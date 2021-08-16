@@ -1,0 +1,45 @@
+.contentForm {
+  display: flex;
+  margin-top: 5rem;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem 0;
+  width: 100%;
+
+  &__title {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 4rem;
+    color: black;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  &__inputLogin {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+}
+
+.config {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+
+}
+
+.forgot {
+  font-size: 0.8rem;
+  font-style: italic;
+  padding: 0.5rem 0;
+  text-align: center;
+  color: chartreuse;
+}
+
+.inputSize {
+  width: 200px;
+}
