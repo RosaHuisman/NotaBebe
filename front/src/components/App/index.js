@@ -5,11 +5,15 @@ import React from 'react';
 import './styles.scss';
 
 // == Import composants custom
+import Header from 'src/components/Header';
 import Login from 'src/components/Login';
 
 // == Composant
 const App = () => (
-  <Login />
+  <>
+    <Header />
+    <Login />
+  </>
 );
 
 // == Export
