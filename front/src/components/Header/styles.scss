@@ -1,0 +1,23 @@
+@use 'src/styles/vars' as v;
+
+.header {
+  // fix position on the top:
+  position: fixed;
+  width: 100vw;
+  left:0;
+  top: 0;
+
+  padding: v.$gutter/2;
+  display: flex;
+  justify-content: space-between;
+  background: linear-gradient(v.$primary-color, v.$secondary-color);
+
+  &-title {
+    font-size: 1.2em;
+    margin: auto 0;
+  }
+  &-logo {
+    width: 80px;
+  }
+}
+
