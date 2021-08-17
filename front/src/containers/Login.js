@@ -1,10 +1,6 @@
 import { connect } from 'react-redux';
 import Login from 'src/components/Login';
 import { isUserLogged } from 'src/store/selectors';
-import {
-  createSubmitLoginAction,
-  createSetSettingsFieldValueAction,
-} from 'src/store/actions';
 
 const mapStateToProps = (state) => ({
   emailValue: state.login.email,
@@ -15,14 +11,24 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   onEmailChange: (e) => {
-    dispatch(createSetSettingsFieldValueAction(e.target.value, 'email'));
+    dispatch({
+      type: 'SET_SETTINGS_FIELD_VALUE',
+      newValue: e.target.value,
+      fieldKey: 'email',
+    });
   },
   onPasswordChange: (e) => {
-    dispatch(createSetSettingsFieldValueAction(e.target.value, 'password'));
+    dispatch({
+      type: 'SET_SETTINGS_FIELD_VALUE',
+      newValue: e.target.value,
+      fieldKey: 'password',
+    });
   },
   onSettingsSubmit: (e) => {
     e.preventDefault();
-    dispatch(createSubmitLoginAction());
+    dispatch({
+      type: 'SUBMIT_LOGIN',
+    });
   },
 });
 

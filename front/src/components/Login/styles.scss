@@ -1,9 +1,9 @@
 .loginForm {
   display: flex;
   margin: 0 auto;
-  margin-top: 12rem;
+  margin-top: 9rem;
   flex-direction: column;
-  width: 320px;
+  width: 300px;
   border-radius: 10px;
   border: 1px solid #eee;
   background-color: #fff;
@@ -58,7 +58,7 @@
     padding: 0.2rem;
     margin-bottom: 1rem;
     text-align: center;
-    color: #777;
-    font-size: 0.9rem;
+    color: rgb(255, 65, 65);
+    font-size: 0.8rem;
   }
 }
