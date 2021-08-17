@@ -1,5 +1,6 @@
 // == Import npm
 import React from 'react';
+import ContactFooter from '../ContactFooter';
 
 // == Import
 import reactLogo from './react-logo.svg';
@@ -10,6 +11,7 @@ const App = () => (
   <div className="app">
     <img src={reactLogo} alt="react logo" />
     <h1>Composant : App</h1>
+    <ContactFooter />
   </div>
 );
 
