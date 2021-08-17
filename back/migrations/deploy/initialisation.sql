@@ -23,34 +23,36 @@ CHECK (
     OR VALUE ~ '^98[4678]\d{2}$' -- CP des TOM
 );
 
+CREATE TABLE "role" (
+    "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    "label" TEXT NOT NULL,
+    "created_at" TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
 CREATE TABLE "user" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    "first_name" text NOT NULL,
-    "last_name" text NOT NULL,
-    "address" text NOT NULL,
+    "first_name" TEXT NOT NULL,
+    "last_name" TEXT NOT NULL,
+    "address" TEXT NOT NULL,
     "postcode" code_postal_fr NOT NULL,
-    "city" text NOT NULL,
+    "city" TEXT NOT NULL,
     "email" email NOT NULL,
-    "password" text NOT NULL,
+    "password" TEXT NOT NULL,
     "phone_number" phone_number NOT NULL,
+    "role_id" INT NOT NULL REFERENCES "role"("id"),
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
     "updated_at" TIMESTAMPTZ
 );
 
-CREATE TABLE "role" (
-    "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    "label" text NOT NULL,
-    "created_at" TIMESTAMPTZ NOT NULL DEFAULT now()
-);
 
 CREATE TABLE "child" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    "first_name" text NOT NULL,
-    "last_name" text NOT NULL,
+    "first_name" TEXT NOT NULL,
+    "last_name" TEXT NOT NULL,
     "birthdate" birthdate NOT NULL,
-    "birthplace" text NOT NULL,
-    "sex" text NOT NULL,
-    "allergies" text NOT NULL,
+    "birthplace" TEXT NOT NULL,
+    "sex" TEXT NOT NULL,
+    "allergies" TEXT NOT NULL,
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
     "updated_at" TIMESTAMPTZ
 );
@@ -58,20 +60,35 @@ CREATE TABLE "child" (
 CREATE TABLE "recap" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "date" TIMESTAMPTZ NOT NULL,
-    "meal_info" text NOT NULL,
-    "nap_time" text NOT NULL,
-    "extra_info" text NOT NULL,
-    "mood" text NOT NULL,
-    "child_id" int NOT NULL REFERENCES "child" ("id"),
+    "extra_info" TEXT NOT NULL,
+    "mood" TEXT NOT NULL,
+    "child_id" INT NOT NULL REFERENCES "child" ("id"),
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
     "updated_at" TIMESTAMPTZ
 );
 
 CREATE TABLE "comment" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    "message" text NOT NULL,
-    "mood" text NOT NULL,
-    "child_id" int NOT NULL REFERENCES "child" ("id"),
+    "message" TEXT NOT NULL,
+    "child_id" INT NOT NULL REFERENCES "child" ("id"),
+    "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
+    "updated_at" TIMESTAMPTZ
+);
+
+CREATE TABLE "nap" (
+    "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    "start_time" TIME NOT NULL,
+    "end_time" TIME NOT NULL,
+    "comment" TEXT NOT NULL,
+    "recap_id" INT NOT NULL REFERENCES "recap"("id"),
+    "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
+    "updated_at" TIMESTAMPTZ
+);
+
+CREATE TABLE "meal" (
+    "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    "comment" TEXT NOT NULL,
+    "recap_id" INT NOT NULL REFERENCES "recap"("id"),
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
     "updated_at" TIMESTAMPTZ
 );

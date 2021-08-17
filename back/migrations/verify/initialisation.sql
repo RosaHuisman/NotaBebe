@@ -7,6 +7,8 @@ SELECT "id" FROM "role" WHERE FALSE;
 SELECT "id" FROM "child" WHERE FALSE;
 SELECT "id" FROM "recap" WHERE FALSE;
 SELECT "id" FROM "comment" WHERE FALSE;
+SELECT "id" FROM "nap" WHERE FALSE;
+SELECT "id" FROM "meal" WHERE FALSE;
 
 
 SELECT "user"."id" 
