@@ -7,7 +7,7 @@
   left: 0;
   top: 0;
 
-  padding: v.$gutter/2;
+  padding: v.$gutter, 2;
   display: flex;
   justify-content: space-between;
   background: linear-gradient(v.$primary-color, v.$secondary-color);
@@ -30,4 +30,8 @@
   background-color: transparent !important;
   margin: 0;
   padding: 0;
+}
+
+.Dropdown {
+  width: 200px !important;
 }
