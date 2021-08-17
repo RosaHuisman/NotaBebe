@@ -30,7 +30,7 @@ const Header = ({ isLogged, handleLogout }) => (
             <Dropdown.Item>MENU1</Dropdown.Item>
             <Dropdown.Item>MENU2</Dropdown.Item>
             <Dropdown.Item>MENU2</Dropdown.Item>
-            <Dropdown.Item onCLick={handleLogout}>Se déconnecter</Dropdown.Item>
+            <Dropdown.Item onClick={handleLogout}>Se déconnecter</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
         <h1 className="header-title">Lien parent-crèche</h1>

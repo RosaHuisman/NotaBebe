@@ -64,8 +64,8 @@ const reducer = (state = initialState, action) => {
         isLogged: false,
         userlogin: {
           ...state.userlogin,
-          email: '',
-          password: '',
+          email: 'admin@notabebe.io',
+          password: 'admin',
           isError: false,
         },
       };

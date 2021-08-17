@@ -28,15 +28,15 @@ function App({ loading, isLogged }) {
     <>
       <Header />
       <Switch>
+      {isLogged && (
+        <Route exact path="/">
+          <div>BONJOUR JE SUIS CONNECTE</div>
+        </Route>
+      )}
         <Route exact path="/">
           <Login />
           <ContactFooter />
         </Route>
-        {isLogged && (
-          <Route exact path="/TEST">
-            <div>BONJOUR JE SUIS CONNECTE</div>
-          </Route>
-        )}
         <Route>
           <Error />
         </Route>

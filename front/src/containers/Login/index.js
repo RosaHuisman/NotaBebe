@@ -46,9 +46,6 @@ const mapDispatchToProps = (dispatch) => ({
       type: 'SUBMIT_LOGIN',
     });
   },
-  handleLogout: () => {
-    dispatch({ type: 'LOGOUT' });
-  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

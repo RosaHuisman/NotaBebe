@@ -6,6 +6,10 @@ const mapStateToProps = (state) => ({
   isLogged: isUserLogged(state),
 });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = (dispatch) => ({
+  handleLogout: () => {
+    dispatch({ type: 'LOGOUT' });
+  },
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
