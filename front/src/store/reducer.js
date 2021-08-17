@@ -3,12 +3,15 @@ import {
   SET_SETTINGS_FIELD_VALUE,
   LOGIN_SUCCESS,
   LOGIN_ERROR,
+  LOGOUT,
 } from './actions';
 
 const initialState = {
   nickname: null,
   inputValue: '',
-  login: {
+  token: null,
+  isLogged: false,
+  userlogin: {
     email: 'admin@notabebe.io',
     password: 'admin',
     // email: '',
@@ -17,19 +20,21 @@ const initialState = {
   },
 };
 
-const reducer = (oldState = initialState, action) => {
+const reducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_INPUT_VALUE:
       return {
-        ...oldState,
+        ...state,
         inputValue: action.value,
       };
     case LOGIN_SUCCESS:
       return {
-        ...oldState,
+        ...state,
         nickname: action.nickname,
-        login: {
-          ...oldState.login,
+        token: action.token,
+        isLogged: action.logged,
+        userlogin: {
+          ...state.userlogin,
           email: '',
           password: '',
           isError: false,
@@ -37,22 +42,35 @@ const reducer = (oldState = initialState, action) => {
       };
     case LOGIN_ERROR:
       return {
-        ...oldState,
-        login: {
-          ...oldState.login,
+        ...state,
+        userlogin: {
+          ...state.userlogin,
           isError: true,
         },
       };
     case SET_SETTINGS_FIELD_VALUE:
       return {
-        ...oldState,
-        login: {
-          ...oldState.login,
+        ...state,
+        userlogin: {
+          ...state.userlogin,
           [action.fieldKey]: action.newValue,
         },
       };
+    case LOGOUT:
+      return {
+        ...state,
+        nickname: null,
+        token: null,
+        isLogged: false,
+        userlogin: {
+          ...state.userlogin,
+          email: '',
+          password: '',
+          isError: false,
+        },
+      };
     default:
-      return oldState;
+      return state;
   }
 };
 

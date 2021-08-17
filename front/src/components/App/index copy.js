@@ -7,51 +7,39 @@ import { Route, Switch, useLocation } from 'react-router-dom';
 import './styles.scss';
 
 // == Import composants custom
-import Loading from './Loading';
 import Login from 'src/containers/Login';
 import Header from 'src/containers/Header';
 import ContactFooter from 'src/components/ContactFooter';
 
 // == Composant
-function App({ loading, isLogged }) {
-  const location = useLocation();
-  console.log('TOTO', isLogged);
-
-  useEffect(() => {
-    window.scroll(0, 0);
-  }, [location]);  
-
-  if (loading) {
-    return <Loading />;
-  }
-    return (
+function App({ isLogged }) {
+  return (
     <>
       <Header />
       <Switch>
-        <Route exact path="/">
-          <Login />
-          <ContactFooter />
-        </Route>
         {isLogged && (
-          <Route exact path="/TEST">
+          <Route exact path="/">
             <div>BONJOUR JE SUIS CONNECTE</div>
           </Route>
         )}
-        <Route>
-          <Error />
-        </Route>
+        {!isLogged && (
+          <Route exact path="/">
+            <Login />
+            <ContactFooter />
+          </Route>
+        )}
       </Switch>
+
+
+      {/* <Header />
+      <Login />
+      <ContactFooter /> */}
     </>
   );
 }
 
 App.propTypes = {
-  loading: PropTypes.bool,
   isLogged: PropTypes.bool.isRequired,
-};
-
-App.defaultProps = {
-  loading: false,
 };
 
 // == Export
