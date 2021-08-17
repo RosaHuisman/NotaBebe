@@ -1,0 +1,37 @@
+@use 'src/styles/vars' as v;
+
+.header {
+  // fix position on the top:
+  position: fixed;
+  width: 100vw;
+  left: 0;
+  top: 0;
+
+  padding: v.$gutter, 2;
+  display: flex;
+  justify-content: space-between;
+  background: linear-gradient(v.$primary-color, v.$secondary-color);
+  align-items: center;
+
+  &-title {
+    display: flex;
+    margin: 0 auto;
+    font-size: 1.2em;
+  }
+  &-logo {
+    display: flex;
+    width: 80px;
+  }
+}
+
+.iconBurger {
+  font-size: 1.5rem !important;
+  border-radius: 0 !important;
+  background-color: transparent !important;
+  margin: 0;
+  padding: 0;
+}
+
+.Dropdown {
+  width: 200px !important;
+}
