@@ -1,0 +1,9 @@
+@use 'src/styles/vars' as v;
+
+.parentprofile {
+  width: 100vw;
+  &__informations {
+    margin: v.$gutter;
+   }
+}
+
