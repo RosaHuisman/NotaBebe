@@ -16,6 +16,7 @@
   border: 1px solid #eee;
   background-color: #fff;
   box-shadow: 0 5px 9px rgba(0, 0, 0, 0.3); 
+  margin-top: 30px;
 }
 
 .contact-link {
@@ -32,18 +33,4 @@ button {
   background: none;
   border: none;
   color: white;
-}
-
-.adresse, .mail, .phone {
-  margin-top: 10px;
-}
-
-.footer {
-  background: linear-gradient(v.$primary-color, v.$secondary-color);
-  text-align: center;
-  position: absolute;
-  bottom:0;
-  width:100%;
-  padding-top: 10px;
-  padding-bottom: 10px;
 }

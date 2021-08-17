@@ -1,16 +1,17 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Icon } from 'semantic-ui-react'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Icon } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 import './styles.scss';
 
 function ContactFooter(props) {
   return (
     <div className="contact-footer">
-      <div className="contact-details">
-        <p className="adress"><span><Icon name='home' /></span>7 rue des bambins, 75000 Paris</p>
-        <p className="mail"><span><Icon name='mail' /></span>contact-creche@notabebe.fr</p>
-        <p className="phone"><span><Icon name='phone' /></span>01.23.45.67.89</p>
+      <div className="contact-button">
+        <Link className="contact-link" to={'/contact'} exact>
+        <button type="button" className="button">Contactez-nous</button>
+        </Link>
       </div>
       <div className="footer"> 
       <a href="" className="mention-link">Mentions légales</a>

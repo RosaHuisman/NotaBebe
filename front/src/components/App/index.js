@@ -1,7 +1,11 @@
 // == Import npm
 import React from 'react';
 import Login from 'src/containers/Login';
-import ContactFooter from '../ContactFooter';
+import Contact from '../Contact';
+import Footer from '../Footer';
+import ContactDetails from '../ContactDetails';
+
+import { Switch, Route } from 'react-router-dom';
 
 
 // == Import
@@ -10,8 +14,16 @@ import './styles.css';
 // == Composant
 const App = () => (
   <>
-    <Login />
-    <ContactFooter />
+  <Switch>
+    <Route path={'/'} exact>
+      <Login />
+      <Contact />
+      <Footer />
+    </Route>
+    <Route path={'/contact'} exact>
+    <ContactDetails />
+    </Route>
+  </Switch>
   </>
 );
 
