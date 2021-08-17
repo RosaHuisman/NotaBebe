@@ -27,6 +27,8 @@ DROP DOMAIN phone_number;
 
 DROP DOMAIN email;
 
-DROP DOMAIN birthdate;
+DROP DOMAIN date_fr;
+
+DROP DOMAIN sex;
 
 COMMIT;

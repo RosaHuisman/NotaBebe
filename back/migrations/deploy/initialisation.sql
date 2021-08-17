@@ -2,7 +2,7 @@
 
 BEGIN;
 
-CREATE DOMAIN birthdate AS text
+CREATE DOMAIN date_fr AS text
 CHECK (VALUE ~ '^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$');
 -- on pense que c'est ok, à voir si on a bien les flags i et g
 
@@ -22,6 +22,9 @@ CHECK (
     OR VALUE ~ '^97[1-68]\d{2}$' -- CP des DOM
     OR VALUE ~ '^98[4678]\d{2}$' -- CP des TOM
 );
+
+CREATE DOMAIN sex AS text
+CHECK (VALUE ~ '^[FM]$');
 
 CREATE TABLE "role" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -49,9 +52,9 @@ CREATE TABLE "child" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "first_name" TEXT NOT NULL,
     "last_name" TEXT NOT NULL,
-    "birthdate" birthdate NOT NULL,
+    "birthdate" date_fr NOT NULL,
     "birthplace" TEXT NOT NULL,
-    "sex" TEXT NOT NULL,
+    "sex" sex NOT NULL,
     "allergies" TEXT NOT NULL,
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
     "updated_at" TIMESTAMPTZ
@@ -59,10 +62,10 @@ CREATE TABLE "child" (
 
 CREATE TABLE "recap" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    "date" TIMESTAMPTZ NOT NULL,
-    "extra_info" TEXT NOT NULL,
+    "date" date_fr NOT NULL,
+    "extra_info" TEXT,
     "mood" TEXT NOT NULL,
-    "child_id" INT NOT NULL REFERENCES "child" ("id"),
+    "child_id" INT NOT NULL REFERENCES "child"("id"),
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
     "updated_at" TIMESTAMPTZ
 );
@@ -70,7 +73,7 @@ CREATE TABLE "recap" (
 CREATE TABLE "comment" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "message" TEXT NOT NULL,
-    "child_id" INT NOT NULL REFERENCES "child" ("id"),
+    "child_id" INT NOT NULL REFERENCES "child"("id"),
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
     "updated_at" TIMESTAMPTZ
 );
@@ -79,7 +82,7 @@ CREATE TABLE "nap" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "start_time" TIME NOT NULL,
     "end_time" TIME NOT NULL,
-    "comment" TEXT NOT NULL,
+    "comment" TEXT,
     "recap_id" INT NOT NULL REFERENCES "recap"("id"),
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
     "updated_at" TIMESTAMPTZ
@@ -87,6 +90,7 @@ CREATE TABLE "nap" (
 
 CREATE TABLE "meal" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    "time" TIME NOT NULL,
     "comment" TEXT NOT NULL,
     "recap_id" INT NOT NULL REFERENCES "recap"("id"),
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
@@ -94,13 +98,13 @@ CREATE TABLE "meal" (
 );
 
 CREATE TABLE "user_has_recap" (
-    "recap_id" INT NOT NULL REFERENCES "recap"("id"),
-    "user_id" INT NOT NULL REFERENCES "user"("id")
+    "user_id" INT NOT NULL REFERENCES "user"("id"),
+    "recap_id" INT NOT NULL REFERENCES "recap"("id")
 );
 
 CREATE TABLE "user_has_child" (
-    "child_id" INT NOT NULL REFERENCES "child"("id"),
-    "user_id" INT NOT NULL REFERENCES "user"("id")
+    "user_id" INT NOT NULL REFERENCES "user"("id"),
+    "child_id" INT NOT NULL REFERENCES "child"("id")
 );
 
 COMMIT;
