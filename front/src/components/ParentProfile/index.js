@@ -1,5 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import { Icon } from 'semantic-ui-react'
+
+
 
 import Header from 'src/components/Header';
 
@@ -32,9 +36,46 @@ const ParentProfile = ({
         <p>Numéro de téléphone: {phone_number} </p> 
         <p>Email: {email} </p> 
       </div>
-     
+      <Link to="/profile/parent/:id/manageprofile">
+        <button 
+          type="button" 
+          className="parentprofile__button"
+        >
+        Modifier mes informations
+        </button>
+      </Link> 
+
+      <button 
+          type="button" 
+          className="parentprofile__button"
+        >
+        Changer mon mot de passe
+        </button>
+
+      <div className="parentprofile__children">
+        <h3> Mes enfants </h3>
+        
+        <div className="parentprofile__children__icons">
+          <Link to="/profile/parent/:id/child/:id">
+          <Icon 
+            name="smile outline" 
+            size="huge" 
+            className="parentprofile__children__icons__icon" />
+          </Link> 
+          
+          <Link to="/profile/parent/:id/child/:id">
+          <Icon 
+            name="smile outline" 
+            size="huge" 
+            className="parentprofile__children__icons__icon" />
+          </Link> 
+        </div>
+       
+
+      </div>
+
     </div>
-     
+
   </>
     )
 };

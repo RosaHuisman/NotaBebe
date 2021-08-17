@@ -2,8 +2,40 @@
 
 .parentprofile {
   width: 100vw;
+  display: flex;
+  flex-direction: column;
   &__informations {
     margin: v.$gutter;
+    & p {
+      margin-top: v.$gutter /4;
+    }
    }
+   &__button {
+     display: block;
+     margin: 0 auto v.$gutter/2 auto;
+     padding: v.$gutter /3;
+     background-color: v.$rose-color;
+     border: none; 
+   }
+
+  &__children {
+    background-color: v.$primary-color;
+    padding: v.$gutter;
+    text-align: center;
+    margin: v.$gutter;
+    & h3 {
+      font-size: 1.3em;
+      margin-bottom: v.$gutter;
+    }
+    &__icons {
+      text-align: center;
+      display: flex;
+      justify-content: space-around;
+
+      &__icon {
+        color: v.$violet-color;
+      }
+    }
+  }
 }
 
