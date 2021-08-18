@@ -5,16 +5,16 @@
   display: flex;
   flex-direction: column;
   &__informations {
-    margin: v.$gutter;
+    margin: v.$gutter v.$gutter 0 v.$gutter;
     & p {
       margin-top: v.$gutter /4;
     }
    }
    &__button {
      display: block;
-     margin: 0 auto v.$gutter/2 auto;
+     margin: v.$gutter/4 auto;
      padding: v.$gutter /3;
-     background-color: v.$rose-color;
+     background-color: v.$bg-color;
      border: none; 
    }
 
@@ -35,6 +35,25 @@
       &__icon {
         color: v.$violet-color;
       }
+    }
+  }
+  &__buttons {
+    display: flex;
+    justify-content: flex-end;
+    padding: v.$gutter /4;
+
+    &__send {
+      display: block;
+      padding: v.$gutter /3;
+      background-color: v.$bg-color;
+      border: none;
+      margin-left: 10px;
+    }
+    &__cancel {
+      display: block;
+      background-color: v.$red-color;
+      border: none;
+      font-size: 0.7rem;
     }
   }
 }

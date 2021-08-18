@@ -3,8 +3,7 @@ import {
   SET_SETTINGS_FIELD_VALUE,
   LOGIN_SUCCESS,
   LOGIN_ERROR,
-  CHANGE_INFOS,
-} from './actions';
+} from '../actions';
 
 const initialState = {
   nickname: null,
@@ -16,18 +15,6 @@ const initialState = {
     // password: '',
     isError: false,
   },
-  user: {
-    id: 1,
-    firstname: 'Tata',
-    lastname: 'Toto',
-    address: 'rue de la paix',
-    cp: '06360',
-    city: 'Tapol',
-    email: 'tata@toto.fr',
-    password: 'hello',
-    phone_number: '06.33.33.33.33',
-    change_infos: false,
-  }
 };
 
 const reducer = (oldState = initialState, action) => {
@@ -62,15 +49,6 @@ const reducer = (oldState = initialState, action) => {
         login: {
           ...oldState.login,
           [action.fieldKey]: action.newValue,
-        },
-      };
-    case CHANGE_INFOS:
-      console.log('je suis dans le cas CHANGE_INFOS')
-      return {
-        ...oldState,
-        user: {
-          ...oldState,
-          change_infos: true,
         },
       };
     default:
