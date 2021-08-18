@@ -129,7 +129,7 @@ const userController = {
             }
 
             const userId = Number(request.params.id);
-            console.log(userId)
+            // console.log(userId)
             const hash = bcrypt.hashSync(password, 10);
             // console.log(hash);
             // save the data into the database
@@ -149,53 +149,59 @@ const userController = {
         }
     },
 
-    updateUser: async (request, response) => {
-        try {
-            console.log(request.body);
+    // updateUser: async (request, response) => {
+    //     try {
+    //         // console.log('req body', request.body);
+
+    //         const address = request.body.address;
+    //         const postcode = request.body.postcode;
+    //         const city = request.body.city;
+    //         const phone_number = request.body.phone_number;
+
+    //         const errors = [];
+
+    //         // On regarde la taille de la chaine de caractère
+
+    //         if (address.length === 0) {
+    //             errors.push("L'adresse est obligatoire'");
+    //         }
+    //         if (postcode.length === 0) {
+    //             errors.push("Le code postal est obligatoire");
+    //         }
+    //         if (city.length === 0) {
+    //             errors.push("La ville est obligatoire");
+    //         }
+
+    //         if (phone_number.length === 0) {
+    //             errors.push("Le numéro de téléphone est obligatoire");
+    //         }
+
+    //         if (errors.length > 0) {
+    //             // En cas d'erreurs détectées, on fait un rendu de la vue register
+    //             // En lui transmettant notre tableau d'erreur.
+    //             response.json({ error: errors });
+    //             return;
+    //         }
+
+    //         const userId = Number(request.params.id);
+
+    //         const foundUser = await userDataMapper.findById(userId);
+    //         // Enregistrer ces données en BDD
+    //         const user = await userDataMapper.updateUser({ ...foundUser }, userId);
+
+    //         // Connecter l'utilisateur (l'enregistrer en session)
+    //         request.session.user = user;
+
+    //         // Rediriger l'internaute sur sa page profil
+    //         // response.redirect('/');
+    //         response.json({ user });
 
 
-            const address = request.body.address;
-            const postcode = request.body.postcode;
-            const city = request.body.city;
-            const phone_number = request.body.phone_number;
-
-            const errors = [];
-
-            // On regarde la taille de la chaine de caractère
-
-            if (address.length === 0) {
-                errors.push("L'adresse est obligatoire'");
-            }
-            if (postcode.length === 0) {
-                errors.push("Le code postal est obligatoire");
-            }
-            if (city.length === 0) {
-                errors.push("La ville est obligatoire");
-            }
-
-            if (phone_number.length === 0) {
-                errors.push("Le numéro de téléphone est obligatoire");
-            }
-
-
-            if (errors.length > 0) {
-                // En cas d'erreurs détectées, on fait un rendu de la vue register
-                // En lui transmettant notre tableau d'erreur.
-                response.json({ error: errors });
-                return;
-            }
-
-            // Enregistrer ces données en BDD
-            const user = await userDataMapper.updateUser({
-                address, postcode, city, phone_number
-            });
-
-
-        } catch (error) {
-            console.log(error);
-            response.json({ error: error.message });
-        }
-    }
+    //     } catch (error) {
+    //         console.log(error);
+    //         response.json({ error: error.message });
+    //     }
+    // }
 
 
 };

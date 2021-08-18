@@ -13,3 +13,14 @@ Content-Type: application/json
 }
 
 
+### update user info
+
+PATCH http://localhost:3000/profile/parent/1/info
+Content-Type: application/json
+
+{
+    "address": "50 rue de Paris",
+    "postcode": "12345",
+    "city": "Marigny",
+    "phone_number": "0611203948"
+}

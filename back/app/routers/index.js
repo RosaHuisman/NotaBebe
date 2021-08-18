@@ -19,8 +19,8 @@ router.get('/logout', userController.logout);
 router.route('/profile/parent/:id')
     .patch(userController.updatePassword)
 
-// autre route pour update le User
-// .patch(userController.updateUser);
+router.route('/profile/parent/:id/info')
+    .patch(userController.updateUser);
 
 
 router.use(errorController.notFoundResource);
