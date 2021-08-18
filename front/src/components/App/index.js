@@ -3,6 +3,12 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Route, Switch, useLocation } from 'react-router-dom';
 
+import Login from 'src/containers/Login';
+import Contact from '../Contact';
+import Footer from '../Footer';
+import ContactDetails from '../ContactDetails';
+import Header from '../Header';
+
 // == Import
 import './styles.scss';
 
@@ -47,9 +53,9 @@ const App = ({ isLogged }) => {
           <Login />
           <Contact />
         </Route>
-        {/* <Route exact path="/contact">
+        <Route exact path="/contact">
           <ContactDetails />
-        </Route> */}
+        </Route>
         <Route>
           <Error />
         </Route>
@@ -62,6 +68,7 @@ const App = ({ isLogged }) => {
 App.propTypes = {
   isLogged: PropTypes.bool.isRequired,
 };
+
 
 // == Export
 export default App;
