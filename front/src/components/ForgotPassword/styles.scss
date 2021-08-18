@@ -1,9 +1,10 @@
-.loginForm {
+.ForgotP {
   display: flex;
   margin: 0 auto;
   margin-top: 4rem;
   flex-direction: column;
-  width: 300px;
+  flex-wrap: wrap;
+  width: 315px;
   border-radius: 10px;
   border: 1px solid #eee;
   background-color: #fff;
@@ -11,24 +12,38 @@
 	-webkit-box-shadow: 0 5px 9px rgba(0, 0, 0, 0.3); 
 	-moz-box-shadow: 0 5px 9px rgba(0, 0, 0, 0.3); 
 
-  &__title {
+  &__txt {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     margin: 2rem 0;
     padding-top: 0.5rem;
-    color: #06C4CA;
-    font-size: 2rem;
-    font-weight: bold;
-  }
 
+    &__title {
+      display: flex;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #ee5937;
+    }
+
+    &__subtitle {
+      display: flex;
+      font-size: 0.8rem;
+      padding-top: 0.5rem;
+      text-align: center;
+      font-style: italic;
+      margin: 0 1rem;
+    }
+  }
+      
   &__content {
     display: flex;
-    margin: 2rem auto;
+    margin: 0 auto;
     flex-direction: column;
   }
 }
 
-.settings {
+.setting {
   &__form {
     width: 100%;
   }
@@ -49,18 +64,16 @@
   }
 
   &__send {
-    margin: 1.1rem 0;
     background-color: #06C4CA;
     color: white;
+    margin-bottom: 2rem;
   }
 
-  &__forgot {
-    text-align: right;
-    font-size: 0.7rem;
-    color: #777;
-  }
-
-  &__forgot:hover {
-    color: #06C4CA;
+  &__notexist {
+    padding: 0.2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: rgb(255, 65, 65);
+    font-size: 0.8rem;
   }
 }

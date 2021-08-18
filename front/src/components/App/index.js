@@ -13,6 +13,8 @@ import Error from 'src/components/Error';
 // import TEST from 'src/components/TEST';
 import Contact from 'src/components/Contact';
 import ContactDetails from 'src/components/ContactDetails';
+import ForgotPassword from 'src/components/ForgotPassword';
+import Confirm from 'src/components/Confirm';
 
 // == Import composants /containers
 import Login from 'src/containers/Login';
@@ -46,6 +48,12 @@ const App = ({ isLogged }) => {
         <Route exact path="/">
           <Login />
           <Contact />
+        </Route>
+        <Route exact path="/forgot-password">
+          <ForgotPassword />
+        </Route>
+        <Route exact path="/confirm">
+          <Confirm />
         </Route>
         <Route exact path="/contact">
           <ContactDetails />

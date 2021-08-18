@@ -22,13 +22,13 @@ const mapDispatchToProps = (dispatch) => ({
       fieldKey: 'password',
     });
   },
-  changeField: (newValue, name) => {
-    dispatch({
-      type: 'SET_INPUT_VALUE',
-      name: name,
-      value: newValue,
-    });
-  },
+  // changeField: (newValue, name) => {
+  //   dispatch({
+  //     type: 'SET_INPUT_VALUE',
+  //     name: name,
+  //     value: newValue,
+  //   });
+  // },
   handleLogin: () => {
     dispatch({
       type: 'SUBMIT_LOGIN',
