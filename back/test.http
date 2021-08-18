@@ -5,13 +5,11 @@ GET http://localhost:3000/rdfhf
 
 ## USER
 ### update user password
-PUT http://localhost:3000/profile/parent/1
+PATCH http://localhost:3000/profile/parent/2
 Content-Type: application/json
 
 {
-    "email": "jeannebonnette@gmail.com",
-    "password": "Chicagoland",
-    "passwordConfirm": "Chicagoland"
+    "password": "Chicagoland"
 }
 
 

@@ -12,7 +12,7 @@ const userController = {
      * @param {Response} response 
      */
     login: (_, response) => {
-        response.json({data: user});
+        response.json({ data: user });
     },
 
 
@@ -44,7 +44,7 @@ const userController = {
             if (bcrypt.compareSync(password, user.password)) {
 
                 // Registering the user in a session
-                
+
                 if (request.session.redirectAfterLogin) {
 
                     response.redirect(request.session.redirectAfterLogin);
@@ -78,106 +78,76 @@ const userController = {
     },
 
     updatePassword: async (request, response) => {
-        try {
-            //   1 recuperer id ?
-            const userId = Number(request.params.id);
-            //   2 enregistrer ?
-            const email = request.body.email;
-            const password = request.body.password;
-            const passwordConfirm = request.body.passwordConfirm;
-            //   3 le hash
-            const hash = bcrypt.hashSync(password, 10);
-            //   4 le return?
-            const user = await userDataMapper.updatePassword({
-                password: hash,
-                id: userId
-            });
-
-        } catch (error) {
-            console.log(error);
-            response.json({ error: error.message });
-        }
-
         // try {
-        //     console.log('request body :', request.body);
-        //     // check that the data is coherent
+        //     //   1 recuperer id ?
+        //     const userId = Number(request.params.id);
+        //     //   2 enregistrer ?
         //     const email = request.body.email;
         //     const password = request.body.password;
         //     const passwordConfirm = request.body.passwordConfirm;
-
-        //     const errors = [];
-
-        //     // checking the string's length
-        //     if (password.length === 0) {
-        //         errors.push("Le mot de passe est obligatoire");
-        //     }
-
-        //     // is the email a valid one?
-        //     if (!email.includes('@')) {
-        //         errors.push("L'email n'est pas valide");
-        //     }
-
-        //     // do the two passwords match?
-        //     if (password !== passwordConfirm) {
-        //         errors.push("Les mots de passe sont différents");
-        //     }
-
-        //     if (errors.length > 0) {
-        //         // if there is at least one error, we want it to show up in the json response
-        //         response.json({ error: errors });
-        //         return;
-        //     }
-
-        //     const userId = Number(request.params.id);
+        //     //   3 le hash
         //     const hash = bcrypt.hashSync(password, 10);
-        //     console.log(hash);
-        //     // save the data into the database
-        //     //! probleme ici
+        //     //   4 le return?
         //     const user = await userDataMapper.updatePassword({
         //         password: hash,
         //         id: userId
         //     });
 
-        //    //! le console log de user nous donne un undefined
-        //     console.log('user after all', response.result);
-        //     // Connecter l'utilisateur (l'enregistrer en session)
-        //     request.session.user = user;
-
-        //     // Rediriger l'internaute sur sa page profil
-        //     response.redirect('/');
-
         // } catch (error) {
         //     console.log(error);
         //     response.json({ error: error.message });
         // }
+
+        try {
+            console.log('request body :', request.body);
+            // check that the data is coherent
+            // const email = request.body.email;
+            const password = request.body.password;
+            // const passwordConfirm = request.body.passwordConfirm;
+
+            const errors = [];
+
+            // checking the string's length
+            if (password.length === 0) {
+                errors.push("Le mot de passe est obligatoire");
+            }
+
+            // is the email a valid one?
+            // if (!email.includes('@')) {
+            //     errors.push("L'email n'est pas valide");
+            // }
+
+            // do the two passwords match?
+            // if (password !== passwordConfirm) {
+            //     errors.push("Les mots de passe sont différents");
+            // }
+
+            if (errors.length > 0) {
+                // if there is at least one error, we want it to show up in the json response
+                response.json({ error: errors });
+                return;
+            }
+
+            const userId = Number(request.params.id);
+            console.log(userId)
+            const hash = bcrypt.hashSync(password, 10);
+            // console.log(hash);
+            // save the data into the database
+
+            const user = await userDataMapper.updatePassword(hash, userId);
+
+            //console.log('user after all', response.result);
+            // Connecter l'utilisateur (l'enregistrer en session)
+            request.session.user = user;
+
+            // Rediriger l'internaute sur sa page profil
+            response.redirect('/');
+
+        } catch (error) {
+            console.log(error);
+            response.json({ error: error.message });
+        }
     },
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     updateUser: async (request, response) => {
         try {
