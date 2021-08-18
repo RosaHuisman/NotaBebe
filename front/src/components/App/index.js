@@ -8,12 +8,18 @@ import ContactDetails from '../ContactDetails';
 import { Switch, Route } from 'react-router-dom';
 
 
+import Header from '/src/components/Header'
+
 // == Import
-import './styles.css';
+import './styles.scss';
+
 
 // == Composant
 const App = () => (
-  <>
+  <div className="app">
+
+  <Header />
+
   <Switch>
     <Route path={'/'} exact>
       <Login />
@@ -24,7 +30,8 @@ const App = () => (
     <ContactDetails />
     </Route>
   </Switch>
-  </>
+
+  </div>
 );
 
 // == Export
