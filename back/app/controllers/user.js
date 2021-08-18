@@ -80,8 +80,18 @@ const userController = {
     updatePassword: async (request, response) => {
         try {
             //   1 recuperer id ?
-            //  2 enregistrer ?
-            //  3
+            const userId = Number(request.params.id);
+            //   2 enregistrer ?
+            const email = request.body.email;
+            const password = request.body.password;
+            const passwordConfirm = request.body.passwordConfirm;
+            //   3 le hash
+            const hash = bcrypt.hashSync(password, 10);
+            //   4 le return?
+            const user = await userDataMapper.updatePassword({
+                password: hash,
+                id: userId
+            });
 
         } catch (error) {
             console.log(error);
