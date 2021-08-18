@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import ParentProfile from 'src/components/ParentProfile';
-import { changeInfos } from 'src/store/actions';
+import { changeInfos, changeValue } from 'src/store/actions';
 
 
 const mapStateToProps = (state) => ({
@@ -17,11 +17,14 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   changeUserInfos: () => {
-    //console.log(e)
-    //e.preventDefault();
-  //console.log('coucou je suis la')
   dispatch(changeInfos());
-}    
+}, 
+  onChange: (value, key) => {
+  dispatch(changeValue(value, key));
+},
+changeField: (value, key) => {
+  dispatch(changeValue(value, key));
+},    
   
 });
 

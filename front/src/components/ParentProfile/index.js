@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Icon } from 'semantic-ui-react'
 
+import Field from './Field';
+
 import Header from 'src/components/Header';
 
 import './styles.scss';
@@ -19,15 +21,19 @@ const ParentProfile = ({
   phone_number,
   changeUserInfos,
   change_infos,
+  changeField,
+  onChange,
+  value,
+  name,
 }) => {
 
   const handleOnClickButton = () => {
-    console.log('je veux modifier le state au click');
-    console.log('infos on click', change_infos)
-
     changeUserInfos();
   };
-  console.log('infos', change_infos)
+
+  const handleChange = (evt) => {
+    onChange(evt.target.value, name);
+  };
 
   return (
   <>
@@ -57,97 +63,55 @@ const ParentProfile = ({
       </div>
     ) : (
       <form
+        autoComplete="off"
         className="parentprofile__informations"
         //onSubmit={}
       >
-        <div>
-          <label>
-          Nom :
-            <input 
-              className="parentprofile__informations__input"
-              type="text" 
-              name="lastname" 
-              value={lastname} 
-              //placeholder={lastname}
-              //onChange={}
-              />
-          </label>
-          </div>
-          
-        <div>
-        <label>
-          Prénom :
-            <input 
-              className="parentprofile__informations__input"
-              type="text" 
-              name="firstname" 
-              value={firstname} 
-              //onChange={}
-              />
-          </label>
-        </div>
 
-        <div>
-        <label>
-          Adresse :
-            <input 
-              className="parentprofile__informations__input"
-              type="text" 
-              name="address" 
-              value={address} 
-              //onChange={}
-              />
-          </label>
-        </div>
+        <p>{lastname} {firstname} </p>
 
-        <div>
-        <label>
-          Code postal: 
-            <input 
-              className="parentprofile__informations__input"
-              type="text" 
-              name="cp" 
-              value={cp} 
-              //onChange={}
-              />
-          </label>
-          <label>
-          Commune: 
-            <input 
-              className="parentprofile__informations__input"
-              type="text" 
-              name="city" 
-              value={city} 
-              //onChange={}
-              />
-          </label>
-        </div>
+        <Field
+          name="address"
+          type="text"
+          placeholder="Addresse"
+          onChange={changeField}
+          value={address}
+        />
 
-        <div>
-        <label>
-          Tél. :
-            <input 
-              className="parentprofile__informations__input"
-              type="text" 
-              name="phone_number" 
-              value={phone_number} 
-              //onChange={}
-              />
-          </label>
-        </div>
+        <Field
+          name="cp"
+          type="text"
+          placeholder="Code postal"
+          onChange={changeField}
+          value={cp}
+        />
 
-        <div>
-        <label>
-          Email :
-            <input 
-              className="parentprofile__informations__input"
-              type="email" 
-              name="email" 
-              value={email} 
-              //onChange={}
-              />
-          </label>
-        </div>
+          <Field
+          name="city"
+          type="text"
+          placeholder="Commune"
+          onChange={changeField}
+          value={city}
+        />
+       
+        <Field
+          name="phone_number"
+          type="text"
+          placeholder="Numéro de téléphone"
+          onChange={changeField}
+          value={phone_number}
+        />
+        
+        
+        <Field
+          name="email"
+          type="email"
+          placeholder="Adresse Email"
+          onChange={changeField}
+          value={email}
+        />
+
+        
     
         <div className="parentprofile__buttons" >
             <button

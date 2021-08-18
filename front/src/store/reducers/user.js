@@ -1,5 +1,7 @@
 import {
   CHANGE_INFOS,
+  CHANGE_VALUE,
+
 } from '../actions';
 
 const initialState = {
@@ -18,11 +20,17 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case CHANGE_INFOS:
-      console.log('je suis dans le cas CHANGE_INFOS')
       return {
         ...state,
         change_infos: true,
       };
+      case CHANGE_VALUE: {
+        console.log('je suis dans le cas CHANGE_VALUE')
+        return {
+          ...state,
+          [action.key]: action.value,
+        };
+      }
     default:
       return state;
   }
