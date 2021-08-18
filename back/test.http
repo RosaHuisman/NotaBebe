@@ -4,6 +4,7 @@ GET http://localhost:3000/rdfhf
 
 
 ## USER
+
 ### update user password
 PATCH http://localhost:3000/profile/parent/2
 Content-Type: application/json
@@ -15,12 +16,47 @@ Content-Type: application/json
 
 ### update user info
 
-PATCH http://localhost:3000/profile/parent/1/info
+# PATCH http://localhost:3000/profile/parent/9/info
+# Content-Type: application/json
+
+# {
+#     "address": "50 rue de Paris",
+#     "postcode": "12345",
+#     "city": "Marigny",
+#     "phone_number": "0611203948"
+# }
+
+
+# ADMIN
+
+### adding an user
+POST http://localhost:3000/profile/admin/manageprofile
 Content-Type: application/json
 
 {
+    "first_name": "Mickael",
+    "last_name": "Menet",
     "address": "50 rue de Paris",
     "postcode": "12345",
     "city": "Marigny",
-    "phone_number": "0611203948"
+    "email": "mickaeldu59@gmail.com",
+    "password": "monsuperpassword",
+    "phone_number": "0611203948",
+    "role_id": 1
 }
+
+### deleting an user
+DELETE http://localhost:3000/profile/admin/manageprofile/8
+
+### adding a child
+# POST http://localhost:3000/profile/admin/parent/1/managechildren
+# Content-Type: application/json
+
+# {
+#     "first_name": "Mickael",
+#     "last_name": "Menet",
+#     "birthdate": "18/04/1995",
+#     "birthplace": "Metz",
+#     "sex": "F",
+#     "allergies": "amandes"
+# }
