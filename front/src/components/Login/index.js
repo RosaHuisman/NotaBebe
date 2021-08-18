@@ -25,9 +25,6 @@ const Login = ({
     <>
       {!isLogged ? (
         <>
-          <header className="header">
-            <Header />
-          </header>
           <div className="loginForm">
             <div className="loginForm__title">
               Connexion

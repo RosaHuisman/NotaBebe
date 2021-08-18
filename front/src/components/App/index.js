@@ -4,26 +4,28 @@ import Login from 'src/containers/Login';
 import Contact from '../Contact';
 import Footer from '../Footer';
 import ContactDetails from '../ContactDetails';
+import Header from '../Header';
 
 import { Switch, Route } from 'react-router-dom';
 
 
 // == Import
-import './styles.css';
+import './styles.scss';
 
 // == Composant
 const App = () => (
   <>
+  <Header />
   <Switch>
     <Route path={'/'} exact>
       <Login />
       <Contact />
-      <Footer />
     </Route>
     <Route path={'/contact'} exact>
-    <ContactDetails />
+      <ContactDetails />
     </Route>
   </Switch>
+  <Footer />
   </>
 );
 

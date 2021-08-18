@@ -2,7 +2,7 @@
 
 .header {
   // fix position on the top:
-  position: fixed;
+
   width: 100vw;
   left: 0;
   top: 0;
@@ -12,6 +12,7 @@
   justify-content: space-between;
   background: linear-gradient(v.$primary-color, v.$secondary-color);
   align-items: center;
+
 
   &-title {
     display: flex;
