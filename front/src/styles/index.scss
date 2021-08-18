@@ -1,8 +1,11 @@
 @use 'reset';
 @use 'vars';
 
+@import 'semantic-ui-css/semantic.min.css';
+
 body {
   font-family: sans-serif;
+  height: auto;
 }
 
 /* 
