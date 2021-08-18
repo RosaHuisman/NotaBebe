@@ -4,28 +4,55 @@ import Login from 'src/containers/Login';
 import Contact from '../Contact';
 import Footer from '../Footer';
 import ContactDetails from '../ContactDetails';
-
-import { Switch, Route } from 'react-router-dom';
-
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { Route, Switch, useLocation } from 'react-router-dom';
 
 // == Import
-import './styles.css';
+import './styles.scss';
+
+// == Import composants custom
+import Loading from 'src/components/App/Loading';
+import Header from 'src/containers/Header';
+import Error from 'src/components/Error';
+
+  
+
+App.propTypes = {
+  loading: PropTypes.bool,
+  isLogged: PropTypes.bool.isRequired,
+};
 
 // == Composant
-const App = () => (
-  <>
-  <Switch>
-    <Route path={'/'} exact>
-      <Login />
-      <Contact />
+const App = () => {
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, [location]);
+
+  if (loading) {
+    return <Loading />;
+  }
+  return (
+    <>
+      <Header />
+      <Switch>
+        {isLogged && (
+          <Route exact path="/">
+            <Error />
+          </Route>
+        )}
+        <Route exact path="/">
+          <Login />
+        </Route>
+        <Route>
+          <Error />
+        </Route>
+      </Switch>
       <Footer />
-    </Route>
-    <Route path={'/contact'} exact>
-    <ContactDetails />
-    </Route>
-  </Switch>
-  </>
-);
+    </>
+  );
+ 
+};
 
 // == Export
 export default App;

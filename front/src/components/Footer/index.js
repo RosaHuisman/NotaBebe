@@ -17,5 +17,5 @@ Footer.propTypes = {
 
 }
 
-export default Footer
+export default Footer;
 
