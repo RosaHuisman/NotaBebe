@@ -1,16 +1,30 @@
 // == Import npm
 import React from 'react';
+import Login from 'src/containers/Login';
+import Contact from '../Contact';
+import Footer from '../Footer';
+import ContactDetails from '../ContactDetails';
+
+import { Switch, Route } from 'react-router-dom';
+
 
 // == Import
-import reactLogo from './react-logo.svg';
 import './styles.css';
 
 // == Composant
 const App = () => (
-  <div className="app">
-    <img src={reactLogo} alt="react logo" />
-    <h1>Composant : App</h1>
-  </div>
+  <>
+  <Switch>
+    <Route path={'/'} exact>
+      <Login />
+      <Contact />
+      <Footer />
+    </Route>
+    <Route path={'/contact'} exact>
+    <ContactDetails />
+    </Route>
+  </Switch>
+  </>
 );
 
 // == Export
