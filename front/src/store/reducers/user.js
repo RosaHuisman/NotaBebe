@@ -1,6 +1,7 @@
 import {
-  CHANGE_INFOS,
+  OPEN_CHANGE_INFOS,
   CHANGE_VALUE,
+  //CHANGE_INFOS,
   TOGGLE_CHANGE_PASSWORD,
   CLOSE_CHANGE_INFOS
 
@@ -11,38 +12,44 @@ const initialState = {
     firstname: 'Tata',
     lastname: 'Toto',
     address: 'rue de la paix',
-    cp: '06360',
+    postcode: '06360',
     city: 'Tapol',
     email: 'tata@toto.fr',
     password: 'hello',
     phone_number: '06.33.33.33.33',
-    change_infos: false,
-    change_password: false, 
+    isOpen: false,
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case CHANGE_INFOS:
+    case OPEN_CHANGE_INFOS:
       return {
         ...state,
-        change_infos: true,
+        isOpen: true,
       };
       case CHANGE_VALUE: {
-        console.log('je suis dans le cas CHANGE_VALUE')
         return {
           ...state,
           [action.key]: action.value,
         };
       };
+      // case CHANGE_INFOS: {
+      //   console.log('je suis dans le cas CHANGE_INFOS')
+      //   return {
+      //     ...state,
+      //     isOpen: false,
+      //   };
+      // }
       case TOGGLE_CHANGE_PASSWORD: 
       return {
         ...state,
-        change_password: true,
+        isOpen: true,
       };
       case CLOSE_CHANGE_INFOS:
+        console.log('je suis dans le cas CLOSE_CHANGE_INFOS')
         return {
           ...state,
-          change_infos: false,
+          isOpen: false,
         }
     default:
       return state;

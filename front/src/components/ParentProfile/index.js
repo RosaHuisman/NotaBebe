@@ -15,16 +15,17 @@ const ParentProfile = ({
   lastname, 
   firstname, 
   address, 
-  cp, 
+  postcode, 
   city, 
   email, 
   phone_number,
   changeUserInfos,
-  change_infos,
+  isOpen,
   changeField,
   togglerChangePassword,
-  change_password,
   closeChangeInfos,
+  handleChangeInfos,
+  handleChangePassword,
   
 }) => {
 
@@ -40,6 +41,17 @@ const ParentProfile = ({
     closeChangeInfos();
   }
 
+  const handleSubmit = (evt) => {
+    console.log('je clique sur submit')
+    evt.preventDefault();
+    handleChangeInfos();
+  };
+
+  const handleSubmitChangePassword = (evt) => {
+    evt.preventDefault();
+    handleChangePassword();
+  }
+
   return (
   <>
     <header className="header">
@@ -47,13 +59,13 @@ const ParentProfile = ({
     </header>
 
     <div className="parentprofile">
-    {!change_infos ? (
+    {!isOpen ? (
       
       <div className="parentprofile__informations">
         <p>Nom: {lastname} </p>
         <p>prénom: {firstname} </p>
         <p>Adresse: {address} </p> 
-        <p>{cp} {city} </p> 
+        <p>{postcode} {city} </p> 
         <p>Tél.: {phone_number} </p> 
         <p>Email: {email} </p>
 
@@ -70,9 +82,10 @@ const ParentProfile = ({
       <form
         autoComplete="off"
         className="parentprofile__informations"
-        //onSubmit={}
+        onSubmit={handleSubmit}
       >
         <p className="parentprofile__informations__fullname">{lastname} {firstname} </p>
+        <p className="parentprofile__informations__email">{email}</p>
 
         <Field
           name="address"
@@ -83,11 +96,11 @@ const ParentProfile = ({
         />
 
         <Field
-          name="cp"
+          name="postcode"
           type="text"
           placeholder="Code postal"
           onChange={changeField}
-          value={cp}
+          value={postcode}
         />
 
           <Field
@@ -105,14 +118,7 @@ const ParentProfile = ({
           onChange={changeField}
           value={phone_number}
         />
-        
-        <Field
-          name="email"
-          type="email"
-          placeholder="Adresse Email"
-          onChange={changeField}
-          value={email}
-        />
+      
 
         <div className="parentprofile__buttons" >
             <button
@@ -134,7 +140,7 @@ const ParentProfile = ({
       </form>
     )}
 
-    {!change_password ? (
+    {!isOpen ? (
       <button 
           type="button" 
           className="parentprofile__button"
@@ -143,13 +149,53 @@ const ParentProfile = ({
         Changer mon mot de passe
         </button>
     ): (
-      <div className="coucou">Coucou
-      <form>
-        <button>
-        Submit
-        </button>
+      <form
+        autoComplete="off"
+        className="parentprofile__password"
+        onSubmit={handleSubmitChangePassword}
+      >
+        <Field
+          name="oldpassword"
+          type="text"
+          placeholder="Ancien mot de passe"
+          onChange={changeField}
+          //value={}
+        />
+
+        <Field
+          name="newpassword"
+          type="text"
+          placeholder="Nouveau mot de passe"
+          onChange={changeField}
+          //value={}
+        />
+
+          <Field
+          name="confirmpassword"
+          type="text"
+          placeholder="Confirmez votre mot de passe"
+          onChange={changeField}
+          //value={}
+        />
+    
+        <div className="parentprofile__buttons" >
+            <button
+            className="parentprofile__buttons__cancel"
+            type="button"
+            onClick={handleOnClickCancelButton}
+            >
+            Annuler
+            </button>
+
+            <button
+              className="parentprofile__buttons__send"
+              type="submit"
+            >
+            Valider
+            </button>
+           
+          </div>
       </form>
-      </div>
     )}
       
 
@@ -185,7 +231,7 @@ ParentProfile.propTypes = {
   firstname: PropTypes.string.isRequired,
   lastname: PropTypes.string.isRequired,
   address: PropTypes.string.isRequired,
-  cp: PropTypes.string.isRequired,
+  postcode: PropTypes.string.isRequired,
   city: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   phone_number: PropTypes.string.isRequired

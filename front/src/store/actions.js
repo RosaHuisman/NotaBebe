@@ -8,10 +8,12 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_ERROR = 'LOGIN_ERROR';
 
 //actions user
-export const CHANGE_INFOS = 'CHANGE_INFOS';
+export const OPEN_CHANGE_INFOS = 'CHANGE_INFOS';
 export const CHANGE_VALUE = 'CHANGE_VALUE';
+export const CHANGE_INFOS = 'CHANGE_INFOS';
 export const TOGGLE_CHANGE_PASSWORD = 'TOGGLE_CHANGE_PASSWORD';
 export const CLOSE_CHANGE_INFOS = 'CLOSE_CHANGE_INFOS';
+export const CHANGE_PASSWORD = 'CHANGE_PASSWORD';
 
 
 //actions login
@@ -19,8 +21,8 @@ export const createLoginSuccessAction = (nickname) => ({ type: LOGIN_SUCCESS, ni
 export const createLoginErrorAction = () => ({ type: LOGIN_ERROR });
 
 //actions user
-export const changeInfos = () => ({ 
-  type: CHANGE_INFOS, 
+export const openChangeInfos = () => ({ 
+  type: OPEN_CHANGE_INFOS, 
 });
 
 export const changeValue = (value, key) => ({
@@ -28,7 +30,11 @@ export const changeValue = (value, key) => ({
   key,
   value,
 });
- 
+
+export const changeInfos = () => ({
+    type: CHANGE_INFOS,
+});
+
 export const toggleChangePassword = () => ({
   type: TOGGLE_CHANGE_PASSWORD,
 });
@@ -36,3 +42,8 @@ export const toggleChangePassword = () => ({
 export const closeChangeInfos = () => ({
   type: CLOSE_CHANGE_INFOS,
 });
+
+export const changePassword = () => ({
+  type: CHANGE_PASSWORD,
+});
+

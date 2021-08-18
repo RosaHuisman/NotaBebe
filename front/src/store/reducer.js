@@ -21,12 +21,12 @@ const initialState = {
     firstname: 'Tata',
     lastname: 'Toto',
     address: 'rue de la paix',
-    cp: '06360',
+    postcode: '06360',
     city: 'Tapol',
     email: 'tata@toto.fr',
     password: 'hello',
     phone_number: '06.33.33.33.33',
-    change_infos: false,
+    isOpen: false,
   }
 };
 
@@ -70,7 +70,7 @@ const reducer = (oldState = initialState, action) => {
         ...oldState,
         user: {
           ...oldState,
-          change_infos: true,
+          isOpen: true,
         },
       };
     default:
