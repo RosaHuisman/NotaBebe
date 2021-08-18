@@ -3,12 +3,6 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Route, Switch, useLocation } from 'react-router-dom';
 
-import Login from 'src/containers/Login';
-import Contact from '../Contact';
-import Footer from '../Footer';
-import ContactDetails from '../ContactDetails';
-import Header from '../Header';
-
 // == Import
 import './styles.scss';
 
@@ -18,7 +12,7 @@ import Footer from 'src/components/Footer';
 import Error from 'src/components/Error';
 // import TEST from 'src/components/TEST';
 import Contact from 'src/components/Contact';
-// import ContactDetails from 'src/components/ContactDetails';
+import ContactDetails from 'src/components/ContactDetails';
 
 // == Import composants /containers
 import Login from 'src/containers/Login';
@@ -68,7 +62,6 @@ const App = ({ isLogged }) => {
 App.propTypes = {
   isLogged: PropTypes.bool.isRequired,
 };
-
 
 // == Export
 export default App;
