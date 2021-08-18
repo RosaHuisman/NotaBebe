@@ -22,18 +22,19 @@ const ParentProfile = ({
   changeUserInfos,
   change_infos,
   changeField,
-  onChange,
-  value,
-  name,
+  togglerChangePassword,
+  change_password,
+  
 }) => {
 
-  const handleOnClickButton = () => {
+  const handleOnClickChangeInfosButton = () => {
     changeUserInfos();
   };
 
-  const handleChange = (evt) => {
-    onChange(evt.target.value, name);
-  };
+  const handleOnClickChangePasswordButton = () => {
+    togglerChangePassword();
+  }
+ 
 
   return (
   <>
@@ -55,7 +56,7 @@ const ParentProfile = ({
         <button 
           type="button" 
           className="parentprofile__button"
-          onClick={handleOnClickButton}
+          onClick={handleOnClickChangeInfosButton}
         >
         Modifier mes informations
         </button>
@@ -67,8 +68,7 @@ const ParentProfile = ({
         className="parentprofile__informations"
         //onSubmit={}
       >
-
-        <p>{lastname} {firstname} </p>
+        <p className="parentprofile__informations__fullname">{lastname} {firstname} </p>
 
         <Field
           name="address"
@@ -132,12 +132,24 @@ const ParentProfile = ({
       </form>
     )}
 
+    {!change_password ? (
       <button 
           type="button" 
           className="parentprofile__button"
+          onClick={handleOnClickChangePasswordButton}
         >
         Changer mon mot de passe
         </button>
+    ): (
+      <div className="coucou">Coucou
+      <form>
+        <button>
+        Submit
+        </button>
+      </form>
+      </div>
+    )}
+      
 
       <div className="parentprofile__children">
         <h3> Mes enfants </h3>

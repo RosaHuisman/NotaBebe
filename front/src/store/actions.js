@@ -10,6 +10,7 @@ export const LOGIN_ERROR = 'LOGIN_ERROR';
 //actions user
 export const CHANGE_INFOS = 'CHANGE_INFOS';
 export const CHANGE_VALUE = 'CHANGE_VALUE';
+export const TOGGLE_CHANGE_PASSWORD = 'TOGGLE_CHANGE_PASSWORD';
 
 
 
@@ -28,3 +29,6 @@ export const changeValue = (value, key) => ({
   value,
 });
  
+export const toggleChangePassword = () => ({
+  type: TOGGLE_CHANGE_PASSWORD,
+});

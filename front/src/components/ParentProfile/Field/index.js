@@ -26,7 +26,7 @@ const Field = ({
         value={value}
         onChange={handleChange}
         // infos de base
-        //id={inputId}
+        id={inputId}
         type={type}
         className="field-input"
         placeholder={placeholder}

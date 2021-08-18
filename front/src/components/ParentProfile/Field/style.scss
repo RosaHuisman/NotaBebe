@@ -1,4 +1,4 @@
-@use 'src/styles/vars';
+@use 'src/styles/vars' as v;
 
 .field {
   margin: .3em .3em .3em 0;
@@ -13,23 +13,21 @@
     height: 2.5em;
 
     &:focus {
-      border-color: red;
+      border-color: v.$bg-color;
 
       & + .field-label {
-        color: red;
+        color: v.$bg-color;
       }
     }
   }
 
   &-label {
-    display: none;
     position: absolute;
-    top: .2rem;
+    top: .3rem;
     left: .7rem;
-    color: #999;
-    font-size: .7em;
+    color: v.$secondary-color;
+    font-size: .8em;
     text-transform: uppercase;
-    animation: labelSlideUpAndShow .3s;
   }
 
   &--has-content {
@@ -43,13 +41,4 @@
 }
 
 
-@keyframes labelSlideUpAndShow{
-  0% {
-    transform: translateY(1em);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0em);
-    opacity: 1;
-  }
-}
+

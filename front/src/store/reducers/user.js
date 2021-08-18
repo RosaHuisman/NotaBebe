@@ -1,6 +1,7 @@
 import {
   CHANGE_INFOS,
   CHANGE_VALUE,
+  TOGGLE_CHANGE_PASSWORD
 
 } from '../actions';
 
@@ -15,6 +16,7 @@ const initialState = {
     password: 'hello',
     phone_number: '06.33.33.33.33',
     change_infos: false,
+    change_password: false, 
 };
 
 const reducer = (state = initialState, action) => {
@@ -30,6 +32,11 @@ const reducer = (state = initialState, action) => {
           ...state,
           [action.key]: action.value,
         };
+      };
+      case TOGGLE_CHANGE_PASSWORD: 
+      return {
+        ...state,
+        change_password: true,
       }
     default:
       return state;
