@@ -7,10 +7,11 @@ import { Route, Switch, useLocation } from 'react-router-dom';
 import './styles.scss';
 
 // == Import composants custom
-import Loading from './Loading';
+import Loading from 'src/components/App/Loading';
 import Login from 'src/containers/Login';
 import Header from 'src/containers/Header';
-import ContactFooter from 'src/components/ContactFooter';
+import Footer from 'src/components/Footer';
+import Error from 'src/components/Error';
 
 // == Composant
 function App({ loading, isLogged }) {
@@ -19,28 +20,28 @@ function App({ loading, isLogged }) {
 
   useEffect(() => {
     window.scroll(0, 0);
-  }, [location]);  
+  }, [location]);
 
   if (loading) {
     return <Loading />;
   }
-    return (
+  return (
     <>
       <Header />
       <Switch>
-      {isLogged && (
-        <Route exact path="/">
-          <div>BONJOUR JE SUIS CONNECTE</div>
-        </Route>
-      )}
+        {isLogged && (
+          <Route exact path="/">
+            <Error />
+          </Route>
+        )}
         <Route exact path="/">
           <Login />
-          <ContactFooter />
         </Route>
         <Route>
           <Error />
         </Route>
       </Switch>
+      <Footer />
     </>
   );
 }
