@@ -2,11 +2,6 @@ const client = require('../client');
 
 const adminDataMapper = {
 
-    async findOne (email) {
-        const result = await client.query('SELECT * FROM "user" WHERE email = $1', [email]);
-        return result.rows[0];
-    },
-
     async countEmail (email) {
         const result = await client.query('SELECT COUNT(*) FROM "user" WHERE email = $1', [email]);
         return result.rows[0];

@@ -1,7 +1,8 @@
 const express = require('express');
 
-const apiController = require('../controllers/api');
+const errorController = require('../controllers/404');
 const userController = require('../controllers/user');
+// const adminController = require('../controllers/admin')
 
 const router = express.Router();
 
@@ -9,12 +10,17 @@ router.route('/login')
     .get(userController.login)
     .post(userController.checkLogin);
 
-router.route('/signup')
-    .get(userController.register)
-    .post(userController.registerSave);
+// router.route('/???')
+//     .get(adminController.register)
+//     .post(adminController.registerSave);
 
 router.get('/logout', userController.logout);
 
-router.use(apiController.notFoundResource);
+router.route('/profile/parent/:id')
+    .put(userController.updatePassword)
+    // .put(userController.updateUser);
+
+
+router.use(errorController.notFoundResource);
 
 module.exports = router;

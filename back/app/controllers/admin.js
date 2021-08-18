@@ -5,15 +5,14 @@ const adminDataMapper = require('../dataMappers/admin');
 
 const adminController = {
 
-
     /**
-     * Send signup form
+     * Access signup form
      * 
      * @param {Request} request 
      * @param {Response} response 
      */
     register: (_, response) => {
-        response.json({ data: '??'});
+        response.json({ data: user });
     },
 
     /**
@@ -61,7 +60,7 @@ const adminController = {
             }
 
             // On compte le nombre d'user avec l'email fourni
-            const emailDejaPresent = await userDataMapper.countEmail(email);
+            const emailDejaPresent = await adminDataMapper.countEmail(email);
 
 
             // Si il est > 0
@@ -82,7 +81,7 @@ const adminController = {
             const hash = bcrypt.hashSync(password, 10);
 
             // Enregistrer ces données en BDD
-            const user = await userDataMapper.insertOne({
+            const user = await adminDataMapper.insertOne({
                 firstname,
                 lastname,
                 email,
@@ -97,9 +96,7 @@ const adminController = {
 
         } catch (error) {
             console.log(error);
-            response.render('signup', {
-                error: error.message
-            });
+            response.json({ error: error.message });
         }
 
     }
