@@ -1,9 +1,4 @@
 // == Import npm
-import React from 'react';
-import Login from 'src/containers/Login';
-import Contact from '../Contact';
-import Footer from '../Footer';
-import ContactDetails from '../ContactDetails';
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Route, Switch, useLocation } from 'react-router-dom';
@@ -11,39 +6,50 @@ import { Route, Switch, useLocation } from 'react-router-dom';
 // == Import
 import './styles.scss';
 
-// == Import composants custom
-import Loading from 'src/components/App/Loading';
-import Header from 'src/containers/Header';
+// == Import composants /components
+import Home from 'src/components/Home';
+import Footer from 'src/components/Footer';
 import Error from 'src/components/Error';
+// import TEST from 'src/components/TEST';
+import Contact from 'src/components/Contact';
+// import ContactDetails from 'src/components/ContactDetails';
 
-  
-
-App.propTypes = {
-  loading: PropTypes.bool,
-  isLogged: PropTypes.bool.isRequired,
-};
+// == Import composants /containers
+import Login from 'src/containers/Login';
+import Header from 'src/containers/Header';
 
 // == Composant
-const App = () => {
+const App = ({ isLogged }) => {
+  const location = useLocation();
+
   useEffect(() => {
     window.scroll(0, 0);
   }, [location]);
 
-  if (loading) {
-    return <Loading />;
-  }
   return (
     <>
       <Header />
       <Switch>
         {isLogged && (
-          <Route exact path="/">
-            <Error />
-          </Route>
+          <>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            {/* <Route exact path="/home">
+              <TEST />
+            </Route> */}
+            {/* <Route>
+              <Error />
+            </Route> */}
+          </>
         )}
         <Route exact path="/">
           <Login />
+          <Contact />
         </Route>
+        {/* <Route exact path="/contact">
+          <ContactDetails />
+        </Route> */}
         <Route>
           <Error />
         </Route>
@@ -51,7 +57,10 @@ const App = () => {
       <Footer />
     </>
   );
- 
+};
+
+App.propTypes = {
+  isLogged: PropTypes.bool.isRequired,
 };
 
 // == Export

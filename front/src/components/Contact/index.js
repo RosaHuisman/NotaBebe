@@ -1,22 +1,20 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import './styles.scss';
 
-function Contact(props) {
+function Contact() {
   return (
-      <div className="contact-button">
-        <Link className="contact-link" to={'/contact'} exact>
+    <div className="contact-button">
+      <Link
+        className="contact-link"
+        exact="true"
+        to="/contact"
+      >
         <button type="button" className="button">Contactez-nous</button>
-        </Link>
-      </div>
-  )
+      </Link>
+    </div>
+  );
 }
 
-Contact.propTypes = {
-
-}
-
-export default Contact
-
+export default Contact;

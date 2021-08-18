@@ -1,12 +1,10 @@
 import { connect } from 'react-redux';
 import Login from 'src/components/Login';
-import { isUserLogged } from 'src/store/selectors';
 
 const mapStateToProps = (state) => ({
-  emailValue: state.login.email,
-  passwordValue: state.login.password,
-  isLogged: isUserLogged(state),
-  isError: state.login.isError,
+  email: state.userlogin.email,
+  password: state.userlogin.password,
+  isError: state.userlogin.isError,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -24,8 +22,14 @@ const mapDispatchToProps = (dispatch) => ({
       fieldKey: 'password',
     });
   },
-  onSettingsSubmit: (e) => {
-    e.preventDefault();
+  changeField: (newValue, name) => {
+    dispatch({
+      type: 'SET_INPUT_VALUE',
+      name: name,
+      value: newValue,
+    });
+  },
+  handleLogin: () => {
     dispatch({
       type: 'SUBMIT_LOGIN',
     });

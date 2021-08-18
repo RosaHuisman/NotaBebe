@@ -17,8 +17,8 @@ const authMiddleware = (store) => (next) => (action) => {
         'Content-Type': 'application/json',
       },
       data: {
-        email: state.login.email,
-        password: state.login.password,
+        email: state.userlogin.email,
+        password: state.userlogin.password,
       },
     };
 

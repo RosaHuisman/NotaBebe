@@ -3,12 +3,15 @@ import {
   SET_SETTINGS_FIELD_VALUE,
   LOGIN_SUCCESS,
   LOGIN_ERROR,
+  LOGOUT,
 } from './actions';
 
 const initialState = {
   nickname: null,
   inputValue: '',
-  login: {
+  token: null,
+  isLogged: false,
+  userlogin: {
     email: 'admin@notabebe.io',
     password: 'admin',
     // email: '',
@@ -28,8 +31,10 @@ const reducer = (oldState = initialState, action) => {
       return {
         ...oldState,
         nickname: action.nickname,
-        login: {
-          ...oldState.login,
+        token: action.token,
+        isLogged: action.logged,
+        userlogin: {
+          ...oldState.userlogin,
           email: '',
           password: '',
           isError: false,
@@ -38,17 +43,30 @@ const reducer = (oldState = initialState, action) => {
     case LOGIN_ERROR:
       return {
         ...oldState,
-        login: {
-          ...oldState.login,
+        userlogin: {
+          ...oldState.userlogin,
           isError: true,
         },
       };
     case SET_SETTINGS_FIELD_VALUE:
       return {
         ...oldState,
-        login: {
-          ...oldState.login,
+        userlogin: {
+          ...oldState.userlogin,
           [action.fieldKey]: action.newValue,
+        },
+      };
+    case LOGOUT:
+      return {
+        ...oldState,
+        nickname: null,
+        token: null,
+        isLogged: false,
+        userlogin: {
+          ...oldState.userlogin,
+          email: 'admin@notabebe.io',
+          password: 'admin',
+          isError: false,
         },
       };
     default:
