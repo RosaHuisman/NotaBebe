@@ -24,6 +24,7 @@ const ParentProfile = ({
   changeField,
   togglerChangePassword,
   change_password,
+  closeChangeInfos,
   
 }) => {
 
@@ -34,7 +35,10 @@ const ParentProfile = ({
   const handleOnClickChangePasswordButton = () => {
     togglerChangePassword();
   }
- 
+  
+  const handleOnClickCancelButton = () => {
+    closeChangeInfos();
+  }
 
   return (
   <>
@@ -102,7 +106,6 @@ const ParentProfile = ({
           value={phone_number}
         />
         
-        
         <Field
           name="email"
           type="email"
@@ -111,12 +114,11 @@ const ParentProfile = ({
           value={email}
         />
 
-        
-    
         <div className="parentprofile__buttons" >
             <button
-                  className="parentprofile__buttons__cancel"
-                  type="button"
+            className="parentprofile__buttons__cancel"
+            type="button"
+            onClick={handleOnClickCancelButton}
             >
             Annuler
             </button>

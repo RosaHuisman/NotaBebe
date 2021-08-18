@@ -11,7 +11,7 @@ export const LOGIN_ERROR = 'LOGIN_ERROR';
 export const CHANGE_INFOS = 'CHANGE_INFOS';
 export const CHANGE_VALUE = 'CHANGE_VALUE';
 export const TOGGLE_CHANGE_PASSWORD = 'TOGGLE_CHANGE_PASSWORD';
-
+export const CLOSE_CHANGE_INFOS = 'CLOSE_CHANGE_INFOS';
 
 
 //actions login
@@ -31,4 +31,8 @@ export const changeValue = (value, key) => ({
  
 export const toggleChangePassword = () => ({
   type: TOGGLE_CHANGE_PASSWORD,
+});
+
+export const closeChangeInfos = () => ({
+  type: CLOSE_CHANGE_INFOS,
 });

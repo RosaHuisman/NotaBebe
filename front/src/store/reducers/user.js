@@ -1,7 +1,8 @@
 import {
   CHANGE_INFOS,
   CHANGE_VALUE,
-  TOGGLE_CHANGE_PASSWORD
+  TOGGLE_CHANGE_PASSWORD,
+  CLOSE_CHANGE_INFOS
 
 } from '../actions';
 
@@ -37,7 +38,12 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         change_password: true,
-      }
+      };
+      case CLOSE_CHANGE_INFOS:
+        return {
+          ...state,
+          change_infos: false,
+        }
     default:
       return state;
   }

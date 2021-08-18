@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import ParentProfile from 'src/components/ParentProfile';
-import { changeInfos, changeValue, toggleChangePassword } from 'src/store/actions';
+import { changeInfos, changeValue, toggleChangePassword, closeChangeInfos } from 'src/store/actions';
 
 
 const mapStateToProps = (state) => ({
@@ -25,9 +25,14 @@ const mapDispatchToProps = (dispatch) => ({
 // },
 changeField: (value, key) => {
   dispatch(changeValue(value, key));
-},    
+}, 
+
 togglerChangePassword: () => {
   dispatch(toggleChangePassword())
+},
+
+closeChangeInfos: () => {
+  dispatch(closeChangeInfos())
 }
   
 });
