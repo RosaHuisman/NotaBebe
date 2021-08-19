@@ -3,9 +3,11 @@
 .footer {
   background: linear-gradient(v.$primary-color, v.$secondary-color);
   text-align: center;
-  position: absolute;
+  position: fixed;
   bottom:0;
-  width:100%;
+  left: 0;
+  width: 100%;
   padding-top: 10px;
   padding-bottom: 10px;
+  
 }
