@@ -1,16 +1,18 @@
 // == Import npm
 import React from 'react';
 import Login from 'src/containers/Login';
-import Contact from '../Contact';
-import Footer from '../Footer';
-import ContactDetails from '../ContactDetails';
-import Header from '../Header';
+import Contact from 'src/components/Contact';
+import Footer from 'src/components/Footer';
+import ContactDetails from 'src/components/ContactDetails';
+import Header from 'src/components/Header';
+import StaffProfile from 'src/components/StaffProfile';
 
 import { Switch, Route } from 'react-router-dom';
 
 
 // == Import
 import './styles.scss';
+
 
 // == Composant
 const App = () => (
@@ -23,6 +25,9 @@ const App = () => (
     </Route>
     <Route path={'/contact'} exact>
       <ContactDetails />
+    </Route>
+    <Route path={'/staff'} exact>
+      <StaffProfile />
     </Route>
   </Switch>
   <Footer />

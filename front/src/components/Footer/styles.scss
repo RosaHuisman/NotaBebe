@@ -1,9 +1,12 @@
 @use 'src/styles/vars' as v;
 
 .footer {
-  background: linear-gradient(v.$primary-color, v.$secondary-color);
+  font-family: v.$montserrat;
+  color: v.$yann-color;
+  //background: linear-gradient(v.$secondary-color, v.$bg-color);
+  background: v.$violet-color;
   text-align: center;
-  position: absolute;
+  position: fixed;
   bottom:0;
   width:100%;
   padding-top: 10px;

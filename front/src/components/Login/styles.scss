@@ -1,3 +1,5 @@
+@use 'src/styles/vars' as v;
+
 .loginForm {
   display: flex;
   margin: 0 auto;
@@ -16,9 +18,10 @@
     justify-content: center;
     margin: 2rem 0;
     padding-top: 0.5rem;
-    color: #06C4CA;
+    color: v.$violet-color;
     font-size: 2rem;
     font-weight: bold;
+    font-family: v.$amatic;
   }
 
   &__content {
@@ -40,19 +43,21 @@
     border-radius: 5px;
     height: 40px;
     width: 270px;
+    
   }
 
   &__input {
     background-color: white;
     margin-bottom: 1rem;
     font-size: 0.8rem;
+    font-family: v.$prompt;
   }
 
   &__send {
     margin: 1.1rem 0;
-    background-color: #06C4CA;
-    color: white;
-  }
+    background-color: v.$primary-color;
+    color: grey;
+    font-family: v.$georama;
 
   &__forgot {
     padding: 0.2rem;
@@ -61,4 +66,5 @@
     color: rgb(255, 65, 65);
     font-size: 0.8rem;
   }
+} 
 }

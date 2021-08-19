@@ -1,0 +1,61 @@
+@use 'src/styles/vars' as v;
+
+.staff {
+  margin: 0 5px 0 5px;
+  overflow: scroll;
+}
+
+.staff__name {
+  font-weight: bold;
+}
+
+.staff__button {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  
+
+  &__comments {
+    padding: 10px;
+    border-radius: 10px;
+    background-color: v.$primary-color;
+  }
+
+  &__recap {
+    padding: 10px;
+    border-radius: 10px;
+    background-color: v.$secondary-color;
+  }
+}
+
+.my__recap {
+  font-weight: bold;
+}
+
+.recaps__filter {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.staff__recap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 10px;
+  
+}
+
+.recap {
+  border: 1px solid grey;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 5px;
+}
+
+
+
+
+
+
+

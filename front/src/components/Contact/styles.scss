@@ -14,14 +14,14 @@
   width: 300px;
   border-radius: 10px;
   border: 1px solid #eee;
-  background-color: #fff;
+  background-color: white;
   box-shadow: 0 5px 9px rgba(0, 0, 0, 0.3); 
   margin-top: 30px;
 }
 
 .contact-link {
   color: white;
-  background-color: #06C4CA;
+  background-color: v.$primary-color;
   text-align: center;
   border-radius: 5px;
   border: 1px solid #eee;
@@ -30,7 +30,9 @@
 }
 
 button {
+  font-family: v.$georama;
+  color: white;
+  font-weight: bold;
   background: none;
   border: none;
-  color: white;
 }

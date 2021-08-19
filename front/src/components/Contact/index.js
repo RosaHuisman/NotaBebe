@@ -7,7 +7,7 @@ import './styles.scss';
 function Contact(props) {
   return (
       <div className="contact-button">
-        <Link className="contact-link" to={'/contact'} exact>
+        <Link className="contact-link" to='/contact' exact="true">
         <button type="button" className="button">Contactez-nous</button>
         </Link>
       </div>
