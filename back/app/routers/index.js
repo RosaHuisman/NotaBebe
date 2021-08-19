@@ -7,7 +7,7 @@ const userController = require('../controllers/user');
 const router = express.Router();
 
 router.route('/login')
-    .get(userController.login)
+    //.get(userController.login)
     .post(userController.checkLogin);
 
 // router.route('/???')

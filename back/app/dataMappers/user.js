@@ -24,10 +24,8 @@ const userDataMapper = {
 
     async updateUser(user) {
         // console.log('id', id)
-        console.log('user', user)
+        // console.log('user', user)
 
-        //! POUR LE CÔTÉ FRONT : UN SEUL FORMULAIRE AVEC 4 INPUTS
-        //! au clic valide la value de l'input ; pour sauvegarder tous les inputs
         const result = await client.query('UPDATE "user" SET address = $1, postcode = $2, city = $3, phone_number = $4, updated_at = now() WHERE id = $5 RETURNING *', [user.address, user.postcode, user.city, user.phone_number, user.id]);
         console.log('result updateuser datamapper', result);
         return result.rows[0];

@@ -3,7 +3,14 @@ GET http://localhost:3000/rdfhf
 
 
 
+
+
 ## USER
+
+### test login
+GET http://localhost:3000/login
+
+
 ### update user password
 PATCH http://localhost:3000/profile/parent/2
 Content-Type: application/json
@@ -14,7 +21,6 @@ Content-Type: application/json
 
 
 ### update user info
-
 PATCH http://localhost:3000/profile/parent/1/info
 Content-Type: application/json
 

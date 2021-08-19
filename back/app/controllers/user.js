@@ -5,15 +5,15 @@ const emailValidator = require('email-validator');
 
 const userController = {
 
-    /**
-     * Show the login form
-     * 
-     * @param {Request} request 
-     * @param {Response} response 
-     */
-    login: (_, response) => {
-        response.json({ data: user });
-    },
+    // /**
+    //  * Show the login form
+    //  * 
+    //  * @param {Request} request 
+    //  * @param {Response} response 
+    //  */
+    // login: (_, response) => {
+    //     response.json({ data: user });
+    // },
 
 
     /**
@@ -140,44 +140,16 @@ const userController = {
             const city = request.body.city;
             const phone_number = request.body.phone_number;
 
-            const errors = [];
-
-            // checking string length
-
-            if (address.length === 0) {
-                errors.push("L'adresse est obligatoire'");
-            }
-            if (postcode.length === 0) {
-                errors.push("Le code postal est obligatoire");
-            }
-            if (city.length === 0) {
-                errors.push("La ville est obligatoire");
-            }
-
-            if (phone_number.length === 0) {
-                errors.push("Le numéro de téléphone est obligatoire");
-            }
-
-            if (errors.length > 0) {
-                // En cas d'erreurs détectées, on fait un rendu de la vue register
-                // En lui transmettant notre tableau d'erreur.
-                response.json({ error: errors });
-                return;
-            }
-
-            
-
-            
             // Enregistrer ces données en BDD
             const updatedUser = await userDataMapper.updateUser(user);
-            console.log(user);
+            console.log(updatedUser);
 
             // Connecter l'utilisateur (l'enregistrer en session)
-            request.session.user = user;
+            request.session.user = updatedUser;
 
             // Rediriger l'internaute sur sa page profil
             // response.redirect('/');
-            response.json({ user });
+            response.json({ ...updatedUser });
 
 
         } catch (error) {
@@ -185,8 +157,6 @@ const userController = {
             response.json({ error: error.message });
         }
     },
-
-
 };
 
 module.exports = userController;
