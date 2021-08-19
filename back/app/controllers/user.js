@@ -6,7 +6,7 @@ const emailValidator = require('email-validator');
 const userController = {
 
     /**
-     * Check that the login information entered by the user is correct
+     * Check that the login information entered by the user is correct and validate login form
      * 
      * @param {Request} request 
      * @param {Response} response 
@@ -24,35 +24,47 @@ const userController = {
 
             const user = await userDataMapper.findOne(email);
 
-            console.log(user);
+            // console.log(user);
 
             if (user === null) {
                 response.json({ error: "Email ou mot de passe incorrect 1" });
                 return;
             }
-            console.log('password', password );
+            console.log('password', password);
             console.log('user.password', user.password);
 
-            // Checking if password is valid thanks to bcrypt's compare function
-            // TODO - make it work
-            if (bcrypt.compareSync(password, user.password)) {
-                
-               
-                // Registering the user in a session
-
-                if (request.session.redirectAfterLogin) {
-
-                    response.redirect(request.session.redirectAfterLogin);
-                    request.session.redirectAfterLogin = null;
-                } else {
-
-                    response.redirect('/');
-                };
-
-                //! on rentre dans cette erreur
+            if (password === user.password) {
+                console.log('user bien connecté')
+                response.json({ user })
             } else {
-                response.json({ error: "Email ou mot de passe incorrect 2" });
-            };
+                response.json('Mot de passe incorrect');
+            }
+
+            //TODO improve password check with bcrypt
+
+            // const pwResult = bcrypt.compareSync(password, user.password);
+
+            //Checking if password is valid thanks to bcrypt's compare function
+
+            // if (pwResult) {
+
+            //     response.json('le mot de passe est correct')
+
+            //     // Registering the user in a session
+
+            //     // if (request.session.redirectAfterLogin) {
+
+            //     //     response.redirect(request.session.redirectAfterLogin);
+            //     //     request.session.redirectAfterLogin = null;
+            // } else {
+            //     response.json('mot de passe incorrect')
+            //     //response.redirect('/');
+            // };
+
+            //! on rentre dans cette erreur
+            // } else {
+            //     response.json({ error: "Email ou mot de passe incorrect 2" });
+            // };
 
         } catch (error) {
             console.log(error);
@@ -60,6 +72,8 @@ const userController = {
         }
 
     },
+
+    //? à voir comment tester le logout
 
     /**
      * Log out of the user. We delete his session.
@@ -78,7 +92,7 @@ const userController = {
      * @param {response} response 
      */
     updatePassword: async (request, response) => {
-        
+
         try {
             // check that the data is coherent
             const password = request.body.password;
@@ -105,7 +119,7 @@ const userController = {
             // connect the user (save into a session)
             request.session.user = user;
 
-            // redirect on /
+            // redirect to /
             response.redirect('/');
 
         } catch (error) {
@@ -125,23 +139,21 @@ const userController = {
             const userId = Number(request.params.id);
             const user = await userDataMapper.findById(userId);
 
-            if(!user) {
+            if (!user) {
                 return next();
             }
 
             const newData = request.body;
 
-            // Enregistrer ces données en BDD
-            const updatedUser = await userDataMapper.updateUser({...newData}, userId);
+            // save the new data in the database
+            const updatedUser = await userDataMapper.updateUser({ ...newData }, userId);
             //console.log(updatedUser);
 
-            // Connecter l'utilisateur (l'enregistrer en session)
+            // save the newly updated user in a session
             request.session.user = updatedUser;
 
-            // Rediriger l'internaute sur sa page profil
             // response.redirect('/');
             response.json({ updatedUser });
-
 
         } catch (error) {
             console.log(error);

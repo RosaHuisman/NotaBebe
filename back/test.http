@@ -16,6 +16,27 @@ Content-Type: application/json
     "password": "athenaassez"
 }
 
+### test login with other user - non-hashed password to try with bcrypt compareSync (not working)
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "email": "gaspardfait@hotmail.fr",
+    "password": "g4sp4rd!"
+}
+
+
+
+
+### test login - wrong password
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "email": "nicoassezadmin@gmail.com",
+    "password": "fgrfdg"
+}
+
 
 ### update user password
 PATCH http://localhost:3000/profile/parent/2
