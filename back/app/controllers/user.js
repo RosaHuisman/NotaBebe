@@ -69,58 +69,31 @@ const userController = {
     /**
      * Log out of the user. We delete his session.
      * 
-     * @param {*} request 
-     * @param {*} response 
+     * @param {request} request 
+     * @param {response} response 
      */
     logout: (request, response) => {
         request.session.destroy();
         response.redirect('/');
     },
 
+    /**
+     * Updating the user password (+ hashing it)
+     * @param {request} request 
+     * @param {response} response 
+     */
     updatePassword: async (request, response) => {
-        // try {
-        //     //   1 recuperer id ?
-        //     const userId = Number(request.params.id);
-        //     //   2 enregistrer ?
-        //     const email = request.body.email;
-        //     const password = request.body.password;
-        //     const passwordConfirm = request.body.passwordConfirm;
-        //     //   3 le hash
-        //     const hash = bcrypt.hashSync(password, 10);
-        //     //   4 le return?
-        //     const user = await userDataMapper.updatePassword({
-        //         password: hash,
-        //         id: userId
-        //     });
-
-        // } catch (error) {
-        //     console.log(error);
-        //     response.json({ error: error.message });
-        // }
-
+        
         try {
-            console.log('request body :', request.body);
             // check that the data is coherent
-            // const email = request.body.email;
             const password = request.body.password;
-            // const passwordConfirm = request.body.passwordConfirm;
 
             const errors = [];
 
-            // checking the string's length
+            // checking string length
             if (password.length === 0) {
                 errors.push("Le mot de passe est obligatoire");
             }
-
-            // is the email a valid one?
-            // if (!email.includes('@')) {
-            //     errors.push("L'email n'est pas valide");
-            // }
-
-            // do the two passwords match?
-            // if (password !== passwordConfirm) {
-            //     errors.push("Les mots de passe sont différents");
-            // }
 
             if (errors.length > 0) {
                 // if there is at least one error, we want it to show up in the json response
@@ -129,18 +102,15 @@ const userController = {
             }
 
             const userId = Number(request.params.id);
-            // console.log(userId)
             const hash = bcrypt.hashSync(password, 10);
-            // console.log(hash);
-            // save the data into the database
 
+            // save the data into the database
             const user = await userDataMapper.updatePassword(hash, userId);
 
-            //console.log('user after all', response.result);
-            // Connecter l'utilisateur (l'enregistrer en session)
+            // connect the user (save into a session)
             request.session.user = user;
 
-            // Rediriger l'internaute sur sa page profil
+            // redirect on /
             response.redirect('/');
 
         } catch (error) {
@@ -149,59 +119,72 @@ const userController = {
         }
     },
 
-    // updateUser: async (request, response) => {
-    //     try {
-    //         // console.log('req body', request.body);
+    /**
+     * Updating user info
+     * @param {request} request 
+     * @param {response} response 
+     */
+    updateUser: async (request, response, next) => {
+        try {
 
-    //         const address = request.body.address;
-    //         const postcode = request.body.postcode;
-    //         const city = request.body.city;
-    //         const phone_number = request.body.phone_number;
+            const userId = Number(request.params.id);
+            const user = await userDataMapper.findById(userId);
 
-    //         const errors = [];
+            if(!user) {
+                return next();
+            }
 
-    //         // On regarde la taille de la chaine de caractère
+            // console.log('req body', request.body);
+            const address = request.body.address;
+            const postcode = request.body.postcode;
+            const city = request.body.city;
+            const phone_number = request.body.phone_number;
 
-    //         if (address.length === 0) {
-    //             errors.push("L'adresse est obligatoire'");
-    //         }
-    //         if (postcode.length === 0) {
-    //             errors.push("Le code postal est obligatoire");
-    //         }
-    //         if (city.length === 0) {
-    //             errors.push("La ville est obligatoire");
-    //         }
+            const errors = [];
 
-    //         if (phone_number.length === 0) {
-    //             errors.push("Le numéro de téléphone est obligatoire");
-    //         }
+            // checking string length
 
-    //         if (errors.length > 0) {
-    //             // En cas d'erreurs détectées, on fait un rendu de la vue register
-    //             // En lui transmettant notre tableau d'erreur.
-    //             response.json({ error: errors });
-    //             return;
-    //         }
+            if (address.length === 0) {
+                errors.push("L'adresse est obligatoire'");
+            }
+            if (postcode.length === 0) {
+                errors.push("Le code postal est obligatoire");
+            }
+            if (city.length === 0) {
+                errors.push("La ville est obligatoire");
+            }
 
-    //         const userId = Number(request.params.id);
+            if (phone_number.length === 0) {
+                errors.push("Le numéro de téléphone est obligatoire");
+            }
 
-    //         const foundUser = await userDataMapper.findById(userId);
-    //         // Enregistrer ces données en BDD
-    //         const user = await userDataMapper.updateUser({ ...foundUser }, userId);
+            if (errors.length > 0) {
+                // En cas d'erreurs détectées, on fait un rendu de la vue register
+                // En lui transmettant notre tableau d'erreur.
+                response.json({ error: errors });
+                return;
+            }
 
-    //         // Connecter l'utilisateur (l'enregistrer en session)
-    //         request.session.user = user;
+            
 
-    //         // Rediriger l'internaute sur sa page profil
-    //         // response.redirect('/');
-    //         response.json({ user });
+            
+            // Enregistrer ces données en BDD
+            const updatedUser = await userDataMapper.updateUser(user);
+            console.log(user);
+
+            // Connecter l'utilisateur (l'enregistrer en session)
+            request.session.user = user;
+
+            // Rediriger l'internaute sur sa page profil
+            // response.redirect('/');
+            response.json({ user });
 
 
-    //     } catch (error) {
-    //         console.log(error);
-    //         response.json({ error: error.message });
-    //     }
-    // }
+        } catch (error) {
+            console.log(error);
+            response.json({ error: error.message });
+        }
+    },
 
 
 };

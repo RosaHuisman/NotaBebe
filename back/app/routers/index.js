@@ -16,11 +16,13 @@ router.route('/login')
 
 router.get('/logout', userController.logout);
 
+router.route('/profile/parent/:id/info')
+    .patch(userController.updateUser);
+
 router.route('/profile/parent/:id')
     .patch(userController.updatePassword)
 
-router.route('/profile/parent/:id/info')
-    .patch(userController.updateUser);
+
 
 
 router.use(errorController.notFoundResource);
