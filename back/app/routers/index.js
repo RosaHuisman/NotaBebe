@@ -3,6 +3,7 @@ const express = require('express');
 const errorController = require('../controllers/404');
 const userController = require('../controllers/user');
 // const adminController = require('../controllers/admin')
+const recapController = require('../controllers/recap');
 
 const router = express.Router();
 
@@ -22,6 +23,17 @@ router.route('/profile/parent/:id/info')
 router.route('/profile/parent/:id')
     .patch(userController.updatePassword)
 
+
+router.route('/test/allrecaps')
+    .get(recapController.getAll);
+//! changer le nom de la route
+
+router.route('/profile/staff/recap/child/')
+    .post(recapController.addRecap)
+
+router.route('/profile/staff/recap/child/:recapId')
+    .patch(recapController.modifyRecap)
+    .delete(recapController.deleteRecap)
 
 
 
