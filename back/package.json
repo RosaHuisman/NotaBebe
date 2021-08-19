@@ -9,8 +9,8 @@
   "scripts": {
     "start": "node .",
     "dev": "nodemon",
-    "installdev": "sqitch revert -y; sqitch deploy; psql -U postgres -d NotaBebe -f data/seeding.sql",
-    "installprod": "sqitch revert production -y; sqitch deploy production; psql -U postgres -f data/seeding.sql"
+    "installdev": "sqitch revert -y; sqitch deploy; psql -U postgres -f data/seeding.sql",
+    "installprod": "sqitch revert prod -y; sqitch deploy prod; psql -U postgres -f data/seeding.sql"
   },
   "keywords": [],
   "author": "",
