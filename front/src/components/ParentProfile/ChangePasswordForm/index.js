@@ -88,7 +88,18 @@ const ChangePasswordForm = ({
 };
 
 ChangePasswordForm.propTypes = {
+  oldpassword: PropTypes.string.isRequired,
+  newpassword: PropTypes.string.isRequired,
+  confirmpassword: PropTypes.string.isRequired,
+  hasPasswordError: PropTypes.bool,
+  changeField: PropTypes.func.isRequired,
+  handleChangePassword: PropTypes.func.isRequired,
+  closeForm: PropTypes.func.isRequired,
   
+};
+
+ChangePasswordForm.defaultProps = {
+  hasPasswordError: false,
 };
 
 

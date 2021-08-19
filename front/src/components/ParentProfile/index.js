@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-
-import Field from 'src/components/Field';
 import Children from 'src/components/ParentProfile/Children';
 import ChangePasswordForm from 'src/components/ParentProfile/ChangePasswordForm';
 import ChangeUserInfosForm from 'src/components/ParentProfile/ChangeUserInfosForm';
@@ -14,16 +12,6 @@ import './styles.scss';
 
 
 const ParentProfile = ({
-  lastname, 
-  firstname, 
-  address, 
-  postcode, 
-  city, 
-  email, 
-  phone_number,
-  oldpassword,
-  newpassword,
-  confirmpassword,
   openUserInfos,
   isOpenInfos,
   changeField,
@@ -32,6 +20,8 @@ const ParentProfile = ({
   isOpenPassword,
   togglerChangePassword,
   handleChangePassword,
+  children,
+  user
 
   
 }) => {
@@ -40,6 +30,10 @@ const ParentProfile = ({
     togglerChangePassword();
   }
 
+  const handleOnClickChangeInfosButton = () => {
+    openUserInfos();
+  };
+  
   return (
   <>
     <header className="header">
@@ -49,29 +43,26 @@ const ParentProfile = ({
     <div className="parentprofile">
     
     {!isOpenInfos ? (
-      
+      <>
      <UserInfos 
+        {...user}
         openUserInfos={openUserInfos}
-        lastname={lastname}
-        firstname={firstname}
-        address={address}
-        postcode={postcode}
-        city={city}
-        email={email}
-        phone_number={phone_number}
+        
      />
+      <button 
+        type="button" 
+        className="parentprofile__button"
+        onClick={handleOnClickChangeInfosButton}
+      >
+      Modifier mes informations
+      </button>
+      </>
     ) : (
       <ChangeUserInfosForm 
         changeField={changeField}
         closeForm={closeForm}
         handleChangeInfos={handleChangeInfos}
-        lastname={lastname}
-        firstname={firstname}
-        address={address}
-        postcode={postcode}
-        city={city}
-        email={email}
-        phone_number={phone_number}
+        {...user}
       />
     )}
 
@@ -89,12 +80,14 @@ const ParentProfile = ({
         changeField={changeField}
         closeForm={closeForm}
         handleChangePassword={handleChangePassword}
-        oldpassword={oldpassword}
-        newpassword={newpassword}
-        confirmpassword={confirmpassword}
+        {...user}
       />
     )}  
-      <Children />
+
+      <Children 
+        children={children}
+        user={user}
+      />
     </div>
 
   </>
@@ -102,14 +95,29 @@ const ParentProfile = ({
 };
 
 ParentProfile.propTypes = {
-  firstname: PropTypes.string.isRequired,
-  lastname: PropTypes.string.isRequired,
-  address: PropTypes.string.isRequired,
-  postcode: PropTypes.string.isRequired,
-  city: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired,
-  phone_number: PropTypes.string.isRequired
+  openUserInfos: PropTypes.func.isRequired,
+  isOpenInfos: PropTypes.bool,
+  changeField: PropTypes.func.isRequired,
+  closeForm: PropTypes.func.isRequired,
+  handleChangeInfos: PropTypes.func.isRequired,
+  isOpenPassword: PropTypes.bool,
+  togglerChangePassword: PropTypes.func.isRequired,
+  handleChangePassword: PropTypes.func.isRequired,
+  children: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+    }),
+  ),
+  // user: PropTypes.objectOf(
+  //   PropTypes.shape({
+  //     id: PropTypes.number.isRequired,
+  //   }),
+  //),
 };
 
+ParentProfile.defaultProps = {
+  isOpenInfos: false,
+  isOpenPassword: false,
+};
 
 export default ParentProfile;

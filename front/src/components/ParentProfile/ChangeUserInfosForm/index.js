@@ -45,7 +45,7 @@ const ChangeUserInfosForm = ({
     <Field
       name="address"
       type="text"
-      placeholder="Addresse"
+      placeholder="Adresse"
       onChange={changeField}
       value={address}
     />
@@ -103,10 +103,23 @@ const ChangeUserInfosForm = ({
 };
 
 ChangeUserInfosForm.propTypes = {
+  hasInfosError: PropTypes.bool,
+  changeField: PropTypes.func.isRequired,
+  closeForm: PropTypes.func.isRequired,
+  lastname: PropTypes.string.isRequired, 
+  firstname: PropTypes.string.isRequired,
+  address: PropTypes.string.isRequired,
+  postcode: PropTypes.string.isRequired,
+  city: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  phone_number: PropTypes.string.isRequired,
+  handleChangeInfos: PropTypes.func.isRequired,
   
 };
 
-
+ChangeUserInfosForm.defaultProps = {
+  hasInfosError: false,
+};
 
 // == Export
 export default ChangeUserInfosForm;

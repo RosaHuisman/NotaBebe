@@ -10,34 +10,16 @@
      display: block;
      margin: v.$gutter/4 auto;
      padding: v.$gutter /3;
-     background-color: v.$secondary-color;
-     border: none; 
+     background-color: v.$violet-color;
+     border: none;
+     color: white;
+     border-radius: 5px;
+     
+     &:hover {
+       background-color: v.$bg-color;
+     }
    }
 
 
-  &__buttons {
-    display: flex;
-    justify-content: flex-end;
-    padding: v.$gutter /4;
-    align-items: center;
-
-    &__send {
-      display: block;
-      padding: v.$gutter /3;
-      background-color: v.$secondary-color;
-      border: none;
-      margin-left: 10px;
-      border-radius: 5px;
-    }
-    &__cancel {
-      display: block;
-      background-color: v.$red-color;
-      border: none;
-      font-size: 0.9rem;
-      height: 1.5rem;
-      border-radius: 5px;
-
-    }
-  }
 }
 

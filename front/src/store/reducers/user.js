@@ -14,7 +14,7 @@ const initialState = {
     id: 1,
     firstname: 'Tata',
     lastname: 'Toto',
-    address: 'rue de la paix',
+    address: '36 rue de la paix',
     postcode: '06360',
     city: 'Tapol',
     email: 'tata@toto.fr',
@@ -27,6 +27,26 @@ const initialState = {
     confirmpassword: '',
     changeInfosError: false,
     changePasswordError: false,
+    children: [
+      {
+      id: 1,
+      firstname: 'Georges',
+      lastname: 'Toupet',
+      birthdate: '14/06/2019',
+      birthplace: 'Tourcoing',
+      gender: 'Masculin',
+      allergy: ['poisson', 'viande', 'oeuf', 'lait'],
+        },
+        {
+      id: 2,
+      firstname: 'Georgette',
+      lastname: 'Toupet',
+      birthdate: '09/11/2021',
+      birthplace: 'Tourcoing',
+      gender: 'Féminin',
+      allergy: [],
+            }
+      ],
 };
 
 const reducer = (state = initialState, action) => {
@@ -34,7 +54,7 @@ const reducer = (state = initialState, action) => {
     case OPEN_CHANGE_INFOS:
       return {
         ...state,
-        isOpenInfos: true,
+        isOpenInfos: !state.isOpenInfos,
       };
       case CHANGE_VALUE: {
         return {
@@ -45,7 +65,7 @@ const reducer = (state = initialState, action) => {
       case TOGGLE_CHANGE_PASSWORD: 
       return {
         ...state,
-        isOpenPassword: true,
+        isOpenPassword: !state.isOpenPassword,
       };
       case CLOSE_FORM:
         console.log('je suis dans le cas CLOSE_CHANGE_INFOS')

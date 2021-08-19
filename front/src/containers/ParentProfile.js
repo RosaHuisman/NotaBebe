@@ -17,9 +17,10 @@ const mapStateToProps = (state, ownProps) => ({
   newpassword: state.user.newpassword,
   confirmpassword: state.user.confirmpassword,
   value: state[ownProps.name],
-  hasInfosError: state.changeInfosError,
-  hasPasswordError: state.changePasswordError,
-
+  hasInfosError: state.user.changeInfosError,
+  hasPasswordError: state.user.changePasswordError,
+  children: state.user.children,
+  user: state.user,
 
 });
 

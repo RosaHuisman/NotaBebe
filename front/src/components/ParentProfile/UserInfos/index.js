@@ -15,29 +15,43 @@ const UserInfos = ({
   city, 
   email, 
   phone_number,
-  openUserInfos,
-}) => {
   
-  const handleOnClickChangeInfosButton = () => {
-    openUserInfos();
-  };
+}) => {
 
   return (
     <div className="userinfos">
-      <p>Nom: {lastname} </p>
-      <p>prénom: {firstname} </p>
-      <p>Adresse: {address} </p> 
-      <p>{postcode} {city} </p> 
-      <p>Tél.: {phone_number} </p> 
-      <p>Email: {email} </p>
+      <div className="userinfos__infos">
+      <table>
+        <tbody>
+            <tr>
+                <td className="userinfos__infos__designation">Nom:</td>
+                <td className="userinfos__infos__result">{lastname}</td>
+            </tr>
+            <tr>
+                <td className="userinfos__infos__designation">Prénom:</td>
+                <td className="userinfos__infos__result">{firstname}</td>
+            </tr>
+            <tr>
+                <td className="userinfos__infos__designation__address">Adresse: </td>
+                <td className="userinfos__infos__result">{address}</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td className="userinfos__infos__result">{postcode} {city}</td>
+            </tr>
+            <tr>
+                <td className="userinfos__infos__designation__tel">Tél.: </td>
+                <td className="userinfos__infos__result">{phone_number}</td>
+            </tr>
+            <tr>
+                <td className="userinfos__infos__designation">Email: </td>
+                <td className="userinfos__infos__result">{email}</td>
+            </tr>
+        </tbody>
+      </table>
+      </div>
 
-      <button 
-        type="button" 
-        className="userinfos__button"
-        onClick={handleOnClickChangeInfosButton}
-      >
-      Modifier mes informations
-      </button>
+      
 
     </div>
 
@@ -45,6 +59,13 @@ const UserInfos = ({
 };
 
 UserInfos.propTypes = {
+  lastname: PropTypes.string.isRequired, 
+  firstname: PropTypes.string.isRequired,
+  address: PropTypes.string.isRequired,
+  postcode: PropTypes.string.isRequired,
+  city: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired, 
+  phone_number: PropTypes.string.isRequired,
   
 };
 
