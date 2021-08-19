@@ -5,17 +5,6 @@ const emailValidator = require('email-validator');
 
 const userController = {
 
-    // /**
-    //  * Show the login form
-    //  * 
-    //  * @param {Request} request 
-    //  * @param {Response} response 
-    //  */
-    // login: (_, response) => {
-    //     response.json({ data: user });
-    // },
-
-
     /**
      * Check that the login information entered by the user is correct
      * 
@@ -38,13 +27,17 @@ const userController = {
             console.log(user);
 
             if (user === null) {
-                response.json({ error: "Email ou mot de passe incorrect" });
+                response.json({ error: "Email ou mot de passe incorrect 1" });
                 return;
             }
+            console.log('password', password );
+            console.log('user.password', user.password);
 
             // Checking if password is valid thanks to bcrypt's compare function
+            // TODO - make it work
             if (bcrypt.compareSync(password, user.password)) {
-
+                
+               
                 // Registering the user in a session
 
                 if (request.session.redirectAfterLogin) {
@@ -56,9 +49,9 @@ const userController = {
                     response.redirect('/');
                 };
 
-
+                //! on rentre dans cette erreur
             } else {
-                response.json({ error: "Email ou mot de passe incorrect" });
+                response.json({ error: "Email ou mot de passe incorrect 2" });
             };
 
         } catch (error) {

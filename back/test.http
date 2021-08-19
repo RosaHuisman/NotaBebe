@@ -17,7 +17,6 @@ Content-Type: application/json
 }
 
 
-
 ### update user password
 PATCH http://localhost:3000/profile/parent/2
 Content-Type: application/json
