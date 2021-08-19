@@ -1,9 +1,12 @@
 import {
   OPEN_CHANGE_INFOS,
   CHANGE_VALUE,
-  //CHANGE_INFOS,
   TOGGLE_CHANGE_PASSWORD,
-  CLOSE_CHANGE_INFOS
+  CLOSE_FORM,
+  INFOS_ERROR,
+  PASSWORD_ERROR,
+  SAVE_INFOS_USER,
+  SAVE_PASSWORD_USER
 
 } from '../actions';
 
@@ -17,7 +20,13 @@ const initialState = {
     email: 'tata@toto.fr',
     password: 'hello',
     phone_number: '06.33.33.33.33',
-    isOpen: false,
+    isOpenInfos: false,
+    isOpenPassword: false,
+    oldpassword: '',
+    newpassword: '',
+    confirmpassword: '',
+    changeInfosError: false,
+    changePasswordError: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -25,7 +34,7 @@ const reducer = (state = initialState, action) => {
     case OPEN_CHANGE_INFOS:
       return {
         ...state,
-        isOpen: true,
+        isOpenInfos: true,
       };
       case CHANGE_VALUE: {
         return {
@@ -33,23 +42,43 @@ const reducer = (state = initialState, action) => {
           [action.key]: action.value,
         };
       };
-      // case CHANGE_INFOS: {
-      //   console.log('je suis dans le cas CHANGE_INFOS')
-      //   return {
-      //     ...state,
-      //     isOpen: false,
-      //   };
-      // }
       case TOGGLE_CHANGE_PASSWORD: 
       return {
         ...state,
-        isOpen: true,
+        isOpenPassword: true,
       };
-      case CLOSE_CHANGE_INFOS:
+      case CLOSE_FORM:
         console.log('je suis dans le cas CLOSE_CHANGE_INFOS')
         return {
           ...state,
-          isOpen: false,
+          isOpenInfos: false,
+          isOpenPassword: false,
+        };
+        case INFOS_ERROR: {
+          return {
+            ...state,
+            loginError: true,
+          };
+        };
+        case PASSWORD_ERROR: {
+          return {
+            ...state,
+            loginError: true,
+          };
+        }; 
+        case SAVE_INFOS_USER: {
+          return {
+            ...state, 
+            changeInfosError: false,
+            isOpenInfos: false,
+          }
+        }
+        case SAVE_PASSWORD_USER: {
+          return {
+            ...state, 
+            changePasswordError: false,
+            isOpenPassword: false,
+          }
         }
     default:
       return state;

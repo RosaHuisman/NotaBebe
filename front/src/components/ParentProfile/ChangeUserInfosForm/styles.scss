@@ -1,20 +1,19 @@
 @use 'src/styles/vars' as v;
 
-.parentprofile {
-  
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-
-   &__button {
-     display: block;
-     margin: v.$gutter/4 auto;
-     padding: v.$gutter /3;
-     background-color: v.$secondary-color;
-     border: none; 
+.changeuserinfosform {
+     margin: 0 v.$gutter;
+      
+  &__fullname {
+     font-size: 1.5rem;
+     margin-left: 2rem;
+     color: v.$red-color;
    }
-
-
+  
+  &__email {
+      font-size: 1.2rem;
+      margin-left: 2rem;
+  }
+  
   &__buttons {
     display: flex;
     justify-content: flex-end;

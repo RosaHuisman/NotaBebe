@@ -1,20 +1,7 @@
 @use 'src/styles/vars' as v;
 
-.parentprofile {
-  
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-
-   &__button {
-     display: block;
-     margin: v.$gutter/4 auto;
-     padding: v.$gutter /3;
-     background-color: v.$secondary-color;
-     border: none; 
-   }
-
-
+.changepasswordform {
+      margin: 0 v.$gutter;
   &__buttons {
     display: flex;
     justify-content: flex-end;

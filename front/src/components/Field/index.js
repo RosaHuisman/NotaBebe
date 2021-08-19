@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // == Import : local
-import './style.scss';
+import './styles.scss';
 
 // == Composant
 const Field = ({
@@ -13,6 +13,7 @@ const Field = ({
   placeholder,
   onChange,
 }) => {
+  
   const handleChange = (evt) => {
     onChange(evt.target.value, name);
   };

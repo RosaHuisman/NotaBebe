@@ -1,4 +1,4 @@
-import { CHANGE_INFOS, CHANGE_PASSWORD } from 'src/store/actions';
+import { CHANGE_INFOS, CHANGE_PASSWORD, saveInfosUser, savePasswordUser, changeInfosError, changePasswordError } from 'src/store/actions';
 import axios from 'axios';
 
 const user = (store) => (next) => (action) => {
@@ -21,7 +21,7 @@ const user = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.log('une erreur s\'est produite')
-          //store.dispatch(loginError());
+          //store.dispatch(changeInfosError());
         });
       break;
     };
@@ -33,12 +33,12 @@ const user = (store) => (next) => (action) => {
         password: state.user.password,
       })
         .then((response) => {
-          const actionSaveInfosUser = saveInfosUser(response.data);
+          const actionSaveInfosUser = savePasswordUser(response.data);
           store.dispatch(actionSaveInfosUser);
         })
         .catch((error) => {
           console.log('une erreur s\'est produite')
-          //store.dispatch(loginError());
+          //store.dispatch(changePasswordError());
         });
       break;
     };
