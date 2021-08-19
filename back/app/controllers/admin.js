@@ -24,9 +24,6 @@ const adminController = {
         }
     },
 
-    modifyUser: async (request, response) => {
-
-    },
 
     deleteUser: async (request, response, next) => {
         try {
