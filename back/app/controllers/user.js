@@ -24,47 +24,23 @@ const userController = {
 
             const user = await userDataMapper.findOne(email);
 
-            // console.log(user);
 
             if (user === null) {
-                response.json({ error: "Email ou mot de passe incorrect 1" });
+                response.json({ error: "Email ou mot de passe incorrect" });
                 return;
-            }
-            console.log('password', password);
-            console.log('user.password', user.password);
+            };
 
-            if (password === user.password) {
-                console.log('user bien connecté')
-                response.json({ user })
+
+            // Checking if password is valid thanks to bcrypt's compare function
+            const pwResult = bcrypt.compareSync(password, user.password);
+            
+            if (pwResult) {
+
+                response.json('le mot de passe est correct')
+        
             } else {
-                response.json('Mot de passe incorrect');
-            }
-
-            //TODO improve password check with bcrypt
-
-            // const pwResult = bcrypt.compareSync(password, user.password);
-
-            //Checking if password is valid thanks to bcrypt's compare function
-
-            // if (pwResult) {
-
-            //     response.json('le mot de passe est correct')
-
-            //     // Registering the user in a session
-
-            //     // if (request.session.redirectAfterLogin) {
-
-            //     //     response.redirect(request.session.redirectAfterLogin);
-            //     //     request.session.redirectAfterLogin = null;
-            // } else {
-            //     response.json('mot de passe incorrect')
-            //     //response.redirect('/');
-            // };
-
-            //! on rentre dans cette erreur
-            // } else {
-            //     response.json({ error: "Email ou mot de passe incorrect 2" });
-            // };
+                response.json({ error: "mot de passe incorrect" });
+            };
 
         } catch (error) {
             console.log(error);
@@ -83,7 +59,9 @@ const userController = {
      */
     logout: (request, response) => {
         request.session.destroy();
+        console.log('coucou je suis delogu');
         response.redirect('/');
+        
     },
 
     /**
