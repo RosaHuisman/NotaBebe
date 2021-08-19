@@ -1,0 +1,58 @@
+### API error 404
+GET http://localhost:3000/rdfhf
+
+
+## USER
+
+### test login
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "email": "mauricettequatre@laposte.net",
+    "password": "test"
+}
+
+### test login with other user - non-hashed password to try with bcrypt compareSync (not working)
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "email": "gaspardfait@hotmail.fr",
+    "password": "g4sp4rd!"
+}
+
+
+### test login - wrong password
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "email": "nicoassezadmin@gmail.com",
+    "password": "fgrfdg"
+}
+
+
+### update user password
+PATCH http://localhost:3000/profile/parent/2
+Content-Type: application/json
+
+{
+    "password": "g4sp4rd!"
+}
+
+
+### update user info
+PATCH http://localhost:3000/profile/parent/1/info
+Content-Type: application/json
+
+{
+    "address": "50 rue de Paris",
+    "postcode": "12345",
+    "city": "Marigny",
+    "phone_number": "0611203948"
+}
+
+# a tester?
+# ### logout user
+# GET http://localhost:3000/logout
