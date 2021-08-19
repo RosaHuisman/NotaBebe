@@ -8,7 +8,14 @@ GET http://localhost:3000/rdfhf
 ## USER
 
 ### test login
-GET http://localhost:3000/login
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "email": "nicoassezadmin@gmail.com",
+    "password": "athenaassez"
+}
+
 
 
 ### update user password

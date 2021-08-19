@@ -22,12 +22,9 @@ const userDataMapper = {
         return result.rows[0];
     },
 
-    async updateUser(user) {
-        // console.log('id', id)
-        // console.log('user', user)
-
-        const result = await client.query('UPDATE "user" SET address = $1, postcode = $2, city = $3, phone_number = $4, updated_at = now() WHERE id = $5 RETURNING *', [user.address, user.postcode, user.city, user.phone_number, user.id]);
-        console.log('result updateuser datamapper', result);
+    async updateUser(user, id) {
+        const result = await client.query('UPDATE "user" SET address = $1, postcode = $2, city = $3, phone_number = $4, updated_at = now() WHERE id = $5 RETURNING *', [user.address, user.postcode, user.city, user.phone_number, id]);
+        //console.log('result updateuser datamapper', result);
         return result.rows[0];
     },
 

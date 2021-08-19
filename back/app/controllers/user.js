@@ -35,6 +35,8 @@ const userController = {
 
             const user = await userDataMapper.findOne(email);
 
+            console.log(user);
+
             if (user === null) {
                 response.json({ error: "Email ou mot de passe incorrect" });
                 return;
@@ -134,22 +136,18 @@ const userController = {
                 return next();
             }
 
-            // console.log('req body', request.body);
-            const address = request.body.address;
-            const postcode = request.body.postcode;
-            const city = request.body.city;
-            const phone_number = request.body.phone_number;
+            const newData = request.body;
 
             // Enregistrer ces données en BDD
-            const updatedUser = await userDataMapper.updateUser(user);
-            console.log(updatedUser);
+            const updatedUser = await userDataMapper.updateUser({...newData}, userId);
+            //console.log(updatedUser);
 
             // Connecter l'utilisateur (l'enregistrer en session)
             request.session.user = updatedUser;
 
             // Rediriger l'internaute sur sa page profil
             // response.redirect('/');
-            response.json({ ...updatedUser });
+            response.json({ updatedUser });
 
 
         } catch (error) {
