@@ -6,8 +6,15 @@ const emailValidator = require('email-validator');
 const userController = {
 
     test: async (request, response) => {
-        const data = await userDataMapper.findAll();
-        response.json(data);
+        try {
+            const data = await userDataMapper.findAll();
+            response.json(data);
+
+        } catch (error) {
+            console.log(error);
+            response.json({ error: error.message });
+        }
+
     },
 
     /**
