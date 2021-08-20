@@ -3,23 +3,23 @@
 BEGIN;
 
 
-DROP TABLE "user_has_child";
+DROP TABLE "user_has_child" CASCADE;
 
-DROP TABLE "user_has_recap";
+DROP TABLE "user_has_recap" CASCADE;
 
-DROP TABLE "meal";
+DROP TABLE "meal" CASCADE;
 
-DROP TABLE "nap";
+DROP TABLE "nap" CASCADE;
 
-DROP TABLE "comment";
+DROP TABLE "comment" CASCADE;
 
-DROP TABLE "recap";
+DROP TABLE "recap" CASCADE;
 
-DROP TABLE "child";
+DROP TABLE "child" CASCADE;
 
-DROP TABLE "user";
+DROP TABLE "user" CASCADE;
 
-DROP TABLE "role";
+DROP TABLE "role" CASCADE;
 
 DROP DOMAIN code_postal_fr;
 
