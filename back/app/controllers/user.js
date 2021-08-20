@@ -5,6 +5,11 @@ const emailValidator = require('email-validator');
 
 const userController = {
 
+    test: async (request, response) => {
+        const data = await userDataMapper.findAll();
+        response.json(data);
+    },
+
     /**
      * Check that the login information entered by the user is correct and validate login form
      * 
@@ -33,11 +38,11 @@ const userController = {
 
             // Checking if password is valid thanks to bcrypt's compare function
             const pwResult = bcrypt.compareSync(password, user.password);
-            
+
             if (pwResult) {
 
                 response.json('le mot de passe est correct')
-        
+
             } else {
                 response.json({ error: "mot de passe incorrect" });
             };
@@ -61,7 +66,7 @@ const userController = {
         request.session.destroy();
         console.log('coucou je suis delogu');
         response.redirect('/');
-        
+
     },
 
     /**

@@ -3,7 +3,7 @@ const client = require('../client');
 const userDataMapper = {
 
     async findAll() {
-        const result = await client.query('SELECT * FROM "user');
+        const result = await client.query('SELECT * FROM "user"');
         return result.rows;
     },
 
