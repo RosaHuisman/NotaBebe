@@ -20,7 +20,9 @@ const ParentProfile = ({
   togglerChangePassword,
   handleChangePassword,
   children,
-  user
+  user,
+  child,
+  
 
   
 }) => {
@@ -84,8 +86,9 @@ const ParentProfile = ({
     )}  
 
       <Children 
-        children={children}
+        children={myChildren}
         user={user}
+        child={child}
       />
     </div>
 
@@ -101,11 +104,12 @@ ParentProfile.propTypes = {
   isOpenPassword: PropTypes.bool,
   togglerChangePassword: PropTypes.func.isRequired,
   handleChangePassword: PropTypes.func.isRequired,
+  
   children: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
     }),
-  ),
+  ).isRequired,
   
   user: PropTypes.shape({ 
     id: PropTypes.number.isRequired,

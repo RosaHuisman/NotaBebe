@@ -5,6 +5,7 @@ import { Route, Switch, Redirect, useLocation } from 'react-router-dom';
 
 
 import ParentProfile from 'src/containers/ParentProfile'
+import ChildProfile from 'src/containers/ChildProfile'
 
 // == Import
 import './styles.scss';
@@ -22,7 +23,11 @@ import Login from 'src/containers/Login';
 import Header from 'src/containers/Header';
 
 // == Composant
-const App = ({ isLogged }) => {
+const App = ({ 
+  isLogged,
+  user,
+  children
+ }) => {
   const location = useLocation();
 
   useEffect(() => {
@@ -44,9 +49,18 @@ const App = ({ isLogged }) => {
             {/* <Route>
               <Error />
             </Route> */}
-             <Route path="/profile/parent" exact>
+             <Route path={`/profile/parent/${user.id}`} exact>
                 <ParentProfile />
               </Route>
+              
+              {/* <Route 
+                path="/profile/parent/:id/child/:id" 
+                component={ChildProfile}
+                exact
+                /> */}
+              
+       
+
           </>
         )}
         <Route exact path="/">

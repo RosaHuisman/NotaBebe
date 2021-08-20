@@ -28,26 +28,7 @@ const initialState = {
     confirmpassword: '',
     changeInfosError: false,
     changePasswordError: false,
-    children: [
-      {
-      id: 1,
-      firstname: 'Georges',
-      lastname: 'Toupet',
-      birthdate: '14/06/2019',
-      birthplace: 'Tourcoing',
-      gender: 'Masculin',
-      allergy: ['poisson', 'viande', 'oeuf', 'lait'],
-        },
-        {
-      id: 2,
-      firstname: 'Georgette',
-      lastname: 'Toupet',
-      birthdate: '09/11/2021',
-      birthplace: 'Tourcoing',
-      gender: 'Féminin',
-      allergy: [],
-            }
-      ],
+    //children: [],
 };
 
 const reducer = (state = initialState, action) => {
