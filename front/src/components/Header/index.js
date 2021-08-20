@@ -12,7 +12,7 @@ const Header = ({ isLogged, handleLogout }) => (
     {!isLogged ? (
       <>
         <header className="header">
-          <h1 className="header-title">Lien parent-crèche</h1>
+          <h1 className="header-title">NotaBebe</h1>
           <Link to="/">
             <img src={logo} className="header-logo" alt="Logo NotaBebe" />
           </Link>
@@ -33,7 +33,7 @@ const Header = ({ isLogged, handleLogout }) => (
             <Dropdown.Item onClick={handleLogout}>Se déconnecter</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
-        <h1 className="header-title">Lien parent-crèche</h1>
+        <h1 className="header-title">NotaBebe</h1>
         <Link to="/">
           <img src={logo} className="header-logo" alt="Logo NotaBebe" />
         </Link>

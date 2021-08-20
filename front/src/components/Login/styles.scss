@@ -22,9 +22,30 @@
     font-weight: bold;
   }
 
+  &__errorMsg {
+    display: flex;
+    flex-direction: column;
+    color: red;
+    display: flex;
+    text-align: center;
+    margin: 0 2rem;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    justify-content: center;
+
+    &__error {
+      font-weight: bold;
+      margin: 0;
+    }
+
+    &__errorBis {
+      margin-top: 0.5rem;
+    }
+  }
+
   &__content {
     display: flex;
-    margin: 2rem auto;
+    margin: 1rem auto;
     flex-direction: column;
   }
 }

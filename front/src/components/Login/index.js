@@ -10,6 +10,7 @@ const Login = ({
   onEmailChange,
   onPasswordChange,
   handleLogin,
+  isError,
 }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,6 +22,17 @@ const Login = ({
       <div className="loginForm__title">
         Connexion
       </div>
+      {isError
+        && (
+        <div className="loginForm__errorMsg">
+          <p className="loginForm__errorMsg__error">
+            Erreur de connexion
+          </p>
+          <p className="loginForm__errorMsg__errorBis">
+            Veuillez vérifier vos identifiants de connexion
+          </p>
+        </div>
+        )}
       <form
         className="loginForm__content"
         onSubmit={handleSubmit}
@@ -63,6 +75,7 @@ Login.propTypes = {
   onEmailChange: PropTypes.func.isRequired,
   onPasswordChange: PropTypes.func.isRequired,
   handleLogin: PropTypes.func.isRequired,
+  isError: PropTypes.bool.isRequired,
 };
 
 export default Login;

@@ -15,6 +15,7 @@ import Contact from 'src/components/Contact';
 import ContactDetails from 'src/components/ContactDetails';
 import ForgotPassword from 'src/components/ForgotPassword';
 import Confirm from 'src/components/Confirm';
+import AdminMobileHome from 'src/components/AdminMobileHome';
 
 // == Import composants /containers
 import Login from 'src/containers/Login';
@@ -33,17 +34,9 @@ const App = ({ isLogged }) => {
       <Header />
       <Switch>
         {isLogged && (
-          <>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            {/* <Route exact path="/home">
-              <TEST />
-            </Route> */}
-            {/* <Route>
-              <Error />
-            </Route> */}
-          </>
+          <Route exact path="/">
+            <Home />
+          </Route>
         )}
         <Route exact path="/">
           <Login />
@@ -57,6 +50,9 @@ const App = ({ isLogged }) => {
         </Route>
         <Route exact path="/contact">
           <ContactDetails />
+        </Route>
+        <Route exact path="/admin">
+          <AdminMobileHome />
         </Route>
         <Route>
           <Error />
