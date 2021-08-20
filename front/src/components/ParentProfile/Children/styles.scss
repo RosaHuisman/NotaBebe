@@ -1,0 +1,42 @@
+@use 'src/styles/vars' as v;
+
+.children {
+  background-color: v.$primary-color;
+  padding: v.$gutter;
+  text-align: center;
+  margin: v.$gutter;
+  border-radius: 5px;
+  &__title {
+    font-size: 1.6em;
+    margin-bottom: v.$gutter;
+    color: white;
+  }
+  &__infos {
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    &__child {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: .5rem;
+      border: 4px solid v.$violet-color;
+      border-radius: 8px;
+      &:hover {
+        color: v.$violet-color;
+        background-color: #fff;
+      }
+      &__icon {
+        color: v.$violet-color;
+      }
+      &__name {
+        margin-top: 1rem;
+        font-size: 1.5em;
+        color:v.$violet-color ;
+        
+        
+      }
+    }
+    
+  }
+}

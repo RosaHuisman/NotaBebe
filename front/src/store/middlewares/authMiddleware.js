@@ -17,8 +17,13 @@ const authMiddleware = (store) => (next) => (action) => {
         'Content-Type': 'application/json',
       },
       data: {
+<<<<<<< HEAD
         email: state.userlogin.email,
         password: state.userlogin.password,
+=======
+        email: state.login.email,
+        password: state.login.password,
+>>>>>>> origin/features-parentProfil
       },
     };
 

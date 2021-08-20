@@ -1,7 +1,10 @@
 // == Import npm
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Route, Switch, useLocation } from 'react-router-dom';
+import { Route, Switch, Redirect, useLocation } from 'react-router-dom';
+
+
+import ParentProfile from 'src/containers/ParentProfile'
 
 // == Import
 import './styles.scss';
@@ -50,6 +53,16 @@ const App = ({ isLogged }) => {
         <Route exact path="/contact">
           <ContactDetails />
         </Route>
+        <Route path="/profile/parent" exact>
+          <ParentProfile />
+        </Route>
+        {/* <Route path="/profile/parent/:id">
+          <ParentProfile />
+        </Route> */}
+        
+        {/* <Route>
+          <Error />
+        </Route> */}
         <Route>
           <Error />
         </Route>
@@ -62,6 +75,7 @@ const App = ({ isLogged }) => {
 App.propTypes = {
   isLogged: PropTypes.bool.isRequired,
 };
+
 
 // == Export
 export default App;

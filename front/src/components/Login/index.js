@@ -1,5 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Dropdown } from 'semantic-ui-react';
+import { useHistory } from 'react-router-dom';
+
+import Header from 'src/components/Header';
 
 import './styles.scss';
 
