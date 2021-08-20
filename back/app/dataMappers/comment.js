@@ -14,7 +14,7 @@ const commentDataMapper = {
     },
 
     async add(data) {
-        //console.log('datamapper', data)
+        // console.log('datamapper', data)
         const result = await client.query('INSERT INTO "comment" (message, child_id) VALUES ($1, $2) RETURNING *', [data.message, data.child_id]);
         return result.rows[0];
     },
