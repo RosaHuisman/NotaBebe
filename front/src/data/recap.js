@@ -3,7 +3,7 @@ export default [
     id: 1,
     child: 'Timothey',
     date: '19/09/2020',
-    mood: `humeur Aléatoire`,
+    mood: `humeur Evolutive`,
     nap_time: '13h3O à 15h00',
     nap_comments:  `long à s'endormir car il n'avait pas son doudou`,
     meal: `Moyen+, il n'a pas mangé les légumes, mais a bien mangé l'entrée, la viande et le laitage`,
