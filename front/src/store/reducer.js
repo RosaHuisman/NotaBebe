@@ -30,9 +30,9 @@ const reducer = (oldState = initialState, action) => {
     case LOGIN_SUCCESS:
       return {
         ...oldState,
-        nickname: action.nickname,
-        token: action.token,
-        isLogged: action.logged,
+        nickname: action.data.pseudo,
+        token: action.data.token,
+        isLogged: action.data.logged,
         userlogin: {
           ...oldState.userlogin,
           email: '',

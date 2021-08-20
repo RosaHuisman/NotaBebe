@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import './styles.scss';
 import logo from 'src/images/NotaBebe_logo.png';
 
-const Header = ({ isLogged, handleLogout }) => (
+const Header = ({ isLogged, handleLogout, loggedMessage }) => (
   <>
     {!isLogged ? (
       <>
@@ -27,7 +27,7 @@ const Header = ({ isLogged, handleLogout }) => (
           className="icon iconBurger"
         >
           <Dropdown.Menu>
-            <Dropdown.Item>MENU1</Dropdown.Item>
+            <Dropdown.Item>{loggedMessage}</Dropdown.Item>
             <Dropdown.Item>MENU2</Dropdown.Item>
             <Dropdown.Item>MENU2</Dropdown.Item>
             <Dropdown.Item onClick={handleLogout}>Se déconnecter</Dropdown.Item>
@@ -43,8 +43,14 @@ const Header = ({ isLogged, handleLogout }) => (
 );
 
 Header.propTypes = {
-  isLogged: PropTypes.bool.isRequired,
+  isLogged: PropTypes.bool,
   handleLogout: PropTypes.func.isRequired,
+  loggedMessage: PropTypes.string,
+};
+
+Header.defaultProps = {
+  isLogged: false,
+  loggedMessage: 'Connecté',
 };
 
 export default Header;

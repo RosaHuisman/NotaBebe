@@ -15,7 +15,7 @@ import Contact from 'src/components/Contact';
 import ContactDetails from 'src/components/ContactDetails';
 import ForgotPassword from 'src/components/ForgotPassword';
 import Confirm from 'src/components/Confirm';
-import AdminMobileHome from 'src/components/AdminMobileHome';
+import AdminMobileHome from 'src/components/Admin';
 
 // == Import composants /containers
 import Login from 'src/containers/Login';

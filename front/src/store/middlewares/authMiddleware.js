@@ -24,7 +24,8 @@ const authMiddleware = (store) => (next) => (action) => {
 
     axios(config)
       .then((response) => {
-        store.dispatch(createLoginSuccessAction(response.data));
+        // store.dispatch(createLoginSuccessAction(data: response.data));
+        store.dispatch({ type: 'LOGIN_SUCCESS', data: response.data });
         console.log('DATA JWT', response.data);
       })
       .catch((error) => {

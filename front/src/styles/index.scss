@@ -34,8 +34,13 @@ body {
     margin-top: 7rem;
   }
 }
+@media only screen and (max-width : 900px){
+  .adminDesktopHome {
+    display: none !important;
+  }
+}
 
-@media only screen and (min-width : 1224px){
+@media only screen and (min-width : 901px){
   .adminMobileHome {
     display: none !important;
   }
