@@ -33,7 +33,7 @@ const App = ({ isLogged }) => {
     <>
       <Header />
       <Switch>
-        {isLogged && (
+      {isLogged && (
           <>
             <Route exact path="/">
               <Home />

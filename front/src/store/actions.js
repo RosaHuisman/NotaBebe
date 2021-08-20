@@ -1,20 +1,11 @@
 /* eslint-disable import/prefer-default-export */
-<<<<<<< HEAD
-=======
 
 //actions login
->>>>>>> origin/features-parentProfil
 export const SET_INPUT_VALUE = 'SET_INPUT_VALUE';
 export const SUBMIT_LOGIN = 'SUBMIT_LOGIN';
 export const SET_SETTINGS_FIELD_VALUE = 'SET_SETTINGS_FIELD_VALUE';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_ERROR = 'LOGIN_ERROR';
-<<<<<<< HEAD
-export const LOGOUT = 'LOGOUT';
-
-export const createLoginSuccessAction = (nickname) => ({ type: LOGIN_SUCCESS, nickname });
-export const createLoginErrorAction = () => ({ type: LOGIN_ERROR });
-=======
 
 //actions user
 export const OPEN_CHANGE_INFOS = 'OPEN_CHANGE_INFOS';
@@ -78,4 +69,3 @@ export const savePasswordUser = () => ({
   type: SAVE_PASSWORD_USER,
 });
 
->>>>>>> origin/features-parentProfil

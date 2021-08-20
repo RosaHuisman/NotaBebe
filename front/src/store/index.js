@@ -1,19 +1,3 @@
-<<<<<<< HEAD
-import { createStore, applyMiddleware } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
-
-import reducer from './reducer';
-import logMiddleware from './middlewares/logMiddleware';
-import authMiddleware from './middlewares/authMiddleware';
-
-const store = createStore(
-  reducer,
-  composeWithDevTools(
-    applyMiddleware(logMiddleware, authMiddleware),
-  ),
-);
-
-=======
 import { createStore, applyMiddleware, compose } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
@@ -31,5 +15,4 @@ const enhancers = composeEnhancers(
 const store = createStore(reducer, enhancers);
 
 
->>>>>>> origin/features-parentProfil
 export default store;
