@@ -6,107 +6,98 @@ import {
   LOGOUT,
 } from './actions';
 
-const initialState = {
-  nickname: null,
-  inputValue: '',
+// const initialState = {
+//   nickname: null,
+//   inputValue: '',
+//   token: null,
+//   logged: false,
+//   userlogin: {
+//     email: 'admin@notabebe.io',
+//     password: 'admin',
+//     // email: '',
+//     // password: '',
+//     isError: false,
+//   },
+// };
+
+export const initialState = {
+  // email: 'admin@notabebe.io',
+  // password: 'admin',
+  pseudo: null,
+  logged: false,
   token: null,
-  isLogged: false,
+  // isError: false,
   userlogin: {
     email: 'admin@notabebe.io',
     password: 'admin',
-    // email: '',
-    // password: '',
     isError: false,
   },
 };
 
-const reducer = (oldState = initialState, action) => {
+const reducer = (oldState = initialState, action = {}) => {
   switch (action.type) {
-    case SET_INPUT_VALUE:
+    // case SET_INPUT_VALUE: {
+    //   return {
+    //     ...oldState,
+    //     inputValue: action.value,
+    //   };
+    // }
+    // case LOGIN_SUCCESS:
+    //   return {
+    //     ...oldState,
+    //     nickname: action.data.pseudo,
+    //     token: action.data.token,
+    //     logged: action.data.logged,
+    //     userlogin: {
+    //       ...oldState.userlogin,
+    //       email: '',
+    //       password: '',
+    //       isError: false,
+    //     },
+    //   };
+    case LOGIN_SUCCESS: {
+      const { pseudo, logged, token } = action.payload;
       return {
         ...oldState,
-        inputValue: action.value,
-      };
-    case LOGIN_SUCCESS:
-      return {
-        ...oldState,
-<<<<<<< HEAD
-        nickname: action.nickname,
-<<<<<<< HEAD
-        token: action.token,
-        isLogged: action.logged,
-=======
-        nickname: action.data.pseudo,
-        token: action.data.token,
-        isLogged: action.data.logged,
->>>>>>> origin/features-componentAdminDesktop
+        pseudo,
+        logged,
+        token,
         userlogin: {
           ...oldState.userlogin,
-=======
-        login: {
-          ...oldState.login,
->>>>>>> origin/features-parentProfil
           email: '',
           password: '',
           isError: false,
         },
       };
-    case LOGIN_ERROR:
+    }
+    case LOGIN_ERROR: {
       return {
         ...oldState,
-<<<<<<< HEAD
-        userlogin: {
-          ...oldState.userlogin,
-=======
-        login: {
-          ...oldState.login,
->>>>>>> origin/features-parentProfil
-          isError: true,
-        },
+        isError: true,
       };
-    case SET_SETTINGS_FIELD_VALUE:
+    }
+    case SET_SETTINGS_FIELD_VALUE: {
       return {
         ...oldState,
-<<<<<<< HEAD
-        userlogin: {
-          ...oldState.userlogin,
-          [action.fieldKey]: action.newValue,
-        },
+        [action.fieldKey]: action.newValue,
       };
-    case LOGOUT:
+    }
+    case LOGOUT: {
       return {
         ...oldState,
-        nickname: null,
         token: null,
-        isLogged: false,
+        logged: false,
+        pseudo: null,
         userlogin: {
-          ...oldState.userlogin,
           email: 'admin@notabebe.io',
           password: 'admin',
           isError: false,
-=======
-        login: {
-          ...oldState.login,
-          [action.fieldKey]: action.newValue,
         },
       };
-    case CHANGE_INFOS:
-      console.log('je suis dans le cas CHANGE_INFOS')
-      return {
-        ...oldState,
-        user: {
-          ...oldState,
-          isOpen: true,
->>>>>>> origin/features-parentProfil
-        },
-      };
+    }
     default:
       return oldState;
   }
 };
 
 export default reducer;
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/features-parentProfil

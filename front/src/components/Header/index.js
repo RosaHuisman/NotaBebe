@@ -7,9 +7,9 @@ import { Link } from 'react-router-dom';
 import './styles.scss';
 import logo from 'src/images/NotaBebe_logo.png';
 
-const Header = ({ isLogged, handleLogout, loggedMessage }) => (
+const Header = ({ logged, handleLogout, loggedMessage }) => (
   <>
-    {!isLogged ? (
+    {!logged ? (
       <>
         <header className="header">
           <h1 className="header-title">NotaBebe</h1>
@@ -43,13 +43,13 @@ const Header = ({ isLogged, handleLogout, loggedMessage }) => (
 );
 
 Header.propTypes = {
-  isLogged: PropTypes.bool,
+  logged: PropTypes.bool,
   handleLogout: PropTypes.func.isRequired,
   loggedMessage: PropTypes.string,
 };
 
 Header.defaultProps = {
-  isLogged: false,
+  logged: false,
   loggedMessage: 'Connecté',
 };
 

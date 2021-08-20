@@ -13,7 +13,6 @@ const Field = ({
   placeholder,
   onChangeInputValue,
 }) => {
-  
   const handleChange = (evt) => {
     onChangeInputValue(evt.target.value, name);
   };
@@ -50,7 +49,6 @@ Field.propTypes = {
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
   onChangeInputValue: PropTypes.func.isRequired,
-
 };
 
 // Valeurs par défaut pour les props

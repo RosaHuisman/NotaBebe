@@ -5,6 +5,7 @@ export const SUBMIT_LOGIN = 'SUBMIT_LOGIN';
 export const SET_SETTINGS_FIELD_VALUE = 'SET_SETTINGS_FIELD_VALUE';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_ERROR = 'LOGIN_ERROR';
+export const CHECK_TOKEN = 'CHECK_TOKEN';
 
 // actions logout
 export const LOGOUT = 'LOGOUT';
@@ -23,8 +24,11 @@ export const SAVE_INFOS_USER = 'SAVE_INFOS_USER';
 export const SAVE_PASSWORD_USER = 'SAVE_PASSWORD_USER';
 
 // actions login
-export const createLoginSuccessAction = (nickname) => ({ type: LOGIN_SUCCESS, nickname });
+// export const createLoginSuccessAction = (nickname) => ({ type: LOGIN_SUCCESS, nickname });
+export const createLoginSuccessAction = (payload) => ({ type: LOGIN_SUCCESS, payload });
 export const createLoginErrorAction = () => ({ type: LOGIN_ERROR });
+// export const saveUser = (payload) => ({ type: SAVE_USER, payload });
+// export const checkToken = () => ({ type: CHECK_TOKEN });
 
 // actions user
 export const openChangeInfos = () => ({

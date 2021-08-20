@@ -1,4 +1,6 @@
-import { CHANGE_INFOS, CHANGE_PASSWORD, saveInfosUser, savePasswordUser, changeInfosError, changePasswordError } from 'src/store/actions';
+import {
+  CHANGE_INFOS, CHANGE_PASSWORD, saveInfosUser, savePasswordUser, changeInfosError, changePasswordError,
+} from 'src/store/actions';
 import axios from 'axios';
 
 const user = (store) => (next) => (action) => {
@@ -6,7 +8,7 @@ const user = (store) => (next) => (action) => {
   // une fois qu'on aura les infos, on va les stocker dans le state => dispatcher une action
   switch (action.type) {
     case CHANGE_INFOS: {
-      console.log('je suis dans le cas CHANGE_INFOS')
+      console.log('je suis dans le cas CHANGE_INFOS');
       const state = store.getState();
 
       axios.patch('http://localhost:3001/profile/parent/:id', {
@@ -20,13 +22,13 @@ const user = (store) => (next) => (action) => {
           store.dispatch(actionSaveInfosUser);
         })
         .catch((error) => {
-          console.log('une erreur s\'est produite')
-          //store.dispatch(changeInfosError());
+          console.log('une erreur s\'est produite');
+          // store.dispatch(changeInfosError());
         });
       break;
-    };
+    }
     case CHANGE_PASSWORD: {
-      console.log('je suis dans le cas CHANGE_PASSWORD')
+      console.log('je suis dans le cas CHANGE_PASSWORD');
       const state = store.getState();
 
       axios.patch('http://localhost:3001/profile/parent/:id', {
@@ -37,11 +39,11 @@ const user = (store) => (next) => (action) => {
           store.dispatch(actionSaveInfosUser);
         })
         .catch((error) => {
-          console.log('une erreur s\'est produite')
-          //store.dispatch(changePasswordError());
+          console.log('une erreur s\'est produite');
+          // store.dispatch(changePasswordError());
         });
       break;
-    };
+    }
     default:
       next(action);
   }

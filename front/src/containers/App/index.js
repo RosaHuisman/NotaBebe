@@ -4,7 +4,7 @@ import { isUserLogged } from 'src/store/selectors';
 import App from 'src/components/App';
 
 const mapStateToProps = (state) => ({
-  isLogged: isUserLogged(state),
+  logged: isUserLogged(state),
 });
 
 const mapDispatchToProps = {};

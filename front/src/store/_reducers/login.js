@@ -1,19 +1,16 @@
 import {
-  // SET_INPUT_VALUE,
+  SET_INPUT_VALUE,
   SET_SETTINGS_FIELD_VALUE,
   LOGIN_SUCCESS,
   LOGIN_ERROR,
-  LOGOUT,
 } from '../actions';
 
 const initialState = {
   nickname: null,
   inputValue: '',
-  token: null,
-  isLogged: false,
-  userlogin: {
-    email: 'admin@notabebe.io',
-    password: 'admin',
+  login: {
+    email: 'bouclierman@herocorp.io',
+    password: 'jennifer',
     // email: '',
     // password: '',
     isError: false,
@@ -22,19 +19,17 @@ const initialState = {
 
 const reducer = (oldState = initialState, action) => {
   switch (action.type) {
-    // case SET_INPUT_VALUE:
-    //   return {
-    //     ...oldState,
-    //     inputValue: action.value,
-    //   };
+    case SET_INPUT_VALUE:
+      return {
+        ...oldState,
+        inputValue: action.value,
+      };
     case LOGIN_SUCCESS:
       return {
         ...oldState,
         nickname: action.nickname,
-        token: action.token,
-        isLogged: action.logged,
-        userlogin: {
-          ...oldState.userlogin,
+        login: {
+          ...oldState.login,
           email: '',
           password: '',
           isError: false,
@@ -43,30 +38,17 @@ const reducer = (oldState = initialState, action) => {
     case LOGIN_ERROR:
       return {
         ...oldState,
-        userlogin: {
-          ...oldState.userlogin,
+        login: {
+          ...oldState.login,
           isError: true,
         },
       };
     case SET_SETTINGS_FIELD_VALUE:
       return {
         ...oldState,
-        userlogin: {
-          ...oldState.userlogin,
+        login: {
+          ...oldState.login,
           [action.fieldKey]: action.newValue,
-        },
-      };
-    case LOGOUT:
-      return {
-        ...oldState,
-        nickname: null,
-        token: null,
-        isLogged: false,
-        userlogin: {
-          ...oldState.userlogin,
-          email: 'admin@notabebe.io',
-          password: 'admin',
-          isError: false,
         },
       };
     default:
@@ -75,3 +57,4 @@ const reducer = (oldState = initialState, action) => {
 };
 
 export default reducer;
+

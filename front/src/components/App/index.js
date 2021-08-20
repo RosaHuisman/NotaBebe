@@ -22,7 +22,7 @@ import Login from 'src/containers/Login';
 import Header from 'src/containers/Header';
 
 // == Composant
-const App = ({ isLogged }) => {
+const App = ({ logged }) => {
   const location = useLocation();
 
   useEffect(() => {
@@ -33,7 +33,7 @@ const App = ({ isLogged }) => {
     <>
       <Header />
       <Switch>
-        {isLogged && (
+        {logged && (
           <Route exact path="/">
             <Home />
           </Route>
@@ -64,7 +64,7 @@ const App = ({ isLogged }) => {
 };
 
 App.propTypes = {
-  isLogged: PropTypes.bool.isRequired,
+  logged: PropTypes.bool.isRequired,
 };
 
 // == Export
