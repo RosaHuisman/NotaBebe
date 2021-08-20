@@ -1,7 +1,7 @@
 // == Import : npm
 import React from 'react';
 import PropTypes from 'prop-types';
-import Field from 'src/components/Field';
+import Field from 'src/containers/Field';
 
 
 // == Import : local
@@ -13,7 +13,6 @@ const ChangePasswordForm = ({
   newpassword,
   confirmpassword,
   hasPasswordError,
-  changeField,
   handleChangePassword,
   closeForm,
 
@@ -41,7 +40,6 @@ const ChangePasswordForm = ({
           name="oldpassword"
           type="password"
           placeholder="Ancien mot de passe"
-          onChange={changeField}
           value={oldpassword}
         />
 
@@ -49,7 +47,6 @@ const ChangePasswordForm = ({
           name="newpassword"
           type="password"
           placeholder="Nouveau mot de passe"
-          onChange={changeField}
           value={newpassword}
         />
 
@@ -57,7 +54,6 @@ const ChangePasswordForm = ({
           name="confirmpassword"
           type="password"
           placeholder="Confirmez votre mot de passe"
-          onChange={changeField}
           value={confirmpassword}
         />
     
@@ -92,7 +88,6 @@ ChangePasswordForm.propTypes = {
   newpassword: PropTypes.string.isRequired,
   confirmpassword: PropTypes.string.isRequired,
   hasPasswordError: PropTypes.bool,
-  changeField: PropTypes.func.isRequired,
   handleChangePassword: PropTypes.func.isRequired,
   closeForm: PropTypes.func.isRequired,
   

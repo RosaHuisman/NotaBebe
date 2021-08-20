@@ -9,16 +9,15 @@ export const LOGIN_ERROR = 'LOGIN_ERROR';
 
 //actions user
 export const OPEN_CHANGE_INFOS = 'OPEN_CHANGE_INFOS';
-export const CHANGE_VALUE = 'CHANGE_VALUE';
 export const CHANGE_INFOS = 'CHANGE_INFOS';
 export const TOGGLE_CHANGE_PASSWORD = 'TOGGLE_CHANGE_PASSWORD';
 export const CLOSE_FORM = 'CLOSE_FORM';
 export const CHANGE_PASSWORD = 'CHANGE_PASSWORD';
-export const CHANGE_FIELD_VALUE = 'CHANGE_FIELD_VALUE';
 export const INFOS_ERROR = 'INFOS_ERROR';
 export const PASSWORD_ERROR = 'PASSWORD_ERROR';
 export const SAVE_INFOS_USER = 'SAVE_INFOS_USER';
 export const SAVE_PASSWORD_USER = 'SAVE_PASSWORD_USER';
+export const CHANGE_FIELD_VALUE = 'CHANGE_FIELD_VALUE';
 
 
 //actions login
@@ -30,10 +29,12 @@ export const openChangeInfos = () => ({
   type: OPEN_CHANGE_INFOS, 
 });
 
-export const changeValue = (value, key) => ({
-  type: CHANGE_VALUE,
-  key,
+
+
+export const changeFieldValue = (key, value) => ({
+  type: CHANGE_FIELD_VALUE,
   value,
+  key,
 });
 
 export const changeInfos = () => ({
@@ -67,3 +68,4 @@ export const saveInfosUser = () => ({
 export const savePasswordUser = () => ({
   type: SAVE_PASSWORD_USER,
 });
+

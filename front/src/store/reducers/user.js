@@ -1,6 +1,7 @@
 import {
   OPEN_CHANGE_INFOS,
-  CHANGE_VALUE,
+  //CHANGE_VALUE,
+  CHANGE_FIELD_VALUE,
   TOGGLE_CHANGE_PASSWORD,
   CLOSE_FORM,
   INFOS_ERROR,
@@ -56,12 +57,12 @@ const reducer = (state = initialState, action) => {
         ...state,
         isOpenInfos: !state.isOpenInfos,
       };
-      case CHANGE_VALUE: {
+      case CHANGE_FIELD_VALUE: {
         return {
           ...state,
           [action.key]: action.value,
         };
-      };
+      }
       case TOGGLE_CHANGE_PASSWORD: 
       return {
         ...state,

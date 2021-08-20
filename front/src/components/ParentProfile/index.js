@@ -14,7 +14,6 @@ import './styles.scss';
 const ParentProfile = ({
   openUserInfos,
   isOpenInfos,
-  changeField,
   closeForm,
   handleChangeInfos,
   isOpenPassword,
@@ -26,6 +25,8 @@ const ParentProfile = ({
   
 }) => {
 
+  console.log(user)
+  
   const handleOnClickChangePasswordButton = () => {
     togglerChangePassword();
   }
@@ -59,7 +60,6 @@ const ParentProfile = ({
       </>
     ) : (
       <ChangeUserInfosForm 
-        changeField={changeField}
         closeForm={closeForm}
         handleChangeInfos={handleChangeInfos}
         {...user}
@@ -77,7 +77,6 @@ const ParentProfile = ({
     ): (
     
       <ChangePasswordForm 
-        changeField={changeField}
         closeForm={closeForm}
         handleChangePassword={handleChangePassword}
         {...user}
@@ -97,7 +96,6 @@ const ParentProfile = ({
 ParentProfile.propTypes = {
   openUserInfos: PropTypes.func.isRequired,
   isOpenInfos: PropTypes.bool,
-  changeField: PropTypes.func.isRequired,
   closeForm: PropTypes.func.isRequired,
   handleChangeInfos: PropTypes.func.isRequired,
   isOpenPassword: PropTypes.bool,
@@ -108,11 +106,12 @@ ParentProfile.propTypes = {
       id: PropTypes.number.isRequired,
     }),
   ),
+  user: PropTypes.object.isRequired,
   // user: PropTypes.objectOf(
   //   PropTypes.shape({
   //     id: PropTypes.number.isRequired,
   //   }),
-  //),
+  // ),
 };
 
 ParentProfile.defaultProps = {

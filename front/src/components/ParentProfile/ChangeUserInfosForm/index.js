@@ -1,7 +1,7 @@
 // == Import : npm
 import React from 'react';
 import PropTypes from 'prop-types';
-import Field from 'src/components/Field';
+import Field from 'src/containers/Field';
 
 
 // == Import : local
@@ -10,7 +10,6 @@ import './styles.scss';
 // == Composant
 const ChangeUserInfosForm = ({
   hasInfosError,
-  changeField,
   closeForm,
   lastname, 
   firstname, 
@@ -46,7 +45,6 @@ const ChangeUserInfosForm = ({
       name="address"
       type="text"
       placeholder="Adresse"
-      onChange={changeField}
       value={address}
     />
 
@@ -54,7 +52,6 @@ const ChangeUserInfosForm = ({
       name="postcode"
       type="text"
       placeholder="Code postal"
-      onChange={changeField}
       value={postcode}
     />
 
@@ -62,7 +59,6 @@ const ChangeUserInfosForm = ({
       name="city"
       type="text"
       placeholder="Commune"
-      onChange={changeField}
       value={city}
     />
    
@@ -70,7 +66,6 @@ const ChangeUserInfosForm = ({
       name="phone_number"
       type="text"
       placeholder="Numéro de téléphone"
-      onChange={changeField}
       value={phone_number}
     />
   
@@ -104,7 +99,6 @@ const ChangeUserInfosForm = ({
 
 ChangeUserInfosForm.propTypes = {
   hasInfosError: PropTypes.bool,
-  changeField: PropTypes.func.isRequired,
   closeForm: PropTypes.func.isRequired,
   lastname: PropTypes.string.isRequired, 
   firstname: PropTypes.string.isRequired,

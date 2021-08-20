@@ -12,6 +12,7 @@ const Children = ({
   children,
   user
 }) => {
+
   return (
     <div className="children">
         
@@ -45,14 +46,10 @@ Children.propTypes = {
   children: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
+      firstname: PropTypes.string.isRequired,
     }),
   ),
-  // user: PropTypes.objectOf(
-  //   PropTypes.shape({
-  //     id: PropTypes.number.isRequired,
-  //   }),
-  // ),
-  
+  user: PropTypes.object.isRequired,
 };
 
 
