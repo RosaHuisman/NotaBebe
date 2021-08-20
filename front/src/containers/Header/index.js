@@ -4,6 +4,7 @@ import { isUserLogged } from 'src/store/selectors';
 
 const mapStateToProps = (state) => ({
   isLogged: isUserLogged(state),
+  loggedMessage: `Bonjour ${state.nickname}`,
 });
 
 const mapDispatchToProps = (dispatch) => ({

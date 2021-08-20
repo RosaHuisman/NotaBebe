@@ -1,9 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Dropdown } from 'semantic-ui-react';
-import { useHistory } from 'react-router-dom';
-
-import Header from 'src/components/Header';
+import { Link } from 'react-router-dom';
 
 import './styles.scss';
 
@@ -12,8 +9,8 @@ const Login = ({
   password,
   onEmailChange,
   onPasswordChange,
-  isError,
   handleLogin,
+  isError,
 }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,6 +22,17 @@ const Login = ({
       <div className="loginForm__title">
         Connexion
       </div>
+      {isError
+        && (
+        <div className="loginForm__errorMsg">
+          <p className="loginForm__errorMsg__error">
+            Erreur de connexion
+          </p>
+          <p className="loginForm__errorMsg__errorBis">
+            Veuillez vérifier vos identifiants de connexion
+          </p>
+        </div>
+        )}
       <form
         className="loginForm__content"
         onSubmit={handleSubmit}
@@ -51,7 +59,11 @@ const Login = ({
         >
           Se connecter
         </button>
-        {isError && <p className="settings__forgot">Erreur Login/Mot de passe</p>}
+        <Link to="/forgot-password">
+          <p className="settings__forgot">
+            Mot de passe oublié
+          </p>
+        </Link>
       </form>
     </div>
   );
@@ -62,8 +74,8 @@ Login.propTypes = {
   password: PropTypes.string.isRequired,
   onEmailChange: PropTypes.func.isRequired,
   onPasswordChange: PropTypes.func.isRequired,
-  isError: PropTypes.bool.isRequired,
   handleLogin: PropTypes.func.isRequired,
+  isError: PropTypes.bool.isRequired,
 };
 
 export default Login;
