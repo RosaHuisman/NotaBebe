@@ -10,7 +10,8 @@
     "start": "node .",
     "dev": "nodemon",
     "installdev": "sqitch revert -y; sqitch deploy; psql -U postgres -f data/seeding.sql",
-    "installprod": "sqitch revert prod -y; sqitch deploy prod; psql -U postgres -f data/seeding.sql"
+    "installprod": "sqitch revert prod -y; sqitch deploy prod; psql -U postgres -f data/seeding.sql",
+    "herokuprod": "sqitch revert heroku -y; sqitch deploy heroku; psql -U postgres -f data/seeding.sql"
   },
   "keywords": [],
   "author": "",
