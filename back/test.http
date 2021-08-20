@@ -1,14 +1,16 @@
+## TEST HTPP
+
 ### API error 404
 GET http://localhost:3000/rdfhf
 
-# test
 
 ### test affichage données
 GET http://localhost:3000/test
 
+
 ## USER
 
-### test login
+### try login
 POST http://localhost:3000/login
 Content-Type: application/json
 
@@ -17,7 +19,7 @@ Content-Type: application/json
     "password": "test"
 }
 
-### test login with other user - non-hashed password to try with bcrypt compareSync (not working)
+### try login with other user - non-hashed password to try with bcrypt compareSync (not working)
 POST http://localhost:3000/login
 Content-Type: application/json
 
@@ -27,7 +29,7 @@ Content-Type: application/json
 }
 
 
-### test login - wrong password
+### try login - wrong password
 POST http://localhost:3000/login
 Content-Type: application/json
 
@@ -48,15 +50,15 @@ Content-Type: application/json
 
 ### update user info
 
-# PATCH http://localhost:3000/profile/parent/9/info
-# Content-Type: application/json
+PATCH http://localhost:3000/profile/parent/9/info
+Content-Type: application/json
 
-# {
-#     "address": "50 rue de Paris",
-#     "postcode": "12345",
-#     "city": "Marigny",
-#     "phone_number": "0611203948"
-# }
+{
+    "address": "50 rue de Paris",
+    "postcode": "12345",
+    "city": "Marigny",
+    "phone_number": "0611203948"
+}
 
 
 # ADMIN
@@ -80,21 +82,23 @@ Content-Type: application/json
 # a tester?
 # ### logout user
 # GET http://localhost:3000/logout
+
+
 ### deleting an user
 DELETE http://localhost:3000/profile/admin/manageprofile/8
 
-### adding a child
-# POST http://localhost:3000/profile/admin/parent/1/managechildren
-# Content-Type: application/json
+## adding a child
+POST http://localhost:3000/profile/admin/parent/1/managechildren
+Content-Type: application/json
 
-# {
-#     "first_name": "Mickael",
-#     "last_name": "Menet",
-#     "birthdate": "18/04/1995",
-#     "birthplace": "Metz",
-#     "sex": "F",
-#     "allergies": "amandes"
-# }
+{
+    "first_name": "Mickael",
+    "last_name": "Menet",
+    "birthdate": "18/04/1995",
+    "birthplace": "Metz",
+    "sex": "F",
+    "allergies": "amandes"
+}
 
 # RECAP
 
