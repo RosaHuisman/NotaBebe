@@ -5,7 +5,7 @@ const emailValidator = require('email-validator');
 
 const userController = {
 
-    getAllUsers: async (request, response) => {
+    getAllUsers: async (_, response) => {
         try {
             const data = await userDataMapper.findAll();
             response.json(data);
@@ -17,7 +17,7 @@ const userController = {
 
     },
 
-    getAllParents: async (request, response) => {
+    getAllParents: async (_, response) => {
         try {
             const data = await userDataMapper.findAllParents();
             response.json(data);
@@ -42,7 +42,7 @@ const userController = {
         }
     },
 
-    getAllStaff: async (request, response) => {
+    getAllStaff: async (_, response) => {
         try {
             const data = await userDataMapper.findAllStaff();
             response.json(data);
@@ -66,7 +66,7 @@ const userController = {
         }
     },
 
-    getAllChildren: async (request, response) => {
+    getAllChildren: async (_, response) => {
         try {
             const data = await userDataMapper.findAllChildren();
             response.json(data);

@@ -2,7 +2,7 @@ const recapDataMapper = require('../dataMappers/recap');
 
 const recapController = {
 
-    getAllRecaps: async (request, response) => {
+    getAllRecaps: async (_, response) => {
         try {
             const recaps = await recapDataMapper.findAll();
             response.json(recaps);
