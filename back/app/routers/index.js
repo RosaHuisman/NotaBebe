@@ -8,18 +8,65 @@ const commentController = require('../controllers/comment');
 
 const router = express.Router();
 
-router.route('/test')
-    .get(userController.test);
+// ROUTES TO DISPLAY ALL DATA
+
+// get all users - for admin
+router.route('/profile/admin/allusers')
+    .get(userController.getAllUsers);
+
+// get all parents - for admin
+router.route('/profile/admin/parents')
+    .get(userController.getAllParents);
+
+// get all staff members - for admin
+router.route('/profile/admin/allstaff')
+    .get(userController.getAllStaff);
+
+// get all children - for admin
+router.route('/profile/admin/children')
+    .get(userController.getAllChildren);
+
+// get all recaps - for staff
+router.route('/profile/staff/allrecaps')
+    .get(recapController.getAllRecaps);
+
+// TODO get all comments - for staff
+// router.route('/profile/staff/comments')
+//     .get(commentController.getAllComments);
+
+
+// ROUTES TO DISPLAY SPECIFIC DATA
+
+// get parent by id
+router.route('/profile/parent/:id')
+    .get(userController.getParentById);
+
+// get staff by id
+router.route('/profile/staff/:id')
+    .get(userController.getStaffById);
+
+
+
+// TODO get child by id -- faire la route paramétrée avec les deux paramètres
+router.route('/profile/parent/:id/child/:childid')
+
+
+//TODO get recap by id
+//TODO get recap by child id
+
+
+
 
 router.route('/login')
     .post(userController.checkLogin);
 
 router.get('/logout', userController.logout);
 
-router.route('/profile/parent/:id/info')
-    .patch(userController.updateUser);
-    
+
 router.route('/profile/parent/:id')
+    .patch(userController.updateUser);
+
+router.route('/profile/parent/:id/password')
     .patch(userController.updatePassword)
 
 // router.route('/profile/parent/:id/info')
@@ -41,9 +88,7 @@ router.route('/profile/admin/manageprofile/:id')
 
 // router.route('/profile/admin/parent/:id/managechildren')
 //     .post(adminController.addChild);
-router.route('/test/allrecaps')
-    .get(recapController.getAll);
-//! changer le nom de la route
+
 
 router.route('/profile/staff/recap/child/')
     .post(recapController.addRecap)

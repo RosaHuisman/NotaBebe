@@ -5,7 +5,7 @@ const emailValidator = require('email-validator');
 
 const userController = {
 
-    test: async (request, response) => {
+    getAllUsers: async (request, response) => {
         try {
             const data = await userDataMapper.findAll();
             response.json(data);
@@ -15,6 +15,66 @@ const userController = {
             response.json({ error: error.message });
         }
 
+    },
+
+    getAllParents: async (request, response) => {
+        try {
+            const data = await userDataMapper.findAllParents();
+            response.json(data);
+
+        } catch (error) {
+            console.log(error);
+            response.json({ error: error.message });
+        }
+    },
+
+    getParentById: async (request, response) => {
+        try {
+            const parentId = Number(request.params.id);
+            console.log(parentId)
+            const data = await userDataMapper.findParentById(parentId);
+            console.log(data)
+            response.json(data);
+
+        } catch (error) {
+            console.log(error);
+            response.json({ error: error.message });
+        }
+    },
+
+    getAllStaff: async (request, response) => {
+        try {
+            const data = await userDataMapper.findAllStaff();
+            response.json(data);
+
+        } catch (error) {
+            console.log(error);
+            response.json({ error: error.message });
+        }
+
+    },
+
+    getStaffById: async (request, response) => {
+        try {
+            const staffId = Number(request.params.id);
+            const data = await userDataMapper.findStaffById(staffId);
+            response.json(data);
+
+        } catch (error) {
+            console.log(error);
+            response.json({ error: error.message });
+        }
+    },
+
+    getAllChildren: async (request, response) => {
+        try {
+            const data = await userDataMapper.findAllChildren();
+            response.json(data);
+
+        } catch (error) {
+            console.log(error);
+            response.json({ error: error.message });
+        }
     },
 
     /**
