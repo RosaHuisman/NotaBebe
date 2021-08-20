@@ -44,6 +44,9 @@ const App = ({ isLogged }) => {
             {/* <Route>
               <Error />
             </Route> */}
+             <Route path="/profile/parent" exact>
+                <ParentProfile />
+              </Route>
           </>
         )}
         <Route exact path="/">
@@ -53,9 +56,9 @@ const App = ({ isLogged }) => {
         <Route exact path="/contact">
           <ContactDetails />
         </Route>
-        <Route path="/profile/parent" exact>
+        {/* <Route path="/profile/parent" exact>
           <ParentProfile />
-        </Route>
+        </Route> */}
         {/* <Route path="/profile/parent/:id">
           <ParentProfile />
         </Route> */}
