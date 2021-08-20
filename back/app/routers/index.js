@@ -4,6 +4,7 @@ const errorController = require('../controllers/404');
 const userController = require('../controllers/user');
 const adminController = require('../controllers/admin')
 const recapController = require('../controllers/recap');
+const commentController = require('../controllers/comment');
 
 const router = express.Router();
 
