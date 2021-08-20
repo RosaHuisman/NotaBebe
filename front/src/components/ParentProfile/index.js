@@ -106,12 +106,10 @@ ParentProfile.propTypes = {
       id: PropTypes.number.isRequired,
     }),
   ),
-  user: PropTypes.object.isRequired,
-  // user: PropTypes.objectOf(
-  //   PropTypes.shape({
-  //     id: PropTypes.number.isRequired,
-  //   }),
-  // ),
+  
+  user: PropTypes.shape({ 
+    id: PropTypes.number.isRequired,
+  }).isRequired,
 };
 
 ParentProfile.defaultProps = {

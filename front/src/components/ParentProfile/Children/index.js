@@ -49,7 +49,9 @@ Children.propTypes = {
       firstname: PropTypes.string.isRequired,
     }),
   ),
-  user: PropTypes.object.isRequired,
+  user: PropTypes.shape({ 
+    id: PropTypes.number.isRequired,
+  }).isRequired,
 };
 
 
