@@ -27,7 +27,8 @@ GET http://localhost:3000/profile/parent/1
 ### DISPLAYING STAFF PROFILE - staff by id
 GET http://localhost:3000/profile/staff/5
 
-
+### DISPLAYING RECAP - by id
+GET http://localhost:3000/profile/staff/recap/1
 
 
 ## USER

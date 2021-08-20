@@ -45,6 +45,10 @@ router.route('/profile/parent/:id')
 router.route('/profile/staff/:id')
     .get(userController.getStaffById);
 
+// get recap by id
+router.route('/profile/staff/recap/:id')
+    .get(recapController.getRecapById);
+
 
 
 // TODO get child by id -- faire la route paramétrée avec les deux paramètres
