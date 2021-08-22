@@ -8,17 +8,10 @@ import { findUser } from 'src/store/selectors/user';
 
 const mapStateToProps = (state, ownProps) => {
 
-  console.log('LIST', state.user.list)
+  //console.log('LIST', state.user.list)
 
   const props = {
-
-    firstname: state.user.firstname,
-    lastname: state.user.lastname,
-    address: state.user.address,
-    postcode: state.user.postcode,
-    city: state.user.city,
-    phone_number: state.user.phone_number,
-    email: state.user.email,
+    oldpassword: state.user.oldpassword,
     isOpenInfos: state.user.isOpenInfos,
     isOpenPassword: state.user.isOpenPassword,
     oldpassword: state.user.oldpassword,
@@ -35,16 +28,9 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => ({
 
-  // loadUsersParents: () => {
-  //   dispatch(fetchUsersParents())
-  // },
-
-  loadUsersParents: () => {
-    dispatch(fetchUsersParents())
+loadUsersParents: () => {
+  dispatch(fetchUsersParents())
   },
-
-
-
 
   openUserInfos: () => {
   dispatch(openChangeInfos());

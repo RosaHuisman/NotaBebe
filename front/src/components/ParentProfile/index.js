@@ -19,30 +19,26 @@ const ParentProfile = ({
   isOpenPassword,
   togglerChangePassword,
   handleChangePassword,
-  //findParent,
-  
   user,
-  child,
-  
   loadUsersParents,
   
 
 }) => {
 
+  //console.log(user)
+
   useEffect(() => {
-
     loadUsersParents();
-  }, []);
-
-  console.log("loadUsersParents:", loadUsersParents())
-  //console.log('mes enfants dans parentprofile', children)
-  //console.log("mon enfant dans parentprofile", child)
   
-  const handleOnClickChangePasswordButton = () => {
+  }, []);
+  
+  const handleOnClickChangePasswordButton = (e) => {
+    e.preventDefault();
     togglerChangePassword();
   }
 
-  const handleOnClickChangeInfosButton = () => {
+  const handleOnClickChangeInfosButton = (e) => {
+    e.preventDefault();
     openUserInfos();
   };
   
@@ -53,6 +49,7 @@ const ParentProfile = ({
     </header>
 
     <div className="parentprofile">
+      
     {!isOpenInfos ? (
       <>
      <UserInfos 

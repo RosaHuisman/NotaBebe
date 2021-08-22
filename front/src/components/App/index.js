@@ -18,15 +18,18 @@ import Error from 'src/components/Error';
 import Contact from 'src/components/Contact';
 import ContactDetails from 'src/components/ContactDetails';
 
+import Loading from './Loading';
+
+
 // == Import composants /containers
 import Login from 'src/containers/Login';
 import Header from 'src/containers/Header';
 
 // == Composant
 const App = ({ 
+  loading,
   isLogged,
   user,
-  children,
   loadUsersParents,
   
 
@@ -42,6 +45,10 @@ const App = ({
     
     window.scroll(0, 0);
   }, [location]);
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <>

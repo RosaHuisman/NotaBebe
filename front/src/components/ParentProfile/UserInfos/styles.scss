@@ -15,7 +15,13 @@
 
 
   &__infos {
-    font-size: 1.2rem;
+    font-size: .9rem;
+    
+    // here I want to truncate the text, I haven't made it yet :
+    overflow: hidden;
+    //white-space: nowrap;
+    text-overflow: ellipsis;
+    
 
     &__designation {
         font-weight: bold;
@@ -32,7 +38,9 @@
     &__result {
         padding-left: v.$gutter/2;
         text-overflow: ellipsis;
-        word-wrap: break-word;   
+        word-wrap: break-word; 
+        
+       
 
       }
     }
