@@ -8,11 +8,13 @@ const mapStateToProps = (state, ownProps) => ({
   
   //child: findChild(state.children.list, ownProps.match.params.id),  
   user: state.user,
+  isOpenInfos: state.user.isOpenInfos,
+
 
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  openChildInfos: () => {
+  openUserInfos: () => {
   dispatch(openChangeInfos());
 }, 
 

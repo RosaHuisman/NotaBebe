@@ -17,9 +17,9 @@ const initialState = {
     isOpenInfos: false,
     isOpenPassword: false,
     
-    oldpassword: 'coucou',
-    newpassword: 'hello',
-    confirmpassword: 'hello',
+    oldpassword: '',
+    newpassword: '',
+    confirmpassword: '',
     
     changeInfosError: false,
     changePasswordError: false,

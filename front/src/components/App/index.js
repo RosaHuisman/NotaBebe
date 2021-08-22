@@ -70,6 +70,12 @@ const App = ({
               component={ParentProfile}
               exact
               />
+
+              <Route 
+              path="/profile/parent/:id/child/:id" 
+              component={ChildProfile}
+              exact
+              />
               
               
               {/* <Route 

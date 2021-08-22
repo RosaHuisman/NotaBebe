@@ -1,10 +1,10 @@
 import React, { useEffect }  from 'react';
 import PropTypes from 'prop-types';
 
-import Children from 'src/components/ParentProfile/Children';
-import ChangePasswordForm from 'src/components/ParentProfile/ChangePasswordForm';
-import ChangeUserInfosForm from 'src/components/ParentProfile/ChangeUserInfosForm';
-import UserInfos from 'src/components/ParentProfile/UserInfos';
+import Children from './Children';
+import ChangePasswordForm from './ChangePasswordForm';
+import ChangeUserInfosForm from './ChangeUserInfosForm';
+import UserInfos from './UserInfos';
 
 import Header from 'src/components/Header';
 

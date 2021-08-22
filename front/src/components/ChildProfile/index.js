@@ -1,10 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import ChildInfos from 'src/components/ChildProfile/ChildInfos';
+import ChildInfos from './ChildInfos';
+import ChangeChildInfosForm from './ChangeChildInfosForm';
+import Comment from './Comment';
 
 
 import Header from 'src/components/Header';
+
+import { Link } from 'react-router-dom';
 
 import './styles.scss';
 
@@ -12,49 +16,70 @@ import './styles.scss';
 const ChildProfile = ({
   user,
   child,
-  openUserInfos
+  openUserInfos,
+  isOpenInfos,
+  closeForm,
+  handleChangeInfos,
+
 }) => {
   
-  //console.log(child)
+  const handleOnClickChangeInfosButton = (e) => {
+    e.preventDefault();
+    openUserInfos();
+  };
   
   return (
   <>
     <header className="header">
       <Header />
     </header>
-
     <div className="childprofile">
-    coucou c'est moi
-    <ChildInfos 
-        {...user}
-        openUserInfos={openUserInfos}
-        
-     />
-    {/* {!isOpenInfos ? (
+   Ici on affichera les infos de l'enfant lorsqu'on pourra récupérer les infos de la BDD
+    </div>
+
+    {!isOpenInfos ? (
       <>
      <ChildInfos 
-        {...user}
         openUserInfos={openUserInfos}
         
      />
+
       <button 
         type="button" 
-        className="parentprofile__button"
+        className="childprofile__button"
         onClick={handleOnClickChangeInfosButton}
       >
-      Modifier mes informations
+      Modifier les informations
       </button>
       </>
     ) : (
-      <ChangeUserInfosForm 
+      <>
+      <div className="hello">Hello</div>
+      <ChangeChildInfosForm 
         closeForm={closeForm}
         handleChangeInfos={handleChangeInfos}
-        {...user}
+        //user={user}
       />
-    )} */}
-    
-  
-    </div>
+      </>
+    )}
+
+      <Link 
+          // key={child.id}
+          //{...child}
+          //to={`/profile/parent/${user.id}/child/${child.id}/recap`}
+          to={`/profile/parent/1/child/1/recap`}
+          >
+          <button 
+          type="button" 
+          className="childprofile__button childprofile__button__recap"
+      >
+          Récap du jour      
+          </button>
+      </Link> 
+
+      <Comment />
+
+   
 
   </>
     )
