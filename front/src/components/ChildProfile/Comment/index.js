@@ -10,18 +10,33 @@ import './styles.scss';
 
 // == Composant
 const Comment = ({
-  
+  submitComment,
+  commentSend,
+  onChangeTextValue,
 }) => {
 
   const handleSubmit = (evt) => {
     //console.log('je clique sur submit')
     evt.preventDefault();
-    subMitComment();
+    submitComment();
+  };
+
+  const handleOnChange = (evt) => {
+    onChangeTextValue(evt.target.value, name);
   };
 
   return (
 
-<form
+<>
+{commentSend ? (
+  <>
+  {/* Ici on veut envoyer le message sur la base de données, on pourra le faire quand on aura la route prévue pour par le back, il faudra donc vérifier si le message a un contenu, l'enregister en BDD et si tout ca est ok, on renverra le message "Votre message a bien été envoyé" */}
+  <div className="comment__success">Votre message a bien été envoyé</div>
+  </>
+) : (
+  <div>
+    
+    <form
     autoComplete="off"
     className="comment"
     onSubmit={handleSubmit}
@@ -41,6 +56,7 @@ const Comment = ({
         rows="4" 
         className="comment__text__textarea"
         placeholder="Saisissez votre message..."
+        onChange={handleOnChange}
         >
       </textarea>
     </div>
@@ -51,8 +67,11 @@ const Comment = ({
         >
         Envoyer le message
         </button>
-
         </form>
+  </div>
+  
+)}
+</>
 
         
 

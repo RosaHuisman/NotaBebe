@@ -20,6 +20,10 @@ const ChildProfile = ({
   isOpenInfos,
   closeForm,
   handleChangeInfos,
+  submitComment,
+  comment, 
+  commentSend,
+  onChangeTextValue, 
 
 }) => {
   
@@ -34,8 +38,8 @@ const ChildProfile = ({
       <Header />
     </header>
     <div className="childprofile">
-   Ici on affichera les infos de l'enfant lorsqu'on pourra récupérer les infos de la BDD
-    </div>
+   {/* Ici on affichera les infos de l'enfant lorsqu'on pourra récupérer les infos de la BDD */}
+   
 
     {!isOpenInfos ? (
       <>
@@ -77,9 +81,13 @@ const ChildProfile = ({
           </button>
       </Link> 
 
-      <Comment />
+      <Comment 
+        submitComment={submitComment}
+        commentSend={commentSend}
+        onChangeTextValue={onChangeTextValue}
+      />
 
-   
+</div>
 
   </>
     )

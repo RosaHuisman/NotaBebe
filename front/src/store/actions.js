@@ -18,11 +18,13 @@ export const PASSWORD_ERROR = 'PASSWORD_ERROR';
 export const SAVE_INFOS_USER = 'SAVE_INFOS_USER';
 export const SAVE_PASSWORD_USER = 'SAVE_PASSWORD_USER';
 export const CHANGE_FIELD_VALUE = 'CHANGE_FIELD_VALUE';
+export const CHANGE_TEXT_VALUE = 'CHANGE_TEXT_VALUE';
 
 
 export const SAVE_USERS_PARENTS = 'SAVE_USERS_PARENTS';
 export const FETCH_USERS_PARENTS = 'FETCH_USERS_PARENTS';
 
+export const SEND_COMMENT = 'SEND_COMMENT'; 
 
 
 
@@ -43,6 +45,11 @@ export const changeFieldValue = (key, value) => ({
   value,
   key,
 });
+
+export const changeTextValue = (value) => ({
+  type: CHANGE_TEXT_VALUE,
+  value,
+})
 
 export const changeInfos = () => ({
     type: CHANGE_INFOS,
@@ -76,8 +83,6 @@ export const savePasswordUser = () => ({
   type: SAVE_PASSWORD_USER,
 });
 
-
-  
 export const fetchUsersParents = () => ({
   type: FETCH_USERS_PARENTS,
 });
@@ -86,3 +91,7 @@ export const saveUsersParents = (users_parents) => ({
   type: SAVE_USERS_PARENTS,
   payload: users_parents,
 });
+
+export const sendComment = () => ({
+  type: SEND_COMMENT,
+})

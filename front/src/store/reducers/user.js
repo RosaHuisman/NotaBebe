@@ -9,6 +9,8 @@ import {
   SAVE_INFOS_USER,
   SAVE_PASSWORD_USER,
   SAVE_USERS_PARENTS,
+  SEND_COMMENT,
+  CHANGE_TEXT_VALUE,
 
 } from '../actions';
 
@@ -24,6 +26,8 @@ const initialState = {
     changeInfosError: false,
     changePasswordError: false,
     loading: true,
+    comment: '',
+    commentSend: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -85,14 +89,27 @@ const reducer = (state = initialState, action) => {
             changeInfosError: false,
             isOpenInfos: false,
           }
-        }
+        };
         case SAVE_PASSWORD_USER: {
           return {
             ...state, 
             changePasswordError: false,
             isOpenPassword: false,
           }
+        };
+        case SEND_COMMENT: {
+          return  {
+            ...state,
+            commentSend: true,
+          }
+        };
+        case CHANGE_TEXT_VALUE: {
+          return {
+            ...state,
+            comment: action.value,
+          }
         }
+
     default:
       return state;
   }
