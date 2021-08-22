@@ -1,10 +1,16 @@
 import { connect } from 'react-redux';
 import ParentProfile from 'src/components/ParentProfile';
-import { openChangeInfos, changeInfos, toggleChangePassword, closeFormAction, changePassword } from 'src/store/actions';
+import { openChangeInfos, changeInfos, toggleChangePassword, closeFormAction, changePassword, saveParent, fetchUsersParents } from 'src/store/actions';
 
 import { findChildren } from 'src/store/selectors/children';
 
-const mapStateToProps = (state, ownProps) => ({
+import { findUser } from 'src/store/selectors/user';
+
+const mapStateToProps = (state, ownProps) => {
+
+  console.log('LIST', state.user.list)
+
+  const props = {
 
     firstname: state.user.firstname,
     lastname: state.user.lastname,
@@ -21,11 +27,25 @@ const mapStateToProps = (state, ownProps) => ({
     value: state[ownProps.name],
     hasInfosError: state.user.changeInfosError,
     hasPasswordError: state.user.changePasswordError,
-    user: state.user,
-    child: findChildren(state.children, ownProps.id),
-});
+    user: findUser(state.user.list, ownProps.match.params.id),
+    //child: findChildren(state.children.list, ownProps.id),
+  }
+    return props
+};
 
 const mapDispatchToProps = (dispatch) => ({
+
+  // loadUsersParents: () => {
+  //   dispatch(fetchUsersParents())
+  // },
+
+  loadUsersParents: () => {
+    dispatch(fetchUsersParents())
+  },
+
+
+
+
   openUserInfos: () => {
   dispatch(openChangeInfos());
 }, 
@@ -45,6 +65,8 @@ closeForm: () => {
 handleChangePassword: () => {
   dispatch(changePassword())
 },
+
+
 
   
 });

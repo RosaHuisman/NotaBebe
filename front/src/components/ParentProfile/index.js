@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect }  from 'react';
 import PropTypes from 'prop-types';
 
 import Children from 'src/components/ParentProfile/Children';
@@ -19,15 +19,24 @@ const ParentProfile = ({
   isOpenPassword,
   togglerChangePassword,
   handleChangePassword,
-  children,
+  //findParent,
+  
   user,
   child,
   
-
+  loadUsersParents,
   
+
 }) => {
 
-  console.log(user)
+  useEffect(() => {
+
+    loadUsersParents();
+  }, []);
+
+  console.log("loadUsersParents:", loadUsersParents())
+  //console.log('mes enfants dans parentprofile', children)
+  //console.log("mon enfant dans parentprofile", child)
   
   const handleOnClickChangePasswordButton = () => {
     togglerChangePassword();
@@ -44,11 +53,10 @@ const ParentProfile = ({
     </header>
 
     <div className="parentprofile">
-    
     {!isOpenInfos ? (
       <>
      <UserInfos 
-        {...user}
+        user={user}
         openUserInfos={openUserInfos}
         
      />
@@ -64,7 +72,7 @@ const ParentProfile = ({
       <ChangeUserInfosForm 
         closeForm={closeForm}
         handleChangeInfos={handleChangeInfos}
-        {...user}
+        user={user}
       />
     )}
 
@@ -81,14 +89,14 @@ const ParentProfile = ({
       <ChangePasswordForm 
         closeForm={closeForm}
         handleChangePassword={handleChangePassword}
-        {...user}
+        user={user}
       />
     )}  
 
       <Children 
-        children={myChildren}
+        //children={myChildren}
         user={user}
-        child={child}
+        //child={child}
       />
     </div>
 
@@ -105,16 +113,16 @@ ParentProfile.propTypes = {
   togglerChangePassword: PropTypes.func.isRequired,
   handleChangePassword: PropTypes.func.isRequired,
   
-  children: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-    }),
-  ).isRequired,
+  // children: PropTypes.arrayOf(
+  //   PropTypes.shape({
+  //     id: PropTypes.number.isRequired,
+  //   }),
+  // ).isRequired,
   
-  user: PropTypes.shape({ 
-    id: PropTypes.number.isRequired,
-  }).isRequired,
-};
+//   user: PropTypes.shape({ 
+//     id: PropTypes.number.isRequired,
+//   }).isRequired,
+ };
 
 ParentProfile.defaultProps = {
   isOpenInfos: false,

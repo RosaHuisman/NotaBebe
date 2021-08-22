@@ -21,7 +21,7 @@ const Children = ({
   return (
     <div className="children">
 
-      {children.firstname}
+      {'mon enfant', child}
         
     <h3 className="children__title"> Mes enfants</h3>
 
@@ -60,9 +60,9 @@ Children.propTypes = {
       firstname: PropTypes.string.isRequired,
     }),
   ),
-  user: PropTypes.shape({ 
-    id: PropTypes.number.isRequired,
-  }).isRequired,
+  // user: PropTypes.shape({ 
+  //   id: PropTypes.number.isRequired,
+  // }).isRequired,
 };
 
 

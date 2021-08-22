@@ -20,6 +20,13 @@ export const SAVE_PASSWORD_USER = 'SAVE_PASSWORD_USER';
 export const CHANGE_FIELD_VALUE = 'CHANGE_FIELD_VALUE';
 
 
+export const SAVE_USERS_PARENTS = 'SAVE_USERS_PARENTS';
+export const FETCH_USERS_PARENTS = 'FETCH_USERS_PARENTS';
+
+
+
+
+
 //actions login
 export const createLoginSuccessAction = (nickname) => ({ type: LOGIN_SUCCESS, nickname });
 export const createLoginErrorAction = () => ({ type: LOGIN_ERROR });
@@ -69,3 +76,13 @@ export const savePasswordUser = () => ({
   type: SAVE_PASSWORD_USER,
 });
 
+
+  
+export const fetchUsersParents = () => ({
+  type: FETCH_USERS_PARENTS,
+});
+
+export const saveUsersParents = (users_parents) => ({
+  type: SAVE_USERS_PARENTS,
+  payload: users_parents,
+});

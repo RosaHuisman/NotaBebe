@@ -7,20 +7,13 @@ import {
   INFOS_ERROR,
   PASSWORD_ERROR,
   SAVE_INFOS_USER,
-  SAVE_PASSWORD_USER
+  SAVE_PASSWORD_USER,
+  SAVE_USERS_PARENTS,
 
 } from '../actions';
 
 const initialState = {
-    id: 1,
-    firstname: 'Tata',
-    lastname: 'Toto',
-    address: '36 rue de la paix',
-    postcode: '06360',
-    city: 'Tapol',
-    email: 'tata@toto.fr',
-    password: 'hello',
-    phone_number: '06.33.33.33.33',
+  list: [],
     isOpenInfos: false,
     isOpenPassword: false,
     oldpassword: '',
@@ -28,11 +21,24 @@ const initialState = {
     confirmpassword: '',
     changeInfosError: false,
     changePasswordError: false,
-    //children: [],
 };
 
 const reducer = (state = initialState, action) => {
+
   switch (action.type) {
+
+    case SAVE_USERS_PARENTS: {
+      console.log('je suis dans le cas SAVE_USERS_PARENTS')
+      //console.log('dans le reducer', action.users_parents)
+      //const { list } = action.payload;
+      //console.log('action payload dans le reducer',action.payload)
+      return {
+        list: action.payload, 
+        ...state,
+        //list: action.users_parents,
+      };
+    }   
+
     case OPEN_CHANGE_INFOS:
       return {
         ...state,
@@ -50,7 +56,7 @@ const reducer = (state = initialState, action) => {
         isOpenPassword: !state.isOpenPassword,
       };
       case CLOSE_FORM:
-        console.log('je suis dans le cas CLOSE_CHANGE_INFOS')
+        //console.log('je suis dans le cas CLOSE_CHANGE_INFOS')
         return {
           ...state,
           isOpenInfos: false,

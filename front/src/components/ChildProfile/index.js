@@ -15,7 +15,7 @@ const ChildProfile = ({
   openUserInfos
 }) => {
   
-  console.log(child)
+  //console.log(child)
   
   return (
   <>

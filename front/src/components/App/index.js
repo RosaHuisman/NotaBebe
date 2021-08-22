@@ -26,11 +26,20 @@ import Header from 'src/containers/Header';
 const App = ({ 
   isLogged,
   user,
-  children
+  children,
+  loadUsersParents,
+  
+
  }) => {
   const location = useLocation();
 
+  //console.log('load users parents dans index app: ', loadUsersParents())
+
   useEffect(() => {
+    //console.log('load users parents dans useeffect: ', loadUsersParents())
+
+    loadUsersParents();
+    
     window.scroll(0, 0);
   }, [location]);
 
@@ -49,9 +58,12 @@ const App = ({
             {/* <Route>
               <Error />
             </Route> */}
-             <Route path={`/profile/parent/${user.id}`} exact>
-                <ParentProfile />
-              </Route>
+             <Route 
+              path="/profile/parent/:id" 
+              component={ParentProfile}
+              exact
+              />
+              
               
               {/* <Route 
                 path="/profile/parent/:id/child/:id" 

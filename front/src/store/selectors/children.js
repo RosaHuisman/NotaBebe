@@ -16,12 +16,12 @@
 //   return child;
 // }
 
-export function findChildren(children, searchedId) {
-  console.log('children', children.list)
- const child = children.list.find((testedChild) => {
-   return testedChild.parent_id === searchedId;
- });
- console.log('child', child)
- return child;
-}
+// export function findChildren(children, searchedId) {
+//   console.log('children', children.list)
+//  const child = children.find((testedChild) => {
+//    return testedChild.parent_id === searchedId;
+//  });
+//  console.log('child', child)
+//  return child;
+// }
 
