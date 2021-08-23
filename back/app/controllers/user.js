@@ -47,6 +47,7 @@ const userController = {
             const childId = Number(request.params.childId);
 
             const data = await userDataMapper.findChildFromParent(parentId, childId);
+            // if data --> response json data... (return next)
             response.json(data);
 
         } catch (error) {

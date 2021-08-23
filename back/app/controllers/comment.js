@@ -3,7 +3,7 @@ const commentDataMapper = require('../dataMappers/comment');
 
 const commentController = {
 
-    getAllComments: async (request, response) => {
+    getAllComments: async (_, response) => {
         try {
             const comments = await commentDataMapper.findAll();
             response.json(comments);
