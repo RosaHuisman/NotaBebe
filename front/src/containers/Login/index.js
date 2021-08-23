@@ -1,26 +1,35 @@
 import { connect } from 'react-redux';
 import Login from 'src/components/Login';
+import { changeValueLogin } from '../../store/actions';
 
+// transforme le state en props
 const mapStateToProps = (state) => ({
-  email: state.userlogin.email,
-  password: state.userlogin.password,
-  isError: state.userlogin.isError,
+  // email: state.userlogin.email,
+  // password: state.userlogin.password,
+  // isError: state.userlogin.isError,
+  email: state.email,
+  password: state.password,
+  isError: state.isError,
 });
 
+// transforme la fonction dispatch en props
 const mapDispatchToProps = (dispatch) => ({
-  onEmailChange: (e) => {
-    dispatch({
-      type: 'SET_SETTINGS_FIELD_VALUE',
-      newValue: e.target.value,
-      fieldKey: 'email',
-    });
-  },
-  onPasswordChange: (e) => {
-    dispatch({
-      type: 'SET_SETTINGS_FIELD_VALUE',
-      newValue: e.target.value,
-      fieldKey: 'password',
-    });
+  // onEmailChange: (value) => {
+  //   dispatch({
+  //     type: 'SET_SETTINGS_FIELD_VALUE',
+  //     newValue: value,
+  //     fieldKey: 'email',
+  //   });
+  // },
+  // onPasswordChange: (value) => {
+  //   dispatch({
+  //     type: 'SET_SETTINGS_FIELD_VALUE',
+  //     newValue: value,
+  //     fieldKey: 'password',
+  //   });
+  // },
+  changeFieldLogin: (value, key) => {
+    dispatch(changeValueLogin(value, key));
   },
   changeField: (newValue, name) => {
     dispatch({

@@ -2,7 +2,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-
 // == Import : local
 import './styles.scss';
 
@@ -17,8 +16,8 @@ const UserInfos = ({
   return (
     <div className="userinfos">
       <div className="userinfos__infos">
-      <table>
-        <tbody>
+        <table>
+          <tbody>
             <tr>
                 <td className="userinfos__infos__designation">Nom:</td>
                 <td className="userinfos__infos__result">{user.last_name}</td>
@@ -43,11 +42,9 @@ const UserInfos = ({
                 <td className="userinfos__infos__designation">Email: </td>
                 <td className="userinfos__infos__result">{user.email}</td>
             </tr>
-        </tbody>
-      </table>
+          </tbody>
+        </table>
       </div>
-
-      
 
     </div>
 
@@ -61,10 +58,12 @@ const UserInfos = ({
   
 // };
 
+// UserInfos.propTypes = {
+//   user: PropTypes.shape({
+//     id: PropTypes.number.isRequired,
+//   }).isRequired,
 
+// };
 
 // == Export
 export default UserInfos;
-
-
-

@@ -6,24 +6,38 @@ import { Route, Switch, Redirect, useLocation } from 'react-router-dom';
 
 import ParentProfile from 'src/containers/ParentProfile'
 import ChildProfile from 'src/containers/ChildProfile'
+import {
+  Route, Switch, useLocation,
+} from 'react-router-dom';
+import { connect, useDispatch } from 'react-redux';
 
 // == Import
 import './styles.scss';
 
 // == Import composants /components
 import Home from 'src/components/Home';
+import HomePage from 'src/components/HomePage';
 import Footer from 'src/components/Footer';
 import Error from 'src/components/Error';
-// import TEST from 'src/components/TEST';
-import Contact from 'src/components/Contact';
 import ContactDetails from 'src/components/ContactDetails';
 
-import Loading from './Loading';
 
+import ForgotPassword from 'src/components/ForgotPassword';
+import AdminMobileHome from 'src/components/Admin';
+
+import PrivateRoute from 'src/components/PrivateRoute';
+
+// TEST
+import HomePage2 from 'src/components/HomePage2';
+import HomePage3 from 'src/components/HomePage3';
 
 // == Import composants /containers
 import Login from 'src/containers/Login';
 import Header from 'src/containers/Header';
+import ParentProfile from 'src/containers/ParentProfile';
+// import ChildProfile from 'src/containers/ChildProfile';
+
+import Loading from './Loading';
 
 // == Composant
 const App = ({ 
@@ -34,7 +48,14 @@ const App = ({
   
 
  }) => {
+const App = ({
+  logged,
+  roles,
+  loading,
+}) => {
   const location = useLocation();
+  // const { logged, roles } = this.props;
+  const dispatch = useDispatch();
 
   //console.log('load users parents dans index app: ', loadUsersParents())
 
@@ -51,6 +72,28 @@ const App = ({
   }
 
   return (
+    // <>
+    //   <Header />
+    //   <Switch>
+    //     {logged && (
+    //       <>
+    //         <Route exact path="/profile/parent/:id" component={ParentProfile} />
+    //         <Route exact path="/homepage" component={HomePage} />
+    //         <Route exact path="/homepage2" component={HomePage2} />
+    //         <Route exact path="/homepage3" component={HomePage3} />
+    //       </>
+    //     )}
+    //     <Route exact path="/" component={Home} />
+    //     <Route exact path="/login" component={Login} />
+    //     <Route exact path="/forgot" component={ForgotPassword} />
+    //     <Route exact path="/confirm" component={Confirm} />
+    //     <Route exact path="/contact" component={ContactDetails} />
+    //     <Route exact path="/admin" component={AdminMobileHome} />
+    //     <Redirect from="login" to="/" />
+    //     <Route component={Error} />
+    //   </Switch>
+    //   <Footer />
+    // </>
     <>
       <Header />
       <Switch>
@@ -111,11 +154,33 @@ const App = ({
       </Switch>
       <Footer />
     </>
+    <Header />
+    <Switch>
+      <Route exact path="/" component={Home} />
+      <Route exact path="/login" component={Login} />
+      <Route exact path="/forgot" component={ForgotPassword} />
+      <Route exact path="/contact" component={ContactDetails} />
+      <Route path="*" component={Error} />
+
+      <PrivateRoute exact path="/" component={AdminMobileHome} />
+      <PrivateRoute exact path="/admin" component={AdminMobileHome} />
+      <PrivateRoute exact path="/profile/parent/:id" component={ParentProfile} />
+      <PrivateRoute exact path="/homepage" component={HomePage} />
+      <PrivateRoute exact path="/homepage2" component={HomePage2} />
+      <PrivateRoute exact path="/homepage3" component={HomePage3} />
+    </Switch>
+    <Footer />
+  </>
   );
 };
 
 App.propTypes = {
-  isLogged: PropTypes.bool.isRequired,
+  loading: PropTypes.bool,
+  logged: PropTypes.bool.isRequired,
+};
+
+App.defaultProps = {
+  loading: false,
 };
 
 

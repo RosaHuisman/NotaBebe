@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
-import { isUserLogged } from 'src/store/selectors';
+import { isUserLogged } from 'src/store/selectors/loggedPseudo';
+import { fetchUsersParents } from 'src/store/actions';
 
 import {fetchUsersParents} from 'src/store/actions'
 
@@ -17,11 +18,15 @@ const mapDispatchToProps = (dispatch) => ({
   loadUsersParents: () => {
     dispatch(fetchUsersParents())
     },
-
-  loadUsersParents: () => {
-    dispatch(fetchUsersParents())
-  }
  
 })
+  
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+// const mapDispatchToProps = (dispatch) => ({
+
+//   loadUsersParents: () => {
+//     dispatch(fetchUsersParents());
+//   },
+// });
+
+export default connect(mapStateToProps)(App);

@@ -21,40 +21,37 @@ const mapStateToProps = (state, ownProps) => {
     hasInfosError: state.user.changeInfosError,
     hasPasswordError: state.user.changePasswordError,
     user: findUser(state.user.list, ownProps.match.params.id),
-    //child: findChildren(state.children.list, ownProps.id),
-  }
-    return props
+    // child: findChildren(state.children.list, ownProps.id),
+  };
+  return props;
 };
 
 const mapDispatchToProps = (dispatch) => ({
 
-loadUsersParents: () => {
-  dispatch(fetchUsersParents())
+  loadUsersParents: () => {
+    dispatch(fetchUsersParents());
   },
 
   openUserInfos: () => {
-  dispatch(openChangeInfos());
-}, 
+    dispatch(openChangeInfos());
+  },
 
-handleChangeInfos: () => {
-  dispatch(changeInfos());
-},
+  handleChangeInfos: () => {
+    dispatch(changeInfos());
+  },
 
-togglerChangePassword: () => {
-  dispatch(toggleChangePassword())
-},
+  togglerChangePassword: () => {
+    dispatch(toggleChangePassword());
+  },
 
-closeForm: () => {
-  dispatch(closeFormAction())
-},
+  closeForm: () => {
+    dispatch(closeFormAction());
+  },
 
-handleChangePassword: () => {
-  dispatch(changePassword())
-},
+  handleChangePassword: () => {
+    dispatch(changePassword());
+  },
 
-
-
-  
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ParentProfile);

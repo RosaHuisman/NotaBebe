@@ -6,6 +6,9 @@ export const SUBMIT_LOGIN = 'SUBMIT_LOGIN';
 export const SET_SETTINGS_FIELD_VALUE = 'SET_SETTINGS_FIELD_VALUE';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_ERROR = 'LOGIN_ERROR';
+export const CHECK_TOKEN = 'CHECK_TOKEN';
+export const CHANGE_VALUE_LOGIN = 'CHANGE_VALUE_LOGIN';
+export const SET_CURRENT_USER = 'SET_CURRENT_USER';
 
 //actions user
 export const OPEN_CHANGE_INFOS = 'OPEN_CHANGE_INFOS';
@@ -32,6 +35,16 @@ export const SEND_COMMENT = 'SEND_COMMENT';
 //actions login
 export const createLoginSuccessAction = (nickname) => ({ type: LOGIN_SUCCESS, nickname });
 export const createLoginErrorAction = () => ({ type: LOGIN_ERROR });
+export const changeValueLogin = (value, key) => ({
+  type: CHANGE_VALUE_LOGIN,
+  key,
+  value,
+});
+
+// export const setCurrentUser = (user) => ({
+//   type: SET_CURRENT_USER,
+//   user,
+// });
 
 //actions user
 export const openChangeInfos = () => ({ 

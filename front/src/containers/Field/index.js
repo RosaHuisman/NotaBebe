@@ -20,7 +20,6 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   //   dispatch(fetchUsersParents())
   //   },
 
-
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Field);

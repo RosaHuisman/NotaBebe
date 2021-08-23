@@ -117,6 +117,3 @@ ChangeUserInfosForm.defaultProps = {
 
 // == Export
 export default ChangeUserInfosForm;
-
-
-
