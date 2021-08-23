@@ -30,6 +30,7 @@ import Login from 'src/containers/Login';
 import Header from 'src/containers/Header';
 import ParentProfile from 'src/containers/ParentProfile';
 import ChildProfile from 'src/containers/ChildProfile';
+import ChildRecap from 'src/containers/ChildRecap';
 
 import Loading from './Loading';
 
@@ -55,9 +56,9 @@ const App = ({
     window.scroll(0, 0);
   }, [location]);
 
-  // if (loading) {
-  //   return <Loading />;
-  // }
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     // <>
@@ -82,23 +83,36 @@ const App = ({
     //   </Switch>
     //   <Footer />
     // </>
-    <>
-      <Header />
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/forgot" component={ForgotPassword} />
-        <Route exact path="/contact" component={ContactDetails} />
-        <Route path="*" component={Error} />
+    // <>
+    //   <Header />
+    //   <Switch>
+    //     <Route exact path="/" component={Home} />
+    //     <Route exact path="/login" component={Login} />
+    //     <Route exact path="/forgot" component={ForgotPassword} />
+    //     <Route exact path="/contact" component={ContactDetails} />
+    //     <Route path="*" component={Error} />
 
-        <PrivateRoute exact path="/" component={AdminMobileHome} />
-        <PrivateRoute exact path="/admin" component={AdminMobileHome} />
-        <PrivateRoute exact path="/profile/parent/:id" component={ParentProfile} />
+    //     <PrivateRoute exact path="/" component={AdminMobileHome} />
+    //     <PrivateRoute exact path="/admin" component={AdminMobileHome} />
+    //     <PrivateRoute exact path="/profile/parent/:id" component={ParentProfile} />
+    //     {/* // à test ChildProfile */}
+    //     <PrivateRoute exact path="/profile/parent/:id/child/:id" component={ChildProfile} />
+    //     <PrivateRoute exact path="/homepage" component={HomePage} />
+    //     <PrivateRoute exact path="/homepage2" component={HomePage2} />
+    //     <PrivateRoute exact path="/homepage3" component={HomePage3} />
+    //   </Switch>
+    //   <Footer />
+    // </>
+    <>
+      
+      <Switch>
+       
+        <Route exact path="/profile/parent/:id" component={ParentProfile} />
         {/* // à test ChildProfile */}
-        <PrivateRoute exact path="/profile/parent/:id/child/:id" component={ChildProfile} />
-        <PrivateRoute exact path="/homepage" component={HomePage} />
-        <PrivateRoute exact path="/homepage2" component={HomePage2} />
-        <PrivateRoute exact path="/homepage3" component={HomePage3} />
+        <Route exact path="/profile/parent/:id/child/:id" component={ChildProfile} />
+        <Route exact path="/profile/parent/1/child/1/recap" component={ChildRecap} />
+
+        
       </Switch>
       <Footer />
     </>

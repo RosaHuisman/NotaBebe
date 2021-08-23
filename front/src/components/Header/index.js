@@ -75,7 +75,7 @@ const Header = ({ logged, handleLogout, loggedMessage }) => {
 
 Header.propTypes = {
   logged: PropTypes.bool,
-  handleLogout: PropTypes.func.isRequired,
+  // handleLogout: PropTypes.func.isRequired,
   loggedMessage: PropTypes.string,
 };
 

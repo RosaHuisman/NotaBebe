@@ -1,0 +1,20 @@
+@use 'src/styles/vars' as v;
+
+.day {
+  background-color: v.$bg-color;
+  margin: v.$gutter;
+  padding: v.$gutter;
+  font-size: 1.2em;
+  border-radius: 5px;
+
+  &__designation {
+    font-weight: bold;
+    padding-bottom: v.$gutter,2;
+  }
+
+  &__result {
+    padding-left: v.$gutter,2;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+  }
+}

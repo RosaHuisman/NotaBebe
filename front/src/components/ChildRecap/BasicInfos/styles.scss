@@ -1,0 +1,30 @@
+@use 'src/styles/vars' as v;
+
+.basicinfos {
+  &__infos {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0 v.$gutter v.$gutter;
+    //padding: v.$gutter,2 v.$gutter;
+    border-radius: 5px;
+    border: 1px solid #eee;
+    background-color: #fff;
+    box-shadow: 0 5px 9px rgba(0, 0, 0, 0.3); 
+      -webkit-box-shadow: 0 5px 9px rgba(0, 0, 0, 0.3); 
+      -moz-box-shadow: 0 5px 9px rgba(0, 0, 0, 0.3);
+    //text-overflow: ellipsis;
+    //word-wrap: break-word;
+      &__icon {
+        margin: v.$gutter;
+        padding: v.$gutter/2;
+        background-color: v.$bg-color;
+        border-radius: 100px;
+        width: 100px;
+    }
+      &__firstname {
+        font-size: 1.8em;
+      }
+  }
+  
+}

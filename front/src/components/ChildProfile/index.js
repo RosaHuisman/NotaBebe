@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 import ChildInfos from './ChildInfos';
 import ChangeChildInfosForm from './ChangeChildInfosForm';
 import Comment from './Comment';
+import ChildRecap from 'src/components/ChildRecap';
+
 
 import './styles.scss';
 
@@ -65,6 +67,7 @@ const ChildProfile = ({
           // {...child}
           // to={`/profile/parent/${user.id}/child/${child.id}/recap`}
           to="/profile/parent/1/child/1/recap"
+          //component={ChildRecap}
         >
           <button
             type="button"
