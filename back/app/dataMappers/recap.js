@@ -3,7 +3,7 @@ const client = require('../client');
 const recapDataMapper = {
 
     async findAll() {
-        const result = await client.query('SELECT * FROM "recap"');
+        const result = await client.query('SELECT * FROM "recap_with_nap_and_meal"');
         // on pourra order by desc
         return result.rows;
     },
@@ -14,7 +14,6 @@ const recapDataMapper = {
     },
 
     async add(data) {
-        //console.log('datamapper', data)
         const result = await client.query('INSERT INTO "recap" (date, extra_info, mood, child_id) VALUES ($1, $2, $3, $4) RETURNING *', [data.date, data.extra_info, data.mood, data.child_id]);
         return result.rows[0];
     },

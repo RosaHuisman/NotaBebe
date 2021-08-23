@@ -41,7 +41,6 @@ router.route('/profile/staff/comments')
 router.route('/profile/parent/:id')
     .get(userController.getParentById);
 
-// TODO get child by id -- faire la route paramétrée avec les deux paramètres
 router.route('/profile/parent/:id/child/:childId')
     .get(userController.getChildFromParent);
 

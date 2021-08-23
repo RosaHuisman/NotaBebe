@@ -41,8 +41,8 @@ INSERT INTO "meal" ("time", "comment", "recap_id") VALUES
 ('16:00:00', 'bébé mangé une compote et un pitch', 1),
 ('12:30:00', 'n''a pas voulu manger de laitage', 2),
 ('13:00:00', 'a goûté à tout', 3),
-('7:30:00', 'un bib de 150ml', 4),
-('9:30:00', 'un bib de 130ml', 4),
+('07:30:00', 'un bib de 150ml', 4),
+('09:30:00', 'un bib de 130ml', 4),
 ('11:30:00', 'un bib de 120ml', 4);
 
 
