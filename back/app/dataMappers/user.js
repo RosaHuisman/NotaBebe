@@ -33,8 +33,13 @@ const userDataMapper = {
     },
 
     async findChildrenByParent(parentId) {
-        const result = await client.query('SELECT * FROM "parent_with_child" WHERE user_id = $1 AND role_id = 1', [parentId]);
+        const result = await client.query('SELECT * FROM "parent_with_child" WHERE "user_id" = $1 AND "role_id" = 1', [parentId]);
         return result.rows;
+    },
+
+    async findChildFromParent(parentId, childId) {
+        const result = await client.query('SELECT * FROM "parent_with_child" WHERE "user_id" = $1 AND "child_id" = $2 AND "role_id" = 1', [parentId, childId]);
+        return result.rows[0];
     },
 
     async findOne(email) {

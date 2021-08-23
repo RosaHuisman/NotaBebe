@@ -35,14 +35,25 @@ const userController = {
             const data = await userDataMapper.findChildrenByParent(parentId);
             response.json(data);
 
-
         } catch (error) {
             console.log(error);
             response.json({ error: error.message });
         }
     },
 
-    // méthode pour la route pour l'affichage du profil enfant après le clic depuis le profil parent (donc en params : parentId et childId) ?
+    getChildFromParent: async (request, response) => {
+        try {
+            const parentId = Number(request.params.id);
+            const childId = Number(request.params.childId);
+
+            const data = await userDataMapper.findChildFromParent(parentId, childId);
+            response.json(data);
+
+        } catch (error) {
+            console.log(error);
+            response.json({ error: error.message });
+        }
+    },
 
     getAllStaff: async (_, response) => {
         try {

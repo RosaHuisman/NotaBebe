@@ -30,7 +30,7 @@ GET http://localhost:3000/profile/staff/comments
 GET http://localhost:3000/profile/parent/1
 
 ### DISPLAYING CHILD ACCORDING TO PARENT PROFILE
-
+GET http://localhost:3000/profile/parent/1/child/2
 
 ### DISPLAYING STAFF PROFILE - staff by id
 GET http://localhost:3000/profile/staff/5
