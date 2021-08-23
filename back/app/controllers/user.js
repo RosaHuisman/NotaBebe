@@ -31,14 +31,9 @@ const userController = {
     getParentById: async (request, response) => {
         try {
             const parentId = Number(request.params.id);
-            console.log(parentId);
-            const data = await userDataMapper.findParentById(parentId);
-            // console.log(data);
-            // response.json(data);
 
-
-            const datatest = await userDataMapper.findChildrenByParent(parentId);
-            response.json(datatest);
+            const data = await userDataMapper.findChildrenByParent(parentId);
+            response.json(data);
 
 
         } catch (error) {
@@ -83,16 +78,6 @@ const userController = {
             response.json({ error: error.message });
         }
     },
-
-    // getChildrenByParent: async (_, response) => {
-    //     try {
-    //         const data = await userDataMapper.findChildrenByParent(parentId);
-    //         response.json(data);
-    //     } catch (error) {
-    //         console.log(error);
-    //         response.json({ error: error.message });
-    //     }
-    // },
 
     /**
      * Check that the login information entered by the user is correct and validate login form

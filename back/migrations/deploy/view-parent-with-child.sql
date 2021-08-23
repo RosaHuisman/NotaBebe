@@ -21,7 +21,8 @@ CREATE VIEW "parent_with_child" AS
 	"user"."city",
 	"user"."email",
 	"user"."password", 
-	"user"."phone_number"
+	"user"."phone_number",
+	"user"."role_id"
 	FROM "user_has_child" 
 	JOIN "child" ON "user_has_child"."child_id" = "child"."id"
 	JOIN "user" ON "user_has_child"."user_id" = "user"."id";

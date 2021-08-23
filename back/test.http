@@ -29,6 +29,9 @@ GET http://localhost:3000/profile/staff/comments
 ### DISPLAYING PARENT PROFILE - parent by id
 GET http://localhost:3000/profile/parent/1
 
+### DISPLAYING CHILD ACCORDING TO PARENT PROFILE
+
+
 ### DISPLAYING STAFF PROFILE - staff by id
 GET http://localhost:3000/profile/staff/5
 
