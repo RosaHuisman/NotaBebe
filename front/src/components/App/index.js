@@ -17,6 +17,9 @@ import Error from 'src/components/Error';
 // import TEST from 'src/components/TEST';
 import Contact from 'src/components/Contact';
 import ContactDetails from 'src/components/ContactDetails';
+import ForgotPassword from 'src/components/ForgotPassword';
+import Confirm from 'src/components/Confirm';
+import AdminMobileHome from 'src/components/Admin';
 
 import Loading from './Loading';
 
@@ -54,6 +57,10 @@ const App = ({
     <>
       <Header />
       <Switch>
+        {isLogged && (
+          <Route exact path="/">
+            <Home />
+          </Route>
       {isLogged && (
           <>
             <Route exact path="/">
@@ -92,19 +99,18 @@ const App = ({
           <Login />
           <Contact />
         </Route>
+        <Route exact path="/forgot-password">
+          <ForgotPassword />
+        </Route>
+        <Route exact path="/confirm">
+          <Confirm />
+        </Route>
         <Route exact path="/contact">
           <ContactDetails />
         </Route>
-        {/* <Route path="/profile/parent" exact>
-          <ParentProfile />
-        </Route> */}
-        {/* <Route path="/profile/parent/:id">
-          <ParentProfile />
-        </Route> */}
-        
-        {/* <Route>
-          <Error />
-        </Route> */}
+        <Route exact path="/admin">
+          <AdminMobileHome />
+        </Route>
         <Route>
           <Error />
         </Route>
@@ -117,7 +123,6 @@ const App = ({
 App.propTypes = {
   isLogged: PropTypes.bool.isRequired,
 };
-
 
 // == Export
 export default App;

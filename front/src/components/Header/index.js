@@ -7,12 +7,12 @@ import { Link } from 'react-router-dom';
 import './styles.scss';
 import logo from 'src/images/NotaBebe_logo.png';
 
-const Header = ({ isLogged, handleLogout }) => (
+const Header = ({ isLogged, handleLogout, loggedMessage }) => (
   <>
     {!isLogged ? (
       <>
         <header className="header">
-          <h1 className="header-title">Lien parent-crèche</h1>
+          <h1 className="header-title">NotaBebe</h1>
           <Link to="/">
             <img src={logo} className="header-logo" alt="Logo NotaBebe" />
           </Link>
@@ -27,13 +27,13 @@ const Header = ({ isLogged, handleLogout }) => (
           className="icon iconBurger"
         >
           <Dropdown.Menu>
-            <Dropdown.Item>MENU1</Dropdown.Item>
+            <Dropdown.Item>{loggedMessage}</Dropdown.Item>
             <Dropdown.Item>MENU2</Dropdown.Item>
             <Dropdown.Item>MENU2</Dropdown.Item>
             <Dropdown.Item onClick={handleLogout}>Se déconnecter</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
-        <h1 className="header-title">Lien parent-crèche</h1>
+        <h1 className="header-title">NotaBebe</h1>
         <Link to="/">
           <img src={logo} className="header-logo" alt="Logo NotaBebe" />
         </Link>
@@ -43,8 +43,14 @@ const Header = ({ isLogged, handleLogout }) => (
 );
 
 Header.propTypes = {
-  //isLogged: PropTypes.bool.isRequired,
-  //handleLogout: PropTypes.func.isRequired,
+  isLogged: PropTypes.bool,
+  handleLogout: PropTypes.func.isRequired,
+  loggedMessage: PropTypes.string,
+};
+
+Header.defaultProps = {
+  isLogged: false,
+  loggedMessage: 'Connecté',
 };
 
 export default Header;
