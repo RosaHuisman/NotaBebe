@@ -50,9 +50,9 @@ UserInfos.propTypes = {
     last_name: PropTypes.string.isRequired,
     first_name: PropTypes.string.isRequired,
     address: PropTypes.string.isRequired,
-    postcode: PropTypes.number.isRequired,
+    postcode: PropTypes.string.isRequired,
     city: PropTypes.string.isRequired,
-    phone_number: PropTypes.number.isRequired,
+    phone_number: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
   }).isRequired,
 

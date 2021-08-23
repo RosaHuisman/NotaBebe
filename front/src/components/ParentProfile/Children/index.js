@@ -12,16 +12,16 @@ import './styles.scss';
 // == Composant
 const Children = ({
   children,
-  // user,
+  user,
   child,
 
-}) => (
+}) => {
+
+  //console.log('mon parent', user)
+
+  return (
   <div className="children">
-
-    {'mon enfant', child}
-
     <h3 className="children__title"> Mes enfants</h3>
-    <div className="text">Ici on affichera le ou les enfants du parent, pour l'instant cette information ne peut pas etre récupérée car les tables de jonction n'existent pas encore</div>
 
     {/* {children && (
       <div className="children__infos">
@@ -43,12 +43,12 @@ const Children = ({
 
             </div>
           </Link>
-        ))} */}
-    {/* </div>
+        ))} 
+      </div>
     )} */}
   </div>
 
-);
+  )};
 
 Children.propTypes = {
   // children: PropTypes.arrayOf(
