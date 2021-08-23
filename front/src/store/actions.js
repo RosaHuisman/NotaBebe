@@ -7,9 +7,15 @@ export const LOGIN_ERROR = 'LOGIN_ERROR';
 export const GET_RECAP = 'GET_RECAP';
 export const GET_RECAP_SUCCESS = 'GET_RECAP_SUCCESS';
 
+export const FETCH_RECAPS = 'FETCH_RECAPS';
+
 export const createLoginSuccessAction = (nickname) => ({ type: LOGIN_SUCCESS, nickname });
 export const createLoginErrorAction = () => ({ type: LOGIN_ERROR });
 
 export const createGetRecapAction = () => ({
   type: GET_RECAP,
+});
+
+export const fetchRecaps = () => ({
+  type: FETCH_RECAPS,
 });

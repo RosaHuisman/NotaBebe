@@ -1,4 +1,4 @@
-@use 'src/styles/vars';
+@use 'src/styles/vars' as v;
 
 .field {
   margin: .3em .3em .3em 0;
@@ -13,10 +13,10 @@
     height: 2.5em;
 
     &:focus {
-      border-color: vars.$color;
+      border-color: v.$bg-color;
 
       & + .field-label {
-        color: vars.$color;
+        color: v.$bg-color;
       }
     }
   }

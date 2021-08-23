@@ -4,7 +4,7 @@ export default [
     child: 'Timothey',
     date: '19/09/2020',
     mood: `humeur Evolutive`,
-    nap_time: '13h3O à 15h00',
+    nap_time: '13h30 à 15h00',
     nap_comments:  `long à s'endormir car il n'avait pas son doudou`,
     meal: `Moyen+, il n'a pas mangé les légumes, mais a bien mangé l'entrée, la viande et le laitage`,
     others_comments: `Arrivée matinale difficile, mais timothey s'est détendu au fur et à mesure, il a participé aux diverses activités de la journée, peinture, jeux exterieurs et bricolage`
