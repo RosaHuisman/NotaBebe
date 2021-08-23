@@ -2,7 +2,7 @@
 
 .changeuserinfosform {
      margin: 0 v.$gutter v.$gutter;
-     padding: v.$gutter /2 v.$gutter;
+     padding: v.$gutter,2 v.$gutter;
      border-radius: 10px;
      border: 1px solid #eee;
      background-color: #fff;
@@ -11,25 +11,25 @@
       -moz-box-shadow: 0 5px 9px rgba(0, 0, 0, 0.3);
         
   &__fullname {
-     font-size: 1.5rem;
+     font-size: 1rem;
      color: v.$red-color;
      margin-bottom: .5rem;
    }
   
   &__email {
-      font-size: 1.2rem;
+      font-size: .7rem;
       margin-bottom: 1rem;
   }
   
   &__buttons {
     display: flex;
     justify-content: flex-end;
-    padding: v.$gutter /4;
+    padding: v.$gutter,4;
     align-items: center;
 
     &__send {
       display: block;
-      padding: v.$gutter /3;
+      padding: v.$gutter,3;
       background-color: v.$primary-color;
       border: none;
       margin-left: 10px;
@@ -50,4 +50,3 @@
     }
   }
 }
-

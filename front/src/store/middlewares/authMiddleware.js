@@ -1,10 +1,9 @@
-import axios from 'axios';
 import {
   SUBMIT_LOGIN,
   createLoginSuccessAction,
   createLoginErrorAction,
+  CHECK_TOKEN,
 } from 'src/store/actions';
-import { LOGIN, saveUser, CHECK_TOKEN } from '../actions';
 import api from './utils/api';
 
 const authMiddleware = (store) => (next) => (action) => {
@@ -17,12 +16,10 @@ const authMiddleware = (store) => (next) => (action) => {
       api({
         method: 'POST',
         url: '/login',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        // url: '/profile/admin/allusers',
         data: {
-          email: state.userlogin.email,
-          password: state.userlogin.password,
+          email: state.email,
+          password: state.password,
         },
       })
         .then((response) => {
@@ -44,6 +41,7 @@ const authMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           store.dispatch(createLoginErrorAction());
+          // console.log('MON ERREUR', createLoginErrorAction);
         });
       break;
     }

@@ -11,19 +11,17 @@ import './styles.scss';
 const ChangeUserInfosForm = ({
   hasInfosError,
   closeForm,
-  lastname, 
-  firstname, 
-  address, 
-  postcode, 
-  city, 
-  email, 
-  phone_number,
-  handleChangeInfos
+  handleChangeInfos,
+  user,
+  
 
 
 }) => {
 
-  const handleOnClickCancelButton = () => {
+console.log(user)
+
+  const handleOnClickCancelButton = (e) => {
+    e.preventDefault();
     closeForm();
   }
 
@@ -38,35 +36,35 @@ const ChangeUserInfosForm = ({
     className="changeuserinfosform"
     onSubmit={handleSubmit}
   >
-    <p className="changeuserinfosform__fullname">{lastname} {firstname} </p>
-    <p className="changeuserinfosform__email">{email}</p>
+    <p className="changeuserinfosform__fullname">{user.last_name} {user.first_name} </p>
+    <p className="changeuserinfosform__email">{user.email}</p>
 
     <Field
       name="address"
       type="text"
       placeholder="Adresse"
-      value={address}
+      value={user.address}
     />
 
     <Field
       name="postcode"
       type="text"
       placeholder="Code postal"
-      value={postcode}
+      value={user.postcode}
     />
 
       <Field
       name="city"
       type="text"
       placeholder="Commune"
-      value={city}
+      value={user.city}
     />
    
     <Field
       name="phone_number"
       type="text"
       placeholder="Numéro de téléphone"
-      value={phone_number}
+      value={user.phone_number}
     />
   
 
@@ -100,13 +98,15 @@ const ChangeUserInfosForm = ({
 ChangeUserInfosForm.propTypes = {
   hasInfosError: PropTypes.bool,
   closeForm: PropTypes.func.isRequired,
-  lastname: PropTypes.string.isRequired, 
-  firstname: PropTypes.string.isRequired,
-  address: PropTypes.string.isRequired,
-  postcode: PropTypes.string.isRequired,
-  city: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired,
-  phone_number: PropTypes.string.isRequired,
+  user: PropTypes.shape({ 
+    last_name: PropTypes.string.isRequired, 
+    first_name: PropTypes.string.isRequired,
+    address: PropTypes.string.isRequired,
+    postcode: PropTypes.string.isRequired,
+    city: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    phone_number: PropTypes.string.isRequired,
+   }).isRequired,
   handleChangeInfos: PropTypes.func.isRequired,
   
 };
@@ -117,6 +117,3 @@ ChangeUserInfosForm.defaultProps = {
 
 // == Export
 export default ChangeUserInfosForm;
-
-
-

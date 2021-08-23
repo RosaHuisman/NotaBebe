@@ -9,12 +9,10 @@ import './styles.scss';
 
 // == Composant
 const ChangePasswordForm = ({
-  oldpassword,
-  newpassword,
-  confirmpassword,
   hasPasswordError,
   handleChangePassword,
   closeForm,
+  user,
 
 
 }) => {
@@ -40,21 +38,21 @@ const ChangePasswordForm = ({
           name="oldpassword"
           type="password"
           placeholder="Ancien mot de passe"
-          value={oldpassword}
+          //value={user.oldpassword}
         />
 
         <Field
           name="newpassword"
           type="password"
           placeholder="Nouveau mot de passe"
-          value={newpassword}
+          //value={user.newpassword}
         />
 
           <Field
           name="confirmpassword"
           type="password"
-          placeholder="Confirmez votre mot de passe"
-          value={confirmpassword}
+          placeholder="Confirmez le mot de passe"
+          //value={user.confirmpassword}
         />
     
         <div className="changepasswordform__buttons" >
@@ -84,9 +82,11 @@ const ChangePasswordForm = ({
 };
 
 ChangePasswordForm.propTypes = {
-  oldpassword: PropTypes.string.isRequired,
-  newpassword: PropTypes.string.isRequired,
-  confirmpassword: PropTypes.string.isRequired,
+  // user: PropTypes.shape({ 
+  //     oldpassword: PropTypes.string.isRequired,
+  //     newpassword: PropTypes.string.isRequired,
+  //     confirmpassword: PropTypes.string.isRequired,
+  // }).isRequired,
   hasPasswordError: PropTypes.bool,
   handleChangePassword: PropTypes.func.isRequired,
   closeForm: PropTypes.func.isRequired,
@@ -101,6 +101,3 @@ ChangePasswordForm.defaultProps = {
 
 // == Export
 export default ChangePasswordForm;
-
-
-

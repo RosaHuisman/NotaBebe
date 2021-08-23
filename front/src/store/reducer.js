@@ -1,4 +1,7 @@
 import {
+  CHANGE_VALUE,
+  CHANGE_VALUE_LOGIN,
+  CHANGE_FIELD_VALUE,
   SET_INPUT_VALUE,
   SET_SETTINGS_FIELD_VALUE,
   LOGIN_SUCCESS,
@@ -11,7 +14,7 @@ import {
 //   inputValue: '',
 //   token: null,
 //   logged: false,
-//   userlogin: {
+//   user: {
 //     email: 'admin@notabebe.io',
 //     password: 'admin',
 //     // email: '',
@@ -27,34 +30,50 @@ export const initialState = {
   logged: false,
   token: null,
   // isError: false,
-  userlogin: {
-    email: 'admin@notabebe.io',
-    password: 'admin',
-    isError: false,
-  },
+  // user: {
+  // //   // email: '',
+  // //   // password: '',
+  //   email: 'admin@notabebe.io' || 'nounou@notabebe.io' || 'parent@notabebe.io',
+  //   password: 'admin' || 'nounou' || 'parent',
+  //   isError: false,
+  // },
+  email: 'admin@notabebe.io',
+  password: 'admin',
+  isError: false,
 };
 
 const reducer = (oldState = initialState, action = {}) => {
   switch (action.type) {
-    // case SET_INPUT_VALUE: {
-    //   return {
-    //     ...oldState,
-    //     inputValue: action.value,
-    //   };
-    // }
+    case CHANGE_VALUE_LOGIN:
+      return {
+        ...oldState,
+        [action.key]: action.value,
+      };
     // case LOGIN_SUCCESS:
     //   return {
     //     ...oldState,
     //     nickname: action.data.pseudo,
     //     token: action.data.token,
     //     logged: action.data.logged,
-    //     userlogin: {
-    //       ...oldState.userlogin,
+    //     user: {
+    //       ...oldState.user,
     //       email: '',
     //       password: '',
     //       isError: false,
     //     },
     //   };
+    // case CHANGE_VALUE: {
+    //   return {
+    //     ...oldState,
+    //     [action.key]: action.value,
+    //   };
+    // }
+    // case CHANGE_FIELD_VALUE: {
+    //   return {
+    //     ...oldState,
+    //     [action.key]: action.value,
+    //   };
+    // }
     case LOGIN_SUCCESS: {
       const { pseudo, logged, token } = action.payload;
       return {
@@ -62,12 +81,12 @@ const reducer = (oldState = initialState, action = {}) => {
         pseudo,
         logged,
         token,
-        userlogin: {
-          ...oldState.userlogin,
-          email: '',
-          password: '',
-          isError: false,
-        },
+        // userlogin: {
+        // ...oldState.userlogin,
+        email: '',
+        password: '',
+        isError: false,
+        // },
       };
     }
     case LOGIN_ERROR: {
@@ -80,6 +99,7 @@ const reducer = (oldState = initialState, action = {}) => {
       return {
         ...oldState,
         [action.fieldKey]: action.newValue,
+        // [action.key]: action.value,
       };
     }
     case LOGOUT: {
@@ -88,11 +108,11 @@ const reducer = (oldState = initialState, action = {}) => {
         token: null,
         logged: false,
         pseudo: null,
-        userlogin: {
-          email: 'admin@notabebe.io',
-          password: 'admin',
-          isError: false,
-        },
+        // userlogin: {
+        email: '',
+        password: '',
+        isError: false,
+        // },
       };
     }
     default:

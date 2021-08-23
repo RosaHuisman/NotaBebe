@@ -1,60 +1,67 @@
 import {
-  SET_INPUT_VALUE,
+  CHANGE_VALUE_LOGIN,
   SET_SETTINGS_FIELD_VALUE,
   LOGIN_SUCCESS,
   LOGIN_ERROR,
+  LOGOUT,
+  SET_CURRENT_USER,
 } from '../actions';
 
-const initialState = {
-  nickname: null,
-  inputValue: '',
-  login: {
-    email: 'bouclierman@herocorp.io',
-    password: 'jennifer',
-    // email: '',
-    // password: '',
-    isError: false,
-  },
+export const initialState = {
+  loading: true,
+  pseudo: null,
+  logged: false,
+  token: null,
+  email: 'admin@notabebe.io',
+  password: 'admin',
+  isError: false,
 };
 
-const reducer = (oldState = initialState, action) => {
+const reducer = (oldState = initialState, action = {}) => {
   switch (action.type) {
-    case SET_INPUT_VALUE:
+    case CHANGE_VALUE_LOGIN:
       return {
         ...oldState,
-        inputValue: action.value,
+        [action.key]: action.value,
       };
-    case LOGIN_SUCCESS:
+    case LOGIN_SUCCESS: {
+      const { pseudo, logged, token } = action.payload;
       return {
         ...oldState,
-        nickname: action.nickname,
-        login: {
-          ...oldState.login,
-          email: '',
-          password: '',
-          isError: false,
-        },
+        pseudo,
+        logged,
+        token,
+        email: '',
+        password: '',
+        isError: false,
       };
-    case LOGIN_ERROR:
+    }
+    case LOGIN_ERROR: {
       return {
         ...oldState,
-        login: {
-          ...oldState.login,
-          isError: true,
-        },
+        isError: true,
       };
-    case SET_SETTINGS_FIELD_VALUE:
+    }
+    case SET_SETTINGS_FIELD_VALUE: {
       return {
         ...oldState,
-        login: {
-          ...oldState.login,
-          [action.fieldKey]: action.newValue,
-        },
+        [action.fieldKey]: action.newValue,
       };
+    }
+    case LOGOUT: {
+      return {
+        ...oldState,
+        token: null,
+        logged: false,
+        pseudo: null,
+        email: '',
+        password: '',
+        isError: false,
+      };
+    }
     default:
       return oldState;
   }
 };
 
 export default reducer;
-

@@ -6,39 +6,50 @@ export const SET_SETTINGS_FIELD_VALUE = 'SET_SETTINGS_FIELD_VALUE';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_ERROR = 'LOGIN_ERROR';
 export const CHECK_TOKEN = 'CHECK_TOKEN';
+export const CHANGE_VALUE_LOGIN = 'CHANGE_VALUE_LOGIN';
+export const SET_CURRENT_USER = 'SET_CURRENT_USER';
 
 // actions logout
 export const LOGOUT = 'LOGOUT';
 
 // actions user
 export const OPEN_CHANGE_INFOS = 'OPEN_CHANGE_INFOS';
-export const CHANGE_VALUE = 'CHANGE_VALUE';
 export const CHANGE_INFOS = 'CHANGE_INFOS';
 export const TOGGLE_CHANGE_PASSWORD = 'TOGGLE_CHANGE_PASSWORD';
 export const CLOSE_FORM = 'CLOSE_FORM';
 export const CHANGE_PASSWORD = 'CHANGE_PASSWORD';
-export const CHANGE_FIELD_VALUE = 'CHANGE_FIELD_VALUE';
 export const INFOS_ERROR = 'INFOS_ERROR';
 export const PASSWORD_ERROR = 'PASSWORD_ERROR';
 export const SAVE_INFOS_USER = 'SAVE_INFOS_USER';
 export const SAVE_PASSWORD_USER = 'SAVE_PASSWORD_USER';
+export const CHANGE_FIELD_VALUE = 'CHANGE_FIELD_VALUE';
+
+export const SAVE_USERS_PARENTS = 'SAVE_USERS_PARENTS';
+export const FETCH_USERS_PARENTS = 'FETCH_USERS_PARENTS';
 
 // actions login
-// export const createLoginSuccessAction = (nickname) => ({ type: LOGIN_SUCCESS, nickname });
 export const createLoginSuccessAction = (payload) => ({ type: LOGIN_SUCCESS, payload });
 export const createLoginErrorAction = () => ({ type: LOGIN_ERROR });
-// export const saveUser = (payload) => ({ type: SAVE_USER, payload });
-// export const checkToken = () => ({ type: CHECK_TOKEN });
+export const changeValueLogin = (value, key) => ({
+  type: CHANGE_VALUE_LOGIN,
+  key,
+  value,
+});
+
+// export const setCurrentUser = (user) => ({
+//   type: SET_CURRENT_USER,
+//   user,
+// });
 
 // actions user
 export const openChangeInfos = () => ({
   type: OPEN_CHANGE_INFOS,
 });
 
-export const changeValue = (value, key) => ({
-  type: CHANGE_VALUE,
-  key,
+export const changeFieldValue = (key, value) => ({
+  type: CHANGE_FIELD_VALUE,
   value,
+  key,
 });
 
 export const changeInfos = () => ({
@@ -72,3 +83,58 @@ export const saveInfosUser = () => ({
 export const savePasswordUser = () => ({
   type: SAVE_PASSWORD_USER,
 });
+
+export const fetchUsersParents = () => ({
+  type: FETCH_USERS_PARENTS,
+});
+
+export const saveUsersParents = (users_parents) => ({
+  type: SAVE_USERS_PARENTS,
+  payload: users_parents,
+});
+
+// export const logout = () => {
+//   localStorage.removeItem('token');
+//   return {
+//     type: LOGOUT,
+//   };
+// };
+
+// export const loginConfirmedAction = (data) => ({
+//   type: LOGIN_SUCCESS,
+//   payload: data,
+// });
+
+// export const runLogoutTimer = (dispatch, timer, history) => {
+//   setTimeout(() => {
+//     dispatch(logout(history));
+//   }, timer);
+// };
+
+// export const checkAutoLogin = (dispatch, history) => {
+//   const tokenDetailsString = localStorage.getItem('token');
+//   let myToken = '';
+//   if (!tokenDetailsString) {
+//     dispatch(logout(history));
+//     return;
+//   }
+
+//   myToken = JSON.toString(tokenDetailsString);
+//   const expireDate = new Date(myToken.expireDate);
+//   const todaysDate = new Date();
+
+//   if (todaysDate > expireDate) {
+//     dispatch(logout(history));
+//     return;
+//   }
+//   dispatch(loginConfirmedAction(myToken));
+
+//   const timer = expireDate.getTime() - todaysDate.getTime();
+//   runLogoutTimer(dispatch, timer, history);
+// };
+
+// export const saveTokenInLocalStorage = (myToken) => {
+//   myToken.expireDate = new Date(
+//     new Date().getTime() && myToken.expiresIn * 1000,
+//   );
+// };
