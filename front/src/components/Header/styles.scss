@@ -1,12 +1,7 @@
 @use 'src/styles/vars' as v;
 
 .header {
-<<<<<<< HEAD
-  //fix position on the top:
   position: fixed;
-=======
-  // fix position on the top:
->>>>>>> origin/features-componentAdminDesktop
   width: 100%;
   left: 0;
   top: 0;
@@ -14,8 +9,9 @@
   padding: v.$gutter, 2;
   display: flex;
   justify-content: space-between;
-  background: v.$primary-color;
+  background: linear-gradient(v.$primary-color, v.$secondary-color);
   align-items: center;
+
 
   &-title {
     display: flex;

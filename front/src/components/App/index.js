@@ -124,6 +124,5 @@ App.propTypes = {
   isLogged: PropTypes.bool.isRequired,
 };
 
-
 // == Export
 export default App;

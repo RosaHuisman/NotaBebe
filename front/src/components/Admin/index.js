@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import HeaderAdmin from './HeaderAdmin';
+import SearchBar from './SearchBar';
 
 import './styles.scss';
 import logoAdmin from '../../images/logo_admin.png';
@@ -26,6 +27,9 @@ const AdminHome = () => (
       </div>
       <div className="adminDesktopHome__adminTitle">
         Administration des accès
+      </div>
+      <div>
+        <SearchBar />
       </div>
     </div>
   </>

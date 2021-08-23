@@ -4,7 +4,7 @@ import './styles.scss';
 
 function Footer() {
   return (
-      <div className="footer"> 
+    <div className="footer">
       <a href="" className="mention__link">Mentions légales</a>
       <br />
       <span className="devteam">Développé par NotaBebe-Tardis</span>
