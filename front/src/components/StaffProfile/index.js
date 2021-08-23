@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 
 import { Link } from 'react-router-dom';
 import { Icon } from 'semantic-ui-react';
+import Field from 'src/components/Field';
 
 
 import './styles.scss';
@@ -16,25 +17,15 @@ console.log(data);
 
 
 
-function StaffProfile(props) {
+const StaffProfile = ({filterValue, onFilterChange, onFilterSubmit}) => {
 
-{/*  
-const [allData,setAllData] = useState([]);
-const [filteredData,setFilteredData] = useState(allData);
 
-  useEffect(() => {
-    (data)
-    .then(response => {
-    console.log(response.data)
-    setAllData(response.data);
-    setFilteredData(response.data);
-    })
-    .catch(error => {
-    console.log('Error getting fake data: ' + error);
-    })
-    }, []);
-  */}
-  
+
+// const onFilterSubmit = (e) => {
+//   e.preventDefault();
+//   onGetDataFilter();
+// }
+
   return (
     <div className="staff">
       <div className="staff__name">
@@ -57,7 +48,22 @@ const [filteredData,setFilteredData] = useState(allData);
        <p className="my__recap"><span><Icon name='file text' size='large'/></span>Mes Récaps</p>
       </div>
       <div className="recaps__filter">
-        <div className="ui input"><input type="text" placeholder="Filtrer"/></div>
+      <form className="filter_form" onSubmit={onFilterSubmit}>
+        <Field 
+        value={filterValue}
+        // onChange={onFilterChange}
+        onChange={(e) => onFilterChange(e.target.value)}
+        type="text"
+        placeholder="Filtrer"
+        />
+      </form>
+        {/* <input
+          className="filter__input"
+          value={filterValue}
+          onChange={onFilterChange}
+          type="text"
+          placeholder="Filtrer"
+        /> */}
       </div>
 
     <div className="staff__recap">
@@ -79,7 +85,9 @@ const [filteredData,setFilteredData] = useState(allData);
 }
 
 StaffProfile.propTypes = {
-
+  filterValue: PropTypes.string.isRequired,
+  onFilterChange: PropTypes.func.isRequired,
+  onFilterSubmit: PropTypes.func.isRequired
 }
 
 export default StaffProfile

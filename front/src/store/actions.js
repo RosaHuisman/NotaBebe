@@ -4,6 +4,12 @@ export const SUBMIT_LOGIN = 'SUBMIT_LOGIN';
 export const SET_SETTINGS_FIELD_VALUE = 'SET_SETTINGS_FIELD_VALUE';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_ERROR = 'LOGIN_ERROR';
+export const GET_RECAP = 'GET_RECAP';
+export const GET_RECAP_SUCCESS = 'GET_RECAP_SUCCESS';
 
 export const createLoginSuccessAction = (nickname) => ({ type: LOGIN_SUCCESS, nickname });
 export const createLoginErrorAction = () => ({ type: LOGIN_ERROR });
+
+export const createGetRecapAction = () => ({
+  type: GET_RECAP,
+});
