@@ -11,10 +11,10 @@ const authMiddleware = (store) => (next) => (action) => {
     const state = store.getState();
 
     const config = {
-      method: 'POST',
+      method: 'post',
       url: 'http://localhost:3001/login',
       headers: {
-        // 'Content-Type': 'application/json',
+        'Content-Type': 'application/json',
       },
       data: {
         // email: state.userlogin.email,
@@ -26,9 +26,8 @@ const authMiddleware = (store) => (next) => (action) => {
 
     axios(config)
       .then((response) => {
-        // store.dispatch(createLoginSuccessAction(data: response.data));
-        store.dispatch({ type: 'LOGIN_SUCCESS', data: response.data });
-        console.log('DATA JWT', response.data);
+        //console.log('coucou je suis la')
+        store.dispatch(createLoginSuccessAction(response.data.pseudo));
       })
       .catch((error) => {
         store.dispatch(createLoginErrorAction());

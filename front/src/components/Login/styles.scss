@@ -14,38 +14,16 @@
   &__title {
     display: flex;
     justify-content: center;
-    margin: 1rem 0;
-    margin-bottom: 0;
+    margin: 2rem 0;
     padding-top: 0.5rem;
     color: #06C4CA;
     font-size: 2rem;
     font-weight: bold;
   }
 
-  &__errorMsg {
-    display: flex;
-    flex-direction: column;
-    color: red;
-    display: flex;
-    text-align: center;
-    margin: 0 2rem;
-    margin-top: 1rem;
-    font-size: 0.9rem;
-    justify-content: center;
-
-    &__error {
-      font-weight: bold;
-      margin: 0;
-    }
-
-    &__errorBis {
-      margin-top: 0.5rem;
-    }
-  }
-
   &__content {
     display: flex;
-    margin: 1rem auto;
+    margin: 2rem auto;
     flex-direction: column;
   }
 }
@@ -77,12 +55,10 @@
   }
 
   &__forgot {
-    text-align: right;
-    font-size: 0.7rem;
-    color: #777;
-  }
-
-  &__forgot:hover {
-    color: #06C4CA;
+    padding: 0.2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: rgb(255, 65, 65);
+    font-size: 0.8rem;
   }
 }
