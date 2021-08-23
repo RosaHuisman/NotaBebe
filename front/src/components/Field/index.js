@@ -1,5 +1,5 @@
 // == Import : npm
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 // == Import : local
@@ -12,7 +12,14 @@ const Field = ({
   name,
   placeholder,
   onChangeInputValue,
+  //loadUsersParents,
 }) => {
+  
+  // useEffect(() => {
+  //   loadUsersParents();
+  
+  // }, []);
+  //console.log('value', value)
   
   const handleChange = (evt) => {
     onChangeInputValue(evt.target.value, name);

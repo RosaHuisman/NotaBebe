@@ -7,51 +7,47 @@ import {
   INFOS_ERROR,
   PASSWORD_ERROR,
   SAVE_INFOS_USER,
-  SAVE_PASSWORD_USER
+  SAVE_PASSWORD_USER,
+  SAVE_USERS_PARENTS,
+  SEND_COMMENT,
+  CHANGE_TEXT_VALUE,
 
 } from '../actions';
 
 const initialState = {
-    id: 1,
-    firstname: 'Tata',
-    lastname: 'Toto',
-    address: '36 rue de la paix',
-    postcode: '06360',
-    city: 'Tapol',
-    email: 'tata@toto.fr',
-    password: 'hello',
-    phone_number: '06.33.33.33.33',
+  list: [],
     isOpenInfos: false,
     isOpenPassword: false,
+    
     oldpassword: '',
     newpassword: '',
     confirmpassword: '',
+    
     changeInfosError: false,
     changePasswordError: false,
-    children: [
-      {
-      id: 1,
-      firstname: 'Georges',
-      lastname: 'Toupet',
-      birthdate: '14/06/2019',
-      birthplace: 'Tourcoing',
-      gender: 'Masculin',
-      allergy: ['poisson', 'viande', 'oeuf', 'lait'],
-        },
-        {
-      id: 2,
-      firstname: 'Georgette',
-      lastname: 'Toupet',
-      birthdate: '09/11/2021',
-      birthplace: 'Tourcoing',
-      gender: 'Féminin',
-      allergy: [],
-            }
-      ],
+    loading: true,
+    comment: '',
+    commentSend: false,
 };
 
 const reducer = (state = initialState, action) => {
+
   switch (action.type) {
+
+    case SAVE_USERS_PARENTS: {
+      //console.log('je suis dans le cas SAVE_USERS_PARENTS')
+
+      //console.log('dans le reducer', action.users_parents)
+      //const { list } = action.payload;
+      //console.log('action payload dans le reducer',action.payload)
+      return {
+        ...state,
+        list: action.payload,
+        //list: action.users_parents,
+        loading: false, 
+      };
+    }   
+
     case OPEN_CHANGE_INFOS:
       return {
         ...state,
@@ -69,7 +65,7 @@ const reducer = (state = initialState, action) => {
         isOpenPassword: !state.isOpenPassword,
       };
       case CLOSE_FORM:
-        console.log('je suis dans le cas CLOSE_CHANGE_INFOS')
+        //console.log('je suis dans le cas CLOSE_CHANGE_INFOS')
         return {
           ...state,
           isOpenInfos: false,
@@ -93,14 +89,27 @@ const reducer = (state = initialState, action) => {
             changeInfosError: false,
             isOpenInfos: false,
           }
-        }
+        };
         case SAVE_PASSWORD_USER: {
           return {
             ...state, 
             changePasswordError: false,
             isOpenPassword: false,
           }
+        };
+        case SEND_COMMENT: {
+          return  {
+            ...state,
+            commentSend: true,
+          }
+        };
+        case CHANGE_TEXT_VALUE: {
+          return {
+            ...state,
+            comment: action.value,
+          }
         }
+
     default:
       return state;
   }

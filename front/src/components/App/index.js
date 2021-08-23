@@ -5,6 +5,7 @@ import { Route, Switch, Redirect, useLocation } from 'react-router-dom';
 
 
 import ParentProfile from 'src/containers/ParentProfile'
+import ChildProfile from 'src/containers/ChildProfile'
 
 // == Import
 import './styles.scss';
@@ -20,17 +21,37 @@ import ForgotPassword from 'src/components/ForgotPassword';
 import Confirm from 'src/components/Confirm';
 import AdminMobileHome from 'src/components/Admin';
 
+import Loading from './Loading';
+
+
 // == Import composants /containers
 import Login from 'src/containers/Login';
 import Header from 'src/containers/Header';
 
 // == Composant
-const App = ({ isLogged }) => {
+const App = ({ 
+  loading,
+  isLogged,
+  user,
+  loadUsersParents,
+  
+
+ }) => {
   const location = useLocation();
 
+  //console.log('load users parents dans index app: ', loadUsersParents())
+
   useEffect(() => {
+    //console.log('load users parents dans useeffect: ', loadUsersParents())
+
+    loadUsersParents();
+    
     window.scroll(0, 0);
   }, [location]);
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <>
@@ -40,6 +61,39 @@ const App = ({ isLogged }) => {
           <Route exact path="/">
             <Home />
           </Route>
+      {isLogged && (
+          <>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            {/* <Route exact path="/home">
+              <TEST />
+            </Route> */}
+            {/* <Route>
+              <Error />
+            </Route> */}
+             <Route 
+              path="/profile/parent/:id" 
+              component={ParentProfile}
+              exact
+              />
+
+              <Route 
+              path="/profile/parent/:id/child/:id" 
+              component={ChildProfile}
+              exact
+              />
+              
+              
+              {/* <Route 
+                path="/profile/parent/:id/child/:id" 
+                component={ChildProfile}
+                exact
+                /> */}
+              
+       
+
+          </>
         )}
         <Route exact path="/">
           <Login />

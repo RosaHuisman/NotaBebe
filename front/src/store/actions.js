@@ -21,6 +21,16 @@ export const INFOS_ERROR = 'INFOS_ERROR';
 export const PASSWORD_ERROR = 'PASSWORD_ERROR';
 export const SAVE_INFOS_USER = 'SAVE_INFOS_USER';
 export const SAVE_PASSWORD_USER = 'SAVE_PASSWORD_USER';
+export const CHANGE_FIELD_VALUE = 'CHANGE_FIELD_VALUE';
+export const CHANGE_TEXT_VALUE = 'CHANGE_TEXT_VALUE';
+
+
+export const SAVE_USERS_PARENTS = 'SAVE_USERS_PARENTS';
+export const FETCH_USERS_PARENTS = 'FETCH_USERS_PARENTS';
+
+export const SEND_COMMENT = 'SEND_COMMENT'; 
+
+
 
 // actions login
 export const createLoginSuccessAction = (nickname) => ({ type: LOGIN_SUCCESS, nickname });
@@ -36,6 +46,11 @@ export const changeValue = (value, key) => ({
   key,
   value,
 });
+
+export const changeTextValue = (value) => ({
+  type: CHANGE_TEXT_VALUE,
+  value,
+})
 
 export const changeInfos = () => ({
   type: CHANGE_INFOS,
@@ -68,3 +83,19 @@ export const saveInfosUser = () => ({
 export const savePasswordUser = () => ({
   type: SAVE_PASSWORD_USER,
 });
+<<<<<<< HEAD
+=======
+
+export const fetchUsersParents = () => ({
+  type: FETCH_USERS_PARENTS,
+});
+
+export const saveUsersParents = (users_parents) => ({
+  type: SAVE_USERS_PARENTS,
+  payload: users_parents,
+});
+
+export const sendComment = () => ({
+  type: SEND_COMMENT,
+})
+>>>>>>> origin/features-childProfil

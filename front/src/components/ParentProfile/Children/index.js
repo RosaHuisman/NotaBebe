@@ -4,26 +4,38 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Icon } from 'semantic-ui-react'
 
+import ChildProfile from 'src/containers/ChildProfile'
+
 // == Import : local
 import './styles.scss';
 
 // == Composant
 const Children = ({
   children,
-  user
+  //user,
+  child
+
 }) => {
+
 
   return (
     <div className="children">
+
+      {'mon enfant', child}
         
     <h3 className="children__title"> Mes enfants</h3>
+    <div className="text">Ici on affichera le ou les enfants du parent, pour l'instant cette information ne peut pas etre récupérée car les tables de jonction n'existent pas encore</div>
 
-    {children && (
+    {/* {children && (
       <div className="children__infos">
         {children.map((child) => (
           <Link 
           key={child.id}
-          to={`/profile/parent/${user.id}/child/${child.id}`}>
+          {...child}
+          to={`/profile/parent/${user.id}/child/${child.id}`}
+          //to={`/profile/child/${child.id}`}
+          >
+            
           <div className="children__infos__child">
             <Icon
               name="user" 
@@ -34,9 +46,9 @@ const Children = ({
               
             </div>
           </Link> 
-        ))}
-        </div>
-    )}
+        ))} */}
+        {/* </div>
+    )} */}
     </div>
 
   );
@@ -49,9 +61,9 @@ Children.propTypes = {
       firstname: PropTypes.string.isRequired,
     }),
   ),
-  user: PropTypes.shape({ 
-    id: PropTypes.number.isRequired,
-  }).isRequired,
+  // user: PropTypes.shape({ 
+  //   id: PropTypes.number.isRequired,
+  // }).isRequired,
 };
 
 

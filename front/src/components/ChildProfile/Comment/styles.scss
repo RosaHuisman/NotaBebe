@@ -1,0 +1,48 @@
+@use 'src/styles/vars' as v;
+
+.comment {
+  margin-top: v.$gutter;
+  &__text {
+
+    &__label {
+      //position: absolute;
+      //top: .3rem;
+      //left: .7rem;
+      
+      color: v.$primary-color;
+      font-size: 1em;
+      text-transform: uppercase;
+      font-weight: bold;
+      margin-left: v.$gutter/2;
+    }
+    &__textarea {
+      display: block;
+      width: 80%;
+      margin: v.$gutter/2 auto;
+      padding: v.$gutter /2;
+      border-radius: 10px;
+      border: 1px solid #eee;
+      background-color: #fff;
+      box-shadow: 0 5px 9px rgba(0, 0, 0, 0.3); 
+      -webkit-box-shadow: 0 5px 9px rgba(0, 0, 0, 0.3); 
+      -moz-box-shadow: 0 5px 9px rgba(0, 0, 0, 0.3);
+     
+        }
+  }
+  &__submit {
+    margin: 0 auto;
+    display: block;
+    padding: v.$gutter /3;
+    background-color: v.$primary-color;
+    border: none;
+    border-radius: 5px;
+    color: white;
+  }
+  &__success {
+    text-align: center;
+    color: v.$violet-color;
+    font-size: 1em;
+    font-weight: bold;
+    margin-top: v.$gutter *3;
+  }
+}

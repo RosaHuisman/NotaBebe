@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useEffect }  from 'react';
 import PropTypes from 'prop-types';
 
-import Children from 'src/components/ParentProfile/Children';
-import ChangePasswordForm from 'src/components/ParentProfile/ChangePasswordForm';
-import ChangeUserInfosForm from 'src/components/ParentProfile/ChangeUserInfosForm';
-import UserInfos from 'src/components/ParentProfile/UserInfos';
+import Children from './Children';
+import ChangePasswordForm from './ChangePasswordForm';
+import ChangeUserInfosForm from './ChangeUserInfosForm';
+import UserInfos from './UserInfos';
 
 import Header from 'src/components/Header';
 
@@ -19,19 +19,26 @@ const ParentProfile = ({
   isOpenPassword,
   togglerChangePassword,
   handleChangePassword,
-  children,
-  user
-
+  user,
+  loadUsersParents,
   
+
 }) => {
 
-  console.log(user)
+  //console.log(user)
+
+  useEffect(() => {
+    loadUsersParents();
   
-  const handleOnClickChangePasswordButton = () => {
+  }, []);
+  
+  const handleOnClickChangePasswordButton = (e) => {
+    e.preventDefault();
     togglerChangePassword();
   }
 
-  const handleOnClickChangeInfosButton = () => {
+  const handleOnClickChangeInfosButton = (e) => {
+    e.preventDefault();
     openUserInfos();
   };
   
@@ -42,11 +49,11 @@ const ParentProfile = ({
     </header>
 
     <div className="parentprofile">
-    
+      
     {!isOpenInfos ? (
       <>
      <UserInfos 
-        {...user}
+        user={user}
         openUserInfos={openUserInfos}
         
      />
@@ -62,7 +69,7 @@ const ParentProfile = ({
       <ChangeUserInfosForm 
         closeForm={closeForm}
         handleChangeInfos={handleChangeInfos}
-        {...user}
+        user={user}
       />
     )}
 
@@ -79,13 +86,14 @@ const ParentProfile = ({
       <ChangePasswordForm 
         closeForm={closeForm}
         handleChangePassword={handleChangePassword}
-        {...user}
+        user={user}
       />
     )}  
 
       <Children 
-        children={children}
+        //children={myChildren}
         user={user}
+        //child={child}
       />
     </div>
 
@@ -101,16 +109,17 @@ ParentProfile.propTypes = {
   isOpenPassword: PropTypes.bool,
   togglerChangePassword: PropTypes.func.isRequired,
   handleChangePassword: PropTypes.func.isRequired,
-  children: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-    }),
-  ),
   
-  user: PropTypes.shape({ 
-    id: PropTypes.number.isRequired,
-  }).isRequired,
-};
+  // children: PropTypes.arrayOf(
+  //   PropTypes.shape({
+  //     id: PropTypes.number.isRequired,
+  //   }),
+  // ).isRequired,
+  
+//   user: PropTypes.shape({ 
+//     id: PropTypes.number.isRequired,
+//   }).isRequired,
+ };
 
 ParentProfile.defaultProps = {
   isOpenInfos: false,

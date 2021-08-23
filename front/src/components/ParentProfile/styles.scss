@@ -2,11 +2,12 @@
 
 .parentprofile {
   
-  width: 100vw;
+  width: 100%;
   display: flex;
   flex-direction: column;
 
    &__button {
+     font-size: .8em;
      display: block;
      margin: v.$gutter/4 auto;
      padding: v.$gutter /3;

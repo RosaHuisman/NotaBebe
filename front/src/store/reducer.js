@@ -91,7 +91,7 @@ const reducer = (oldState = initialState, action) => {
         },
       };
     case CHANGE_INFOS:
-      console.log('je suis dans le cas CHANGE_INFOS')
+      //console.log('je suis dans le cas CHANGE_INFOS')
       return {
         ...oldState,
         user: {
