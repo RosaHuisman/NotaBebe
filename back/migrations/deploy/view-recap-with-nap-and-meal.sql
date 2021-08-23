@@ -17,7 +17,7 @@ CREATE VIEW "recap_with_nap_and_meal" AS
 		"meal"."time",
 		"meal"."comment" AS "rwnam_meal_comment"
 	   FROM "recap"
-		 JOIN "nap" ON "recap"."id" = "nap"."recap_id"
-		 JOIN "meal" ON "recap"."id" = "meal"."recap_id";
+		 LEFT JOIN "nap" ON "recap"."id" = "nap"."recap_id"
+		 LEFT JOIN "meal" ON "recap"."id" = "meal"."recap_id";
 
 COMMIT;

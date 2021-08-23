@@ -33,8 +33,7 @@ INSERT INTO "nap" ("start_time", "end_time", "comment", "recap_id") VALUES
 ('10:00:00', '11:00:00', 'n''a pas voulu dormir', 1),
 ('09:00:00', '11:00:00', 'bien dodo', 2),
 ('14:00:00', '16:00:00', 'dodo ', 2),
-('11:00:00', '11:00:00', 'semble énervé, ne veut pas dormir', 3),
-('12:00:00', '12:30:00', 'très bien dormi', 4);
+('11:00:00', '11:00:00', 'semble énervé, ne veut pas dormir', 3);
 
 
 INSERT INTO "meal" ("time", "comment", "recap_id") VALUES
