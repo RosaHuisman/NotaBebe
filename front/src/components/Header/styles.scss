@@ -1,17 +1,17 @@
 @use 'src/styles/vars' as v;
 
 .header {
+  //fix position on the top:
   position: fixed;
   width: 100%;
   left: 0;
   top: 0;
-  position: fixed;
+
   padding: v.$gutter, 2;
   display: flex;
   justify-content: space-between;
-  background: linear-gradient(v.$primary-color, v.$secondary-color);
+  background: v.$primary-color;
   align-items: center;
-
 
   &-title {
     display: flex;
