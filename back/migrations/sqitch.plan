@@ -3,3 +3,4 @@
 
 initialisation 2021-08-16T19:04:34Z MorganeBENUREAU <morgane.benureau@gmail.com> # initialisation du projet
 adding-roles 2021-08-17T12:57:03Z Blandine Jarysta <blandine.jarysta@gmail.com> # adding our defined roles in the database
+view-parent-with-child 2021-08-23T09:40:16Z MorganeBENUREAU <morgane.benureau@gmail.com> # creating a view to get each parent's child/children
