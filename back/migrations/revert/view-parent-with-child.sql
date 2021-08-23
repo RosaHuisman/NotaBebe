@@ -2,6 +2,6 @@
 
 BEGIN;
 
-DROP VIEW parent_with_child;
+DROP VIEW "parent_with_child";
 
 COMMIT;

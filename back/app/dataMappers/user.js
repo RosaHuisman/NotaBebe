@@ -32,6 +32,11 @@ const userDataMapper = {
         return result.rows;
     },
 
+    async findChildrenByParent(parentId) {
+        const result = await client.query('SELECT * FROM "parent_with_child" WHERE user_id = $1', [parentId]);
+        return result.rows;
+    },
+
     async findOne(email) {
         const result = await client.query('SELECT * FROM "user" WHERE email = $1', [email]);
         return result.rows[0];

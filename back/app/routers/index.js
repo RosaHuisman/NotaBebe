@@ -40,6 +40,9 @@ router.route('/profile/staff/comments')
 // get parent by id
 router.route('/profile/parent/:id')
     .get(userController.getParentById);
+    //! sur cette route, on veut pouvoir afficher les infos de profil du parent AINSI QUE la liste de son/ses enfants
+
+//! on veut ensuite, au clic sur le profil enfant (dans les request params id) accéder au profil de l'enfan
 
 // get staff by id
 router.route('/profile/staff/:id')
@@ -52,6 +55,9 @@ router.route('/profile/staff/recap/:id')
 // get comment by id
 router.route('/profile/staff/comments/:id')
     .get(commentController.getCommentById);
+
+// get parent with children
+
 
 
 

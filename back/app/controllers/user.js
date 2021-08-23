@@ -31,16 +31,23 @@ const userController = {
     getParentById: async (request, response) => {
         try {
             const parentId = Number(request.params.id);
-            console.log(parentId)
+            console.log(parentId);
             const data = await userDataMapper.findParentById(parentId);
-            console.log(data)
-            response.json(data);
+            // console.log(data);
+            // response.json(data);
+
+
+            const datatest = await userDataMapper.findChildrenByParent(parentId);
+            response.json(datatest);
+
 
         } catch (error) {
             console.log(error);
             response.json({ error: error.message });
         }
     },
+
+    // méthode pour la route pour l'affichage du profil enfant après le clic depuis le profil parent (donc en params : parentId et childId) ?
 
     getAllStaff: async (_, response) => {
         try {
@@ -76,6 +83,16 @@ const userController = {
             response.json({ error: error.message });
         }
     },
+
+    // getChildrenByParent: async (_, response) => {
+    //     try {
+    //         const data = await userDataMapper.findChildrenByParent(parentId);
+    //         response.json(data);
+    //     } catch (error) {
+    //         console.log(error);
+    //         response.json({ error: error.message });
+    //     }
+    // },
 
     /**
      * Check that the login information entered by the user is correct and validate login form
