@@ -17,9 +17,7 @@ console.log(data);
 
 
 
-const StaffProfile = ({filterValue, onFilterChange, onFilterSubmit}) => {
-
-
+const StaffProfile = () => {
 
 // const onFilterSubmit = (e) => {
 //   e.preventDefault();
@@ -47,23 +45,15 @@ const StaffProfile = ({filterValue, onFilterChange, onFilterSubmit}) => {
       <div className="recaps">
        <p className="my__recap"><span><Icon name='file text' size='large'/></span>Mes Récaps</p>
       </div>
+      
       <div className="recaps__filter">
-      <form className="filter_form" onSubmit={onFilterSubmit}>
-        <Field 
-        value={filterValue}
-        // onChange={onFilterChange}
-        onChange={(e) => onFilterChange(e.target.value)}
-        type="text"
-        placeholder="Filtrer"
-        />
-      </form>
-        {/* <input
+     <input
           className="filter__input"
           value={filterValue}
           onChange={onFilterChange}
           type="text"
           placeholder="Filtrer"
-        /> */}
+        />
       </div>
 
     <div className="staff__recap">

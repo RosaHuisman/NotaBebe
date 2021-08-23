@@ -3,8 +3,6 @@ import {
   SET_SETTINGS_FIELD_VALUE,
   LOGIN_SUCCESS,
   LOGIN_ERROR,
-  GET_RECAP,
-  GET_RECAP_SUCCESS,
 } from './actions';
 
 const initialState = {
