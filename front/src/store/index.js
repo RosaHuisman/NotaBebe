@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-import reducer from './reducer';
+import reducer from './reducers';
 import logMiddleware from './middlewares/logMiddleware';
 import authMiddleware from './middlewares/authMiddleware';
 

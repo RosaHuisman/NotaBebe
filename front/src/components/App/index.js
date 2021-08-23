@@ -6,7 +6,7 @@ import Footer from 'src/components/Footer';
 import ContactDetails from 'src/components/ContactDetails';
 import Header from 'src/components/Header';
 import StaffProfile from 'src/components/StaffProfile';
-import CreateRecap from 'src/components/CreateRecap';
+import CreateRecap from 'src/containers/CreateRecap';
 
 import { Switch, Route } from 'react-router-dom';
 

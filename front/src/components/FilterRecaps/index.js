@@ -5,7 +5,7 @@ import recaps from 'src/store/middlewares/recaps';
 
 import './styles.scss';
 import data from 'src/data/recap';
-console.log(data);
+//console.log(data);
 
 // Dans mon composant FilterRecaps ci dessous, j'y ai mis:
 // Le titre "Mes Recaps" + Icon

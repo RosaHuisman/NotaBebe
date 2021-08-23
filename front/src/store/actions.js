@@ -6,6 +6,8 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_ERROR = 'LOGIN_ERROR';
 export const GET_RECAP = 'GET_RECAP';
 export const GET_RECAP_SUCCESS = 'GET_RECAP_SUCCESS';
+export const SHOW_FIELD_NAP = 'SHOW_FIELD_NAP';
+export const CHANGE_TEXT_VALUE = 'CHANGE_TEXT_VALUE';
 
 export const FETCH_RECAPS = 'FETCH_RECAPS';
 
@@ -18,4 +20,14 @@ export const createGetRecapAction = () => ({
 
 export const fetchRecaps = () => ({
   type: FETCH_RECAPS,
+});
+
+export const showFieldNap = () => ({
+  type: SHOW_FIELD_NAP,
+});
+
+export const changeTextValue = (key, value) => ({
+  type: CHANGE_TEXT_VALUE,
+  value,
+  key,
 });
