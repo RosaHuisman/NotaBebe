@@ -22,6 +22,8 @@ const reducer = (oldState = initialState, action = {}) => {
     case CHANGE_VALUE_LOGIN:
       return {
         ...oldState,
+        loading: false,
+
         [action.key]: action.value,
       };
     case LOGIN_SUCCESS: {

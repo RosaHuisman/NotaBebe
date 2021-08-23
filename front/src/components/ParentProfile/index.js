@@ -1,15 +1,13 @@
-import React, { useEffect }  from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
+import Header from 'src/components/Header';
 import Children from './Children';
 import ChangePasswordForm from './ChangePasswordForm';
 import ChangeUserInfosForm from './ChangeUserInfosForm';
 import UserInfos from './UserInfos';
 
-import Header from 'src/components/Header';
-
 import './styles.scss';
-
 
 const ParentProfile = ({
   openUserInfos,
@@ -21,84 +19,79 @@ const ParentProfile = ({
   handleChangePassword,
   user,
   loadUsersParents,
-  
 
 }) => {
-
-  //console.log(user)
+  // console.log(user)
 
   useEffect(() => {
     loadUsersParents();
-  
   }, []);
-  
+
   const handleOnClickChangePasswordButton = (e) => {
     e.preventDefault();
     togglerChangePassword();
-  }
+  };
 
   const handleOnClickChangeInfosButton = (e) => {
     e.preventDefault();
     openUserInfos();
   };
-  
+
   return (
-  <>
-    <header className="header">
-      <Header />
-    </header>
+    <>
+      <header className="header">
+        <Header />
+      </header>
 
-    <div className="parentprofile">
-      
-    {!isOpenInfos ? (
-      <>
-     <UserInfos 
-        user={user}
-        openUserInfos={openUserInfos}
-        
-     />
-      <button 
-        type="button" 
-        className="parentprofile__button"
-        onClick={handleOnClickChangeInfosButton}
-      >
-      Modifier mes informations
-      </button>
-      </>
-    ) : (
-      <ChangeUserInfosForm 
-        closeForm={closeForm}
-        handleChangeInfos={handleChangeInfos}
-        user={user}
-      />
-    )}
+      <div className="parentprofile">
 
-  {!isOpenPassword ? (
-      <button 
-          type="button" 
-          className="parentprofile__button"
-          onClick={handleOnClickChangePasswordButton}
-        >
-        Changer mon mot de passe
-        </button>
-    ): (
-    
-      <ChangePasswordForm 
-        closeForm={closeForm}
-        handleChangePassword={handleChangePassword}
-        user={user}
-      />
-    )}  
+        {!isOpenInfos ? (
+          <>
+            <UserInfos
+              user={user}
+              openUserInfos={openUserInfos}
+            />
+            <button
+              type="button"
+              className="parentprofile__button"
+              onClick={handleOnClickChangeInfosButton}
+            >
+              Modifier mes informations
+            </button>
+          </>
+        ) : (
+          <ChangeUserInfosForm
+            closeForm={closeForm}
+            handleChangeInfos={handleChangeInfos}
+            user={user}
+          />
+        )}
 
-      <Children 
-        //children={myChildren}
-        user={user}
-        //child={child}
-      />
-    </div>
+        {!isOpenPassword ? (
+          <button
+            type="button"
+            className="parentprofile__button"
+            onClick={handleOnClickChangePasswordButton}
+          >
+            Changer mon mot de passe
+          </button>
+        ) : (
 
-  </>
-    )
+          <ChangePasswordForm
+            closeForm={closeForm}
+            handleChangePassword={handleChangePassword}
+            user={user}
+          />
+        )}
+
+        <Children
+        // children={myChildren}
+          user={user}
+        />
+      </div>
+
+    </>
+  );
 };
 
 ParentProfile.propTypes = {
@@ -109,17 +102,17 @@ ParentProfile.propTypes = {
   isOpenPassword: PropTypes.bool,
   togglerChangePassword: PropTypes.func.isRequired,
   handleChangePassword: PropTypes.func.isRequired,
-  
+
   // children: PropTypes.arrayOf(
   //   PropTypes.shape({
   //     id: PropTypes.number.isRequired,
   //   }),
   // ).isRequired,
-  
-//   user: PropTypes.shape({ 
+
+//   user: PropTypes.shape({
 //     id: PropTypes.number.isRequired,
 //   }).isRequired,
- };
+};
 
 ParentProfile.defaultProps = {
   isOpenInfos: false,

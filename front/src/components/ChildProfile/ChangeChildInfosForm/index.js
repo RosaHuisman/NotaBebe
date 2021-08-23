@@ -3,7 +3,6 @@ import React, { Children } from 'react';
 import PropTypes from 'prop-types';
 import Field from 'src/containers/Field';
 
-
 // == Import : local
 import './styles.scss';
 
@@ -12,70 +11,61 @@ const ChangeChildInfosForm = ({
   hasInfosError,
   closeForm,
   handleChangeInfos,
-  child
-  
-
-
+  child,
 }) => {
-
-
   const handleOnClickCancelButton = (e) => {
     e.preventDefault();
     closeForm();
-  }
+  };
 
   const handleSubmit = (evt) => {
-    //console.log('je clique sur submit')
+    // console.log('je clique sur submit')
     evt.preventDefault();
     handleChangeInfos();
   };
 
   return (
     <form
-    autoComplete="off"
-    className="changechildinfosform"
-    onSubmit={handleSubmit}
-  >
-    {/* <p className="changeuserinfosform__fullname">{child.first_name} </p> */}
-    <p className="changechildinfosform__fullname">Prénom de l'enfant</p>
+      autoComplete="off"
+      className="changechildinfosform"
+      onSubmit={handleSubmit}
+    >
+      {/* <p className="changeuserinfosform__fullname">{child.first_name} </p> */}
+      <p className="changechildinfosform__fullname">Prénom de l'enfant</p>
 
-    <Field
-      name="allergy"
-      type="text"
-      placeholder="Allergies"
-      //value={child.allergy}
-    />
+      <Field
+        name="allergy"
+        type="text"
+        placeholder="Allergies"
+      />
 
-  
-
-    <div className="changechildinfosform__buttons" >
+      <div className="changechildinfosform__buttons">
         <button
-        className="changechildinfosform__buttons__cancel"
-        type="button"
-        onClick={handleOnClickCancelButton}
+          className="changechildinfosform__buttons__cancel"
+          type="button"
+          onClick={handleOnClickCancelButton}
         >
-        Annuler
+          Annuler
         </button>
 
         <button
           className="changechildinfosform__buttons__send"
           type="submit"
         >
-        Valider
+          Valider
         </button>
-       
-      </div>
-  </form>
 
-    
+      </div>
+    </form>
+
   );
 };
 
 ChangeChildInfosForm.propTypes = {
   hasInfosError: PropTypes.bool,
   closeForm: PropTypes.func.isRequired,
-  // user: PropTypes.shape({ 
-  //   last_name: PropTypes.string.isRequired, 
+  // user: PropTypes.shape({
+  //   last_name: PropTypes.string.isRequired,
   //   first_name: PropTypes.string.isRequired,
   //   address: PropTypes.string.isRequired,
   //   postcode: PropTypes.string.isRequired,
@@ -84,7 +74,7 @@ ChangeChildInfosForm.propTypes = {
   //   phone_number: PropTypes.string.isRequired,
   //  }).isRequired,
   handleChangeInfos: PropTypes.func.isRequired,
-  
+
 };
 
 ChangeChildInfosForm.defaultProps = {
@@ -93,6 +83,3 @@ ChangeChildInfosForm.defaultProps = {
 
 // == Export
 export default ChangeChildInfosForm;
-
-
-

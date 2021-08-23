@@ -9,8 +9,8 @@
    &__button {
      font-size: .8em;
      display: block;
-     margin: v.$gutter/4 auto;
-     padding: v.$gutter /3;
+     margin: v.$gutter,4 auto;
+     padding: v.$gutter,3;
      background-color: v.$violet-color;
      border: none;
      color: white;
@@ -20,7 +20,7 @@
       background-color: v.$bg-color;
       font-size: 1.2em;
       margin-top: 20px;
-      padding: v.$gutter/2;
+      padding: v.$gutter,2;
 
      }
      

@@ -11,7 +11,6 @@ const Login = ({
   changeFieldLogin,
   handleLogin,
   isError,
-  handleLogin,
 }) => {
   const history = useHistory();
 
@@ -78,7 +77,6 @@ Login.propTypes = {
   changeFieldLogin: PropTypes.func.isRequired,
   handleLogin: PropTypes.func.isRequired,
   isError: PropTypes.bool.isRequired,
-  handleLogin: PropTypes.func.isRequired,
 };
 
 export default Login;

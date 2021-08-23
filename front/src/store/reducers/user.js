@@ -1,6 +1,6 @@
 import {
   OPEN_CHANGE_INFOS,
-  //CHANGE_VALUE,
+  // CHANGE_VALUE,
   CHANGE_FIELD_VALUE,
   TOGGLE_CHANGE_PASSWORD,
   CLOSE_FORM,
@@ -16,99 +16,97 @@ import {
 
 const initialState = {
   list: [],
-    isOpenInfos: false,
-    isOpenPassword: false,
-    
-    oldpassword: '',
-    newpassword: '',
-    confirmpassword: '',
-    
-    changeInfosError: false,
-    changePasswordError: false,
-    loading: true,
-    comment: '',
-    commentSend: false,
+  isOpenInfos: false,
+  isOpenPassword: false,
+
+  oldpassword: '',
+  newpassword: '',
+  confirmpassword: '',
+
+  changeInfosError: false,
+  changePasswordError: false,
+  loading: true,
+  comment: '',
+  commentSend: false,
 };
 
 const reducer = (state = initialState, action) => {
-
   switch (action.type) {
-
     case SAVE_USERS_PARENTS: {
-      //console.log('je suis dans le cas SAVE_USERS_PARENTS')
+      // console.log('je suis dans le cas SAVE_USERS_PARENTS')
 
-      //console.log('dans le reducer', action.users_parents)
-      //const { list } = action.payload;
-      //console.log('action payload dans le reducer',action.payload)
+      // console.log('dans le reducer', action.users_parents)
+      // const { list } = action.payload;
+      // console.log('action payload dans le reducer',action.payload)
       return {
         ...state,
         list: action.payload,
-        //list: action.users_parents,
-        loading: false, 
+        // list: action.users_parents,
+        loading: false,
       };
-    }   
+    }
 
     case OPEN_CHANGE_INFOS:
       return {
         ...state,
         isOpenInfos: !state.isOpenInfos,
       };
-      case CHANGE_FIELD_VALUE: {
-        return {
-          ...state,
-          [action.key]: action.value,
-        };
-      }
-      case TOGGLE_CHANGE_PASSWORD: 
+    case CHANGE_FIELD_VALUE: {
+      return {
+        ...state,
+        [action.key]: action.value,
+      };
+    }
+    case TOGGLE_CHANGE_PASSWORD:
       return {
         ...state,
         isOpenPassword: !state.isOpenPassword,
       };
-      case CLOSE_FORM:
-        //console.log('je suis dans le cas CLOSE_CHANGE_INFOS')
-        return {
-          ...state,
-          isOpenInfos: false,
-          isOpenPassword: false,
-        };
-        case INFOS_ERROR: {
-          return {
-            ...state,
-            loginError: true,
-          };
-        };
-        case PASSWORD_ERROR: {
-          return {
-            ...state,
-            loginError: true,
-          };
-        }; 
-        case SAVE_INFOS_USER: {
-          return {
-            ...state, 
-            changeInfosError: false,
-            isOpenInfos: false,
-          }
-        };
-        case SAVE_PASSWORD_USER: {
-          return {
-            ...state, 
-            changePasswordError: false,
-            isOpenPassword: false,
-          }
-        };
-        case SEND_COMMENT: {
-          return  {
-            ...state,
-            commentSend: true,
-          }
-        };
-        case CHANGE_TEXT_VALUE: {
-          return {
-            ...state,
-            comment: action.value,
-          }
-        }
+    case CLOSE_FORM:
+      // console.log('je suis dans le cas CLOSE_CHANGE_INFOS')
+      return {
+        ...state,
+        isOpenInfos: false,
+        isOpenPassword: false,
+      };
+    case INFOS_ERROR: {
+      return {
+        ...state,
+        loginError: true,
+      };
+    }
+    case PASSWORD_ERROR: {
+      return {
+        ...state,
+        loginError: true,
+      };
+    }
+    case SAVE_INFOS_USER: {
+      return {
+        ...state,
+        changeInfosError: false,
+        isOpenInfos: false,
+      };
+    }
+    case SAVE_PASSWORD_USER: {
+      return {
+        ...state,
+        changePasswordError: false,
+        isOpenPassword: false,
+      };
+    }
+    case SEND_COMMENT: {
+      return {
+        ...state,
+        commentSend: true,
+      };
+    }
+    case CHANGE_TEXT_VALUE: {
+      return {
+        ...state,
+        comment: action.value,
+      };
+    }
 
     default:
       return state;
@@ -116,4 +114,3 @@ const reducer = (state = initialState, action) => {
 };
 
 export default reducer;
-

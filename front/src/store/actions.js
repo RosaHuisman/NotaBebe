@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 
-//actions login
+// actions login
 export const SET_INPUT_VALUE = 'SET_INPUT_VALUE';
 export const SUBMIT_LOGIN = 'SUBMIT_LOGIN';
 export const SET_SETTINGS_FIELD_VALUE = 'SET_SETTINGS_FIELD_VALUE';
@@ -9,8 +9,9 @@ export const LOGIN_ERROR = 'LOGIN_ERROR';
 export const CHECK_TOKEN = 'CHECK_TOKEN';
 export const CHANGE_VALUE_LOGIN = 'CHANGE_VALUE_LOGIN';
 export const SET_CURRENT_USER = 'SET_CURRENT_USER';
+export const LOGOUT = 'LOGOUT';
 
-//actions user
+// actions user
 export const OPEN_CHANGE_INFOS = 'OPEN_CHANGE_INFOS';
 export const CHANGE_INFOS = 'CHANGE_INFOS';
 export const TOGGLE_CHANGE_PASSWORD = 'TOGGLE_CHANGE_PASSWORD';
@@ -23,16 +24,12 @@ export const SAVE_PASSWORD_USER = 'SAVE_PASSWORD_USER';
 export const CHANGE_FIELD_VALUE = 'CHANGE_FIELD_VALUE';
 export const CHANGE_TEXT_VALUE = 'CHANGE_TEXT_VALUE';
 
-
 export const SAVE_USERS_PARENTS = 'SAVE_USERS_PARENTS';
 export const FETCH_USERS_PARENTS = 'FETCH_USERS_PARENTS';
 
-export const SEND_COMMENT = 'SEND_COMMENT'; 
+export const SEND_COMMENT = 'SEND_COMMENT';
 
-
-
-
-//actions login
+// actions login
 export const createLoginSuccessAction = (nickname) => ({ type: LOGIN_SUCCESS, nickname });
 export const createLoginErrorAction = () => ({ type: LOGIN_ERROR });
 export const changeValueLogin = (value, key) => ({
@@ -46,12 +43,10 @@ export const changeValueLogin = (value, key) => ({
 //   user,
 // });
 
-//actions user
-export const openChangeInfos = () => ({ 
-  type: OPEN_CHANGE_INFOS, 
+// actions user
+export const openChangeInfos = () => ({
+  type: OPEN_CHANGE_INFOS,
 });
-
-
 
 export const changeFieldValue = (key, value) => ({
   type: CHANGE_FIELD_VALUE,
@@ -62,10 +57,10 @@ export const changeFieldValue = (key, value) => ({
 export const changeTextValue = (value) => ({
   type: CHANGE_TEXT_VALUE,
   value,
-})
+});
 
 export const changeInfos = () => ({
-    type: CHANGE_INFOS,
+  type: CHANGE_INFOS,
 });
 
 export const toggleChangePassword = () => ({
@@ -107,4 +102,11 @@ export const saveUsersParents = (users_parents) => ({
 
 export const sendComment = () => ({
   type: SEND_COMMENT,
-})
+});
+
+export const logout = () => {
+  localStorage.removeItem('token');
+  return {
+    type: LOGOUT,
+  };
+};

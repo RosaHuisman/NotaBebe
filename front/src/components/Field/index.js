@@ -12,19 +12,18 @@ const Field = ({
   name,
   placeholder,
   onChangeInputValue,
-  //loadUsersParents,
+  // loadUsersParents,
+  // onChange,
 }) => {
-  
   // useEffect(() => {
   //   loadUsersParents();
-  
   // }, []);
-  //console.log('value', value)
-  
-  onChange,
-}) => {
+
+  // console.log('value', value);
+
   const handleChange = (evt) => {
-    onChange(evt.target.value, name);
+    // onChange(evt.target.value, name);
+    onChangeInputValue(evt.target.value, name);
   };
 
   const inputId = `field-${name}`;
@@ -58,7 +57,8 @@ Field.propTypes = {
   type: PropTypes.string,
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
+  // onChange: PropTypes.func.isRequired,
+  onChangeInputValue: PropTypes.func.isRequired,
 };
 
 // Valeurs par défaut pour les props

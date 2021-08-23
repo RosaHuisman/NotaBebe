@@ -1,0 +1,28 @@
+@use 'sass:color';
+@use 'src/styles/vars';
+
+.menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  justify-items: center;
+  padding: 0 3rem 1rem 3rem;
+  border-bottom: 1px solid #ddd;
+  width: 1000px;
+
+  &__link {
+    display: flex;
+    padding: 0 2rem;
+    margin: 0 1rem;
+    cursor: pointer;
+    color: #000;
+
+    &__selected {
+      text-decoration: underline;
+    }
+
+    &:hover {
+      color: #e52354;
+    }
+  }
+}
