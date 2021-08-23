@@ -19,6 +19,11 @@ GET http://localhost:3000/profile/admin/children
 ### DISPLAYING ALL RECAPS - for staff
 GET http://localhost:3000/profile/staff/allrecaps
 
+### DISPLAYING ALL COMMENTS - for staff
+GET http://localhost:3000/profile/staff/comments
+
+
+
 
 
 ### DISPLAYING PARENT PROFILE - parent by id
@@ -26,6 +31,12 @@ GET http://localhost:3000/profile/parent/1
 
 ### DISPLAYING STAFF PROFILE - staff by id
 GET http://localhost:3000/profile/staff/5
+
+### DISPLAYING RECAP - by id
+GET http://localhost:3000/profile/staff/recap/1
+
+### DISPLAYING COMMENT - by id
+GET http://localhost:3000/profile/staff/comments/3
 
 
 
@@ -149,3 +160,29 @@ Content-Type: application/json
 
 ### delete
 DELETE http://localhost:3000/profile/staff/recap/child/13
+
+
+
+
+# COMMENTS
+
+### add comment
+POST http://localhost:3000/profile/parent/comments/
+Content-Type: application/json
+
+{
+    "message": "mal dormi !!!",
+    "child_id": 2
+}
+
+### modify comment
+PATCH http://localhost:3000/profile/parent/comments/5
+Content-Type: application/json
+
+{
+    "message": "en fait ça va mieux maintenant",
+    "child_id": 2
+}
+
+### delete comment
+DELETE http://localhost:3000/profile/parent/comments/5

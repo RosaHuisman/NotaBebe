@@ -12,6 +12,17 @@ const recapController = {
         }
     },
 
+    getRecapById: async (request, response) => {
+        try {
+            const recapId = Number(request.params.id);
+            const data = await recapDataMapper.findById(recapId);
+            response.json(data);
+        } catch (error) {
+            console.log(error);
+            response.json({ error: error.message });
+        }
+    },
+
     addRecap: async (request, response, next) => {
         try {
             //console.log(request.body)

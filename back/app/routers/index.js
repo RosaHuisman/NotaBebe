@@ -30,9 +30,9 @@ router.route('/profile/admin/children')
 router.route('/profile/staff/allrecaps')
     .get(recapController.getAllRecaps);
 
-// TODO get all comments - for staff
-// router.route('/profile/staff/comments')
-//     .get(commentController.getAllComments);
+// get all comments - for staff
+router.route('/profile/staff/comments')
+    .get(commentController.getAllComments);
 
 
 // ROUTES TO DISPLAY SPECIFIC DATA
@@ -45,13 +45,20 @@ router.route('/profile/parent/:id')
 router.route('/profile/staff/:id')
     .get(userController.getStaffById);
 
+// get recap by id
+router.route('/profile/staff/recap/:id')
+    .get(recapController.getRecapById);
+
+// get comment by id
+router.route('/profile/staff/comments/:id')
+    .get(commentController.getCommentById);
+
 
 
 // TODO get child by id -- faire la route paramétrée avec les deux paramètres
 router.route('/profile/parent/:id/child/:childid')
 
 
-//TODO get recap by id
 //TODO get recap by child id
 
 
@@ -96,6 +103,16 @@ router.route('/profile/staff/recap/child/')
 router.route('/profile/staff/recap/child/:recapId')
     .patch(recapController.modifyRecap)
     .delete(recapController.deleteRecap)
+
+
+//TODO mieux paramétrer les deux routes suivantes -- cibler le parentId et le childId
+// adding a comment (for parents)
+router.route('/profile/parent/comments/')
+    .post(commentController.addComment)
+// modifying/deleting a comment (for parents)
+router.route('/profile/parent/comments/:id')
+    .patch(commentController.modifyComment)
+    .delete(commentController.deleteComment);
 
 
 // router.route('/profile/admin/parent/:id/managechildren/:childid')
