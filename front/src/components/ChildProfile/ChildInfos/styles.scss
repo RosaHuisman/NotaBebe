@@ -16,12 +16,8 @@
 
   &__infos {
     font-size: .9rem;
-    
-    // here I want to truncate the text, I haven't made it yet :
     overflow: hidden;
-    //white-space: nowrap;
     text-overflow: ellipsis;
-    
 
     &__designation {
         font-weight: bold;

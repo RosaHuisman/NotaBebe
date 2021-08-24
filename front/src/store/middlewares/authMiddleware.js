@@ -47,31 +47,31 @@ const authMiddleware = (store) => (next) => (action) => {
         });
       break;
     }
-    case CHECK_TOKEN: {
-      // on récupère le token stocké dans le localStorage
-      const token = localStorage.getItem('MyToken');
+    // case CHECK_TOKEN: {
+    //   // on récupère le token stocké dans le localStorage
+    //   const token = localStorage.getItem('MyToken');
 
-      // s'il existe on fait notre requête API pour vérifier sa validité
-      if (token) {
-        api.get('/checkToken', {
-          // on oublie pas d'embarquer le token avec la requête
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
-        })
-          .then((response) => {
-            // ici le token est bon, donc on peut le stocker dans l'insance
-            api.defaults.headers.common.authorization = `Bearer ${token}`;
+    //   // s'il existe on fait notre requête API pour vérifier sa validité
+    //   if (token) {
+    //     api.get('/checkToken', {
+    //       // on oublie pas d'embarquer le token avec la requête
+    //       headers: {
+    //         authorization: `Bearer ${token}`,
+    //       },
+    //     })
+    //       .then((response) => {
+    //         // ici le token est bon, donc on peut le stocker dans l'insance
+    //         api.defaults.headers.common.authorization = `Bearer ${token}`;
 
-            // en cas de réponse on sauvegarde le user dans le state
-            // avec la même action que pour le login
-            const payload = { ...response.data };
-            store.dispatch(saveUserLogin(payload));
-          })
-          .catch((error) => console.log(error));
-      }
-      break;
-    }
+    //         // en cas de réponse on sauvegarde le user dans le state
+    //         // avec la même action que pour le login
+    //         const payload = { ...response.data };
+    //         store.dispatch(saveUserLogin(payload));
+    //       })
+    //       .catch((error) => console.log(error));
+    //   }
+    //   break;
+    // }
     default:
       next(action);
   }

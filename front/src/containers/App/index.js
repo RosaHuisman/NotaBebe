@@ -7,6 +7,7 @@ import App from 'src/components/App';
 
 const mapStateToProps = (state) => ({
   // loading: state.userload.loading,
+  loading: state.userload,
   logged: state.user.logged,
 });
 

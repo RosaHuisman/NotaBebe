@@ -13,7 +13,6 @@ export const LOGIN_ERROR = 'LOGIN_ERROR';
 export const CHECK_TOKEN = 'CHECK_TOKEN';
 export const CHANGE_VALUE_LOGIN = 'CHANGE_VALUE_LOGIN';
 export const SET_CURRENT_USER = 'SET_CURRENT_USER';
-export const LOGOUT = 'LOGOUT';
 
 // actions user
 export const OPEN_CHANGE_INFOS = 'OPEN_CHANGE_INFOS';
@@ -106,15 +105,4 @@ export const saveUsersParents = (users_parents) => ({
 
 export const sendComment = () => ({
   type: SEND_COMMENT,
-});
-
-export const logout = () => {
-  localStorage.removeItem('token');
-  return {
-    type: LOGOUT,
-  };
-};
-
-export const Hello = () => ({
-  type: GET_WELCOME_PAGE,
 });

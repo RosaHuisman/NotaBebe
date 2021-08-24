@@ -10,9 +10,6 @@ const Login = ({
   password,
   changeField,
   handleLogin,
-  handleLogout,
-  logged,
-  loggedMessage,
   isError,
 }) => {
   const history = useHistory();
@@ -41,39 +38,6 @@ const Login = ({
             </p>
           </div>
           )}
-        {/* <form
-          className="loginForm__content"
-          onSubmit={handleSubmit}
-        >
-          <input
-            className="settings__input"
-            value={email}
-            onChange={onEmailChange}
-            placeholder="Votre email"
-            type="email"
-            required
-          />
-          <input
-            className="settings__input"
-            value={password}
-            onChange={onPasswordChange}
-            type="password"
-            placeholder="Votre mot de passe"
-            required
-          />
-          <button
-            className="settings__send"
-            type="submit"
-          >
-            Se connecter
-          </button>
-          <Link to="/forgot">
-            <p className="settings__forgottxt">
-              Mot de passe oublié
-            </p>
-          </Link>
-        </form> */}
-
         <form autoComplete="off" className="loginForm__content" onSubmit={handleSubmit}>
           <Field
             name="email"
@@ -114,19 +78,7 @@ Login.propTypes = {
   password: PropTypes.string.isRequired,
   changeField: PropTypes.func.isRequired,
   handleLogin: PropTypes.func.isRequired,
-  handleLogout: PropTypes.func.isRequired,
-  logged: PropTypes.bool,
-  loggedMessage: PropTypes.string,
   isError: PropTypes.bool.isRequired,
-
-  // onEmailChange: PropTypes.func.isRequired,
-  // onPasswordChange: PropTypes.func.isRequired,
-  // handleLogin: PropTypes.func.isRequired,
-};
-
-Login.defaultProps = {
-  logged: false,
-  loggedMessage: 'Connecté',
 };
 
 export default Login;

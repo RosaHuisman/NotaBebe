@@ -5,10 +5,6 @@
   &__text {
 
     &__label {
-      //position: absolute;
-      //top: .3rem;
-      //left: .7rem;
-      
       color: v.$primary-color;
       font-size: 1em;
       text-transform: uppercase;
@@ -26,8 +22,7 @@
       box-shadow: 0 5px 9px rgba(0, 0, 0, 0.3); 
       -webkit-box-shadow: 0 5px 9px rgba(0, 0, 0, 0.3); 
       -moz-box-shadow: 0 5px 9px rgba(0, 0, 0, 0.3);
-     
-        }
+    }
   }
   &__submit {
     margin: 0 auto;

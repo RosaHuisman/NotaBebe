@@ -10,6 +10,7 @@ const Header = ({ logged, handleLogout, loggedMessage }) => {
   const history = useHistory();
 
   const getToken = localStorage.getItem('MyToken');
+  console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa', getToken);
 
   const LOGOUT = (e) => {
     localStorage.removeItem('MyToken');
@@ -60,13 +61,13 @@ const Header = ({ logged, handleLogout, loggedMessage }) => {
             <Dropdown.Menu>
               <Dropdown.Item>{loggedMessage}</Dropdown.Item>
               <Dropdown.Item>
-                <Link onClick={handleMenu2}>MENU1</Link>
+                <Link to="" onClick={handleMenu2}>MENU1</Link>
               </Dropdown.Item>
               <Dropdown.Item>
-                <Link onClick={handleMenu3}>MENU2</Link>
+                <Link to="" onClick={handleMenu3}>MENU2</Link>
               </Dropdown.Item>
               <Dropdown.Item>
-                <Link onClick={handleMenu2}>MENU3</Link>
+                <Link to="" onClick={handleMenu2}>MENU3</Link>
               </Dropdown.Item>
               <Dropdown.Item onClick={LOGOUT}>Se déconnecter</Dropdown.Item>
             </Dropdown.Menu>

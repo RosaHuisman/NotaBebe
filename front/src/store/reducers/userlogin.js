@@ -33,6 +33,8 @@ const reducer = (oldState = initialState, action = {}) => {
         email: '',
         password: '',
         isError: false,
+        loading: false,
+
       };
     }
     case SAVE_USER_LOGIN: {
@@ -45,6 +47,7 @@ const reducer = (oldState = initialState, action = {}) => {
         email: '',
         password: '',
         isError: false,
+        loading: false,
       };
     }
     case LOGIN_ERROR: {
@@ -60,6 +63,7 @@ const reducer = (oldState = initialState, action = {}) => {
     //   };
     // }
     case LOGOUT: {
+      localStorage.removeItem('token');
       return {
         ...oldState,
       };
