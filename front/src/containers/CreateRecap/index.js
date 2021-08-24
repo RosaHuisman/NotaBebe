@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import CreateRecap from 'src/components/CreateRecap';
 import { showFieldNap, changeTextValue } from 'src/store/actions';
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = (state) => ({
   isOpen: state.recap.isOpen,
   // name: state.recap[ownProps.name],
 });

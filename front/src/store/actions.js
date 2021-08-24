@@ -24,10 +24,10 @@ export const fetchRecaps = () => ({
 
 export const showFieldNap = () => ({
   type: SHOW_FIELD_NAP,
-});
+})
 
 export const changeTextValue = (key, value) => ({
   type: CHANGE_TEXT_VALUE,
-  value,
+  value, 
   key,
-});
+})
