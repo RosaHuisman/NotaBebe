@@ -13,13 +13,13 @@
       font-size: 1em;
       text-transform: uppercase;
       font-weight: bold;
-      margin-left: v.$gutter,2;
+      margin-left: v.$gutter/2;
     }
     &__textarea {
       display: block;
       width: 80%;
-      margin: v.$gutter,2 auto;
-      padding: v.$gutter,2;
+      margin: v.$gutter/2 auto;
+      padding: v.$gutter/2;
       border-radius: 10px;
       border: 1px solid #eee;
       background-color: #fff;
@@ -32,7 +32,7 @@
   &__submit {
     margin: 0 auto;
     display: block;
-    padding: v.$gutter,3;
+    padding: v.$gutter/3;
     background-color: v.$primary-color;
     border: none;
     border-radius: 5px;
