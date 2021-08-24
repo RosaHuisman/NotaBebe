@@ -14,7 +14,7 @@ const router = express.Router();
 router.route('/profile/admin/allusers')
     .get(userController.getAllUsers);
 
-// get all parents - for admin
+// get all parents (with children) - for admin
 router.route('/profile/admin/parents')
     .get(userController.getAllParents);
 
@@ -39,14 +39,23 @@ router.route('/profile/staff/comments')
 
 // get parent by id
 router.route('/profile/parent/:id')
-    .get(userController.getParentById);
+    .get(userController.getParentById)
+    //.patch(userController.updateUser) -- patch à améliorer (cf Object.keys/Object.values)
+
+// modify password (with parent id)
+router.route('/profile/parent/:id/password')
+    .patch(userController.updatePassword);
+    //? voir pour refacto pour tous les users
+
 
 router.route('/profile/parent/:id/child/:childId')
     .get(userController.getChildFromParent);
+    //patch --> modifyChild
 
 // get staff by id
 router.route('/profile/staff/:id')
     .get(userController.getStaffById);
+    // patch -> modifyStaff
 
 // get recap by id
 router.route('/profile/staff/recap/:id')
@@ -56,10 +65,53 @@ router.route('/profile/staff/recap/:id')
 router.route('/profile/staff/comments/:id')
     .get(commentController.getCommentById);
 
-// get parent with children
+
+//TODO get comment by parentId
+ 
 
 
-//TODO get recap by child id
+// adding a user
+router.route('/profile/admin/manageprofile')
+    .post(adminController.addUser);
+
+// modifying or deleting a user
+router.route('/profile/admin/manageprofile/:id')
+    // .patch(adminController.modifyUser) - patch à améliorer (cf Object.keys/Object.values)
+    .delete(adminController.deleteUser);
+
+
+//TODO router.route('/profile/admin/parent/:id/managechildren')
+//TODO     .post(adminController.addChild);
+
+// router.route('/profile/admin/parent/:id/managechildren/:childid')
+//      .patch(userController.modifyChild)
+//     .delete(adminController.deleteChild);
+
+
+
+router.route('/profile/staff/child/recap')
+    .post(recapController.addRecap);
+
+router.route('/profile/staff/child/recap/:recapId/')
+    .patch(recapController.modifyRecap)
+    .delete(recapController.deleteRecap);
+
+
+// adding a comment (for parents)
+router.route('/profile/parent/:id/child/:childId/comments')
+    //! TODO get? + ajouter les request.params dans les méthodes
+    .post(commentController.addComment);
+    
+// modifying/deleting a comment (for parents)
+router.route('/profile/parent/:id/child/:childId/comments/:commentId')
+    //! ajouter les request.params dans les méthodes
+    //.patch(commentController.modifyComment) - améliorer le patch (cf au-dessus)
+    .delete(commentController.deleteComment);
+
+
+
+
+//? TODO get recap by child id ?
 
 
 router.route('/login')
@@ -68,54 +120,7 @@ router.route('/login')
 router.get('/logout', userController.logout);
 
 
-router.route('/profile/parent/:id')
-    .patch(userController.updateUser);
 
-router.route('/profile/parent/:id/password')
-    .patch(userController.updatePassword)
-
-// router.route('/profile/parent/:id/info')
-//     .patch(userController.updateUser);
-
-router.route('/profile/parent/:id')
-    .patch(userController.updatePassword)
-
-// adding a user
-router.route('/profile/admin/manageprofile')
-    .post(adminController.addUser);
-
-
-// modifying or deleting a user
-router.route('/profile/admin/manageprofile/:id')
-    // .patch(adminController.modifyUser)
-    .delete(adminController.deleteUser);
-
-
-// router.route('/profile/admin/parent/:id/managechildren')
-//     .post(adminController.addChild);
-
-
-router.route('/profile/staff/recap/child/')
-    .post(recapController.addRecap);
-
-router.route('/profile/staff/recap/:recapId/child/')
-    .patch(recapController.modifyRecap)
-    .delete(recapController.deleteRecap);
-
-
-//TODO mieux paramétrer les deux routes suivantes -- cibler le parentId et le childId
-// adding a comment (for parents)
-router.route('/profile/parent/comments/')
-    .post(commentController.addComment);
-// modifying/deleting a comment (for parents)
-router.route('/profile/parent/comments/:id')
-    .patch(commentController.modifyComment)
-    .delete(commentController.deleteComment);
-
-
-// router.route('/profile/admin/parent/:id/managechildren/:childid')
-//     //.patch(userController.modifyChild)
-//     .delete(adminController.deleteChild);
 
 router.use(errorController.notFoundResource);
 

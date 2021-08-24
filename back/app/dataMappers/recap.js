@@ -30,7 +30,7 @@ const recapDataMapper = {
             await client.query(`UPDATE "recap" SET ${keys[i]} = $1, updated_at = now() WHERE id = $2 `, [values[i] , id ]);
         };
         
-        return "la modification a bien été éffectuée";
+        return "la modification a bien été effectuée";
     },
 
     async delete(id) {

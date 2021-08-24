@@ -139,7 +139,7 @@ Content-Type: application/json
 # RECAP
 
 ### add recap
-POST http://localhost:3000/profile/staff/recap/child/
+POST http://localhost:3000/profile/staff/child/recap/
 Content-Type: application/json
 
 {
@@ -150,7 +150,7 @@ Content-Type: application/json
 }
 
 ### modify
-PATCH http://localhost:3000/profile/staff/recap/5/child/
+PATCH http://localhost:3000/profile/staff/child/recap/5/
 Content-Type: application/json
 
 {
@@ -159,7 +159,7 @@ Content-Type: application/json
 }
 
 ### delete
-DELETE http://localhost:3000/profile/staff/recap/child/13
+DELETE http://localhost:3000/profile/staff/child/recap/13
 
 
 
