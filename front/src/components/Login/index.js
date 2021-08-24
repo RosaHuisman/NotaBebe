@@ -20,7 +20,8 @@ const Login = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     handleLogin();
-    history.push('/homepage2');
+    // history.push('/homepage2');
+    return history.push('/admin');
   };
 
   return (

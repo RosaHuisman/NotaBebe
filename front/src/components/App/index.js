@@ -88,7 +88,7 @@ const App = ({
         {/* <Route path="*" component={Error} /> */}
 
         <PrivateRoute exact path="/admin" component={AdminMobileHome} />
-        {/* <PrivateRoute exact path="/profile/parent/:id" component={ParentProfile} /> */}
+        <PrivateRoute exact path="/profile/parent/:id" component={ParentProfile} />
         <PrivateRoute exact path="/homepage2" component={HomePage2} />
         <PrivateRoute exact path="/homepage2" component={HomePage2} />
         <PrivateRoute exact path="/homepage3" component={HomePage3} />

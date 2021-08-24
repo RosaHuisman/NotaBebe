@@ -4,7 +4,10 @@
 //   createLoginErrorAction,
 //   CHECK_TOKEN,
 // } from 'src/store/actions';
-import { LOGIN, saveUserLogin, CHECK_TOKEN, createLoginErrorAction } from 'src/store/actions/userlogin';
+
+import {
+  LOGIN, saveUserLogin, CHECK_TOKEN, createLoginErrorAction,
+} from 'src/store/actions/userlogin';
 import api from './utils/api';
 
 const authMiddleware = (store) => (next) => (action) => {
