@@ -11,25 +11,20 @@ import './styles.scss';
 
 // == Composant
 const Children = ({
-  children,
-  // user,
-  child,
+  //children,
+  user,
+  //child,
 
 }) => (
   <div className="children">
 
-    {'mon enfant', child}
-
-    <h3 className="children__title"> Mes enfants</h3>
-    <div className="text">Ici on affichera le ou les enfants du parent, pour l'instant cette information ne peut pas etre récupérée car les tables de jonction n'existent pas encore</div>
-
-    {/* {children && (
+    <h3 className="children__title"> Mon enfant</h3>
+    
       <div className="children__infos">
-        {children.map((child) => (
+        
           <Link
-          key={child.id}
-          {...child}
-          to={`/profile/parent/${user.id}/child/${child.id}`}
+          key={user[0].pwc_child_id}
+          to={`/profile/parent/${user.id}/child/${user[0].pwc_child_id}`}
           //to={`/profile/child/${child.id}`}
           >
 
@@ -39,14 +34,37 @@ const Children = ({
               size="huge"
               className="children__infos__child__icon"
               />
-              <div className="children__infos__child__name">{child.firstname}</div>
+              <div className="children__infos__child__name">{user[0].pwc_child_first_name}</div>
 
             </div>
           </Link>
-        ))} */}
-    {/* </div>
-    )} */}
-  </div>
+
+          {user[1] ? (
+              <Link
+              key={user[1].pwc_child_id}
+              to={`/profile/parent/${user.id}/child/${user[1].pwc_child_id}`}
+              //to={`/profile/child/${child.id}`}
+              >
+
+              <div className="children__infos__child">
+                <Icon
+                  name="user"
+                  size="huge"
+                  className="children__infos__child__icon"
+                  />
+                  <div className="children__infos__child__name">{user[1].pwc_child_first_name}</div>
+
+                </div>
+              </Link>
+
+          ) : ( 
+            <div className="vide"></div>
+          )}
+
+         
+         
+        </div>
+      </div>
 
 );
 

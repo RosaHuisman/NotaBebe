@@ -48,7 +48,7 @@ const ParentProfile = ({
         {!isOpenInfos ? (
           <>
             <UserInfos
-              user={user}
+              user={user[0]}
               openUserInfos={openUserInfos}
             />
             <button
@@ -63,7 +63,7 @@ const ParentProfile = ({
           <ChangeUserInfosForm
             closeForm={closeForm}
             handleChangeInfos={handleChangeInfos}
-            user={user}
+            user={user[0]}
           />
         )}
 
@@ -80,7 +80,7 @@ const ParentProfile = ({
           <ChangePasswordForm
             closeForm={closeForm}
             handleChangePassword={handleChangePassword}
-            user={user}
+            user={user[0]}
           />
         )}
 

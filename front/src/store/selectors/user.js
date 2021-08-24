@@ -9,7 +9,7 @@
 export function findUser(users, searchedId) {
   // console.log('mes users sont: ', users)
   // console.log('id de user recherché', searchedId)
-  const user = users.find((testedUser) => {
+  const user = users.filter((testedUser) => {
     // console.log('id de user qu on teste', testedUser.id)
     return testedUser.id === Number(searchedId);
   });

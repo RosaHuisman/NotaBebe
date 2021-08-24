@@ -6,14 +6,8 @@ import PropTypes from 'prop-types';
 import './styles.scss';
 
 // == Composant
-const UserInfos = ({
-  firstname,
-  phone_number,
-  birthdate,
-  allergy,
-  children,
-  user,
-  child,
+const ChildInfos = ({
+  
 }) => (
   <div className="childinfos">
     <div className="childinfos__infos">
@@ -42,7 +36,7 @@ const UserInfos = ({
 
 );
 
-UserInfos.propTypes = {
+ChildInfos.propTypes = {
   // lastname: PropTypes.string.isRequired,
   // firstname: PropTypes.string.isRequired,
   // address: PropTypes.string.isRequired,
@@ -54,4 +48,4 @@ UserInfos.propTypes = {
 };
 
 // == Export
-export default UserInfos;
+export default ChildInfos;
