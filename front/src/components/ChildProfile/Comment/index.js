@@ -11,6 +11,7 @@ const Comment = ({
   submitComment,
   commentSend,
   onChangeTextValue,
+  name,
 }) => {
   const handleSubmit = (evt) => {
     // console.log('je clique sur submit')

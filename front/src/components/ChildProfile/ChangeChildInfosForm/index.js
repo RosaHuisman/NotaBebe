@@ -12,6 +12,7 @@ const ChangeChildInfosForm = ({
   closeForm,
   handleChangeInfos,
   child,
+  user
 }) => {
   const handleOnClickCancelButton = (e) => {
     e.preventDefault();
@@ -31,7 +32,7 @@ const ChangeChildInfosForm = ({
       onSubmit={handleSubmit}
     >
       {/* <p className="changeuserinfosform__fullname">{child.first_name} </p> */}
-      <p className="changechildinfosform__fullname">Prénom de l'enfant</p>
+      <p className="changechildinfosform__fullname">{child.pwc_child_first_name}</p>
 
       <Field
         name="allergy"

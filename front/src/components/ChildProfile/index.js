@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { useLocation } from "react-router-dom";
+
+
 import Header from 'src/components/Header';
 import { Link } from 'react-router-dom';
 import ChildInfos from './ChildInfos';
@@ -24,70 +27,143 @@ const ChildProfile = ({
   onChangeTextValue,
 
 }) => {
+  const data = useLocation();
+  
+  //const child = data.state.child;
+  //console.log('mon enfant', data.state.child);
+
+  // const child = () => {
+  //   return data.state.child
+  // }
+
+  // console.log(child)
+
   const handleOnClickChangeInfosButton = (e) => {
     e.preventDefault();
     openUserInfos();
   };
 
   return (
-    <>
+     
+        <>
       <header className="header">
-        <Header />
-      </header>
-      <div className="childprofile">
-        {/* Ici on affichera les infos de l'enfant
-        lorsqu'on pourra récupérer les infos de la BDD */}
+          <Header />
+        </header>
+        <div className="childprofile">
+  
+          {!isOpenInfos ? (
+            <>
+              <ChildInfos
+                openUserInfos={openUserInfos}
+                child={data.state.child}
+              />
+  
+              <button
+                type="button"
+                className="childprofile__button"
+                onClick={handleOnClickChangeInfosButton}
+              >
+                Modifier les informations
+              </button>
+            </>
+          ) : (
+            <>
+              <ChangeChildInfosForm
+                closeForm={closeForm}
+                handleChangeInfos={handleChangeInfos}
+                user={user}
+                child={data.state.child}
 
-        {!isOpenInfos ? (
-          <>
-            <ChildInfos
-              openUserInfos={openUserInfos}
-            />
-
+              />
+            </>
+          )}
+  
+          <Link
+            to="/profile/parent/1/child/1/recap"
+          >
             <button
               type="button"
-              className="childprofile__button"
-              onClick={handleOnClickChangeInfosButton}
+              className="childprofile__button childprofile__button__recap"
             >
-              Modifier les informations
+              Récap du jour
             </button>
+          </Link>
+  
+          <Comment
+            submitComment={submitComment}
+            commentSend={commentSend}
+            onChangeTextValue={onChangeTextValue}
+          />
+
+          </div>
           </>
-        ) : (
-          <>
-            <div className="hello">Hello</div>
-            <ChangeChildInfosForm
-              closeForm={closeForm}
-              handleChangeInfos={handleChangeInfos}
-            />
-          </>
-        )}
+      )
+        
+    }
 
-        <Link
-          // key={child.id}
-          // {...child}
-          // to={`/profile/parent/${user.id}/child/${child.id}/recap`}
-          to="/profile/parent/1/child/1/recap"
-          //component={ChildRecap}
-        >
-          <button
-            type="button"
-            className="childprofile__button childprofile__button__recap"
-          >
-            Récap du jour
-          </button>
-        </Link>
+// if (user.length === 1) {
+//   return (
+//     <>
+    
+//       <header className="header">
+//         <Header />
+//       </header>
+//       <div className="childprofile">
 
-        <Comment
-          submitComment={submitComment}
-          commentSend={commentSend}
-          onChangeTextValue={onChangeTextValue}
-        />
+//         {!isOpenInfos ? (
+//           <>
+//             <ChildInfos
+//               openUserInfos={openUserInfos}
+//               user={user}
+//             />
 
-      </div>
+//             <button
+//               type="button"
+//               className="childprofile__button"
+//               onClick={handleOnClickChangeInfosButton}
+//             >
+//               Modifier les informations
+//             </button>
+//           </>
+//         ) : (
+//           <>
+//             <ChangeChildInfosForm
+//               closeForm={closeForm}
+//               handleChangeInfos={handleChangeInfos}
+//               user={user}
+//             />
+//           </>
+//         )}
 
-    </>
-  );
-};
+//         <Link
+//           to="/profile/parent/1/child/1/recap"
+//         >
+//           <button
+//             type="button"
+//             className="childprofile__button childprofile__button__recap"
+//           >
+//             Récap du jour
+//           </button>
+//         </Link>
+
+//         <Comment
+//           submitComment={submitComment}
+//           commentSend={commentSend}
+//           onChangeTextValue={onChangeTextValue}
+//         />
+
+//       </div>
+
+//     </>
+//   );
+// } 
+// else if (user.length === 2) {
+  
+
+
+//} 
+  
+//};
 
 ChildProfile.propTypes = {
 

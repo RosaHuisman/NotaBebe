@@ -109,8 +109,8 @@ const App = ({
        
         <Route exact path="/profile/parent/:id" component={ParentProfile} />
         {/* // à test ChildProfile */}
-        <Route exact path="/profile/parent/:id/child/:id" component={ChildProfile} />
-        <Route exact path="/profile/parent/1/child/1/recap" component={ChildRecap} />
+        <Route exact path="/profile/parent/:id/child/:child_id" component={ChildProfile} />
+        <Route exact path="/profile/parent/1/child/:id/recap" component={ChildRecap} />
 
         
       </Switch>

@@ -37,6 +37,8 @@ const ParentProfile = ({
     openUserInfos();
   };
 
+  //console.log('user dans parentprofile', user)
+
   return (
     <>
       <header className="header">

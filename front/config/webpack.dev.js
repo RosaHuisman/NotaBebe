@@ -53,5 +53,6 @@ module.exports = merge(common, {
       ignored: /node_modules/,
     },
     port,
+  
   },
 });

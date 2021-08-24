@@ -11,46 +11,28 @@
 	-moz-box-shadow: 0 5px 9px rgba(0, 0, 0, 0.3);
   text-overflow: ellipsis;
   word-wrap: break-word;   
+  font-size: .9em;
 
-
-
-  &__infos {
-    font-size: .9rem;
-    
-    // here I want to truncate the text, I haven't made it yet :
-    overflow: hidden;
-    //white-space: nowrap;
-    text-overflow: ellipsis;
-    
+  &__firstname {
+    font-size: 1.5em;
+    color: v.$red-color;
+    margin-bottom: v.$gutter;
+    text-align: center;
+  }
 
     &__designation {
         font-weight: bold;
-        padding-bottom: v.$gutter/2;
-        &__address {
-          font-weight: bold;
-        }
-        &__tel {
-          font-weight: bold;
-          padding: v.$gutter/2 0;
-
-        }
+      
       }
     &__result {
         padding-left: v.$gutter/2;
         text-overflow: ellipsis;
-        word-wrap: break-word; 
+        word-wrap: break-word;
+        font-size: 1.1em;
         
-       
-
       }
     }
-    &__button {
-      display: block;
-      margin: v.$gutter/4 auto;
-      padding: v.$gutter/3;
-      background-color: v.$secondary-color;
-      border: none; 
-    }
-  }
+  
+  
  
 

@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Icon } from 'semantic-ui-react';
 
-import ChildProfile from 'src/containers/ChildProfile';
 
 // == Import : local
 import './styles.scss';
@@ -15,35 +14,50 @@ const Children = ({
   user,
   //child,
 
-}) => (
-  <div className="children">
+}) => {
+//console.log(user)
+  return (
+    <div className="children">
 
     <h3 className="children__title"> Mon enfant</h3>
     
       <div className="children__infos">
-        
-          <Link
-          key={user[0].pwc_child_id}
-          to={`/profile/parent/${user.id}/child/${user[0].pwc_child_id}`}
-          //to={`/profile/child/${child.id}`}
-          >
+        {user.map((child) => {
+          //console.log(child)
+          return (
+          
+            <Link
+            key={child.child_id}
+            to={{
+              pathname: `/profile/parent/${child.id}/child/${child.child_id}`,
+              state: {
+                child: child, 
+              }
+            }}            
+            >
+  
+            <div className="children__infos__child">
+              <Icon
+                name="user"
+                size="huge"
+                className="children__infos__child__icon"
+                />
+  
+                <div className="children__infos__child__name">{child.pwc_child_first_name}</div>
+  
+              </div>
+            </Link> 
 
-          <div className="children__infos__child">
-            <Icon
-              name="user"
-              size="huge"
-              className="children__infos__child__icon"
-              />
-              <div className="children__infos__child__name">{user[0].pwc_child_first_name}</div>
+          )
+          
+        })
+        };
+          
 
-            </div>
-          </Link>
-
-          {user[1] ? (
+          {/* {user[1] ? (
               <Link
               key={user[1].pwc_child_id}
-              to={`/profile/parent/${user.id}/child/${user[1].pwc_child_id}`}
-              //to={`/profile/child/${child.id}`}
+              to={`/profile/parent/${user[1].id}/child/${user[1].pwc_child_id}`}
               >
 
               <div className="children__infos__child">
@@ -58,15 +72,17 @@ const Children = ({
               </Link>
 
           ) : ( 
-            <div className="vide"></div>
-          )}
+            <div className="empty"></div>
+          )} */}
 
          
          
         </div>
       </div>
+  )
+ 
 
-);
+};
 
 Children.propTypes = {
   // children: PropTypes.arrayOf(

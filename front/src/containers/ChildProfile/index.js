@@ -4,11 +4,11 @@ import {
   openChangeInfos, changeInfos, closeFormAction, sendComment, changeTextValue,
 } from 'src/store/actions';
 import { findChild } from 'src/store/selectors/children';
+import { findUser } from 'src/store/selectors/user';
+
 
 const mapStateToProps = (state, ownProps) => ({
-
-  // child: findChild(state.children.list, ownProps.match.params.id),
-  user: state.user,
+  user: findUser(state.user.list, ownProps.match.params.id),
   isOpenInfos: state.user.isOpenInfos,
   commentSend: state.user.commentSend,
 
