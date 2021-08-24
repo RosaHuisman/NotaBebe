@@ -8,6 +8,9 @@ export const GET_RECAP = 'GET_RECAP';
 export const GET_RECAP_SUCCESS = 'GET_RECAP_SUCCESS';
 export const SHOW_FIELD_NAP = 'SHOW_FIELD_NAP';
 export const CHANGE_TEXT_VALUE = 'CHANGE_TEXT_VALUE';
+export const CHANGE_CHILD = 'CHANGE_CHILD';
+export const CHANGE_MOOD = 'CHANGE_MOOD';
+export const CHANGE_TIME_NAP = 'CHANGE_TIME_NAP';
 
 export const FETCH_RECAPS = 'FETCH_RECAPS';
 
@@ -28,6 +31,24 @@ export const showFieldNap = () => ({
 
 export const changeTextValue = (key, value) => ({
   type: CHANGE_TEXT_VALUE,
+  value, 
+  key,
+})
+
+export const changeChild = (key, value) => ({
+  type: CHANGE_CHILD,
+  value, 
+  key,
+})
+
+export const changeMood = (key, value) => ({
+  type: CHANGE_MOOD,
+  value, 
+  key,
+})
+
+export const changeTimeNap = (key, value) => ({
+  type: CHANGE_TIME_NAP,
   value, 
   key,
 })

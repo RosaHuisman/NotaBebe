@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import './styles.scss';
 
 function CreateRecap({
-  openNewNap, isOpen, onChangeValue, name,
+  openNewNap, isOpen, onChangeValue, name, handleSubmit, childSelected, moodSelected, timeNapSelected
 }) {
   const handleClick = () => {
     openNewNap();
@@ -16,15 +16,31 @@ function CreateRecap({
     onChangeValue(e.target.value, name);
   };
 
+  const selectChild = (e) => {
+    e.preventDefault();
+    childSelected(e.target.value, name);
+  }
+
+  const selectMood = (e) => {
+    e.preventDefault();
+    moodSelected(e.target.value, name);
+  }
+
+  const selectTimeNap = (e) => {
+    e.preventDefault();
+    timeNapSelected(e.target.value, name);
+  }
+
   return (
     <>
+    <form className="create__recap__form" onSubmit={handleSubmit}>
       <div className="create__recap">
         <h1>Création d'un récap</h1>
 
         <div className="child__select">
           <label htmlFor="child-select">Choisir l'enfant:</label>
-          <select name="childs" id="child-select">
-            <option value="">--Sélectionner--</option>
+          <select name="childs" id="child-select" onChange={selectChild}>
+            <option value="0">--Sélectionner--</option>
             <option value="1">Child 1</option>
             <option value="2">Child 2</option>
             <option value="3">Child 3</option>
@@ -32,8 +48,8 @@ function CreateRecap({
         </div>
         <div className="input__mood">
           <label htmlFor="mood-select">Choisir l'humeur:</label>
-          <select name="mood" id="mood-select">
-            <option value="">--Sélectionner--</option>
+          <select name="mood" id="mood-select" onChange={selectMood}>
+            <option value="0">--Sélectionner--</option>
             <option value="happy">Joyeux</option>
             <option value="middle">Moyen</option>
             <option value="grumpy">Grincheux</option>
@@ -45,8 +61,7 @@ function CreateRecap({
             type="time"
             id="snap"
             name="snap"
-            min="06:00"
-            max="18:00"
+            onChange={selectTimeNap}
             required
           />
 
@@ -55,8 +70,7 @@ function CreateRecap({
             type="time"
             id="enap"
             name="enap"
-            min="06:00"
-            max="18:00"
+            onChange={selectTimeNap}
             required
           />
         </div>
@@ -69,6 +83,7 @@ function CreateRecap({
             onChange={changeValue}
             rows="5"
             cols="30"
+            placeholder="Ecrivez votre commentaire"
           />
         </div>
 
@@ -116,7 +131,7 @@ function CreateRecap({
           </>
         )}
 
-        <div className="comments__meal">
+      <div className="comments__meal">
           <label htmlFor="meal">Commentaires repas:</label>
           <textarea
             id="meal"
@@ -125,7 +140,7 @@ function CreateRecap({
             rows="5"
             cols="30"
           />
-        </div>nap
+        </div>
 
         <div className="comments__others">
           <label htmlFor="others">Autres commentaires:</label>
@@ -142,6 +157,7 @@ function CreateRecap({
           <button type="button">Créer le récap</button>
         </div>
       </div>
+      </form>
     </>
   );
 }
