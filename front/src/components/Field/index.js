@@ -1,5 +1,5 @@
 // == Import : npm
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 // == Import : local
@@ -11,19 +11,10 @@ const Field = ({
   type,
   name,
   placeholder,
-  onChangeInputValue,
-  // loadUsersParents,
-  // onChange,
+  onChange,
 }) => {
-  // useEffect(() => {
-  //   loadUsersParents();
-  // }, []);
-
-  // console.log('value', value);
-
   const handleChange = (evt) => {
-    // onChange(evt.target.value, name);
-    onChangeInputValue(evt.target.value, name);
+    onChange(evt.target.value, name);
   };
 
   const inputId = `field-${name}`;
@@ -57,8 +48,7 @@ Field.propTypes = {
   type: PropTypes.string,
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
-  // onChange: PropTypes.func.isRequired,
-  onChangeInputValue: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 // Valeurs par défaut pour les props

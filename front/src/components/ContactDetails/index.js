@@ -23,7 +23,7 @@ function ContactDetails() {
         <p className="mail"><span><Icon name="mail" /></span>devteam@notabebe.fr</p>
       </div>
       <div className="return">
-        <Link className="return-link" to="/" exact>
+        <Link className="return-link" to="/" exact="true">
           <button type="button" className="button__return">
             Retour à l'accueil
           </button>

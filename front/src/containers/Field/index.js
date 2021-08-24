@@ -5,7 +5,7 @@ import { changeFieldValue, fetchUsersParents } from 'src/store/actions';
 // import { findUser } from 'src/store/selectors/user';
 
 const mapStateToProps = (state, ownProps) => ({
-  value: state.user[ownProps.name],
+  value: state.user.name,
   // value: findUser(state.user.list, ownProps.match.params.id)[ownProps.name],
 });
 

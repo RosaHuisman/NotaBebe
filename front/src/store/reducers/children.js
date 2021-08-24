@@ -1,4 +1,3 @@
-
 export const initialState = {
   list: [
     {
@@ -10,8 +9,8 @@ export const initialState = {
       gender: 'Masculin',
       allergy: ['poisson', 'viande', 'lait', 'gluten'],
       parent_id: 1,
-        },
-        {
+    },
+    {
       id: 2,
       firstname: 'Georgette',
       lastname: 'Toupet',
@@ -20,8 +19,8 @@ export const initialState = {
       gender: 'Féminin',
       allergy: [],
       parent_id: 1,
-            },
-      {
+    },
+    {
       id: 3,
       firstname: 'Alessi',
       lastname: 'Putter',
@@ -30,7 +29,7 @@ export const initialState = {
       gender: 'Masculin',
       allergy: ['tofu'],
       parent_id: 2,
-            }
+    },
   ],
   loading: true,
 };

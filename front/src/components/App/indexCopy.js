@@ -16,7 +16,7 @@ import Footer from 'src/components/Footer';
 import Error from 'src/components/Error';
 import ContactDetails from 'src/components/ContactDetails';
 import ForgotPassword from 'src/components/ForgotPassword';
-import Confirm from 'src/components/Confirm';
+// import Confirm from 'src/components/Confirm';
 import AdminMobileHome from 'src/components/Admin';
 
 // TEST
@@ -49,7 +49,6 @@ const App = ({ logged }) => {
         <Route exact path="/" component={Home} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/forgot" component={ForgotPassword} />
-        <Route exact path="/confirm" component={Confirm} />
         <Route exact path="/contact" component={ContactDetails} />
         <Route exact path="/admin" component={AdminMobileHome} />
         <Redirect from="login" to="/" />

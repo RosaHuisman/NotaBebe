@@ -17,15 +17,15 @@ export const initialState = {
   logged: false,
   token: null,
   // isError: false,
-  // user: {
-  // //   // email: '',
-  // //   // password: '',
-  //   email: 'admin@notabebe.io' || 'nounou@notabebe.io' || 'parent@notabebe.io',
-  //   password: 'admin' || 'nounou' || 'parent',
-  //   isError: false,
-  // },
-  email: 'admin@notabebe.io',
-  password: 'admin',
+  user: {
+    email: '',
+    password: '',
+    // email: 'admin@notabebe.io' || 'nounou@notabebe.io' || 'parent@notabebe.io',
+    // password: 'admin' || 'nounou' || 'parent',
+    isError: false,
+  },
+  // email: 'admin@notabebe.io',
+  // password: 'admin',
   isError: false,
 };
 
@@ -43,12 +43,12 @@ const reducer = (oldState = initialState, action = {}) => {
         pseudo,
         logged,
         token,
-        // userlogin: {
-        // ...oldState.userlogin,
-        email: '',
-        password: '',
-        isError: false,
-        // },
+        user: {
+          ...oldState.user,
+          email: '',
+          password: '',
+          isError: false,
+        },
       };
     }
     case LOGIN_ERROR: {
@@ -70,11 +70,11 @@ const reducer = (oldState = initialState, action = {}) => {
         token: null,
         logged: false,
         pseudo: null,
-        // userlogin: {
-        email: '',
-        password: '',
-        isError: false,
-        // },
+        user: {
+          email: '',
+          password: '',
+          isError: false,
+        },
       };
     }
     default:

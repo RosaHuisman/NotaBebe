@@ -1,30 +1,29 @@
-import {
-  SUBMIT_LOGIN,
-  createLoginSuccessAction,
-  createLoginErrorAction,
-  CHECK_TOKEN,
-} from 'src/store/actions';
+// import {
+//   SUBMIT_LOGIN,
+//   createLoginSuccessAction,
+//   createLoginErrorAction,
+//   CHECK_TOKEN,
+// } from 'src/store/actions';
+import { LOGIN, saveUserLogin, CHECK_TOKEN, createLoginErrorAction } from 'src/store/actions/userlogin';
 import api from './utils/api';
 
 const authMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
-    case SUBMIT_LOGIN: {
+    case LOGIN: {
       const state = store.getState();
-      // version total destructuring
       // const { user: { email, password } } = store.getState();
 
       api({
         method: 'POST',
         url: '/login',
-        // url: '/profile/admin/allusers',
         data: {
-          email: state.email,
-          password: state.password,
+          email: state.userlogin.email,
+          password: state.userlogin.password,
         },
       })
         .then((response) => {
           // ici on vient stocker le token dans localStorage
-          localStorage.setItem('token', response.data.token);
+          localStorage.setItem('MyToken', response.data.token);
 
           // on en profite pour venir le stoker aussi dans l'instance d'axios
           // comme ça on l'aura à chaque requête !!
@@ -33,7 +32,7 @@ const authMiddleware = (store) => (next) => (action) => {
           // ici on veut stocker dans le state les infos du user
           // donc on va faire un dispatch d'action
           // on passe par la fonction dispatch du store
-          store.dispatch(createLoginSuccessAction(response.data));
+          store.dispatch(saveUserLogin(response.data));
 
           // store.dispatch(createLoginSuccessAction(data: response.data));
           // store.dispatch({ type: 'LOGIN_SUCCESS', data: response.data });
@@ -41,13 +40,13 @@ const authMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           store.dispatch(createLoginErrorAction());
-          // console.log('MON ERREUR', createLoginErrorAction);
+          console.log('MON ERREUR createLoginErrorAction');
         });
       break;
     }
     case CHECK_TOKEN: {
       // on récupère le token stocké dans le localStorage
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem('MyToken');
 
       // s'il existe on fait notre requête API pour vérifier sa validité
       if (token) {
@@ -64,7 +63,7 @@ const authMiddleware = (store) => (next) => (action) => {
             // en cas de réponse on sauvegarde le user dans le state
             // avec la même action que pour le login
             const payload = { ...response.data };
-            store.dispatch(createLoginSuccessAction(payload));
+            store.dispatch(saveUserLogin(payload));
           })
           .catch((error) => console.log(error));
       }

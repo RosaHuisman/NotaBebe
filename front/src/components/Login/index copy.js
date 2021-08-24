@@ -1,18 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, useHistory } from 'react-router-dom';
-import Field from '../Field';
+import Field from 'src/components/Field';
 
 import './styles.scss';
 
 const Login = ({
   email,
   password,
-  changeField,
+  onEmailChange,
+  onPasswordChange,
   handleLogin,
-  handleLogout,
-  logged,
-  loggedMessage,
   isError,
 }) => {
   const history = useHistory();
@@ -20,7 +18,7 @@ const Login = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     handleLogin();
-    history.push('/homepage2');
+    history.push('/homepage');
   };
 
   return (
@@ -40,7 +38,7 @@ const Login = ({
             </p>
           </div>
           )}
-        {/* <form
+        <form
           className="loginForm__content"
           onSubmit={handleSubmit}
         >
@@ -71,33 +69,7 @@ const Login = ({
               Mot de passe oublié
             </p>
           </Link>
-        </form> */}
-
-        <form autoComplete="off" className="loginForm__content" onSubmit={handleSubmit}>
-          <Field
-            name="email"
-            placeholder="Adresse Email"
-            onChange={changeField}
-            value={email}
-            type="email"
-            required
-          />
-          <Field
-            name="password"
-            type="password"
-            placeholder="Mot de passe"
-            onChange={changeField}
-            value={password}
-            required
-          />
-          <button
-            type="submit"
-            className="settings__send"
-          >
-            Se connecter
-          </button>
         </form>
-
       </div>
       <Link className="return-link" to="/" exact="true">
         <button type="button" className="button__return">
@@ -111,21 +83,11 @@ const Login = ({
 Login.propTypes = {
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
-  changeField: PropTypes.func.isRequired,
-  handleLogin: PropTypes.func.isRequired,
-  handleLogout: PropTypes.func.isRequired,
-  logged: PropTypes.bool,
-  loggedMessage: PropTypes.string,
   isError: PropTypes.bool.isRequired,
 
-  // onEmailChange: PropTypes.func.isRequired,
-  // onPasswordChange: PropTypes.func.isRequired,
-  // handleLogin: PropTypes.func.isRequired,
-};
-
-Login.defaultProps = {
-  logged: false,
-  loggedMessage: 'Connecté',
+  onEmailChange: PropTypes.func.isRequired,
+  onPasswordChange: PropTypes.func.isRequired,
+  handleLogin: PropTypes.func.isRequired,
 };
 
 export default Login;

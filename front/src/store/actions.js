@@ -1,5 +1,9 @@
 /* eslint-disable import/prefer-default-export */
 
+// actions page de bienvenue
+export const GET_WELCOME_PAGE = 'GET_WELCOME_PAGE';
+export const GET_WELCOME_PAGE_SUCCESS = 'GET_WELCOME_PAGE_SUCCESS';
+
 // actions login
 export const SET_INPUT_VALUE = 'SET_INPUT_VALUE';
 export const SUBMIT_LOGIN = 'SUBMIT_LOGIN';
@@ -38,10 +42,10 @@ export const changeValueLogin = (value, key) => ({
   value,
 });
 
-// export const setCurrentUser = (user) => ({
-//   type: SET_CURRENT_USER,
-//   user,
-// });
+export const setCurrentUser = (user) => ({
+  type: SET_CURRENT_USER,
+  user,
+});
 
 // actions user
 export const openChangeInfos = () => ({
@@ -110,3 +114,7 @@ export const logout = () => {
     type: LOGOUT,
   };
 };
+
+export const Hello = () => ({
+  type: GET_WELCOME_PAGE,
+});

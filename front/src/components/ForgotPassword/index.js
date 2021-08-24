@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 import './styles.scss';
 
@@ -25,33 +26,40 @@ const ForgotPassword = () => {
   };
 
   return (
-    <div className="ForgotP">
-      <div className="ForgotP__txt">
-        <p className="ForgotP__txt__title">Mot de passe oublié ?</p>
-        <p className="ForgotP__txt__subtitle">Remplissez le formulaire et nous vous enverrons un email vous permettant de réinitialiser votre mot de passe.</p>
-      </div>
+    <>
+      <div className="ForgotP">
+        <div className="ForgotP__txt">
+          <p className="ForgotP__txt__title">Mot de passe oublié ?</p>
+          <p className="ForgotP__txt__subtitle">Remplissez le formulaire et nous vous enverrons un email vous permettant de réinitialiser votre mot de passe.</p>
+        </div>
 
-      <form
-        className="ForgotP__content"
-        onSubmit={handleSubmitPassword}
-      >
-        <input
-          className="setting__input"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Votre email"
-          type="email"
-          required
-        />
-        <button
-          className="setting__send"
-          type="submit"
+        <form
+          className="ForgotP__content"
+          onSubmit={handleSubmitPassword}
         >
-          Réinitialiser le mot de passe
+          <input
+            className="setting__input"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Votre email"
+            type="email"
+            required
+          />
+          <button
+            className="setting__send"
+            type="submit"
+          >
+            Réinitialiser le mot de passe
+          </button>
+          {/* {isError && <p className="setting__notexist">Email non existant</p>} */}
+        </form>
+      </div>
+      <Link className="return-link" to="/login" exact="true">
+        <button type="button" className="button__return">
+          Retour à la connexion
         </button>
-        {/* {isError && <p className="setting__notexist">Email non existant</p>} */}
-      </form>
-    </div>
+      </Link>
+    </>
   );
 };
 
