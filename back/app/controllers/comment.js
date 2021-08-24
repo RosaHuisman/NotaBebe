@@ -6,7 +6,12 @@ const commentController = {
     getAllComments: async (_, response) => {
         try {
             const comments = await commentDataMapper.findAll();
-            response.json(comments);
+
+            if (comments) {
+                response.json(comments);
+                } else {
+                    return next();
+                };
         } catch {
             console.log(error);
             response.json({ error: error.message });
@@ -17,7 +22,13 @@ const commentController = {
         try {
             const commentId = Number(request.params.id);
             const comment = await commentDataMapper.findById(commentId);
+
+            if (commnent) {
             response.json(comment);
+            } else {
+                return next();
+            };
+
         } catch (error) {
             console.log(error);
             response.json({ error: error.message });

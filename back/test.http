@@ -30,7 +30,7 @@ GET http://localhost:3000/profile/staff/comments
 GET http://localhost:3000/profile/parent/1
 
 ### DISPLAYING CHILD ACCORDING TO PARENT PROFILE
-GET http://localhost:3000/profile/parent/1/child/2
+GET http://localhost:3000/profile/parent/1/child/3
 
 ### DISPLAYING STAFF PROFILE - staff by id
 GET http://localhost:3000/profile/staff/5
@@ -55,7 +55,7 @@ Content-Type: application/json
     "password": "test"
 }
 
-### try login with other user - non-hashed password to try with bcrypt compareSync (not working)
+### try login with other user - non-hashed password to try with bcrypt compareSync 
 POST http://localhost:3000/login
 Content-Type: application/json
 

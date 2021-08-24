@@ -5,7 +5,13 @@ const recapController = {
     getAllRecaps: async (_, response) => {
         try {
             const recaps = await recapDataMapper.findAll();
-            response.json(recaps);
+            
+            if (recaps) {
+                response.json(recaps);
+                } else {
+                    return next();
+                };
+
         } catch (error) {
             console.log(error);
             response.json({ error: error.message });
@@ -16,7 +22,13 @@ const recapController = {
         try {
             const recapId = Number(request.params.id);
             const data = await recapDataMapper.findById(recapId);
-            response.json(data);
+            
+            if (data) {
+                response.json(data);
+                } else {
+                    return next();
+                };
+
         } catch (error) {
             console.log(error);
             response.json({ error: error.message });

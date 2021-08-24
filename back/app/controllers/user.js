@@ -10,6 +10,12 @@ const userController = {
             const data = await userDataMapper.findAll();
             response.json(data);
 
+            if (data) {
+                response.json(data);
+                } else {
+                    return next();
+                };
+
         } catch (error) {
             console.log(error);
             response.json({ error: error.message });
@@ -22,6 +28,12 @@ const userController = {
             const data = await userDataMapper.findAllParents();
             response.json(data);
 
+            if (data) {
+                response.json(data);
+                } else {
+                    return next();
+                };
+
         } catch (error) {
             console.log(error);
             response.json({ error: error.message });
@@ -33,7 +45,12 @@ const userController = {
             const parentId = Number(request.params.id);
 
             const data = await userDataMapper.findChildrenByParent(parentId);
-            response.json(data);
+            
+            if (data) {
+                response.json(data);
+                } else {
+                    return next();
+                };
 
         } catch (error) {
             console.log(error);
@@ -41,14 +58,18 @@ const userController = {
         }
     },
 
-    getChildFromParent: async (request, response) => {
+    getChildFromParent: async (request, response, next) => {
         try {
             const parentId = Number(request.params.id);
             const childId = Number(request.params.childId);
 
             const data = await userDataMapper.findChildFromParent(parentId, childId);
-            // if data --> response json data... (return next)
+
+            if (data) {
             response.json(data);
+            } else {
+                return next();
+            };
 
         } catch (error) {
             console.log(error);
@@ -59,7 +80,12 @@ const userController = {
     getAllStaff: async (_, response) => {
         try {
             const data = await userDataMapper.findAllStaff();
-            response.json(data);
+            
+            if (data) {
+                response.json(data);
+                } else {
+                    return next();
+                };
 
         } catch (error) {
             console.log(error);
@@ -72,7 +98,12 @@ const userController = {
         try {
             const staffId = Number(request.params.id);
             const data = await userDataMapper.findStaffById(staffId);
-            response.json(data);
+            
+            if (data) {
+                response.json(data);
+                } else {
+                    return next();
+                };
 
         } catch (error) {
             console.log(error);
@@ -83,7 +114,12 @@ const userController = {
     getAllChildren: async (_, response) => {
         try {
             const data = await userDataMapper.findAllChildren();
-            response.json(data);
+            
+            if (data) {
+                response.json(data);
+                } else {
+                    return next();
+                };
 
         } catch (error) {
             console.log(error);

@@ -39,7 +39,6 @@ const userDataMapper = {
 
     async findChildFromParent(parentId, childId) {
         const result = await client.query('SELECT * FROM "parent_with_child" WHERE "user_id" = $1 AND "child_id" = $2 AND "role_id" = 1', [parentId, childId]);
-        // vérification que result contient qqch ?
         return result.rows[0];
     },
 
