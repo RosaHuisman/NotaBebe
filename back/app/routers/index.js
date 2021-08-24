@@ -59,14 +59,7 @@ router.route('/profile/staff/comments/:id')
 // get parent with children
 
 
-
-
-
-
-
 //TODO get recap by child id
-
-
 
 
 router.route('/login')
@@ -103,17 +96,17 @@ router.route('/profile/admin/manageprofile/:id')
 
 
 router.route('/profile/staff/recap/child/')
-    .post(recapController.addRecap)
+    .post(recapController.addRecap);
 
-router.route('/profile/staff/recap/child/:recapId')
+router.route('/profile/staff/recap/:recapId/child/')
     .patch(recapController.modifyRecap)
-    .delete(recapController.deleteRecap)
+    .delete(recapController.deleteRecap);
 
 
 //TODO mieux paramétrer les deux routes suivantes -- cibler le parentId et le childId
 // adding a comment (for parents)
 router.route('/profile/parent/comments/')
-    .post(commentController.addComment)
+    .post(commentController.addComment);
 // modifying/deleting a comment (for parents)
 router.route('/profile/parent/comments/:id')
     .patch(commentController.modifyComment)

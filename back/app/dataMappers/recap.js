@@ -19,8 +19,18 @@ const recapDataMapper = {
     },
 
     async modify(recap, id) {
-        const result = await client.query('UPDATE "recap" SET date = $1, extra_info = $2, mood = $3, child_id = $4, updated_at = now() WHERE id = $5 RETURNING *', [recap.date, recap.extra_info, recap.mood, recap.child_id, id]);
-        return result.rows[0];
+
+        const keys = Object.keys(recap);
+        const values = Object.values(recap);
+
+        console.log(id);
+        for (let i = 0; i < keys.length; i++) {
+            console.log(keys[i]);
+            console.log(values[i]);
+            await client.query(`UPDATE "recap" SET ${keys[i]} = $1, updated_at = now() WHERE id = $2 `, [values[i] , id ]);
+        };
+        
+        return "la modification a bien été éffectuée";
     },
 
     async delete(id) {
