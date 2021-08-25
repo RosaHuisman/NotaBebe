@@ -52,10 +52,10 @@ Content-Type: application/json
 
 {
     "email": "mauricettequatre@laposte.net",
-    "password": "test"
+    "password": "mauricette"
 }
 
-### try login with other user - non-hashed password to try with bcrypt compareSync 
+### try login with other user - hashed password to try with bcrypt compareSync 
 POST http://localhost:3000/login
 Content-Type: application/json
 

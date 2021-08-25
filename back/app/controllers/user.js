@@ -2,6 +2,8 @@ const userDataMapper = require("../dataMappers/user");
 
 const bcrypt = require('bcrypt');
 const emailValidator = require('email-validator');
+const jsonwebtoken = require('jsonwebtoken');
+const jwtSecret = process.env.SECRET_KEY;
 
 const userController = {
 
@@ -12,9 +14,9 @@ const userController = {
 
             if (data) {
                 response.json(data);
-                } else {
-                    return next();
-                };
+            } else {
+                return next();
+            };
 
         } catch (error) {
             console.log(error);
@@ -30,9 +32,9 @@ const userController = {
 
             if (data) {
                 response.json(data);
-                } else {
-                    return next();
-                };
+            } else {
+                return next();
+            };
 
         } catch (error) {
             console.log(error);
@@ -45,12 +47,12 @@ const userController = {
             const parentId = Number(request.params.id);
 
             const data = await userDataMapper.findChildrenByParent(parentId);
-            
+
             if (data) {
                 response.json(data);
-                } else {
-                    return next();
-                };
+            } else {
+                return next();
+            };
 
         } catch (error) {
             console.log(error);
@@ -66,7 +68,7 @@ const userController = {
             const data = await userDataMapper.findChildFromParent(parentId, childId);
 
             if (data) {
-            response.json(data);
+                response.json(data);
             } else {
                 return next();
             };
@@ -80,12 +82,12 @@ const userController = {
     getAllStaff: async (_, response) => {
         try {
             const data = await userDataMapper.findAllStaff();
-            
+
             if (data) {
                 response.json(data);
-                } else {
-                    return next();
-                };
+            } else {
+                return next();
+            };
 
         } catch (error) {
             console.log(error);
@@ -98,12 +100,12 @@ const userController = {
         try {
             const staffId = Number(request.params.id);
             const data = await userDataMapper.findStaffById(staffId);
-            
+
             if (data) {
                 response.json(data);
-                } else {
-                    return next();
-                };
+            } else {
+                return next();
+            };
 
         } catch (error) {
             console.log(error);
@@ -114,12 +116,12 @@ const userController = {
     getAllChildren: async (_, response) => {
         try {
             const data = await userDataMapper.findAllChildren();
-            
+
             if (data) {
                 response.json(data);
-                } else {
-                    return next();
-                };
+            } else {
+                return next();
+            };
 
         } catch (error) {
             console.log(error);
@@ -134,9 +136,7 @@ const userController = {
      * @param {Response} response 
      */
     checkLogin: async (request, response) => {
-
         try {
-
             const email = request.body.email;
             const password = request.body.password;
 
@@ -146,29 +146,37 @@ const userController = {
 
             const user = await userDataMapper.findOne(email);
 
-
             if (user === null) {
                 response.json({ error: "Email ou mot de passe incorrect" });
                 return;
             };
 
-
             // Checking if password is valid thanks to bcrypt's compare function
             const pwResult = bcrypt.compareSync(password, user.password);
 
+            // if the password is correct 
             if (pwResult) {
-
-                response.json('le mot de passe est correct')
-
+                if (user) {
+                    const jwtContent = { userId: user.id };
+                    const jwtOptions = {
+                        algorithm: 'HS256',
+                        expiresIn: '10s'
+                    };
+                    response.json({
+                        logged: true,
+                        email: user.email,
+                        token: jsonwebtoken.sign(jwtContent, jwtSecret, jwtOptions),
+                    });
+                } else {
+                    response.status(401).json(`401 unauthorized`);
+                }
             } else {
                 response.json({ error: "mot de passe incorrect" });
             };
-
         } catch (error) {
             console.log(error);
             response.json({ error: error.message });
         }
-
     },
 
     //? à voir comment tester le logout
