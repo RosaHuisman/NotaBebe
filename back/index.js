@@ -20,24 +20,6 @@ app.use(session({
     cookie: { secure: false }
 }));
 
-// const jsonwebtoken = require('jsonwebtoken');
-// const JWT_SECRET_SIGN = '5MeilleurTeam5DuMondeIci5';
-// const jwt_option = {
-//     algorithm: 'HS256',
-//     expiresIn: '3h'
-// }
-
-// const authHeader = request.headers['authorization'];
-//     const token = authHeader && authHeader.split(' ')[1];
-//         console.log(request.headers['authorization']);
-
-//         jsonwebtoken.verify(token, JWT_SECRET_SIGN, (err, user) => {
-//     if (err) {
-//       return res.sendStatus(401);
-//     }
-//     const decoded = jsonwebtoken.verify(token, JWT_SECRET_SIGN);
-//     console.log(decoded);
-
 
 // Body parser
 app.use(express.json());
