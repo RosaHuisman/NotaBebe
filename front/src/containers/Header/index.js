@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Header from 'src/components/Header';
-import { logout } from 'src/store/actions/userlogin';
+import { logout } from 'src/store/actions';
 
 import { isUserLogged } from 'src/store/selectors/loggedPseudo';
 

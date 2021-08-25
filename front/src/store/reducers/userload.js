@@ -1,4 +1,4 @@
-import { SAVE_USER_LOGGED } from 'src/store/actions/userload';
+import { SAVE_USER_LOGGED } from 'src/store/actions';
 
 export const initialState = {
   listUsers: [],

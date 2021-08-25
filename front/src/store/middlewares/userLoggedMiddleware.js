@@ -1,8 +1,8 @@
 import {
   FETCH_USER_LOGGED,
   saveUserLogged,
-} from 'src/store/actions/userload';
-import { FETCH_USER_DATA, saveUserData } from 'src/store/actions/userlogin';
+} from 'src/store/actions';
+import { FETCH_USER_DATA, saveUserData } from 'src/store/actions';
 import api from './utils/api';
 
 const userLogged = (store) => (next) => (action) => {

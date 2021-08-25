@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { fetchUsersParents } from 'src/store/actions';
-import { fetchUserLogged } from 'src/store/actions/userload';
-import { checkToken } from 'src/store/actions/userlogin';
+import { fetchUserLogged } from 'src/store/actions';
+import { checkToken } from 'src/store/actions';
 
 import { findUser } from 'src/store/selectors/user';
 

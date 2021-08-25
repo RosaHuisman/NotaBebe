@@ -28,6 +28,8 @@ export const SAVE_PASSWORD_USER = 'SAVE_PASSWORD_USER';
 export const CHANGE_FIELD_VALUE = 'CHANGE_FIELD_VALUE';
 export const CHANGE_TEXT_VALUE = 'CHANGE_TEXT_VALUE';
 export const SAVE_USER = 'SAVE_USER';
+export const FETCH_USER_LOGGED = 'FETCH_USER_LOGGED';
+export const SAVE_USER_LOGGED = 'SAVE_USER_LOGGED';
 
 export const SAVE_USERS_PARENTS = 'SAVE_USERS_PARENTS';
 export const FETCH_USERS_PARENTS = 'FETCH_USERS_PARENTS';
@@ -41,6 +43,11 @@ export const CHANGE_MOOD = 'CHANGE_MOOD';
 export const CHANGE_TIME_NAP = 'CHANGE_TIME_NAP';
 
 export const FETCH_RECAPS = 'FETCH_RECAPS';
+
+export const SAVE_USER_LOGIN = 'SAVE_USER_LOGIN';
+export const LOGOUT = 'LOGOUT';
+export const FETCH_USER_DATA = 'FETCH_USER_DATA';
+export const SAVE_USER_DATA = 'SAVE_USER_DATA';
 
 // actions login
 export const createLoginSuccessAction = (nickname) => ({ type: LOGIN_SUCCESS, nickname });
@@ -65,10 +72,10 @@ export const openChangeInfos = () => ({
   type: OPEN_CHANGE_INFOS,
 });
 
-export const changeFieldValue = (key, value) => ({
+export const changeFieldValue = (value, key) => ({
   type: CHANGE_FIELD_VALUE,
-  value,
   key,
+  value,
 });
 
 // export const changeTextValue = (value) => ({
@@ -112,10 +119,10 @@ export const fetchUsersParents = () => ({
   type: FETCH_USERS_PARENTS,
 });
 
-// export const saveUsersParents = (users_parents) => ({
-//   type: SAVE_USERS_PARENTS,
-//   payload: users_parents,
-// });
+export const saveUsersParents = (users_parents) => ({
+  type: SAVE_USERS_PARENTS,
+  payload: users_parents,
+});
 
 export const saveUser = () => ({
   type: SAVE_USER,
@@ -159,4 +166,30 @@ export const changeTimeNap = (key, value) => ({
   type: CHANGE_TIME_NAP,
   value,
   key,
+});
+
+export const fetchUserLogged = () => ({
+  type: FETCH_USER_LOGGED,
+});
+
+export const saveUserLogged = (userLogged) => ({
+  type: SAVE_USER_LOGGED,
+  userLogged,
+});
+
+export const logout = () => ({
+  type: LOGOUT,
+});
+
+export const fetchUserData = () => ({
+  type: FETCH_USER_DATA,
+});
+
+export const saveUserData = (favorites) => ({
+  type: SAVE_USER_DATA,
+  payload: favorites,
+});
+
+export const checkToken = () => ({
+  type: CHECK_TOKEN,
 });

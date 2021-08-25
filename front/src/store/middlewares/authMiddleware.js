@@ -25,8 +25,8 @@ const authMiddleware = (store) => (next) => (action) => {
         method: 'POST',
         url: '/login',
         data: {
-          email: state.userlogin.email,
-          password: state.userlogin.password,
+          email: state.user.email,
+          password: state.user.password,
         },
       })
         .then((response) => {
