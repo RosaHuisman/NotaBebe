@@ -1,19 +1,18 @@
 import {
   CHANGE_VALUE_LOGIN,
-  SET_SETTINGS_FIELD_VALUE,
-  LOGIN_SUCCESS,
-  LOGIN_ERROR,
+  SAVE_USER_LOGIN,
   LOGOUT,
-  SET_CURRENT_USER,
-} from '../actions';
+  LOGIN,
+  LOGIN_ERROR,
+} from 'src/store/actions/userlogin';
 
-export const initialState = {
-  loading: true,
+const initialState = {
+  email: '',
+  password: '',
   pseudo: null,
   logged: false,
   token: null,
-  email: 'admin@notabebe.io',
-  password: 'admin',
+  loading: true,
   isError: false,
 };
 
@@ -22,11 +21,9 @@ const reducer = (oldState = initialState, action = {}) => {
     case CHANGE_VALUE_LOGIN:
       return {
         ...oldState,
-        loading: false,
-
         [action.key]: action.value,
       };
-    case LOGIN_SUCCESS: {
+    case LOGIN: {
       const { pseudo, logged, token } = action.payload;
       return {
         ...oldState,
@@ -36,6 +33,21 @@ const reducer = (oldState = initialState, action = {}) => {
         email: '',
         password: '',
         isError: false,
+        loading: false,
+
+      };
+    }
+    case SAVE_USER_LOGIN: {
+      const { pseudo, logged, token } = action.payload;
+      return {
+        ...oldState,
+        pseudo,
+        logged,
+        token,
+        email: '',
+        password: '',
+        isError: false,
+        loading: false,
       };
     }
     case LOGIN_ERROR: {
@@ -44,21 +56,16 @@ const reducer = (oldState = initialState, action = {}) => {
         isError: true,
       };
     }
-    case SET_SETTINGS_FIELD_VALUE: {
-      return {
-        ...oldState,
-        [action.fieldKey]: action.newValue,
-      };
-    }
+    // case SET_SETTINGS_FIELD_VALUE: {
+    //   return {
+    //     ...oldState,
+    //     [action.fieldKey]: action.newValue,
+    //   };
+    // }
     case LOGOUT: {
+      localStorage.removeItem('token');
       return {
         ...oldState,
-        token: null,
-        logged: false,
-        pseudo: null,
-        email: '',
-        password: '',
-        isError: false,
       };
     }
     default:

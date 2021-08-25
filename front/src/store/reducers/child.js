@@ -1,5 +1,5 @@
 // import {
-  
+
 // } from '../actions';
 
 // const initialState = {
@@ -10,17 +10,15 @@
 //     birthplace: 'Tourcoing',
 //     gender: 'Masculin',
 //     allergy: ['poisson', 'viande', 'oeuf', 'lait'],
-    
+
 // };
 
 // const reducer = (state = initialState, action) => {
 //   switch (action.type) {
-    
-      
+
 //     default:
 //       return state;
 //   }
 // };
 
 // export default reducer;
-

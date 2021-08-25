@@ -1,5 +1,9 @@
 /* eslint-disable import/prefer-default-export */
 
+// actions page de bienvenue
+export const GET_WELCOME_PAGE = 'GET_WELCOME_PAGE';
+export const GET_WELCOME_PAGE_SUCCESS = 'GET_WELCOME_PAGE_SUCCESS';
+
 // actions login
 export const SET_INPUT_VALUE = 'SET_INPUT_VALUE';
 export const SUBMIT_LOGIN = 'SUBMIT_LOGIN';
@@ -9,7 +13,6 @@ export const LOGIN_ERROR = 'LOGIN_ERROR';
 export const CHECK_TOKEN = 'CHECK_TOKEN';
 export const CHANGE_VALUE_LOGIN = 'CHANGE_VALUE_LOGIN';
 export const SET_CURRENT_USER = 'SET_CURRENT_USER';
-export const LOGOUT = 'LOGOUT';
 
 // actions user
 export const OPEN_CHANGE_INFOS = 'OPEN_CHANGE_INFOS';
@@ -38,10 +41,10 @@ export const changeValueLogin = (value, key) => ({
   value,
 });
 
-// export const setCurrentUser = (user) => ({
-//   type: SET_CURRENT_USER,
-//   user,
-// });
+export const setCurrentUser = (user) => ({
+  type: SET_CURRENT_USER,
+  user,
+});
 
 // actions user
 export const openChangeInfos = () => ({
@@ -103,10 +106,3 @@ export const saveUsersParents = (users_parents) => ({
 export const sendComment = () => ({
   type: SEND_COMMENT,
 });
-
-export const logout = () => {
-  localStorage.removeItem('token');
-  return {
-    type: LOGOUT,
-  };
-};

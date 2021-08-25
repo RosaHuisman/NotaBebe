@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
-import { isUserLogged } from 'src/store/selectors/loggedPseudo';
 import { fetchUsersParents } from 'src/store/actions';
+import { fetchUserLogged } from 'src/store/actions/userload';
+import { checkToken } from 'src/store/actions/userlogin';
 
 import { findUser } from 'src/store/selectors/user';
 
@@ -14,9 +15,19 @@ const mapStateToProps = (state, ownProps) => ({
   //user: findUser(state.user.list, ownProps.match.params.id),
   //user: state.user,
   loading: state.user.loading,
+const mapStateToProps = (state) => ({
+  // loading: state.userload.loading,
+  loading: state.userload,
+  logged: state.user.logged,
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  checkIsLogged: () => {
+    dispatch(checkToken());
+  },
+  loadUserLogged: () => {
+    dispatch(fetchUserLogged());
+  },
   loadUsersParents: () => {
     dispatch(fetchUsersParents());
   },

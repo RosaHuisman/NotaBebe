@@ -1,8 +1,8 @@
 // == Import : npm
 import React from 'react';
-import { render } from 'react-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
+import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import store from 'src/store';
 
@@ -23,4 +23,4 @@ const rootReactElement = (
 // 2. La cible du DOM (là où la structure doit prendre vie dans le DOM)
 const target = document.getElementById('root');
 // 3. Déclenchement du rendu de React (virtuel) => DOM (page web)
-render(rootReactElement, target);
+ReactDOM.render(rootReactElement, target);

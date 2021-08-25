@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, useHistory } from 'react-router-dom';
-import Field from '../Field';
+import Field from 'src/components/Field';
 
 import './styles.scss';
 
 const Login = ({
   email,
   password,
-  changeField,
+  onEmailChange,
+  onPasswordChange,
   handleLogin,
   isError,
 }) => {
@@ -17,8 +18,7 @@ const Login = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     handleLogin();
-    // history.push('/homepage2');
-    return history.push('/admin');
+    history.push('/homepage');
   };
 
   return (
@@ -38,31 +38,38 @@ const Login = ({
             </p>
           </div>
           )}
-        <form autoComplete="off" className="loginForm__content" onSubmit={handleSubmit}>
-          <Field
-            name="email"
-            placeholder="Adresse Email"
-            onChange={changeField}
+        <form
+          className="loginForm__content"
+          onSubmit={handleSubmit}
+        >
+          <input
+            className="settings__input"
             value={email}
+            onChange={onEmailChange}
+            placeholder="Votre email"
             type="email"
             required
           />
-          <Field
-            name="password"
-            type="password"
-            placeholder="Mot de passe"
-            onChange={changeField}
+          <input
+            className="settings__input"
             value={password}
+            onChange={onPasswordChange}
+            type="password"
+            placeholder="Votre mot de passe"
             required
           />
           <button
-            type="submit"
             className="settings__send"
+            type="submit"
           >
             Se connecter
           </button>
+          <Link to="/forgot">
+            <p className="settings__forgottxt">
+              Mot de passe oublié
+            </p>
+          </Link>
         </form>
-
       </div>
       <Link className="return-link" to="/" exact="true">
         <button type="button" className="button__return">
@@ -76,9 +83,11 @@ const Login = ({
 Login.propTypes = {
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
-  changeField: PropTypes.func.isRequired,
-  handleLogin: PropTypes.func.isRequired,
   isError: PropTypes.bool.isRequired,
+
+  onEmailChange: PropTypes.func.isRequired,
+  onPasswordChange: PropTypes.func.isRequired,
+  handleLogin: PropTypes.func.isRequired,
 };
 
 export default Login;

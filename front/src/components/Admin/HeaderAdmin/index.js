@@ -22,7 +22,7 @@ const HeaderAdmin = () => (
     <Link
       className="menu__link"
       activeClassName="menu__link__selected"
-      to="/contact"
+      to="/contacts"
     >
       Contact
     </Link>

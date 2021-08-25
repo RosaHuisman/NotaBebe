@@ -1,108 +1,88 @@
 // == Import npm
 import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
-import {
-  Route, Switch, useLocation,
-} from 'react-router-dom';
-import { connect, useDispatch } from 'react-redux';
-
-// == Import
-import './styles.scss';
-
-// == Import composants /components
-import Home from 'src/components/Home';
-import HomePage from 'src/components/HomePage';
-import Footer from 'src/components/Footer';
-import Error from 'src/components/Error';
-import ContactDetails from 'src/components/ContactDetails';
-
-import ForgotPassword from 'src/components/ForgotPassword';
-import AdminMobileHome from 'src/components/Admin';
+import { Route, Switch, useLocation, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import PrivateRoute from 'src/components/PrivateRoute';
 
-// TEST
-import HomePage2 from 'src/components/HomePage2';
-import HomePage3 from 'src/components/HomePage3';
+import PropTypes from 'prop-types';
+
+// == Import composants /components
+import Home from 'src/components/Home';
+import Footer from 'src/components/Footer';
+import ContactDetails from 'src/components/ContactDetails';
+import ForgotPassword from 'src/components/ForgotPassword';
+import AdminMobileHome from 'src/components/Admin';
+import Error from 'src/components/Error';
 
 // == Import composants /containers
 import Login from 'src/containers/Login';
 import Header from 'src/containers/Header';
+// STAFF
+// import StaffProfile from 'src/containers/StaffProfile';
+// import ReadComment from 'src/containers/ReadComment';
+// import CreateRecap from 'src/containers/CreateRecap';
+// PARENT CHILD
 import ParentProfile from 'src/containers/ParentProfile';
 import ChildProfile from 'src/containers/ChildProfile';
 import ChildRecap from 'src/containers/ChildRecap';
+// import Recap from 'src/containers/Recap';
+// TEST
+import HomePage1 from 'src/components/HomePage';
+import HomePage2 from 'src/components/HomePage2';
+import HomePage3 from 'src/components/HomePage3';
 
 import Loading from './Loading';
 
+// == Import
+import './styles.scss';
+// == Composant
 const App = ({
-  logged,
-  // isLogged,
-  roles,
+  // logged,
+  // loading,
   loading,
-  user,
-  loadUsersParents,
+  loadUserLogged,
+  logged,
+  checkIsLogged,
 }) => {
   const location = useLocation();
-  // const { logged, roles } = this.props;
-  const dispatch = useDispatch();
-
-  // console.log('load users parents dans index app: ', loadUsersParents())
 
   useEffect(() => {
-    // console.log('load users parents dans useeffect: ', loadUsersParents())
-
-    loadUsersParents();
-
     window.scroll(0, 0);
   }, [location]);
+
+  useEffect(() => {
+    loadUserLogged();
+    // ici on veut vérifier si l'utilisateur est déjà connecté
+    // au 1e rendu du composant App
+    checkIsLogged();
+  }, []);
 
   if (loading) {
     return <Loading />;
   }
 
   return (
-    // <>
-    //   <Header />
-    //   <Switch>
-    //     {logged && (
-    //       <>
-    //         <Route exact path="/profile/parent/:id" component={ParentProfile} />
-    //         <Route exact path="/homepage" component={HomePage} />
-    //         <Route exact path="/homepage2" component={HomePage2} />
-    //         <Route exact path="/homepage3" component={HomePage3} />
-    //       </>
-    //     )}
-    //     <Route exact path="/" component={Home} />
-    //     <Route exact path="/login" component={Login} />
-    //     <Route exact path="/forgot" component={ForgotPassword} />
-    //     <Route exact path="/confirm" component={Confirm} />
-    //     <Route exact path="/contact" component={ContactDetails} />
-    //     <Route exact path="/admin" component={AdminMobileHome} />
-    //     <Redirect from="login" to="/" />
-    //     <Route component={Error} />
-    //   </Switch>
-    //   <Footer />
-    // </>
-    // <>
-    //   <Header />
-    //   <Switch>
-    //     <Route exact path="/" component={Home} />
-    //     <Route exact path="/login" component={Login} />
-    //     <Route exact path="/forgot" component={ForgotPassword} />
-    //     <Route exact path="/contact" component={ContactDetails} />
-    //     <Route path="*" component={Error} />
-
-    //     <PrivateRoute exact path="/" component={AdminMobileHome} />
-    //     <PrivateRoute exact path="/admin" component={AdminMobileHome} />
-    //     <PrivateRoute exact path="/profile/parent/:id" component={ParentProfile} />
-    //     {/* // à test ChildProfile */}
-    //     <PrivateRoute exact path="/profile/parent/:id/child/:id" component={ChildProfile} />
-    //     <PrivateRoute exact path="/homepage" component={HomePage} />
-    //     <PrivateRoute exact path="/homepage2" component={HomePage2} />
-    //     <PrivateRoute exact path="/homepage3" component={HomePage3} />
-    //   </Switch>
-    //   <Footer />
-    // </>
+  // <>
+  //   <Header />
+  //   <Switch>
+  //     {!logged && (
+  //       <>
+  //         <Route exact path="/profile/parent/:id" component={ParentProfile} />
+  //         <Route exact path="/homepage" component={HomePage} />
+  //         <Route exact path="/homepage2" component={HomePage2} />
+  //         <Route exact path="/homepage3" component={HomePage3} />
+  //       </>
+  //     )}
+  //     <Route exact path="/" component={Home} />
+  //     <Route exact path="/login" component={Login} />
+  //     <Route exact path="/forgot" component={ForgotPassword} />
+  //     <Route exact path="/contact" component={ContactDetails} />
+  //     <Route exact path="/admin" component={AdminMobileHome} />
+  //     <Route component={Error} />
+  //   </Switch>
+  //   <Footer />
+  // </>
     <>
       
       <Switch>
@@ -113,19 +93,67 @@ const App = ({
         <Route exact path="/profile/parent/1/child/:id/recap" component={ChildRecap} />
 
         
+        <Route exact path="/" component={Home} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/forgot" component={ForgotPassword} />
+        <Route exact path="/contact" component={ContactDetails} />
+        {/* <Route path="*" component={Error} /> */}
+
+        {/* Route Admin */}
+        <PrivateRoute exact path="/admin" component={AdminMobileHome} />
+
+        {/* Route Staff */}
+        {/* <PrivateRoute exact path="/staff/:id/" component={StaffProfile} />
+        <PrivateRoute exact path="/staff/:id/comments" component={ReadComment} />
+        <PrivateRoute exact path="/staff/:id/createrecap" component={CreateRecap} /> */}
+
+        {/* Route Parent Children */}
+        <PrivateRoute exact path="/profile/parent/:id" component={ParentProfile} />
+        <PrivateRoute exact path="/profile/parent/:id/child/:id" component={ChildProfile} />
+        {/* <PrivateRoute exact path="/parent/:id/child/:id/recap" component={Recap} /> */}
+
+        {/* Route de test blabla */}
+        <PrivateRoute exact path="/homepage1" component={HomePage1} />
+        <PrivateRoute exact path="/homepage2" component={HomePage2} />
+        <PrivateRoute exact path="/homepage3" component={HomePage3} />
       </Switch>
       <Footer />
     </>
+  // <>
+  //   <Header />
+  //   <Switch>
+  //     <Route exact path="/" component={Home} />
+  //     <Route exact path="/login" component={Login} />
+  //     <Route exact path="/forgot" component={ForgotPassword} />
+  //     <Route exact path="/contact" component={ContactDetails} />
+  //     {logged ? (
+  //       <>
+  //         <Route exact path="/admin" component={AdminMobileHome} />
+  //         <Route exact path="/profile/parent/:id" component={ParentProfile} />
+  //         <Route exact path="/homepage" component={HomePage} />
+  //         <Route exact path="/homepage2" component={HomePage2} />
+  //         <Route exact path="/homepage3" component={HomePage3} />
+  //       </>
+  //     ) : (
+  //       <Redirect to="/" />
+  //     )}
+  //     <Route component={Error} />
+  //   </Switch>
+  //   <Footer />
+  // </>
   );
 };
 
 App.propTypes = {
   loading: PropTypes.bool,
-  logged: PropTypes.bool.isRequired,
+  loadUserLogged: PropTypes.func.isRequired,
+  checkIsLogged: PropTypes.func.isRequired,
+  logged: PropTypes.bool,
 };
 
 App.defaultProps = {
   loading: false,
+  logged: false,
 };
 
 // == Export

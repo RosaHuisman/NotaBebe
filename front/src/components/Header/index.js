@@ -9,24 +9,33 @@ import logo from 'src/images/NotaBebe_logo.png';
 const Header = ({ logged, handleLogout, loggedMessage }) => {
   const history = useHistory();
 
+  const getToken = localStorage.getItem('MyToken');
+  console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa', getToken);
+
   const LOGOUT = (e) => {
-    localStorage.removeItem('token');
+    localStorage.removeItem('MyToken');
     e.preventDefault();
     handleLogout();
-    history.push('/');
+    if (getToken) {
+      history.push('/homepage2');
+    }
   };
 
   const handleMenu2 = (e) => {
     e.preventDefault();
-    history.push('/homepage2');
+    if (getToken) {
+      history.push('/homepage2');
+    }
   };
   const handleMenu3 = (e) => {
     e.preventDefault();
-    history.push('/homepage3');
+    if (getToken) {
+      history.push('/homepage3');
+    }
   };
   return (
     <>
-      {!logged ? (
+      {!getToken ? (
         <>
           <header className="header">
             <h1 className="header-title">NotaBebe</h1>
@@ -52,13 +61,13 @@ const Header = ({ logged, handleLogout, loggedMessage }) => {
             <Dropdown.Menu>
               <Dropdown.Item>{loggedMessage}</Dropdown.Item>
               <Dropdown.Item>
-                <Link to="/homepage">MENU1</Link>
+                <Link to="" onClick={handleMenu2}>MENU1</Link>
               </Dropdown.Item>
               <Dropdown.Item>
-                <Link to="/homepage2">MENU2</Link>
+                <Link to="" onClick={handleMenu3}>MENU2</Link>
               </Dropdown.Item>
               <Dropdown.Item>
-                <Link to="/homepage3">MENU3</Link>
+                <Link to="" onClick={handleMenu2}>MENU3</Link>
               </Dropdown.Item>
               <Dropdown.Item onClick={LOGOUT}>Se déconnecter</Dropdown.Item>
             </Dropdown.Menu>
