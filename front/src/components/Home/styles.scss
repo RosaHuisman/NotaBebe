@@ -80,6 +80,11 @@
     background-color: v.$primary-color;
     color: #fff;
     font-family: v.$georama;
+  }
+
+  &__send:hover {
+    background-color: #1bc4ca;
+  }
 
   &__forgottxt {
     text-align: right;
@@ -90,7 +95,6 @@
   &__forgottxt:hover {
     color: #06C4CA;
   }
-} 
 }
 
 .welcome {

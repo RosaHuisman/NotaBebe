@@ -44,7 +44,7 @@ const authMiddleware = (store) => (next) => (action) => {
           // ici on veut stocker dans le state les infos du user
           // donc on va faire un dispatch d'action
           // on passe par la fonction dispatch du store
-          store.dispatch(saveUser(response.data));
+          store.dispatch(saveUser(myTokenDecoded));
 
           // store.dispatch(createLoginSuccessAction(data: response.data));
           // store.dispatch({ type: 'LOGIN_SUCCESS', data: response.data });

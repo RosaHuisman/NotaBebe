@@ -49,7 +49,7 @@ const App = ({
   }, [location]);
 
   useEffect(() => {
-    loadUserLogged();
+    // loadUserLogged();
     // ici on veut vérifier si l'utilisateur est déjà connecté
     // au 1e rendu du composant App
     checkIsLogged();
@@ -128,7 +128,7 @@ const App = ({
 
 App.propTypes = {
   loading: PropTypes.bool,
-  loadUserLogged: PropTypes.func.isRequired,
+  // loadUserLogged: PropTypes.func.isRequired,
   checkIsLogged: PropTypes.func.isRequired,
   logged: PropTypes.bool,
 };

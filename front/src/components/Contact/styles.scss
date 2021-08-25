@@ -4,7 +4,7 @@
   margin-top: 30px;
 }
 
-.contactbutton {
+.submitbutton {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -17,18 +17,9 @@
   box-shadow: 0 5px 9px rgba(0, 0, 0, 0.3); 
   margin-top: 30px;
 
-  // &__link {
-  //   color: white;
-  //   background-color: v.$primary-color;
-  //   text-align: center;
-  //   border-radius: 5px;
-  //   border: 1px solid #eee;
-  //   padding-top: 5px;
-  //   padding-bottom: 5px;
-  // }
 }
 
-.buttonContact {
+.buttonAction {
   display: flex;
   width: 100%;
   justify-content: center;
@@ -36,7 +27,7 @@
   background-color: v.$primary-color;
   text-align: center;
   border-radius: 5px;
-  border: 1px solid #ccc;
+  border: 1px solid #ddd;
   padding-top: 5px;
   padding-bottom: 5px;
 }

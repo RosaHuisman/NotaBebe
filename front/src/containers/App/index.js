@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { fetchUsersParents } from 'src/store/actions';
-import { fetchUserLogged } from 'src/store/actions';
+// import { fetchUserLogged } from 'src/store/actions';
 import { checkToken } from 'src/store/actions';
 
 import { findUser } from 'src/store/selectors/user';
@@ -22,9 +22,9 @@ const mapDispatchToProps = (dispatch) => ({
   checkIsLogged: () => {
     dispatch(checkToken());
   },
-  loadUserLogged: () => {
-    dispatch(fetchUserLogged());
-  },
+  // loadUserLogged: () => {
+  //   dispatch(fetchUserLogged());
+  // },
   loadUsersParents: () => {
     dispatch(fetchUsersParents());
   },

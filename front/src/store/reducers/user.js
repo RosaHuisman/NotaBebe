@@ -16,7 +16,7 @@ import {
 } from '../actions';
 
 const initialState = {
-  user: [],
+  list: [],
   isOpenInfos: false,
   isOpenPassword: false,
 
@@ -30,9 +30,11 @@ const initialState = {
   comment: '',
   commentSend: false,
   email: '',
-  token: null,
-  isError: false,
+  password: '',
   logged: false,
+  token: null,
+  roleId: null,
+  isError: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -51,9 +53,13 @@ const reducer = (state = initialState, action) => {
     //   };
     // }
     case SAVE_USER: {
+      const { email, logged, roleId } = action.myTokenDecoded;
       return {
         ...state,
-        user: action.payload,
+        email,
+        logged,
+        token,
+        roleId,
         isError: false,
         loading: false,
       };

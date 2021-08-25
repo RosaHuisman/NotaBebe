@@ -124,8 +124,9 @@ export const saveUsersParents = (users_parents) => ({
   payload: users_parents,
 });
 
-export const saveUser = () => ({
+export const saveUser = (payload) => ({
   type: SAVE_USER,
+  payload,
 });
 
 export const sendComment = () => ({

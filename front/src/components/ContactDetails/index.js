@@ -22,13 +22,11 @@ function ContactDetails() {
         <h1>Pour contacter l'équipe de conception du site:</h1>
         <p className="mail"><span><Icon name="mail" /></span>devteam@notabebe.fr</p>
       </div>
-      <div className="return">
-        <Link className="returnlink" to="/" exact="true">
-          <button type="button" className="returnlink__return">
-            Retour à l'accueil
-          </button>
-        </Link>
-      </div>
+      <Link className="submitbutton" to="/" exact="true">
+        <button type="button" className="buttonAction">
+          Retour à l'accueil
+        </button>
+      </Link>
     </div>
   );
 }
