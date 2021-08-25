@@ -12,10 +12,10 @@ const userDataMapper = {
         return result.rows;
     },
 
-    // async findParentById(id) {
-    //     const result = await client.query('SELECT * FROM "user" WHERE "role_id" = 1 AND id = $1', [id])
-    //     return result.rows[0];
-    // },
+    async findParentById(id) {
+        const result = await client.query('SELECT * FROM "user" WHERE "role_id" = 1 AND id = $1', [id])
+        return result.rows[0];
+    },
 
     async findAllStaff() {
         const result = await client.query('SELECT * FROM "user" WHERE "role_id" = 2')
@@ -58,6 +58,21 @@ const userDataMapper = {
     },
 
     async updateUser(user, id) {
+        // const keys = Object.keys(user);
+        // console.log(keys)
+        // const values = Object.values(user);
+        // console.log(values)
+
+
+        // console.log(id);
+        // for (let i = 0; i < keys.length; i++) {
+        //     console.log(keys[i]);
+        //     console.log(values[i]);
+        //     await client.query(`UPDATE "user" SET ${keys[i]} = $1, updated_at = now() WHERE id = $2 `, [values[i], id]);
+        // };
+
+        // return "la modification a bien été effectuée";
+
         const result = await client.query('UPDATE "user" SET address = $1, postcode = $2, city = $3, phone_number = $4, updated_at = now() WHERE id = $5 RETURNING *', [user.address, user.postcode, user.city, user.phone_number, id]);
         return result.rows[0];
     },

@@ -27,7 +27,7 @@ GET http://localhost:3000/profile/staff/comments
 
 
 ### DISPLAYING PARENT PROFILE - parent by id
-GET http://localhost:3000/profile/parent/1
+GET http://localhost:3000/profile/parent/8
 
 ### DISPLAYING CHILD ACCORDING TO PARENT PROFILE
 GET http://localhost:3000/profile/parent/1/child/3
@@ -96,14 +96,11 @@ Content-Type: application/json
 
 ### update user info
 
-PATCH http://localhost:3000/profile/parent/9/
+PATCH http://localhost:3000/profile/parent/8/
 Content-Type: application/json
 
 {
-    "address": "50 rue de Paris",
-    "postcode": "12345",
-    "city": "Marigny",
-    "phone_number": "0611203948"
+    "phone_number": "0123456789"
 }
 
 
@@ -160,12 +157,13 @@ Content-Type: application/json
 }
 
 ### modify
-PATCH http://localhost:3000/profile/staff/child/recap/5/
+PATCH http://localhost:3000/profile/staff/child/recap/3/
 Content-Type: application/json
 
 {
-    "mood": "reloulou",
-    "child_id": 1
+    "date": "18/05/2010",
+    "extra_info": "coucou",
+    "mood": "test !!!"
 }
 
 ### delete

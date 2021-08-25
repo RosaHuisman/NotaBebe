@@ -5,12 +5,12 @@ const recapController = {
     getAllRecaps: async (_, response) => {
         try {
             const recaps = await recapDataMapper.findAll();
-            
+
             if (recaps) {
                 response.json(recaps);
-                } else {
-                    return next();
-                };
+            } else {
+                return next();
+            };
 
         } catch (error) {
             console.log(error);
@@ -22,12 +22,12 @@ const recapController = {
         try {
             const recapId = Number(request.params.id);
             const data = await recapDataMapper.findById(recapId);
-            
+
             if (data) {
                 response.json(data);
-                } else {
-                    return next();
-                };
+            } else {
+                return next();
+            };
 
         } catch (error) {
             console.log(error);
@@ -57,7 +57,7 @@ const recapController = {
         try {
             const recapId = Number(request.params.recapId);
             const recap = await recapDataMapper.findById(recapId);
-            console.log(recap)
+            //console.log(recap)
 
             if (!recap) {
                 return next();
@@ -66,8 +66,8 @@ const recapController = {
             const newData = request.body;
             const updatedRecap = await recapDataMapper.modify({ ...newData }, recapId);
 
-            response.json({ updatedRecap }); 
-           
+            response.json({ updatedRecap });
+
 
         } catch (error) {
             console.log(error);

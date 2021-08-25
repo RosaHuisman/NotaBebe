@@ -246,7 +246,9 @@ const userController = {
         try {
 
             const userId = Number(request.params.id);
+
             const user = await userDataMapper.findById(userId);
+
 
             if (!user) {
                 return next();

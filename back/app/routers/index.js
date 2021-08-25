@@ -40,7 +40,7 @@ router.route('/profile/staff/comments')
 // get parent by id
 router.route('/profile/parent/:id')
     .get(userController.getParentById)
-//.patch(userController.updateUser) -- patch à améliorer (cf Object.keys/Object.values)
+    .patch(userController.updateUser) //! -- patch à améliorer??? (cf Object.keys/Object.values)
 
 // modify password (with parent id)
 router.route('/profile/parent/:id/password')
@@ -52,9 +52,7 @@ router.route('/profile/parent/:id/password')
 router.route('/profile/staff/:id/password')
     .patch(userController.updatePassword);
 
-
-
-
+//
 router.route('/profile/parent/:id/child/:childId')
     .get(userController.getChildFromParent);
 //patch --> modifyChild
@@ -68,12 +66,20 @@ router.route('/profile/staff/:id')
 router.route('/profile/staff/recap/:id')
     .get(recapController.getRecapById);
 
+
+// TODO get recaps by child id ?
+// router.route('/profile/staff/child/:childId/recaps')
+//     .get(recapController.getRecapsByChildId);
+
+
 // get comment by id
 router.route('/profile/staff/comments/:id')
     .get(commentController.getCommentById);
 
 
-//TODO get comment by parentId
+//TODO get comments by parent id ?
+// router.route('/profile/staff/comments/parent/:parentId')
+//     .get(commentController.getCommentsByParentId);
 
 
 
@@ -83,7 +89,6 @@ router.route('/profile/admin/manageprofile')
 
 // modifying or deleting a user
 router.route('/profile/admin/manageprofile/:id')
-    // .patch(adminController.modifyUser) - patch à améliorer (cf Object.keys/Object.values)
     .delete(adminController.deleteUser);
 
 
@@ -118,7 +123,8 @@ router.route('/profile/parent/:id/child/:childId/comments/:commentId')
 
 
 
-//? TODO get recap by child id ?
+
+
 
 
 router.route('/login')
