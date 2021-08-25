@@ -31,6 +31,15 @@ export const SAVE_USERS_PARENTS = 'SAVE_USERS_PARENTS';
 export const FETCH_USERS_PARENTS = 'FETCH_USERS_PARENTS';
 
 export const SEND_COMMENT = 'SEND_COMMENT';
+export const GET_RECAP = 'GET_RECAP';
+export const GET_RECAP_SUCCESS = 'GET_RECAP_SUCCESS';
+export const SHOW_FIELD_NAP = 'SHOW_FIELD_NAP';
+export const CHANGE_TEXT_VALUE = 'CHANGE_TEXT_VALUE';
+export const CHANGE_CHILD = 'CHANGE_CHILD';
+export const CHANGE_MOOD = 'CHANGE_MOOD';
+export const CHANGE_TIME_NAP = 'CHANGE_TIME_NAP';
+
+export const FETCH_RECAPS = 'FETCH_RECAPS';
 
 // actions login
 export const createLoginSuccessAction = (nickname) => ({ type: LOGIN_SUCCESS, nickname });
@@ -106,3 +115,39 @@ export const saveUsersParents = (users_parents) => ({
 export const sendComment = () => ({
   type: SEND_COMMENT,
 });
+
+export const createGetRecapAction = () => ({
+  type: GET_RECAP,
+});
+
+export const fetchRecaps = () => ({
+  type: FETCH_RECAPS,
+});
+
+export const showFieldNap = () => ({
+  type: SHOW_FIELD_NAP,
+})
+
+export const changeTextValue = (key, value) => ({
+  type: CHANGE_TEXT_VALUE,
+  value, 
+  key,
+})
+
+export const changeChild = (key, value) => ({
+  type: CHANGE_CHILD,
+  value, 
+  key,
+})
+
+export const changeMood = (key, value) => ({
+  type: CHANGE_MOOD,
+  value, 
+  key,
+})
+
+export const changeTimeNap = (key, value) => ({
+  type: CHANGE_TIME_NAP,
+  value, 
+  key,
+})

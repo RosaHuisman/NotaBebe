@@ -12,6 +12,11 @@ const rootReducer = combineReducers({
   user: userReducer,
   // child: childReducer,
   children: childrenReducer,
+import recapReducer from './recap';
+
+
+const rootReducer = combineReducers({
+  recap: recapReducer,
 
 });
 

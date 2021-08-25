@@ -5,6 +5,8 @@
   width: 100%;
   left: 0;
   top: 0;
+  z-index: 999;
+  
 
   padding: v.$gutter, 2;
   display: flex;
@@ -15,7 +17,11 @@
   &-title {
     display: flex;
     margin: 0 auto;
-    font-size: 1.2em;
+    font-size: 2em;
+    font-family: v.$georama;
+    color: v.$yann-color;
+    font-weight: bold;
+    font-style: normal;
   }
   &-logo {
     display: flex;

@@ -6,6 +6,14 @@ import { connect } from 'react-redux';
 import PrivateRoute from 'src/components/PrivateRoute';
 
 import PropTypes from 'prop-types';
+import React from 'react';
+import Login from 'src/containers/Login';
+import Contact from 'src/components/Contact';
+import Footer from 'src/components/Footer';
+import ContactDetails from 'src/components/ContactDetails';
+import Header from 'src/components/Header';
+import StaffProfile from 'src/components/StaffProfile';
+import CreateRecap from 'src/containers/CreateRecap';
 
 // == Import composants /components
 import Home from 'src/components/Home';
