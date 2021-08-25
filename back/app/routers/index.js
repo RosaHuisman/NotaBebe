@@ -45,8 +45,7 @@ router.route('/profile/parent/:id')
 // modify password (with parent id)
 router.route('/profile/parent/:id/password')
     .patch(userController.updatePassword);
-//? voir pour refacto pour tous les users
-
+//? voir pour refacto pour tous les users : /profile/user/:id/password ???
 
 // modify password for STAFF (with user id)
 router.route('/profile/staff/:id/password')
@@ -55,7 +54,7 @@ router.route('/profile/staff/:id/password')
 //
 router.route('/profile/parent/:id/child/:childId')
     .get(userController.getChildFromParent);
-//patch --> modifyChild
+//TODO patch --> modifyChild
 
 // get staff by id
 router.route('/profile/staff/:id')
@@ -67,9 +66,10 @@ router.route('/profile/staff/recap/:id')
     .get(recapController.getRecapById);
 
 
-// TODO get recaps by child id ?
+// TODO get recaps by child id ? normalement : OK
 router.route('/profile/staff/child/:childId/recaps')
     .get(recapController.getRecapsByChildId);
+//! check si on peut afficher plusieurs récaps (pour l'instant en bdd on n'en a qu'un par enfant)
 
 
 // get comment by id
@@ -77,10 +77,13 @@ router.route('/profile/staff/comments/:id')
     .get(commentController.getCommentById);
 
 
-//TODO get comments by parent id ?
-// router.route('/profile/staff/comments/parent/:parentId')
-//     .get(commentController.getCommentsByParentId);
+//TODO get comments by child id ?
+router.route('/profile/staff/comments/child/:childId')
+    .get(commentController.getCommentsByChildId);
+//! check si on peut afficher plusieurs commentaires (pour l'instant en bdd on n'en a qu'un par enfant)
 
+
+//? je vois mal comment get comments by parent id parce qu'on n'a pas le champ parent_id relié au commentaire. Il faudrait alors faire une vue
 
 
 // adding a user
@@ -95,9 +98,9 @@ router.route('/profile/admin/manageprofile/:id')
 //TODO router.route('/profile/admin/parent/:id/managechildren')
 //TODO     .post(adminController.addChild);
 
-// router.route('/profile/admin/parent/:id/managechildren/:childid')
-//      .patch(userController.modifyChild)
-//     .delete(adminController.deleteChild);
+//TODO router.route('/profile/admin/parent/:id/managechildren/:childId')
+//TODO      .patch(userController.modifyChild)
+//TODO     .delete(adminController.deleteChild);
 
 
 
@@ -105,7 +108,7 @@ router.route('/profile/staff/child/recap')
     .post(recapController.addRecap);
 
 router.route('/profile/staff/child/recap/:recapId/')
-    .patch(recapController.modifyRecap)
+    .patch(recapController.modifyRecap) //! patch en cours
     .delete(recapController.deleteRecap);
 
 
@@ -117,11 +120,8 @@ router.route('/profile/parent/:id/child/:childId/comments')
 // modifying/deleting a comment (for parents)
 router.route('/profile/parent/:id/child/:childId/comments/:commentId')
     //! ajouter les request.params dans les méthodes
-    //.patch(commentController.modifyComment) - améliorer le patch (cf au-dessus)
+    //.patch(commentController.modifyComment) //! améliorer le patch (cf au-dessus)
     .delete(commentController.deleteComment);
-
-
-
 
 
 

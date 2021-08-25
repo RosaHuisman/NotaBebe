@@ -9,9 +9,9 @@ const commentController = {
 
             if (comments) {
                 response.json(comments);
-                } else {
-                    return next();
-                };
+            } else {
+                return next();
+            };
         } catch {
             console.log(error);
             response.json({ error: error.message });
@@ -24,7 +24,7 @@ const commentController = {
             const comment = await commentDataMapper.findById(commentId);
 
             if (commnent) {
-            response.json(comment);
+                response.json(comment);
             } else {
                 return next();
             };
@@ -35,8 +35,29 @@ const commentController = {
         }
     },
 
+    getCommentsByChildId: async (request, response, next) => {
+        try {
+            const childId = Number(request.params.childId);
+            const data = await commentDataMapper.findByChildId(childId);
+            console.log(data);
+
+            if (data) {
+                response.json(data);
+            } else {
+                return next();
+            }
+
+        } catch (error) {
+            console.log(error);
+            response.json({ error: error.message });
+        }
+    },
+
     addComment: async (request, response, next) => {
         try {
+            const parentId = request.params.id;
+            const childId = request.params.childId;
+            //TODO ajouter les request params dans la méthode
 
             const newComment = await commentDataMapper.add(request.body);
 

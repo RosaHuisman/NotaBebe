@@ -45,6 +45,9 @@ GET http://localhost:3000/profile/staff/child/1/recaps
 GET http://localhost:3000/profile/staff/comments/3
 
 
+### DISPLAYING COMMENTS - by child id
+GET http://localhost:3000/profile/staff/comments/child/2
+
 
 
 ## USER

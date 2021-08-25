@@ -1,4 +1,5 @@
 const client = require('../client');
+const { deleteChild } = require('../controllers/admin');
 
 const adminDataMapper = {
 
@@ -26,6 +27,11 @@ const adminDataMapper = {
 
         const result = await client.query('DELETE FROM "user" WHERE id = $1', [id])
         return result;
+    },
+
+    async deleteChild(id) {
+        // TODO : récupérer le parent id... partir sur la vue sql ????
+        const result = await client.query('DELETE FROM "child" WHERE id = $1', [id]);
     }
 
 

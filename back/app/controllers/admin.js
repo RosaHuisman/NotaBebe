@@ -65,6 +65,25 @@ const adminController = {
         }
     },
 
+    deleteChild: async (request, response, next) => {
+        try {
+
+            const parentId = Number(request.params.id);
+            const childId = Number(request.params.childId);
+
+            if (isNaN(childId)) {
+                return next();
+            }
+
+            await adminDataMapper.deleteChild(childId);
+
+            response.json('Enfant bien supprimé de la plateforme');
+        } catch {
+            console.error(error);
+            response.json({ error: error.message });
+        }
+    }
+
 }
 
 module.exports = adminController;
