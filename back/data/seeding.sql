@@ -2,10 +2,10 @@ BEGIN;
 
 INSERT INTO "user" ("first_name", "last_name", "address", "postcode", "city", "email", "password", "phone_number", "role_id") VALUES
 ('Jeanne', 'Bonnette', '3 rue des Pommes', '48000', 'Trifouilly-les-Oies', 'jeannebonnette@gmail.com', 'ABC123!?!', '0320831920', 1),
-('Gaspard', 'Fait', '616 place de la Madeleine', '59000', 'Lille', 'gaspardfait@hotmail.fr', 'g4sp4rd!', '0459102934', 1),
+('Gaspard', 'Fait', '616 place de la Madeleine', '59000', 'Lille', 'gaspardfait@hotmail.fr', '$2b$10$v4iWb6NEMyJ4/OiqxhX6qem8FNQ8zY8cD1/dKg50N1K7rayzcPhai', '0459102934', 1),
 ('Thierry', 'Chmonfils', '852 rue Bonnet', '44600', 'Saint-Nazaire', 'thierrychemonfils@caramail.fr', '10!Thierry', '0691238561', 1),
 ('Barbara', 'Dégout', '274 rue Adolphe Wurtz', '80000', 'Amiens', 'barbaradegout@gmail.com', 'JeSuisUnRat80', '0549332190', 2),
-('Mauricette', 'Quatre', '150 boulevard des prairies', '13000', 'Marseille', 'mauricettequatre@laposte.net', 'mauricette', '0670102943', 2),
+('Mauricette', 'Quatre', '150 boulevard des prairies', '13000', 'Marseille', 'mauricettequatre@laposte.net', '$2b$10$pKjs4HGP0n95LlNbOT5ZRucwPL.8/vr2i6SIqz5DF5ls2laSu.tIe', '0670102943', 2),
 ('Nico', 'Assez', '89 rue de la mer', '06800', 'Cagnes-sur-Mer', 'nicoassezadmin@gmail.com', 'athenaassez', '0538592058', 3);
 
 
