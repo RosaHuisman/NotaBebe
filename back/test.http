@@ -52,7 +52,18 @@ Content-Type: application/json
 
 {
     "email": "mauricettequatre@laposte.net",
-    "password": "mauricette"
+    "password": "testouille"
+}
+
+
+###try login with password not hashed
+
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "email": "barbaradegout@gmail.com",
+    "password": "JeSuisUnRat80"
 }
 
 ### try login with other user - hashed password to try with bcrypt compareSync 

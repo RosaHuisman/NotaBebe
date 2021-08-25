@@ -156,6 +156,7 @@ const userController = {
 
             // if the password is correct 
             if (pwResult) {
+
                 if (user) {
                     const jwtContent = { userId: user.id, email: user.email, roleId: user.role_id };
                     const jwtOptions = {
@@ -171,6 +172,7 @@ const userController = {
                 } else {
                     response.status(401).json(`401 unauthorized`);
                 }
+
             } else {
                 response.json({ error: "mot de passe incorrect" });
             };
