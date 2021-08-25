@@ -52,7 +52,7 @@ Content-Type: application/json
 
 {
     "email": "mauricettequatre@laposte.net",
-    "password": "mauricette"
+    "password": "testouille"
 }
 
 ### try login with other user - hashed password to try with bcrypt compareSync 
@@ -75,12 +75,22 @@ Content-Type: application/json
 }
 
 
-### update user password
+### update parent password
 PATCH http://localhost:3000/profile/parent/2/password
 Content-Type: application/json
 
 {
     "password": "g4sp4rd!"
+}
+
+
+
+### update staff password
+PATCH http://localhost:3000/profile/staff/5/password
+Content-Type: application/json
+
+{
+    "password": "testouille"
 }
 
 

@@ -40,22 +40,29 @@ router.route('/profile/staff/comments')
 // get parent by id
 router.route('/profile/parent/:id')
     .get(userController.getParentById)
-    //.patch(userController.updateUser) -- patch à améliorer (cf Object.keys/Object.values)
+//.patch(userController.updateUser) -- patch à améliorer (cf Object.keys/Object.values)
 
 // modify password (with parent id)
 router.route('/profile/parent/:id/password')
     .patch(userController.updatePassword);
-    //? voir pour refacto pour tous les users
+//? voir pour refacto pour tous les users
+
+
+// modify password for STAFF (with user id)
+router.route('/profile/staff/:id/password')
+    .patch(userController.updatePassword);
+
+
 
 
 router.route('/profile/parent/:id/child/:childId')
     .get(userController.getChildFromParent);
-    //patch --> modifyChild
+//patch --> modifyChild
 
 // get staff by id
 router.route('/profile/staff/:id')
     .get(userController.getStaffById);
-    // patch -> modifyStaff
+// patch -> modifyStaff
 
 // get recap by id
 router.route('/profile/staff/recap/:id')
@@ -67,7 +74,7 @@ router.route('/profile/staff/comments/:id')
 
 
 //TODO get comment by parentId
- 
+
 
 
 // adding a user
@@ -101,7 +108,7 @@ router.route('/profile/staff/child/recap/:recapId/')
 router.route('/profile/parent/:id/child/:childId/comments')
     //! TODO get? + ajouter les request.params dans les méthodes
     .post(commentController.addComment);
-    
+
 // modifying/deleting a comment (for parents)
 router.route('/profile/parent/:id/child/:childId/comments/:commentId')
     //! ajouter les request.params dans les méthodes

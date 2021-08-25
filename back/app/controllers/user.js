@@ -157,7 +157,7 @@ const userController = {
             // if the password is correct 
             if (pwResult) {
                 if (user) {
-                    const jwtContent = { userId: user.id };
+                    const jwtContent = { userId: user.id, roleId: user.role_id };
                     const jwtOptions = {
                         algorithm: 'HS256',
                         expiresIn: '10s'
@@ -165,6 +165,7 @@ const userController = {
                     response.json({
                         logged: true,
                         email: user.email,
+                        roleId: user.role_id,
                         token: jsonwebtoken.sign(jwtContent, jwtSecret, jwtOptions),
                     });
                 } else {
