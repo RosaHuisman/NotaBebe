@@ -8,7 +8,6 @@ import PropTypes from 'prop-types';
 import PrivateRoute from 'src/components/PrivateRoute';
 
 // == Import composants /components
-import Home from 'src/components/Home';
 import Footer from 'src/components/Footer';
 import ContactDetails from 'src/components/ContactDetails';
 import ForgotPassword from 'src/components/ForgotPassword';
@@ -18,6 +17,7 @@ import Error from 'src/components/Error';
 // == Import composants /containers
 import Login from 'src/containers/Login';
 import Header from 'src/containers/Header';
+import Home from 'src/containers/Home';
 // STAFF
 // import StaffProfile from 'src/containers/StaffProfile';
 // import ReadComment from 'src/containers/ReadComment';
@@ -60,70 +60,69 @@ const App = ({
   // }
 
   return (
-    // <>
-    //   <Switch>
-
-    //     {/* // à test ChildProfile */}
-
-    //     <Route exact path="/" component={Home} />
-    //     <Route exact path="/login" component={Login} />
-    //     <Route exact path="/forgot" component={ForgotPassword} />
-    //     <Route exact path="/contact" component={ContactDetails} />
-    //     {/* <Route path="*" component={Error} /> */}
-
-    //     {/* Route Admin */}
-    //     <PrivateRoute exact path="/admin" component={AdminMobileHome} />
-
-    //     {/* Route Staff */}
-    //     {/* <PrivateRoute exact path="/staff/:id/" component={StaffProfile} />
-    //     <PrivateRoute exact path="/staff/:id/comments" component={ReadComment} /> */}
-    //     <PrivateRoute exact path="/staff/:id/createrecap" component={CreateRecap} />
-
-    //     {/* Route Parent Children */}
-    //     <PrivateRoute exact path="/profile/parent/:id" component={ParentProfile} />
-    //     <PrivateRoute exact path="/profile/parent/:id/child/:id" component={ChildProfile} />
-    //     <PrivateRoute exact path="/profile/parent/:id/child/:child_id" component={ChildProfile} />
-    //     <PrivateRoute exact path="/profile/parent/:id/child/:id/recap" component={ChildRecap} />
-
-    //     {/* Route de test blabla */}
-    //     <PrivateRoute exact path="/homepage1" component={HomePage1} />
-    //     <PrivateRoute exact path="/homepage2" component={HomePage2} />
-    //     <PrivateRoute exact path="/homepage3" component={HomePage3} />
-    //   </Switch>
-    //   <Footer />
-    // </>
     <>
-    <Switch>
+      <Header />
+      <Switch>
+        {/* // à test ChildProfile */}
+        <Route exact path="/" component={Home} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/forgot" component={ForgotPassword} />
+        <Route exact path="/contact" component={ContactDetails} />
+        {/* <Route path="*" component={Error} /> */}
 
-      {/* // à test ChildProfile */}
+        {/* Route Admin */}
+        <PrivateRoute exact path="/admin" component={AdminMobileHome} />
 
-      {/* <Route exact path="/" component={Home} /> */}
-      <Route exact path="/" component={Login} />
-      <Route exact path="/forgot" component={ForgotPassword} />
-      <Route exact path="/contact" component={ContactDetails} />
-      {/* <Route path="*" component={Error} /> */}
+        {/* Route Staff */}
+        {/* <PrivateRoute exact path="/staff/:id/" component={StaffProfile} />
+        <PrivateRoute exact path="/staff/:id/comments" component={ReadComment} /> */}
+        <PrivateRoute exact path="/staff/:id/createrecap" component={CreateRecap} />
 
-      {/* Route Admin */}
-      <PrivateRoute exact path="/admin" component={AdminMobileHome} />
+        {/* Route Parent Children */}
+        <PrivateRoute exact path="/profile/parent/:id" component={ParentProfile} />
+        <PrivateRoute exact path="/profile/parent/:id/child/:id" component={ChildProfile} />
+        <PrivateRoute exact path="/profile/parent/:id/child/:child_id" component={ChildProfile} />
+        <PrivateRoute exact path="/profile/parent/:id/child/:id/recap" component={ChildRecap} />
 
-      {/* Route Staff */}
-      {/* <PrivateRoute exact path="/staff/:id/" component={StaffProfile} />
-      <PrivateRoute exact path="/staff/:id/comments" component={ReadComment} /> */}
-      <Route exact path="/staff/:id/createrecap" component={CreateRecap} />
+        {/* Route de test blabla */}
+        <PrivateRoute exact path="/homepage1" component={HomePage1} />
+        <PrivateRoute exact path="/homepage2" component={HomePage2} />
+        <PrivateRoute exact path="/homepage3" component={HomePage3} />
+      </Switch>
+      <Footer />
+    </>
+  //   <>
+  //   <Switch>
 
-      {/* Route Parent Children */}
-      <Route exact path="/profile/parent/:id" component={ParentProfile} />
-      <Route exact path="/profile/parent/:id/child/:id" component={ChildProfile} />
-      <Route exact path="/profile/parent/:id/child/:child_id" component={ChildProfile} />
-      <Route exact path="/profile/parent/:id/child/:id/recap" component={ChildRecap} />
+  //     {/* // à test ChildProfile */}
 
-      {/* Route de test blabla */}
-      <Route exact path="/homepage1" component={HomePage1} />
-      <Route exact path="/homepage2" component={HomePage2} />
-      <Route exact path="/homepage3" component={HomePage3} />
-    </Switch>
-    <Footer />
-  </>
+  //     {/* <Route exact path="/" component={Home} /> */}
+  //     <Route exact path="/" component={Home} />
+  //     <Route exact path="/forgot" component={ForgotPassword} />
+  //     <Route exact path="/contact" component={ContactDetails} />
+  //     {/* <Route path="*" component={Error} /> */}
+
+  //     {/* Route Admin */}
+  //     {/* <PrivateRoute exact path="/admin" component={AdminMobileHome} /> */}
+
+  //     {/* Route Staff */}
+  //     {/* <PrivateRoute exact path="/staff/:id/" component={StaffProfile} />
+  //     <PrivateRoute exact path="/staff/:id/comments" component={ReadComment} /> */}
+  //     <Route exact path="/staff/:id/createrecap" component={CreateRecap} />
+
+  //     {/* Route Parent Children */}
+  //     <Route exact path="/profile/parent/:id" component={ParentProfile} />
+  //     <Route exact path="/profile/parent/:id/child/:id" component={ChildProfile} />
+  //     <Route exact path="/profile/parent/:id/child/:child_id" component={ChildProfile} />
+  //     <Route exact path="/profile/parent/:id/child/:id/recap" component={ChildRecap} />
+
+  //     {/* Route de test blabla */}
+  //     <Route exact path="/homepage1" component={HomePage1} />
+  //     <Route exact path="/homepage2" component={HomePage2} />
+  //     <Route exact path="/homepage3" component={HomePage3} />
+  //   </Switch>
+  //   <Footer />
+  // </>
   );
 };
 

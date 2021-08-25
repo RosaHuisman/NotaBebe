@@ -7,23 +7,24 @@ import api from './utils/api';
 
 const userLogged = (store) => (next) => (action) => {
   switch (action.type) {
-    case FETCH_USER_LOGGED: {
-      const fetchUserLogged = async () => {
-        try {
-          const response = await api.post('/login');
-          // à partir de là on a notre réponse et on va pouvoir stocker les données
-          // sinon on aura une erreur et on passera dans le "catch"
-          // on va donc créer une action qui sera traiter dans le reducer
-          // pour modifier la valeur de recipes.list
-          store.dispatch(saveUserLogged(response.data));
-        }
-        catch (error) {
-          console.log(error);
-        }
-      };
-      fetchUserLogged();
-      break;
-    }
+    // case FETCH_USER_LOGGED: {
+    //   const fetchUserLogged = async () => {
+    //     try {
+    //       const response = await api.post('/profile/');
+    //       // à partir de là on a notre réponse et on va pouvoir stocker les données
+    //       // sinon on aura une erreur et on passera dans le "catch"
+    //       // on va donc créer une action qui sera traiter dans le reducer
+    //       // pour modifier la valeur de recipes.list
+    //       store.dispatch(saveUserLogged(response.data));
+    //       console.log('USERLOGGED DATA', response.data);
+    //     }
+    //     catch (error) {
+    //       console.log(error);
+    //     }
+    //   };
+    //   fetchUserLogged();
+    //   break;
+    // }
     case FETCH_USER_DATA: {
       // plus la peine d'intégrer le token, il l'est déjà depuis le login ou le checkToken
 

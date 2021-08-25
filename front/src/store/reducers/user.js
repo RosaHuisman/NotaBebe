@@ -8,14 +8,15 @@ import {
   PASSWORD_ERROR,
   SAVE_INFOS_USER,
   SAVE_PASSWORD_USER,
-  SAVE_USERS_PARENTS,
+  // SAVE_USERS_PARENTS,
+  SAVE_USER,
   SEND_COMMENT,
   CHANGE_TEXT_VALUE,
 
 } from '../actions';
 
 const initialState = {
-  list: [],
+  user: [],
   isOpenInfos: false,
   isOpenPassword: false,
 
@@ -28,24 +29,35 @@ const initialState = {
   loading: true,
   comment: '',
   commentSend: false,
+  email: '',
+  token: null,
+  isError: false,
+  logged: false,
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case SAVE_USERS_PARENTS: {
-      // console.log('je suis dans le cas SAVE_USERS_PARENTS')
+    // case SAVE_USERS_PARENTS: {
+    //   // console.log('je suis dans le cas SAVE_USERS_PARENTS')
 
-      // console.log('dans le reducer', action.users_parents)
-      // const { list } = action.payload;
-      // console.log('action payload dans le reducer',action.payload)
+    //   // console.log('dans le reducer', action.users_parents)
+    //   // const { list } = action.payload;
+    //   // console.log('action payload dans le reducer',action.payload)
+    //   return {
+    //     ...state,
+    //     list: action.payload,
+    //     // list: action.users_parents,
+    //     loading: false,
+    //   };
+    // }
+    case SAVE_USER: {
       return {
         ...state,
-        list: action.payload,
-        // list: action.users_parents,
+        user: action.payload,
+        isError: false,
         loading: false,
       };
     }
-
     case OPEN_CHANGE_INFOS:
       return {
         ...state,

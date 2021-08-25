@@ -23,20 +23,6 @@ const reducer = (oldState = initialState, action = {}) => {
         ...oldState,
         [action.key]: action.value,
       };
-    case LOGIN: {
-      const { pseudo, logged, token } = action.payload;
-      return {
-        ...oldState,
-        pseudo,
-        logged,
-        token,
-        email: '',
-        password: '',
-        isError: false,
-        loading: false,
-
-      };
-    }
     case SAVE_USER_LOGIN: {
       const { pseudo, logged, token } = action.payload;
       return {

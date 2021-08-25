@@ -1,4 +1,3 @@
-
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -16,7 +15,7 @@ const PrivateRoute = ({ loading, component: Component, ...rest }) => {
       ) : (
         <Redirect
           to={{
-            pathname: '/login',
+            pathname: '/admin',
             state: { from: props.location },
           }}
         />

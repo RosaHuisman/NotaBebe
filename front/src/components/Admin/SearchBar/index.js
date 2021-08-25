@@ -30,8 +30,12 @@ const SearchBar = ({ searchValue, onApiChange }) => (
 );
 
 SearchBar.propTypes = {
-  searchValue: PropTypes.string.isRequired,
+  // searchValue: PropTypes.string.isRequired,
+  searchValue: PropTypes.string,
   onApiChange: PropTypes.func.isRequired,
 };
 
+SearchBar.defaultProps = {
+  searchValue: '',
+};
 export default SearchBar;

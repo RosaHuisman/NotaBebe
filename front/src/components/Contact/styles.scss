@@ -4,7 +4,7 @@
   margin-top: 30px;
 }
 
-.contact-button {
+.contactbutton {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -14,25 +14,29 @@
   width: 300px;
   border-radius: 10px;
   border: 1px solid #eee;
-  background-color: white;
   box-shadow: 0 5px 9px rgba(0, 0, 0, 0.3); 
   margin-top: 30px;
+
+  // &__link {
+  //   color: white;
+  //   background-color: v.$primary-color;
+  //   text-align: center;
+  //   border-radius: 5px;
+  //   border: 1px solid #eee;
+  //   padding-top: 5px;
+  //   padding-bottom: 5px;
+  // }
 }
 
-.contact-link {
+.buttonContact {
+  display: flex;
+  width: 100%;
+  justify-content: center;
   color: white;
   background-color: v.$primary-color;
   text-align: center;
   border-radius: 5px;
-  border: 1px solid #eee;
+  border: 1px solid #ccc;
   padding-top: 5px;
   padding-bottom: 5px;
-}
-
-button {
-  font-family: v.$georama;
-  color: white;
-  font-weight: bold;
-  background: none;
-  border: none;
 }

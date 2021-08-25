@@ -5,13 +5,13 @@ import './styles.scss';
 
 function Contact() {
   return (
-    <div className="contact-button">
+    <div className="contactbutton">
       <Link
-        className="contact-link"
+        className="contactbutton__link"
         exact="true"
         to="/contact"
       >
-        <button type="button" className="button">Contactez-nous</button>
+        <button type="button" className="buttonContact">Contactez-nous</button>
       </Link>
     </div>
   );

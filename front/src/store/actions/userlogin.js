@@ -25,11 +25,6 @@ export const createLoginErrorAction = () => ({
   type: LOGIN_ERROR,
 });
 
-export const saveUserLogin = (payload) => ({
-  type: SAVE_USER_LOGIN,
-  payload,
-});
-
 export const fetchUserData = () => ({
   type: FETCH_USER_DATA,
 });

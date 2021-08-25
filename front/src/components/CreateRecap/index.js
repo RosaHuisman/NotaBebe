@@ -125,7 +125,7 @@ function CreateRecap({
                 cols="30"
               />
 
-              <button type="button" onClick={handleClick}>Annuler</button>
+              <button type="buttons" onClick={handleClick}>Annuler</button>
 
             </div>
           </>

@@ -17,7 +17,7 @@ const Header = ({ logged, handleLogout, loggedMessage }) => {
     e.preventDefault();
     // handleLogout();
     if (getToken) {
-      history.push('/homepage2');
+      history.push('/');
     }
   };
 

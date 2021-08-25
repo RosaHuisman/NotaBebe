@@ -26,6 +26,7 @@ export const SAVE_INFOS_USER = 'SAVE_INFOS_USER';
 export const SAVE_PASSWORD_USER = 'SAVE_PASSWORD_USER';
 export const CHANGE_FIELD_VALUE = 'CHANGE_FIELD_VALUE';
 export const CHANGE_TEXT_VALUE = 'CHANGE_TEXT_VALUE';
+export const SAVE_USER = 'SAVE_USER';
 
 export const SAVE_USERS_PARENTS = 'SAVE_USERS_PARENTS';
 export const FETCH_USERS_PARENTS = 'FETCH_USERS_PARENTS';
@@ -106,9 +107,13 @@ export const fetchUsersParents = () => ({
   type: FETCH_USERS_PARENTS,
 });
 
-export const saveUsersParents = (users_parents) => ({
-  type: SAVE_USERS_PARENTS,
-  payload: users_parents,
+// export const saveUsersParents = (users_parents) => ({
+//   type: SAVE_USERS_PARENTS,
+//   payload: users_parents,
+// });
+
+export const saveUser = () => ({
+  type: SAVE_USER,
 });
 
 export const sendComment = () => ({
