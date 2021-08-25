@@ -68,8 +68,8 @@ router.route('/profile/staff/recap/:id')
 
 
 // TODO get recaps by child id ?
-// router.route('/profile/staff/child/:childId/recaps')
-//     .get(recapController.getRecapsByChildId);
+router.route('/profile/staff/child/:childId/recaps')
+    .get(recapController.getRecapsByChildId);
 
 
 // get comment by id

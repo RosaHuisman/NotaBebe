@@ -13,6 +13,12 @@ const recapDataMapper = {
         return result.rows[0];
     },
 
+    async findByChildId(id) {
+        const result = await client.query('SELECT * FROM "recap" WHERE child_id = $1', [id]);
+        console.log(result)
+        return result.rows[0];
+    },
+
     async add(data) {
         const result = await client.query('INSERT INTO "recap" (date, extra_info, mood, child_id) VALUES ($1, $2, $3, $4) RETURNING *', [data.date, data.extra_info, data.mood, data.child_id]);
         return result.rows[0];
@@ -20,26 +26,31 @@ const recapDataMapper = {
 
     async modify(recap, id) {
 
+        //console.log("id", id)
         //! à modifier ??? 
 
         let query = `UPDATE "recap" SET `;
         const values = [];
 
         const keys = Object.keys(recap);
-        //console.log(keys)
+        console.log(keys);
         // const values = Object.values(recap);
 
         for (let i = 0; i < keys.length; i++) {
             query += `"${keys[i]}" = $${i + 1}, `;
             values.push(recap[keys[i]]);
-            //console.log(values)
+            console.log(values);
         }
 
-        query += `udpated_at = now() WHERE id = $${keys.length + 1} RETURNING *;`;
+        query += `updated_at = now() WHERE id = $${id} RETURNING *;`;
         //console.log(query);
 
-        values.push(recap[id]);
-        console.log(values)
+        //values.push(recap[id]);
+        //console.log(values)
+
+        const result = await client.query(query, values);
+
+        console.log(result);
 
 
         // console.log(id);

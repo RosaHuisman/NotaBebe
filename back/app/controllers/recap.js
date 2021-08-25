@@ -2,7 +2,7 @@ const recapDataMapper = require('../dataMappers/recap');
 
 const recapController = {
 
-    getAllRecaps: async (_, response) => {
+    getAllRecaps: async (_, response, next) => {
         try {
             const recaps = await recapDataMapper.findAll();
 
@@ -18,7 +18,7 @@ const recapController = {
         }
     },
 
-    getRecapById: async (request, response) => {
+    getRecapById: async (request, response, next) => {
         try {
             const recapId = Number(request.params.id);
             const data = await recapDataMapper.findById(recapId);
@@ -28,6 +28,24 @@ const recapController = {
             } else {
                 return next();
             };
+
+        } catch (error) {
+            console.log(error);
+            response.json({ error: error.message });
+        }
+    },
+
+    getRecapsByChildId: async (request, response, next) => {
+        try {
+            const childId = Number(request.params.childId);
+            const data = await recapDataMapper.findByChildId(childId);
+            console.log(data);
+
+            if (data) {
+                response.json(data);
+            } else {
+                return next();
+            }
 
         } catch (error) {
             console.log(error);

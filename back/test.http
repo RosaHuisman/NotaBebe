@@ -38,6 +38,9 @@ GET http://localhost:3000/profile/staff/5
 ### DISPLAYING RECAP - by id
 GET http://localhost:3000/profile/staff/recap/1
 
+### DISPLAYING RECAPS - by child id
+GET http://localhost:3000/profile/staff/child/1/recaps
+
 ### DISPLAYING COMMENT - by id
 GET http://localhost:3000/profile/staff/comments/3
 
