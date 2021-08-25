@@ -161,7 +161,7 @@ const userController = {
                     const jwtContent = { userId: user.id, email: user.email, roleId: user.role_id };
                     const jwtOptions = {
                         algorithm: 'HS256',
-                        expiresIn: '10s'
+                        expiresIn: '3h'
                     };
                     response.json({
                         logged: true,
