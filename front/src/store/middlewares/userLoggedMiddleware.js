@@ -1,3 +1,4 @@
+import axios from 'axios';
 import {
   FETCH_USER_LOGGED,
   saveUserLogged,
@@ -10,7 +11,9 @@ const userLogged = (store) => (next) => (action) => {
     case FETCH_USER_LOGGED: {
       const fetchUserLogged = async () => {
         try {
-          const response = await api.get('/recipes');
+          // const response = await api.get('/recipes');
+          const response = await axios.get('http://localhost:3001/login');
+
           // à partir de là on a notre réponse et on va pouvoir stocker les données
           // sinon on aura une erreur et on passera dans le "catch"
           // on va donc créer une action qui sera traiter dans le reducer
