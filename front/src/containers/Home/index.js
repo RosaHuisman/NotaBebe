@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Home from 'src/components/Home';
-import { changeValueLogin, login } from 'src/store/actions/userlogin';
+import { changeValueLogin, login } from 'src/store/actions';
 
 // transforme le state en props
 const mapStateToProps = (state) => ({

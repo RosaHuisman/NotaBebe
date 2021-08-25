@@ -13,6 +13,7 @@ export const LOGIN_ERROR = 'LOGIN_ERROR';
 export const CHECK_TOKEN = 'CHECK_TOKEN';
 export const CHANGE_VALUE_LOGIN = 'CHANGE_VALUE_LOGIN';
 export const SET_CURRENT_USER = 'SET_CURRENT_USER';
+export const LOGIN = 'LOGIN';
 
 // actions user
 export const OPEN_CHANGE_INFOS = 'OPEN_CHANGE_INFOS';
@@ -48,6 +49,10 @@ export const changeValueLogin = (value, key) => ({
   type: CHANGE_VALUE_LOGIN,
   key,
   value,
+});
+
+export const login = () => ({
+  type: LOGIN,
 });
 
 export const setCurrentUser = (user) => ({
