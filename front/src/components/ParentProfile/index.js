@@ -91,7 +91,7 @@ const ParentProfile = ({
           user={user}
         />
       </div>
-
+      <div className="test">id de mon user: {user.id}</div>
     </>
   );
 };

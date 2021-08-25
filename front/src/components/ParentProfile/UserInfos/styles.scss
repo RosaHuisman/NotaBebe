@@ -37,15 +37,16 @@
       }
     &__result {
         padding-left: v.$gutter/2;
+        text-overflow: ellipsis;
         word-wrap: break-word; 
-        
+             
        
 
       }
     }
     &__button {
       display: block;
-      margin: v.$gutter,4 auto;
+      margin: v.$gutter/4 auto;
       padding: v.$gutter/3;
       background-color: v.$secondary-color;
       border: none; 

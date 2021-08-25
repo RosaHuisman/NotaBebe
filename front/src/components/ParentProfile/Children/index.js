@@ -53,6 +53,17 @@ const Children = ({
         })
         };
           
+  children,
+  user,
+  child,
+
+}) => {
+
+  //console.log('mon parent', user)
+
+  return (
+  <div className="children">
+    <h3 className="children__title"> Mes enfants</h3>
 
           {/* {user[1] ? (
               <Link
@@ -83,6 +94,14 @@ const Children = ({
  
 
 };
+            </div>
+          </Link>
+        ))} 
+      </div>
+    )} */}
+  </div>
+
+  )};
 
 Children.propTypes = {
   // children: PropTypes.arrayOf(

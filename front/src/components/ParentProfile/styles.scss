@@ -2,24 +2,22 @@
 
 .parentprofile {
   
-  width: 100%;
-  display: flex;
-  flex-direction: column;
+  // width: 100%;
+  // display: flex;
+  // flex-direction: column;
 
-   &__button {
-     font-size: .8em;
-     display: block;
-     margin: v.$gutter/4 auto;
-     padding: v.$gutter/3;
-     background-color: v.$violet-color;
-     border: none;
-     color: white;
-     border-radius: 5px;
+    &__button {
+      font-size: 1em;
+      display: block;
+      margin: v.$gutter/2 auto;
+      padding: v.$gutter/2;
+      background-color: v.$violet-color;
+      border: none;
+      color: white;
+      border-radius: 5px;
      
      &:hover {
-       background-color: v.$bg-color;
+        background-color: v.$bg-color;
      }
-   }
-
-
+    }
 }
