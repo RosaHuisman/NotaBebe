@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Login from 'src/components/Login';
-import { isUserLogged } from 'src/store/selectors';
+import { isUserLogged } from 'src/store/selectors/loggedPseudo';
 
 const mapStateToProps = (state) => ({
   emailValue: state.login.email,

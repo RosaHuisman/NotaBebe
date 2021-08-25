@@ -6,7 +6,6 @@ import {
 import { findChild } from 'src/store/selectors/children';
 import { findUser } from 'src/store/selectors/user';
 
-
 const mapStateToProps = (state, ownProps) => ({
   user: findUser(state.user.list, ownProps.match.params.id),
   isOpenInfos: state.user.isOpenInfos,

@@ -6,9 +6,9 @@ import PropTypes from 'prop-types';
 import './styles.scss';
 
 // == Composant
-const UserInfos = ({ user }) => {
-  //console.log(user);
-  return (
+const UserInfos = ({ user }) =>
+  // console.log(user);
+  (
     <div className="userinfos">
       <div className="userinfos__infos">
         <table>
@@ -42,8 +42,6 @@ const UserInfos = ({ user }) => {
       </div>
     </div>
   );
-};
-
 UserInfos.propTypes = {
   user: PropTypes.shape({
     id: PropTypes.number.isRequired,

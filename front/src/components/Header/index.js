@@ -15,7 +15,7 @@ const Header = ({ logged, handleLogout, loggedMessage }) => {
   const LOGOUT = (e) => {
     localStorage.removeItem('MyToken');
     e.preventDefault();
-    handleLogout();
+    // handleLogout();
     if (getToken) {
       history.push('/homepage2');
     }

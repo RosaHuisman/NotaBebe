@@ -34,7 +34,6 @@ export const SEND_COMMENT = 'SEND_COMMENT';
 export const GET_RECAP = 'GET_RECAP';
 export const GET_RECAP_SUCCESS = 'GET_RECAP_SUCCESS';
 export const SHOW_FIELD_NAP = 'SHOW_FIELD_NAP';
-export const CHANGE_TEXT_VALUE = 'CHANGE_TEXT_VALUE';
 export const CHANGE_CHILD = 'CHANGE_CHILD';
 export const CHANGE_MOOD = 'CHANGE_MOOD';
 export const CHANGE_TIME_NAP = 'CHANGE_TIME_NAP';
@@ -66,10 +65,10 @@ export const changeFieldValue = (key, value) => ({
   key,
 });
 
-export const changeTextValue = (value) => ({
-  type: CHANGE_TEXT_VALUE,
-  value,
-});
+// export const changeTextValue = (value) => ({
+//   type: CHANGE_TEXT_VALUE,
+//   value,
+// });
 
 export const changeInfos = () => ({
   type: CHANGE_INFOS,
@@ -126,28 +125,28 @@ export const fetchRecaps = () => ({
 
 export const showFieldNap = () => ({
   type: SHOW_FIELD_NAP,
-})
+});
 
 export const changeTextValue = (key, value) => ({
   type: CHANGE_TEXT_VALUE,
-  value, 
+  value,
   key,
-})
+});
 
 export const changeChild = (key, value) => ({
   type: CHANGE_CHILD,
-  value, 
+  value,
   key,
-})
+});
 
 export const changeMood = (key, value) => ({
   type: CHANGE_MOOD,
-  value, 
+  value,
   key,
-})
+});
 
 export const changeTimeNap = (key, value) => ({
   type: CHANGE_TIME_NAP,
-  value, 
+  value,
   key,
-})
+});

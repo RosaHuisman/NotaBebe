@@ -1,16 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { useLocation } from "react-router-dom";
-
+import { useLocation, Link } from 'react-router-dom';
 
 import Header from 'src/components/Header';
-import { Link } from 'react-router-dom';
+import ChildRecap from 'src/components/ChildRecap';
 import ChildInfos from './ChildInfos';
 import ChangeChildInfosForm from './ChangeChildInfosForm';
 import Comment from './Comment';
-import ChildRecap from 'src/components/ChildRecap';
-
 
 import './styles.scss';
 
@@ -28,9 +25,9 @@ const ChildProfile = ({
 
 }) => {
   const data = useLocation();
-  
-  //const child = data.state.child;
-  //console.log('mon enfant', data.state.child);
+
+  // const child = data.state.child;
+  // console.log('mon enfant', data.state.child);
 
   // const child = () => {
   //   return data.state.child
@@ -45,66 +42,64 @@ const ChildProfile = ({
 
   return (
      
-        <>
+    <>
       <header className="header">
-          <Header />
-        </header>
-        <div className="childprofile">
-  
-          {!isOpenInfos ? (
-            <>
-              <ChildInfos
-                openUserInfos={openUserInfos}
-                child={data.state.child}
-              />
-  
-              <button
-                type="button"
-                className="childprofile__button"
-                onClick={handleOnClickChangeInfosButton}
-              >
-                Modifier les informations
-              </button>
-            </>
-          ) : (
-            <>
-              <ChangeChildInfosForm
-                closeForm={closeForm}
-                handleChangeInfos={handleChangeInfos}
-                user={user}
-                child={data.state.child}
+        <Header />
+      </header>
+      <div className="childprofile">
 
-              />
-            </>
-          )}
-  
-          <Link
-            to="/profile/parent/1/child/1/recap"
-          >
+        {!isOpenInfos ? (
+          <>
+            <ChildInfos
+              openUserInfos={openUserInfos}
+              child={data.state.child}
+            />
+
             <button
               type="button"
-              className="childprofile__button childprofile__button__recap"
+              className="childprofile__button"
+              onClick={handleOnClickChangeInfosButton}
             >
-              Récap du jour
+              Modifier les informations
             </button>
-          </Link>
-  
-          <Comment
-            submitComment={submitComment}
-            commentSend={commentSend}
-            onChangeTextValue={onChangeTextValue}
-          />
-
-          </div>
           </>
-      )
-        
-    }
+        ) : (
+          <>
+            <ChangeChildInfosForm
+              closeForm={closeForm}
+              handleChangeInfos={handleChangeInfos}
+              user={user}
+              child={data.state.child}
+            />
+          </>
+        )}
+
+        <Link
+          to="/profile/parent/1/child/1/recap"
+        >
+          <button
+            type="button"
+            className="childprofile__button childprofile__button__recap"
+          >
+            Récap du jour
+          </button>
+        </Link>
+
+        <Comment
+          submitComment={submitComment}
+          commentSend={commentSend}
+          onChangeTextValue={onChangeTextValue}
+        />
+
+      </div>
+    </>
+  );
+};
 
 // if (user.length === 1) {
 //   return (
 //     <>
-    
+
 //       <header className="header">
 //         <Header />
 //       </header>
@@ -156,14 +151,12 @@ const ChildProfile = ({
 
 //     </>
 //   );
-// } 
+// }
 // else if (user.length === 2) {
-  
 
+// }
 
-//} 
-  
-//};
+// };
 
 ChildProfile.propTypes = {
 

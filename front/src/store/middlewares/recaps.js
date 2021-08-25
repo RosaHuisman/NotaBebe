@@ -1,4 +1,4 @@
-import  { FETCH_RECAPS } from 'src/store/actions';
+import { FETCH_RECAPS } from 'src/store/actions';
 import axios from 'axios';
 import api from './utils/api';
 

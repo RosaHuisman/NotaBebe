@@ -5,6 +5,7 @@ import loginReducer from './userlogin';
 import userReducer from './user';
 // import childReducer from './child';
 import childrenReducer from './children';
+import recapReducer from './recap';
 
 const rootReducer = combineReducers({
   userlogin: loginReducer,
@@ -12,12 +13,7 @@ const rootReducer = combineReducers({
   user: userReducer,
   // child: childReducer,
   children: childrenReducer,
-import recapReducer from './recap';
-
-
-const rootReducer = combineReducers({
   recap: recapReducer,
-
 });
 
 export default rootReducer;
