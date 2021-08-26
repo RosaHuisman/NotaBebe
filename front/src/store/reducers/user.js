@@ -9,8 +9,9 @@ import {
   INFOS_ERROR,
   PASSWORD_ERROR,
   SAVE_INFOS_USER,
-  SAVE_PASSWORD_USER,
-   SAVE_USERS_PARENTS,
+  // SAVE_PASSWORD_USER,
+  SAVE_NEW_PASSWORD_PARENT,
+  SAVE_USERS_PARENTS,
   SAVE_USER,
   SEND_COMMENT,
   CHANGE_TEXT_VALUE,
@@ -120,7 +121,14 @@ const reducer = (state = initialState, action) => {
         isOpenInfos: false,
       };
     }
-    case SAVE_PASSWORD_USER: {
+    // case SAVE_PASSWORD_USER: {
+    //   return {
+    //     ...state,
+    //     changePasswordError: false,
+    //     isOpenPassword: false,
+    //   };
+    // }
+    case SAVE_NEW_PASSWORD_PARENT: {
       return {
         ...state,
         changePasswordError: false,

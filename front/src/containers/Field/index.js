@@ -11,10 +11,10 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  onChange: (value) => {
-    const action = changeFieldValue(ownProps.name, value);
-    dispatch(action);
-  },
+  // onChange: (value) => {
+  //   const action = changeFieldValue(ownProps.name, value);
+  //   dispatch(action);
+  // },
 
   onChangeInputValue: (value) => {
     const action = changeFieldValueTwo(ownProps.name, value);

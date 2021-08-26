@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useHistory, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import Field from '../Field';
+import Field from 'src/containers/Field';
 
 import './styles.scss';
 
@@ -110,8 +110,8 @@ const Home = ({
                 <Field
                   name="email"
                   placeholder="Adresse Email"
-                  onChange={changeField}
-                  value={email}
+                  //onChange={changeField}
+                  //value={email}
                   type="email"
                   required
                 />
@@ -119,8 +119,8 @@ const Home = ({
                   name="password"
                   type="password"
                   placeholder="Mot de passe"
-                  onChange={changeField}
-                  value={password}
+                  //onChange={changeField}
+                  //value={password}
                   required
                 />
                 <button
@@ -162,7 +162,7 @@ const Home = ({
 Home.propTypes = {
   email: PropTypes.string,
   password: PropTypes.string.isRequired,
-  changeField: PropTypes.func.isRequired,
+  //changeField: PropTypes.func.isRequired,
   handleLogin: PropTypes.func.isRequired,
   errorMessage: PropTypes.bool,
   contentHome: PropTypes.bool,

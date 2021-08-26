@@ -14,9 +14,11 @@ const ChangePasswordForm = ({
   user,
 
 }) => {
+
   const handleSubmitChangePassword = (evt) => {
     evt.preventDefault();
-    handleChangePassword();
+    console.log('id dans component', user.id)
+    handleChangePassword(user.id);
   };
 
   const handleOnClickCancelButton = () => {

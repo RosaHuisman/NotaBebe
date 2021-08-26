@@ -25,6 +25,7 @@ const ParentProfile = ({
 
 }) => {
 
+  
   useEffect(() => {
     //console.log('je suis dans le useEffect')
     loadUsersParents();
@@ -40,7 +41,7 @@ const ParentProfile = ({
     openUserInfos();
   };
 
-  //console.log('user dans parentprofile', user)
+  // console.log('user dans parentprofile', user)
 
   if (loading) {
     return <Loading />;

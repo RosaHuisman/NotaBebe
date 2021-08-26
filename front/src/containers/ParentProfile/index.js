@@ -55,8 +55,9 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(closeFormAction());
   },
 
-  handleChangePassword: () => {
-    dispatch(changePassword());
+  handleChangePassword: (id) => {
+    console.log('id dans container', id)
+    dispatch(changePassword(id));
   },
 
 });
