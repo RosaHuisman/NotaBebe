@@ -1,21 +1,18 @@
 // == Import npm
 import React, { useEffect } from 'react';
-import {
-  Route, Switch, useLocation, Redirect,
-} from 'react-router-dom';
-import { connect } from 'react-redux';
+import { Route, Switch, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import PrivateRoute from 'src/components/PrivateRoute';
 
 // == Import composants /components
 import Footer from 'src/components/Footer';
 import ContactDetails from 'src/components/ContactDetails';
 import ForgotPassword from 'src/components/ForgotPassword';
 import AdminMobileHome from 'src/components/Admin';
+import PrivateRoute from 'src/components/PrivateRoute';
 import Error from 'src/components/Error';
 
 // == Import composants /containers
-import Login from 'src/containers/Login';
+// import Login from 'src/containers/Login';
 import Header from 'src/containers/Header';
 import Home from 'src/containers/Home';
 // STAFF
@@ -37,10 +34,9 @@ import Loading from './Loading';
 import './styles.scss';
 // == Composant
 const App = ({
+  welcomePage,
   loading,
-  loadUserLogged,
-  logged,
-  checkIsLogged,
+  // checkIsLogged,
 }) => {
   const location = useLocation();
 
@@ -49,15 +45,16 @@ const App = ({
   }, [location]);
 
   useEffect(() => {
-    // loadUserLogged();
-    // ici on veut vérifier si l'utilisateur est déjà connecté
-    // au 1e rendu du composant App
-    checkIsLogged();
+    // state HomePage
+    welcomePage();
+
+    // check si un user est connecté (token valide) au 1er rendu du composant App
+    // checkIsLogged();
   }, []);
 
-  // if (loading) {
-  //   return <Loading />;
-  // }
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <>
@@ -65,7 +62,7 @@ const App = ({
       <Switch>
         {/* // à test ChildProfile */}
         <Route exact path="/" component={Home} />
-        <Route exact path="/login" component={Login} />
+        {/* <Route exact path="/login" component={Login} /> */}
         <Route exact path="/forgot" component={ForgotPassword} />
         <Route exact path="/contact" component={ContactDetails} />
         {/* <Route path="*" component={Error} /> */}
@@ -91,51 +88,17 @@ const App = ({
       </Switch>
       <Footer />
     </>
-  //   <>
-  //   <Switch>
-
-  //     {/* // à test ChildProfile */}
-
-  //     {/* <Route exact path="/" component={Home} /> */}
-  //     <Route exact path="/" component={Home} />
-  //     <Route exact path="/forgot" component={ForgotPassword} />
-  //     <Route exact path="/contact" component={ContactDetails} />
-  //     {/* <Route path="*" component={Error} /> */}
-
-  //     {/* Route Admin */}
-  //     {/* <PrivateRoute exact path="/admin" component={AdminMobileHome} /> */}
-
-  //     {/* Route Staff */}
-  //     {/* <PrivateRoute exact path="/staff/:id/" component={StaffProfile} />
-  //     <PrivateRoute exact path="/staff/:id/comments" component={ReadComment} /> */}
-  //     <Route exact path="/staff/:id/createrecap" component={CreateRecap} />
-
-  //     {/* Route Parent Children */}
-  //     <Route exact path="/profile/parent/:id" component={ParentProfile} />
-  //     <Route exact path="/profile/parent/:id/child/:id" component={ChildProfile} />
-  //     <Route exact path="/profile/parent/:id/child/:child_id" component={ChildProfile} />
-  //     <Route exact path="/profile/parent/:id/child/:id/recap" component={ChildRecap} />
-
-  //     {/* Route de test blabla */}
-  //     <Route exact path="/homepage1" component={HomePage1} />
-  //     <Route exact path="/homepage2" component={HomePage2} />
-  //     <Route exact path="/homepage3" component={HomePage3} />
-  //   </Switch>
-  //   <Footer />
-  // </>
   );
 };
 
 App.propTypes = {
   loading: PropTypes.bool,
-  // loadUserLogged: PropTypes.func.isRequired,
-  checkIsLogged: PropTypes.func.isRequired,
-  logged: PropTypes.bool,
+  welcomePage: PropTypes.func.isRequired,
+  // checkIsLogged: PropTypes.func.isRequired,
 };
 
 App.defaultProps = {
   loading: false,
-  logged: false,
 };
 
 // == Export

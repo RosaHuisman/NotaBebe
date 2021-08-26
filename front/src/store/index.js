@@ -7,13 +7,14 @@ import logMiddleware from './middlewares/logMiddleware';
 // import userServicesMiddleware from './middlewares/userServicesMiddleware';
 
 import authMiddleware from './middlewares/authMiddleware';
-import userLoggedMiddleware from './middlewares/userLoggedMiddleware';
+import forgotMiddleware from './middlewares/forgotMiddleware';
+
 import user from './middlewares/user';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const enhancers = composeEnhancers(
-  applyMiddleware(logMiddleware, authMiddleware, userLoggedMiddleware, user),
+  applyMiddleware(logMiddleware, authMiddleware, forgotMiddleware, user),
 );
 
 const store = createStore(reducer, enhancers);

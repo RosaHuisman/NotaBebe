@@ -1,4 +1,5 @@
 import {
+  // HOME_INITIAL,
   OPEN_CHANGE_INFOS,
   // CHANGE_VALUE,
   CHANGE_FIELD_VALUE,
@@ -52,18 +53,23 @@ const reducer = (state = initialState, action) => {
     //     loading: false,
     //   };
     // }
-    case SAVE_USER: {
-      const { email, logged, roleId } = action.myTokenDecoded;
-      return {
-        ...state,
-        email,
-        logged,
-        token,
-        roleId,
-        isError: false,
-        loading: false,
-      };
-    }
+    // case HOME_INITIAL: {
+    //   return {
+    //     loading: false,
+    //   };
+    // }
+    // case SAVE_USER: {
+    //   const { email, logged, token, roleId } = action.myTokenDecoded;
+    //   return {
+    //     ...state,
+    //     email,
+    //     logged,
+    //     token,
+    //     roleId,
+    //     isError: false,
+    //     loading: false,
+    //   };
+    // }
     case OPEN_CHANGE_INFOS:
       return {
         ...state,

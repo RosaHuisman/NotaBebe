@@ -15,7 +15,6 @@ import api from './utils/api';
 const user = (store) => (next) => (action) => {
   // une fois qu'on aura les infos, on va les stocker dans le state => dispatcher une action
   switch (action.type) {
-    
     case FETCH_USERS_PARENTS: {
       // console.log('je suis dans le cas FETCH USERS PARENTS')
       const fetchData = async () => {

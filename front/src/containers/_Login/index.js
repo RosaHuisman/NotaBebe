@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
 import Login from 'src/components/Login';
-import { changeValueLogin, login } from 'src/store/actions';
+import { changeValueLogin, login } from 'src/store/actions/authActions';
 
 // transforme le state en props
 const mapStateToProps = (state) => ({
-  email: state.user.email,
-  password: state.user.password,
-  isError: state.user.isError,
+  email: state.auth.email,
+  password: state.auth.password,
+  isError: state.auth.isError,
 });
 
 // transforme la fonction dispatch en props
