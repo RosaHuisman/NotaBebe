@@ -22,15 +22,6 @@
 
     &__designation {
         font-weight: bold;
-        padding-bottom: v.$gutter/2;
-        &__address {
-          font-weight: bold;
-        }
-        &__tel {
-          font-weight: bold;
-          padding: v.$gutter/2 0;
-
-        }
       }
     &__result {
         padding-left: v.$gutter/2;

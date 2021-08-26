@@ -28,6 +28,7 @@ const mapStateToProps = (state, ownProps) => {
     hasPasswordError: state.user.changePasswordError,
     user: findUser(state.user.list, ownProps.match.params.id),
     // child: findChildren(state.children.list, ownProps.id),
+    loading: state.user.loading,
   };
   return props;
 };

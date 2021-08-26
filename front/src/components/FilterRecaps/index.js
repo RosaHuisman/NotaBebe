@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { useRef, useEffect } from 'react';
+import React from 'react';
 import { Icon } from 'semantic-ui-react';
 import recaps from 'src/store/middlewares/recaps';
 

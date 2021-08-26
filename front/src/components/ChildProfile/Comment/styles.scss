@@ -26,6 +26,7 @@
   }
   &__submit {
     margin: 0 auto;
+    margin-bottom: v.$gutter*3;
     display: block;
     padding: v.$gutter/3;
     background-color: v.$primary-color;
@@ -38,6 +39,8 @@
     color: v.$violet-color;
     font-size: 1em;
     font-weight: bold;
-    margin-top: v.$gutter *3;
+    margin-top: v.$gutter;
+    margin-bottom: v.$gutter*3;
+
   }
 }

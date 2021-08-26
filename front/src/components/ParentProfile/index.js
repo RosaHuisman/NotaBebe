@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import Header from 'src/components/Header';
+import Loading from 'src/components/App/Loading';
+
 import Children from './Children';
 import ChangePasswordForm from './ChangePasswordForm';
 import ChangeUserInfosForm from './ChangeUserInfosForm';
@@ -19,11 +21,12 @@ const ParentProfile = ({
   handleChangePassword,
   user,
   loadUsersParents,
+  loading,
 
 }) => {
-  // console.log(user)
 
   useEffect(() => {
+    console.log('je suis dans le useEffect')
     loadUsersParents();
   }, []);
 
@@ -37,7 +40,11 @@ const ParentProfile = ({
     openUserInfos();
   };
 
-  //console.log('user dans parentprofile', user)
+  console.log('user dans parentprofile', user)
+
+  if (loading) {
+    return <Loading />;
+  } 
 
   return (
     <>

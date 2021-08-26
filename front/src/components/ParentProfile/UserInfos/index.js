@@ -43,16 +43,16 @@ const UserInfos = ({ user }) =>
     </div>
   );
 UserInfos.propTypes = {
-  user: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    last_name: PropTypes.string.isRequired,
-    first_name: PropTypes.string.isRequired,
-    address: PropTypes.string.isRequired,
-    postcode: PropTypes.string.isRequired,
-    city: PropTypes.string.isRequired,
-    phone_number: PropTypes.string.isRequired,
-    email: PropTypes.string.isRequired,
-  }).isRequired,
+  // user: PropTypes.shape({
+  //   id: PropTypes.number.isRequired,
+  //   last_name: PropTypes.string.isRequired,
+  //   first_name: PropTypes.string.isRequired,
+  //   address: PropTypes.string.isRequired,
+  //   postcode: PropTypes.string.isRequired,
+  //   city: PropTypes.string.isRequired,
+  //   phone_number: PropTypes.string.isRequired,
+  //   email: PropTypes.string.isRequired,
+  // }).isRequired,
 
 };
 

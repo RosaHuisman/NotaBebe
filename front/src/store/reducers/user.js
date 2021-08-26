@@ -1,5 +1,5 @@
 import {
-  // HOME_INITIAL,
+   HOME_INITIAL,
   OPEN_CHANGE_INFOS,
   // CHANGE_VALUE,
   CHANGE_FIELD_VALUE,
@@ -9,7 +9,7 @@ import {
   PASSWORD_ERROR,
   SAVE_INFOS_USER,
   SAVE_PASSWORD_USER,
-  // SAVE_USERS_PARENTS,
+   SAVE_USERS_PARENTS,
   SAVE_USER,
   SEND_COMMENT,
   CHANGE_TEXT_VALUE,
@@ -40,24 +40,24 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    // case SAVE_USERS_PARENTS: {
-    //   // console.log('je suis dans le cas SAVE_USERS_PARENTS')
+    case SAVE_USERS_PARENTS: {
+       console.log('je suis dans le cas SAVE_USERS_PARENTS')
 
-    //   // console.log('dans le reducer', action.users_parents)
-    //   // const { list } = action.payload;
-    //   // console.log('action payload dans le reducer',action.payload)
-    //   return {
-    //     ...state,
-    //     list: action.payload,
-    //     // list: action.users_parents,
-    //     loading: false,
-    //   };
-    // }
-    // case HOME_INITIAL: {
-    //   return {
-    //     loading: false,
-    //   };
-    // }
+      // console.log('dans le reducer', action.users_parents)
+      // const { list } = action.payload;
+      // console.log('action payload dans le reducer',action.payload)
+      return {
+        ...state,
+        list: action.payload,
+        //list: action.users_parents,
+        loading: false,
+      };
+    }
+    case HOME_INITIAL: {
+      return {
+        loading: false,
+      };
+    }
     // case SAVE_USER: {
     //   const { email, logged, token, roleId } = action.myTokenDecoded;
     //   return {
