@@ -83,7 +83,8 @@ router.route('/profile/staff/comments/child/:childId')
 //! check si on peut afficher plusieurs commentaires (pour l'instant en bdd on n'en a qu'un par enfant)
 
 
-//? je vois mal comment get comments by parent id parce qu'on n'a pas le champ parent_id relié au commentaire. Il faudrait alors faire une vue
+//? je vois mal comment get comments by parent id parce qu'on n'a pas le champ parent_id relié au commentaire. 
+//? Il faudrait alors faire une vue
 
 
 // adding a user
