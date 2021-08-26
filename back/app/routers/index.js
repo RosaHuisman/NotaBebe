@@ -97,7 +97,7 @@ router.route('/profile/admin/manageprofile')
 router.route('/profile/admin/manageprofile/:id')
     .delete(adminController.deleteUser);
 
-
+// adding a child (for admin)
 router.route('/profile/admin/parent/:id/managechildren')
     .post(adminController.addChild);
 
@@ -109,14 +109,16 @@ router.route('/profile/admin/parent/:id/managechildren/:childId')
     .delete(adminController.deleteChild);
     //! pour l'instant, deleteChild fonctionne mais on n'a pas l'id du parent dans les params
 
-
+// ! TODO routes pour nounou acces aux enfants + a 1 enft
 
 router.route('/profile/staff/child/recap')
     .post(recapController.addRecap);
 
+
 router.route('/profile/staff/child/recap/:recapId/')
     .patch(recapController.modifyRecap)
     .delete(recapController.deleteRecap);
+
 
 
 // adding a comment (for parents)
@@ -129,9 +131,6 @@ router.route('/profile/parent/:id/child/:childId/comments/:commentId')
     //! TODO ajouter les request.params dans les méthodes
     .patch(commentController.modifyComment)
     .delete(commentController.deleteComment);
-
-
-
 
 
 router.route('/login')

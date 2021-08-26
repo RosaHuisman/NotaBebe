@@ -204,9 +204,15 @@ const userController = {
 
         try {
             // check that the data is coherent
+
+            // const oldPassword = request.body.oldPassword;
+                // voir si c'est le nom choisi en front
+                // vérifier s'il match avec l'ancien mdp présent en BDD ?
+                // si ça matche pas -> errors.push('blabla');
             const password = request.body.password;
 
             const errors = [];
+
 
             // checking string length
             if (password.length === 0) {
