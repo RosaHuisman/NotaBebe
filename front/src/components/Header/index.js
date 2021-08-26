@@ -12,7 +12,7 @@ const Header = ({
   const history = useHistory();
 
   const getToken = localStorage.getItem('MyToken');
-  console.log('JE SUIS DANS LE COMPONENT HEADER POUR CHECK LE TOKEN', getToken);
+  //console.log('JE SUIS DANS LE COMPONENT HEADER POUR CHECK LE TOKEN', getToken);
 
   const LOGOUT = (e) => {
     localStorage.removeItem('MyToken');

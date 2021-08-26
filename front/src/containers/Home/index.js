@@ -9,6 +9,7 @@ const mapStateToProps = (state) => ({
   errorMessage: state.auth.errorMessage,
   contentHome: state.auth.contentHome,
   successMessage: state.auth.successMessage,
+  user: state.auth,
 });
 
 // transforme la fonction dispatch en props

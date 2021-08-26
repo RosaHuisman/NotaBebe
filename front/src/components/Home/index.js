@@ -13,6 +13,7 @@ const Home = ({
   errorMessage,
   contentHome,
   successMessage,
+  user
 }) => {
   // const history = useHistory();
   const getToken = localStorage.getItem('MyToken');
@@ -24,23 +25,59 @@ const Home = ({
     // return history.push('/admin');
   };
 
+  console.log("mon user", user)
+
   return (
     <>
       {getToken ? (
         <>
           <div className="welcomeHome">
             <div className="welcomeHome__titleHome">
-              <p>Bonjour,</p>
+              <p>Bonjour "untel" </p>
               <p>Vous êtes connecté</p>
             </div>
           </div>
-          <Link
+
+          {user.roleId === 1 ? 
+            <Link
             className="contentButton"
             exact="true"
-            to="/profile/parent/1"
-          >
-            <button type="button" className="settings__send">Mon espace profil</button>
-          </Link>
+            to={`/profile/parent/${user.userId}`}
+            >
+            <button type="button" className="settings__send">Mon espace personnel</button>
+            </Link> 
+          : user.roleId === 2 ? 
+            <Link
+            className="contentButton"
+            exact="true"
+            to={`/profile/staff/${user.userId}`}
+            >
+            <button type="button" className="settings__send">Mon espace personnel</button>
+            </Link> 
+          : 
+            <Link
+            className="contentButton"
+            exact="true"
+            to="/profile/admin"
+            >
+            <button type="button" className="settings__send">Mon espace personnel</button>
+            </Link>
+          }
+        
+        {/* { user.roleId === 1 ? (
+          <Link
+          className="contentButton"
+          exact="true"
+          to="/profile/parent/:id"
+        >
+          <button type="button" className="settings__send">Mon espace personnel</button>
+        </Link>
+        ) : (
+          <div className="empty"></div>
+        )} */}
+          
+
+
         </>
       ) : (
         <div className="containerMain">

@@ -16,6 +16,7 @@ const initialState = {
   password: '',
   token: null,
   roleId: null,
+  userId: null,
   messageForgot: true,
   successMessage: false,
   errorMessage: false,
@@ -60,7 +61,7 @@ const reducer = (oldState = initialState, action = {}) => {
     //   };
     // }
     case SAVE_USER: {
-      const { email, logged, token, roleId } = action.myTokenDecoded;
+      const { email, logged, token, roleId, userId } = action.myTokenDecoded;
       return {
         ...oldState,
         email,
@@ -68,6 +69,7 @@ const reducer = (oldState = initialState, action = {}) => {
         password: '',
         token,
         roleId,
+        userId,
         loading: false,
         errorMessage: false,
         contentHome: false,
