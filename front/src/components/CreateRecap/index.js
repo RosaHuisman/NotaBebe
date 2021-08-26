@@ -4,8 +4,9 @@ import PropTypes from 'prop-types';
 import './styles.scss';
 
 function CreateRecap({
-  openNewNap, isOpen, onChangeValue, name, handleSubmit, childSelected, moodSelected, timeNapSelected
+  openNewNap, isOpen, onChangeValue, handleSubmit, childSelected, moodSelected, timeNapSelected
 }) {
+
   const handleClick = () => {
     openNewNap();
   };
@@ -13,22 +14,28 @@ function CreateRecap({
   const changeValue = (e) => {
     e.preventDefault();
     console.log('textarea value');
-    onChangeValue(e.target.value, name);
+    onChangeValue(e.target.value, e.target.name);
   };
+
+  // const changeValue = (e) => {
+  //   e.preventDefault();
+  //   console.log('textarea value');
+  //   onChangeValue(e.target.value, name);
+  // }; VERSION ORIGINALE AVANT ROBIN
 
   const selectChild = (e) => {
     e.preventDefault();
-    childSelected(e.target.value, name);
+    childSelected(e.target.value, e.target.name);
   }
 
   const selectMood = (e) => {
     e.preventDefault();
-    moodSelected(e.target.value, name);
+    moodSelected(e.target.value, e.target.name);
   }
 
   const selectTimeNap = (e) => {
     e.preventDefault();
-    timeNapSelected(e.target.value, name);
+    timeNapSelected(e.target.value, e.target.name);
   }
 
   return (
@@ -87,7 +94,7 @@ function CreateRecap({
           />
         </div>
 
-        {!isOpen ? (
+        {/* {!isOpen ? (
           <div className="nap__button">
             <button type="button" onClick={handleClick}>+</button>
           </div>
@@ -129,7 +136,7 @@ function CreateRecap({
 
             </div>
           </>
-        )}
+        )} */}
 
       <div className="comments__meal">
           <label htmlFor="meal">Commentaires repas:</label>
@@ -139,6 +146,7 @@ function CreateRecap({
             onChange={changeValue}
             rows="5"
             cols="30"
+            placeholder="Ecrivez votre commentaire"
           />
         </div>
 
@@ -150,6 +158,7 @@ function CreateRecap({
             onChange={changeValue}
             rows="5"
             cols="30"
+            placeholder="Ecrivez votre commentaire"
           />
         </div>
 

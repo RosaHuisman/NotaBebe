@@ -21,7 +21,7 @@ const reducer = (state = initialState, action ={} ) => {
       return {
         ...state,
         [action.key]: action.value,
-      };CHANGE_TIME_NAP
+      };
     case CHANGE_CHILD:
       return {
         ...state,

@@ -12,20 +12,21 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     dispatch(showFieldNap());
   },
 
-  onChangeValue: (value) => {
-    dispatch(changeTextValue(ownProps.name, value));
+  onChangeValue: (value, name) => {
+    // dispatch(changeTextValue(ownProps.name, value));
+    dispatch(changeTextValue(name, value));
   },
 
-  childSelected: (value) => {
-    dispatch(changeChild(ownProps.name, value));
+  childSelected: (value, name) => {
+    dispatch(changeChild(name, value));
   },
 
-  moodSelected: (value) => {
-    dispatch(changeMood(ownProps.name, value));
+  moodSelected: (value, name) => {
+    dispatch(changeMood(name, value));
   },
 
-  timeNapSelected: (value) => {
-    dispatch(changeTimeNap(ownProps.name, value));
+  timeNapSelected: (value, name) => {
+    dispatch(changeTimeNap(name, value));
   },
 
 });
