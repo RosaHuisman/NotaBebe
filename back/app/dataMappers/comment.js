@@ -3,8 +3,7 @@ const client = require('../client');
 const commentDataMapper = {
 
     async findAll() {
-        const result = await client.query('SELECT * FROM "comment"');
-        // on pourra order by desc
+        const result = await client.query('SELECT * FROM "comment" ORDER BY created_at DESC');
         return result.rows;
     },
 
@@ -15,12 +14,15 @@ const commentDataMapper = {
 
     async findByChildId(id) {
         const result = await client.query('SELECT * FROM "comment" WHERE child_id = $1', [id]);
-        console.log(result)
-        return result.rows[0];
+        return result.rows;
+    },
+    
+    async findByParentId(id) {
+        const result = await client.query('SELECT * FROM "comments_with_parent" WHERE user_id = $1', [id]);
+        return result.rows;
     },
 
     async add(data) {
-        // console.log('datamapper', data)
         const result = await client.query('INSERT INTO "comment" (message, child_id) VALUES ($1, $2) RETURNING *', [data.message, data.child_id]);
         return result.rows[0];
     },

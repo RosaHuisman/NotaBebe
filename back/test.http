@@ -22,8 +22,12 @@ GET http://localhost:3000/profile/staff/allrecaps
 ### DISPLAYING ALL COMMENTS - for staff
 GET http://localhost:3000/profile/staff/comments
 
+### DISPLAYING COMMENTS BY PARENT ID - for staff
+GET http://localhost:3000/profile/staff/comments/parent/3
 
 
+### DISPLAYING COMMENTS BY PARENT ID - for parents
+GET http://localhost:3000/profile/parent/3/comments
 
 
 ### DISPLAYING PARENT PROFILE - parent by id
@@ -46,7 +50,7 @@ GET http://localhost:3000/profile/staff/comments/3
 
 
 ### DISPLAYING COMMENTS - by child id
-GET http://localhost:3000/profile/staff/comments/child/2
+GET http://localhost:3000/profile/staff/comments/child/4
 
 
 
@@ -162,14 +166,12 @@ Content-Type: application/json
     "child_id": 1
 }
 
-### modify
+### modify one field 
 PATCH http://localhost:3000/profile/staff/child/recap/3/
 Content-Type: application/json
 
 {
-    "date": "18/05/2010",
-    "extra_info": "coucou",
-    "mood": "test !!!"
+    "date": "18/05/2025"
 }
 
 ### delete

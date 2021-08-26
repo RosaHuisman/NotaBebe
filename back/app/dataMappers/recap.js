@@ -16,7 +16,7 @@ const recapDataMapper = {
     async findByChildId(id) {
         const result = await client.query('SELECT * FROM "recap" WHERE child_id = $1', [id]);
         console.log(result)
-        return result.rows[0];
+        return result.rows;
     },
 
     async add(data) {
@@ -26,49 +26,29 @@ const recapDataMapper = {
 
     async modify(recap, id) {
 
-        //console.log("id", id)
-        //! à modifier ??? 
-
         let query = `UPDATE "recap" SET `;
         const values = [];
 
         const keys = Object.keys(recap);
-        console.log(keys);
-        // const values = Object.values(recap);
 
         for (let i = 0; i < keys.length; i++) {
             query += `"${keys[i]}" = $${i + 1}, `;
             values.push(recap[keys[i]]);
-            console.log(values);
         }
 
-        query += `updated_at = now() WHERE id = $${id} RETURNING *;`;
-        //console.log(query);
-
-        //values.push(recap[id]);
-        //console.log(values)
+        query += `updated_at = now() WHERE id = $${keys.length + 1} RETURNING *;`;
+        values.push(id);
 
         const result = await client.query(query, values);
 
-        console.log(result);
+        return result.rows[0];
 
-
-        // console.log(id);
-        // for (let i = 0; i < keys.length; i++) {
-        //     console.log(keys[i]);
-        //     console.log(values[i]);
-        //     await client.query(`UPDATE "recap" SET ${keys[i]} = $1, updated_at = now() WHERE id = $2 `, [values[i], id]);
-        // };
-
-        // return "la modification a bien été effectuée";
     },
 
     async delete(id) {
-        const result = await client.query('DELETE FROM "recap" WHERE id = $1', [id])
+        const result = await client.query('DELETE FROM "recap" WHERE id = $1', [id]);
         return result;
     }
-
-
 
 };
 

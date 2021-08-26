@@ -82,7 +82,9 @@ const recapController = {
             }
 
             const newData = request.body;
+            //console.log(newData);
             const updatedRecap = await recapDataMapper.modify({ ...newData }, recapId);
+            // console.log("console log", newData, recapId);
 
             response.json({ updatedRecap });
 
