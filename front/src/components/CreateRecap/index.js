@@ -94,28 +94,30 @@ function CreateRecap({
           />
         </div>
 
-        {/* {!isOpen ? (
+        {!isOpen ? (
           <div className="nap__button">
             <button type="button" onClick={handleClick}>+</button>
           </div>
         ) : (
           <>
             <div className="nap__time">
-              <label className="snap" htmlFor="snap">Début sieste:</label>
+              <label className="snap2" htmlFor="snap2">Début sieste:</label>
               <input
                 type="time"
-                id="snap"
-                name="snap"
+                id="snap2"
+                name="snap2"
+                onChange={selectTimeNap}
                 min="06:00"
                 max="18:00"
                 required
               />
 
-              <label className="enap" htmlFor="enap">Fin sieste:</label>
+              <label className="enap2" htmlFor="enap2">Fin sieste:</label>
               <input
                 type="time"
-                id="enap"
-                name="enap"
+                id="enap2"
+                name="enap2"
+                onChange={selectTimeNap}
                 min="06:00"
                 max="18:00"
                 required
@@ -136,7 +138,7 @@ function CreateRecap({
 
             </div>
           </>
-        )} */}
+        )}
 
       <div className="comments__meal">
           <label htmlFor="meal">Commentaires repas:</label>
