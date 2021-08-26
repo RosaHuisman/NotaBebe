@@ -32,6 +32,11 @@ const userDataMapper = {
         return result.rows;
     },
 
+    async findChildById(id) {
+        const result = await client.query('SELECT * FROM "child" WHERE id = $1', [id]);
+        return result.rows[0];
+    },
+
     async findChildrenByParent(parentId) {
         const result = await client.query('SELECT * FROM "parent_with_child" WHERE "user_id" = $1 AND "role_id" = 1', [parentId]);
         return result.rows;
@@ -39,6 +44,25 @@ const userDataMapper = {
 
     async findChildFromParent(parentId, childId) {
         const result = await client.query('SELECT * FROM "parent_with_child" WHERE "user_id" = $1 AND "child_id" = $2 AND "role_id" = 1', [parentId, childId]);
+        return result.rows[0];
+    },
+
+    async modifyChild (child, id) {
+        let query = `UPDATE "child" SET `;
+        const values = [];
+
+        const keys = Object.keys(child);
+
+        for (let i = 0; i < keys.length; i++) {
+            query += `"${keys[i]}" = $${i + 1}, `;
+            values.push(child[keys[i]]);
+        }
+
+        query += `updated_at = now() WHERE id = $${keys.length + 1} RETURNING *;`;
+        values.push(id);
+
+        const result = await client.query(query, values);
+
         return result.rows[0];
     },
 

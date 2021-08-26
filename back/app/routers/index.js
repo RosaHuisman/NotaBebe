@@ -51,10 +51,10 @@ router.route('/profile/parent/:id/password')
 router.route('/profile/staff/:id/password')
     .patch(userController.updatePassword);
 
-//
+// modify child
 router.route('/profile/parent/:id/child/:childId')
-    .get(userController.getChildFromParent);
-//TODO patch --> modifyChild
+    .get(userController.getChildFromParent)
+    .patch(userController.modifyChild);
 
 // get staff by id
 router.route('/profile/staff/:id')
@@ -89,7 +89,7 @@ router.route('/profile/parent/:parentId/comments')
     .get(commentController.getCommentsByParentId);
 
 
-// adding a user
+// adding a user (selecting role_id in the request.body)
 router.route('/profile/admin/manageprofile')
     .post(adminController.addUser);
 
@@ -98,12 +98,16 @@ router.route('/profile/admin/manageprofile/:id')
     .delete(adminController.deleteUser);
 
 
-//TODO router.route('/profile/admin/parent/:id/managechildren')
-//TODO     .post(adminController.addChild);
+router.route('/profile/admin/parent/:id/managechildren')
+    .post(adminController.addChild);
 
-//TODO router.route('/profile/admin/parent/:id/managechildren/:childId')
-//TODO      .patch(userController.modifyChild)
-//TODO     .delete(adminController.deleteChild);
+
+
+// modifying a child - for admin
+router.route('/profile/admin/parent/:id/managechildren/:childId')
+    .patch(userController.modifyChild)
+    .delete(adminController.deleteChild);
+    //! pour l'instant, deleteChild fonctionne mais on n'a pas l'id du parent dans les params
 
 
 

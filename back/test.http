@@ -34,7 +34,7 @@ GET http://localhost:3000/profile/parent/3/comments
 GET http://localhost:3000/profile/parent/8
 
 ### DISPLAYING CHILD ACCORDING TO PARENT PROFILE
-GET http://localhost:3000/profile/parent/1/child/3
+GET http://localhost:3000/profile/parent/1/child/2
 
 ### DISPLAYING STAFF PROFILE - staff by id
 GET http://localhost:3000/profile/staff/5
@@ -52,6 +52,27 @@ GET http://localhost:3000/profile/staff/comments/3
 ### DISPLAYING COMMENTS - by child id
 GET http://localhost:3000/profile/staff/comments/child/4
 
+
+### MODIFY CHILD PROFILE - by parent
+PATCH http://localhost:3000/profile/parent/2/child/3
+Content-Type: application/json
+
+{
+    "first_name": "olivier",
+    "birthplace": "nantes"
+}
+
+### MODIFY CHILD PROFILE - by admin
+PATCH http://localhost:3000/profile/admin/parent/2/managechildren/3
+Content-Type: application/json
+
+{
+    "first_name": "Charles",
+    "birthplace": "Orvault"
+}
+
+### DELETE CHILD PROFILE - by adminController
+DELETE http://localhost:3000/profile/admin/parent/2/managechildren/3
 
 
 ## USER
@@ -140,8 +161,8 @@ Content-Type: application/json
 ### deleting an user
 DELETE http://localhost:3000/profile/admin/manageprofile/8
 
-## adding a child
-POST http://localhost:3000/profile/admin/parent/1/managechildren
+### adding a child
+POST http://localhost:3000/profile/admin/parent/3/managechildren
 Content-Type: application/json
 
 {

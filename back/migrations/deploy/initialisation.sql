@@ -42,7 +42,7 @@ CREATE TABLE "user" (
     "email" email NOT NULL,
     "password" TEXT NOT NULL,
     "phone_number" phone_number NOT NULL,
-    "role_id" INT NOT NULL REFERENCES "role"("id"),
+    "role_id" INT NOT NULL REFERENCES "role"("id") ON DELETE CASCADE,
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
     "updated_at" TIMESTAMPTZ
 );
@@ -65,7 +65,7 @@ CREATE TABLE "recap" (
     "date" date_fr NOT NULL,
     "extra_info" TEXT,
     "mood" TEXT NOT NULL,
-    "child_id" INT NOT NULL REFERENCES "child"("id"),
+    "child_id" INT NOT NULL REFERENCES "child"("id") ON DELETE CASCADE,
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
     "updated_at" TIMESTAMPTZ
 );
@@ -73,7 +73,7 @@ CREATE TABLE "recap" (
 CREATE TABLE "comment" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "message" TEXT NOT NULL,
-    "child_id" INT NOT NULL REFERENCES "child"("id"),
+    "child_id" INT NOT NULL REFERENCES "child"("id") ON DELETE CASCADE,
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
     "updated_at" TIMESTAMPTZ
 );
@@ -83,7 +83,7 @@ CREATE TABLE "nap" (
     "start_time" TIME NOT NULL,
     "end_time" TIME NOT NULL,
     "comment" TEXT,
-    "recap_id" INT NOT NULL REFERENCES "recap"("id"),
+    "recap_id" INT NOT NULL REFERENCES "recap"("id") ON DELETE CASCADE,
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
     "updated_at" TIMESTAMPTZ
 );
@@ -92,19 +92,19 @@ CREATE TABLE "meal" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "time" TIME NOT NULL,
     "comment" TEXT NOT NULL,
-    "recap_id" INT NOT NULL REFERENCES "recap"("id"),
+    "recap_id" INT NOT NULL REFERENCES "recap"("id") ON DELETE CASCADE,
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
     "updated_at" TIMESTAMPTZ
 );
 
 CREATE TABLE "user_has_recap" (
-    "user_id" INT NOT NULL REFERENCES "user"("id"),
-    "recap_id" INT NOT NULL REFERENCES "recap"("id")
+    "user_id" INT NOT NULL REFERENCES "user"("id") ON DELETE CASCADE,
+    "recap_id" INT NOT NULL REFERENCES "recap"("id") ON DELETE CASCADE
 );
 
 CREATE TABLE "user_has_child" (
-    "user_id" INT NOT NULL REFERENCES "user"("id"),
-    "child_id" INT NOT NULL REFERENCES "child"("id")
+    "user_id" INT NOT NULL REFERENCES "user"("id") ON DELETE CASCADE,
+    "child_id" INT NOT NULL REFERENCES "child"("id") ON DELETE CASCADE
 );
 
 COMMIT;

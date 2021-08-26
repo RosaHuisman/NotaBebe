@@ -271,6 +271,31 @@ const userController = {
             response.json({ error: error.message });
         }
     },
+
+    modifyChild: async (request, response, next) => {
+        try {
+            const parentId = Number(request.params.id);
+
+            const childId = Number(request.params.childId);
+
+            
+            const child = await userDataMapper.findChildFromParent(parentId, childId);
+
+            if (!child) {
+                return next();
+            }
+
+            const newData = request.body;
+
+            const updatedChild = await userDataMapper.modifyChild({ ...newData }, childId);
+
+            response.json({ updatedChild });
+
+        } catch (error) {
+            console.log(error);
+            response.json({ error: error.message });
+        }
+    }
 };
 
 module.exports = userController;

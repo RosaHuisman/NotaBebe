@@ -14,26 +14,59 @@ const adminDataMapper = {
         return result.rows[0];
     },
 
-    async addChild(data) {
+    async addChild(data, parentId) {
+        
         const result = await client.query('INSERT INTO "child" (first_name, last_name, birthdate, birthplace, sex, allergies) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *', [data.first_name, data.last_name, data.birthdate, data.birthplace, data.sex, data.allergies]);
 
-        //TODO comment relier avec le parent ?? soit, comment faire une "insertion" sur la table de liaison
+        // the new child id is created
+        const childId = result.rows[0].id;
+
+        //! à tester - requête imbriquée
+        /*
+        `INSERT INTO table_liaison(id_parent, id_child) VALUES (id_parent, (
+	INSERT INTO child(les, champs) VALUES(les, champs) RETURNING id
+    ));` 
+        */
+       
+        // the query is returning the user_id which is linked to child_id
+        const result2 =  await client.query('INSERT INTO "user_has_child" (user_id, child_id) VALUES ($1, $2) RETURNING *', [parentId, childId]);
 
         return result.rows[0];
     },
 
-    async delete(id) {
-        //TODO : factoriser le tablename pour qu'on puisse utiliser la même méthode pour toutes les suppressions
+    async modifyChild (child, id) {
+        let query = `UPDATE "child" SET `;
+        const values = [];
 
+        const keys = Object.keys(child);
+
+        for (let i = 0; i < keys.length; i++) {
+            query += `"${keys[i]}" = $${i + 1}, `;
+            values.push(child[keys[i]]);
+        }
+
+        query += `updated_at = now() WHERE id = $${keys.length + 1} RETURNING *;`;
+        values.push(id);
+
+        const result = await client.query(query, values);
+
+        return result.rows[0];
+    },
+
+    async deleteUser(id) {
         const result = await client.query('DELETE FROM "user" WHERE id = $1', [id])
         return result;
     },
 
+    //TODO si on a le temps : factoriser le tablename pour qu'on puisse utiliser la même méthode pour toutes les suppressions
+
+
     async deleteChild(id) {
-        // TODO : récupérer le parent id... partir sur la vue sql ????
         const result = await client.query('DELETE FROM "child" WHERE id = $1', [id]);
+        return result;
     }
 
+    // TODO si on a le temps : récupérer le parent id... partir sur la vue sql ????
 
 };
 
