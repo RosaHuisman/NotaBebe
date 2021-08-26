@@ -12,7 +12,7 @@ function CreateRecap({
 
   const changeValue = (e) => {
     e.preventDefault();
-    console.log('textarea value');
+    //console.log('textarea value');
     onChangeValue(e.target.value, name);
   };
 

@@ -1,8 +1,9 @@
 import {
-   HOME_INITIAL,
+  // HOME_INITIAL,
   OPEN_CHANGE_INFOS,
   // CHANGE_VALUE,
   CHANGE_FIELD_VALUE,
+  CHANGE_FIELD_VALUE_TWO,
   TOGGLE_CHANGE_PASSWORD,
   CLOSE_FORM,
   INFOS_ERROR,
@@ -41,7 +42,7 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case SAVE_USERS_PARENTS: {
-       console.log('je suis dans le cas SAVE_USERS_PARENTS')
+       //console.log('je suis dans le cas SAVE_USERS_PARENTS')
 
       // console.log('dans le reducer', action.users_parents)
       // const { list } = action.payload;
@@ -53,11 +54,11 @@ const reducer = (state = initialState, action) => {
         loading: false,
       };
     }
-    case HOME_INITIAL: {
-      return {
-        loading: false,
-      };
-    }
+    // case HOME_INITIAL: {
+    //   return {
+    //     loading: false,
+    //   };
+    // }
     // case SAVE_USER: {
     //   const { email, logged, token, roleId } = action.myTokenDecoded;
     //   return {
@@ -76,6 +77,13 @@ const reducer = (state = initialState, action) => {
         isOpenInfos: !state.isOpenInfos,
       };
     case CHANGE_FIELD_VALUE: {
+      return {
+        ...state,
+        [action.key]: action.value,
+      };
+    }
+    case CHANGE_FIELD_VALUE_TWO: {
+      console.log('je suis dans le case CHANGE FIELD VALUE TWO')
       return {
         ...state,
         [action.key]: action.value,

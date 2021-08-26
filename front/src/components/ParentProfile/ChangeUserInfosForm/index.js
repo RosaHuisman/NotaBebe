@@ -14,7 +14,7 @@ const ChangeUserInfosForm = ({
   user,
 
 }) => {
-  console.log(user);
+  //console.log(user);
 
   const handleOnClickCancelButton = (e) => {
     e.preventDefault();

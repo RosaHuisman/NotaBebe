@@ -40,7 +40,7 @@ const ParentProfile = ({
     openUserInfos();
   };
 
-  console.log('user dans parentprofile', user)
+  //console.log('user dans parentprofile', user)
 
   if (loading) {
     return <Loading />;

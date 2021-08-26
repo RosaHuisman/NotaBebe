@@ -22,6 +22,8 @@ export const PASSWORD_ERROR = 'PASSWORD_ERROR';
 export const SAVE_INFOS_USER = 'SAVE_INFOS_USER';
 export const SAVE_PASSWORD_USER = 'SAVE_PASSWORD_USER';
 export const CHANGE_FIELD_VALUE = 'CHANGE_FIELD_VALUE';
+export const CHANGE_FIELD_VALUE_TWO = 'CHANGE_FIELD_VALUE_TWO';
+
 export const CHANGE_TEXT_VALUE = 'CHANGE_TEXT_VALUE';
 
 export const SAVE_USERS_PARENTS = 'SAVE_USERS_PARENTS';
@@ -46,6 +48,12 @@ export const changeFieldValue = (value, key) => ({
   type: CHANGE_FIELD_VALUE,
   key,
   value,
+});
+
+export const changeFieldValueTwo = (key, value) => ({
+  type: CHANGE_FIELD_VALUE_TWO,
+  value,
+  key,
 });
 
 export const setCurrentUser = (user) => ({

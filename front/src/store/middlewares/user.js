@@ -16,11 +16,11 @@ const user = (store) => (next) => (action) => {
   // une fois qu'on aura les infos, on va les stocker dans le state => dispatcher une action
   switch (action.type) {
     case FETCH_USERS_PARENTS: {
-      console.log('je suis dans le cas FETCH USERS PARENTS')
+      //console.log('je suis dans le cas FETCH USERS PARENTS')
       const fetchData = async () => {
         try {
           const response = await api.get('/profile/admin/parents');
-          console.log('reponse du fetch : ', response.data)
+          //console.log('reponse du fetch : ', response.data)
           const actionsaveUsersParents = saveUsersParents(response.data);
           store.dispatch(actionsaveUsersParents);
         }
@@ -78,7 +78,7 @@ const user = (store) => (next) => (action) => {
       break;
     }
     case CHANGE_PASSWORD: {
-      console.log('je suis dans le cas CHANGE_PASSWORD');
+      //console.log('je suis dans le cas CHANGE_PASSWORD');
       const state = store.getState();
 
       axios.patch('http://localhost:3001/profile/parent/:id', {
