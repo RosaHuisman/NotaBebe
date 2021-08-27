@@ -59,16 +59,20 @@ const user = (store) => (next) => (action) => {
     //   break;
     // }
     case CHANGE_INFOS: {
-      // console.log('je suis dans le cas CHANGE_INFOS')
+      console.log('je suis dans le cas CHANGE_INFOS')
       const state = store.getState();
+      const id = action.id;
+      console.log(id)
 
-      axios.patch('http://localhost:3001/profile/parent/:id', {
+
+      axios.patch(`http://notabebe-back.herokuapp.com/profile/parent/${id}`, {
         address: state.user.address,
         postcode: state.user.postcode,
         city: state.user.city,
         phone_number: state.user.phone_number,
       })
         .then((response) => {
+          console.log("reponse de la BDD update parent infos", response.data)
           const actionSaveInfosUser = saveInfosUser(response.data);
           store.dispatch(actionSaveInfosUser);
         })

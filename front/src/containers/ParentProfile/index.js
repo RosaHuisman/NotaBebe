@@ -24,6 +24,7 @@ const mapStateToProps = (state, ownProps) => {
     newpassword: state.user.newpassword,
     confirmpassword: state.user.confirmpassword,
     value: state[ownProps.name],
+    changeInfos: state.user.changeInfos,
     hasInfosError: state.user.changeInfosError,
     hasPasswordError: state.user.changePasswordError,
     user: findUser(state.user.list, ownProps.match.params.id),
@@ -43,8 +44,8 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(openChangeInfos());
   },
 
-  handleChangeInfos: () => {
-    dispatch(changeInfos());
+  handleChangeInfos: (id) => {
+    dispatch(changeInfos(id));
   },
 
   togglerChangePassword: () => {

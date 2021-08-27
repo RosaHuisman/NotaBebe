@@ -48,7 +48,7 @@ const Children = ({
               </div>
             </Link>
 
-          ))};
+          ))}
       </div>
     </div>
   );

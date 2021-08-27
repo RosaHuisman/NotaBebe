@@ -22,7 +22,7 @@ const ParentProfile = ({
   user,
   loadUsersParents,
   loading,
-
+  changeInfos,
 }) => {
 
   
@@ -41,7 +41,7 @@ const ParentProfile = ({
     openUserInfos();
   };
 
-  // console.log('user dans parentprofile', user)
+   //console.log('user dans parentprofile', user)
 
   if (loading) {
     return <Loading />;
@@ -74,6 +74,7 @@ const ParentProfile = ({
             closeForm={closeForm}
             handleChangeInfos={handleChangeInfos}
             user={user[0]}
+            changeInfos={changeInfos}
           />
         )}
 
@@ -99,7 +100,6 @@ const ParentProfile = ({
           user={user}
         />
       </div>
-      <div className="test">id de mon user: {user.id}</div>
     </>
   );
 };

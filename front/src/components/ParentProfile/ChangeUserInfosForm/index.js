@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Field from 'src/containers/Field';
+import UserInfos from '../UserInfos';
 
 // == Import : local
 import './styles.scss';
@@ -12,9 +13,11 @@ const ChangeUserInfosForm = ({
   closeForm,
   handleChangeInfos,
   user,
+  changeInfos, 
 
 }) => {
   //console.log(user);
+  console.log(changeInfos)
 
   const handleOnClickCancelButton = (e) => {
     e.preventDefault();
@@ -23,11 +26,20 @@ const ChangeUserInfosForm = ({
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    handleChangeInfos();
+    handleChangeInfos(user.id);
   };
 
   return (
-    <form
+    <>
+  {changeInfos ? (
+        <>
+        <UserInfos />
+        <UserInfos />
+        <div className="success">Vos données ont été modifiées</div>
+        </>
+      ) : (
+        <>
+        <form
       autoComplete="off"
       className="changeuserinfosform"
       onSubmit={handleSubmit}
@@ -62,8 +74,7 @@ const ChangeUserInfosForm = ({
         placeholder="Numéro de téléphone"
         value={user.phone_number}
       />
-
-      <div className="changeuserinfosform__buttons">
+        <div className="changeuserinfosform__buttons">
         <button
           className="changeuserinfosform__buttons__cancel"
           type="button"
@@ -80,12 +91,17 @@ const ChangeUserInfosForm = ({
         </button>
 
       </div>
+      </form>
+      </>
+      )}
+
+      
 
       {/* voir comment gérer l'erreur une fois qu'on pourra se connecter au back */}
 
-      {hasInfosError && <div>Veuillez vérifier vos identifiants</div>}
-    </form>
-
+      {hasInfosError && <div>Une erreur s'est produite, veuillez recommencer</div>}
+    
+</>
   );
 };
 

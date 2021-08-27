@@ -72,8 +72,9 @@ export const openChangeInfos = () => ({
 //   value,
 // });
 
-export const changeInfos = () => ({
+export const changeInfos = (id) => ({
   type: CHANGE_INFOS,
+  id,
 });
 
 export const toggleChangePassword = () => ({

@@ -27,6 +27,7 @@ const initialState = {
   newpassword: '',
   confirmpassword: '',
 
+  changeInfos: false,
   changeInfosError: false,
   changePasswordError: false,
   loading: true,
@@ -38,16 +39,26 @@ const initialState = {
   token: null,
   roleId: null,
   isError: false,
+  address: '',
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case SAVE_INFOS_USER: {
+      console.log('je suis dans le cas SAVE_INFOS_USERS')
+      console.log('payload save infos user',action.payload)
+      return {
+        ...state,
+        changeInfos: true,
+        isOpenInfos: false,
+      };
+    }
     case SAVE_USERS_PARENTS: {
-       //console.log('je suis dans le cas SAVE_USERS_PARENTS')
+       console.log('je suis dans le cas SAVE_USERS_PARENTS')
 
       // console.log('dans le reducer', action.users_parents)
       // const { list } = action.payload;
-      // console.log('action payload dans le reducer',action.payload)
+       console.log('action payload dans le reducer',action.payload)
       return {
         ...state,
         list: action.payload,
@@ -114,13 +125,7 @@ const reducer = (state = initialState, action) => {
         loginError: true,
       };
     }
-    case SAVE_INFOS_USER: {
-      return {
-        ...state,
-        changeInfosError: false,
-        isOpenInfos: false,
-      };
-    }
+    
     // case SAVE_PASSWORD_USER: {
     //   return {
     //     ...state,
