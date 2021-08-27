@@ -50,9 +50,8 @@ const adminController = {
     addChild: async (request, response, next) => {
         try {
             const parentId = request.params.id;
-            // ! ne fonctionne pas encore, il faudrait pouvoir inclure le request.params.id pour récupérer l'id du parent
             const newChild = await adminDataMapper.addChild((request.body), parentId);
-            
+
             if (!newChild) {
                 return next();
             }

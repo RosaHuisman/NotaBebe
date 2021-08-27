@@ -15,7 +15,7 @@ const adminDataMapper = {
     },
 
     async addChild(data, parentId) {
-        
+
         const result = await client.query('INSERT INTO "child" (first_name, last_name, birthdate, birthplace, sex, allergies) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *', [data.first_name, data.last_name, data.birthdate, data.birthplace, data.sex, data.allergies]);
 
         // the new child id is created
@@ -24,17 +24,17 @@ const adminDataMapper = {
         //! à tester - requête imbriquée
         /*
         `INSERT INTO table_liaison(id_parent, id_child) VALUES (id_parent, (
-	INSERT INTO child(les, champs) VALUES(les, champs) RETURNING id
+    INSERT INTO child(les, champs) VALUES(les, champs) RETURNING id
     ));` 
         */
-       
+
         // the query is returning the user_id which is linked to child_id
-        const result2 =  await client.query('INSERT INTO "user_has_child" (user_id, child_id) VALUES ($1, $2) RETURNING *', [parentId, childId]);
+        const result2 = await client.query('INSERT INTO "user_has_child" (user_id, child_id) VALUES ($1, $2) RETURNING *', [parentId, childId]);
 
         return result.rows[0];
     },
 
-    async modifyChild (child, id) {
+    async modifyChild(child, id) {
         let query = `UPDATE "child" SET `;
         const values = [];
 

@@ -1,4 +1,5 @@
 const commentDataMapper = require('../dataMappers/comment');
+const userDataMapper = require('../dataMappers/user');
 
 
 const commentController = {
@@ -56,11 +57,11 @@ const commentController = {
     getCommentsByParentId: async (request, response, next) => {
         try {
             const parentId = Number(request.params.parentId);
-            const data = await commentDataMapper.findByParentId(parentId);
-            console.log(data);
+            const comments = await commentDataMapper.findByParentId(parentId);
+            console.log(comments);
 
-            if (data) {
-                response.json(data);
+            if (comments) {
+                response.json(comments);
             } else {
                 return next();
             }
@@ -76,10 +77,23 @@ const commentController = {
 
             //! en cours !!
             const parentId = request.params.id;
+            console.log("parentId", parentId);
             const childId = request.params.childId;
+            console.log("childId", childId);
             //TODO ajouter les request params dans la méthode
 
-            const newComment = await commentDataMapper.add(request.body);
+            const parent = await userDataMapper.findParentById(parentId);
+            console.log("parent", parent)
+
+            if (!parent) {
+                return next();
+            }
+
+            const newData = request.body;
+
+            console.log(request.body);
+
+            const newComment = await commentDataMapper.add({ ...newData }, childId);
 
             if (!newComment) {
                 return next();
