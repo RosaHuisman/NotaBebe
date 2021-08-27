@@ -156,15 +156,19 @@ const userController = {
 
             // if the password is correct 
             if (pwResult) {
+
                 if (user) {
+
                     const jwtContent = { userId: user.id, roleId: user.role_id, firstName: user.first_name, lastName: user.last_name };
+
                     const jwtOptions = {
                         algorithm: 'HS256',
-                        expiresIn: '10s'
+                        expiresIn: '3h'
                     };
                     response.json({
                         logged: true,
                         email: user.email,
+
                         firstName: user.first_name,
                         lastName: user.last_name,
                         roleId: user.role_id,
@@ -173,6 +177,7 @@ const userController = {
                 } else {
                     response.status(401).json(`401 unauthorized`);
                 }
+
             } else {
                 response.json({ error: "mot de passe incorrect" });
             };

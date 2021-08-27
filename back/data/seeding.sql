@@ -1,12 +1,13 @@
 BEGIN;
 
 INSERT INTO "user" ("first_name", "last_name", "address", "postcode", "city", "email", "password", "phone_number", "role_id") VALUES
-('Jeanne', 'Bonnette', '3 rue des Pommes', '48000', 'Trifouilly-les-Oies', 'jeannebonnette@gmail.com', 'ABC123!?!', '0320831920', 1),
+('Jeanne', 'Bonnette', '3 rue des Pommes', '48000', 'Trifouilly-les-Oies', 'parent@notabebe.io', '$2b$10$3LpDqhR5lMGHzIYOrLLgs.oUzT7m2iwOctl26yL2mrrCH57B6DVje', '0320831920', 1),
 ('Gaspard', 'Fait', '616 place de la Madeleine', '59000', 'Lille', 'gaspardfait@hotmail.fr', 'g4sp4rd!', '0459102934', 1),
 ('Thierry', 'Chmonfils', '852 rue Bonnet', '44600', 'Saint-Nazaire', 'thierrychemonfils@caramail.fr', '10!Thierry', '0691238561', 1),
-('Barbara', 'Dégout', '274 rue Adolphe Wurtz', '80000', 'Amiens', 'barbaradegout@gmail.com', 'JeSuisUnRat80', '0549332190', 2),
+('Barbara', 'Dégout', '274 rue Adolphe Wurtz', '80000', 'Amiens', 'staff@notabebe.io', '$2b$10$NAl5uBV3mamCnTjXd5I7uuU0ZKVi8Y9lIyq0XlOm5VrQKiqU5/0k6', '0549332190', 2),
 ('Mauricette', 'Quatre', '150 boulevard des prairies', '13000', 'Marseille', 'mauricettequatre@laposte.net', 'mauricette', '0670102943', 2),
-('Nico', 'Assez', '89 rue de la mer', '06800', 'Cagnes-sur-Mer', 'nicoassezadmin@gmail.com', 'athenaassez', '0538592058', 3);
+('Nico', 'Assez', '89 rue de la mer', '06800', 'Cagnes-sur-Mer', 'admin@notabebe.io', '$2b$10$9zEcQIenAFg8GkGnZJIuneRDjNuBe1JEKpz6ZsfBdRDMobx0JAT76', '0538592058', 3);
+
 
 
 INSERT INTO "child" ("first_name", "last_name", "birthdate", "birthplace", "sex", "allergies") VALUES
