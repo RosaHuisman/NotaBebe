@@ -33,7 +33,7 @@ const Home = ({
         <>
           <div className="welcomeHome">
             <div className="welcomeHome__titleHome">
-              <p>Bonjour "untel" </p>
+              <p>Bonjour {user.firstName} {user.lastName} </p>
               <p>Vous êtes connecté</p>
             </div>
           </div>
@@ -58,7 +58,7 @@ const Home = ({
             <Link
             className="contentButton"
             exact="true"
-            to="/profile/admin"
+            to="/admin"
             >
             <button type="button" className="settings__send">Mon espace personnel</button>
             </Link>
