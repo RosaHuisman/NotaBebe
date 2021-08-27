@@ -23,16 +23,8 @@ const commentDataMapper = {
     },
 
     async add(data) {
-
         const result = await client.query('INSERT INTO "comment" (message, child_id) VALUES ($1, $2) RETURNING *', [data.message, data.child_id]);
-
-
         return result.rows[0];
-
-        // the query is returning the user_id which is linked to child_id
-        // const result2 = await client.query('INSERT INTO "user_has_child" (user_id, child_id) VALUES ($1, $2) RETURNING *', [parentId, childId2]);
-
-        // return result.rows[0];
     },
 
     async modify(comment, id) {

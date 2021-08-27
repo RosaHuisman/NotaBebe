@@ -18,6 +18,8 @@ CREATE VIEW "recap_with_nap_and_meal" AS
 		"meal"."comment" AS "rwnam_meal_comment"
 	   FROM "recap"
 		 LEFT JOIN "nap" ON "recap"."id" = "nap"."recap_id"
-		 LEFT JOIN "meal" ON "recap"."id" = "meal"."recap_id";
+		 LEFT JOIN "meal" ON "recap"."id" = "meal"."recap_id"
+		 
+		GROUP BY "recap"."child_id";
 
 COMMIT;
