@@ -26,14 +26,6 @@ const commentDataMapper = {
 
         const result = await client.query('INSERT INTO "comment" (message, child_id) VALUES ($1, $2) RETURNING *', [data.message, data.child_id]);
 
-        // return result.rows[0];
-
-        // const result = await client.query('INSERT INTO "comment" (message) VALUES ($1) RETURNING *', [data.comment]);
-
-        // // the new child id is created
-        // const childId = result.rows[0].id;
-
-        //! à tester - requête imbriquée
 
         return result.rows[0];
 

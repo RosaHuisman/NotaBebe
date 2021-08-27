@@ -75,23 +75,24 @@ const commentController = {
     addComment: async (request, response, next) => {
         try {
 
-            //! en cours !!
+            const newData = request.body;
+            // const test = {
+            //     "comment": {
+            //         "message": request.body,
+            //         "parentId": request.params.id,
+            //         "childId": request.params.childId
+            //     }
+            // }
+            //console.log(test)
+
             const parentId = request.params.id;
-            console.log("parentId", parentId);
             const childId = request.params.childId;
-            console.log("childId", childId);
-            //TODO ajouter les request params dans la méthode
 
-            const parent = await userDataMapper.findParentById(parentId);
-            console.log("parent", parent)
+            const childLinkedToParent = await userDataMapper.findChildFromParent(parentId, childId);
 
-            if (!parent) {
+            if (!childLinkedToParent) {
                 return next();
             }
-
-            const newData = request.body;
-
-            console.log(request.body);
 
             const newComment = await commentDataMapper.add({ ...newData }, childId);
 

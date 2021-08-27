@@ -26,8 +26,18 @@ GET http://localhost:3000/profile/staff/comments
 GET http://localhost:3000/profile/staff/comments/parent/1
 
 
+
+
+
+
+
 ### DISPLAYING COMMENTS BY PARENT ID - for parents
-GET http://localhost:3000/profile/parent/1/comments
+GET http://localhost:3000/profile/parent/3/comments
+
+
+
+
+
 
 
 ### DISPLAYING PARENT PROFILE - parent by id
@@ -218,12 +228,12 @@ DELETE http://localhost:3000/profile/staff/child/recap/13
 # COMMENTS
 
 ### add comment
-POST http://localhost:3000/profile/parent/3/child/2/comments
+POST http://localhost:3000/profile/parent/4/child/3/comments
 Content-Type: application/json
 
 {
-    "message": "rip mon cerveau",
-    "child_id": 2
+    "message": "marre",
+    "child_id": 1
 }
 
 ### modify comment
