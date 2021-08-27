@@ -40,78 +40,97 @@ router.route('/profile/staff/comments')
 // get parent by id
 router.route('/profile/parent/:id')
     .get(userController.getParentById)
-    //.patch(userController.updateUser) -- patch à améliorer (cf Object.keys/Object.values)
+    .patch(userController.updateUser);
 
 // modify password (with parent id)
 router.route('/profile/parent/:id/password')
     .patch(userController.updatePassword);
-    //? voir pour refacto pour tous les users
+//? voir pour refacto pour tous les users : /profile/user/:id/password ???
 
+// modify password for STAFF (with user id)
+router.route('/profile/staff/:id/password')
+    .patch(userController.updatePassword);
 
+// modify child
 router.route('/profile/parent/:id/child/:childId')
-    .get(userController.getChildFromParent);
-    //patch --> modifyChild
+    .get(userController.getChildFromParent)
+    .patch(userController.modifyChild);
 
 // get staff by id
 router.route('/profile/staff/:id')
     .get(userController.getStaffById);
-    // patch -> modifyStaff
+// patch -> modifyStaff
 
 // get recap by id
 router.route('/profile/staff/recap/:id')
     .get(recapController.getRecapById);
+
+// get recaps by child id 
+router.route('/profile/staff/child/:childId/recaps')
+    .get(recapController.getRecapsByChildId);
+
 
 // get comment by id
 router.route('/profile/staff/comments/:id')
     .get(commentController.getCommentById);
 
 
-//TODO get comment by parentId
- 
+// get comments by child id
+router.route('/profile/staff/comments/child/:childId')
+    .get(commentController.getCommentsByChildId);
 
 
-// adding a user
+// get all of one parent's comments - for staff
+router.route('/profile/staff/comments/parent/:parentId')
+    .get(commentController.getCommentsByParentId);
+
+// get all of one parent's comments - for the parent
+router.route('/profile/parent/:parentId/comments')
+    .get(commentController.getCommentsByParentId);
+
+
+// adding a user (selecting role_id in the request.body)
 router.route('/profile/admin/manageprofile')
     .post(adminController.addUser);
 
 // modifying or deleting a user
 router.route('/profile/admin/manageprofile/:id')
-    // .patch(adminController.modifyUser) - patch à améliorer (cf Object.keys/Object.values)
     .delete(adminController.deleteUser);
 
-
-//TODO router.route('/profile/admin/parent/:id/managechildren')
-//TODO     .post(adminController.addChild);
-
-// router.route('/profile/admin/parent/:id/managechildren/:childid')
-//      .patch(userController.modifyChild)
-//     .delete(adminController.deleteChild);
+// adding a child (for admin)
+router.route('/profile/admin/parent/:id/managechildren')
+    .post(adminController.addChild);
 
 
+
+// modifying a child - for admin
+router.route('/profile/admin/parent/:id/managechildren/:childId')
+    .patch(userController.modifyChild)
+    .delete(adminController.deleteChild);
+    //! pour l'instant, deleteChild fonctionne mais on n'a pas l'id du parent dans les params
+
+// ! TODO routes pour nounou acces aux enfants + a 1 enft
 
 router.route('/profile/staff/child/recap')
     .post(recapController.addRecap);
+
 
 router.route('/profile/staff/child/recap/:recapId/')
     .patch(recapController.modifyRecap)
     .delete(recapController.deleteRecap);
 
 
+
 // adding a comment (for parents)
 router.route('/profile/parent/:id/child/:childId/comments')
     //! TODO get? + ajouter les request.params dans les méthodes
     .post(commentController.addComment);
-    
+
 // modifying/deleting a comment (for parents)
 router.route('/profile/parent/:id/child/:childId/comments/:commentId')
-    //! ajouter les request.params dans les méthodes
-    //.patch(commentController.modifyComment) - améliorer le patch (cf au-dessus)
+    //! TODO ajouter les request.params dans les méthodes
+    .patch(commentController.modifyComment)
     .delete(commentController.deleteComment);
-
-
-
-
-//? TODO get recap by child id ?
 
 
 router.route('/login')

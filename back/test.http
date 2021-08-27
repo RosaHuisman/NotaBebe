@@ -22,15 +22,19 @@ GET http://localhost:3000/profile/staff/allrecaps
 ### DISPLAYING ALL COMMENTS - for staff
 GET http://localhost:3000/profile/staff/comments
 
+### DISPLAYING COMMENTS BY PARENT ID - for staff
+GET http://localhost:3000/profile/staff/comments/parent/3
 
 
+### DISPLAYING COMMENTS BY PARENT ID - for parents
+GET http://localhost:3000/profile/parent/3/comments
 
 
 ### DISPLAYING PARENT PROFILE - parent by id
-GET http://localhost:3000/profile/parent/1
+GET http://localhost:3000/profile/parent/8
 
 ### DISPLAYING CHILD ACCORDING TO PARENT PROFILE
-GET http://localhost:3000/profile/parent/1/child/3
+GET http://localhost:3000/profile/parent/1/child/2
 
 ### DISPLAYING STAFF PROFILE - staff by id
 GET http://localhost:3000/profile/staff/5
@@ -38,10 +42,37 @@ GET http://localhost:3000/profile/staff/5
 ### DISPLAYING RECAP - by id
 GET http://localhost:3000/profile/staff/recap/1
 
+### DISPLAYING RECAPS - by child id
+GET http://localhost:3000/profile/staff/child/1/recaps
+
 ### DISPLAYING COMMENT - by id
 GET http://localhost:3000/profile/staff/comments/3
 
 
+### DISPLAYING COMMENTS - by child id
+GET http://localhost:3000/profile/staff/comments/child/4
+
+
+### MODIFY CHILD PROFILE - by parent
+PATCH http://localhost:3000/profile/parent/2/child/3
+Content-Type: application/json
+
+{
+    "first_name": "olivier",
+    "birthplace": "nantes"
+}
+
+### MODIFY CHILD PROFILE - by admin
+PATCH http://localhost:3000/profile/admin/parent/2/managechildren/3
+Content-Type: application/json
+
+{
+    "first_name": "Charles",
+    "birthplace": "Orvault"
+}
+
+### DELETE CHILD PROFILE - by adminController
+DELETE http://localhost:3000/profile/admin/parent/2/managechildren/3
 
 
 ## USER
@@ -53,11 +84,11 @@ Content-Type: application/json
 {
     "email": "mauricettequatre@laposte.net",
     "password": "testouille"
+
 }
 
 
 ###try login with password not hashed
-
 POST http://localhost:3000/login
 Content-Type: application/json
 
@@ -86,6 +117,10 @@ Content-Type: application/json
 }
 
 
+
+### update parent password
+PATCH http://localhost:3000/profile/parent/2/password
+
 ### update user password
 PATCH http://localhost:3000/profile/parent/6/password
 Content-Type: application/json
@@ -95,16 +130,23 @@ Content-Type: application/json
 }
 
 
-### update user info
 
-PATCH http://localhost:3000/profile/parent/9/
+### update staff password
+PATCH http://localhost:3000/profile/staff/5/password
 Content-Type: application/json
 
 {
-    "address": "50 rue de Paris",
-    "postcode": "12345",
-    "city": "Marigny",
-    "phone_number": "0611203948"
+    "password": "testouille"
+}
+
+
+### update user info
+
+PATCH http://localhost:3000/profile/parent/8/
+Content-Type: application/json
+
+{
+    "phone_number": "0123456789"
 }
 
 
@@ -134,8 +176,8 @@ Content-Type: application/json
 ### deleting an user
 DELETE http://localhost:3000/profile/admin/manageprofile/8
 
-## adding a child
-POST http://localhost:3000/profile/admin/parent/1/managechildren
+### adding a child
+POST http://localhost:3000/profile/admin/parent/3/managechildren
 Content-Type: application/json
 
 {
@@ -160,13 +202,12 @@ Content-Type: application/json
     "child_id": 1
 }
 
-### modify
-PATCH http://localhost:3000/profile/staff/child/recap/5/
+### modify one field 
+PATCH http://localhost:3000/profile/staff/child/recap/3/
 Content-Type: application/json
 
 {
-    "mood": "reloulou",
-    "child_id": 1
+    "date": "18/05/2025"
 }
 
 ### delete

@@ -34,7 +34,7 @@ const adminController = {
                 return next();
             }
 
-            await adminDataMapper.delete(id);
+            await adminDataMapper.deleteUser(id);
 
             response.json('User bien supprimé');
 
@@ -49,10 +49,10 @@ const adminController = {
 
     addChild: async (request, response, next) => {
         try {
-
-            //! ne fonctionne pas encore, il faudrait pouvoir inclure le request.params.id pour récupérer l'id du parent
-            const newChild = await adminDataMapper.addChild(request.body);
-
+            const parentId = request.params.id;
+            // ! ne fonctionne pas encore, il faudrait pouvoir inclure le request.params.id pour récupérer l'id du parent
+            const newChild = await adminDataMapper.addChild((request.body), parentId);
+            
             if (!newChild) {
                 return next();
             }
@@ -64,6 +64,28 @@ const adminController = {
             response.json({ error: error.message });
         }
     },
+
+
+
+    deleteChild: async (request, response, next) => {
+        try {
+
+            const parentId = Number(request.params.id);
+            const childId = Number(request.params.childId);
+
+            if (isNaN(childId)) {
+                return next();
+            };
+
+            const childToDelete = await adminDataMapper.deleteChild(childId);
+
+            response.json('Enfant bien supprimé de la plateforme');
+
+        } catch (error) {
+            console.error(error);
+            response.json({ error: error.message });
+        }
+    }
 
 }
 

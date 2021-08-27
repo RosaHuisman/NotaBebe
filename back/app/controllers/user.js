@@ -158,7 +158,9 @@ const userController = {
             if (pwResult) {
 
                 if (user) {
-                    const jwtContent = { userId: user.id, email: user.email, roleId: user.role_id };
+
+                    const jwtContent = { userId: user.id, roleId: user.role_id, firstName: user.first_name, lastName: user.last_name };
+
                     const jwtOptions = {
                         algorithm: 'HS256',
                         expiresIn: '3h'
@@ -166,6 +168,9 @@ const userController = {
                     response.json({
                         logged: true,
                         email: user.email,
+
+                        firstName: user.first_name,
+                        lastName: user.last_name,
                         roleId: user.role_id,
                         token: jsonwebtoken.sign(jwtContent, jwtSecret, jwtOptions),
                     });
@@ -206,9 +211,22 @@ const userController = {
 
         try {
             // check that the data is coherent
+
+            // const oldPassword = request.body.oldPassword;
+            // côté datamapper : select password from "user" where id=$1
+            // id = request.params.id
+            // -- à ce niveau-là, c'est le oldpassword
+
+            // après il faudrait pouvoir comparer
+
+
+            // voir si c'est le nom choisi en front
+            // vérifier s'il match avec l'ancien mdp présent en BDD ?
+            // si ça matche pas -> errors.push('blabla');
             const password = request.body.password;
 
             const errors = [];
+
 
             // checking string length
             if (password.length === 0) {
@@ -248,7 +266,9 @@ const userController = {
         try {
 
             const userId = Number(request.params.id);
+
             const user = await userDataMapper.findById(userId);
+
 
             if (!user) {
                 return next();
@@ -271,6 +291,31 @@ const userController = {
             response.json({ error: error.message });
         }
     },
+
+    modifyChild: async (request, response, next) => {
+        try {
+            const parentId = Number(request.params.id);
+
+            const childId = Number(request.params.childId);
+
+
+            const child = await userDataMapper.findChildFromParent(parentId, childId);
+
+            if (!child) {
+                return next();
+            }
+
+            const newData = request.body;
+
+            const updatedChild = await userDataMapper.modifyChild({ ...newData }, childId);
+
+            response.json({ updatedChild });
+
+        } catch (error) {
+            console.log(error);
+            response.json({ error: error.message });
+        }
+    }
 };
 
 module.exports = userController;

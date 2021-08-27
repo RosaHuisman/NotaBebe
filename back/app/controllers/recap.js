@@ -2,15 +2,15 @@ const recapDataMapper = require('../dataMappers/recap');
 
 const recapController = {
 
-    getAllRecaps: async (_, response) => {
+    getAllRecaps: async (_, response, next) => {
         try {
             const recaps = await recapDataMapper.findAll();
-            
+
             if (recaps) {
                 response.json(recaps);
-                } else {
-                    return next();
-                };
+            } else {
+                return next();
+            };
 
         } catch (error) {
             console.log(error);
@@ -18,16 +18,34 @@ const recapController = {
         }
     },
 
-    getRecapById: async (request, response) => {
+    getRecapById: async (request, response, next) => {
         try {
             const recapId = Number(request.params.id);
             const data = await recapDataMapper.findById(recapId);
-            
+
             if (data) {
                 response.json(data);
-                } else {
-                    return next();
-                };
+            } else {
+                return next();
+            };
+
+        } catch (error) {
+            console.log(error);
+            response.json({ error: error.message });
+        }
+    },
+
+    getRecapsByChildId: async (request, response, next) => {
+        try {
+            const childId = Number(request.params.childId);
+            const data = await recapDataMapper.findByChildId(childId);
+            console.log(data);
+
+            if (data) {
+                response.json(data);
+            } else {
+                return next();
+            }
 
         } catch (error) {
             console.log(error);
@@ -57,17 +75,19 @@ const recapController = {
         try {
             const recapId = Number(request.params.recapId);
             const recap = await recapDataMapper.findById(recapId);
-            console.log(recap)
+            //console.log(recap)
 
             if (!recap) {
                 return next();
             }
 
             const newData = request.body;
+            //console.log(newData);
             const updatedRecap = await recapDataMapper.modify({ ...newData }, recapId);
+            // console.log("console log", newData, recapId);
 
-            response.json({ updatedRecap }); 
-           
+            response.json({ updatedRecap });
+
 
         } catch (error) {
             console.log(error);
