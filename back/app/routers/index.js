@@ -129,8 +129,8 @@ router.route('/profile/parent/:id/child/:childId/comments')
 
 // modifying/deleting a comment (for parents)
 router.route('/profile/parent/:id/child/:childId/comments/:commentId')
-    //! TODO ajouter les request.params dans les méthodes
     .patch(commentController.modifyComment)
+    //! TODO ajouter les request.params dans les méthodes
     .delete(commentController.deleteComment);
 
 

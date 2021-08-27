@@ -85,20 +85,20 @@ const commentController = {
             // }
             //console.log(test)
 
-            const parentId = request.params.id;
-            const childId = request.params.childId;
+            const parentId = Number(request.params.id);
+            const childId = Number(request.params.childId);
 
             const childLinkedToParent = await userDataMapper.findChildFromParent(parentId, childId);
 
             if (!childLinkedToParent) {
                 return next();
-            }
+            };
 
             const newComment = await commentDataMapper.add({ ...newData }, childId);
 
             if (!newComment) {
                 return next();
-            }
+            };
 
             response.json({ data: newComment });
 
@@ -111,16 +111,24 @@ const commentController = {
     modifyComment: async (request, response, next) => {
         try {
 
-            const commentId = Number(request.params.id);
-            const comment = await commentDataMapper.findById(commentId);
-
-            if (!comment) {
-                return next();
-            }
-
             const newData = request.body;
 
+            const parentId = Number(request.params.id);
+            const childId = Number(request.params.childId);
+
+            const commentId = Number(request.params.commentId);
+
+            const childLinkedToParent = await userDataMapper.findChildFromParent(parentId, childId);
+
+            if (!childLinkedToParent) {
+                return next();
+            };
+
             const modifiedComment = await commentDataMapper.modify({ ...newData }, commentId);
+
+            if (!modifiedComment) {
+                return next();
+            }
             // response.redirect('/');
             response.json({ modifiedComment });
 
@@ -133,15 +141,27 @@ const commentController = {
     deleteComment: async (request, response, next) => {
         try {
 
-            const id = Number(request.params.id);
+            const parentId = Number(request.params.id);
+            const childId = Number(request.params.childId);
+            const commentId = Number(request.params.commentId);
 
-            if (isNaN(id)) {
+            const childLinkedToParent = await userDataMapper.findChildFromParent(parentId, childId);
+
+            if (!childLinkedToParent) {
+                return next();
+            };
+
+            if (isNaN(commentId)) {
                 return next();
             }
 
-            await commentDataMapper.delete(id);
+            const result = await commentDataMapper.delete(commentId);
 
-            response.json('Commentaire bien supprimé');
+            if (result.rowCount > 0) {
+                response.json('Commentaire bien supprimé');
+            } else {
+                return next();
+            }
 
 
         } catch (error) {

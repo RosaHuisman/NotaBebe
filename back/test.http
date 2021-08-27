@@ -32,7 +32,7 @@ GET http://localhost:3000/profile/staff/comments/parent/1
 
 
 ### DISPLAYING COMMENTS BY PARENT ID - for parents
-GET http://localhost:3000/profile/parent/3/comments
+GET http://localhost:3000/profile/parent/1/comments
 
 
 
@@ -228,22 +228,22 @@ DELETE http://localhost:3000/profile/staff/child/recap/13
 # COMMENTS
 
 ### add comment
-POST http://localhost:3000/profile/parent/4/child/3/comments
+POST http://localhost:3000/profile/parent/1/child/1/comments
 Content-Type: application/json
 
 {
-    "message": "marre",
+    "message": "super marre",
     "child_id": 1
 }
 
 ### modify comment
-PATCH http://localhost:3000/profile/parent/comments/5
+PATCH http://localhost:3000/profile/parent/1/child/1/comments/27
 Content-Type: application/json
 
 {
-    "message": "en fait ça va mieux maintenant",
-    "child_id": 2
+    "message": "adieu mon cerveau",
+    "child_id": 1
 }
 
 ### delete comment
-DELETE http://localhost:3000/profile/parent/comments/5
+DELETE http://localhost:3000/profile/parent/1/child/1/comments/25
