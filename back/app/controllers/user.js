@@ -157,7 +157,7 @@ const userController = {
             // if the password is correct 
             if (pwResult) {
                 if (user) {
-                    const jwtContent = { userId: user.id, roleId: user.role_id };
+                    const jwtContent = { userId: user.id, roleId: user.role_id, firstName: user.first_name, lastName: user.last_name };
                     const jwtOptions = {
                         algorithm: 'HS256',
                         expiresIn: '10s'
@@ -165,6 +165,8 @@ const userController = {
                     response.json({
                         logged: true,
                         email: user.email,
+                        firstName: user.first_name,
+                        lastName: user.last_name,
                         roleId: user.role_id,
                         token: jsonwebtoken.sign(jwtContent, jwtSecret, jwtOptions),
                     });
@@ -206,9 +208,16 @@ const userController = {
             // check that the data is coherent
 
             // const oldPassword = request.body.oldPassword;
-                // voir si c'est le nom choisi en front
-                // vérifier s'il match avec l'ancien mdp présent en BDD ?
-                // si ça matche pas -> errors.push('blabla');
+            // côté datamapper : select password from "user" where id=$1
+            // id = request.params.id
+            // -- à ce niveau-là, c'est le oldpassword
+
+            // après il faudrait pouvoir comparer
+
+
+            // voir si c'est le nom choisi en front
+            // vérifier s'il match avec l'ancien mdp présent en BDD ?
+            // si ça matche pas -> errors.push('blabla');
             const password = request.body.password;
 
             const errors = [];
@@ -284,7 +293,7 @@ const userController = {
 
             const childId = Number(request.params.childId);
 
-            
+
             const child = await userDataMapper.findChildFromParent(parentId, childId);
 
             if (!child) {
