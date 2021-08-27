@@ -8,11 +8,11 @@ import FilterRecaps from 'src/components/FilterRecaps';
 import './styles.scss';
 
 const StaffProfile = ({ searchValue, setSearchValue, handleSubmit }) => {
-  const [datas, setDatas] = useState([]);
+  // const [datas, setDatas] = useState([]);
 
-  useEffect(() => {
-    fetch;
-  }, []);
+  // useEffect(() => {
+  //   fetch;
+  // }, []);
 
   return (
     <div className="staff">
@@ -33,13 +33,13 @@ const StaffProfile = ({ searchValue, setSearchValue, handleSubmit }) => {
       </div>
       <div className="ui divider" />
 
-      <div className="recaps__filter">
+      {/* <div className="recaps__filter">
         <FilterRecaps
           searchValue={searchValue}
           onSearchChange={setSearchValue}
           onSearchSubmit={handleSubmit}
         />
-      </div>
+      </div> */}
     </div>
   );
 };
