@@ -22,16 +22,16 @@ const Children = ({
       <h3 className="children__title"> Mon enfant</h3>
 
       <div className="children__infos">
-        {user.map((child) =>
+        {user.map((parent) =>
         // console.log(child)
           (
 
             <Link
-              key={child.child_id}
+              key={parent.child_id}
               to={{
-                pathname: `/profile/parent/${child.id}/child/${child.child_id}`,
+                pathname: `/profile/parent/${parent.id}/child/${parent.child_id}`,
                 state: {
-                  child: child,
+                  parent: parent,
                 },
               }}
             >
@@ -43,7 +43,7 @@ const Children = ({
                   className="children__infos__child__icon"
                 />
 
-                <div className="children__infos__child__name">{child.pwc_child_first_name}</div>
+                <div className="children__infos__child__name">{parent.pwc_child_first_name}</div>
 
               </div>
             </Link>

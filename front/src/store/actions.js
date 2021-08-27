@@ -14,6 +14,8 @@ export const SET_CURRENT_USER = 'SET_CURRENT_USER';
 // actions user
 export const OPEN_CHANGE_INFOS = 'OPEN_CHANGE_INFOS';
 export const CHANGE_INFOS = 'CHANGE_INFOS';
+export const CHANGE_CHILD_INFOS = 'CHANGE_CHILD_INFOS';
+
 export const TOGGLE_CHANGE_PASSWORD = 'TOGGLE_CHANGE_PASSWORD';
 export const CLOSE_FORM = 'CLOSE_FORM';
 export const CHANGE_PASSWORD = 'CHANGE_PASSWORD';
@@ -75,6 +77,12 @@ export const openChangeInfos = () => ({
 export const changeInfos = (id) => ({
   type: CHANGE_INFOS,
   id,
+});
+
+export const changeChildInfos = (parentId, childId) => ({
+  type: CHANGE_CHILD_INFOS,
+  parentId,
+  childId,
 });
 
 export const toggleChangePassword = () => ({

@@ -22,8 +22,16 @@ const ChildProfile = ({
   comment,
   commentSend,
   onChangeTextValue,
+  
+  // loadUsersParents,
 
 }) => {
+
+  // useEffect(() => {
+  //   //console.log('je suis dans le useEffect')
+  //   loadUsersParents();
+  // }, []);
+
   const data = useLocation();
 
   // const child = data.state.child;
@@ -32,8 +40,12 @@ const ChildProfile = ({
   // const child = () => {
   //   return data.state.child
   // }
+  
+  // we retrieve the data of the parent and the child through Link of Children in ParentProfile
+  // we could use this informations for the parent and the child
+  // I called it parent but the child's information is available too
 
-  // console.log(child)
+  console.log('user dans index profil enfant', data.state.parent)
 
   const handleOnClickChangeInfosButton = (e) => {
     e.preventDefault();
@@ -52,7 +64,7 @@ const ChildProfile = ({
           <>
             <ChildInfos
               openUserInfos={openUserInfos}
-              child={data.state.child}
+              parent={data.state.parent}
             />
 
             <button
@@ -68,8 +80,8 @@ const ChildProfile = ({
             <ChangeChildInfosForm
               closeForm={closeForm}
               handleChangeInfos={handleChangeInfos}
-              user={user}
-              child={data.state.child}
+              //user={user}
+              parent={data.state.parent}
             />
           </>
         )}

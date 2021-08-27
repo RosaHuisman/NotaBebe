@@ -1,5 +1,6 @@
 import {
   CHANGE_INFOS,
+  CHANGE_CHILD_INFOS,
   CHANGE_PASSWORD,
   saveInfosUser,
   savePasswordUser,
@@ -70,6 +71,28 @@ const user = (store) => (next) => (action) => {
         postcode: state.user.postcode,
         city: state.user.city,
         phone_number: state.user.phone_number,
+      })
+        .then((response) => {
+          console.log("reponse de la BDD update parent infos", response.data)
+          const actionSaveInfosUser = saveInfosUser(response.data);
+          store.dispatch(actionSaveInfosUser);
+        })
+        .catch((error) => {
+          // console.log('une erreur s\'est produite')
+          // store.dispatch(changeInfosError());
+        });
+      break;
+    }
+
+    case CHANGE_CHILD_INFOS: {
+      console.log('je suis dans le cas CHANGE_CHILD_INFOS')
+      const state = store.getState();
+      const parentId = action.parentId;
+      const childId = action.childId;
+
+
+      axios.patch(`http://notabebe-back.herokuapp.com/profile/parent/${parentId}/child/${childId}`, {
+        allergies: state.user.allergy,
       })
         .then((response) => {
           console.log("reponse de la BDD update parent infos", response.data)
