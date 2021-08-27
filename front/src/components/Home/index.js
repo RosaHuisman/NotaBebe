@@ -13,7 +13,8 @@ const Home = ({
   errorMessage,
   contentHome,
   successMessage,
-  user
+  user,
+  logged,
 }) => {
   // const history = useHistory();
   const getToken = localStorage.getItem('MyToken');
@@ -33,7 +34,7 @@ const Home = ({
         <>
           <div className="welcomeHome">
             <div className="welcomeHome__titleHome">
-              <p>Bonjour {user.firstName} {user.lastName} </p>
+              <p>Bonjour {user.firstName} {user.lastName}</p>
               <p>Vous êtes connecté</p>
             </div>
           </div>

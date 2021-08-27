@@ -7,7 +7,7 @@ import './styles.scss';
 import logo from 'src/images/NotaBebe_logo.png';
 
 const Header = ({
-  logged, handleLogout, loggedMessage, successMessage,
+  logged, handleLogout, loggedMessage, successMessage, user
 }) => {
   const history = useHistory();
 
@@ -49,30 +49,77 @@ const Header = ({
       ) : (
         <>
           <header className="header">
-            <Dropdown
+            <>
+            {user.roleId === 1 ?
+              <Dropdown
               icon="content"
               floating
               button
               className="icon iconBurger"
-            >
-              <Dropdown.Menu>
-                <Dropdown.Item>{loggedMessage}</Dropdown.Item>
-                <Dropdown.Item>
-                  <Link to="" onClick={handleMenu2}>Mon profil</Link>
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  <Link to="" onClick={handleMenu3}> Commentaires parents</Link>
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  <Link to="" onClick={handleMenu2}>Editer un récap</Link>
-                </Dropdown.Item>
-                <Dropdown.Item onClick={LOGOUT}>Se déconnecter</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-            <h1 className="header-title">NotaBebe</h1>
-            <Link to="/">
-              <img src={logo} className="header-logo" alt="Logo NotaBebe" />
-            </Link>
+              >
+                <Dropdown.Menu>
+                  <Dropdown.Item>{loggedMessage}</Dropdown.Item>
+                  <Dropdown.Item>
+                    <Link to={`/profile/parent/${user.userId}`}>Mon profil</Link>
+                  </Dropdown.Item>
+                  <Dropdown.Item>
+                    <Link to="/actualites" onClick={handleMenu3}>Actualités</Link>
+                  </Dropdown.Item>
+                  <Dropdown.Item onClick={LOGOUT}>Se déconnecter</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            
+            : user.roleId === 2 ?
+                <Dropdown
+                icon="content"
+                floating
+                button
+                className="icon iconBurger"
+                >
+                  <Dropdown.Menu>
+                    <Dropdown.Item>{loggedMessage}</Dropdown.Item>
+                    <Dropdown.Item>
+                      <Link to={`/profile/staff/${user.userId}`}>Mon profil</Link>
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      <Link to="/actualites">Actualités</Link>
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      <Link to="">Listes des commentaires</Link>
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      <Link to="">Editer un récap</Link>
+                    </Dropdown.Item>
+                    <Dropdown.Item onClick={LOGOUT}>Se déconnecter</Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+            : 
+                <Dropdown
+                icon="content"
+                floating
+                button
+                className="icon iconBurger"
+                >
+                  <Dropdown.Menu>
+                    <Dropdown.Item>{loggedMessage}</Dropdown.Item>
+                    <Dropdown.Item>
+                      <Link to="/actualites">Actualités</Link>
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      <Link to="/admin">Listes des utilisateurs</Link>
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      <Link to="/admin/adduser">Créer un utilisateur</Link>
+                    </Dropdown.Item>
+                    <Dropdown.Item onClick={LOGOUT}>Se déconnecter</Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+            }
+            </>
+              <h1 className="header-title">NotaBebe</h1>
+              <Link to="/">
+                <img src={logo} className="header-logo" alt="Logo NotaBebe" />
+              </Link>
           </header>
         </>
       )}
