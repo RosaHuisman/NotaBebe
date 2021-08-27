@@ -20,8 +20,11 @@ export const CHANGE_PASSWORD = 'CHANGE_PASSWORD';
 export const INFOS_ERROR = 'INFOS_ERROR';
 export const PASSWORD_ERROR = 'PASSWORD_ERROR';
 export const SAVE_INFOS_USER = 'SAVE_INFOS_USER';
-export const SAVE_PASSWORD_USER = 'SAVE_PASSWORD_USER';
+// export const SAVE_PASSWORD_USER = 'SAVE_PASSWORD_USER';
+export const SAVE_NEW_PASSWORD_PARENT = 'SAVE_NEW_PASSWORD_PARENT';
 export const CHANGE_FIELD_VALUE = 'CHANGE_FIELD_VALUE';
+export const CHANGE_FIELD_VALUE_TWO = 'CHANGE_FIELD_VALUE_TWO';
+
 export const CHANGE_TEXT_VALUE = 'CHANGE_TEXT_VALUE';
 
 export const SAVE_USERS_PARENTS = 'SAVE_USERS_PARENTS';
@@ -42,10 +45,16 @@ export const SAVE_USER_LOGIN = 'SAVE_USER_LOGIN';
 export const FETCH_USER_DATA = 'FETCH_USER_DATA';
 export const SAVE_USER_DATA = 'SAVE_USER_DATA';
 
-export const changeFieldValue = (value, key) => ({
-  type: CHANGE_FIELD_VALUE,
-  key,
+// export const changeFieldValue = (value, key) => ({
+//   type: CHANGE_FIELD_VALUE,
+//   key,
+//   value,
+// });
+
+export const changeFieldValueTwo = (key, value) => ({
+  type: CHANGE_FIELD_VALUE_TWO,
   value,
+  key,
 });
 
 export const setCurrentUser = (user) => ({
@@ -75,9 +84,14 @@ export const closeFormAction = () => ({
   type: CLOSE_FORM,
 });
 
-export const changePassword = () => ({
+export const changePassword = (id) => ({
   type: CHANGE_PASSWORD,
+  id,
 });
+
+export const saveNewPasswordParent = () => ({
+  type: SAVE_NEW_PASSWORD_PARENT,
+})
 
 export const passwordError = () => ({
   type: LOGIN_ERROR,
@@ -91,9 +105,9 @@ export const saveInfosUser = () => ({
   type: SAVE_INFOS_USER,
 });
 
-export const savePasswordUser = () => ({
-  type: SAVE_PASSWORD_USER,
-});
+// export const savePasswordUser = () => ({
+//   type: SAVE_PASSWORD_USER,
+// });
 
 export const fetchUsersParents = () => ({
   type: FETCH_USERS_PARENTS,

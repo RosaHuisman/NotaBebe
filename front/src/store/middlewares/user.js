@@ -7,6 +7,7 @@ import {
   changePasswordError,
   saveUsersParents,
   FETCH_USERS_PARENTS,
+  saveNewPasswordParent,
 } from 'src/store/actions';
 import axios from 'axios';
 
@@ -16,11 +17,11 @@ const user = (store) => (next) => (action) => {
   // une fois qu'on aura les infos, on va les stocker dans le state => dispatcher une action
   switch (action.type) {
     case FETCH_USERS_PARENTS: {
-      console.log('je suis dans le cas FETCH USERS PARENTS')
+      //console.log('je suis dans le cas FETCH USERS PARENTS')
       const fetchData = async () => {
         try {
           const response = await api.get('/profile/admin/parents');
-          console.log('reponse du fetch : ', response.data)
+          //console.log('reponse du fetch : ', response.data)
           const actionsaveUsersParents = saveUsersParents(response.data);
           store.dispatch(actionsaveUsersParents);
         }
@@ -78,23 +79,30 @@ const user = (store) => (next) => (action) => {
       break;
     }
     case CHANGE_PASSWORD: {
-      console.log('je suis dans le cas CHANGE_PASSWORD');
+       console.log('je suis dans le cas CHANGE_PASSWORD')
       const state = store.getState();
+      const id = action.id;
 
-      axios.patch('http://localhost:3001/profile/parent/:id', {
-        password: state.user.password,
+      console.log(state.user.oldpassword)
+      //console.log(state.user)
+
+      axios.patch(`http://notabebe-back.herokuapp.com/profile/parent/${id}/password`, {
+        oldPassword: state.user.oldpassword,
+        id: action.id,
       })
         .then((response) => {
-          // console.log('la response du serveur', response.data)
-          const actionSaveInfosUser = savePasswordUser(response.data);
-          store.dispatch(actionSaveInfosUser);
+          console.log(response.data)
+          const actionsChangePasswordParent = saveNewPasswordParent(response.data);
+          store.dispatch(actionsChangePasswordParent);
         })
         .catch((error) => {
-          console.log('une erreur s\'est produite');
-          // store.dispatch(changePasswordError());
+          console.log('il y a eu une erreur dans le save password parent', error);
+          // store.dispatch(changeInfosError());
         });
       break;
     }
+    
+  
     default:
       next(action);
   }

@@ -14,7 +14,7 @@ const Children = ({
   // child,
 
 }) => {
-  console.log(user);
+  //console.log(user);
 
   return (
     <div className="children">
