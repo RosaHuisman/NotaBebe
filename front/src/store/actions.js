@@ -170,3 +170,19 @@ export const saveUserData = (favorites) => ({
   type: SAVE_USER_DATA,
   payload: favorites,
 });
+
+
+// liste user (viktk)
+export const GET_ALL_USERS = 'GET_ALL_USERS';
+export const getAllUsersAction = () => ({
+  type: GET_ALL_USERS,
+});
+
+export const GET_ALL_USERS_SUCCESS = 'GET_ALL_USERS_SUCCESS';
+export const getAllUsersSuccessAction = (payload) => ({
+  type: GET_ALL_USERS_SUCCESS,
+  userList: payload,
+});
+
+export const LOGOUT_ADMIN = 'LOGOUT_ADMIN';
+

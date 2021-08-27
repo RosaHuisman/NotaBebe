@@ -1,3 +1,21 @@
+@use 'sass:color';
+@use 'src/styles/vars';
+
+
+// Partie vue mobile
+.button-settings-back {
+  display: flex;
+  justify-content: center;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  width: fit-content;
+  color: #fff;
+  margin-top: 1.3rem;
+  font-size: 0.8rem;
+  padding: 0.5rem;
+  background-color: #06C4CA;
+}
+
 .adminMobileHome {
   display: flex;
   flex-direction: column;
@@ -22,19 +40,7 @@
   }
 }
 
-.button-settings-back {
-  display: flex;
-  justify-content: center;
-  border: 1px solid #eee;
-  border-radius: 4px;
-  width: fit-content;
-  color: #fff;
-  margin-top: 1.3rem;
-  font-size: 0.8rem;
-  padding: 0.5rem;
-  background-color: #06C4CA;
-}
-
+// Partie vue Desktop
 .adminDesktopHome {
   display: flex;
   flex-direction: column;
@@ -45,4 +51,88 @@
     font-size: 1.5rem;
     font-weight: bold;
   }
+}
+
+.menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  justify-items: center;
+  padding: 0 3rem 1rem 3rem;
+  border-bottom: 1px solid #ddd;
+  width: 1000px;
+
+  &__link {
+    display: flex;
+    padding: 0 2rem;
+    margin: 0 1rem;
+    cursor: pointer;
+    color: #000;
+
+    &__selected {
+      text-decoration: underline;
+    }
+
+    &:hover {
+      color: #e52354;
+    }
+  }
+}
+
+.contentInputAdd {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .uiInput {
+    display: flex;
+    width: 750px;
+  }
+  
+  .uiButtonInput {
+    display: flex;
+  
+  }
+}
+
+.containerTable {
+  margin-top: 5rem;
+}
+
+.contentBar {
+  &__searchBar {
+    display: flex;
+    width: 740px;
+    height: 40px;
+    border: 1px solid #E3E3E4;
+    border-radius: 5px;
+    padding-left: 10px;
+    color: #aaa;
+    
+    &__icon {
+      display: flex !important;
+      align-items: center !important;
+      height: 40px !important;
+      padding-right: 0.8rem !important;
+    }
+
+    &__text {
+      display: flex;
+      align-items: center;
+      width: 690px;
+      border: none;
+      color: grey;
+      padding-left: 1rem;
+
+
+      &::placeholder {
+        color: #ccc;
+        font-style: italic;
+      }
+    }
+  }
+}
+
+.TableListUser {
+  padding-bottom: 10rem;
 }

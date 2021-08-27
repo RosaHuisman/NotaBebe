@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import './styles.scss';
-
 const HeaderAdmin = () => (
   <header className="menu">
     <Link
@@ -15,14 +13,14 @@ const HeaderAdmin = () => (
     <Link
       className="menu__link"
       activeClassName="menu__link__selected"
-      to="/news"
+      to="/actualites"
     >
       Actualités
     </Link>
     <Link
       className="menu__link"
       activeClassName="menu__link__selected"
-      to="/contacts"
+      to="/contact"
     >
       Contact
     </Link>
