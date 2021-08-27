@@ -120,12 +120,12 @@ router.route('/profile/staff/child/recap/:recapId/')
     .delete(recapController.deleteRecap);
 
 
-//! faire en priorité
 
 // adding a comment (for parents)
 router.route('/profile/parent/:id/child/:childId/comments')
-    //! TODO get? + ajouter les request.params dans les méthodes
     .post(commentController.addComment);
+
+//! faire en priorité
 
 // modifying/deleting a comment (for parents)
 router.route('/profile/parent/:id/child/:childId/comments/:commentId')
