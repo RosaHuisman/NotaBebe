@@ -11,39 +11,44 @@ import './styles.scss';
 
 const StaffProfile = ({ searchValue, setSearchValue, handleSubmit }) => {
 
-const [datas, setDatas] = useState([])
+// const [datas, setDatas] = useState([])
 
-useEffect(() => {
-  fetch
-}, [])
+// useEffect(() => {
+//   fetch
+// }, [])
 
   return (
     <div className="staff">
       <div className="staff__name">
-        <h2> Dupont-Moretti Christine</h2>
+        <h2> Dupont-Moretti Christine </h2>
       </div>
       <div className="staff__button">
-      <div className="staff__button__comments">
-        <Link className="comments__link" to='/contact' exact="true">
-        <button type="button" className="button">Commentaires</button>
-        </Link>
+        <div className="staff__button__child">
+          <Link className="childs__link" to='/childs' exact="true">
+            <button type="button" className="button">Liste des enfants</button>
+          </Link>
+        </div>
+        <div className="staff__button__recap">
+          <Link className="recap__link" to='/allrecaps' exact="true">
+            <button type="button" className="button">Liste des récaps</button>
+          </Link>
+        </div>
+        <div className="staff__button__comments">
+          <Link className="comments__link" to='/allcomments' exact="true">
+            <button type="button" className="button">Les Commentaires</button>
+          </Link>
+        </div>
       </div>
-     <div className="staff__button__recap">
-        <Link className="recap__link" to='/contact' exact="true">
-        <button type="button" className="button">Créer un récap</button>
-        </Link>
-      </div>
-      </div>
-      <div className="ui divider"></div>
+      {/* <div className="ui divider"></div> */}
       
-      <div className="recaps__filter">
+      {/* <div className="recaps__filter">
         <FilterRecaps
           searchValue={searchValue}
           onSearchChange={setSearchValue}
           onSearchSubmit={handleSubmit}
         />
-      </div>
-      </div>
+      </div> */}
+    </div>
     )}
    
 StaffProfile.propTypes = {

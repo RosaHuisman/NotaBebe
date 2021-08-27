@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import './styles.scss';
 
 function CreateRecap({
-  openNewNap, isOpen, onChangeValue, handleSubmit, childSelected, moodSelected, timeNapSelected
+  openNewNap, isOpen, onChangeValue, handleSubmit, childSelected, moodSelected, timeNapSelected, handleSendRecap,
 }) {
 
   const handleClick = () => {
@@ -38,11 +38,20 @@ function CreateRecap({
     timeNapSelected(e.target.value, e.target.name);
   }
 
+  // const handleSubmit = (e) => {
+  //   evt.preventDefault();
+  //   handleSendRecap();
+  // };
+
   return (
     <>
     <form className="create__recap__form" onSubmit={handleSubmit}>
       <div className="create__recap">
         <h1>Création d'un récap</h1>
+
+        <label for="start">Date du Récap:</label>
+        <input type="date" id="start" name="trip-start"
+         value="02-07-2021"></input>
 
         <div className="child__select">
           <label htmlFor="child-select">Choisir l'enfant:</label>
@@ -165,7 +174,7 @@ function CreateRecap({
         </div>
 
         <div className="submit__button">
-          <button type="button">Créer le récap</button>
+          <button type="submit" className="validaterecap__button">Créer le récap</button>
         </div>
       </div>
       </form>

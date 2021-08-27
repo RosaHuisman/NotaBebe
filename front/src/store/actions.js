@@ -11,6 +11,7 @@ export const CHANGE_TEXT_VALUE = 'CHANGE_TEXT_VALUE';
 export const CHANGE_CHILD = 'CHANGE_CHILD';
 export const CHANGE_MOOD = 'CHANGE_MOOD';
 export const CHANGE_TIME_NAP = 'CHANGE_TIME_NAP';
+export const SEND_RECAP = 'SEND_RECAP';
 
 export const FETCH_RECAPS = 'FETCH_RECAPS';
 
@@ -52,3 +53,9 @@ export const changeTimeNap = (key, value) => ({
   value, 
   key,
 })
+
+// export const sendRecap = (key, value) => ({
+//   type: SEND_RECAP,
+//   value, 
+//   key,
+// })

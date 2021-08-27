@@ -8,6 +8,7 @@ import Header from 'src/components/Header';
 import StaffProfile from 'src/components/StaffProfile';
 import CreateRecap from 'src/containers/CreateRecap';
 
+
 import { Switch, Route } from 'react-router-dom';
 
 
@@ -33,6 +34,9 @@ const App = () => (
     <Route path={'/create-recap'} exact>
       <CreateRecap />
     </Route>
+    {/* <Route path={'/allrecaps'} exact>
+      <RecapsPage />
+    </Route> */}
   </Switch>
   <Footer />
   </>

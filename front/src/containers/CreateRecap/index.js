@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import CreateRecap from 'src/components/CreateRecap';
-import { showFieldNap, changeTextValue, changeChild, changeMood, changeTimeNap } from 'src/store/actions';
+import { showFieldNap, changeTextValue, changeChild, changeMood, changeTimeNap, sendRecap } from 'src/store/actions';
 
 const mapStateToProps = (state) => ({
   isOpen: state.recap.isOpen,
@@ -28,6 +28,10 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   timeNapSelected: (value, name) => {
     dispatch(changeTimeNap(name, value));
   },
+
+  // handleSendRecap: () => {
+  //   dispatch(sendRecap());
+  // },
 
 });
 

@@ -2,7 +2,7 @@
 
 .staff {
   margin: 0 5px 0 5px;
-  overflow: scroll;
+  //overflow: scroll;
 }
 
 .staff__name {
@@ -12,44 +12,29 @@
 .staff__button {
   margin-top: 10px;
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  
-
-  &__comments {
-    padding: 10px;
-    border-radius: 10px;
-    background-color: v.$primary-color;
-  }
-
-  &__recap {
-    padding: 10px;
-    border-radius: 10px;
-    background-color: v.$secondary-color;
-  }
-}
-
-.my__recap {
-  font-weight: bold;
-}
-
-
-.staff__recap {
-  display: flex;
   flex-direction: column;
-  justify-content: center;
-  margin-top: 10px;
-  
+  justify-content: space-around;
+  text-align: center;
 }
 
-.recap {
-  border: 1px solid grey;
-  border-radius: 8px;
-  padding: 10px;
-  margin-bottom: 5px;
+.recap__link {
+  background-color: greenyellow;
 }
 
+.button {
+  background-color: v.$primary-color;
+  color: white;
+  font-weight: bold;
+  border: 1px solid;
+  border-radius: 10px;
+  box-shadow: 0 5px 9px rgba(0, 0, 0, 0.3); 
+  margin-top: 20px;
+  padding: 10px 10px 10px 10px;
 
+  // :hover {
+  //   background-color: red;
+  // }
+}
 
 
 
