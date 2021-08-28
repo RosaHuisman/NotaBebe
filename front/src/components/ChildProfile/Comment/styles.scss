@@ -26,7 +26,7 @@
   }
   &__submit {
     margin: 0 auto;
-    margin-bottom: v.$gutter*3;
+    margin-bottom: v.$gutter;
     display: block;
     padding: v.$gutter/3;
     background-color: v.$primary-color;
@@ -42,5 +42,54 @@
     margin-top: v.$gutter;
     margin-bottom: v.$gutter*3;
 
+  }
+
+  &__allcomments {
+    margin-bottom: v.$gutter*3;
+    &__title{
+      color: v.$primary-color;
+      font-size: 1em;
+      text-transform: uppercase;
+      font-weight: bold;
+      margin-left: v.$gutter/2;
+    }
+  }
+
+  &__onecomment {
+    
+    width: 80%;
+    margin: v.$gutter/3 auto v.$gutter;
+    padding: v.$gutter/2;
+    border-radius: 10px;
+    border: 1px solid #eee;
+    background-color: v.$bg-color;
+    box-shadow: 0 5px 9px rgba(0, 0, 0, 0.3); 
+      -webkit-box-shadow: 0 5px 9px rgba(0, 0, 0, 0.3); 
+      -moz-box-shadow: 0 5px 9px rgba(0, 0, 0, 0.3);
+
+      &__infos {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      &__date {
+        font-size: .9em;
+        color: #fefefe;
+      }
+
+      &__message {
+        font-size: 1.1em;
+      }
+
+      &__icons {
+        display: flex;
+        //flex-direction: column;
+        color: white;
+
+        &__icon {
+          display: inline-flex;
+          margin-top: 30px;
+        }
+      }
   }
 }

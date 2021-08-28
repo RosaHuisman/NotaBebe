@@ -25,7 +25,6 @@ const Children = ({
         {user.map((parent) =>
         // console.log(child)
           (
-
             <Link
               key={parent.child_id}
               to={{

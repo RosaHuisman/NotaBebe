@@ -14,7 +14,7 @@ const ChangeChildInfosForm = ({
   parent,
   //user
 }) => {
-  console.log('parent', parent)
+  //console.log('parent', parent)
   const handleOnClickCancelButton = (e) => {
     e.preventDefault();
     closeForm();

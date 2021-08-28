@@ -41,7 +41,6 @@ export const CHANGE_CHILD = 'CHANGE_CHILD';
 export const CHANGE_MOOD = 'CHANGE_MOOD';
 export const CHANGE_TIME_NAP = 'CHANGE_TIME_NAP';
 
-export const FETCH_RECAPS = 'FETCH_RECAPS';
 
 export const SAVE_USER_LOGIN = 'SAVE_USER_LOGIN';
 export const FETCH_USER_DATA = 'FETCH_USER_DATA';
@@ -137,10 +136,7 @@ export const sendComment = () => ({
 export const createGetRecapAction = () => ({
   type: GET_RECAP,
 });
-
-export const fetchRecaps = () => ({
-  type: FETCH_RECAPS,
-});
+;
 
 export const showFieldNap = () => ({
   type: SHOW_FIELD_NAP,

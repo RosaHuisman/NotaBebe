@@ -3,6 +3,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Field from 'src/containers/Field';
 
+import { Icon } from 'semantic-ui-react';
+
+
+import { formatDate } from 'src/store/selectors/formatDate'
+import { formatHour } from 'src/store/selectors/formatDate'
+
 // == Import : local
 import './styles.scss';
 
@@ -12,6 +18,7 @@ const Comment = ({
   commentSend,
   onChangeTextValue,
   name,
+  comments
 }) => {
   const handleSubmit = (evt) => {
     // console.log('je clique sur submit')
@@ -68,6 +75,41 @@ const Comment = ({
               Envoyer le message
             </button>
           </form>
+
+          <div className="comment__allcomments">
+
+            <p className="comment__allcomments__title">Mes messages envoyés:</p>
+
+            {comments.map((comment) => {
+            console.log('un commentaire', comment)
+              return(
+                <div 
+                  className="comment__onecomment"
+                  key={comment.id}
+                  >
+                  <div className="comment__onecomment__infos">
+                    <p className="comment__onecomment__date">
+                      Envoyé le {formatDate(comment.created_at)} à {formatHour(comment.created_at)}
+                    </p>
+                    <div className="comment__onecomment__icons">
+                      <Icon name="edit"  className="comment__onecomment__icons__icon"/>
+                      <Icon name="ban" className="comment__onecomment__icons__icon"/> 
+                    </div>
+                  </div>
+
+                 
+                    
+                    <p className="comment__onecomment__message">
+                      {comment.message}
+                    </p>
+                 
+
+                </div>
+              )
+            })}
+        </div>
+
+
         </div>
 
       )}

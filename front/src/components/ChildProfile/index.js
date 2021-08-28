@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect} from 'react';
 import PropTypes from 'prop-types';
 
 import { useLocation, Link } from 'react-router-dom';
@@ -8,6 +8,8 @@ import ChildRecap from 'src/components/ChildRecap';
 import ChildInfos from './ChildInfos';
 import ChangeChildInfosForm from './ChangeChildInfosForm';
 import Comment from './Comment';
+import Loading from 'src/components/App/Loading';
+
 
 import './styles.scss';
 
@@ -22,30 +24,36 @@ const ChildProfile = ({
   comment,
   commentSend,
   onChangeTextValue,
+  loadRecaps,
+  loading,
+  recap,
+  loadComments,
+  comments
   
   // loadUsersParents,
 
 }) => {
 
-  // useEffect(() => {
-  //   //console.log('je suis dans le useEffect')
-  //   loadUsersParents();
-  // }, []);
-
   const data = useLocation();
 
-  // const child = data.state.child;
-  // console.log('mon enfant', data.state.child);
+  useEffect(() => {
+    //console.log('useEffect de childprofile')
+    loadComments();
+    loadRecaps();
+    //loadComments();
+  }, []);
 
-  // const child = () => {
-  //   return data.state.child
-  // }
-  
+  if (loading) {
+    return <Loading />;
+  } 
+
   // we retrieve the data of the parent and the child through Link of Children in ParentProfile
   // we could use this informations for the parent and the child
   // I called it parent but the child's information is available too
 
-  console.log('user dans index profil enfant', data.state.parent)
+  //console.log('user dans index profil enfant', data.state.parent)
+  const parent = data.state.parent;
+  console.log('les commentaires de mon parent', comments)
 
   const handleOnClickChangeInfosButton = (e) => {
     e.preventDefault();
@@ -64,7 +72,7 @@ const ChildProfile = ({
           <>
             <ChildInfos
               openUserInfos={openUserInfos}
-              parent={data.state.parent}
+              parent={parent}
             />
 
             <button
@@ -81,13 +89,19 @@ const ChildProfile = ({
               closeForm={closeForm}
               handleChangeInfos={handleChangeInfos}
               //user={user}
-              parent={data.state.parent}
+              parent={parent}
             />
           </>
         )}
 
         <Link
-          to="/profile/parent/1/child/1/recap"
+          to={{
+            pathname: `/profile/parent/${data.state.parent.id}/child/${data.state.parent.child_id}/recap`,
+            state: {
+              recap: recap,
+              parent: {parent},
+            },
+          }}
         >
           <button
             type="button"
@@ -101,6 +115,7 @@ const ChildProfile = ({
           submitComment={submitComment}
           commentSend={commentSend}
           onChangeTextValue={onChangeTextValue}
+          comments={comments}
         />
 
       </div>

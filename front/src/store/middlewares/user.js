@@ -60,7 +60,7 @@ const user = (store) => (next) => (action) => {
     //   break;
     // }
     case CHANGE_INFOS: {
-      console.log('je suis dans le cas CHANGE_INFOS')
+      //console.log('je suis dans le cas CHANGE_INFOS')
       const state = store.getState();
       const id = action.id;
       console.log(id)
@@ -110,7 +110,7 @@ const user = (store) => (next) => (action) => {
       const state = store.getState();
       const id = action.id;
 
-      console.log(state.user.oldpassword)
+      //console.log(state.user.oldpassword)
       //console.log(state.user)
 
       axios.patch(`http://notabebe-back.herokuapp.com/profile/parent/${id}/password`, {
@@ -118,7 +118,7 @@ const user = (store) => (next) => (action) => {
         id: action.id,
       })
         .then((response) => {
-          console.log(response.data)
+          //console.log(response.data)
           const actionsChangePasswordParent = saveNewPasswordParent(response.data);
           store.dispatch(actionsChangePasswordParent);
         })

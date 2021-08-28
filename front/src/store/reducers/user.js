@@ -54,11 +54,11 @@ const reducer = (state = initialState, action) => {
       };
     }
     case SAVE_USERS_PARENTS: {
-       console.log('je suis dans le cas SAVE_USERS_PARENTS')
+       //console.log('je suis dans le cas SAVE_USERS_PARENTS')
 
       // console.log('dans le reducer', action.users_parents)
       // const { list } = action.payload;
-       console.log('action payload dans le reducer',action.payload)
+       //console.log('action payload dans le reducer',action.payload)
       return {
         ...state,
         list: action.payload,
