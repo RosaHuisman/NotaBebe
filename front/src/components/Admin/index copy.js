@@ -8,10 +8,6 @@ import {
 } from 'semantic-ui-react';
 
 import HeaderAdmin from 'src/components/Admin/HeaderAdmin';
-import EditModalAdmin from 'src/components/Admin/EditModalAdmin';
-import AddUserAdmin from 'src/components/Admin/AddUserAdmin';
-
-
 import Loading from '../App/Loading';
 // import userAPI from './data.json';
 
@@ -163,12 +159,6 @@ const AdminHome = ({
               </>
             </Table.Body>
           </Table>
-        </div>
-        <div>
-          <EditModalAdmin />
-        </div>
-        <div>
-          <AddUserAdmin />
         </div>
       </div>
     </>

@@ -9,7 +9,7 @@ import { allUser } from 'src/store/selectors/admin';
 const mapStateToProps = (state) => ({
   // loading: state.admin.loading,
   // userAPI: state.admin.userList,
-  userAPI: allUser(state.admin.userList),
+  // userAPI: state.admin.userList,
   // searchValue: state.auth.searchValue,
   // successMessage: state.auth.successMessage,
   // user: state.auth,

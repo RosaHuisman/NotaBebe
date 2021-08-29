@@ -68,29 +68,29 @@ const reducer = (oldState = initialState, action) => {
         // },
       };
     }
-    case SEARCH_CONTACTS: {
-      const searchValue = action.payload?.toLowerCase();
-      return {
-        ...oldState,
-        // listUsers: {
-        //   ...oldState.listUsers,
-          loading: false,
-          isSearchActive: !!action.payload.length > 0 || false,
-          foundUsers: oldState.data.filter((item) => {
-            try {
-              return (
-                item.first_name.toLowerCase().search(searchValue) !== -1
-                || item.last_name.toLowerCase().search(searchValue) !== -1
-                || item.phone_number.toLowerCase().search(searchValue) !== -1
-              );
-            }
-            catch (error) {
-              return [];
-            }
-          }),
-        // },
-      };
-    }
+    // case SEARCH_CONTACTS: {
+    //   const searchValue = action.payload?.toLowerCase();
+    //   return {
+    //     ...oldState,
+    //     // listUsers: {
+    //     //   ...oldState.listUsers,
+    //       loading: false,
+    //       isSearchActive: !!action.payload.length > 0 || false,
+    //       foundUsers: oldState.data.filter((item) => {
+    //         try {
+    //           return (
+    //             item.first_name.toLowerCase().search(searchValue) !== -1
+    //             || item.last_name.toLowerCase().search(searchValue) !== -1
+    //             || item.phone_number.toLowerCase().search(searchValue) !== -1
+    //           );
+    //         }
+    //         catch (error) {
+    //           return [];
+    //         }
+    //       }),
+    //     // },
+    //   };
+    // }
 
     default:
       return oldState;
