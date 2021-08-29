@@ -1,10 +1,9 @@
 import { connect } from 'react-redux';
 import ChildProfile from 'src/components/ChildProfile';
 import {
-  openChangeInfos, changeChildInfos, closeFormAction, sendComment, changeTextValue, fetchUsersParents
-} from 'src/store/actions';
+  openChangeInfos, changeChildInfos, closeFormAction, fetchUsersParents} from 'src/store/actions';
 import { fetchRecaps } from 'src/store/actions/recap'
-import { fetchComments } from 'src/store/actions/comment'
+import { changeTextValue, fetchComments, openModal, postComment, updateComment, openFormDeleteComment, deleteComment } from 'src/store/actions/comment'
 // import { findChild } from 'src/store/selectors/children';
 // import { findUser } from 'src/store/selectors/user';
 import { findRecap } from 'src/store/selectors/recap';
@@ -19,7 +18,9 @@ const mapStateToProps = (state, ownProps) => ({
   loading: state.recap.loading,
   recap: findRecap(state.recap.list, ownProps.match.params.id),
   comments: findComments(state.comment.list, ownProps.match.params.id),
-
+  modalOpen: state.comment.modalOpen,
+  commentId: state.comment.commentId,
+  formDeleteOpen: state.comment.formDeleteOpen,
 
 });
 
@@ -36,8 +37,8 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     dispatch(closeFormAction());
   },
 
-  submitComment: () => {
-    dispatch(sendComment());
+  submitComment: (parentId, childId, commentId) => {
+    dispatch(postComment(parentId, childId));
   },
 
   onChangeTextValue: (value) => {
@@ -49,9 +50,30 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     dispatch(fetchRecaps());
   },
   loadComments: () => {
-    console.log('loadcomments container childprofile')
+    //console.log('loadcomments container childprofile')
     dispatch(fetchComments());
   },
+
+  onClickOpenModalToFormChangeComment: (commentId) => {
+    console.log(commentId)
+    dispatch(openModal(commentId));
+  },
+
+  onClickCancelFormChangeComment: () => {
+    dispatch(openModal());
+  },
+
+  patchComment: (parentId, childId, commentId) => {
+    dispatch(updateComment(parentId, childId, commentId));
+  },
+
+  onClickOpenFormDeleteComment: (commentId) => {
+    dispatch(openFormDeleteComment(commentId))
+  },
+
+  deleteComment: (parentId, childId, commentId) => {
+    dispatch(deleteComment(parentId, childId, commentId));
+  }
 
 });
 

@@ -10,7 +10,7 @@
   const allComments = comments.filter((testedComment) => {
     return testedComment.child_id === Number(childId);
   });
-  console.log(comments)
+  //console.log(comments)
   return allComments;
 }
 

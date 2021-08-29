@@ -12,7 +12,7 @@
     return testedRecap.child_id === Number(childId);
   });
   
-  console.log(recap)
+  //console.log(recap)
   
   // const recap1 = recap.splice(-1,1)
   // console.log('recap1', recap1)

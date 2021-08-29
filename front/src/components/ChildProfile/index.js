@@ -28,7 +28,16 @@ const ChildProfile = ({
   loading,
   recap,
   loadComments,
-  comments
+  comments,
+  onClickOpenModalToFormChangeComment,
+  modalOpen,
+  commentId,
+  onClickCancelFormChangeComment,
+  patchComment,
+  onClickOpenFormDeleteComment,
+  formDeleteOpen,
+  deleteComment,
+
   
   // loadUsersParents,
 
@@ -53,7 +62,7 @@ const ChildProfile = ({
 
   //console.log('user dans index profil enfant', data.state.parent)
   const parent = data.state.parent;
-  console.log('les commentaires de mon parent', comments)
+  //console.log('les commentaires de mon parent', comments)
 
   const handleOnClickChangeInfosButton = (e) => {
     e.preventDefault();
@@ -116,6 +125,16 @@ const ChildProfile = ({
           commentSend={commentSend}
           onChangeTextValue={onChangeTextValue}
           comments={comments}
+          onClickOpenModalToFormChangeComment={onClickOpenModalToFormChangeComment}
+          modalOpen={modalOpen}
+          parent={parent}
+          commentId={commentId}
+          onClickCancelFormChangeComment={onClickCancelFormChangeComment}
+          patchComment={patchComment}
+          onClickOpenFormDeleteComment={onClickOpenFormDeleteComment}
+          formDeleteOpen={formDeleteOpen}
+          deleteComment={deleteComment}
+          loadComments={loadComments}
         />
 
       </div>

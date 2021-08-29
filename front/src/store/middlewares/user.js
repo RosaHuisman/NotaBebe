@@ -63,7 +63,7 @@ const user = (store) => (next) => (action) => {
       //console.log('je suis dans le cas CHANGE_INFOS')
       const state = store.getState();
       const id = action.id;
-      console.log(id)
+      //console.log(id)
 
 
       axios.patch(`http://notabebe-back.herokuapp.com/profile/parent/${id}`, {
