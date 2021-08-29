@@ -7,19 +7,24 @@
  * @return {Object} - L'user trouvé
  */
 export function allUser(users, searchNewValue) {
-  const userList = users.filter((user) => {
+  const userList = users.filter((userData) => {
     if (searchNewValue === '') {
-      return user;
+      return userData;
     } if (
-      user.first_name.toLowerCase().includes(searchNewValue.toLowerCase())
-      || user.last_name.toLowerCase().includes(searchNewValue.toLowerCase())
-      || user.email.toLowerCase().includes(searchNewValue.toLowerCase())
-      || user.phone_number.toLowerCase().includes(searchNewValue.toLowerCase())
-      || user.role_id.toLowerCase().includes(searchNewValue.toLowerCase())
+      userData.first_name.toLowerCase().includes(searchNewValue.toLowerCase())
+      || userData.last_name.toLowerCase().includes(searchNewValue.toLowerCase())
+      || userData.email.toLowerCase().includes(searchNewValue.toLowerCase())
+      || userData.phone_number.toLowerCase().includes(searchNewValue.toLowerCase())
     ) {
-      return user;
+      return userData;
     }
   });
 
   return userList;
 }
+
+// export function allUser(users) {
+//   const userList = users.filter(user);
+
+//   return userList;
+// }

@@ -9,33 +9,49 @@ import {
 
 import HeaderAdmin from 'src/components/Admin/HeaderAdmin';
 import Loading from '../App/Loading';
+import DataTable from './DataTable';
 // import userAPI from './data.json';
 
 import './styles.scss';
 import logoAdmin from '../../images/logo_admin.png';
 
 const AdminHome = ({
-  loading, newSearchValue, onApiChange, onApiSubmit, userAPI, loadMoreUsers, getAllUsers,
+  loading,
+  // newSearchValue,
+  // onApiChange,
+  onApiSubmit,
+  // userAPI,
+  // loadMoreUsers,
+  getAllUsers,
+
 }) => {
   // le hook useLocation nous renvoie l'url courante
   const location = useLocation();
 
-  useEffect(() => {
-    // on appelle une prop qui declencehra l'action GET_RECIPES
-    // (voir le container de App)
-    getAllUsers();
-  }, []);
-
-  useEffect(() => {
-    // on scroll la page en haut a gauche (0, 0)
-    window.scroll(0, 0);
-  }, [location]);
-
-  if (loading) {
-    return <Loading />;
-  }
+  // useEffect(() => {
+  //   // on appelle une prop qui declencehra l'action GET_RECIPES
+  //   // (voir le container de App)
+  //   getAllUsers();
+  // }, []);
 
   const [searchNewValue, setSearchNewValue] = useState('');
+  const [UsersListData, setUsersListData] = useState([]);
+  console.log('LLLLLOOOOOOOOOOOO', UsersListData);
+
+  useEffect(() => {
+    fetch('http://notabebe-back.herokuapp.com/profile/admin/allusers')
+      .then((response) => response.json())
+      .then((json) => setUsersListData(json));
+  }, []);
+
+  // useEffect(() => {
+  //   // on scroll la page en haut a gauche (0, 0)
+  //   window.scroll(0, 0);
+  // }, [location]);
+
+  // if (loading) {
+  //   return <Loading />;
+  // }
 
   return (
     <>
@@ -79,7 +95,7 @@ const AdminHome = ({
 
         <div className="TableListUser">
           <Table celled>
-            <Table.Header fullWidth>
+            <Table.Header fullwidth="true">
               <Table.Row>
                 <Table.HeaderCell colSpan="5">
                   <Form onSubmit={onApiSubmit}>
@@ -91,7 +107,7 @@ const AdminHome = ({
                       type="text"
                       placeholder="Filtrer les accès"
                       // loading={isLoading}
-                      // value={newSearchValue}
+                      value={searchNewValue}
                       onChange={(e) => setSearchNewValue(e.target.value)}
                     />
                   </Form>
@@ -123,10 +139,9 @@ const AdminHome = ({
             </Table.Header>
 
             <Table.Body>
-
-              {/* <>
+              <>
                 {
-                userAPI.filter((user) => {
+                UsersListData.filter((user) => {
                   if (searchNewValue === '') {
                     return user;
                   } if (
@@ -134,7 +149,6 @@ const AdminHome = ({
                     || user.last_name.toLowerCase().includes(searchNewValue.toLowerCase())
                     || user.email.toLowerCase().includes(searchNewValue.toLowerCase())
                     || user.phone_number.toLowerCase().includes(searchNewValue.toLowerCase())
-                    || user.role_id.toLowerCase().includes(searchNewValue.toLowerCase())
                   ) {
                     return user;
                   }
@@ -150,22 +164,8 @@ const AdminHome = ({
                   </Table.Row>
                 ))
               }
-              </> */}
-              <>
-                {
-                userAPI.map((user) => (
-                  <Table.Row key={user.id}>
-                    <Table.Cell>{user.last_name}</Table.Cell>
-                    <Table.Cell>{user.first_name}</Table.Cell>
-                    <Table.Cell>{user.email}</Table.Cell>
-                    <Table.Cell>{user.phone_number}</Table.Cell>
-                    <Table.Cell textAlign="center">{user.role_id}</Table.Cell>
-                    <Table.Cell textAlign="center"><Icon name="pencil alternate" /></Table.Cell>
-                    <Table.Cell textAlign="center"><Icon name="trash alternate" /></Table.Cell>
-                  </Table.Row>
-                ))
-              }
               </>
+              {/* <DataTable dataUser={UsersListData} /> */}
             </Table.Body>
           </Table>
         </div>
@@ -188,7 +188,7 @@ AdminHome.propTypes = {
   //   }).isRequired,
   // ).isRequired,
 
-  userAPI: PropTypes.array.isRequired,
+  // userAPI: PropTypes.array.isRequired,
   // onApiSubmit: PropTypes.func.isRequired,
   // onApiChange: PropTypes.func.isRequired,
   // loadMoreUsers: PropTypes.func.isRequired,

@@ -7,13 +7,18 @@ import {
 import { allUser } from 'src/store/selectors/admin';
 
 const mapStateToProps = (state) => ({
-  loading: state.admin.loading,
+  // loading: state.admin.loading,
   // userAPI: state.admin.userList,
   userAPI: allUser(state.admin.userList),
-  searchValue: state.auth.searchValue,
-  successMessage: state.auth.successMessage,
+  // searchValue: state.auth.searchValue,
+  // successMessage: state.auth.successMessage,
+  // user: state.auth,
 
-  user: state.auth,
+  loading: state.admin.loading,
+  isSearchActive: state.admin.isSearchActive,
+  foundUsers: state.admin.foundUsers,
+  dataUserList: state.admin.dataUserList,
+  // userAPI: state.admin.dataUserList,
 });
 
 const mapDispatchToProps = (dispatch) => ({

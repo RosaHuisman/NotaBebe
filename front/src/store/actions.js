@@ -173,16 +173,41 @@ export const saveUserData = (favorites) => ({
 
 
 // liste user (viktk)
-export const GET_ALL_USERS = 'GET_ALL_USERS';
-export const getAllUsersAction = () => ({
-  type: GET_ALL_USERS,
-});
+// export const GET_ALL_USERS = 'GET_ALL_USERS';
+// export const getAllUsersAction = () => ({
+//   type: GET_ALL_USERS,
+// });
 
-export const GET_ALL_USERS_SUCCESS = 'GET_ALL_USERS_SUCCESS';
-export const getAllUsersSuccessAction = (payload) => ({
-  type: GET_ALL_USERS_SUCCESS,
-  userList: payload,
-});
+// export const GET_ALL_USERS_SUCCESS = 'GET_ALL_USERS_SUCCESS';
+// export const getAllUsersSuccessAction = (payload) => ({
+//   type: GET_ALL_USERS_SUCCESS,
+//   userList: payload,
+// });
 
 export const LOGOUT_ADMIN = 'LOGOUT_ADMIN';
 
+
+export const USER_LIST_LOADING = 'USER_LIST_LOADING';
+export const getAllUsersAction = () => ({
+  type: USER_LIST_LOADING,
+});
+
+
+export const USER_LIST_LOAD_SUCCESS = 'USER_LIST_LOAD_SUCCESS';
+export const getAllUsersSuccessAction = (myUserList) => ({
+  type: USER_LIST_LOAD_SUCCESS,
+  payload: myUserList,
+});
+
+
+export const USER_LIST_LOAD_ERROR = 'USER_LIST_LOAD_ERROR';
+export const getAllUsersErrorAction = () => ({
+  type: USER_LIST_LOAD_ERROR,
+});
+
+
+export const SEARCH_CONTACTS = 'SEARCH_CONTACTS';
+export const searchUsers = (searchText) => ({
+  type: SEARCH_CONTACTS,
+  payload: searchText,
+});
