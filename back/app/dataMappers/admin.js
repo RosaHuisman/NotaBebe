@@ -66,8 +66,6 @@ const adminDataMapper = {
         return result;
     }
 
-    // TODO si on a le temps : récupérer le parent id... partir sur la vue sql ????
-
 };
 
 module.exports = adminDataMapper;

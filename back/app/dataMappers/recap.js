@@ -15,7 +15,6 @@ const recapDataMapper = {
 
     async findByChildId(id) {
         const result = await client.query('SELECT * FROM "recap_with_nap_and_meal" WHERE child_id = $1', [id]);
-        console.log(result)
         return result.rows;
     },
 
@@ -56,12 +55,60 @@ const recapDataMapper = {
 
     },
 
-    // ! modifyNap
-    // ! modifyMeal
+    async modifyNap(nap, id) {
+        let query = `UPDATE "nap" SET `;
 
-    // ! il faudrait garder le delete un recap on cascad ET add des delete pr nap et meal
+        const values = [];
+
+        const keys = Object.keys(nap);
+
+        for (let i = 0; i < keys.length; i++) {
+            query += `"${keys[i]}" = $${i + 1}, `;
+            values.push(nap[keys[i]]);
+        }
+
+        query += `updated_at = now() WHERE id = $${keys.length + 1} RETURNING *;`;
+        values.push(id);
+
+        const result = await client.query(query, values);
+
+        return result.rows[0];
+    },
+
+    async modifyMeal(meal, id) {
+        let query = `UPDATE "meal" SET `;
+
+        const values = [];
+
+        const keys = Object.keys(meal);
+        console.log(keys);
+
+        for (let i = 0; i < keys.length; i++) {
+            query += `"${keys[i]}" = $${i + 1}, `;
+            values.push(meal[keys[i]]);
+        }
+
+        query += `updated_at = now() WHERE id = $${keys.length + 1} RETURNING *;`;
+        values.push(id);
+
+        const result = await client.query(query, values);
+
+        return result.rows[0];
+    },
+    
+
     async deleteRecap(id) {
         const result = await client.query('DELETE FROM "recap" WHERE id = $1', [id]);
+        return result;
+    },
+
+    async deleteNap(id) {
+        const result = await client.query('DELETE FROM "nap" WHERE id = $1', [id]);
+        return result;
+    },
+
+    async deleteMeal(id) {
+        const result = await client.query('DELETE FROM "meal" WHERE id = $1', [id]);
         return result;
     }
 

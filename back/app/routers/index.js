@@ -29,7 +29,6 @@ router.route('/profile/admin/children')
 // get all children - for staff
 router.route('/profile/staff/children')
     .get(userController.getAllChildren);
-//! à rajouter dans les tests
 
 // get all recaps - for staff
 router.route('/profile/staff/allrecaps')
@@ -55,6 +54,17 @@ router.route('/profile/parent/:id/password')
 // modify password for STAFF (with user id)
 router.route('/profile/staff/:id/password')
     .patch(userController.updatePassword);
+
+// get child by id - for admin
+router.route('/profile/admin/child/:id')
+    .get(adminController.getChildById);
+
+// get child by id - for staff
+router.route('/profile/staff/child/:id')
+    .get(adminController.getChildById);
+
+
+
 
 // modify child
 router.route('/profile/parent/:id/child/:childId')
@@ -107,46 +117,53 @@ router.route('/profile/admin/parent/:id/managechildren')
     .post(adminController.addChild);
 
 
-
 // modifying a child - for admin
 router.route('/profile/admin/parent/:id/managechildren/:childId')
     .patch(userController.modifyChild)
     .delete(adminController.deleteChild);
-//! pour l'instant, deleteChild fonctionne mais on n'a pas l'id du parent dans les params
 
-// ! TODO routes pour nounou acces aux enfants + a 1 enft
-
+// adding a recap
 router.route('/profile/staff/child/recap')
     .post(recapController.addRecap);
 
+// adding a nap to a recap
 router.route('/profile/staff/child/recap/:recapId/nap')
     .post(recapController.addNap);
 
+// adding a meal to a recap
 router.route('/profile/staff/child/recap/:recapId/meal')
     .post(recapController.addMeal);
 
+// modify and delete a recap
 router.route('/profile/staff/child/recap/:recapId/')
     .patch(recapController.modifyRecap)
     .delete(recapController.deleteRecap);
 
+// modify and delete a nap in a recap
+router.route('/profile/staff/child/recap/:recapId/nap/:napId')
+    .patch(recapController.modifyNap)
+    .delete(recapController.deleteNap);
 
+// modify and delete a meal in a recap
+router.route('/profile/staff/child/recap/:recapId/meal/:mealId')
+    .patch(recapController.modifyMeal)
+    .delete(recapController.deleteMeal);
 
 // adding a comment (for parents)
 router.route('/profile/parent/:id/child/:childId/comments')
     .post(commentController.addComment);
 
-//! faire en priorité
 
 // modifying/deleting a comment (for parents)
 router.route('/profile/parent/:id/child/:childId/comments/:commentId')
     .patch(commentController.modifyComment)
-    //! TODO ajouter les request.params dans les méthodes
     .delete(commentController.deleteComment);
 
 
 router.route('/login')
     .post(userController.checkLogin);
 
+    
 router.get('/logout', userController.logout);
 
 

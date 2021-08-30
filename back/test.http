@@ -15,7 +15,10 @@ GET http://localhost:3000/profile/admin/allstaff
 
 ### DISPLAYING ALL CHILDREN - for admin
 GET http://localhost:3000/profile/admin/children
-+-
+
+### DISPLAYING ALL CHILDREN - for staff
+GET http://localhost:3000/profile/staff/children
+
 ### DISPLAYING ALL RECAPS - for staff
 GET http://localhost:3000/profile/staff/allrecaps
 
@@ -25,20 +28,8 @@ GET http://localhost:3000/profile/staff/comments
 ### DISPLAYING COMMENTS BY PARENT ID - for staff
 GET http://localhost:3000/profile/staff/comments/parent/1
 
-
-
-
-
-
-
 ### DISPLAYING COMMENTS BY PARENT ID - for parents
 GET http://localhost:3000/profile/parent/1/comments
-
-
-
-
-
-
 
 ### DISPLAYING PARENT PROFILE - parent by id
 GET http://localhost:3000/profile/parent/8
@@ -62,6 +53,11 @@ GET http://localhost:3000/profile/staff/comments/3
 ### DISPLAYING COMMENTS - by child id
 GET http://localhost:3000/profile/staff/comments/child/2
 
+### DISPLAYING CHILD - for admin
+GET http://localhost:3000/profile/admin/child/2
+
+### DISPLAYING CHILD - for staff
+GET http://localhost:3000/profile/staff/child/1
 
 ### MODIFY CHILD PROFILE - by parent
 PATCH http://localhost:3000/profile/parent/2/child/3
@@ -177,9 +173,6 @@ Content-Type: application/json
     "role_id": 1
 }
 
-# a tester?
-# ### logout user
-# GET http://localhost:3000/logout
 
 
 ### deleting an user
@@ -230,7 +223,7 @@ Content-Type: application/json
     "comment": "tout mangé mais en a mis plein partout"
 }
 
-### modify one field of recap
+### modify one field of a recap
 PATCH http://localhost:3000/profile/staff/child/recap/3/
 Content-Type: application/json
 
@@ -238,8 +231,30 @@ Content-Type: application/json
     "date": "18/05/2025"
 }
 
+### modify a nap of a recap
+PATCH http://localhost:3000/profile/staff/child/recap/6/nap/10
+Content-Type: application/json
+
+{
+    "start_time": "23:00:00"
+}
+
+### modify a meal of a recap
+PATCH http://localhost:3000/profile/staff/child/recap/6/meal/10
+Content-Type: application/json
+
+{
+    "comment": "une modif en test"
+}
+
 ### delete a recap
 DELETE http://localhost:3000/profile/staff/child/recap/1
+
+### delete a nap
+DELETE http://localhost:3000/profile/staff/child/recap/6/nap/11
+
+### delete a meal
+DELETE http://localhost:3000/profile/staff/child/recap/6/meal/11
 
 
 
@@ -251,18 +266,22 @@ POST http://localhost:3000/profile/parent/1/child/1/comments
 Content-Type: application/json
 
 {
-    "message": "super marre",
-    "child_id": 1
+    "message": "essai de com"
 }
 
 ### modify comment
-PATCH http://localhost:3000/profile/parent/1/child/1/comments/27
+PATCH http://localhost:3000/profile/parent/1/child/1/comments/11
 Content-Type: application/json
 
 {
-    "message": "adieu mon cerveau",
+    "message": "essai de modif de com",
     "child_id": 1
 }
 
 ### delete comment
-DELETE http://localhost:3000/profile/parent/1/child/1/comments/25
+DELETE http://localhost:3000/profile/parent/3/child/4/comments/10
+
+
+# a tester?
+# ### logout user
+# GET http://localhost:3000/logout

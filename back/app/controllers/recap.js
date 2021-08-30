@@ -129,19 +129,46 @@ const recapController = {
     
     modifyNap: async (request, response, next) => {
         try {
+            const recapId = Number(request.params.recapId);
+            const recap = await recapDataMapper.findById(recapId);
+
+            const napId = Number(request.params.napId);
+
+            if (!recap) {
+                return next();
+            }
+
+            const newData = request.body;
+
+            const updatedNap = await recapDataMapper.modifyNap({ ...newData }, napId);
+
+            response.json({ updatedNap });
 
         } catch (error) {
             console.log(error);
-            resoonse.json({ error: error.message });
+            response.json({ error: error.message });
         }
     },
 
     modifyMeal: async (request, response, next) => {
         try {
+            const recapId = Number(request.params.recapId);
+            const recap = await recapDataMapper.findById(recapId);
 
+            const mealId = Number(request.params.mealId);
+
+            if (!recap) {
+                return next();
+            }
+
+            const newData = request.body;
+
+            const updatedMeal = await recapDataMapper.modifyMeal({ ...newData }, mealId);
+
+            response.json({ updatedMeal });
         } catch (error) {
             console.log(error);
-            resoonse.json({ error: error.message });
+            response.json({ error: error.message });
         }
     },
 
@@ -173,11 +200,55 @@ const recapController = {
     },
 
     deleteNap: async (request, response, next) => {
+        try {
+            const napId = request.params.napId;
 
+            if (isNaN(napId)) {
+                return next();
+            }
+
+            if (!napId) {
+                return next();
+            }
+
+            const result = await recapDataMapper.deleteNap(napId);
+
+            if (result.rowCount > 0) {
+                response.json('Sieste bien supprimée');
+            } else {
+                return next();
+            }
+
+        } catch (error) {
+            console.error(error);
+            response.json({ error: error.message });
+        }
     },
 
     deleteMeal: async (request, response, next) => {
+        try {
+            const mealId = request.params.mealId;
 
+            if (isNaN(mealId)) {
+                return next();
+            }
+
+            if (!mealId) {
+                return next();
+            }
+
+            const result = await recapDataMapper.deleteMeal(mealId);
+
+            if (result.rowCount > 0) {
+                response.json('Repas bien supprimé');
+            } else {
+                return next();
+            }
+
+        } catch (error) {
+            console.error(error);
+            response.json({ error: error.message });
+        }
     }
 };
 

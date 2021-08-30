@@ -129,7 +129,7 @@ const commentController = {
             if (!modifiedComment) {
                 return next();
             }
-            // response.redirect('/');
+
             response.json({ modifiedComment });
 
         } catch (error) {
@@ -168,14 +168,8 @@ const commentController = {
             console.error(error);
             response.json({ error: error.message });
         }
-    },
-
-
-
-
-
-
-
+    }
+    
 };
 
 module.exports = commentController;
