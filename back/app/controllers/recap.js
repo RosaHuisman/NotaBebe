@@ -39,7 +39,6 @@ const recapController = {
         try {
             const childId = Number(request.params.childId);
             const data = await recapDataMapper.findByChildId(childId);
-            console.log(data);
 
             if (data) {
                 response.json(data);
@@ -55,15 +54,13 @@ const recapController = {
 
     addRecap: async (request, response, next) => {
         try {
-            //console.log(request.body)
-            const newRecap = await recapDataMapper.add(request.body);
-            //console.log(newRecap)
+            const newRecap = await recapDataMapper.addRecap(request.body);
+
             if (!newRecap) {
                 return next();
             }
 
-            console.log('récap bien ajouté')
-            response.json({ data: newRecap })
+            response.json({ data: newRecap });
 
         } catch (error) {
             console.log(error);
@@ -71,27 +68,80 @@ const recapController = {
         }
     },
 
+    addNap: async (request, response, next) => {
+        try {
+            const recapId = request.params.recapId;
+
+            const newNap = await recapDataMapper.addNap({...request.body}, recapId);
+
+            if (!newNap) {
+                return next();
+            };
+
+            response.json({ data: newNap });
+
+        } catch (error) {
+            console.log(error);
+            response.json({ error: error.message });
+        }
+    },
+
+    addMeal: async (request, response, next) => {
+        try {
+
+            const recapId = request.params.recapId;
+
+            const newMeal = await recapDataMapper.addMeal({...request.body}, recapId);
+
+            if (!newMeal) {
+                return next();
+            };
+
+            response.json({ data: newMeal });
+
+        } catch (error) {
+            console.log(error);
+            response.json({ error: error.message });
+        }
+    },
+    
+
     modifyRecap: async (request, response, next) => {
         try {
             const recapId = Number(request.params.recapId);
             const recap = await recapDataMapper.findById(recapId);
-            //console.log(recap)
 
             if (!recap) {
                 return next();
             }
 
             const newData = request.body;
-            //console.log(newData);
-            const updatedRecap = await recapDataMapper.modify({ ...newData }, recapId);
-            // console.log("console log", newData, recapId);
+
+            const updatedRecap = await recapDataMapper.modifyRecap({ ...newData }, recapId);
 
             response.json({ updatedRecap });
-
 
         } catch (error) {
             console.log(error);
             response.json({ error: error.message });
+        }
+    },
+    
+    modifyNap: async (request, response, next) => {
+        try {
+
+        } catch (error) {
+            console.log(error);
+            resoonse.json({ error: error.message });
+        }
+    },
+
+    modifyMeal: async (request, response, next) => {
+        try {
+
+        } catch (error) {
+            console.log(error);
+            resoonse.json({ error: error.message });
         }
     },
 
@@ -108,16 +158,26 @@ const recapController = {
                 return next();
             }
 
-            await recapDataMapper.delete(recapId);
+            const result = await recapDataMapper.deleteRecap(recapId);
 
-            //! fonctionne, mais renvoie la réponse à chaque fois, même si le recap est supprimé. Peut-être faudra-t-il passer par un findById avant de delete (et pareil pour l'user)
-            response.json('Récap bien supprimé');
-
-
+            if (result.rowCount > 0) {
+                response.json('Récap bien supprimé');
+            } else {
+                return next();
+            }
+            
         } catch (error) {
             console.error(error);
             response.json({ error: error.message });
         }
+    },
+
+    deleteNap: async (request, response, next) => {
+
+    },
+
+    deleteMeal: async (request, response, next) => {
+
     }
 };
 

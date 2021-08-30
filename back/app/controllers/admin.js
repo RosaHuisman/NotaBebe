@@ -34,9 +34,13 @@ const adminController = {
                 return next();
             }
 
-            await adminDataMapper.deleteUser(id);
+            const result = await adminDataMapper.deleteUser(id);
 
-            response.json('User bien supprimé');
+            if (result.rowCount > 0) {
+                response.json('User bien supprimé');
+            } else {
+                return next();
+            }
 
 
         } catch (error) {
@@ -76,10 +80,14 @@ const adminController = {
                 return next();
             };
 
-            const childToDelete = await adminDataMapper.deleteChild(childId);
+            const result = await adminDataMapper.deleteChild(childId);
 
-            response.json('Enfant bien supprimé de la plateforme');
-
+            if (result.rowCount > 0) {
+                response.json('Enfant bien supprimé de la plateforme');
+            } else {
+                return next();
+            }
+            
         } catch (error) {
             console.error(error);
             response.json({ error: error.message });

@@ -119,6 +119,11 @@ router.route('/profile/admin/parent/:id/managechildren/:childId')
 router.route('/profile/staff/child/recap')
     .post(recapController.addRecap);
 
+router.route('/profile/staff/child/recap/:recapId/nap')
+    .post(recapController.addNap);
+
+router.route('/profile/staff/child/recap/:recapId/meal')
+    .post(recapController.addMeal);
 
 router.route('/profile/staff/child/recap/:recapId/')
     .patch(recapController.modifyRecap)

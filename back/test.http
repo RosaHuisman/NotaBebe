@@ -211,7 +211,26 @@ Content-Type: application/json
     "child_id": 1
 }
 
-### modify one field 
+### add a nap to a recap
+POST http://localhost:3000/profile/staff/child/recap/2/nap/
+Content-Type: application/json
+
+{
+    "start_time": "10:00:00",
+    "end_time": "12:00:00",
+    "comment": "gros dodo"
+}
+
+### add a meal to a recap
+POST http://localhost:3000/profile/staff/child/recap/6/meal/
+Content-Type: application/json
+
+{
+    "time": "13:00:00",
+    "comment": "tout mangé mais en a mis plein partout"
+}
+
+### modify one field of recap
 PATCH http://localhost:3000/profile/staff/child/recap/3/
 Content-Type: application/json
 
@@ -219,8 +238,8 @@ Content-Type: application/json
     "date": "18/05/2025"
 }
 
-### delete
-DELETE http://localhost:3000/profile/staff/child/recap/13
+### delete a recap
+DELETE http://localhost:3000/profile/staff/child/recap/1
 
 
 
