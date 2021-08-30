@@ -19,7 +19,7 @@ import Home from 'src/containers/Home';
 import StaffProfile from 'src/components/StaffProfile';
 import ChildsList from 'src/components/ChildsList';
 import Recaps from 'src/components/Recaps';
-import Comments from 'src/components/Comments';
+import Comments from 'src/containers/Comments';
 // import ReadComment from 'src/containers/ReadComment';
 import CreateRecap from 'src/containers/CreateRecap';
 // PARENT CHILD
