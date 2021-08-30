@@ -1,15 +1,19 @@
-import { FETCH_RECAPS } from 'src/store/actions';
+import { 
+  FETCH_RECAPS, 
+  saveRecaps 
+} from 'src/store/actions/recap';
+
 import axios from 'axios';
 import api from './utils/api';
 
-const recaps = (store) => (next) => (action) => {
+const recap = (store) => (next) => (action) => {
   switch (action.type) {
     case FETCH_RECAPS: {
-      // console.log('je suis dans le cas FETCH USERS PARENTS')
+      //console.log('je suis dans le cas FETCH RECAPS')
       const fetchData = async () => {
         try {
           const response = await api.get('profile/staff/allrecaps');
-          // console.log('reponse du fetch : ', response.data)
+          //console.log('reponse du fetch : ', response.data)
           const actionsaveRecaps = saveRecaps(response.data);
           store.dispatch(actionsaveRecaps);
         }
@@ -27,4 +31,4 @@ const recaps = (store) => (next) => (action) => {
 };
 }
 
-export default recaps;
+export default recap;

@@ -1,5 +1,6 @@
 import {
   CHANGE_INFOS,
+  CHANGE_CHILD_INFOS,
   CHANGE_PASSWORD,
   saveInfosUser,
   savePasswordUser,
@@ -59,10 +60,10 @@ const user = (store) => (next) => (action) => {
     //   break;
     // }
     case CHANGE_INFOS: {
-      console.log('je suis dans le cas CHANGE_INFOS')
+      //console.log('je suis dans le cas CHANGE_INFOS')
       const state = store.getState();
       const id = action.id;
-      console.log(id)
+      //console.log(id)
 
 
       axios.patch(`http://notabebe-back.herokuapp.com/profile/parent/${id}`, {
@@ -82,12 +83,34 @@ const user = (store) => (next) => (action) => {
         });
       break;
     }
+
+    case CHANGE_CHILD_INFOS: {
+      console.log('je suis dans le cas CHANGE_CHILD_INFOS')
+      const state = store.getState();
+      const parentId = action.parentId;
+      const childId = action.childId;
+
+
+      axios.patch(`http://notabebe-back.herokuapp.com/profile/parent/${parentId}/child/${childId}`, {
+        allergies: state.user.allergy,
+      })
+        .then((response) => {
+          console.log("reponse de la BDD update parent infos", response.data)
+          const actionSaveInfosUser = saveInfosUser(response.data);
+          store.dispatch(actionSaveInfosUser);
+        })
+        .catch((error) => {
+          // console.log('une erreur s\'est produite')
+          // store.dispatch(changeInfosError());
+        });
+      break;
+    }
     case CHANGE_PASSWORD: {
        console.log('je suis dans le cas CHANGE_PASSWORD')
       const state = store.getState();
       const id = action.id;
 
-      console.log(state.user.oldpassword)
+      //console.log(state.user.oldpassword)
       //console.log(state.user)
 
       axios.patch(`http://notabebe-back.herokuapp.com/profile/parent/${id}/password`, {
@@ -95,7 +118,7 @@ const user = (store) => (next) => (action) => {
         id: action.id,
       })
         .then((response) => {
-          console.log(response.data)
+          //console.log(response.data)
           const actionsChangePasswordParent = saveNewPasswordParent(response.data);
           store.dispatch(actionsChangePasswordParent);
         })

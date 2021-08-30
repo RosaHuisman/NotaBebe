@@ -6,8 +6,14 @@ import {
   CHANGE_TIME_NAP,
 } from '../actions';
 
+import {
+  SAVE_RECAPS,
+} from 'src/store/actions/recap'
+
 const initialState = {
   isOpen: false,
+  loading: true,
+  list: [],
 };
 
 const reducer = (state = initialState, action ={} ) => {
@@ -37,6 +43,15 @@ const reducer = (state = initialState, action ={} ) => {
         ...state,
         [action.key]: action.value,
       }
+      case SAVE_RECAPS: {
+        //console.log('je suis dans le cas SAVE_RECAPS')
+        //console.log('action payload dans le reducer recap',action.payload)
+       return {
+         ...state,
+         list: action.payload,
+         loading: false,
+       };
+     }
     default:
       return state;
   }
