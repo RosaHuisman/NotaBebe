@@ -6,6 +6,9 @@ import {
   DELETE_USER,
   deleteUserSuccess,
   deleteUserError,
+  ADMIN_ADD_USER,
+  adminAddUserSuccess,
+  adminAddUserError,
 } from 'src/store/actions';
 
 import axios from 'axios';
@@ -14,18 +17,6 @@ import api from './utils/api';
 const listUsersAdminMiddleware = (store) => (next) => (action) => {
   // une fois qu'on aura les infos, on va les stocker dans le state => dispatcher une action
   switch (action.type) {
-    // case GET_ALL_USERS: {
-    //   console.log('je suis dans le cas GET_ALL_USERS');
-    //   api({
-    //     method: 'GET',
-    //     url: '/profile/admin/allusers',
-    //   })
-    //     .then((response) => {
-    //       store.dispatch(getAllUsersSuccessAction(response.data));
-    //     });
-    //   next(action);
-    //   break;
-    // }
     case USER_LIST_LOADING: {
       console.log('je suis dans le cas GET_ALL_USERS');
       // api({
@@ -64,10 +55,10 @@ const listUsersAdminMiddleware = (store) => (next) => (action) => {
     case DELETE_USER: {
       console.log('je suis dans le cas DELETE_USER');
 
-      const { id } = action;
-      console.log('je suis dans le cas DELETE_USER', id);
+      const LALALA = action.payload;
+      console.log('je suis dans le cas DELETE_USER', LALALA);
 
-      api.delete(`/profile/admin/manageprofile/${id}`)
+      api.delete(`/profile/admin/manageprofile/${LALALA}`)
         .then((response) => {
           console.log('reponse de la BDD delete user', response.data);
           store.dispatch(deleteUserSuccess(response.data));
@@ -80,6 +71,44 @@ const listUsersAdminMiddleware = (store) => (next) => (action) => {
           errorPayload.status = error.response.status;
 
           store.dispatch(deleteUserError(errorPayload));
+        });
+      break;
+    }
+    case ADMIN_ADD_USER: {
+      console.log('je suis dans le cas ADMIN_ADD_USER');
+
+      const state = store.getState();
+      console.log('je consoleLOG STATE', state);
+      const LALALA = action.payload;
+
+      console.log('Je consoleLOG le PAYLOAD', LALALA);
+
+      api({
+        method: 'POST',
+        url: '/profile/admin/manageprofile',
+        data: {
+          last_name: state.user.last_name,
+          first_name: state.user.first_name,
+          email: state.user.email,
+          phone_number: state.user.phone_number,
+          address: state.user.address,
+          postcode: state.user.postcode,
+          city: state.user.city,
+          password: state.user.password,
+          role_id: state.user.role_id,
+        },
+      })
+        .then((response) => {
+          console.log('je suis dans adminAddUserSuccess');
+          store.dispatch(adminAddUserSuccess(response.data));
+        })
+        .catch((error) => {
+          console.log('ERREUR je suis dans adminAddUserError');
+
+          const errorPayload = {};
+          errorPayload.message = error.response.data.message;
+          errorPayload.status = error.response.status;
+          store.dispatch(adminAddUserError(errorPayload));
         });
       break;
     }

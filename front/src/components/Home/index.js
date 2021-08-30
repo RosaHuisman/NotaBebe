@@ -20,6 +20,7 @@ const Home = ({
   const getToken = localStorage.getItem('MyToken');
 
   const handleSubmit = (e) => {
+    console.log('BONJOUR VOICI LES INFO QUE JE TRRANSMET', e)
     e.preventDefault();
     handleLogin();
     // history.push('/homepage2');

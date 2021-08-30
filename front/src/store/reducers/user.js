@@ -15,6 +15,9 @@ import {
   SAVE_USER,
   SEND_COMMENT,
   CHANGE_TEXT_VALUE,
+  ADMIN_ADD_USER_SUCCESS,
+  ADMIN_ADD_USER_ERROR,
+  RESET_FORM_ADMIN,
 } from '../actions';
 
 const initialState = {
@@ -40,6 +43,16 @@ const initialState = {
   roleId: null,
   isError: false,
   address: '',
+
+  last_name: '',
+  first_name: '',
+  phone_number: '',
+  postcode: '',
+  city: '',
+  role_id: '',
+  contentAdminPageAdd: true,
+  addUserSuccess: false,
+  addUserError: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -150,6 +163,39 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         comment: action.value,
+      };
+    }
+    case ADMIN_ADD_USER_SUCCESS: {
+      return {
+        ...state,
+        contentAdminPageAdd: false,
+        addUserSuccess: true,
+        addUserError: false,
+      };
+    }
+    case ADMIN_ADD_USER_ERROR: {
+      return {
+        ...state,
+        contentAdminPageAdd: false,
+        addUserSuccess: false,
+        addUserError: true,
+      };
+    }
+    case RESET_FORM_ADMIN: {
+      return {
+        ...state,
+        email: '',
+        password: '',
+        address: '',
+        last_name: '',
+        first_name: '',
+        phone_number: '',
+        postcode: '',
+        city: '',
+        role_id: '',
+        contentAdminPageAdd: true,
+        addUserSuccess: false,
+        addUserError: false,
       };
     }
     default:

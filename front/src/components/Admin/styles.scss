@@ -50,6 +50,17 @@
     margin: 5rem 0;
     font-size: 1.5rem;
     font-weight: bold;
+    text-align: center;
+
+    &__messageSuccess {
+      padding-top: 2rem;
+      color: limegreen;
+    }
+
+    &__messageError {
+      padding-top: 2rem;
+      color: red;
+    }
   }
 }
 
@@ -134,7 +145,7 @@
 }
 
 .TableListUser {
-  width: 1000px;
+  width: 1200px;
   padding-bottom: 10rem;
 }
 

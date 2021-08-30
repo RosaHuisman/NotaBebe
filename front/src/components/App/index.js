@@ -24,7 +24,7 @@ import ParentProfile from 'src/containers/ParentProfile';
 import ChildProfile from 'src/containers/ChildProfile';
 import ChildRecap from 'src/containers/ChildRecap';
 // ADMIN
-import AddUserAdmin from 'src/components/Admin/AddUserAdmin';
+import AddUserAdmin from 'src/containers/AddUserAdmin';
 import EditUserAdmin from 'src/components/Admin/EditUserAdmin';
 import Admin from 'src/containers/Admin';
 

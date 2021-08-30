@@ -1,0 +1,40 @@
+import { connect } from 'react-redux';
+import AddUserAdmin from 'src/components/Admin/AddUserAdmin';
+
+import {
+  AdminAddUser,
+  changeFieldValueAdminAddUser,
+  resetFormAdmin,
+} from 'src/store/actions';
+
+const mapStateToProps = (state) => ({
+  last_name: state.user.last_name,
+  first_name: state.user.first_name,
+  email: state.user.email,
+  phone_number: state.user.phone_number,
+  address: state.user.address,
+  postcode: state.user.postcode,
+  city: state.user.city,
+  password: state.user.password,
+  role_id: state.user.role_id,
+
+  contentAdminPageAdd: state.user.contentAdminPageAdd,
+  addUserSuccess: state.user.addUserSuccess,
+  addUserError: state.user.addUserError,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+
+  handleAddUser: (userAdmin) => {
+    dispatch(AdminAddUser(userAdmin));
+  },
+  changeField: (value, key) => {
+    dispatch(changeFieldValueAdminAddUser(value, key));
+  },
+  resetFormAdmin: () => {
+    dispatch(resetFormAdmin());
+  },
+
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddUserAdmin);

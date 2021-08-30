@@ -237,3 +237,35 @@ export const deleteUserError = (data) => ({
   type: DELETE_USER_ERROR,
   payload: data,
 });
+
+export const ADMIN_ADD_USER = 'ADMIN_ADD_USER';
+export const AdminAddUser = (userAdmin) => ({
+  type: ADMIN_ADD_USER,
+  payload: userAdmin,
+});
+
+export const ADMIN_ADD_USER_SUCCESS = 'ADMIN_ADD_USER_SUCCESS';
+export const adminAddUserSuccess = (id) => ({
+  type: ADMIN_ADD_USER_SUCCESS,
+  payload: {
+    id: id,
+  },
+});
+
+export const ADMIN_ADD_USER_ERROR = 'ADMIN_ADD_USER_ERROR';
+export const adminAddUserError = (data) => ({
+  type: ADMIN_ADD_USER_ERROR,
+  payload: data,
+});
+
+export const CHANGE_FIELD_VALUE_ADMIN_ADD_USER = 'CHANGE_FIELD_VALUE_ADMIN_ADD_USER';
+export const changeFieldValueAdminAddUser = (value, key) => ({
+  type: CHANGE_FIELD_VALUE_ADMIN_ADD_USER,
+  key,
+  value,
+});
+
+export const RESET_FORM_ADMIN = 'RESET_FORM_ADMIN';
+export const resetFormAdmin = () => ({
+  type: RESET_FORM_ADMIN,
+});

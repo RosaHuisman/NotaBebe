@@ -10,6 +10,9 @@ import {
   CLOSE_MODAL_DELETE_USER,
   DELETE_USER_SUCCESS,
   DELETE_USER_ERROR,
+  ADMIN_ADD_USER_SUCCESS,
+  ADMIN_ADD_USER_ERROR,
+  CHANGE_FIELD_VALUE_ADMIN_ADD_USER,
 } from '../actions';
 
 const initialState = {
@@ -24,6 +27,8 @@ const initialState = {
   users: [],
   FormDeleteOpen: false,
   userDeleteId: null,
+  deletedUserError: null,
+  deletedUserSuccess: null,
 
 };
 
@@ -114,17 +119,25 @@ const reducer = (oldState = initialState, action) => {
       };
     }
     case DELETE_USER_SUCCESS: {
-      const filteredUsers = oldState.admin.filter((user) => user.id !== action.payload.id);
-      console.log('TEST DELETE CLICK filteredUsers', filteredUsers);
+      // const filteredUsers = oldState.admin.filter((user) => user.id !== action.payload.id);
+      // console.log('TEST DELETE CLICK filteredUsers', filteredUsers);
       return {
         ...oldState,
-        users: filteredUsers,
+        // users: filteredUsers,
+        deletedUserSuccess: true,
+        FormDeleteOpen: false,
       };
     }
     case DELETE_USER_ERROR: {
       return {
         ...oldState,
-        error: action.payload,
+        deletedUserError: action.payload,
+      };
+    }
+    case CHANGE_FIELD_VALUE_ADMIN_ADD_USER: {
+      return {
+        ...oldState,
+        [action.key]: action.value,
       };
     }
     default:

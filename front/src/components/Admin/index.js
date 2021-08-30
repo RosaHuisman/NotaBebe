@@ -10,7 +10,7 @@ import {
 import HeaderAdmin from 'src/components/Admin/HeaderAdmin';
 
 import Loading from '../App/Loading';
-// import userAPI from './data.json';
+// import UsersListData from './data.json';
 
 import './styles.scss';
 import logoAdmin from '../../images/logo_admin.png';
@@ -21,7 +21,7 @@ const AdminHome = ({
   error,
   user,
   FormDeleteOpen,
-  // loading,
+  loading,
   // newSearchValue,
   // onApiChange,
   onApiSubmit,
@@ -33,13 +33,23 @@ const AdminHome = ({
   onClickCloseFormDeleteUser,
   userDeleteId,
   deleteUser,
+  deletedUserError,
+  deletedUserSuccess,
 
 }) => {
   // le hook useLocation nous renvoie l'url courante
   const location = useLocation();
 
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, [location]);
+
   const [searchNewValue, setSearchNewValue] = useState('');
   const [UsersListData, setUsersListData] = useState([]);
+
+  // useEffect(() => {
+  //   setUsersListData({});
+  // }, []);
 
   useEffect(() => {
     fetch('http://notabebe-back.herokuapp.com/profile/admin/allusers')
@@ -47,11 +57,11 @@ const AdminHome = ({
       .then((json) => setUsersListData(json));
   }, []);
 
-  const handleClickDeleteUserClose = (id) => {
-    console.log('CLICK DELETE', id);
-    // e.preventDefault();
-    onClickCloseFormDeleteUser(id);
-  };
+  // const handleClickDeleteUserClose = (id) => {
+  //   console.log('CLICK DELETE', id);
+  //   // e.preventDefault();
+  //   onClickCloseFormDeleteUser(id);
+  // };
 
   const handleClickDeleteUserOpen = (id) => {
     console.log('CLICK DELETE', id);
@@ -65,13 +75,9 @@ const AdminHome = ({
     deleteUser(id);
   };
 
-  useEffect(() => {
-    window.scroll(0, 0);
-  }, [location]);
-
-  // if (loading) {
-  //   return <Loading />;
-  // }
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <>
@@ -94,6 +100,20 @@ const AdminHome = ({
 
         <div className="adminDesktopHome__adminTitle">
           Administration des accès
+
+          {deletedUserSuccess
+            && (
+              <div className="adminDesktopHome__adminTitle__messageSuccess">
+                Utilisateur supprimé
+              </div>
+            )}
+
+          {deletedUserError
+            && (
+              <div className="adminDesktopHome__adminTitle__messageError">
+                Erreur serveur
+              </div>
+            )}
         </div>
 
         <div>
@@ -120,7 +140,7 @@ const AdminHome = ({
                 <Table.HeaderCell colSpan="5" width="twelve">
                   <Form onSubmit={onApiSubmit}>
                     <Input
-                      fullWidth
+                      fullwidth="true"
                       fluid
                       icon="search"
                       iconPosition="left"
@@ -213,6 +233,8 @@ const AdminHome = ({
 AdminHome.propTypes = {
   // loading: PropTypes.bool.isRequired,
   FormDeleteOpen: PropTypes.bool,
+  deletedUserSuccess: PropTypes.bool,
+  deletedUserError: PropTypes.bool,
   // newSearchValue: PropTypes.string.isRequired,
   // userAPI: PropTypes.arrayOf(
   //   PropTypes.shape({
@@ -232,8 +254,10 @@ AdminHome.propTypes = {
 
 };
 
-AdminHome.defaultProps = {
-  FormDeleteOpen: false,
-};
+// AdminHome.defaultProps = {
+//   FormDeleteOpen: false,
+//   deletedUserSuccess: false,
+//   deletedUserError: false,
+// };
 
 export default AdminHome;

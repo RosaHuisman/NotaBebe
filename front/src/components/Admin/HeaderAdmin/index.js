@@ -5,21 +5,21 @@ const HeaderAdmin = () => (
   <header className="menu">
     <Link
       className="menu__link"
-      activeClassName="menu__link__selected"
+      activeclassname="menu__link__selected"
       to="/admin"
     >
       Accueil
     </Link>
     <Link
       className="menu__link"
-      activeClassName="menu__link__selected"
+      activeclassname="menu__link__selected"
       to="/actualites"
     >
       Actualités
     </Link>
     <Link
       className="menu__link"
-      activeClassName="menu__link__selected"
+      activeclassname="menu__link__selected"
       to="/contact"
     >
       Contact

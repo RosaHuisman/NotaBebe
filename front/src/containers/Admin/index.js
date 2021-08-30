@@ -1,10 +1,12 @@
 import { connect } from 'react-redux';
 import Admin from 'src/components/Admin';
+
 import {
   getAllUsersAction,
   openModalDeleteUser,
   closeModalDeleteUser,
   deleteUser,
+  AdminAddUser,
 } from 'src/store/actions';
 
 const mapStateToProps = (state) => ({
@@ -25,6 +27,7 @@ const mapStateToProps = (state) => ({
   error: state.admin.error,
   FormDeleteOpen: state.admin.FormDeleteOpen,
   userDeleteId: state.admin.userDeleteId,
+  // deletedUserError: state.admin.deletedUserError,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -44,12 +47,12 @@ const mapDispatchToProps = (dispatch) => ({
   },
 
   deleteUser: (userDeleteId) => {
-    console.log('BLABLAAAAA après');
+    console.log('BLABLAAAAA après', userDeleteId);
     dispatch(deleteUser(userDeleteId));
   },
-  // onApiSubmit: () => {
-  //   dispatch(searchUsersList());
-  // },
+  handleAddUser: () => {
+    dispatch(AdminAddUser());
+  },
   // onApiChange: () => {
   //   dispatch(logout());
   // },
