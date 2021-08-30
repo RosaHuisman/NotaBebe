@@ -1,5 +1,10 @@
 @use 'src/styles/vars' as v;
 
+h1 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
 .comments__list {
   display: flex;
   flex-direction: column;
