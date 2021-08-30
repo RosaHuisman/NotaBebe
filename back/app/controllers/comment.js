@@ -4,7 +4,13 @@ const userDataMapper = require('../dataMappers/user');
 
 const commentController = {
 
-    getAllComments: async (_, response) => {
+    /**
+     * Getting all comments
+     * @param {*} _ 
+     * @param {*} response 
+     * @returns 
+     */
+    getAllComments: async (_, response, next) => {
         try {
             const comments = await commentDataMapper.findAll();
 
@@ -19,6 +25,13 @@ const commentController = {
         }
     },
 
+    /**
+     * Getting a comment by its id
+     * @param {*} request 
+     * @param {*} response 
+     * @param {*} next 
+     * @returns 
+     */
     getCommentById: async (request, response, next) => {
         try {
             const commentId = Number(request.params.id);
@@ -36,6 +49,13 @@ const commentController = {
         }
     },
 
+    /**
+     * Getting all comments by a child id
+     * @param {*} request 
+     * @param {*} response 
+     * @param {*} next 
+     * @returns 
+     */
     getCommentsByChildId: async (request, response, next) => {
         try {
             const childId = Number(request.params.childId);
@@ -53,6 +73,13 @@ const commentController = {
         }
     },
 
+    /**
+     * Getting all comments by a parent id
+     * @param {*} request 
+     * @param {*} response 
+     * @param {*} next 
+     * @returns 
+     */
     getCommentsByParentId: async (request, response, next) => {
         try {
             const parentId = Number(request.params.parentId);
@@ -70,6 +97,13 @@ const commentController = {
         }
     },
 
+    /**
+     * Adding a comment
+     * @param {*} request 
+     * @param {*} response 
+     * @param {*} next 
+     * @returns 
+     */
     addComment: async (request, response, next) => {
         try {
 
@@ -98,6 +132,13 @@ const commentController = {
         }
     },
 
+    /**
+     * Modifying a comment
+     * @param {*} request 
+     * @param {*} response 
+     * @param {*} next 
+     * @returns 
+     */
     modifyComment: async (request, response, next) => {
         try {
 
@@ -128,6 +169,13 @@ const commentController = {
         }
     },
 
+    /**
+     * Deleting a comment
+     * @param {*} request 
+     * @param {*} response 
+     * @param {*} next 
+     * @returns 
+     */
     deleteComment: async (request, response, next) => {
         try {
 

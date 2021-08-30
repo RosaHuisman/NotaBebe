@@ -7,7 +7,14 @@ const jwtSecret = process.env.SECRET_KEY;
 
 const userController = {
 
-    getAllUsers: async (_, response) => {
+    /**
+     * Getting all users
+     * @param {*} _ 
+     * @param {*} response 
+     * @param {*} next 
+     * @returns 
+     */
+    getAllUsers: async (_, response, next) => {
         try {
             const data = await userDataMapper.findAll();
 
@@ -24,7 +31,14 @@ const userController = {
 
     },
 
-    getAllParents: async (_, response) => {
+    /**
+     * Getting all parents
+     * @param {*} _ 
+     * @param {*} response 
+     * @param {*} next 
+     * @returns 
+     */
+    getAllParents: async (_, response, next) => {
         try {
             const data = await userDataMapper.findAllParents();
 
@@ -40,7 +54,14 @@ const userController = {
         }
     },
 
-    getParentById: async (request, response) => {
+    /**
+     * Getting a parent by their id
+     * @param {*} request 
+     * @param {*} response 
+     * @param {*} next 
+     * @returns 
+     */
+    getParentById: async (request, response, next) => {
         try {
             const parentId = Number(request.params.id);
 
@@ -58,6 +79,13 @@ const userController = {
         }
     },
 
+    /**
+     * Get a child by their parent
+     * @param {*} request 
+     * @param {*} response 
+     * @param {*} next 
+     * @returns 
+     */
     getChildFromParent: async (request, response, next) => {
         try {
             const parentId = Number(request.params.id);
@@ -77,7 +105,14 @@ const userController = {
         }
     },
 
-    getAllStaff: async (_, response) => {
+    /**
+     * Get all staff members
+     * @param {*} _ 
+     * @param {*} response 
+     * @param {*} next 
+     * @returns 
+     */
+    getAllStaff: async (_, response, next) => {
         try {
             const data = await userDataMapper.findAllStaff();
 
@@ -94,7 +129,14 @@ const userController = {
 
     },
 
-    getStaffById: async (request, response) => {
+    /**
+     * Get a staff member by their id
+     * @param {*} request 
+     * @param {*} response 
+     * @param {*} next 
+     * @returns 
+     */
+    getStaffById: async (request, response, next) => {
         try {
             const staffId = Number(request.params.id);
             const data = await userDataMapper.findStaffById(staffId);
@@ -111,7 +153,14 @@ const userController = {
         }
     },
 
-    getAllChildren: async (_, response) => {
+    /**
+     * Get all children
+     * @param {*} _ 
+     * @param {*} response 
+     * @param {*} next 
+     * @returns 
+     */
+    getAllChildren: async (_, response, next) => {
         try {
             const data = await userDataMapper.findAllChildren();
 
@@ -128,7 +177,7 @@ const userController = {
     },
 
     /**
-     * Check that the login information entered by the user is correct and validate login form
+     * Checking that the login information entered by the user is correct and validate login form
      * 
      * @param {Request} request 
      * @param {Response} response 
@@ -188,7 +237,7 @@ const userController = {
     //? à voir comment tester le logout
 
     /**
-     * Log out of the user. We delete his session.
+     * Log out of the user, deleting their session
      * 
      * @param {request} request 
      * @param {response} response 
@@ -196,7 +245,6 @@ const userController = {
     logout: (request, response) => {
         request.session.destroy();
         response.redirect('/');
-
     },
 
     /**
@@ -205,7 +253,6 @@ const userController = {
      * @param {response} response 
      */
     updatePassword: async (request, response) => {
-
         try {
             // check that the data is coherent
 
@@ -287,7 +334,14 @@ const userController = {
             response.json({ error: error.message });
         }
     },
-
+    
+    /**
+     * Modifying a child
+     * @param {*} request 
+     * @param {*} response 
+     * @param {*} next 
+     * @returns 
+     */
     modifyChild: async (request, response, next) => {
         try {
             const parentId = Number(request.params.id);

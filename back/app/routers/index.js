@@ -1,7 +1,5 @@
 const express = require('express');
 
-// const security = require('../../middlewares/security');
-
 const errorController = require('../controllers/404');
 const userController = require('../controllers/user');
 const adminController = require('../controllers/admin')

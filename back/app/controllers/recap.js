@@ -2,6 +2,13 @@ const recapDataMapper = require('../dataMappers/recap');
 
 const recapController = {
 
+    /**
+     * Getting all recaps
+     * @param {*} _ 
+     * @param {*} response 
+     * @param {*} next 
+     * @returns 
+     */
     getAllRecaps: async (_, response, next) => {
         try {
             const recaps = await recapDataMapper.findAll();
@@ -18,6 +25,13 @@ const recapController = {
         }
     },
 
+    /**
+     * Getting a recap by its id
+     * @param {*} request 
+     * @param {*} response 
+     * @param {*} next 
+     * @returns 
+     */
     getRecapById: async (request, response, next) => {
         try {
             const recapId = Number(request.params.id);
@@ -35,6 +49,13 @@ const recapController = {
         }
     },
 
+    /**
+     * Getting recaps by a child id
+     * @param {*} request 
+     * @param {*} response 
+     * @param {*} next 
+     * @returns 
+     */
     getRecapsByChildId: async (request, response, next) => {
         try {
             const childId = Number(request.params.childId);
@@ -52,6 +73,13 @@ const recapController = {
         }
     },
 
+    /**
+     * Adding a recap
+     * @param {*} request 
+     * @param {*} response 
+     * @param {*} next 
+     * @returns 
+     */
     addRecap: async (request, response, next) => {
         try {
             const newRecap = await recapDataMapper.addRecap(request.body);
@@ -68,6 +96,13 @@ const recapController = {
         }
     },
 
+    /**
+     * Adding a nap to a recap
+     * @param {*} request 
+     * @param {*} response 
+     * @param {*} next 
+     * @returns 
+     */
     addNap: async (request, response, next) => {
         try {
             const recapId = request.params.recapId;
@@ -86,6 +121,13 @@ const recapController = {
         }
     },
 
+    /**
+     * Adding a meal to a recap
+     * @param {*} request 
+     * @param {*} response 
+     * @param {*} next 
+     * @returns 
+     */
     addMeal: async (request, response, next) => {
         try {
 
@@ -105,7 +147,13 @@ const recapController = {
         }
     },
     
-
+    /**
+     * Modifying a recap
+     * @param {*} request 
+     * @param {*} response 
+     * @param {*} next 
+     * @returns 
+     */
     modifyRecap: async (request, response, next) => {
         try {
             const recapId = Number(request.params.recapId);
@@ -127,6 +175,13 @@ const recapController = {
         }
     },
     
+    /**
+     * Modifying a nap
+     * @param {*} request 
+     * @param {*} response 
+     * @param {*} next 
+     * @returns 
+     */
     modifyNap: async (request, response, next) => {
         try {
             const recapId = Number(request.params.recapId);
@@ -150,6 +205,13 @@ const recapController = {
         }
     },
 
+    /**
+     * Modifying a meal
+     * @param {*} request 
+     * @param {*} response 
+     * @param {*} next 
+     * @returns 
+     */
     modifyMeal: async (request, response, next) => {
         try {
             const recapId = Number(request.params.recapId);
@@ -172,6 +234,13 @@ const recapController = {
         }
     },
 
+    /**
+     * Deleting a recap
+     * @param {*} request 
+     * @param {*} response 
+     * @param {*} next 
+     * @returns 
+     */
     deleteRecap: async (request, response, next) => {
         try {
 
@@ -199,6 +268,13 @@ const recapController = {
         }
     },
 
+    /**
+     * Deleting a nap
+     * @param {*} request 
+     * @param {*} response 
+     * @param {*} next 
+     * @returns 
+     */
     deleteNap: async (request, response, next) => {
         try {
             const napId = request.params.napId;
@@ -225,6 +301,13 @@ const recapController = {
         }
     },
 
+    /**
+     * Deleting a meal
+     * @param {*} request 
+     * @param {*} response 
+     * @param {*} next 
+     * @returns 
+     */
     deleteMeal: async (request, response, next) => {
         try {
             const mealId = request.params.mealId;
