@@ -78,12 +78,12 @@ const App = ({
         
         {/* <PrivateRoute exact path="/staff/:id/" component={StaffProfile} /> */}
         
-        <Route exact path="/staff/childs" component={ChildsList} />
+        <Route exact path="/staff/children" component={ChildsList} />
         <Route exact path="/staff/recaps" component={Recaps} />
         <Route exact path="/staff/comments" component={Comments} />
 
         {/*<PrivateRoute exact path="/staff/:id/comments" component={ReadComment} /> */}
-        <PrivateRoute exact path="/staff/:id/createrecap" component={CreateRecap} />
+        <Route exact path="/staff/children/:id/createrecap" component={CreateRecap} />
 
         {/* Route Parent Children */}
         <PrivateRoute exact path="/profile/parent/:id" component={ParentProfile} />

@@ -1,15 +1,28 @@
-.childs__list {
+@use 'src/styles/vars' as v;
+
+.childs {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
-}
 
-.child {
-  margin-top: 5px;
-  width: 48%;
-  border: 1px solid rgb(211, 211, 211);
-  border-radius: 5px;
-  padding: 5px;
+  &__child {
+    margin-top: 5px;
+    width: 48%;
+    border: 1px solid rgb(211, 211, 211);
+    border-radius: 5px;
+    padding: 5px;
+
+    &__createrecapbutton {
+      display: block;
+      margin: 0 auto;
+      padding: v.$gutter/2;
+      background-color: v.$bg-color;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      font-size: 1.2em;
+    }
+  } 
   
 }

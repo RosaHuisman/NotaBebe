@@ -1,11 +1,78 @@
-.create__recap {
+@use 'src/styles/vars' as v;
+
+.createrecap {
   margin: 5px;
+  margin-bottom: 5rem;
+  &__title {
+    text-align: center;
+    font-style: normal;
+  }
+  &__firstname {
+    color: v.$bg-color;
+    font-size: 2em;
+    text-align: center;
+  }
+  &__mood {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    &__label {
+      margin: auto 10px;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+  }
+  &__nap {
+  display: flex;
+  justify-content: flex-end;
+  margin: 5px;
+  margin-top: 20px;
+  margin-right: 20px;
+    &__label {
+    margin: auto 10px;
+    font-size: 1.2em;
+      font-weight: bold;
+    }
+    &__comment {
+      margin: 20px;
+      &__label {
+      font-size: 1.2em;
+      font-weight: bold;
+      }
+      &__textarea {
+        margin-top: 5px;
+        width: 100%;
+      }
+    }
+    &__input {
+      background-color: v.$bg-color;
+      border: none;
+      height: 40px;
+    }
+    &__button {
+      display: block;
+      background-color: v.$bg-color;
+      margin: 0 auto;
+      padding: v.$gutter/2;
+      color: white;
+      border: none;
+      font-size: 1.2em;
+    }
+  }
+
+  &__submit {
+    display: block;
+    background-color: v.$primary-color;
+    margin: 0 auto;
+    padding: v.$gutter;
+    color: white;
+    border: none;
+    font-size: 1.6em;
+         
+  }
+  
 }
 
-h1 {
-  text-align: center;
-  font-style: normal;
-}
 
 .child__select {
   margin: 5px;
@@ -16,44 +83,11 @@ select {
   padding: 5px;
 }
 
-.input__mood {
-  margin: 5px;
-  margin-top: 10px;
-}
 
 #mood {
   margin-left: 20px;
 }
 
-.nap__time {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin: 5px;
-  margin-top: 10px;
-  justify-content: space-around;
-}
-
-.comments__nap {
-  display: flex;
-  flex-direction: column;
-  margin: 5px;
-  margin-top: 10px;
-}
-
-.comments__meal {
-  display: flex;
-  flex-direction: column;
-  margin: 5px;
-  margin-top: 10px;
-}
-
-.comments__others {
-  display: flex;
-  flex-direction: column;
-  margin: 5px;
-  margin-top: 10px;
-}
 
 label {
   vertical-align: top;
@@ -64,9 +98,7 @@ textarea {
   padding: 10px 10px 10px 10px;
 }
 
-.submit__button {
-  text-align: center;
-}
+
 
 .buttons {
   background-color: red;
