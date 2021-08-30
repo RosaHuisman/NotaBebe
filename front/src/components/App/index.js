@@ -17,7 +17,7 @@ import Header from 'src/containers/Header';
 import Home from 'src/containers/Home';
 // STAFF
 import StaffProfile from 'src/components/StaffProfile';
-import ChildsList from 'src/components/ChildsList';
+import ChildsList from 'src/containers/ChildsList';
 import Recaps from 'src/components/Recaps';
 import Comments from 'src/components/Comments';
 // import ReadComment from 'src/containers/ReadComment';

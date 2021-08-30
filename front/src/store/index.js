@@ -12,12 +12,13 @@ import forgotMiddleware from './middlewares/forgotMiddleware';
 import user from './middlewares/user';
 import recap from './middlewares/recap';
 import comment from './middlewares/comment';
+import children from './middlewares/children';
 
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const enhancers = composeEnhancers(
-  applyMiddleware(logMiddleware, authMiddleware, forgotMiddleware, user, recap, comment),
+  applyMiddleware(logMiddleware, authMiddleware, forgotMiddleware, user, recap, comment, children),
 );
 
 const store = createStore(reducer, enhancers);

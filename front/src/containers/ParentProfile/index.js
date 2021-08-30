@@ -27,6 +27,7 @@ const mapStateToProps = (state, ownProps) => {
     changeInfos: state.user.changeInfos,
     hasInfosError: state.user.changeInfosError,
     hasPasswordError: state.user.changePasswordError,
+    
     user: findUser(state.user.list, ownProps.match.params.id),
     // child: findChildren(state.children.list, ownProps.id),
     loading: state.user.loading,

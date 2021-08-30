@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Icon } from 'semantic-ui-react';
-import recaps from 'src/store/middlewares/recaps';
+import recaps from 'src/store/middlewares/recap';
 
 import './styles.scss';
 import data from 'src/data/recaps';
