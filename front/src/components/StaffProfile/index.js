@@ -31,7 +31,7 @@ const StaffProfile = ({ searchValue, setSearchValue, handleSubmit }) => {
           </Link>
         </div>
         <div className="staff__button__comments">
-          <Link className="comments__link" to='/staff∕comments' exact="true">
+          <Link className="comments__link" to='/staff/comments' exact="true">
             <button type="button" className="button">Les Commentaires</button>
           </Link>
         </div>

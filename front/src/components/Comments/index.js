@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import PropTypes from 'prop-types'
 
 import './styles.scss';
@@ -6,14 +6,12 @@ import commentsData from 'src/data/comments';
 // console.log('mes données 2:', commentsData),
 // console.log('Salut');
 
-const Comments = ({
-  recaps, onSearchSubmit, inputRef, searchValue,
-}) => {
+const Comments = ({ recaps, onSearchSubmit, inputRef, searchValue }) => {
 
-  console.log('coucou');
-  console.log('mes données:', commentsData);
+  // console.log('coucou');
+  // console.log('mes données:', commentsData);
 
-return (
+  return (
   <>
     <h1>Les commentaires parents</h1>
     <div className="filter">
@@ -35,12 +33,8 @@ return (
         </div>
       ))}
     </div>
-    </>
+  </>
 )};
-
-Comments.propTypes = {
-  
-}
 
 export default Comments;
 
