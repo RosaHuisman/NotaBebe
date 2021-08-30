@@ -5,22 +5,21 @@ import { useLocation } from 'react-router-dom';
 
 import './styles.scss';
 
-function CreateRecap({
+const CreateRecap = ({
   openNewNap, 
   isOpen, 
   onChangeValue, 
   name, 
   handleSubmit, 
-  childSelected, 
   moodSelected, 
   timeNapSelected,
+  value,
 
-}) {
+}) => {
 
   const data = useLocation();
   const child = data.state.child;
-  console.log(child)
-
+  
 
   const handleClick = () => {
     openNewNap();
@@ -28,23 +27,17 @@ function CreateRecap({
 
   const changeValue = (e) => {
     e.preventDefault();
-    //console.log('textarea value');
-    onChangeValue(e.target.value, name);
+    onChangeValue(e.target.value, e.target.name);
   };
-
-  const selectChild = (e) => {
-    e.preventDefault();
-    childSelected(e.target.value, name);
-  }
 
   const selectMood = (e) => {
     e.preventDefault();
-    moodSelected(e.target.value, name);
+    moodSelected(e.target.value, e.target.name);
   }
 
   const selectTimeNap = (e) => {
     e.preventDefault();
-    timeNapSelected(e.target.value, name);
+    timeNapSelected(e.target.value, e.target.name);
   }
 
   return (
@@ -137,7 +130,7 @@ function CreateRecap({
           <label htmlFor="nap2" className="createrecap__nap__comment__label">Commentaire sieste:</label>
           <textarea
             id="nap"
-            name="nap"
+            name="nap2"
             onChange={changeValue}
             rows="3"
             placeholder="Ecrivez votre commentaire"

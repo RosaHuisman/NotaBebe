@@ -52,9 +52,9 @@ console.log(children)
           <p className="childs__child__infos">Allergies: {child.allergies}</p>
           <Link
           to={{
-          pathname: `/staff/children/${child.id}/createrecap`,
-          state: {
-            child: child,
+            pathname: `/staff/children/${child.id}/createrecap`,
+            state: {
+              child: child,
           },
           }}
           >

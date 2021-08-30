@@ -34,10 +34,7 @@ export const FETCH_PARENT = 'FETCH_PARENT';
 
 export const GET_RECAP = 'GET_RECAP';
 export const GET_RECAP_SUCCESS = 'GET_RECAP_SUCCESS';
-export const SHOW_FIELD_NAP = 'SHOW_FIELD_NAP';
 export const CHANGE_CHILD = 'CHANGE_CHILD';
-export const CHANGE_MOOD = 'CHANGE_MOOD';
-export const CHANGE_TIME_NAP = 'CHANGE_TIME_NAP';
 
 export const CHANGE_TEXT_VALUE = 'CHANGE_TEXT_VALUE';
 
@@ -138,9 +135,7 @@ export const createGetRecapAction = () => ({
 });
 ;
 
-export const showFieldNap = () => ({
-  type: SHOW_FIELD_NAP,
-});
+
 
 
 
@@ -150,17 +145,8 @@ export const changeChild = (key, value) => ({
   key,
 });
 
-export const changeMood = (key, value) => ({
-  type: CHANGE_MOOD,
-  value,
-  key,
-});
 
-export const changeTimeNap = (key, value) => ({
-  type: CHANGE_TIME_NAP,
-  value,
-  key,
-});
+
 
 export const fetchUserData = () => ({
   type: FETCH_USER_DATA,
