@@ -15,9 +15,10 @@ export const formatDate = (comment) => {
 };
 
 export const formatHour = (comment) => {
-  const hour = new Date(comment);
-  const heure = hour.getHours();
-  let minutes = hour.getMinutes();
+  const date = new Date(comment);
+  //console.log(date)
+  let heure = date.getHours();
+  let minutes = date.getMinutes();
 
   if (heure < 10) {
     heure = `0${heure}`;

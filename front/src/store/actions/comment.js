@@ -36,6 +36,7 @@ export const saveComment = (comment) => ({
   payload: comment,
 });
 
+
 export const changeTextValue = (value) => ({
   type: CHANGE_TEXT_VALUE,
   value,

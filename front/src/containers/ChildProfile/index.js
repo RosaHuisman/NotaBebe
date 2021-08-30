@@ -55,7 +55,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   },
 
   onClickOpenModalToFormChangeComment: (commentId) => {
-    console.log(commentId)
+    //console.log(commentId)
     dispatch(openModal(commentId));
   },
 

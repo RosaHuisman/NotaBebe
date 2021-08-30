@@ -18,7 +18,8 @@ const initialState = {
   modalOpen: false,
   comment:'',
   commentId: null,
-  formDeleteOpen: false,  
+  formDeleteOpen: false,
+  commentSend: false,  
 };
 
 const reducer = (state = initialState, action ={} ) => {
@@ -45,8 +46,9 @@ const reducer = (state = initialState, action ={} ) => {
      case SAVE_COMMENT: {
       return {
         ...state,
-        commentSend: true,
-        commentId: action.payload.data.id,
+        commentSend: !state.commentSend,
+        //commentId: action.payload.data.id,
+        comment:'',
       };
     }
     case CHANGE_TEXT_VALUE: {

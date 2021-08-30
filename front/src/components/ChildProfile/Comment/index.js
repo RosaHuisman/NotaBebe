@@ -51,7 +51,8 @@ const Comment = ({
   };
 
   const handleClickEdit = (evt) => {
-    evt.preventDefault();    
+    evt.preventDefault();
+    console.log(evt.target.id)    
     onClickOpenModalToFormChangeComment(evt.target.id);
     
   }
@@ -76,12 +77,14 @@ const Comment = ({
     deleteComment(parent.id, parent.child_id, evt.target.id);
   }
 
-  //console.log(commentId)
+  //console.log(commentSend)
 
   return (
 
     <>
-      {!commentSend ? (
+      {commentSend ? (
+         <div className="comment__success">Votre message a bien été envoyé</div>
+      ) : (
         <>
         <div>
 
@@ -119,8 +122,7 @@ const Comment = ({
           </div>
           
         </>
-      ) : (
-        <div className="comment__success">Votre message a bien été envoyé</div>
+       
       )}
 
         <div className="comment__allcomments">
@@ -143,56 +145,66 @@ const Comment = ({
                   <p className="comment__onecomment__date">
                   Envoyé le {formatDate(comment.created_at)} à {formatHour(comment.created_at)}
                 </p>
+                
                 ) }
+
                 <div className="comment__onecomment__icons">
-                    <Icon name="edit" className="comment__onecomment__icons__icon" {...comment} onClick={handleClickEdit} />
+                      <Icon 
+                      name="edit" 
+                      className="comment__onecomment__icons__icon" 
+                      {...comment} 
+                      onClick={handleClickEdit} 
+                      />
+                   
+                      <Icon name="ban" className="comment__onecomment__icons__icon" {...comment} onClick={handleClickDelete}/> 
                     
-                  <Icon name="ban" className="comment__onecomment__icons__icon" {...comment} onClick={handleClickDelete}/> 
+        
                 </div>
               </div>
-                {!modalOpen ? (
+                {(commentId == comment.id && modalOpen) ? (
+                   <div className="comment__onecomment__message">
+                   <form
+                   autoComplete="off"
+                   className="comment"
+                   onSubmit={handleSubmitPatch}
+                   {...comment}
+                   >
+                   <textarea
+                     name="comment"
+                     rows="4"
+                     className="comment__onecomment__message"
+                     placeholder="Modifiez votre message..."
+                     onChange={handleOnChange}
+                     // value={comment.message}
+                   />
+                   <div className="comment__onecomment__buttons">
+                   <button
+                       className="comment__onecomment__buttons__cancel"
+                       type="button"
+                       onClick={handleClickCancel}
+                     >
+                     Annuler
+                     </button>
+                     <button
+                       className="comment__onecomment__buttons__submit"
+                       type="submit"
+                     >
+                     Valider
+                     </button>
+                   </div>
+                   </form>
+                   
+                 
+               </div>
+                  
+                 ) : (
                   <p className="comment__onecomment__message">
                   {comment.message}
                     </p>
-                 ) : (
-                  <div className="comment__onecomment__message">
-                    <form
-                    autoComplete="off"
-                    className="comment"
-                    onSubmit={handleSubmitPatch}
-                    {...comment}
-                    >
-                    <textarea
-                      name="comment"
-                      rows="4"
-                      className="comment__onecomment__message"
-                      placeholder="Modifiez votre message..."
-                      onChange={handleOnChange}
-                      // value={comment.message}
-                    />
-                    <div className="comment__onecomment__buttons">
-                    <button
-                        className="comment__onecomment__buttons__cancel"
-                        type="button"
-                        onClick={handleClickCancel}
-                      >
-                      Annuler
-                      </button>
-                      <button
-                        className="comment__onecomment__buttons__submit"
-                        type="submit"
-                      >
-                      Valider
-                      </button>
-                    </div>
-                    </form>
-                    
-                  
-                </div>
                  
                  )
                 } 
-                {formDeleteOpen ? (
+                {(commentId == comment.id && formDeleteOpen) ? (
                    <div className="comment__formdelete">
                    <form
                    autoComplete="off"

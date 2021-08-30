@@ -45,6 +45,7 @@ const comment = (store) => (next) => (action) => {
        .then((response) => {
          console.log(response.data)
          const actionsaveComment = saveComment(response.data);
+
          store.dispatch(actionsaveComment);
        })
        .catch((error) => {
