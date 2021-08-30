@@ -92,7 +92,7 @@ export const changePassword = (id) => ({
 
 export const saveNewPasswordParent = () => ({
   type: SAVE_NEW_PASSWORD_PARENT,
-})
+});
 
 export const passwordError = () => ({
   type: LOGIN_ERROR,
@@ -114,13 +114,10 @@ export const fetchUsersParents = () => ({
   type: FETCH_USERS_PARENTS,
 });
 
-
 export const saveUsersParents = (users_parents) => ({
   type: SAVE_USERS_PARENTS,
   payload: users_parents,
 });
-
-
 
 export const sendComment = () => ({
   type: SEND_COMMENT,
@@ -171,7 +168,6 @@ export const saveUserData = (favorites) => ({
   payload: favorites,
 });
 
-
 // liste user (viktk)
 // export const GET_ALL_USERS = 'GET_ALL_USERS';
 // export const getAllUsersAction = () => ({
@@ -186,12 +182,10 @@ export const saveUserData = (favorites) => ({
 
 export const LOGOUT_ADMIN = 'LOGOUT_ADMIN';
 
-
 export const USER_LIST_LOADING = 'USER_LIST_LOADING';
 export const getAllUsersAction = () => ({
   type: USER_LIST_LOADING,
 });
-
 
 export const USER_LIST_LOAD_SUCCESS = 'USER_LIST_LOAD_SUCCESS';
 export const getAllUsersSuccessAction = (myUserList) => ({
@@ -199,15 +193,47 @@ export const getAllUsersSuccessAction = (myUserList) => ({
   payload: myUserList,
 });
 
-
 export const USER_LIST_LOAD_ERROR = 'USER_LIST_LOAD_ERROR';
 export const getAllUsersErrorAction = () => ({
   type: USER_LIST_LOAD_ERROR,
 });
 
-
 export const SEARCH_CONTACTS = 'SEARCH_CONTACTS';
 export const searchUsers = (searchText) => ({
   type: SEARCH_CONTACTS,
   payload: searchText,
+});
+
+export const OPEN_MODAL_DELETE_USER = 'OPEN_MODAL_DELETE_USER';
+export const CLOSE_MODAL_DELETE_USER = 'CLOSE_MODAL_DELETE_USER';
+
+export const DELETE_USER = 'DELETE_USER';
+export const DELETE_USER_SUCCESS = 'DELETE_USER_SUCCESS';
+export const DELETE_USER_ERROR = 'DELETE_USER_ERROR';
+
+export const openModalDeleteUser = (userDeleteId) => ({
+  type: OPEN_MODAL_DELETE_USER,
+  userDeleteId,
+});
+
+export const closeModalDeleteUser = (userDeleteId) => ({
+  type: CLOSE_MODAL_DELETE_USER,
+  userDeleteId,
+});
+
+export const deleteUser = (id) => ({
+  type: DELETE_USER,
+  payload: id,
+});
+
+export const deleteUserSuccess = (id) => ({
+  type: DELETE_USER_SUCCESS,
+  payload: {
+    id: id,
+  },
+});
+
+export const deleteUserError = (data) => ({
+  type: DELETE_USER_ERROR,
+  payload: data,
 });

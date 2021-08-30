@@ -6,17 +6,24 @@ import {
   USER_LIST_LOAD_SUCCESS,
   USER_LIST_LOAD_ERROR,
   SEARCH_CONTACTS,
+  OPEN_MODAL_DELETE_USER,
+  CLOSE_MODAL_DELETE_USER,
+  DELETE_USER_SUCCESS,
+  DELETE_USER_ERROR,
 } from '../actions';
 
 const initialState = {
   // userList: [],
   // loading: true,
 
-    loading: false,
-    error: null,
-    dataUserList: [],
-    isSearchActive: false,
-    foundUsers: [],
+  loading: false,
+  error: null,
+  dataUserList: [],
+  isSearchActive: false,
+  foundUsers: [],
+  users: [],
+  FormDeleteOpen: false,
+  userDeleteId: null,
 
 };
 
@@ -44,7 +51,7 @@ const reducer = (oldState = initialState, action) => {
         ...oldState,
         // listUsers: {
         //   ...oldState.listUsers,
-          loading: true,
+        loading: true,
         // },
       };
     }
@@ -52,9 +59,9 @@ const reducer = (oldState = initialState, action) => {
       return {
         ...oldState,
         // listUsers: {
-          // ...oldState.listUsers,
-          loading: false,
-          dataUserList: action.payload,
+        // ...oldState.listUsers,
+        loading: false,
+        dataUserList: action.payload,
         // },
       };
     }
@@ -62,9 +69,9 @@ const reducer = (oldState = initialState, action) => {
       return {
         ...oldState,
         // listUsers: {
-          // ...oldState.listUsers,
-          loading: false,
-          error: action.payload,
+        // ...oldState.listUsers,
+        loading: false,
+        error: action.payload,
         // },
       };
     }
@@ -91,7 +98,35 @@ const reducer = (oldState = initialState, action) => {
     //     // },
     //   };
     // }
-
+    case OPEN_MODAL_DELETE_USER: {
+      return {
+        ...oldState,
+        FormDeleteOpen: !oldState.FormDeleteOpen,
+        // FormDeleteOpen: true,
+        userDeleteId: action.userDeleteId,
+      };
+    }
+    case CLOSE_MODAL_DELETE_USER: {
+      return {
+        ...oldState,
+        FormDeleteOpen: oldState.FormDeleteOpen,
+        userDeleteId: action.userDeleteId,
+      };
+    }
+    case DELETE_USER_SUCCESS: {
+      const filteredUsers = oldState.admin.filter((user) => user.id !== action.payload.id);
+      console.log('TEST DELETE CLICK filteredUsers', filteredUsers);
+      return {
+        ...oldState,
+        users: filteredUsers,
+      };
+    }
+    case DELETE_USER_ERROR: {
+      return {
+        ...oldState,
+        error: action.payload,
+      };
+    }
     default:
       return oldState;
   }

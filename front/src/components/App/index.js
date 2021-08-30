@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import Footer from 'src/components/Footer';
 import ContactDetails from 'src/components/ContactDetails';
 import ForgotPassword from 'src/components/ForgotPassword';
-import AdminMobileHome from 'src/components/Admin';
+// import AdminMobileHome from 'src/components/Admin';
 import PrivateRoute from 'src/components/PrivateRoute';
 import Error from 'src/components/Error';
 
@@ -23,10 +23,10 @@ import CreateRecap from 'src/containers/CreateRecap';
 import ParentProfile from 'src/containers/ParentProfile';
 import ChildProfile from 'src/containers/ChildProfile';
 import ChildRecap from 'src/containers/ChildRecap';
-// TEST
-import HomePage1 from 'src/components/HomePage';
-import HomePage2 from 'src/components/HomePage2';
-import HomePage3 from 'src/components/HomePage3';
+// ADMIN
+import AddUserAdmin from 'src/components/Admin/AddUserAdmin';
+import EditUserAdmin from 'src/components/Admin/EditUserAdmin';
+import Admin from 'src/containers/Admin';
 
 import Loading from './Loading';
 
@@ -68,7 +68,11 @@ const App = ({
         {/* <Route path="*" component={Error} /> */}
 
         {/* Route Admin */}
-        <PrivateRoute exact path="/admin" component={AdminMobileHome} />
+        {/* <PrivateRoute exact path="/admin" component={AdminMobileHome} /> */}
+        <PrivateRoute exact path="/admin" component={Admin} />
+        <PrivateRoute exact path="/admin/adduser" component={AddUserAdmin} />
+        <PrivateRoute exact path="/admin/edituser" component={EditUserAdmin} />
+
 
         {/* Route Staff */}
         {/* <PrivateRoute exact path="/staff/:id/" component={StaffProfile} />
@@ -81,10 +85,6 @@ const App = ({
         <PrivateRoute exact path="/profile/parent/:id/child/:child_id" component={ChildProfile} />
         <PrivateRoute exact path="/profile/parent/:id/child/:id/recap" component={ChildRecap} />
 
-        {/* Route de test blabla */}
-        <PrivateRoute exact path="/homepage1" component={HomePage1} />
-        <PrivateRoute exact path="/homepage2" component={HomePage2} />
-        <PrivateRoute exact path="/homepage3" component={HomePage3} />
       </Switch>
       <Footer />
     </>

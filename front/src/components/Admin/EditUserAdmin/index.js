@@ -7,7 +7,7 @@ import {
   Button, Icon, Table, Input, Form, Grid, Segment, Header, Footer, Select,
 } from 'semantic-ui-react';
 
-const EditModalAdmin = () => {
+const EditUserAdmin = () => {
   console.log('modal admin edit');
 
   const roleOption = [
@@ -118,14 +118,14 @@ const EditModalAdmin = () => {
             <Table.Footer fullwidth="true" column="equal">
               <Table.Row>
                 <Table.HeaderCell colSpan="3" textAlign="center">
-                  <Button
-                  // onClick=""
-                    icon="cancel"
-                    color="red"
-                    size="tiny"
-                  >
-                    {/* <Icon name="cancel" /> */}
-                  </Button>
+                  <Link to="/admin">
+                    <Button
+                    // onClick=""
+                      icon="cancel"
+                      color="red"
+                      size="tiny"
+                    />
+                  </Link>
                   <Button
                   // onClick=""
                     icon
@@ -168,8 +168,8 @@ const EditModalAdmin = () => {
   );
 };
 
-EditModalAdmin.propTypes = {
+EditUserAdmin.propTypes = {
 
 };
 
-export default EditModalAdmin;
+export default EditUserAdmin;

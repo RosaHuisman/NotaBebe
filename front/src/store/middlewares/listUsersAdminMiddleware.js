@@ -3,6 +3,9 @@ import {
   getAllUsersSuccessAction,
   USER_LIST_LOADING,
   getAllUsersErrorAction,
+  DELETE_USER,
+  deleteUserSuccess,
+  deleteUserError,
 } from 'src/store/actions';
 
 import axios from 'axios';
@@ -56,6 +59,28 @@ const listUsersAdminMiddleware = (store) => (next) => (action) => {
       fetch('http://notabebe-back.herokuapp.com/profile/admin/allusers')
         .then((response) => response.json())
         .then((data) => console.log(data));
+      break;
+    }
+    case DELETE_USER: {
+      console.log('je suis dans le cas DELETE_USER');
+
+      const { id } = action;
+      console.log('je suis dans le cas DELETE_USER', id);
+
+      api.delete(`/profile/admin/manageprofile/${id}`)
+        .then((response) => {
+          console.log('reponse de la BDD delete user', response.data);
+          store.dispatch(deleteUserSuccess(response.data));
+        })
+        .catch((error) => {
+          console.log('une erreur s\'est produite');
+
+          const errorPayload = {};
+          errorPayload.message = error.response.data.message;
+          errorPayload.status = error.response.status;
+
+          store.dispatch(deleteUserError(errorPayload));
+        });
       break;
     }
     default:

@@ -4,22 +4,24 @@ import {
   Link, Switch, Route, useLocation,
 } from 'react-router-dom';
 import {
-  Button, Icon, Table, Input, Form, Grid,
+  Button, Icon, Table, Input, Form,
 } from 'semantic-ui-react';
 
 import HeaderAdmin from 'src/components/Admin/HeaderAdmin';
-import EditModalAdmin from 'src/components/Admin/EditModalAdmin';
-import AddUserAdmin from 'src/components/Admin/AddUserAdmin';
-
 
 import Loading from '../App/Loading';
 // import userAPI from './data.json';
 
 import './styles.scss';
 import logoAdmin from '../../images/logo_admin.png';
+import { deleteUser } from '../../store/actions';
 
 const AdminHome = ({
-  loading,
+  handleDelete,
+  error,
+  user,
+  FormDeleteOpen,
+  // loading,
   // newSearchValue,
   // onApiChange,
   onApiSubmit,
@@ -27,6 +29,10 @@ const AdminHome = ({
   // loadMoreUsers,
   // getAllUsers,
   // dataUserList,
+  onClickOpenFormDeleteUser,
+  onClickCloseFormDeleteUser,
+  userDeleteId,
+  deleteUser,
 
 }) => {
   // le hook useLocation nous renvoie l'url courante
@@ -40,6 +46,24 @@ const AdminHome = ({
       .then((response) => response.json())
       .then((json) => setUsersListData(json));
   }, []);
+
+  const handleClickDeleteUserClose = (id) => {
+    console.log('CLICK DELETE', id);
+    // e.preventDefault();
+    onClickCloseFormDeleteUser(id);
+  };
+
+  const handleClickDeleteUserOpen = (id) => {
+    console.log('CLICK DELETE', id);
+    // e.preventDefault();
+    onClickOpenFormDeleteUser(id);
+  };
+
+  const handleSubmitDelete = (id) => {
+    console.log('SUBMIT DELETE', id);
+    // e.preventDefault();
+    deleteUser(id);
+  };
 
   useEffect(() => {
     window.scroll(0, 0);
@@ -93,7 +117,7 @@ const AdminHome = ({
           <Table celled>
             <Table.Header fullwidth="true">
               <Table.Row>
-                <Table.HeaderCell colSpan="5">
+                <Table.HeaderCell colSpan="5" width="twelve">
                   <Form onSubmit={onApiSubmit}>
                     <Input
                       fullWidth
@@ -102,22 +126,23 @@ const AdminHome = ({
                       iconPosition="left"
                       type="text"
                       placeholder="Filtrer les accès"
-                      loading={loading}
+                      // loading={loading}
                       value={searchNewValue}
                       onChange={(e) => setSearchNewValue(e.target.value)}
                     />
                   </Form>
                 </Table.HeaderCell>
                 <Table.HeaderCell colSpan="2" textAlign="center">
-                  <Button
-                    // onClick=""
-                    icon
-                    labelPosition="left"
-                    primary
-                    size="medium"
-                  >
-                    <Icon name="add user" /> Créer un accès
-                  </Button>
+                  <Link to="/admin/adduser">
+                    <Button
+                      icon
+                      labelPosition="left"
+                      primary
+                      size="medium"
+                    >
+                      <Icon name="add user" /> Créer un accès
+                    </Button>
+                  </Link>
                 </Table.HeaderCell>
               </Table.Row>
             </Table.Header>
@@ -155,8 +180,24 @@ const AdminHome = ({
                     <Table.Cell>{user.email}</Table.Cell>
                     <Table.Cell>{user.phone_number}</Table.Cell>
                     <Table.Cell textAlign="center">{user.role_id}</Table.Cell>
-                    <Table.Cell textAlign="center"><Icon name="pencil alternate" /></Table.Cell>
-                    <Table.Cell textAlign="center"><Icon name="trash alternate" /></Table.Cell>
+                    <Table.Cell textAlign="center">
+                      <Link to="/admin/edituser">
+                        <Icon name="pencil alternate" />
+                      </Link>
+                    </Table.Cell>
+                    <Table.Cell textAlign="center">
+                      {/* { !FormDeleteOpen && userDeleteId === user.id &&  ? ( */}
+                      { FormDeleteOpen && userDeleteId === user.id ? (
+                        <Form onSubmit={() => handleSubmitDelete(user.id)}>
+                          <Button.Group>
+                            <Button primary type="submit">Oui</Button>
+                            <Button color="red" type="button" onClick={() => handleClickDeleteUserOpen(user.id)}>Non</Button>
+                          </Button.Group>
+                        </Form>
+                      ) : (
+                        <Button icon="trash alternate" onClick={() => handleClickDeleteUserOpen(user.id)} />
+                      )}
+                    </Table.Cell>
                   </Table.Row>
                 ))
               }
@@ -164,20 +205,14 @@ const AdminHome = ({
             </Table.Body>
           </Table>
         </div>
-        <div>
-          <EditModalAdmin />
-        </div>
-        <div>
-          <AddUserAdmin />
-        </div>
       </div>
     </>
   );
 };
 
 AdminHome.propTypes = {
-  loading: PropTypes.bool.isRequired,
-
+  // loading: PropTypes.bool.isRequired,
+  FormDeleteOpen: PropTypes.bool,
   // newSearchValue: PropTypes.string.isRequired,
   // userAPI: PropTypes.arrayOf(
   //   PropTypes.shape({
@@ -195,6 +230,10 @@ AdminHome.propTypes = {
   // loadMoreUsers: PropTypes.func.isRequired,
   // getAllUsers: PropTypes.func.isRequired,
 
+};
+
+AdminHome.defaultProps = {
+  FormDeleteOpen: false,
 };
 
 export default AdminHome;
