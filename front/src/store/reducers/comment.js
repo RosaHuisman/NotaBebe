@@ -35,10 +35,10 @@ const reducer = (state = initialState, action ={} ) => {
      case OPEN_MODAL: {
       console.log('je suis dans le cas OPEN MODAL')
       console.log(action.commentId)
-
        return {
          ...state,
          modalOpen: !state.modalOpen,
+         //[action.commentId]: !state.modalOpen, 
          commentId: action.commentId,
        }
      }
