@@ -26,6 +26,11 @@ router.route('/profile/admin/allstaff')
 router.route('/profile/admin/children')
     .get(userController.getAllChildren);
 
+// get all children - for staff
+router.route('/profile/staff/children')
+    .get(userController.getAllChildren);
+//! à rajouter dans les tests
+
 // get all recaps - for staff
 router.route('/profile/staff/allrecaps')
     .get(recapController.getAllRecaps);

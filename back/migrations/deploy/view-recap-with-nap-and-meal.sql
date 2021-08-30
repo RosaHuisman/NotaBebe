@@ -3,21 +3,19 @@
 BEGIN;
 
 CREATE VIEW "recap_with_nap_and_meal" AS
-	 SELECT DISTINCT 
-		"recap"."id" AS "rwnam_recap_id",
-		"recap"."date",
-		"recap"."extra_info",
-		"recap"."mood",
-		"recap"."child_id",
-		"nap"."id" AS "rwnam_nap_id",
-		"nap"."start_time",
-		"nap"."end_time",
-		"nap"."comment" AS "rwnam_nap_comment",
-		"meal"."id" AS "rwnam_meal_id",
-		"meal"."time",
-		"meal"."comment" AS "rwnam_meal_comment"
-	   FROM "recap"
-		 LEFT JOIN "nap" ON "recap"."id" = "nap"."recap_id"
-		 LEFT JOIN "meal" ON "recap"."id" = "meal"."recap_id";
+
+     SELECT
+        "recap"."child_id",
+        "recap"."id",
+        "recap"."date",
+        "recap"."extra_info",
+        "recap"."mood",
+        jsonb_agg(to_jsonb("nap") - 'recap_id') AS "naps",
+		    jsonb_agg(to_jsonb("meal") - 'recap_id') AS "meals"
+       FROM "recap"
+         LEFT JOIN "nap" ON "recap"."id" = "nap"."recap_id"
+         LEFT JOIN "meal" ON "recap"."id" = "meal"."recap_id"
+
+        GROUP BY "recap"."id";
 
 COMMIT;
