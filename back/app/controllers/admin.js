@@ -5,8 +5,13 @@ const userDataMapper = require('../dataMappers/user');
 
 const adminController = {
 
-    // ADMIN USER
-
+    /**
+     * Adding a user
+     * @param {request} request 
+     * @param {response} response 
+     * @param {next} next 
+     * @returns 
+     */
     addUser: async (request, response, next) => {
         try {
 
@@ -23,8 +28,14 @@ const adminController = {
             response.json({ error: error.message });
         }
     },
-
-
+    
+    /**
+     * Deleting a user
+     * @param {*} request 
+     * @param {*} response 
+     * @param {*} next 
+     * @returns 
+     */
     deleteUser: async (request, response, next) => {
         try {
 
@@ -49,8 +60,13 @@ const adminController = {
         }
     },
 
-    // ADMIN CHILD
-
+    /**
+     * Adding a child
+     * @param {*} request 
+     * @param {*} response 
+     * @param {*} next 
+     * @returns 
+     */
     addChild: async (request, response, next) => {
         try {
             const parentId = request.params.id;
@@ -68,6 +84,13 @@ const adminController = {
         }
     },
 
+    /**
+     * Get a child by their id
+     * @param {*} request 
+     * @param {*} response 
+     * @param {*} next 
+     * @returns 
+     */
     getChildById: async (request, response, next) => {
 
         try {
@@ -87,8 +110,13 @@ const adminController = {
         }
     },
 
-
-
+    /**
+     * Delete a child
+     * @param {*} request 
+     * @param {*} response 
+     * @param {*} next 
+     * @returns 
+     */
     deleteChild: async (request, response, next) => {
         try {
 

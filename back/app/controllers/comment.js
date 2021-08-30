@@ -4,7 +4,13 @@ const userDataMapper = require('../dataMappers/user');
 
 const commentController = {
 
-    getAllComments: async (_, response) => {
+    /**
+     * Getting all comments
+     * @param {*} _ 
+     * @param {*} response 
+     * @returns 
+     */
+    getAllComments: async (_, response, next) => {
         try {
             const comments = await commentDataMapper.findAll();
 
@@ -19,7 +25,14 @@ const commentController = {
         }
     },
 
-    getCommentById: async (request, response) => {
+    /**
+     * Getting a comment by its id
+     * @param {*} request 
+     * @param {*} response 
+     * @param {*} next 
+     * @returns 
+     */
+    getCommentById: async (request, response, next) => {
         try {
             const commentId = Number(request.params.id);
             const comment = await commentDataMapper.findById(commentId);
@@ -36,11 +49,17 @@ const commentController = {
         }
     },
 
+    /**
+     * Getting all comments by a child id
+     * @param {*} request 
+     * @param {*} response 
+     * @param {*} next 
+     * @returns 
+     */
     getCommentsByChildId: async (request, response, next) => {
         try {
             const childId = Number(request.params.childId);
             const data = await commentDataMapper.findByChildId(childId);
-            console.log(data);
 
             if (data) {
                 response.json(data);
@@ -54,11 +73,17 @@ const commentController = {
         }
     },
 
+    /**
+     * Getting all comments by a parent id
+     * @param {*} request 
+     * @param {*} response 
+     * @param {*} next 
+     * @returns 
+     */
     getCommentsByParentId: async (request, response, next) => {
         try {
             const parentId = Number(request.params.parentId);
             const comments = await commentDataMapper.findByParentId(parentId);
-            console.log(comments);
 
             if (comments) {
                 response.json(comments);
@@ -72,18 +97,17 @@ const commentController = {
         }
     },
 
+    /**
+     * Adding a comment
+     * @param {*} request 
+     * @param {*} response 
+     * @param {*} next 
+     * @returns 
+     */
     addComment: async (request, response, next) => {
         try {
 
             const newData = request.body;
-            // const test = {
-            //     "comment": {
-            //         "message": request.body,
-            //         "parentId": request.params.id,
-            //         "childId": request.params.childId
-            //     }
-            // }
-            //console.log(test)
 
             const parentId = Number(request.params.id);
             const childId = Number(request.params.childId);
@@ -108,6 +132,13 @@ const commentController = {
         }
     },
 
+    /**
+     * Modifying a comment
+     * @param {*} request 
+     * @param {*} response 
+     * @param {*} next 
+     * @returns 
+     */
     modifyComment: async (request, response, next) => {
         try {
 
@@ -138,6 +169,13 @@ const commentController = {
         }
     },
 
+    /**
+     * Deleting a comment
+     * @param {*} request 
+     * @param {*} response 
+     * @param {*} next 
+     * @returns 
+     */
     deleteComment: async (request, response, next) => {
         try {
 

@@ -21,13 +21,6 @@ const adminDataMapper = {
         // the new child id is created
         const childId = result.rows[0].id;
 
-        //! à tester - requête imbriquée
-        /*
-        `INSERT INTO table_liaison(id_parent, id_child) VALUES (id_parent, (
-    INSERT INTO child(les, champs) VALUES(les, champs) RETURNING id
-    ));` 
-        */
-
         // the query is returning the user_id which is linked to child_id
         const result2 = await client.query('INSERT INTO "user_has_child" (user_id, child_id) VALUES ($1, $2) RETURNING *', [parentId, childId]);
 

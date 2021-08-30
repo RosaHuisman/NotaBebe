@@ -163,7 +163,7 @@ router.route('/profile/parent/:id/child/:childId/comments/:commentId')
 router.route('/login')
     .post(userController.checkLogin);
 
-    
+
 router.get('/logout', userController.logout);
 
 
