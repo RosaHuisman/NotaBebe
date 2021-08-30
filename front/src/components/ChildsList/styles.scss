@@ -1,0 +1,15 @@
+.childs__list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.child {
+  margin-top: 5px;
+  width: 48%;
+  border: 1px solid rgb(211, 211, 211);
+  border-radius: 5px;
+  padding: 5px;
+  
+}

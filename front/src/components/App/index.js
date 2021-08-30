@@ -16,7 +16,10 @@ import Error from 'src/components/Error';
 import Header from 'src/containers/Header';
 import Home from 'src/containers/Home';
 // STAFF
-// import StaffProfile from 'src/containers/StaffProfile';
+import StaffProfile from 'src/components/StaffProfile';
+import ChildsList from 'src/components/ChildsList';
+import Recaps from 'src/components/Recaps';
+import Comments from 'src/components/Comments';
 // import ReadComment from 'src/containers/ReadComment';
 import CreateRecap from 'src/containers/CreateRecap';
 // PARENT CHILD
@@ -71,8 +74,15 @@ const App = ({
         <PrivateRoute exact path="/admin" component={AdminMobileHome} />
 
         {/* Route Staff */}
-        {/* <PrivateRoute exact path="/staff/:id/" component={StaffProfile} />
-        <PrivateRoute exact path="/staff/:id/comments" component={ReadComment} /> */}
+        <Route exact path="/staff" component={StaffProfile} />
+        
+        {/* <PrivateRoute exact path="/staff/:id/" component={StaffProfile} /> */}
+        
+        <Route exact path="/staff/childs" component={ChildsList} />
+        <Route exact path="/staff/recaps" component={Recaps} />
+        <Route exact path="/staff/comments" component={Comments} />
+
+        {/*<PrivateRoute exact path="/staff/:id/comments" component={ReadComment} /> */}
         <PrivateRoute exact path="/staff/:id/createrecap" component={CreateRecap} />
 
         {/* Route Parent Children */}
