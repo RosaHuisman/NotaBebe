@@ -10,7 +10,6 @@ const userController = {
     getAllUsers: async (_, response) => {
         try {
             const data = await userDataMapper.findAll();
-            response.json(data);
 
             if (data) {
                 response.json(data);
@@ -28,7 +27,6 @@ const userController = {
     getAllParents: async (_, response) => {
         try {
             const data = await userDataMapper.findAllParents();
-            response.json(data);
 
             if (data) {
                 response.json(data);
@@ -197,7 +195,6 @@ const userController = {
      */
     logout: (request, response) => {
         request.session.destroy();
-        console.log('coucou je suis delogu');
         response.redirect('/');
 
     },
@@ -278,7 +275,6 @@ const userController = {
 
             // save the new data in the database
             const updatedUser = await userDataMapper.updateUser({ ...newData }, userId);
-            //console.log(updatedUser);
 
             // save the newly updated user in a session
             request.session.user = updatedUser;

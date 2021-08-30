@@ -4,6 +4,47 @@
 GET http://localhost:3000/rdfhf
 
 
+### try login with other user - hashed password to try with bcrypt compareSync 
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "email": "admin@notabebe.io",
+    "password": "admin"
+}
+
+
+### try login with other user - hashed password to try with bcrypt compareSync 
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "email": "parent@notabebe.io",
+    "password": "parent"
+}
+
+
+### try login - wrong password
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "email": "admin@notabebe.io",
+    "password": "fgrfdg"
+}
+
+
+
+
+
+# a tester?
+# ### logout user
+# GET http://localhost:3000/logout
+
+
+
+
+
 ### DISPLAYING ALL OF THE USERS - for admin only
 GET http://localhost:3000/profile/admin/allusers
 
@@ -77,7 +118,7 @@ Content-Type: application/json
     "birthplace": "Orvault"
 }
 
-### DELETE CHILD PROFILE - by adminController
+### DELETE CHILD PROFILE - by admin
 DELETE http://localhost:3000/profile/admin/parent/2/managechildren/3
 
 
@@ -103,24 +144,6 @@ Content-Type: application/json
     "password": "JeSuisUnRat80"
 }
 
-### try login with other user - hashed password to try with bcrypt compareSync 
-POST http://localhost:3000/login
-Content-Type: application/json
-
-{
-    "email": "gaspardfait@hotmail.fr",
-    "password": "g4sp4rd!"
-}
-
-
-### try login - wrong password
-POST http://localhost:3000/login
-Content-Type: application/json
-
-{
-    "email": "nicoassezadmin@gmail.com",
-    "password": "fgrfdg"
-}
 
 
 
@@ -282,6 +305,3 @@ Content-Type: application/json
 DELETE http://localhost:3000/profile/parent/3/child/4/comments/10
 
 
-# a tester?
-# ### logout user
-# GET http://localhost:3000/logout

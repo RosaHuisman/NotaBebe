@@ -19,7 +19,7 @@ const commentController = {
         }
     },
 
-    getCommentById: async (request, response) => {
+    getCommentById: async (request, response, next) => {
         try {
             const commentId = Number(request.params.id);
             const comment = await commentDataMapper.findById(commentId);
@@ -40,7 +40,6 @@ const commentController = {
         try {
             const childId = Number(request.params.childId);
             const data = await commentDataMapper.findByChildId(childId);
-            console.log(data);
 
             if (data) {
                 response.json(data);
@@ -58,7 +57,6 @@ const commentController = {
         try {
             const parentId = Number(request.params.parentId);
             const comments = await commentDataMapper.findByParentId(parentId);
-            console.log(comments);
 
             if (comments) {
                 response.json(comments);
@@ -76,14 +74,6 @@ const commentController = {
         try {
 
             const newData = request.body;
-            // const test = {
-            //     "comment": {
-            //         "message": request.body,
-            //         "parentId": request.params.id,
-            //         "childId": request.params.childId
-            //     }
-            // }
-            //console.log(test)
 
             const parentId = Number(request.params.id);
             const childId = Number(request.params.childId);
