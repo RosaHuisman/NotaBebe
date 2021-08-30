@@ -6,6 +6,10 @@ const mapStateToProps = (state) => ({
   loading: state.comment.loading,
   comments: state.comment.list,
 
+  // const props = {
+  //   children: findChildren()
+  // }
+
 });
 
 const mapDispatchToProps = (dispatch,) => ({

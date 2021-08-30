@@ -8,7 +8,6 @@ import logMiddleware from './middlewares/logMiddleware';
 
 import authMiddleware from './middlewares/authMiddleware';
 import forgotMiddleware from './middlewares/forgotMiddleware';
-import comment from './middlewares/comment';
 
 import user from './middlewares/user';
 import recap from './middlewares/recap';

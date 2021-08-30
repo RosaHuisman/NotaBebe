@@ -3,15 +3,10 @@ import PropTypes from 'prop-types'
 import Loading from 'src/components/App/Loading'
 
 import './styles.scss';
-//import commentsData from 'src/data/comments';
-// console.log('mes données 2:', commentsData),
-// console.log('Salut');
 
 const Comments = ({ recaps, onSearchSubmit, inputRef, searchValue, loading, loadComments, comments }) => {
 
-
   console.log(comments);
-  // console.log('mes données:', commentsData);
 
   useEffect(() => {
     loadComments();
