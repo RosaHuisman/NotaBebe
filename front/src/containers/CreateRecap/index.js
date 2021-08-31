@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import CreateRecap from 'src/components/CreateRecap';
-import { showFieldNap, changeValueText, changeMood, changeTimeNap } from 'src/store/actions/recap';
+import { showFieldNap, changeValueText, changeMood, changeTimeNap, submitFormCreateRecap, changeDate } from 'src/store/actions/recap';
 
 const mapStateToProps = (state, ownProps) => ({
   isOpen: state.recap.isOpen,
@@ -8,6 +8,10 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
+  submitCreateRecap: (child_id) => {
+    dispatch(submitFormCreateRecap(child_id));
+  },
+  
   openNewNap: () => {
     dispatch(showFieldNap());
   },
@@ -24,6 +28,10 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   timeNapSelected: (value, name) => {
     dispatch(changeTimeNap(name, value));
   },
+
+  dateSelected: (date, name) => {
+    dispatch(changeDate(date, name));
+  }
 
 });
 
