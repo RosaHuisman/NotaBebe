@@ -1,34 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import {
-  Link, Switch, Route, useLocation, useHistory,
-} from 'react-router-dom';
-import {
-  Button, Icon, Table, Input, Form, Grid, Segment, Header, Footer, Select,
-} from 'semantic-ui-react';
+import { useLocation, useHistory } from 'react-router-dom';
+import { Button, Icon, Table, Form } from 'semantic-ui-react';
 
 import Field from 'src/containers/Field';
 
 const AddUserAdmin = ({
-  loading,
-
-  first_name,
-  last_name,
+  firstName,
+  lastName,
   email,
-  phone_number,
+  phoneNumber,
   address,
   postcode,
   city,
   password,
-  role_id,
+  roleId,
 
   handleAddUser,
   changeField,
+  resetFormAdmin,
 
   contentAdminPageAdd,
   addUserSuccess,
   addUserError,
-  resetFormAdmin,
 }) => {
   console.log('modal admin edit');
   const location = useLocation();
@@ -49,12 +43,6 @@ const AddUserAdmin = ({
     history.push('/admin');
     resetFormAdmin();
   };
-
-  const roleOption = [
-    { key: '1', value: '1', text: '1 : Parent' },
-    { key: '2', value: '2', text: '2 : Staff' },
-    { key: '3', value: '3', text: '3 : Administrateur' },
-  ];
 
   return (
     <div className="addUserForm">
@@ -79,7 +67,7 @@ const AddUserAdmin = ({
                       name="last_name"
                       placeholder="Nom"
                       onChange={changeField}
-                      value={last_name}
+                      value={lastName}
                       required
                     />
                   </Table.Cell>
@@ -92,7 +80,7 @@ const AddUserAdmin = ({
                       name="first_name"
                       placeholder="Prénom"
                       onChange={changeField}
-                      value={first_name}
+                      value={firstName}
                       required
                     />
                   </Table.Cell>
@@ -119,7 +107,7 @@ const AddUserAdmin = ({
                       pattern="^[0-9]{10}$"
                       placeholder="Numéro de téléphone"
                       onChange={changeField}
-                      value={phone_number}
+                      value={phoneNumber}
                       required
                     />
                   </Table.Cell>
@@ -174,7 +162,7 @@ const AddUserAdmin = ({
                       min="1"
                       max="3"
                       onChange={changeField}
-                      value={role_id}
+                      value={roleId}
                       required
                     />
                   </Table.Cell>
@@ -196,14 +184,13 @@ const AddUserAdmin = ({
               <Table.Footer fullwidth="true" column="equal">
                 <Table.Row>
                   <Table.HeaderCell colSpan="2" textAlign="center">
-                    <Link to="/admin">
-                      <Button
-                      // onClick=""
-                        icon="cancel"
-                        color="red"
-                        size="tiny"
-                      />
-                    </Link>
+                    <Button
+                      type="button"
+                      onClick={previousPage}
+                      icon="cancel"
+                      color="red"
+                      size="tiny"
+                    />
                     <Button
                       type="submit"
                       icon
@@ -233,7 +220,7 @@ const AddUserAdmin = ({
             <Table.Body>
               <Table.Row>
                 <Table.Cell verticalAlign="middle" textAlign="center">
-                  <div className="messageSuccess">Utilisateur créé</div>
+                  <div className="messageSuccessAddUser">Utilisateur créé</div>
                 </Table.Cell>
               </Table.Row>
             </Table.Body>
@@ -269,7 +256,7 @@ const AddUserAdmin = ({
             <Table.Body>
               <Table.Row>
                 <Table.Cell verticalAlign="middle" textAlign="center">
-                  <div className="messageError">Erreur serveur</div>
+                  <div className="messageErrorAddUser">Erreur serveur</div>
                 </Table.Cell>
               </Table.Row>
             </Table.Body>
@@ -296,10 +283,19 @@ const AddUserAdmin = ({
 };
 
 AddUserAdmin.propTypes = {
-  // email: PropTypes.string,
-  // password: PropTypes.string.isRequired,
-  // changeField: PropTypes.func.isRequired,
-  // handleLogin: PropTypes.func.isRequired,
+  firstName: PropTypes.string.isRequired,
+  lastName: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  phoneNumber: PropTypes.string.isRequired,
+  address: PropTypes.string.isRequired,
+  postcode: PropTypes.string.isRequired,
+  city: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+  roleId: PropTypes.string.isRequired,
+
+  handleAddUser: PropTypes.func.isRequired,
+  changeField: PropTypes.func.isRequired,
+  resetFormAdmin: PropTypes.func.isRequired,
 
   contentAdminPageAdd: PropTypes.bool,
   addUserSuccess: PropTypes.bool,
@@ -307,7 +303,7 @@ AddUserAdmin.propTypes = {
 };
 
 AddUserAdmin.defaultProps = {
-  contentAdminPageAdd: true,
+  contentAdminPageAdd: false,
   addUserSuccess: false,
   addUserError: false,
 };

@@ -54,7 +54,7 @@
 
     &__messageSuccess {
       padding-top: 2rem;
-      color: limegreen;
+      color: green;
     }
 
     &__messageError {
@@ -192,4 +192,12 @@
   display: flex;
   align-items: center;
   padding-bottom: 1rem;
+}
+
+.messageSuccessAddUser {
+  color:green;
+}
+
+.messageErrorAddUser {
+  color: red;
 }

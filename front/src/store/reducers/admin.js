@@ -80,29 +80,6 @@ const reducer = (oldState = initialState, action) => {
         // },
       };
     }
-    // case SEARCH_CONTACTS: {
-    //   const searchValue = action.payload?.toLowerCase();
-    //   return {
-    //     ...oldState,
-    //     // listUsers: {
-    //     //   ...oldState.listUsers,
-    //       loading: false,
-    //       isSearchActive: !!action.payload.length > 0 || false,
-    //       foundUsers: oldState.data.filter((item) => {
-    //         try {
-    //           return (
-    //             item.first_name.toLowerCase().search(searchValue) !== -1
-    //             || item.last_name.toLowerCase().search(searchValue) !== -1
-    //             || item.phone_number.toLowerCase().search(searchValue) !== -1
-    //           );
-    //         }
-    //         catch (error) {
-    //           return [];
-    //         }
-    //       }),
-    //     // },
-    //   };
-    // }
     case OPEN_MODAL_DELETE_USER: {
       return {
         ...oldState,
@@ -119,11 +96,8 @@ const reducer = (oldState = initialState, action) => {
       };
     }
     case DELETE_USER_SUCCESS: {
-      // const filteredUsers = oldState.admin.filter((user) => user.id !== action.payload.id);
-      // console.log('TEST DELETE CLICK filteredUsers', filteredUsers);
       return {
         ...oldState,
-        // users: filteredUsers,
         deletedUserSuccess: true,
         FormDeleteOpen: false,
       };
