@@ -29,3 +29,11 @@ export const formatHour = (comment) => {
 
   return `${heure}h${minutes}`;
 };
+
+
+
+export const changeDate = (date) => {
+  const newDate = date.split('-').reverse().join('/')
+  return newDate
+}
+

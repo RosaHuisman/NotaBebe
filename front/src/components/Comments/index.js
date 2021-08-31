@@ -2,19 +2,35 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types'
 import Loading from 'src/components/App/Loading'
 
+import { formatDate, formatHour } from 'src/store/selectors/formatDate'
+import { childSearched } from 'src/store/selectors/user'
+
+
 import './styles.scss';
 //import commentsData from 'src/data/comments';
 // console.log('mes données 2:', commentsData),
 // console.log('Salut');
 
-const Comments = ({ recaps, onSearchSubmit, inputRef, searchValue, loading, loadComments, comments }) => {
+const Comments = ({ 
+    onSearchSubmit, 
+    inputRef, 
+    searchValue, 
+    loading, 
+    loadComments, 
+    comments,
+    loadChildren,
+    //child,
+    children,
+  }) => {
 
 
-  console.log(comments);
+  //console.log(children);
   // console.log('mes données:', commentsData);
 
   useEffect(() => {
+    loadChildren();
     loadComments();
+    
   }, [])
 
   if (loading) {
@@ -37,12 +53,15 @@ const Comments = ({ recaps, onSearchSubmit, inputRef, searchValue, loading, load
     <div className="comments__list">
       { comments.map((comment) => (
         <div key={comment.id} className="comment">
-          <h1 className="comment__child">Prénom: {comment.child_id}</h1>
-          <h2>Date: xx.xx.xxx</h2>
+          <h1 className="comment__child"> {childSearched(children, comment.child_id )}</h1>
+          <p className="comment__child__date">
+          Date: {formatDate(comment.created_at)} à {formatHour(comment.created_at)}
+          </p>
           <p className="comment__message">Message: {comment.message}</p>
         </div>
       ))}
     </div>
+    <div>-</div>
   </>
 )};
 

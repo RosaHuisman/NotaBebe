@@ -8,11 +8,12 @@ h1 {
 .comments__list {
   display: flex;
   flex-direction: column;
+  margin-bottom: 5rem;
 }
 
 .comment {
   padding: 10px;
   border: 1px solid v.$primary-color;
   border-radius: 10px;
-  margin: 10px;
+  margin: 0 10px;
 }
