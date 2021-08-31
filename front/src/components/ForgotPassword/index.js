@@ -1,22 +1,19 @@
 import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import Field from '../Field';
+import Field from 'src/containers/Field';
 import Loading from '../App/Loading';
 
 import './styles.scss';
 
 const ForgotPassword = ({
-  email, changezzzzz, handleForgot, messageForgot, successMessage, errorMessage, loading,
+  handleForgot, messageForgot, successMessage, errorMessage, loading,
 }) => {
-  const history = useHistory();
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleForgot(e.target.name);
-    // history.push('/homepage2');
-    return history.push('/');
+    handleForgot();
   };
+
   if (loading) {
     return <Loading />;
   }
@@ -36,7 +33,6 @@ const ForgotPassword = ({
           <Field
             name="email"
             placeholder="Adresse Email"
-            onChange={changezzzzz}
             type="email"
             required
           />
@@ -44,7 +40,7 @@ const ForgotPassword = ({
             type="submit"
             className="settings__send"
           >
-            Se connecter
+            Réinitialiser le mot de passe
           </button>
         </form>
       </div>
@@ -61,8 +57,6 @@ const ForgotPassword = ({
 
 ForgotPassword.propTypes = {
   loading: PropTypes.bool,
-  email: PropTypes.string.isRequired,
-  changezzzzz: PropTypes.func.isRequired,
   handleForgot: PropTypes.func.isRequired,
   successMessage: PropTypes.bool.isRequired,
   errorMessage: PropTypes.bool.isRequired,

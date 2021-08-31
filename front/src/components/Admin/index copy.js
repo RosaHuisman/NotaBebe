@@ -1,22 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Link, useLocation, useHistory } from 'react-router-dom';
-import { Button, Icon, Table, Input, Form } from 'semantic-ui-react';
+import {
+  Link, Switch, Route, useLocation,
+} from 'react-router-dom';
+import {
+  Button, Icon, Table, Input, Form, Grid,
+} from 'semantic-ui-react';
 
 import HeaderAdmin from 'src/components/Admin/HeaderAdmin';
-import logoAdmin from 'src/images/logo_admin.png';
-
 import Loading from '../App/Loading';
-// import UsersListData from './data.json';
+// import userAPI from './data.json';
 
 import './styles.scss';
-import { deleteUser } from '../../store/actions';
+import logoAdmin from '../../images/logo_admin.png';
 
 const AdminHome = ({
-  handleDelete,
-  error,
-  user,
-  FormDeleteOpen,
   loading,
   // newSearchValue,
   // onApiChange,
@@ -25,21 +23,10 @@ const AdminHome = ({
   // loadMoreUsers,
   // getAllUsers,
   // dataUserList,
-  onClickOpenFormDeleteUser,
-  onClickCloseFormDeleteUser,
-  userDeleteId,
-  deleteUser,
-  deletedUserError,
-  deletedUserSuccess,
 
 }) => {
   // le hook useLocation nous renvoie l'url courante
   const location = useLocation();
-  const history = useHistory();
-
-  useEffect(() => {
-    window.scroll(0, 0);
-  }, [location]);
 
   const [searchNewValue, setSearchNewValue] = useState('');
   const [UsersListData, setUsersListData] = useState([]);
@@ -50,28 +37,13 @@ const AdminHome = ({
       .then((json) => setUsersListData(json));
   }, []);
 
-  const addUserPage = () => {
-    history.push('/admin/adduser');
-  };
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, [location]);
 
-  const handleClickEditUser = (id) => {
-    console.log('CLICK EDIT', id);
-    history.push('/admin/edituser');
-  };
-
-  const handleClickDeleteUserOpen = (id) => {
-    console.log('CLICK DELETE', id);
-    onClickOpenFormDeleteUser(id);
-  };
-
-  const handleSubmitDelete = (id) => {
-    console.log('SUBMIT DELETE', id);
-    deleteUser(id);
-  };
-
-  if (loading) {
-    return <Loading />;
-  }
+  // if (loading) {
+  //   return <Loading />;
+  // }
 
   return (
     <>
@@ -94,30 +66,33 @@ const AdminHome = ({
 
         <div className="adminDesktopHome__adminTitle">
           Administration des accès
+        </div>
 
-          {deletedUserSuccess
-            && (
-              <div className="adminDesktopHome__adminTitle__messageSuccess">
-                Utilisateur supprimé
-              </div>
-            )}
+        <div>
+          <div>
+            <Link to="/profile/parent/1">PARENT 1 - </Link>
+            <Link to="/profile/parent/2">PARENT 2 - </Link>
+            <Link to="/profile/parent/3">PARENT 3 - </Link>
 
-          {deletedUserError
-            && (
-              <div className="adminDesktopHome__adminTitle__messageError">
-                Erreur serveur
-              </div>
-            )}
+            <Link to="/profile/parent/1/child/1">PARENT 1: enfant 1 - </Link>
+            <Link to="/profile/parent/1/child/2">PARENT 1: enfant 2 - </Link>
+            <Link to="/profile/parent/2/child/3">PARENT 2: enfant 3 - </Link>
+            <Link to="/profile/parent/3/child/4">PARENT 3: enfant 4 - </Link>
+
+            <Link to="/homepage1">HOME 1 - </Link>
+            <Link to="/homepage2">HOME 2 - </Link>
+            <Link to="/homepage3">HOME 3</Link>
+          </div>
         </div>
 
         <div className="TableListUser">
           <Table celled>
             <Table.Header fullwidth="true">
               <Table.Row>
-                <Table.HeaderCell colSpan="5" width="twelve">
+                <Table.HeaderCell colSpan="5">
                   <Form onSubmit={onApiSubmit}>
                     <Input
-                      fullwidth="true"
+                      fullWidth
                       fluid
                       icon="search"
                       iconPosition="left"
@@ -131,8 +106,7 @@ const AdminHome = ({
                 </Table.HeaderCell>
                 <Table.HeaderCell colSpan="2" textAlign="center">
                   <Button
-                    onClick={addUserPage}
-                    type="button"
+                    // onClick=""
                     icon
                     labelPosition="left"
                     primary
@@ -150,9 +124,9 @@ const AdminHome = ({
                 <Table.HeaderCell>Prénom</Table.HeaderCell>
                 <Table.HeaderCell>Adresse mail</Table.HeaderCell>
                 <Table.HeaderCell>Numéro de téléphone</Table.HeaderCell>
-                <Table.HeaderCell textAlign="center">Rôle</Table.HeaderCell>
-                <Table.HeaderCell textAlign="center">Modifier</Table.HeaderCell>
-                <Table.HeaderCell textAlign="center">Supprimer</Table.HeaderCell>
+                <Table.HeaderCell>Rôle</Table.HeaderCell>
+                <Table.HeaderCell />
+                <Table.HeaderCell />
               </Table.Row>
             </Table.Header>
 
@@ -177,21 +151,8 @@ const AdminHome = ({
                     <Table.Cell>{user.email}</Table.Cell>
                     <Table.Cell>{user.phone_number}</Table.Cell>
                     <Table.Cell textAlign="center">{user.role_id}</Table.Cell>
-
-                    <Table.Cell textAlign="center">
-                      <Button icon="edit" onClick={() => handleClickEditUser(user.id)} />
-                    </Table.Cell>
-
-                    <Table.Cell textAlign="center">
-                      { FormDeleteOpen && userDeleteId === user.id ? (
-                        <Button.Group size="mini">
-                          <Button primary type="button" onClick={() => handleSubmitDelete(user.id)}>Oui</Button>
-                          <Button color="red" type="button" onClick={() => handleClickDeleteUserOpen(user.id)}>Non</Button>
-                        </Button.Group>
-                      ) : (
-                        <Button icon="trash alternate" onClick={() => handleClickDeleteUserOpen(user.id)} />
-                      )}
-                    </Table.Cell>
+                    <Table.Cell textAlign="center"><Icon name="pencil alternate" /></Table.Cell>
+                    <Table.Cell textAlign="center"><Icon name="trash alternate" /></Table.Cell>
                   </Table.Row>
                 ))
               }
@@ -206,9 +167,7 @@ const AdminHome = ({
 
 AdminHome.propTypes = {
   loading: PropTypes.bool.isRequired,
-  FormDeleteOpen: PropTypes.bool,
-  deletedUserSuccess: PropTypes.bool,
-  deletedUserError: PropTypes.bool,
+
   // newSearchValue: PropTypes.string.isRequired,
   // userAPI: PropTypes.arrayOf(
   //   PropTypes.shape({
@@ -227,11 +186,5 @@ AdminHome.propTypes = {
   // getAllUsers: PropTypes.func.isRequired,
 
 };
-
-// AdminHome.defaultProps = {
-//   FormDeleteOpen: false,
-//   deletedUserSuccess: false,
-//   deletedUserError: false,
-// };
 
 export default AdminHome;
