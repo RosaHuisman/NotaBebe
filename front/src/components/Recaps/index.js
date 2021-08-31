@@ -5,8 +5,6 @@ import recaps from 'src/store/middlewares/recap';
 
 import './styles.scss';
 import data from 'src/data/recaps';
-console.log('Hola !')
-
 
 // Dans mon composant FilterRecaps ci dessous, j'y ai mis:
 // Le titre 

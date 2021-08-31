@@ -6,15 +6,16 @@ import PropTypes from 'prop-types';
 // == Import composants /components
 import Footer from 'src/components/Footer';
 import ContactDetails from 'src/components/ContactDetails';
+import ContactAdmin from 'src/components/Admin/ContactAdmin';
 import ForgotPassword from 'src/components/ForgotPassword';
-// import AdminMobileHome from 'src/components/Admin';
-import PrivateRoute from 'src/components/PrivateRoute';
 import Error from 'src/components/Error';
 
 // == Import composants /containers
 // import Login from 'src/containers/Login';
 import Header from 'src/containers/Header';
 import Home from 'src/containers/Home';
+import PrivateRoute from 'src/containers/PrivateRoute';
+
 // STAFF
 import StaffProfile from 'src/containers/StaffProfile';
 import ChildsList from 'src/containers/ChildsList';
@@ -70,12 +71,6 @@ const App = ({
         <Route exact path="/contact" component={ContactDetails} />
         {/* <Route path="*" component={Error} /> */}
 
-        {/* Route Admin */}
-        {/* <PrivateRoute exact path="/admin" component={AdminMobileHome} /> */}
-        <PrivateRoute exact path="/admin" component={Admin} />
-        <PrivateRoute exact path="/admin/adduser" component={AddUserAdmin} />
-        <PrivateRoute exact path="/admin/edituser" component={EditUserAdmin} />
-
 
         {/* Route Staff */}
         <PrivateRoute exact path="/profile/staff/:id" component={StaffProfile} />
@@ -84,7 +79,7 @@ const App = ({
         
         <PrivateRoute exact path="/profile/staff/:id/children" component={ChildsList} />
         <PrivateRoute exact path="/profile/staff/:id/recaps" component={Recaps} />
-        <PrivateRoute exact path="/profile/staff/comments" component={Comments} />
+        <PrivateRoute exact path="/profile/staff/:id/comments" component={Comments} />
 
         {/*<PrivateRoute exact path="/staff/:id/comments" component={ReadComment} /> */}
         <PrivateRoute exact path="/profile/staff/children/:id/createrecap" component={CreateRecap} />
@@ -95,6 +90,12 @@ const App = ({
         <PrivateRoute exact path="/profile/parent/:id/child/:child_id" component={ChildProfile} />
         <PrivateRoute exact path="/profile/parent/:id/child/:id/recap" component={ChildRecap} />
 
+        {/* Route Admin */}
+        {/* <PrivateRoute exact path="/admin" component={AdminMobileHome} /> */}
+        <PrivateRoute exact path="/admin" component={Admin} />
+        <PrivateRoute exact path="/admin/adduser" component={AddUserAdmin} />
+        <PrivateRoute exact path="/admin/edituser" component={EditUserAdmin} />
+        <PrivateRoute exact path="/admin/contacts" component={ContactAdmin} />
       </Switch>
       <Footer />
     </>

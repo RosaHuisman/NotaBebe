@@ -2,7 +2,7 @@ import {
   LOGIN,
   saveUser,
   createLoginErrorAction,
-  CHECK_TOKEN,
+  LOGOUT,
 } from 'src/store/actions/authActions';
 
 // import {
@@ -11,15 +11,14 @@ import {
 
 import jwtDecode from 'jwt-decode';
 
+import axios from 'axios';
+
 import api from './utils/api';
 
 const authMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case LOGIN: {
-      console.log('je suis dans le case LOGIN');
-
       const state = store.getState();
-      // const { user: { email, password } } = store.getState();
 
       api({
         method: 'POST',
@@ -34,7 +33,7 @@ const authMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           // ici on vient stocker le token dans localStorage
           localStorage.setItem('MyToken', response.data.token);
-          //const userData = response.data.token;
+          // const userData = response.data.token;
 
           const myToken = response.data.token;
           const myTokenDecoded = jwtDecode(myToken);
@@ -56,53 +55,6 @@ const authMiddleware = (store) => (next) => (action) => {
         });
       break;
     }
-    // case CHECK_TOKEN: {
-    //   // on récupère le token stocké dans le localStorage
-    //   const state = store.getState();
-    //   const myToken = localStorage.getItem('MyToken');
-    //   // // s'il existe on fait notre requête API pour vérifier sa validité
-    //   // if (myToken) {
-    //   //   api.post('/checkToken', {
-    //   //     // on oublie pas d'embarquer le token avec la requête
-    //   //     headers: {
-    //   //       authorization: `Bearer ${myToken}`,
-    //   //     },
-    //   //   })
-    //   //     .then((response) => {
-    //   //       // ici le token est bon, donc on peut le stocker dans l'instance
-    //   //       api.defaults.headers.common.authorization = `Bearer ${myToken}`;
-
-    //   //       // en cas de réponse on sauvegarde le user dans le state
-    //   //       // avec la même action que pour le login
-    //   //       const payload = { ...response.data };
-    //   //       store.dispatch(saveUserLogin(payload));
-    //   //     })
-    //   //     .catch((error) => console.log(error));
-    //   // }
-    //   if (myToken) {
-    //     api({
-    //       method: 'POST',
-    //       url: '/login',
-    //       data: {
-    //         email: state.user.email,
-    //         password: state.user.password,
-    //       },
-    //     })
-    //       .then((response) => {
-    //       // ici le token est bon, donc on peut le stocker dans l'instance
-    //         api.defaults.headers.common.authorization = `Bearer ${myToken}`;
-
-    //         // en cas de réponse on sauvegarde le user dans le state
-    //         // avec la même action que pour le login
-    //         const myTokenDecoded = { ...response.data };
-    //         store.dispatch(saveUser(myTokenDecoded));
-    //         console.log('MON PAYLOAD', myTokenDecoded);
-    //       })
-    //       .catch((error) => console.log(error));
-    //   }
-
-    //   break;
-    // }
     default:
       next(action);
   }

@@ -1,10 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
 import { Route, Redirect } from 'react-router-dom';
-import Loading from 'src/components/App/Loading';
 
-const PrivateRoute = ({ loading, component: Component, ...rest }) => {
+const PrivateRoute = ({ component: Component, ...rest }) => {
   const getToken = localStorage.getItem('MyToken');
 
   return (
@@ -23,13 +20,5 @@ const PrivateRoute = ({ loading, component: Component, ...rest }) => {
     />
   );
 };
-
-// PrivateRoute.propTypes = {
-//   loading: PropTypes.bool,
-// };
-
-// PrivateRoute.defaultProps = {
-//   loading: false,
-// };
 
 export default PrivateRoute;

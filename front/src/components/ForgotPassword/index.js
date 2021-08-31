@@ -2,21 +2,20 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Field from 'src/containers/Field';
-import Loading from '../App/Loading';
 
 import './styles.scss';
 
 const ForgotPassword = ({
-  handleForgot, messageForgot, successMessage, errorMessage, loading,
+  handleForgot,
+  messageForgot,
+  successMessage,
+  errorMessage,
 }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     handleForgot();
   };
 
-  if (loading) {
-    return <Loading />;
-  }
   return (
     <>
       <div className="ForgotP">
@@ -56,16 +55,16 @@ const ForgotPassword = ({
 };
 
 ForgotPassword.propTypes = {
-  loading: PropTypes.bool,
-  handleForgot: PropTypes.func.isRequired,
-  successMessage: PropTypes.bool.isRequired,
-  errorMessage: PropTypes.bool.isRequired,
+  // handleForgot: PropTypes.func.isRequired,
+  successMessage: PropTypes.bool,
+  errorMessage: PropTypes.bool,
   messageForgot: PropTypes.bool,
 };
 
 ForgotPassword.defaultProps = {
   messageForgot: true,
-  loading: false,
+  successMessage: false,
+  errorMessage: false,
 };
 
 export default ForgotPassword;

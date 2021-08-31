@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Header from 'src/components/Header';
+import HeaderAdmin from 'src/components/Admin/HeaderAdmin';
 import { logout } from 'src/store/actions/authActions';
 
 // transforme le state en props
@@ -20,4 +20,4 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(HeaderAdmin);

@@ -7,6 +7,7 @@ import {
   closeModalDeleteUser,
   deleteUser,
   AdminAddUser,
+  resetFormAdmin,
 } from 'src/store/actions';
 
 const mapStateToProps = (state) => ({
@@ -27,7 +28,8 @@ const mapStateToProps = (state) => ({
   error: state.admin.error,
   FormDeleteOpen: state.admin.FormDeleteOpen,
   userDeleteId: state.admin.userDeleteId,
-  // deletedUserError: state.admin.deletedUserError,
+  deletedUserSuccess: state.admin.deletedUserSuccess,
+  deletedUserError: state.admin.deletedUserError,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -53,12 +55,9 @@ const mapDispatchToProps = (dispatch) => ({
   handleAddUser: () => {
     dispatch(AdminAddUser());
   },
-  // onApiChange: () => {
-  //   dispatch(logout());
-  // },
-  // loadMoreUsers: () => {
-  //   dispatch(logout());
-  // },
+  resetFormAdmin: () => {
+    dispatch(resetFormAdmin());
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Admin);

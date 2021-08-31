@@ -6,6 +6,7 @@ import {
   LOGIN_ERROR,
   FORGOT_SUCCESS,
   FORGOT_ERROR,
+  LOGOUT,
   LOGOUT_SUCCESS,
   SAVE_USER,
 } from 'src/store/actions/authActions';
@@ -105,6 +106,21 @@ const reducer = (oldState = initialState, action = {}) => {
         successMessage: false,
         loading: false,
         email: '',
+      };
+    }
+    case LOGOUT: {
+      localStorage.removeItem('MyToken');
+      return {
+        ...oldState,
+        email: '',
+        password: '',
+        token: null,
+        roleId: null,
+        messageForgot: false,
+        successMessage: false,
+        errorMessage: false,
+        loading: false,
+        contentHome: true,
       };
     }
     case LOGOUT_SUCCESS: {

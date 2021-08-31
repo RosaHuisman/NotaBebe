@@ -10,7 +10,7 @@ import {
   FETCH_USERS_PARENTS,
   saveNewPasswordParent,
   FETCH_USERS_STAFF,
-  saveUsersStaff
+  saveUsersStaff,
 } from 'src/store/actions';
 import axios from 'axios';
 

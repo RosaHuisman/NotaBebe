@@ -1,5 +1,5 @@
 @use 'sass:color';
-@use 'src/styles/vars';
+@use 'src/styles/vars' as v;
 
 
 // Partie vue mobile
@@ -47,7 +47,7 @@
   align-items: center;
 
   &__adminTitle {
-    margin: 5rem 0;
+    margin: 1rem 0 3rem 0;
     font-size: 1.5rem;
     font-weight: bold;
     text-align: center;
@@ -72,6 +72,7 @@
   padding: 0 3rem 1rem 3rem;
   border-bottom: 1px solid #ddd;
   width: 1000px;
+  margin-bottom: 2rem;
 
   &__link {
     display: flex;
@@ -203,6 +204,38 @@
 }
 
 .addUserForm {
+  margin-top: 2rem;
   margin-bottom: 8rem;
   width: 1200px;
+}
+
+.headerAdmin {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 999;
+  padding: 0 2rem;
+  
+  display: flex;
+  background: v.$violet-color;
+  align-items: center;
+
+  &__logoButton {
+    display: flex;
+  }
+
+  &__title {
+    display: flex;
+    margin: 0 auto;
+    font-size: 2em;
+    font-family: v.$georama;
+    color: v.$yann-color;
+    font-weight: bold;
+    font-style: normal;
+  }
+  &__logo img{
+    display: flex;
+    width: 80px;
+  }
 }
