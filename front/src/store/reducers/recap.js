@@ -1,38 +1,45 @@
 import {
   SHOW_FIELD_NAP,
-  CHANGE_TEXT_VALUE,
-  CHANGE_CHILD,
+  CHANGE_VALUE_TEXT,
   CHANGE_MOOD,
   CHANGE_TIME_NAP,
-} from '../actions';
-
-import {
   SAVE_RECAPS,
-} from 'src/store/actions/recap'
+} from 'src/store/actions/recap';
+
+
 
 const initialState = {
   isOpen: false,
   loading: true,
   list: [],
+  mood: '',
+  snap: '',
+  enap: '',
+  nap: '',
+  snap2: '',
+  enap2: '',
+  nap2: '',
+  meal: '',
+  others: '',
+
 };
 
-const reducer = (state = initialState, action ={} ) => {
+const reducer = (state = initialState, action ) => {
   switch (action.type) {
     case SHOW_FIELD_NAP:
       return {
         ...state,
         isOpen: !state.isOpen,
       };
-    case CHANGE_TEXT_VALUE:
+    case CHANGE_VALUE_TEXT: {
+      //console.log(action.key)
+      //console.log(action.value)
       return {
         ...state,
         [action.key]: action.value,
-      };CHANGE_TIME_NAP
-    case CHANGE_CHILD:
-      return {
-        ...state,
-        [action.key]: action.value,
-      }
+      }; 
+    }
+         
     case CHANGE_MOOD:
       return {
         ...state,

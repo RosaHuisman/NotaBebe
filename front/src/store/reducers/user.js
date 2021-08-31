@@ -12,6 +12,7 @@ import {
   // SAVE_PASSWORD_USER,
   SAVE_NEW_PASSWORD_PARENT,
   SAVE_USERS_PARENTS,
+  SAVE_USERS_STAFF,
   SAVE_USER,
   CHANGE_TEXT_VALUE,
   ADMIN_ADD_USER_SUCCESS,
@@ -83,6 +84,15 @@ const reducer = (state = initialState, action) => {
         loading: false,
       };
     }
+    case SAVE_USERS_STAFF: {
+      console.log('je suis dans le cas SAVE_USERS_STAFF')
+      console.log(action.payload)
+     return {
+       ...state,
+       list: action.payload,
+       loading: false,
+     };
+   }
     // case HOME_INITIAL: {
     //   return {
     //     loading: false,

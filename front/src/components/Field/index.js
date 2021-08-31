@@ -16,6 +16,7 @@ const Field = ({
 }) => {
   const handleChange = (evt) => {
     evt.preventDefault();
+    
     //onChange(evt.target.value, name);
     onChangeInputValue(evt.target.value, name);
   };

@@ -9,6 +9,8 @@ import {
   saveUsersParents,
   FETCH_USERS_PARENTS,
   saveNewPasswordParent,
+  FETCH_USERS_STAFF,
+  saveUsersStaff
 } from 'src/store/actions';
 import axios from 'axios';
 
@@ -25,6 +27,23 @@ const user = (store) => (next) => (action) => {
           //console.log('reponse du fetch : ', response.data)
           const actionsaveUsersParents = saveUsersParents(response.data);
           store.dispatch(actionsaveUsersParents);
+        }
+        catch (error) {
+          console.log('il y a eu une erreur', error);
+        }
+      };
+
+      fetchData();
+      break;
+    }
+    case FETCH_USERS_STAFF: {
+      console.log('je suis dans le cas FETCH USERS STAFF')
+      const fetchData = async () => {
+        try {
+          const response = await api.get('/profile/admin/allstaff');
+          console.log('reponse du fetch : ', response.data)
+          const actionsaveUsersStaff = saveUsersStaff(response.data);
+          store.dispatch(actionsaveUsersStaff);
         }
         catch (error) {
           console.log('il y a eu une erreur', error);

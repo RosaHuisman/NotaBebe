@@ -16,7 +16,7 @@ import Error from 'src/components/Error';
 import Header from 'src/containers/Header';
 import Home from 'src/containers/Home';
 // STAFF
-import StaffProfile from 'src/components/StaffProfile';
+import StaffProfile from 'src/containers/StaffProfile';
 import ChildsList from 'src/containers/ChildsList';
 import Recaps from 'src/components/Recaps';
 import Comments from 'src/containers/Comments';
@@ -78,16 +78,16 @@ const App = ({
 
 
         {/* Route Staff */}
-        <Route exact path="/staff" component={StaffProfile} />
+        <PrivateRoute exact path="/profile/staff/:id" component={StaffProfile} />
         
         {/* <PrivateRoute exact path="/staff/:id/" component={StaffProfile} /> */}
         
-        <Route exact path="/staff/childs" component={ChildsList} />
-        <Route exact path="/staff/recaps" component={Recaps} />
-        <Route exact path="/staff/comments" component={Comments} />
+        <PrivateRoute exact path="/profile/staff/:id/children" component={ChildsList} />
+        <PrivateRoute exact path="/profile/staff/:id/recaps" component={Recaps} />
+        <PrivateRoute exact path="/profile/staff/comments" component={Comments} />
 
         {/*<PrivateRoute exact path="/staff/:id/comments" component={ReadComment} /> */}
-        <PrivateRoute exact path="/staff/:id/createrecap" component={CreateRecap} />
+        <PrivateRoute exact path="/profile/staff/children/:id/createrecap" component={CreateRecap} />
 
         {/* Route Parent Children */}
         <PrivateRoute exact path="/profile/parent/:id" component={ParentProfile} />

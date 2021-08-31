@@ -1,13 +1,24 @@
 import React, {useState, useEffect} from 'react';
 import PropTypes from 'prop-types'
+import Loading from 'src/components/App/Loading';
+
 
 import { Link } from 'react-router-dom';
 
 import './styles.scss';
 
 
-const StaffProfile = ({ searchValue, setSearchValue, handleSubmit }) => {
+const StaffProfile = ({ searchValue, setSearchValue, handleSubmit, loadUsersStaff, staff, loading }) => {
 
+  useEffect(() => {
+    //console.log('je suis dans le useEffect')
+    loadUsersStaff();
+  }, []);
+
+  if (loading) {
+    return <Loading />;
+  }
+   
 // const [datas, setDatas] = useState([])
 
 // useEffect(() => {
@@ -21,17 +32,17 @@ const StaffProfile = ({ searchValue, setSearchValue, handleSubmit }) => {
       </div>
       <div className="staff__button">
         <div className="staff__button__child">
-          <Link className="childs__link" to='/staff/childs' exact="true">
+          <Link className="childs__link" to={`/profile/staff/${staff[0].id}/children`} exact="true">
             <button type="button" className="button">Liste des enfants</button>
           </Link>
         </div>
         <div className="staff__button__recap">
-          <Link className="recap__link" to='/staff/recaps' exact="true">
+          <Link className="recap__link" to={`/profile/staff/${staff[0].id}/recaps`} exact="true">
             <button type="button" className="button">Liste des récaps</button>
           </Link>
         </div>
         <div className="staff__button__comments">
-          <Link className="comments__link" to='/staff/comments' exact="true">
+          <Link className="comments__link" to={`/profile/staff/${staff[0].id}/comments`} exact="true">
             <button type="button" className="button">Les Commentaires</button>
           </Link>
         </div>
