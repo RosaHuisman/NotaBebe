@@ -3,7 +3,7 @@ const client = require('../client');
 const recapDataMapper = {
 
     async findAll() {
-        const result = await client.query('SELECT * FROM "recap_with_nap_and_meal"');
+        const result = await client.query('SELECT * FROM "recap_with_nap_and_meal" ORDER BY created_at DESC');
         return result.rows;
     },
 

@@ -53,7 +53,7 @@ Content-Type: application/json
     "date": "11/11/2019",
     "extra_info": "coucou les fronteux",
     "mood": "on a réussi l'ajout",
-    "child_id": 2,
+    "child_id": 3,
     "naps": [{
         "start_time": "11:00:00",
         "end_time": "12:00:00",

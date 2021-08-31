@@ -10,6 +10,7 @@ SELECT
         "recap"."date",
         "recap"."extra_info",
         "recap"."mood",
+		"recap"."created_at",
 		(
 			SELECT array_agg(
 				json_build_object('id', nap.id, 'comment', nap.comment, 'start_time', nap.start_time, 'end_time', nap.end_time)
