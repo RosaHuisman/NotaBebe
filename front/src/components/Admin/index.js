@@ -4,12 +4,12 @@ import { Link, useLocation, useHistory } from 'react-router-dom';
 import { Button, Icon, Table, Input, Form } from 'semantic-ui-react';
 
 import HeaderAdmin from 'src/components/Admin/HeaderAdmin';
+import logoAdmin from 'src/images/logo_admin.png';
 
 import Loading from '../App/Loading';
 // import UsersListData from './data.json';
 
 import './styles.scss';
-import logoAdmin from '../../images/logo_admin.png';
 import { deleteUser } from '../../store/actions';
 
 const AdminHome = ({
