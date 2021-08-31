@@ -171,18 +171,24 @@ const recapController = {
      */
     modifyRecap: async (request, response, next) => {
         try {
-            const recapId = Number(request.params.recapId);
-            const recap = await recapDataMapper.findById(recapId);
+            try {
+                const recapId = Number(request.params.recapId);
+                const recap = await recapDataMapper.findById(recapId);
 
-            if (!recap) {
-                return next();
+                if (!recap) {
+                    return next();
+                }
+
+                const newData = request.body;
+
+                const updatedRecap = await recapDataMapper.modifyRecap({ ...newData }, recapId);
+
+                response.json({ updatedRecap });
+
+            } catch (error) {
+                console.log(error);
+                response.json({ error: error.message });
             }
-
-            const newData = request.body;
-
-            const updatedRecap = await recapDataMapper.modifyRecap({ ...newData }, recapId);
-
-            response.json({ updatedRecap });
 
         } catch (error) {
             console.log(error);
@@ -227,6 +233,7 @@ const recapController = {
      * @param {*} next 
      * @returns 
      */
+
     modifyMeal: async (request, response, next) => {
         try {
             const recapId = Number(request.params.recapId);

@@ -28,7 +28,7 @@ const adminController = {
             response.json({ error: error.message });
         }
     },
-    
+
     /**
      * Deleting a user
      * @param {*} request 
@@ -69,7 +69,7 @@ const adminController = {
      */
     addChild: async (request, response, next) => {
         try {
-            const parentId = request.params.id;
+            const parentId = Number(request.params.id);
             const newChild = await adminDataMapper.addChild((request.body), parentId);
 
             if (!newChild) {

@@ -334,7 +334,7 @@ const userController = {
             response.json({ error: error.message });
         }
     },
-    
+
     /**
      * Modifying a child
      * @param {*} request 
