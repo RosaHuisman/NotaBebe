@@ -4,18 +4,22 @@ BEGIN;
 
 CREATE VIEW "recap_with_nap_and_meal" AS
 
-     SELECT
+SELECT
         "recap"."child_id",
         "recap"."id",
         "recap"."date",
         "recap"."extra_info",
         "recap"."mood",
-        jsonb_agg(to_jsonb("nap") - 'recap_id') AS "naps",
-		    jsonb_agg(to_jsonb("meal") - 'recap_id') AS "meals"
-       FROM "recap"
-         LEFT JOIN "nap" ON "recap"."id" = "nap"."recap_id"
-         LEFT JOIN "meal" ON "recap"."id" = "meal"."recap_id"
-
-        GROUP BY "recap"."id";
+		(
+			SELECT array_agg(
+				json_build_object('id', nap.id, 'comment', nap.comment, 'start_time', nap.start_time, 'end_time', nap.end_time)
+			) FROM nap WHERE nap.recap_id=recap.id GROUP BY recap_id
+		) AS naps,
+		(
+			SELECT array_agg(
+				json_build_object('id', meal.id, 'comment', meal.comment, 'time', meal.time)
+			) FROM meal WHERE meal.recap_id=recap.id GROUP BY recap_id
+		) AS meals
+       FROM "recap";
 
 COMMIT;

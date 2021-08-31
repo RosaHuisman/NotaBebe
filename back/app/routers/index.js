@@ -122,7 +122,7 @@ router.route('/profile/admin/parent/:id/managechildren/:childId')
     .patch(userController.modifyChild)
     .delete(adminController.deleteChild);
 
-// adding a recap
+// adding a recap - with nap and meal
 router.route('/profile/staff/child/recap')
     .post(recapController.addRecap);
 

@@ -4,7 +4,6 @@ const recapDataMapper = {
 
     async findAll() {
         const result = await client.query('SELECT * FROM "recap_with_nap_and_meal"');
-        // on pourra order by desc
         return result.rows;
     },
 
@@ -94,7 +93,7 @@ const recapDataMapper = {
 
         return result.rows[0];
     },
-    
+
 
     async deleteRecap(id) {
         const result = await client.query('DELETE FROM "recap" WHERE id = $1', [id]);

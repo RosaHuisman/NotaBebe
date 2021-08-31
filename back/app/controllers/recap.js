@@ -82,18 +82,33 @@ const recapController = {
      */
     addRecap: async (request, response, next) => {
         try {
+
             const newRecap = await recapDataMapper.addRecap(request.body);
 
-            if (!newRecap) {
+            const recapId = newRecap.id;
+
+            if (!newRecap)
                 return next();
+
+            for (const nap of request.body.naps) {
+                await recapDataMapper.addNap(nap, recapId);
+
             }
 
-            response.json({ data: newRecap });
+            for (const meal of request.body.meals) {
+                await recapDataMapper.addMeal(meal, recapId);
+
+            }
+
+            const recapToAdd = await recapDataMapper.findById(recapId);
+
+            response.json(recapToAdd);
 
         } catch (error) {
             console.log(error);
             response.json({ error: error.message });
         }
+
     },
 
     /**
@@ -107,7 +122,7 @@ const recapController = {
         try {
             const recapId = request.params.recapId;
 
-            const newNap = await recapDataMapper.addNap({...request.body}, recapId);
+            const newNap = await recapDataMapper.addNap({ ...request.body }, recapId);
 
             if (!newNap) {
                 return next();
@@ -133,7 +148,7 @@ const recapController = {
 
             const recapId = request.params.recapId;
 
-            const newMeal = await recapDataMapper.addMeal({...request.body}, recapId);
+            const newMeal = await recapDataMapper.addMeal({ ...request.body }, recapId);
 
             if (!newMeal) {
                 return next();
@@ -146,7 +161,7 @@ const recapController = {
             response.json({ error: error.message });
         }
     },
-    
+
     /**
      * Modifying a recap
      * @param {*} request 
@@ -174,7 +189,7 @@ const recapController = {
             response.json({ error: error.message });
         }
     },
-    
+
     /**
      * Modifying a nap
      * @param {*} request 
@@ -261,7 +276,7 @@ const recapController = {
             } else {
                 return next();
             }
-            
+
         } catch (error) {
             console.error(error);
             response.json({ error: error.message });
