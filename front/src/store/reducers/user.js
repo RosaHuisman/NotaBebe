@@ -14,11 +14,14 @@ import {
   SAVE_USERS_PARENTS,
   SAVE_USER,
   CHANGE_TEXT_VALUE,
-
+  ADMIN_ADD_USER_SUCCESS,
+  ADMIN_ADD_USER_ERROR,
+  RESET_FORM_ADMIN,
 } from '../actions';
 
 const initialState = {
   list: [],
+  userlist: [],
   isOpenInfos: false,
   isOpenPassword: false,
 
@@ -39,13 +42,25 @@ const initialState = {
   roleId: null,
   isError: false,
   address: '',
+
+  last_name: '',
+  first_name: '',
+  phone_number: '',
+  postcode: '',
+  city: '',
+  role_id: '',
+  contentAdminPageAdd: true,
+  addUserSuccess: false,
+  addUserError: false,
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case SAVE_INFOS_USER: {
-      //console.log('je suis dans le cas SAVE_INFOS_USERS')
-      //console.log('payload save infos user',action.payload)
+
+      console.log('je suis dans le cas SAVE_INFOS_USERS');
+      console.log('payload save infos user', action.payload);
+
       return {
         ...state,
         changeInfos: true,
@@ -53,15 +68,18 @@ const reducer = (state = initialState, action) => {
       };
     }
     case SAVE_USERS_PARENTS: {
-       //console.log('je suis dans le cas SAVE_USERS_PARENTS')
+
+      console.log('je suis dans le cas SAVE_USERS_PARENTS');
 
       // console.log('dans le reducer', action.users_parents)
       // const { list } = action.payload;
-       //console.log('action payload dans le reducer',action.payload)
+      console.log('action payload dans le reducer', action.payload);
+
+
       return {
         ...state,
         list: action.payload,
-        //list: action.users_parents,
+        // list: action.users_parents,
         loading: false,
       };
     }
@@ -94,7 +112,9 @@ const reducer = (state = initialState, action) => {
       };
     }
     case CHANGE_FIELD_VALUE_TWO: {
-      //console.log('je suis dans le case CHANGE FIELD VALUE TWO')
+
+      console.log('je suis dans le case CHANGE FIELD VALUE TWO');
+
       return {
         ...state,
         [action.key]: action.value,
@@ -124,7 +144,7 @@ const reducer = (state = initialState, action) => {
         loginError: true,
       };
     }
-    
+
     // case SAVE_PASSWORD_USER: {
     //   return {
     //     ...state,
@@ -145,7 +165,40 @@ const reducer = (state = initialState, action) => {
         comment: action.value,
       };
     }
-    
+
+    case ADMIN_ADD_USER_SUCCESS: {
+      return {
+        ...state,
+        contentAdminPageAdd: false,
+        addUserSuccess: true,
+        addUserError: false,
+      };
+    }
+    case ADMIN_ADD_USER_ERROR: {
+      return {
+        ...state,
+        contentAdminPageAdd: false,
+        addUserSuccess: false,
+        addUserError: true,
+      };
+    }
+    case RESET_FORM_ADMIN: {
+      return {
+        ...state,
+        email: '',
+        password: '',
+        address: '',
+        last_name: '',
+        first_name: '',
+        phone_number: '',
+        postcode: '',
+        city: '',
+        role_id: '',
+        contentAdminPageAdd: true,
+        addUserSuccess: false,
+        addUserError: false,
+      };
+    }
 
     default:
       return state;

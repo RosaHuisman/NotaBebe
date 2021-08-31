@@ -1,28 +1,26 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import './styles.scss';
-
 const HeaderAdmin = () => (
   <header className="menu">
     <Link
       className="menu__link"
-      activeClassName="menu__link__selected"
+      activeclassname="menu__link__selected"
       to="/admin"
     >
       Accueil
     </Link>
     <Link
       className="menu__link"
-      activeClassName="menu__link__selected"
-      to="/news"
+      activeclassname="menu__link__selected"
+      to="/actualites"
     >
       Actualités
     </Link>
     <Link
       className="menu__link"
-      activeClassName="menu__link__selected"
-      to="/contacts"
+      activeclassname="menu__link__selected"
+      to="/contact"
     >
       Contact
     </Link>
