@@ -43,6 +43,10 @@ export const SAVE_USER_LOGIN = 'SAVE_USER_LOGIN';
 export const FETCH_USER_DATA = 'FETCH_USER_DATA';
 export const SAVE_USER_DATA = 'SAVE_USER_DATA';
 
+export const FETCH_USERS_STAFF = 'FETCH_USERS_STAFF';
+export const SAVE_USERS_STAFF = 'SAVE_USERS_STAFF';
+
+
 // export const changeFieldValue = (value, key) => ({
 //   type: CHANGE_FIELD_VALUE,
 //   key,
@@ -120,33 +124,31 @@ export const fetchUsersParents = () => ({
   type: FETCH_USERS_PARENTS,
 });
 
+export const fetchUsersStaff = () => ({
+  type: FETCH_USERS_STAFF,
+});
+
 
 export const saveUsersParents = (users_parents) => ({
   type: SAVE_USERS_PARENTS,
   payload: users_parents,
 });
 
-
-
-
+export const saveUsersStaff = (users_staff) => ({
+  type: SAVE_USERS_STAFF,
+  payload: users_staff,
+});
 
 export const createGetRecapAction = () => ({
   type: GET_RECAP,
 });
 ;
 
-
-
-
-
 export const changeChild = (key, value) => ({
   type: CHANGE_CHILD,
   value,
   key,
 });
-
-
-
 
 export const fetchUserData = () => ({
   type: FETCH_USER_DATA,
