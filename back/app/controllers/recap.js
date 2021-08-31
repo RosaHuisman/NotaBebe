@@ -90,15 +90,16 @@ const recapController = {
             if (!newRecap)
                 return next();
 
-            for (const nap of request.body.naps) {
-                await recapDataMapper.addNap(nap, recapId);
-
+            if (request.body.naps) {
+                for (const nap of request.body.naps) {
+                    await recapDataMapper.addNap(nap, recapId);
+                }
             }
 
-            for (const meal of request.body.meals) {
-                await recapDataMapper.addMeal(meal, recapId);
-
-            }
+            if (request.body.meals)
+                for (const meal of request.body.meals) {
+                    await recapDataMapper.addMeal(meal, recapId);
+                }
 
             const recapToAdd = await recapDataMapper.findById(recapId);
 
