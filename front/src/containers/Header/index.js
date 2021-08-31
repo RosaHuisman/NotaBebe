@@ -9,7 +9,7 @@ const mapStateToProps = (state) => ({
   logged: isUserLogged(state),
   // loggedMessage: `Bonjour ${state.pseudo}`,
   successMessage: state.auth.successMessage,
-  user: state.auth,
+  user: state.user,
 });
 
 // transforme la fonction dispatch en props

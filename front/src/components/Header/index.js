@@ -49,7 +49,7 @@ const Header = ({
       ) : (
         <>
           <header className="header">
-            <>
+            {/* <>
               {user.roleId === 1
                 ? (
                   <Dropdown
@@ -119,7 +119,7 @@ const Header = ({
                       </Dropdown.Menu>
                     </Dropdown>
                   )}
-            </>
+            </> */}
             <h1 className="header-title">NotaBebe</h1>
             <Link to="/">
               <img src={logo} className="header-logo" alt="Logo NotaBebe" />
