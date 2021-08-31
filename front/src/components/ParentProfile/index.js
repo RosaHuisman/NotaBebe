@@ -25,7 +25,7 @@ const ParentProfile = ({
   changeInfos,
 }) => {
 
-  
+  //console.log('user dans le composant profile parent', user)
   useEffect(() => {
     //console.log('je suis dans le useEffect')
     loadUsersParents();

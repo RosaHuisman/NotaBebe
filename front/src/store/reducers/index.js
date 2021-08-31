@@ -6,6 +6,7 @@ import userReducer from './user';
 // import childReducer from './child';
 import childrenReducer from './children';
 import recapReducer from './recap';
+import commentReducer from './comment';
 
 const rootReducer = combineReducers({
   auth: authReducer,
@@ -14,6 +15,8 @@ const rootReducer = combineReducers({
   // child: childReducer,
   children: childrenReducer,
   recap: recapReducer,
+  comment: commentReducer,
+  
 });
 
 export default rootReducer;

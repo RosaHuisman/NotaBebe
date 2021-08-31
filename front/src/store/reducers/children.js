@@ -1,44 +1,25 @@
-export const initialState = {
-  list: [
-    {
-      id: 1,
-      firstname: 'Georges',
-      lastname: 'Toupet',
-      birthdate: '14/06/2019',
-      birthplace: 'Tourcoing',
-      gender: 'Masculin',
-      allergy: ['poisson', 'viande', 'lait', 'gluten'],
-      parent_id: 1,
-    },
-    {
-      id: 2,
-      firstname: 'Georgette',
-      lastname: 'Toupet',
-      birthdate: '09/11/2021',
-      birthplace: 'Tourcoing',
-      gender: 'Féminin',
-      allergy: [],
-      parent_id: 1,
-    },
-    {
-      id: 3,
-      firstname: 'Alessi',
-      lastname: 'Putter',
-      birthdate: '03/01/2021',
-      birthplace: 'Rennes',
-      gender: 'Masculin',
-      allergy: ['tofu'],
-      parent_id: 2,
-    },
-  ],
+import {
+ SAVE_CHILDREN,
+} from 'src/store/actions/children'
+
+const initialState = {
   loading: true,
+  list: [],  
 };
 
-const reducer = (state = initialState, action = {}) => {
+const reducer = (state = initialState, action ={} ) => {
   switch (action.type) {
+      case SAVE_CHILDREN: {
+       return {
+         ...state,
+         list: action.payload,
+         loading: false,
+       };
+     }
     default:
       return state;
   }
+  
 };
 
 export default reducer;

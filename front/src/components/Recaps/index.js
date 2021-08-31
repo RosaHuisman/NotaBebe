@@ -1,34 +1,33 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Icon } from 'semantic-ui-react';
-import recaps from 'src/store/middlewares/recaps';
+import recaps from 'src/store/middlewares/recap';
 
 import './styles.scss';
-import data from 'src/data/recap';
-// console.log(data);
+import data from 'src/data/recaps';
+console.log('Hola !')
+
 
 // Dans mon composant FilterRecaps ci dessous, j'y ai mis:
-// Le titre "Mes Recaps" + Icon
+// Le titre 
 // Le filtre de recherche
 // Le rendu des récaps
 
-const FilterRecaps = ({
+const Recaps = ({
   recaps, onSearchSubmit, inputRef, searchValue,
 }) => (
+  console.log('hello'),
+  console.log('mes recaps:', data),
   <>
-    <div className="recaps">
-      <p className="my__recap"><span><Icon name="file text" size="large" /></span>Mes Récaps</p>
-    </div>
+    <h1>Mes récapitulatifs enfants</h1>
     <div className="filter">
       <form onSubmit={onSearchSubmit}>
         <input
           ref={inputRef}
           className="filter__input"
           fluid
-          placeholder="Filtrer les récaps"
-          value={searchValue}
-          onChange={(event) => onSearchChange(event.target.value)}
-        />
+          placeholder="Filtrer les récaps"aff
+          />
       </form>
     </div>
     <div className="staff__recap">
@@ -46,8 +45,8 @@ const FilterRecaps = ({
   </>
 );
 
-FilterRecaps.propTypes = {
+Recaps.propTypes = {
 
 };
 
-export default FilterRecaps;
+export default Recaps;

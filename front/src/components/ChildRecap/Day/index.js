@@ -6,24 +6,34 @@ import './styles.scss';
 
 // == Composant
 const Day = ({
+  recap,
  
-}) => (
-  <div className="day">  
-    <p className="day__designation">Heure début de sieste :</p>
-    <p className="day__result">12:30</p>
-           
-    <p className="day__designation">Heure fin de sieste :</p>
-    <p className="day__result">15:10</p>
+}) => {
+  console.log(recap)
+  return (
+    <div className="day">  
+
+      <p className="day__designation">Horaires de sieste :</p>
+      <p className="day__result">{recap[0].start_time} - {recap[0].end_time}</p>
+
+       {/* {recap[1] ? (
+         <>
+         <p className="day__designation">Repas :</p>
+         <p className="day__result">{recap[1].rwnam_meal_comment}</p>
+         </>
+       ) : null} */}
+
+      <p className="day__designation">Repas :</p>
+      <p className="day__result">{recap[1].rwnam_meal_comment}</p>
             
-    <p className="day__designation">Repas :</p>
-    <p className="day__result">Bien mangé: riz, saumon, epinards, yaourt, pain</p>
-           
-    <p className="day__designation">Infos complémentaires :</p>
-    <p className="day__result">Il a joué au foot et s'est tombé, d'où sa petite bosse</p>
+      <p className="day__designation">Infos complémentaires :</p>
+      <p className="day__result">{recap[0].extra_info}</p>
 
   </div>
+  )
+  
 
-);
+};
 
 // == Export
 export default Day;

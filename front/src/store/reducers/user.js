@@ -13,7 +13,6 @@ import {
   SAVE_NEW_PASSWORD_PARENT,
   SAVE_USERS_PARENTS,
   SAVE_USER,
-  SEND_COMMENT,
   CHANGE_TEXT_VALUE,
   ADMIN_ADD_USER_SUCCESS,
   ADMIN_ADD_USER_ERROR,
@@ -58,8 +57,10 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case SAVE_INFOS_USER: {
+
       console.log('je suis dans le cas SAVE_INFOS_USERS');
       console.log('payload save infos user', action.payload);
+
       return {
         ...state,
         changeInfos: true,
@@ -67,11 +68,14 @@ const reducer = (state = initialState, action) => {
       };
     }
     case SAVE_USERS_PARENTS: {
+
       console.log('je suis dans le cas SAVE_USERS_PARENTS');
 
       // console.log('dans le reducer', action.users_parents)
       // const { list } = action.payload;
       console.log('action payload dans le reducer', action.payload);
+
+
       return {
         ...state,
         list: action.payload,
@@ -108,7 +112,9 @@ const reducer = (state = initialState, action) => {
       };
     }
     case CHANGE_FIELD_VALUE_TWO: {
+
       console.log('je suis dans le case CHANGE FIELD VALUE TWO');
+
       return {
         ...state,
         [action.key]: action.value,
@@ -153,18 +159,13 @@ const reducer = (state = initialState, action) => {
         isOpenPassword: false,
       };
     }
-    case SEND_COMMENT: {
-      return {
-        ...state,
-        commentSend: true,
-      };
-    }
     case CHANGE_TEXT_VALUE: {
       return {
         ...state,
         comment: action.value,
       };
     }
+
     case ADMIN_ADD_USER_SUCCESS: {
       return {
         ...state,
@@ -198,6 +199,7 @@ const reducer = (state = initialState, action) => {
         addUserError: false,
       };
     }
+
     default:
       return state;
   }
