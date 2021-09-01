@@ -5,12 +5,13 @@ import {} from 'src/store/actions';
 import { fetchRecaps } from 'src/store/actions/recap'
 import { fetchChildren } from 'src/store/actions/children';
 import { findUser } from 'src/store/selectors/user';
+import { findRecap } from 'src/store/selectors/recap';
 
 
 const mapStateToProps = (state, ownProps) => ({
   child: findUser(state.children.list, ownProps.match.params.id),
   loading: state.recap.loading,
-  recap: findUser(state.recap.list, ownProps.match.params.id)
+  recap: findRecap(state.recap.list, ownProps.match.params.id)
 
 });
 

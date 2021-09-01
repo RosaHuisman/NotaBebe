@@ -21,6 +21,8 @@ const ChildRecap = ({
 
 }) => {
 
+console.log(recap)
+
   useEffect(() => {
     loadChildren();
     loadRecaps();
@@ -40,8 +42,8 @@ const ChildRecap = ({
     <div className="childrecap">
     <p className="childrecap__date">{recap.date}</p>
 
-    <BasicInfos recap={recap} child={child} parent={parent}/>
-    <Day recap={recap}/>
+    <BasicInfos recap={recap[0]} child={child} parent={parent}/>
+    <Day recap={recap[0]}/>
     </div>
 
   </>)

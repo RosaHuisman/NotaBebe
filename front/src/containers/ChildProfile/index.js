@@ -6,7 +6,6 @@ import { fetchRecaps } from 'src/store/actions/recap'
 import { changeTextValue, fetchComments, openModal, postComment, updateComment, openFormDeleteComment, deleteComment } from 'src/store/actions/comment'
 // import { findChild } from 'src/store/selectors/children';
 // import { findUser } from 'src/store/selectors/user';
-import { findRecap } from 'src/store/selectors/recap';
 import { findComments } from 'src/store/selectors/comment';
 import { fetchChildren } from 'src/store/actions/children';
 
@@ -19,7 +18,7 @@ const mapStateToProps = (state, ownProps) => ({
   isOpenInfos: state.user.isOpenInfos,
   commentSend: state.user.commentSend,
   loading: state.comment.loading,
-  recap: findRecap(state.recap.list, ownProps.match.params.id),
+  //recap: findRecap(state.recap.list, ownProps.match.params.id),
   comments: findComments(state.comment.list, ownProps.match.params.id),
   modalOpen: state.comment.modalOpen,
   commentId: state.comment.commentId,

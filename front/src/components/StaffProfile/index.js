@@ -31,17 +31,17 @@ const StaffProfile = ({ searchValue, setSearchValue, handleSubmit, loadUsersStaf
       </div>
       <div className="staff__button">
         <div className="staff__button__child">
-          <Link className="childs__link" to={`/profile/staff/${staff[0].id}/children`} exact="true">
+          <Link className="childs__link" to={`/profile/staff/${staff.id}/children`} exact="true">
             <button type="button" className="button">Liste des enfants</button>
           </Link>
         </div>
         <div className="staff__button__recap">
-          <Link className="recap__link" to={`/profile/staff/${staff[0].id}/recaps`} exact="true">
+          <Link className="recap__link" to={`/profile/staff/${staff.id}/recaps`} exact="true">
             <button type="button" className="button">Liste des récaps</button>
           </Link>
         </div>
         <div className="staff__button__comments">
-          <Link className="comments__link" to={`/profile/staff/${staff[0].id}/comments`} exact="true">
+          <Link className="comments__link" to={`/profile/staff/${staff.id}/comments`} exact="true">
             <button type="button" className="button">Les Commentaires</button>
           </Link>
         </div>

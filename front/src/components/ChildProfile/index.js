@@ -27,7 +27,7 @@ const ChildProfile = ({
   onChangeTextValue,
   loadRecaps,
   loading,
-  recap,
+  //recap,
   loadComments,
   comments,
   onClickOpenModalToFormChangeComment,

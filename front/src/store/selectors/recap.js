@@ -7,16 +7,11 @@
  * @return {Object} - Le recap trouvé
  */
  export function findRecap(recaps, childId) {
-  const recap = recaps.find((testedRecap) => {
+   console.log(recaps)
+   console.log(childId)
+  const recap = recaps.filter((testedRecap) => {
     return testedRecap.child_id === Number(childId);
   });
-  
-  
-  // const recap1 = recap.splice(-1,1)
-  // const recap2 = recap.splice(-2,1)
-
-  // Array.prototype.push.apply(recap1, recap2); 
-
-  //  const recapsconcacted = recap1.concat(recap2)
+  console.log(recap)
   return recap;
 }

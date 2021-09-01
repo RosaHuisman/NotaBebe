@@ -18,12 +18,13 @@ const BasicInfos = ({
   child,
  
 }) => {
+//console.log(parent)
   return(
   <div className="basicinfos">
       <div className="basicinfos__infos">
       {recap.mood === 'triste' ? 
             <img src={childGrumpyIcon} className="basicinfos__infos__icon" alt="Child Icon" />
-          : recap.mood === 'moyen' ? 
+          : recap.mood === 'middle' ? 
           <img src={childMediumIcon} className="basicinfos__infos__icon" alt="Child Icon" /> 
           : recap.mood === 'heureux' ?
           <img src={childHappyIcon} className="basicinfos__infos__icon" alt="Child Icon" />
