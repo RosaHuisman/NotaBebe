@@ -210,7 +210,7 @@ const userController = {
 
                     const jwtOptions = {
                         algorithm: 'HS256',
-                        expiresIn: '3h'
+                        expiresIn: '300s'
                     };
                     response.json({
                         logged: true,
