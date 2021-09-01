@@ -6,7 +6,11 @@ const adminController = require('../controllers/admin')
 const recapController = require('../controllers/recap');
 const commentController = require('../controllers/comment');
 
+const checkTokenMiddleware = require('../middlewares/token');
+
 const router = express.Router();
+
+router.use('/', checkTokenMiddleware);
 
 // ROUTES TO DISPLAY ALL DATA
 

@@ -6,7 +6,6 @@ const cors = require('cors');
 
 const router = require('./app/routers/index');
 
-const checkTokenMiddleware = require('./app/middlewares/token')
 
 const app = express();
 app.use(cors());
@@ -32,7 +31,7 @@ app.use(express.urlencoded({ extended: true }));
 
 
 // Routage
-app.use('/', checkTokenMiddleware, router);
+app.use('/', router);
 
 
 app.listen(port, () => {
