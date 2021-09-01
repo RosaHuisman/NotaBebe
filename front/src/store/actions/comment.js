@@ -9,6 +9,7 @@ export const COMMENT_UPDATED = 'COMMENT_UPDATED';
 export const OPEN_FORM_DELETE_COMMENT = 'OPEN_FORM_DELETE_COMMENT';
 export const DELETE_COMMENT = 'DELETE_COMMENT';
 export const COMMENT_DELETED = 'COMMENT_DELETED';
+export const FILTER_COMMENTS = 'FILTER_COMMENTS';
 
 
 export const fetchComments = () => ({
@@ -68,3 +69,9 @@ export const deleteComment = (parentId, childId, commentId) => ({
 export const commentDeleted = () => ({
   type: COMMENT_DELETED,
 });
+
+export const filterComments = (filterInputValue) => ({
+  type: FILTER_COMMENTS,
+  filterInputValue,
+});
+
