@@ -28,7 +28,7 @@ const recap = (store) => (next) => (action) => {
 
     default:
       next(action);
+  };
 };
-}
 
 export default recap;

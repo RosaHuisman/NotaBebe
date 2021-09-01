@@ -48,7 +48,7 @@ const AdminHome = ({
   const [UsersListData, setUsersListData] = useState([]);
 
   useEffect(() => {
-    fetch('http://notabebe-back.herokuapp.com/profile/admin/allusers')
+    fetch('https://notabebe-back.herokuapp.com/profile/admin/allusers')
       .then((response) => response.json())
       .then((json) => setUsersListData(json));
   }, []);

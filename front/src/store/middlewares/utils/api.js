@@ -8,8 +8,8 @@ import axios from 'axios';
 // });
 
 const api = axios.create({
-  // baseURL: 'http://localhost:3001/',
-  baseURL: 'http://notabebe-back.herokuapp.com/',
+  // baseURL: 'https://localhost:3001/',
+  baseURL: 'https://notabebe-back.herokuapp.com/',
   timeout: 2500,
 });
 

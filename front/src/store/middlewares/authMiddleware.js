@@ -2,7 +2,7 @@ import {
   LOGIN,
   saveUser,
   createLoginErrorAction,
-  LOGOUT,
+  CHECK_TOKEN,
 } from 'src/store/actions/authActions';
 
 // import {
@@ -23,12 +23,7 @@ const authMiddleware = (store) => (next) => (action) => {
       api({
         method: 'POST',
         url: '/login',
-        data: {
-          email: state.user.email,
-          password: state.user.password,
-          // email: state.auth.email,
-          // password: state.auth.password,
-        },
+        data: { email: state.user.email, password: state.user.password },
       })
         .then((response) => {
           // ici on vient stocker le token dans localStorage
@@ -55,6 +50,32 @@ const authMiddleware = (store) => (next) => (action) => {
         });
       break;
     }
+    // case CHECK_TOKEN: {
+    //   // on récupère le token stocké dans le localStorage
+    //   const token = localStorage.getItem('MyToken');
+
+    //   // s'il existe on fait notre requête API pour vérifier sa validité
+    //   if (token) {
+    //     api.get('/checkToken', {
+    //       // on oublie pas d'embarquer le token avec la requête
+    //       headers: {
+    //         authorization: `Bearer ${token}`,
+    //       },
+    //     })
+    //       .then((response) => {
+    //         // ici le token est bon, donc on peut le stocker dans l'insance
+    //         api.defaults.headers.common.authorization = `Bearer ${token}`;
+
+    //         // en cas de réponse on sauvegarde le user dans le state
+    //         // avec la même action que pour le login
+    //         const payload = { ...response.data };
+    //         const actionSaveUser = saveUser(payload);
+    //         store.dispatch(actionSaveUser);
+    //       })
+    //       .catch((error) => console.log(error));
+    //   }
+    //   break;
+    // }
     default:
       next(action);
   }

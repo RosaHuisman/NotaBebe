@@ -41,6 +41,7 @@ import './styles.scss';
 const App = ({
   welcomePage,
   loading,
+  checkIsLogged,
 }) => {
   const location = useLocation();
 
@@ -51,6 +52,9 @@ const App = ({
   useEffect(() => {
     // state HomePage
     welcomePage();
+    // ici on veut vérifier si l'utilisateur est déjà connecté
+    // au 1e rendu du composant App
+    checkIsLogged();
   }, []);
 
   if (loading) {
@@ -103,6 +107,7 @@ const App = ({
 App.propTypes = {
   loading: PropTypes.bool,
   welcomePage: PropTypes.func.isRequired,
+  checkIsLogged: PropTypes.func.isRequired,
 };
 
 App.defaultProps = {
