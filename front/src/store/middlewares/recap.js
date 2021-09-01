@@ -29,18 +29,24 @@ const recap = (store) => (next) => (action) => {
       const state = store.getState();
       const childId = action.child_id;
 
-      console.log(state.recap.start_time)
+      const naps = [] 
+
+      const nap = state.recap.napFormList.map(form => {
+        naps.push({
+          start_time: state['recap'][`start_time_${form.id}`],
+          end_time: state['recap'][`end_time_${form.id}`],
+          comment: state['recap'][`comment_nap_${form.id}`],
+        })
+      })
+
+      console.log('SCHNAPS : ', naps)
 
      axios.post(`http://notabebe-back.herokuapp.com/profile/staff/child/recap`, 
      {
       child_id: childId,
       date: state.recap.date,
       mood: state.recap.mood,
-      naps:  [{
-        start_time: state.recap.start_time,
-        end_time: state.recap.end_time,
-        comment: state.recap.comment_nap
-      }],
+      naps: naps,
       meals:  [{
         time: state.recap.time,
         comment: state.recap.comment_meal

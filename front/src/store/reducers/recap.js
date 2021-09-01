@@ -28,6 +28,7 @@ const initialState = {
   loading: true,
   list: [],
   time: '12:00:00',
+  comment_meal: 'un commentaire sur le miam',
   start_time: '',
   end_time: '',
   comment: '',
@@ -38,6 +39,18 @@ const initialState = {
   date: '',
   mood: '',
   others:'',
+
+  start_time_1: '',
+  end_time_1: '',
+  comment_nap_1: '',
+
+  start_time_2: '',
+  end_time_2: '',
+  comment_nap_2: '',
+
+  start_time_3: '',
+  end_time_3: '',
+  comment_nap_3: '',
 };
 
 
