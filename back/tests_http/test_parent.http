@@ -2,7 +2,7 @@
 
 
 ### DISPLAYING PARENT PROFILE BY ID
-GET http://localhost:3000/profile/parent/8
+GET http://localhost:3000/profile/parent/1
 
 
 ### DISPLAYING CHILD ACCORDING TO PARENT PROFILE
