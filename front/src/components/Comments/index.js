@@ -1,6 +1,8 @@
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types'
-import Loading from 'src/components/App/Loading'
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import Loading from 'src/components/App/Loading';
+import { formatDate, formatHour } from 'src/store/selectors/formatDate';
+import { filterComments } from 'src/store/selectors/comment';
 
 import { formatDate, formatHour } from 'src/store/selectors/formatDate'
 import { childSearched } from 'src/store/selectors/user'
@@ -12,19 +14,26 @@ import './styles.scss';
 // console.log('Salut');
 
 const Comments = ({ 
-    onSearchSubmit, 
-    inputRef, 
-    searchValue, 
-    loading, 
-    loadComments, 
-    comments,
-    loadChildren,
-    //child,
-    children,
-  }) => {
+
+  recaps, 
+  onSearchSubmit, 
+  inputRef, 
+  searchValue, 
+  loading, 
+  loadComments, 
+  comments,
+  loadChildren,
+  //child,
+  children,
+  inputValue,
+  onInputValueCommentChange
+}) => {
+
+  console.log(comments)
 
 
   //console.log(children);
+
   // console.log('mes données:', commentsData);
 
   useEffect(() => {
@@ -37,7 +46,13 @@ const Comments = ({
     return <Loading />;
   }
 
-  return (
+  // const [ searchNewValue, setSearchNewValue ] = useState('');
+  // const [comments] = useState([]);
+
+
+// filterComments(comments, inputValue);
+
+return (
   <>
     <h1>Les commentaires parents</h1>
     <div className="filter">
@@ -46,22 +61,28 @@ const Comments = ({
           ref={inputRef}
           className="filter__input"
           //fluid
+          value={inputValue}
+          onChange={(e) => onInputValueCommentChange(e.target.value)}
           placeholder="Filtrer les commentaires"
           />
       </form>
     </div>
     <div className="comments__list">
-      { comments.map((comment) => (
+      { filterComments(comments, inputValue).map((comment) => (
         <div key={comment.id} className="comment">
+
           <h1 className="comment__child"> {childSearched(children, comment.child_id )}</h1>
           <p className="comment__child__date">
           Date: {formatDate(comment.created_at)} à {formatHour(comment.created_at)}
           </p>
+
           <p className="comment__message">Message: {comment.message}</p>
         </div>
       ))}
     </div>
+
     <div>-</div>
+
   </>
 )};
 
