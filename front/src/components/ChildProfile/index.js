@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 
 import { useLocation, Link } from 'react-router-dom';
 
-import Header from 'src/components/Header';
+// import Header from 'src/components/Header';
+import HeaderParent from 'src/containers/HeaderParent';
+
 import ChildRecap from 'src/components/ChildRecap';
 import ChildInfos from './ChildInfos';
 import ChangeChildInfosForm from './ChangeChildInfosForm';
@@ -72,9 +74,9 @@ const ChildProfile = ({
   return (
      
     <>
-      <header className="header">
-        <Header />
-      </header>
+      <div>
+        <HeaderParent />
+      </div>
       <div className="childprofile">
 
         {!isOpenInfos ? (

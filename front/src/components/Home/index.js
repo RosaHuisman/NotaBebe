@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Field from 'src/containers/Field';
+import Header from 'src/containers/Header';
 
 import './styles.scss';
 
@@ -43,70 +44,75 @@ const Home = ({
         </>
 
       ) : (
+        <>
+          <div>
+            <Header />
+          </div>
 
-        <div className="containerMain">
-          {contentHome
-            && (
-              <>
-                <div className="welcomeHome">
-                  <div className="welcomeHome__titleHome">
-                    <p>Bienvenue sur NotaBebe,</p>
-                    <p>Merci de vous connecter</p>
+          <div className="containerMain">
+            {contentHome
+              && (
+                <>
+                  <div className="welcomeHome">
+                    <div className="welcomeHome__titleHome">
+                      <p>Bienvenue sur NotaBebe,</p>
+                      <p>Merci de vous connecter</p>
+                    </div>
                   </div>
-                </div>
 
-                <div className="loginForm">
-                  <div className="loginForm__title">
-                    Connexion
+                  <div className="loginForm">
+                    <div className="loginForm__title">
+                      Connexion
+                    </div>
+                    {errorMessage
+                      && (
+                        <div className="loginForm__errorMsg">
+                          <p className="loginForm__errorMsg__error">
+                            Erreur de connexion
+                          </p>
+                          <p className="loginForm__errorMsg__errorBis">
+                            Veuillez vérifier vos identifiants
+                          </p>
+                        </div>
+                      )}
+                    <form autoComplete="off" className="loginForm__content" onSubmit={handleSubmit}>
+                      <Field
+                        name="email"
+                        placeholder="Adresse Email"
+                        type="email"
+                        required
+                      />
+                      <Field
+                        name="password"
+                        type="password"
+                        placeholder="Mot de passe"
+                        required
+                      />
+                      <button
+                        type="submit"
+                        className="settings__send"
+                      >
+                        Se connecter
+                      </button>
+                      <Link to="/forgot">
+                        <p className="settings__forgottxt">
+                          Mot de passe oublié
+                        </p>
+                      </Link>
+                    </form>
                   </div>
-                  {errorMessage
-                    && (
-                      <div className="loginForm__errorMsg">
-                        <p className="loginForm__errorMsg__error">
-                          Erreur de connexion
-                        </p>
-                        <p className="loginForm__errorMsg__errorBis">
-                          Veuillez vérifier vos identifiants
-                        </p>
-                      </div>
-                    )}
-                  <form autoComplete="off" className="loginForm__content" onSubmit={handleSubmit}>
-                    <Field
-                      name="email"
-                      placeholder="Adresse Email"
-                      type="email"
-                      required
-                    />
-                    <Field
-                      name="password"
-                      type="password"
-                      placeholder="Mot de passe"
-                      required
-                    />
-                    <button
-                      type="submit"
-                      className="settings__send"
-                    >
-                      Se connecter
-                    </button>
-                    <Link to="/forgot">
-                      <p className="settings__forgottxt">
-                        Mot de passe oublié
-                      </p>
-                    </Link>
-                  </form>
-                </div>
 
-                <Link
-                  className="contentButton"
-                  exact="true"
-                  to="/contact"
-                >
-                  <button type="button" className="settings__send">Contactez-nous</button>
-                </Link>
-              </>
-            )}
-        </div>
+                  <Link
+                    className="contentButton"
+                    exact="true"
+                    to="/contact"
+                  >
+                    <button type="button" className="settings__send">Contactez-nous</button>
+                  </Link>
+                </>
+              )}
+          </div>
+        </>
       )}
     </>
   );

@@ -1,67 +1,72 @@
-import React, {useState, useEffect} from 'react';
-import PropTypes from 'prop-types'
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import Loading from 'src/components/App/Loading';
-
+import HeaderStaff from 'src/containers/HeaderStaff';
 
 import { Link } from 'react-router-dom';
 
 import './styles.scss';
 
-
-const StaffProfile = ({ searchValue, setSearchValue, handleSubmit, loadUsersStaff, staff, loading }) => {
-
+const StaffProfile = ({
+  searchValue, setSearchValue, handleSubmit, loadUsersStaff, staff, loading,
+}) => {
   useEffect(() => {
-    //console.log('je suis dans le useEffect')
+    // console.log('je suis dans le useEffect')
     loadUsersStaff();
   }, []);
 
   if (loading) {
     return <Loading />;
   }
-   
-// const [datas, setDatas] = useState([])
 
-// useEffect(() => {
-//   fetch
-// }, [])
+  // const [datas, setDatas] = useState([])
+
+  // useEffect(() => {
+  //   fetch
+  // }, [])
 
   return (
-    <div className="staff">
-      <div className="staff__name">
-        <h2> Dupont-Moretti Christine </h2>
+    <>
+      <div>
+        <HeaderStaff />
       </div>
-      <div className="staff__button">
-        <div className="staff__button__child">
-          <Link className="childs__link" to={`/profile/staff/${staff[0].id}/children`} exact="true">
-            <button type="button" className="button">Liste des enfants</button>
-          </Link>
+      <div className="staff">
+        <div className="staff__name">
+          <h2> Dupont-Moretti Christine </h2>
         </div>
-        <div className="staff__button__recap">
-          <Link className="recap__link" to={`/profile/staff/${staff[0].id}/recaps`} exact="true">
-            <button type="button" className="button">Liste des récaps</button>
-          </Link>
+        <div className="staff__button">
+          <div className="staff__button__child">
+            <Link className="childs__link" to={`/profile/staff/${staff[0].id}/children`} exact="true">
+              <button type="button" className="button">Liste des enfants</button>
+            </Link>
+          </div>
+          <div className="staff__button__recap">
+            <Link className="recap__link" to={`/profile/staff/${staff[0].id}/recaps`} exact="true">
+              <button type="button" className="button">Liste des récaps</button>
+            </Link>
+          </div>
+          <div className="staff__button__comments">
+            <Link className="comments__link" to={`/profile/staff/${staff[0].id}/comments`} exact="true">
+              <button type="button" className="button">Les Commentaires</button>
+            </Link>
+          </div>
         </div>
-        <div className="staff__button__comments">
-          <Link className="comments__link" to={`/profile/staff/${staff[0].id}/comments`} exact="true">
-            <button type="button" className="button">Les Commentaires</button>
-          </Link>
-        </div>
-      </div>
-      {/* <div className="ui divider"></div> */}
-      
-      {/* <div className="recaps__filter">
+        {/* <div className="ui divider"></div> */}
+
+        {/* <div className="recaps__filter">
         <FilterRecaps
           searchValue={searchValue}
           onSearchChange={setSearchValue}
           onSearchSubmit={handleSubmit}
         />
       </div> */}
-    </div>
-    )}
-   
+      </div>
+    </>
+  );
+};
+
 StaffProfile.propTypes = {
-  
-}
 
-export default StaffProfile
+};
 
+export default StaffProfile;

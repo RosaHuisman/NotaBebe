@@ -42,7 +42,7 @@ const AddUserAdmin = ({
   };
 
   const previousPage = () => {
-    history.push('/admin');
+    history.goBack();
     resetFormAdmin();
   };
 

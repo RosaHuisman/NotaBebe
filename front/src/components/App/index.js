@@ -21,6 +21,7 @@ import StaffProfile from 'src/containers/StaffProfile';
 import ChildsList from 'src/containers/ChildsList';
 import Recaps from 'src/components/Recaps';
 import Comments from 'src/containers/Comments';
+import HeaderStaff from 'src/containers/HeaderStaff';
 // import ReadComment from 'src/containers/ReadComment';
 import CreateRecap from 'src/containers/CreateRecap';
 // PARENT CHILD
@@ -40,7 +41,6 @@ import './styles.scss';
 const App = ({
   welcomePage,
   loading,
-  // checkIsLogged,
 }) => {
   const location = useLocation();
 
@@ -51,9 +51,6 @@ const App = ({
   useEffect(() => {
     // state HomePage
     welcomePage();
-
-    // check si un user est connecté (token valide) au 1er rendu du composant App
-    // checkIsLogged();
   }, []);
 
   if (loading) {
@@ -62,26 +59,24 @@ const App = ({
 
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <Switch>
         {/* // à test ChildProfile */}
         <Route exact path="/" component={Home} />
         {/* <Route exact path="/login" component={Login} /> */}
         <Route exact path="/forgot" component={ForgotPassword} />
         <Route exact path="/contact" component={ContactDetails} />
-        {/* <Route path="*" component={Error} /> */}
-
 
         {/* Route Staff */}
         <PrivateRoute exact path="/profile/staff/:id" component={StaffProfile} />
-        
+
         {/* <PrivateRoute exact path="/staff/:id/" component={StaffProfile} /> */}
-        
+
         <PrivateRoute exact path="/profile/staff/:id/children" component={ChildsList} />
         <PrivateRoute exact path="/profile/staff/:id/recaps" component={Recaps} />
         <PrivateRoute exact path="/profile/staff/:id/comments" component={Comments} />
 
-        {/*<PrivateRoute exact path="/staff/:id/comments" component={ReadComment} /> */}
+        {/* <PrivateRoute exact path="/staff/:id/comments" component={ReadComment} /> */}
         <PrivateRoute exact path="/profile/staff/children/:id/createrecap" component={CreateRecap} />
 
         {/* Route Parent Children */}
@@ -91,13 +86,16 @@ const App = ({
         <PrivateRoute exact path="/profile/parent/:id/child/:id/recap" component={ChildRecap} />
 
         {/* Route Admin */}
-        {/* <PrivateRoute exact path="/admin" component={AdminMobileHome} /> */}
         <PrivateRoute exact path="/admin" component={Admin} />
         <PrivateRoute exact path="/admin/adduser" component={AddUserAdmin} />
         <PrivateRoute exact path="/admin/edituser" component={EditUserAdmin} />
         <PrivateRoute exact path="/admin/contacts" component={ContactAdmin} />
+
+        <Route exact path="*" component={Error} />
+
       </Switch>
       <Footer />
+
     </>
   );
 };
@@ -105,7 +103,6 @@ const App = ({
 App.propTypes = {
   loading: PropTypes.bool,
   welcomePage: PropTypes.func.isRequired,
-  // checkIsLogged: PropTypes.func.isRequired,
 };
 
 App.defaultProps = {

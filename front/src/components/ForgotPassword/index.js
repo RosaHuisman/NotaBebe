@@ -1,7 +1,9 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useLocation, useHistory } from 'react-router-dom';
+import { Button, Icon } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import Field from 'src/containers/Field';
+import Header from 'src/containers/Header';
 
 import './styles.scss';
 
@@ -11,6 +13,18 @@ const ForgotPassword = ({
   successMessage,
   errorMessage,
 }) => {
+  const location = useLocation();
+
+  const history = useHistory();
+
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, [location]);
+
+  const previousPage = () => {
+    history.goBack();
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     handleForgot();
@@ -18,6 +32,9 @@ const ForgotPassword = ({
 
   return (
     <>
+      <div>
+        <Header />
+      </div>
       <div className="ForgotP">
         <div className="ForgotP__txt">
           <p className="ForgotP__txt__title">Mot de passe oublié ?</p>
@@ -43,13 +60,18 @@ const ForgotPassword = ({
           </button>
         </form>
       </div>
-      <Link
-        className="contentButton"
-        exact="true"
-        to="/"
-      >
-        <button type="button" className="settings__send">Retour</button>
-      </Link>
+      <div className="backButtonContact">
+        <Button
+          type="button"
+          onClick={previousPage}
+          icon
+          labelPosition="left"
+          primary
+          size="tiny"
+        >
+          <Icon name="angle left" />Retour
+        </Button>
+      </div>
     </>
   );
 };

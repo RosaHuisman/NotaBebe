@@ -20,9 +20,6 @@ const mapDispatchToProps = (dispatch) => ({
   welcomePage: () => {
     dispatch(homeInitial());
   },
-  // checkIsLogged: () => {
-  //   dispatch(checkToken());
-  // },
 
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // loadUsersParents: () => {

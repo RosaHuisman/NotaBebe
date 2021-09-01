@@ -24,7 +24,7 @@ const user = (store) => (next) => (action) => {
       const fetchData = async () => {
         try {
           const response = await api.get('/profile/admin/parents');
-          //console.log('reponse du fetch : ', response.data)
+          console.log('reponse du fetch : ', response.data);
           const actionsaveUsersParents = saveUsersParents(response.data);
           store.dispatch(actionsaveUsersParents);
         }
