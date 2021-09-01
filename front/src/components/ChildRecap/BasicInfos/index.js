@@ -18,7 +18,6 @@ const BasicInfos = ({
   child,
  
 }) => {
-//console.log(parent)
   return(
   <div className="basicinfos">
       <div className="basicinfos__infos">

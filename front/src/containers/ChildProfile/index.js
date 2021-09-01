@@ -8,6 +8,9 @@ import { changeTextValue, fetchComments, openModal, postComment, updateComment, 
 // import { findUser } from 'src/store/selectors/user';
 import { findRecap } from 'src/store/selectors/recap';
 import { findComments } from 'src/store/selectors/comment';
+import { fetchChildren } from 'src/store/actions/children';
+
+import { findUser } from 'src/store/selectors/user';
 
 
 
@@ -15,13 +18,14 @@ const mapStateToProps = (state, ownProps) => ({
   //user: findUser(state.user.list, ownProps.match.params.id),
   isOpenInfos: state.user.isOpenInfos,
   commentSend: state.user.commentSend,
-  loading: state.recap.loading,
+  loading: state.comment.loading,
   recap: findRecap(state.recap.list, ownProps.match.params.id),
   comments: findComments(state.comment.list, ownProps.match.params.id),
   modalOpen: state.comment.modalOpen,
   commentId: state.comment.commentId,
   formDeleteOpen: state.comment.formDeleteOpen,
-
+  child: findUser(state.children.list, ownProps.match.params.id),
+  parent: findUser(state.user.list, ownProps.match.params.parent_id),
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
@@ -46,16 +50,20 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   },
 
   loadRecaps: () => {
-    //console.log('loadrecaps container childprofile')
     dispatch(fetchRecaps());
   },
   loadComments: () => {
-    //console.log('loadcomments container childprofile')
     dispatch(fetchComments());
   },
 
+  loadParents: () => {
+    dispatch(fetchUsersParents());
+  },
+
+  loadChildren: () => {
+    dispatch(fetchChildren());
+  },
   onClickOpenModalToFormChangeComment: (commentId) => {
-    //console.log(commentId)
     dispatch(openModal(commentId));
   },
 

@@ -22,25 +22,14 @@ const ChildRecap = ({
 }) => {
 
   useEffect(() => {
-    //console.log('useEffect de childprofile')
     loadChildren();
     loadRecaps();
-    //loadComments();
   }, []);
 
   if (loading) {
     return <Loading />;
   } 
 
-
-  //const data = useLocation();
-
-  //console.log('recap dans childrecap', data.state.recap)
-  //const recap = data.state.recap;
-  //const parent = data.state.parent;
-  //console.log(parent)
-  console.log(child)
-  console.log(recap)
 
   return ( 
   <>

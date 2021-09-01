@@ -11,7 +11,6 @@ import './styles.scss';
 const StaffProfile = ({ searchValue, setSearchValue, handleSubmit, loadUsersStaff, staff, loading }) => {
 
   useEffect(() => {
-    //console.log('je suis dans le useEffect')
     loadUsersStaff();
   }, []);
 

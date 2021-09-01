@@ -91,7 +91,7 @@ const App = ({
 
         {/* Route Parent Children */}
         <PrivateRoute exact path="/profile/parent/:id" component={ParentProfile} />
-        <PrivateRoute exact path="/profile/parent/:id/child/:id" component={ChildProfile} />
+        <PrivateRoute exact path="/profile/parent/:parent_id/child/:id" component={ChildProfile} />
         <PrivateRoute exact path="/profile/parent/:id/child/:child_id" component={ChildProfile} />
         <PrivateRoute exact path="/profile/parent/:id/child/:id/recap" component={ChildRecap} />
 

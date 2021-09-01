@@ -12,7 +12,7 @@ import {
 
 //import { findChildren } from 'src/store/selectors/children';
 
-import { findUser } from 'src/store/selectors/user';
+import { findUser, findChildrenOfParent } from 'src/store/selectors/user';
 
 const mapStateToProps = (state, ownProps) => {
   // console.log('LIST', state.user.list)
@@ -27,9 +27,8 @@ const mapStateToProps = (state, ownProps) => {
     changeInfos: state.user.changeInfos,
     hasInfosError: state.user.changeInfosError,
     hasPasswordError: state.user.changePasswordError,
-    
     user: findUser(state.user.list, ownProps.match.params.id),
-    // child: findChildren(state.children.list, ownProps.id),
+    children: findChildrenOfParent(state.user.list, ownProps.match.params.id),
     loading: state.user.loading,
   };
   return props;
@@ -40,6 +39,8 @@ const mapDispatchToProps = (dispatch) => ({
   loadUsersParents: () => {
     dispatch(fetchUsersParents());
   },
+
+  
 
   openUserInfos: () => {
     dispatch(openChangeInfos());

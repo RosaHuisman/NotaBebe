@@ -16,11 +16,9 @@ import api from './utils/api';
 const comment = (store) => (next) => (action) => {
   switch (action.type) {
     case FETCH_COMMENTS: {
-      //console.log('je suis dans le cas FETCH COMMENTS')
       const fetchData = async () => {
         try {
           const response = await api.get('profile/staff/comments');
-          //console.log('reponse du fetch : ', response.data)
           const actionsaveComments = saveComments(response.data);
           store.dispatch(actionsaveComments);
         }
@@ -33,7 +31,6 @@ const comment = (store) => (next) => (action) => {
       break;
     }
     case POST_COMMENT: {
-      console.log('je suis dans le cas  POST_COMMENT')
       const state = store.getState();
       const parentId = action.parentId;
       const childId = action.childId;
@@ -43,7 +40,6 @@ const comment = (store) => (next) => (action) => {
        child_id: action.childId,
      })
        .then((response) => {
-         console.log(response.data)
          const actionsaveComment = saveComment(response.data);
 
          store.dispatch(actionsaveComment);

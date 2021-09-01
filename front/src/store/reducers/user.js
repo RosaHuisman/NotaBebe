@@ -59,9 +59,6 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case SAVE_INFOS_USER: {
 
-      console.log('je suis dans le cas SAVE_INFOS_USERS');
-      console.log('payload save infos user', action.payload);
-
       return {
         ...state,
         changeInfos: true,
@@ -69,14 +66,7 @@ const reducer = (state = initialState, action) => {
       };
     }
     case SAVE_USERS_PARENTS: {
-
-      console.log('je suis dans le cas SAVE_USERS_PARENTS');
-
-      // console.log('dans le reducer', action.users_parents)
       // const { list } = action.payload;
-      console.log('action payload dans le reducer', action.payload);
-
-
       return {
         ...state,
         list: action.payload,
@@ -85,8 +75,6 @@ const reducer = (state = initialState, action) => {
       };
     }
     case SAVE_USERS_STAFF: {
-      console.log('je suis dans le cas SAVE_USERS_STAFF')
-      console.log(action.payload)
      return {
        ...state,
        list: action.payload,
@@ -122,9 +110,6 @@ const reducer = (state = initialState, action) => {
       };
     }
     case CHANGE_FIELD_VALUE_TWO: {
-
-      console.log('je suis dans le case CHANGE FIELD VALUE TWO');
-
       return {
         ...state,
         [action.key]: action.value,
@@ -136,7 +121,6 @@ const reducer = (state = initialState, action) => {
         isOpenPassword: !state.isOpenPassword,
       };
     case CLOSE_FORM:
-      // console.log('je suis dans le cas CLOSE_CHANGE_INFOS')
       return {
         ...state,
         isOpenInfos: false,

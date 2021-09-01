@@ -1,6 +1,7 @@
 import React, { useEffect} from 'react';
 import PropTypes from 'prop-types';
 
+
 import { useLocation, Link } from 'react-router-dom';
 
 import Header from 'src/components/Header';
@@ -37,38 +38,42 @@ const ChildProfile = ({
   onClickOpenFormDeleteComment,
   formDeleteOpen,
   deleteComment,
+  loadChildren,
+  loadParents,
+  parent
 
   
   // loadUsersParents,
 
 }) => {
 
-  const data = useLocation();
+  //const data = useLocation();
 
   useEffect(() => {
-    //console.log('useEffect de childprofile')
-    loadComments();
+    loadParents();
+    loadChildren();
     loadRecaps();
-    //loadComments();
+    
+    loadComments();
   }, []);
 
   if (loading) {
     return <Loading />;
   } 
+ 
 
   // we retrieve the data of the parent and the child through Link of Children in ParentProfile
   // we could use this informations for the parent and the child
   // I called it parent but the child's information is available too
 
-  //console.log('user dans index profil enfant', data.state.parent)
-  //const parent = data.state.parent;
-  //console.log('les commentaires de mon parent', comments)
+ 
 
   const handleOnClickChangeInfosButton = (e) => {
     e.preventDefault();
     openUserInfos();
   };
 
+  
   return (
      
     <>
@@ -82,6 +87,7 @@ const ChildProfile = ({
             <ChildInfos
               openUserInfos={openUserInfos}
               parent={parent}
+              child={child}
             />
 
             <button
@@ -97,20 +103,14 @@ const ChildProfile = ({
             <ChangeChildInfosForm
               closeForm={closeForm}
               handleChangeInfos={handleChangeInfos}
-              //user={user}
               parent={parent}
+              child={child}
             />
           </>
         )}
 
-        {/* <Link
-          to={{
-            pathname: `/profile/parent/${data.state.parent.id}/child/${data.state.parent.child_id}/recap`,
-            state: {
-              recap: recap,
-              parent: {parent},
-            },
-          }}
+        <Link
+          to={`/profile/parent/${parent.id}/child/${child.id}/recap`}
         >
           <button
             type="button"
@@ -118,7 +118,7 @@ const ChildProfile = ({
           >
             Récap du jour
           </button>
-        </Link> */}
+        </Link>
 
         <Comment
           submitComment={submitComment}

@@ -1,5 +1,5 @@
 // == Import : npm
-import React from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import Field from 'src/containers/Field';
 import UserInfos from '../UserInfos';
@@ -14,10 +14,12 @@ const ChangeUserInfosForm = ({
   handleChangeInfos,
   user,
   changeInfos, 
+  loadUsersParents
 
 }) => {
-  //console.log(user);
-  //console.log(changeInfos)
+  useEffect(() => {
+   loadUsersParents();
+  }, [user]);
 
   const handleOnClickCancelButton = (e) => {
     e.preventDefault();

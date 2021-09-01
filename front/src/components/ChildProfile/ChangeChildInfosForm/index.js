@@ -12,18 +12,17 @@ const ChangeChildInfosForm = ({
   closeForm,
   handleChangeInfos,
   parent,
+  child,
   //user
 }) => {
-  //console.log('parent', parent)
   const handleOnClickCancelButton = (e) => {
     e.preventDefault();
     closeForm();
   };
 
   const handleSubmit = (evt) => {
-     console.log('je clique sur submit')
     evt.preventDefault();
-    // handleChangeInfos(parent.id, parent.child_id);
+     handleChangeInfos(parent.id, child.id);
   };
 
   return (
@@ -32,7 +31,7 @@ const ChangeChildInfosForm = ({
       className="changechildinfosform"
       onSubmit={handleSubmit}
     >
-      {/* <p className="changeuserinfosform__fullname">{child.first_name} </p> */}
+      <p className="changeuserinfosform__fullname">{child.first_name} </p>
       {/* <p className="changechildinfosform__fullname">{parent.pwc_child_first_name}</p> */}
 
       <Field

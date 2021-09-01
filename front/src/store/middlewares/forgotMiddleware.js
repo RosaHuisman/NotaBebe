@@ -7,7 +7,6 @@ import api from './utils/api';
 const forgotMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case FORGOT: {
-      console.log('je suis dans le case FORGOT');
 
       const state = store.getState();
       // const { user: { email, password } } = store.getState();

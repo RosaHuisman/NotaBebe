@@ -10,13 +10,11 @@ const Day = ({
   recap,
  
 }) => {
-  console.log(recap)
   return (
     <div className="day">  
 
       <p className="day__designation">Horaires de sieste(s) :</p>
       <div className="day__result">{recap.naps.map((nap) => (
-        //console.log(nap)
         <div
           key={nap.id}
         > 
@@ -28,7 +26,6 @@ const Day = ({
     </div>
     <p className="day__designation">Repas :</p>
     <div className="day__result">{recap.meals.map((meal) => (
-        //console.log(meal)
         <div
           key={meal.id}
         > 

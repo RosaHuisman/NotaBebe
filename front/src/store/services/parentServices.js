@@ -3,10 +3,8 @@
 import api from '../middlewares/utils/api';
 
 function handleResponse(response) {
-  //console.log('handleResponse', response.data);
   return response.text().then((text) => {
     const data = text && JSON.parse(text);
-    console.log('handleResponseData', data);
     return data;
   });
 }

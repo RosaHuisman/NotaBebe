@@ -11,11 +11,9 @@ import api from './utils/api';
 const recap = (store) => (next) => (action) => {
   switch (action.type) {
     case FETCH_RECAPS: {
-      //console.log('je suis dans le cas FETCH RECAPS')
       const fetchData = async () => {
         try {
           const response = await api.get('profile/staff/allrecaps');
-          //console.log('reponse du fetch : ', response.data)
           const actionsaveRecaps = saveRecaps(response.data);
           store.dispatch(actionsaveRecaps);
         }
@@ -28,10 +26,8 @@ const recap = (store) => (next) => (action) => {
       break;
     }
     case CREATE_RECAP: {
-      console.log('je suis dans le cas CREATE_RECAP')
       const state = store.getState();
       const childId = action.child_id;
-      console.log(childId)
 
      axios.post(`http://notabebe-back.herokuapp.com/profile/staff/child/recap`, {
        child_id: childId,
