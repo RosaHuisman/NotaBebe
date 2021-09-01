@@ -21,8 +21,6 @@ import StaffProfile from 'src/containers/StaffProfile';
 import ChildsList from 'src/containers/ChildsList';
 import Recaps from 'src/components/Recaps';
 import Comments from 'src/containers/Comments';
-import HeaderStaff from 'src/containers/HeaderStaff';
-// import ReadComment from 'src/containers/ReadComment';
 import CreateRecap from 'src/containers/CreateRecap';
 // PARENT CHILD
 import ParentProfile from 'src/containers/ParentProfile';
@@ -81,8 +79,9 @@ const App = ({
         <PrivateRoute exact path="/profile/staff/:id/comments" component={Comments} />
 
         {/* <PrivateRoute exact path="/staff/:id/comments" component={ReadComment} /> */}
-        <PrivateRoute exact path="/profile/staff/children/:id/createrecap" component={CreateRecap} />
-
+        {/* <PrivateRoute exact path="/profile/staff/children/:id/createrecap" component={CreateRecap} /> */}
+        <PrivateRoute exact path="/profile/staff/childrensetSearchNewValue:id/createrecap" component={CreateRecap} />
+        
         {/* Route Parent Children */}
         <PrivateRoute exact path="/profile/parent/:id" component={ParentProfile} />
         <PrivateRoute exact path="/profile/parent/:id/child/:id" component={ChildProfile} />
