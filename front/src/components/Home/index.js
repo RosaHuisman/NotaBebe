@@ -27,6 +27,10 @@ const Home = ({
     <>
       {getToken ? (
         <>
+          <div>
+            <Header />
+          </div>
+
           {user.roleId === 1
             && (
               <Redirect to={`/profile/parent/${user.userId}`} />
