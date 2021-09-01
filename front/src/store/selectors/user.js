@@ -17,3 +17,13 @@ export function findUser(users, searchedId) {
 
   return user;
 }
+
+export const childSearched = (children, commentChildId) => {
+  //console.log(children)
+  //console.log(commentChildId)
+  const child = children.find((child) => {
+    return child.id == commentChildId
+  });
+  
+   return child.first_name
+};

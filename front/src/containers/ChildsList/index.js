@@ -10,7 +10,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   
   loadChildren: () => {
-    console.log('coucou')
     dispatch(fetchChildren());
   },
 

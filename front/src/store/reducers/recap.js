@@ -4,6 +4,8 @@ import {
   CHANGE_MOOD,
   CHANGE_TIME_NAP,
   SAVE_RECAPS,
+  CHANGE_DATE,
+  SAVE_RECAP,
 } from 'src/store/actions/recap';
 
 
@@ -12,16 +14,7 @@ const initialState = {
   isOpen: false,
   loading: true,
   list: [],
-  mood: '',
-  snap: '',
-  enap: '',
-  nap: '',
-  snap2: '',
-  enap2: '',
-  nap2: '',
-  meal: '',
-  others: '',
-
+  time: '12:00:00',
 };
 
 const reducer = (state = initialState, action ) => {
@@ -32,8 +25,6 @@ const reducer = (state = initialState, action ) => {
         isOpen: !state.isOpen,
       };
     case CHANGE_VALUE_TEXT: {
-      //console.log(action.key)
-      //console.log(action.value)
       return {
         ...state,
         [action.key]: action.value,
@@ -51,14 +42,24 @@ const reducer = (state = initialState, action ) => {
         [action.key]: action.value,
       }
       case SAVE_RECAPS: {
-        //console.log('je suis dans le cas SAVE_RECAPS')
-        //console.log('action payload dans le reducer recap',action.payload)
        return {
          ...state,
          list: action.payload,
          loading: false,
        };
      }
+     case CHANGE_DATE: {
+      return {
+        ...state,
+        [action.key]: action.value,
+      }; 
+    }
+    case SAVE_RECAP: {
+      return {
+        ...state,
+        recap: action.payload,
+      }
+    }
     default:
       return state;
   }
