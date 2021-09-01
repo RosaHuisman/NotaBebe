@@ -61,7 +61,7 @@ const ChildProfile = ({
   // I called it parent but the child's information is available too
 
   //console.log('user dans index profil enfant', data.state.parent)
-  const parent = data.state.parent;
+  //const parent = data.state.parent;
   //console.log('les commentaires de mon parent', comments)
 
   const handleOnClickChangeInfosButton = (e) => {
@@ -103,7 +103,7 @@ const ChildProfile = ({
           </>
         )}
 
-        <Link
+        {/* <Link
           to={{
             pathname: `/profile/parent/${data.state.parent.id}/child/${data.state.parent.child_id}/recap`,
             state: {
@@ -118,7 +118,7 @@ const ChildProfile = ({
           >
             Récap du jour
           </button>
-        </Link>
+        </Link> */}
 
         <Comment
           submitComment={submitComment}

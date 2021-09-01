@@ -29,8 +29,7 @@ const reducer = (state = initialState, action ) => {
         ...state,
         [action.key]: action.value,
       }; 
-    }
-         
+    }         
     case CHANGE_MOOD:
       return {
         ...state,

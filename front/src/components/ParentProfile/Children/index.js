@@ -22,7 +22,7 @@ const Children = ({
       <h3 className="children__title"> Mon enfant</h3>
 
       <div className="children__infos">
-        {user.map((parent) =>
+        {/* {user.map((parent) =>
         // console.log(child)
           (
             <Link
@@ -47,7 +47,7 @@ const Children = ({
               </div>
             </Link>
 
-          ))}
+          ))} */}
       </div>
     </div>
   );

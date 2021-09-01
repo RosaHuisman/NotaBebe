@@ -15,25 +15,26 @@ import './styles.scss';
 const BasicInfos = ({
   recap,
   parent,
+  child,
  
 }) => {
 //console.log(parent)
   return(
   <div className="basicinfos">
       <div className="basicinfos__infos">
-      {recap[0].mood === 'triste' ? 
+      {recap.mood === 'triste' ? 
             <img src={childGrumpyIcon} className="basicinfos__infos__icon" alt="Child Icon" />
-          : recap[0].mood === 'moyen' ? 
+          : recap.mood === 'moyen' ? 
           <img src={childMediumIcon} className="basicinfos__infos__icon" alt="Child Icon" /> 
-          : recap[0].mood === 'heureux' ?
+          : recap.mood === 'heureux' ?
           <img src={childHappyIcon} className="basicinfos__infos__icon" alt="Child Icon" />
           : null  
         }
         
         
         <div className="basicinfos__infos__nameandmood">
-          <p className="basicinfos__infos__firstname">{parent.parent.pwc_child_first_name}</p>
-          <p className="basicinfos__infos__mood">{recap[0].mood}</p>
+          <p className="basicinfos__infos__firstname">{child.first_name}</p>
+          <p className="basicinfos__infos__mood">{recap.mood}</p>
         </div>
       </div>
     </div>

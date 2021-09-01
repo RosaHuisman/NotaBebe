@@ -11,7 +11,7 @@ const UserInfos = ({ user }) =>
   (
     <div className="userinfos">
       <div className="userinfos__infos">
-        <table>
+        {/* <table>
           <tbody>
             <tr>
               <td className="userinfos__infos__designation">Nom:</td>
@@ -38,7 +38,7 @@ const UserInfos = ({ user }) =>
               <td className="userinfos__infos__result">{user.email}</td>
             </tr>
           </tbody>
-        </table>
+        </table> */}
       </div>
     </div>
   );

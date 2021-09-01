@@ -21,9 +21,9 @@ const ChangeChildInfosForm = ({
   };
 
   const handleSubmit = (evt) => {
-    // console.log('je clique sur submit')
+     console.log('je clique sur submit')
     evt.preventDefault();
-    handleChangeInfos(parent.id, parent.child_id);
+    // handleChangeInfos(parent.id, parent.child_id);
   };
 
   return (
@@ -33,7 +33,7 @@ const ChangeChildInfosForm = ({
       onSubmit={handleSubmit}
     >
       {/* <p className="changeuserinfosform__fullname">{child.first_name} </p> */}
-      <p className="changechildinfosform__fullname">{parent.pwc_child_first_name}</p>
+      {/* <p className="changechildinfosform__fullname">{parent.pwc_child_first_name}</p> */}
 
       <Field
         name="allergy"
