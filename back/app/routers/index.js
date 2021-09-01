@@ -10,7 +10,7 @@ const checkTokenMiddleware = require('../middlewares/token');
 
 const router = express.Router();
 
-router.use('/', checkTokenMiddleware);
+router.use('/checktoken', checkTokenMiddleware);
 
 // ROUTES TO DISPLAY ALL DATA
 
