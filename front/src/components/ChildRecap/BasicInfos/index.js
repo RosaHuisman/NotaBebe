@@ -26,7 +26,7 @@ const BasicInfos = ({
             <img src={childGrumpyIcon} className="basicinfos__infos__icon" alt="Child Icon" />
           : recap.mood === 'middle' ? 
           <img src={childMediumIcon} className="basicinfos__infos__icon" alt="Child Icon" /> 
-          : recap.mood === 'heureux' ?
+          : recap.mood === 'happy' ?
           <img src={childHappyIcon} className="basicinfos__infos__icon" alt="Child Icon" />
           : null  
         }

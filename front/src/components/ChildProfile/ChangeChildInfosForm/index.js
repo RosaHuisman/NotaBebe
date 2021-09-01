@@ -31,7 +31,7 @@ const ChangeChildInfosForm = ({
       className="changechildinfosform"
       onSubmit={handleSubmit}
     >
-      <p className="changeuserinfosform__fullname">{child.first_name} </p>
+      <p className="changechildinfosform__firstname">{child.first_name} </p>
       {/* <p className="changechildinfosform__fullname">{parent.pwc_child_first_name}</p> */}
 
       <Field

@@ -12,6 +12,8 @@ const CreateRecap = ({
   onChangeValue, 
   name, 
   moodSelected, 
+  // timeNapStartSelected,
+  // timeNapEndSelected,
   timeNapSelected,
   value,
   submitCreateRecap,
@@ -44,8 +46,19 @@ const CreateRecap = ({
 
   const selectTimeNap = (e) => {
     e.preventDefault();
+    console.log(e.target.value)
     timeNapSelected(e.target.value, e.target.name);
   }
+
+  // const selectTimeStartNap = (e) => {
+  //   e.preventDefault();
+  //   timeNapStartSelected(e.target.value, e.target.name);
+  // }
+
+  // const selectTimeEndNap = (e) => {
+  //   e.preventDefault();
+  //   timeNapEndSelected(e.target.value, e.target.name);
+  // }
 
   const selectDate = (e) => {
     e.preventDefault();
@@ -77,41 +90,43 @@ const CreateRecap = ({
             <option value="grumpy">Grincheux</option>
           </select>
         </div>
-        <div className="createrecap__nap">
-          <label className="createrecap__nap__label" htmlFor="snap">Début sieste:</label>
+        
+      <div className="createrecap__nap">
+      <h2 className="createrecap__nap__title">Sieste </h2>
+
+        <div className="createrecap__nap__timeinputs">
+        <p>De</p>
           <input
             type="time"
             id="snap"
-            name="start_nap_1"
+            name="start_time"
             onChange={selectTimeNap}
-            required
+            //onChange={selectTimeStartNap}
             className="createrecap__nap__input"
           />
-        </div>
-        <div className="createrecap__nap">
-          <label className="createrecap__nap__label" htmlFor="enap">Fin sieste:</label>
+         <p> à </p>
           <input
             type="time"
             id="enap"
-            name="end_nap_1"
+            name="end_time"
             onChange={selectTimeNap}
-            required
+            //onChange={selectTimeEndNap}
+
             className="createrecap__nap__input"
           />
         </div>
 
         <div className="createrecap__nap__comment">
-          <label htmlFor="nap" className="createrecap__nap__comment__label">Commentaire sieste:</label>
           <textarea
             id="nap"
-            name="comment_nap_1"
+            name="comment_nap"
             onChange={changeValue}
             rows="3"
             placeholder="Ecrivez votre commentaire"
             className="createrecap__nap__comment__textarea"
           />
         </div>
-
+        </div>
         {!isOpen ? (
           
             <button 
@@ -131,7 +146,6 @@ const CreateRecap = ({
               id="snap2"
               name="start_nap_2"
               onChange={selectTimeNap}
-              required
               className="createrecap__nap__input"
             />
           </div>
@@ -142,7 +156,6 @@ const CreateRecap = ({
               id="enap2"
               name="end_nap_2"
               onChange={selectTimeNap}
-              required
               className="createrecap__nap__input"
             />
           </div>
@@ -166,10 +179,10 @@ const CreateRecap = ({
         )}
 
       <div className="createrecap__nap__comment">
-          <label htmlFor="meal" className="createrecap__nap__comment__label">Commentaires repas:</label>
+          <label htmlFor="meal" className="createrecap__nap__comment__label">Commentaire repas:</label>
           <textarea
             id="meal"
-            name="meal"
+            name="comment_meal"
             onChange={changeValue}
             rows="3"
             className="createrecap__nap__comment__textarea"

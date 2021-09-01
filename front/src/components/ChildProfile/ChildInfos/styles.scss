@@ -20,16 +20,13 @@
     text-align: center;
   }
 
-    &__designation {
+    &__infos {
         font-weight: bold;
-      }
-    &__result {
-        padding-left: v.$gutter/2;
         text-overflow: ellipsis;
         word-wrap: break-word;
         font-size: 1.1em;
-        
       }
+    
     }
 
   
