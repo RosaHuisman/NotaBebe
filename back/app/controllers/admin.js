@@ -15,7 +15,14 @@ const adminController = {
     addUser: async (request, response, next) => {
         try {
 
-            const newUser = await adminDataMapper.insertOne(request.body);
+            const password = request.body.password;
+
+            const hash = bcrypt.hashSync(password, 10);
+
+            const newUser = await adminDataMapper.insertOne({
+                ...request.body,
+                password: hash
+            });
 
             if (!newUser) {
                 return next();

@@ -198,8 +198,11 @@ const userController = {
                 return;
             };
 
+            console.log("password", password);
+            console.log("user.password", user.password);
             // Checking if password is valid thanks to bcrypt's compare function
             const pwResult = bcrypt.compareSync(password, user.password);
+        
 
             // if the password is correct 
             if (pwResult) {
@@ -256,24 +259,29 @@ const userController = {
         try {
             // check that the data is coherent
 
-            // const oldPassword = request.body.oldPassword;
+            const oldPassword = request.body.password;
+
+            console.log(oldPassword);
+
+            const compareHash = bcrypt.compareSync(oldPassword, user.password);
+            console.log(compareHash);
+
             // côté datamapper : select password from "user" where id=$1
             // id = request.params.id
             // -- à ce niveau-là, c'est le oldpassword
 
             // après il faudrait pouvoir comparer
 
-
             // voir si c'est le nom choisi en front
             // vérifier s'il match avec l'ancien mdp présent en BDD ?
             // si ça matche pas -> errors.push('blabla');
-            const password = request.body.password;
+            const newPassword = request.body.password;
 
             const errors = [];
 
 
             // checking string length
-            if (password.length === 0) {
+            if (newPassword.length === 0) {
                 errors.push("Le mot de passe est obligatoire");
             }
 
@@ -284,7 +292,7 @@ const userController = {
             }
 
             const userId = Number(request.params.id);
-            const hash = bcrypt.hashSync(password, 10);
+            const hash = bcrypt.hashSync(newPassword, 10);
 
             // save the data into the database
             const user = await userDataMapper.updatePassword(hash, userId);

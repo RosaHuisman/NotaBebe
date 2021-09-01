@@ -36,7 +36,8 @@ PATCH http://localhost:3000/profile/parent/2/password
 PATCH http://localhost:3000/profile/parent/6/password
 Content-Type: application/json
 
-{
+{   
+    
     "password": "admin"
 }
 
