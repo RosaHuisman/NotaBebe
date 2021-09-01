@@ -1,5 +1,6 @@
 import {
-  SHOW_FIELD_NAP,
+  ADD_FIELD_NAP,
+  REMOVE_FIELD_NAP,
   CHANGE_VALUE_TEXT,
   CHANGE_MOOD,
   CHANGE_TIME_NAP,
@@ -13,6 +14,16 @@ import {
 
 
 const initialState = {
+  napFormLimit: 1,
+  napFormList: [
+    {
+      id: 1,
+      nameStartNap: `start_time_1`,
+      nameEndNap: 'end_time_1',
+      nameCommentNap: 'comment_nap_1'
+    },
+  ],
+
   isOpen: false,
   loading: true,
   list: [],
@@ -35,19 +46,37 @@ const initialState = {
 
 const reducer = (state = initialState, action ) => {
   switch (action.type) {
-    case SHOW_FIELD_NAP:
-      const newNap = {
-        start_time: state.start_nap_1,
-        end_time: state.end_nap_1,
-        comment: state.comment_nap_1 
-      } 
+    case ADD_FIELD_NAP:{
 
-      console.log(newNap)
+      const newId = Math.max(...state.napFormList.map(form => form.id)) + 1
+
+      const newNap = {
+        id: newId,
+        nameStartNap: `start_time_${newId}`,
+        nameEndNap: `end_time_${newId}`,
+        nameCommentNap: `comment_nap_${newId}`
+      } 
       return {
         ...state,
-        isOpen: !state.isOpen,
-        naps: [{...newNap}]
+        napFormList: [
+          ...state.napFormList,
+          newNap
+        ],
+        napFormLimit: state.napFormLimit + 1
       };
+    }
+
+    case REMOVE_FIELD_NAP:{
+
+      const newFormList = [...state.napFormList]
+      newFormList.pop()
+      return {
+        ...state,
+        napFormList: [...newFormList],
+        napFormLimit: state.napFormLimit - 1
+      };
+    }
+
     case CHANGE_VALUE_TEXT: {
       return {
         ...state,

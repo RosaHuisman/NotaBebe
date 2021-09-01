@@ -1,6 +1,7 @@
 export const FETCH_RECAPS = 'FETCH_RECAPS';
 export const SAVE_RECAPS = 'SAVE_RECAPS';
-export const SHOW_FIELD_NAP = 'SHOW_FIELD_NAP';
+export const ADD_FIELD_NAP = 'ADD_FIELD_NAP';
+export const REMOVE_FIELD_NAP = 'REMOVE_FIELD_NAP';
 export const CHANGE_VALUE_TEXT = 'CHANGE_VALUE_TEXT';
 export const CHANGE_MOOD = 'CHANGE_MOOD';
 // export const CHANGE_TIME_NAP_START = 'CHANGE_TIME_NAP_START';
@@ -20,8 +21,12 @@ export const saveRecaps = (recaps) => ({
   payload: recaps,
 });
 
-export const showFieldNap = () => ({
-  type: SHOW_FIELD_NAP,
+export const addFieldNap = () => ({
+  type: ADD_FIELD_NAP,
+});
+
+export const removeFieldNap = () => ({
+  type: REMOVE_FIELD_NAP,
 });
 
 export const changeValueText = (key, value) => ({

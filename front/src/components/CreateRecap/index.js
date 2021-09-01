@@ -17,7 +17,12 @@ const CreateRecap = ({
   timeNapSelected,
   value,
   submitCreateRecap,
-  dateSelected
+  dateSelected,
+
+  napFormList,
+  napFormLimit,
+  removeLastNap,
+  addNewNap,
 
 }) => {
 
@@ -30,8 +35,12 @@ const CreateRecap = ({
     submitCreateRecap(child.id);
   }
 
-  const handleClick = () => {
-    openNewNap();
+  const handleAddNapFormClick = () => {
+    addNewNap();
+  };
+
+  const handleRemoveNapFormClick = () => {
+    removeLastNap();
   };
 
   const changeValue = (e) => {
@@ -91,91 +100,63 @@ const CreateRecap = ({
           </select>
         </div>
         
-      <div className="createrecap__nap">
-      <h2 className="createrecap__nap__title">Sieste </h2>
 
-        <div className="createrecap__nap__timeinputs">
-        <p>De</p>
-          <input
-            type="time"
-            id="snap"
-            name="start_time"
-            onChange={selectTimeNap}
-            //onChange={selectTimeStartNap}
-            className="createrecap__nap__input"
-          />
-         <p> à </p>
-          <input
-            type="time"
-            id="enap"
-            name="end_time"
-            onChange={selectTimeNap}
-            //onChange={selectTimeEndNap}
+        // FORMULAIRE NAPS
+      
+      {napFormList.map((form) => (
+        <div key={form.id} className="createrecap__nap">
+        <h2 className="createrecap__nap__title">Sieste </h2>
 
-            className="createrecap__nap__input"
-          />
-        </div>
-
-        <div className="createrecap__nap__comment">
-          <textarea
-            id="nap"
-            name="comment_nap"
-            onChange={changeValue}
-            rows="3"
-            placeholder="Ecrivez votre commentaire"
-            className="createrecap__nap__comment__textarea"
-          />
-        </div>
-        </div>
-        {!isOpen ? (
-          
-            <button 
-              type="button" 
-              onClick={handleClick} 
-              className="createrecap__nap__button"
-              >
-                Ajouter une sieste
-              </button>
-          
-        ) : (
-          <>
-            <div className="createrecap__nap">
-            <label className="createrecap__nap__label" htmlFor="snap2">Début sieste:</label>
+          <div className="createrecap__nap__timeinputs">
+          <p>De</p>
             <input
               type="time"
-              id="snap2"
-              name="start_nap_2"
+              id="snap"
+              name={form.nameStartNap}
               onChange={selectTimeNap}
+              //onChange={selectTimeStartNap}
               className="createrecap__nap__input"
             />
-          </div>
-          <div className="createrecap__nap">
-            <label className="createrecap__nap__label" htmlFor="enap2">Fin sieste:</label>
+          <p> à </p>
             <input
               type="time"
-              id="enap2"
-              name="end_nap_2"
+              id="enap"
+              name={form.nameEndNap}
               onChange={selectTimeNap}
+              //onChange={selectTimeEndNap}
+
               className="createrecap__nap__input"
             />
           </div>
 
           <div className="createrecap__nap__comment">
-          <label htmlFor="nap2" className="createrecap__nap__comment__label">Commentaire sieste:</label>
-          <textarea
-            id="nap"
-            name="comment_nap_2"
-            onChange={changeValue}
-            rows="3"
-            placeholder="Ecrivez votre commentaire"
-            className="createrecap__nap__comment__textarea"
-          />
+            <textarea
+              id="nap"
+              name={form.nameCommentNap}
+              onChange={changeValue}
+              rows="3"
+              placeholder="Ecrivez votre commentaire"
+              className="createrecap__nap__comment__textarea"
+            />
+          </div>
         </div>
+      ))}
 
-              <button type="buttons" onClick={handleClick} className="createrecap__nap__button">Annuler</button>
-
-           
-          </>
+        // BOUTON AJOUTER
+        {napFormLimit < 3 && (
+          <button 
+            type="button" 
+            onClick={handleAddNapFormClick} 
+            className="createrecap__nap__button"
+            >
+              Ajouter une sieste
+          </button>
+        )}
+          
+        
+        // BOUTON ANNULER
+        {napFormLimit > 1 && (
+          <button type="button" onClick={handleRemoveNapFormClick} className="createrecap__nap__button">Annuler</button>
         )}
 
       <div className="createrecap__nap__comment">
