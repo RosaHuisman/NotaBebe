@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
-import { Button, Icon } from 'semantic-ui-react';
+import { Icon } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import Field from 'src/containers/Field';
 import Header from 'src/containers/Header';
@@ -60,17 +60,11 @@ const ForgotPassword = ({
           </button>
         </form>
       </div>
-      <div className="backButtonContact">
-        <Button
-          type="button"
-          onClick={previousPage}
-          icon
-          labelPosition="left"
-          primary
-          size="tiny"
-        >
-          <Icon name="angle left" />Retour
-        </Button>
+
+      <div className="backButton">
+        <div className="backButton__contentButton">
+          <button onClick={previousPage} type="button" className="settings__send">Retour</button>
+        </div>
       </div>
     </>
   );

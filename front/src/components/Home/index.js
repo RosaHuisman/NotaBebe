@@ -121,13 +121,15 @@ const Home = ({
                     </form>
                   </div>
 
-                  <Link
-                    className="contentButton"
-                    exact="true"
-                    to="/contact"
-                  >
-                    <button type="button" className="settings__send">Contactez-nous</button>
-                  </Link>
+                  <div className="backButton">
+                    <Link
+                      className="backButton__contentButton"
+                      exact="true"
+                      to="/contact"
+                    >
+                      <button type="button" className="settings__send">Contactez-nous</button>
+                    </Link>
+                  </div>
                 </>
               )}
           </div>

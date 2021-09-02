@@ -28,6 +28,25 @@
      
     }
 
+.filter {
+  text-align: center;
+  margin-top: 5px;
+  input {
+    border-radius: 5px;
+    border: 1px solid #999;
+    height: 35px;
+    padding-left: 15px;
+  }
+}
+
+.recap {
+  margin: 2rem 1rem;
+  border: 1px solid v.$primary-color;
+  border-radius: 5px;
+  padding: 1.4rem 2rem;
+  background-color: v.$bg-color-card;
+}
+
   &__meal {
     text-align: center;
   }

@@ -4,7 +4,6 @@ import { Route, Switch, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 // == Import composants /components
-import WelcomeHome from 'src/components/WelcomeHome';
 import Footer from 'src/components/Footer';
 import ContactDetails from 'src/components/ContactDetails';
 import ContactAdmin from 'src/components/Admin/ContactAdmin';
@@ -43,7 +42,6 @@ const App = ({
   checkIsLogged,
 }) => {
   const location = useLocation();
-  console.log('LES INFO USER', user);
   useEffect(() => {
     window.scroll(0, 0);
   }, [location]);
@@ -62,12 +60,8 @@ const App = ({
 
   return (
     <>
-      {/* <Header /> */}
       <Switch>
-        {/* // à test ChildProfile */}
-        {/* <Route exact path="/" component={WelcomeHome} /> */}
         <Route exact path="/" component={Home} />
-        {/* <Route exact path="/login" component={Home} /> */}
         <Route exact path="/forgot" component={ForgotPassword} />
         <Route exact path="/contact" component={ContactDetails} />
 
@@ -76,28 +70,20 @@ const App = ({
         <>
           <PrivateRoute exact path="/profile/parent/:id" component={ParentProfile} />
           <PrivateRoute exact path="/profile/parent/:parent_id/child/:id" component={ChildProfile} />
-          {/* <PrivateRoute exact path="/profile/parent/:parent_id/child/:id" component={ChildProfile} /> */}
           <PrivateRoute exact path="/profile/parent/:id/child/:id/recap" component={ChildRecap} />
         </>
         )}
 
-
-       
+        {/* Route Staff */}
         {user.roleId === 2 && (
         <>
-        {/* Route Staff */}
-        <PrivateRoute exact path="/profile/staff/:id" component={StaffProfile} />
-        
-        {/* <PrivateRoute exact path="/staff/:id/" component={StaffProfile} /> */}
-        
-        <PrivateRoute exact path="/profile/staff/:id/children" component={ChildsList} />
-        <PrivateRoute exact path="/profile/staff/:id/recaps" component={Recaps} />
-        <PrivateRoute exact path="/profile/staff/:id/comments" component={Comments} />
-
-        {/*<PrivateRoute exact path="/staff/:id/comments" component={ReadComment} /> */}
-        <PrivateRoute exact path="/profile/staff/children/:id/createrecap" component={CreateRecap} />
-        {/* <PrivateRoute exact path="/profile/staff/childrensetSearchNewValue:id/createrecap" component={CreateRecap} /> */}
-
+          <PrivateRoute exact path="/profile/staff/:id" component={StaffProfile} />
+          <PrivateRoute exact path="/profile/staff/:id/children" component={ChildsList} />
+          <PrivateRoute exact path="/profile/staff/:id/recaps" component={Recaps} />
+          <PrivateRoute exact path="/profile/staff/:id/comments" component={Comments} />
+          {/* <PrivateRoute exact path="/staff/:id/comments" component={ReadComment} /> */}
+          <PrivateRoute exact path="/profile/staff/children/:id/createrecap" component={CreateRecap} />
+          {/* <PrivateRoute exact path="/profile/staff/childrensetSearchNewValue:id/createrecap" component={CreateRecap} /> */}
         </>
         )}
 

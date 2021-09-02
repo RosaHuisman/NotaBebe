@@ -104,16 +104,18 @@
   }
 }
 
-.contentButton {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: 2rem auto;
-  margin-bottom: 6rem;
-  padding: 0 1rem;
-  width: 300px;
-  border-radius: 10px;
-  border: 1px solid #eee;
-  box-shadow: 0 5px 9px rgba(0, 0, 0, 0.3); 
+.backButton {
+  &__contentButton {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 2rem auto;
+    margin-bottom: 6rem;
+    padding: 0 1rem;
+    width: 300px;
+    border-radius: 10px;
+    border: 1px solid #eee;
+    box-shadow: 0 5px 9px rgba(0, 0, 0, 0.3);
+  }
 }

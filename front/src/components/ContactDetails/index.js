@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import Header from 'src/containers/Header';
 
-import { Icon, Button } from 'semantic-ui-react';
+import { Icon } from 'semantic-ui-react';
 
 import './styles.scss';
 
@@ -24,34 +24,37 @@ const ContactDetails = () => {
       <div>
         <Header />
       </div>
-      <div className="contact__details">
-        <div className="nursery__contact">
-          <h1>Pour contacter la crèche:</h1>
-          <p className="adress"><span><Icon name="home" /></span>7 rue des bambins, 75000 Paris</p>
-          <p className="mail"><span><Icon name="mail" /></span>contact-creche@notabebe.fr</p>
-          <p className="phone"><span><Icon name="phone" /></span>01.23.45.67.89</p>
+      <div className="containerContact">
+        <div className="contactDetails">
+          <div className="contactDetails__nursery">
+            <h1>Pour contacter la crèche:</h1>
+            <div className="contactDetails__txt">
+              <p><Icon name="home" />7 rue des bambins, 75000 Paris</p>
+              <p><Icon name="mail" />Contact-creche@notabebe.fr</p>
+              <p><Icon name="phone" />01.23.45.67.89</p>
+            </div>
+          </div>
+          <div className="contactDetails__admin">
+            <h1>Pour contacter l'Administrateur du site:</h1>
+            <div className="contactDetails__txt">
+              <p><Icon name="mail" />admin@notabebe.fr</p>
+            </div>
+          </div>
+          <div className="contactDetails__devTeam">
+            <h1>Pour contacter l'équipe de conception du site:</h1>
+            <div className="contactDetails__txt">
+              <p><Icon name="mail" />devteam@notabebe.fr</p>
+            </div>
+          </div>
         </div>
-        <div className="admin__contact">
-          <h1>Pour contacter l'Administrateur du site:</h1>
-          <p className="mail"><span><Icon name="mail" /></span>admin@notabebe.fr</p>
-        </div>
-        <div className="dev__team">
-          <h1>Pour contacter l'équipe de conception du site:</h1>
-          <p className="mail"><span><Icon name="mail" /></span>devteam@notabebe.fr</p>
-        </div>
-        <div className="backButtonContact">
-          <Button
-            type="button"
-            onClick={previousPage}
-            icon
-            labelPosition="left"
-            primary
-            size="tiny"
-          >
-            <Icon name="angle left" />Retour
-          </Button>
+
+        <div className="backButton">
+          <div className="backButton__contentButton">
+            <button onClick={previousPage} type="button" className="settings__send">Retour</button>
+          </div>
         </div>
       </div>
+
     </>
   );
 };
