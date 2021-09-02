@@ -1,9 +1,10 @@
-import React, {useState, useEffect} from 'react';
-import PropTypes from 'prop-types'
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import Loading from 'src/components/App/Loading';
 import Field from 'src/containers/Field';
 
 
+import HeaderStaff from 'src/containers/HeaderStaff';
 
 import { Link } from 'react-router-dom';
 
@@ -95,8 +96,7 @@ const StaffProfile = ({
     )}
    
 StaffProfile.propTypes = {
-  
-}
 
-export default StaffProfile
+};
 
+export default StaffProfile;

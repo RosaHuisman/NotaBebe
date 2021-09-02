@@ -50,6 +50,7 @@ const initialState = {
   postcode: '',
   city: '',
   role_id: '',
+  user_id: '',
   contentAdminPageAdd: true,
   addUserSuccess: false,
   addUserError: false,
@@ -66,12 +67,18 @@ const reducer = (state = initialState, action) => {
       };
     }
     case SAVE_USERS_PARENTS: {
-      // const { list } = action.payload;
+      console.log('je suis dans le cas SAVE_USERS_PARENTS');
+      const { user_id, role_id } = action.payload;
+
+      console.log('action payload dans le reducer', action.payload);
+
       return {
         ...state,
         list: action.payload,
-        // list: action.users_parents,
+        user_id,
+        role_id,
         loading: false,
+        logged: true,
       };
     }
     case SAVE_USERS_STAFF: {

@@ -9,7 +9,8 @@ h1 {
 .comments__list {
   display: flex;
   flex-direction: column;
-  margin-bottom: 5rem;
+  margin: 0 1.5rem;
+  padding-bottom: 5rem;
 }
 
 .comment {

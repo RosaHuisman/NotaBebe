@@ -7,7 +7,9 @@ import {
   closeModalDeleteUser,
   deleteUser,
   AdminAddUser,
+  resetFormAdmin,
 } from 'src/store/actions';
+import { checkToken } from 'src/store/actions/authActions';
 
 const mapStateToProps = (state) => ({
   // loading: state.admin.loading,
@@ -27,7 +29,8 @@ const mapStateToProps = (state) => ({
   error: state.admin.error,
   FormDeleteOpen: state.admin.FormDeleteOpen,
   userDeleteId: state.admin.userDeleteId,
-  // deletedUserError: state.admin.deletedUserError,
+  deletedUserSuccess: state.admin.deletedUserSuccess,
+  deletedUserError: state.admin.deletedUserError,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -54,12 +57,12 @@ const mapDispatchToProps = (dispatch) => ({
   handleAddUser: () => {
     dispatch(AdminAddUser());
   },
-  // onApiChange: () => {
-  //   dispatch(logout());
-  // },
-  // loadMoreUsers: () => {
-  //   dispatch(logout());
-  // },
+  resetFormAdmin: () => {
+    dispatch(resetFormAdmin());
+  },
+  checkIsLogged: () => {
+    dispatch(checkToken());
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Admin);

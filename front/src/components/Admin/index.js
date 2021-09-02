@@ -3,14 +3,13 @@ import PropTypes from 'prop-types';
 import { Link, useLocation, useHistory } from 'react-router-dom';
 import { Button, Icon, Table, Input, Form } from 'semantic-ui-react';
 
-import HeaderAdmin from 'src/components/Admin/HeaderAdmin';
+import HeaderAdmin from 'src/containers/HeaderAdmin';
 import logoAdmin from 'src/images/logo_admin.png';
 
 import Loading from '../App/Loading';
 // import UsersListData from './data.json';
 
 import './styles.scss';
-import { deleteUser } from '../../store/actions';
 
 const AdminHome = ({
   handleDelete,
@@ -31,8 +30,27 @@ const AdminHome = ({
   deleteUser,
   deletedUserError,
   deletedUserSuccess,
+  checkIsLogged,
 
 }) => {
+  const [searchNewValue, setSearchNewValue] = useState('');
+  const [UsersListData, setUsersListData] = useState([]);
+
+  useEffect(() => {
+    fetch('https://notabebe-back.herokuapp.com/profile/admin/allusers')
+      .then((response) => response.json())
+      .then((json) => setUsersListData(json));
+  }, []);
+
+  useEffect(() => {
+    // ici on veut vérifier si l'utilisateur est déjà connecté
+    // au 1e rendu du composant App
+    checkIsLogged();
+  }, []);
+
+  // if (loading) {
+  //   return <Loading />;
+  // }
   // le hook useLocation nous renvoie l'url courante
   const location = useLocation();
   const history = useHistory();
@@ -40,15 +58,6 @@ const AdminHome = ({
   useEffect(() => {
     window.scroll(0, 0);
   }, [location]);
-
-  const [searchNewValue, setSearchNewValue] = useState('');
-  const [UsersListData, setUsersListData] = useState([]);
-
-  useEffect(() => {
-    fetch('http://notabebe-back.herokuapp.com/profile/admin/allusers')
-      .then((response) => response.json())
-      .then((json) => setUsersListData(json));
-  }, []);
 
   const addUserPage = () => {
     history.push('/admin/adduser');
@@ -69,27 +78,45 @@ const AdminHome = ({
     deleteUser(id);
   };
 
-  if (loading) {
-    return <Loading />;
-  }
-
   return (
     <>
       <div className="adminMobileHome">
+        <div>
+          <HeaderAdmin />
+        </div>
         <img src={logoAdmin} className="adminMobileHome__logo" alt="admin" />
         <div className="adminMobileHome__txt">
           Pour une meilleur expérience, veuillez vous connecter à partir d'un ordinateur.
         </div>
-        <Link to="/">
-          <div className="button-settings-back">
-            Retour à l'accueil
-          </div>
-        </Link>
       </div>
 
       <div className="adminDesktopHome">
         <div>
           <HeaderAdmin />
+        </div>
+
+        <div className="menu">
+          <Link
+            className="menu__link"
+            activeclassname="menu__link__selected"
+            to="/admin"
+          >
+            Listes des utilisateurs
+          </Link>
+          <Link
+            className="menu__link"
+            activeclassname="menu__link__selected"
+            to="/actualites"
+          >
+            Actualités
+          </Link>
+          <Link
+            className="menu__link"
+            activeclassname="menu__link__selected"
+            to="/admin/contacts"
+          >
+            Contact
+          </Link>
         </div>
 
         <div className="adminDesktopHome__adminTitle">
@@ -114,7 +141,7 @@ const AdminHome = ({
           <Table celled>
             <Table.Header fullwidth="true">
               <Table.Row>
-                <Table.HeaderCell colSpan="5" width="twelve">
+                <Table.HeaderCell colSpan="4" width="twelve">
                   <Form onSubmit={onApiSubmit}>
                     <Input
                       fullwidth="true"
@@ -151,7 +178,7 @@ const AdminHome = ({
                 <Table.HeaderCell>Adresse mail</Table.HeaderCell>
                 <Table.HeaderCell>Numéro de téléphone</Table.HeaderCell>
                 <Table.HeaderCell textAlign="center">Rôle</Table.HeaderCell>
-                <Table.HeaderCell textAlign="center">Modifier</Table.HeaderCell>
+                {/* <Table.HeaderCell textAlign="center">Modifier</Table.HeaderCell> */}
                 <Table.HeaderCell textAlign="center">Supprimer</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
@@ -178,9 +205,9 @@ const AdminHome = ({
                     <Table.Cell>{user.phone_number}</Table.Cell>
                     <Table.Cell textAlign="center">{user.role_id}</Table.Cell>
 
-                    <Table.Cell textAlign="center">
+                    {/* <Table.Cell textAlign="center">
                       <Button icon="edit" onClick={() => handleClickEditUser(user.id)} />
-                    </Table.Cell>
+                    </Table.Cell> */}
 
                     <Table.Cell textAlign="center">
                       { FormDeleteOpen && userDeleteId === user.id ? (

@@ -3,11 +3,9 @@ import {
   saveUser,
   createLoginErrorAction,
   CHECK_TOKEN,
+  saveToken,
+  checkTokeError,
 } from 'src/store/actions/authActions';
-
-// import {
-//   LOGIN, saveUser, CHECK_TOKEN, createLoginErrorAction,
-// } from 'src/store/actions';
 
 import jwtDecode from 'jwt-decode';
 
@@ -16,24 +14,17 @@ import api from './utils/api';
 const authMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case LOGIN: {
-
       const state = store.getState();
-      // const { user: { email, password } } = store.getState();
 
       api({
         method: 'POST',
         url: '/login',
-        data: {
-          email: state.user.email,
-          password: state.user.password,
-          // email: state.auth.email,
-          // password: state.auth.password,
-        },
+        data: { email: state.user.email, password: state.user.password },
       })
         .then((response) => {
           // ici on vient stocker le token dans localStorage
           localStorage.setItem('MyToken', response.data.token);
-          //const userData = response.data.token;
+          // const userData = response.data.token;
 
           const myToken = response.data.token;
           const myTokenDecoded = jwtDecode(myToken);
@@ -55,53 +46,26 @@ const authMiddleware = (store) => (next) => (action) => {
         });
       break;
     }
-    // case CHECK_TOKEN: {
-    //   // on récupère le token stocké dans le localStorage
-    //   const state = store.getState();
-    //   const myToken = localStorage.getItem('MyToken');
-    //   // // s'il existe on fait notre requête API pour vérifier sa validité
-    //   // if (myToken) {
-    //   //   api.post('/checkToken', {
-    //   //     // on oublie pas d'embarquer le token avec la requête
-    //   //     headers: {
-    //   //       authorization: `Bearer ${myToken}`,
-    //   //     },
-    //   //   })
-    //   //     .then((response) => {
-    //   //       // ici le token est bon, donc on peut le stocker dans l'instance
-    //   //       api.defaults.headers.common.authorization = `Bearer ${myToken}`;
+    case CHECK_TOKEN: {
+      // on récupère le token stocké dans le localStorage
+      const tokenLocal = localStorage.getItem('MyToken');
 
-    //   //       // en cas de réponse on sauvegarde le user dans le state
-    //   //       // avec la même action que pour le login
-    //   //       const payload = { ...response.data };
-    //   //       store.dispatch(saveUserLogin(payload));
-    //   //     })
-    //   //     .catch((error) => console.log(error));
-    //   // }
-    //   if (myToken) {
-    //     api({
-    //       method: 'POST',
-    //       url: '/login',
-    //       data: {
-    //         email: state.user.email,
-    //         password: state.user.password,
-    //       },
-    //     })
-    //       .then((response) => {
-    //       // ici le token est bon, donc on peut le stocker dans l'instance
-    //         api.defaults.headers.common.authorization = `Bearer ${myToken}`;
-
-    //         // en cas de réponse on sauvegarde le user dans le state
-    //         // avec la même action que pour le login
-    //         const myTokenDecoded = { ...response.data };
-    //         store.dispatch(saveUser(myTokenDecoded));
-    //         console.log('MON PAYLOAD', myTokenDecoded);
-    //       })
-    //       .catch((error) => console.log(error));
-    //   }
-
-    //   break;
-    // }
+      if (tokenLocal && jwtDecode(tokenLocal).exp < Date.now() / 1000) {
+        next(action);
+        localStorage.clear();
+        store.dispatch(checkTokeError());
+      }
+      else if (!tokenLocal) {
+        console.log('IL N\'Y A PAS DE TOKEN');
+      }
+      else {
+        const tokenLocalcheck = localStorage.getItem('MyToken');
+        api.defaults.headers.common.authorization = `Bearer ${tokenLocalcheck}`;
+        store.dispatch(saveToken(jwtDecode(tokenLocalcheck)));
+      }
+      next(action);
+      break;
+    }
     default:
       next(action);
   }

@@ -16,7 +16,6 @@ import comment from './middlewares/comment';
 import children from './middlewares/children';
 import staff from './middlewares/staff';
 
-
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const enhancers = composeEnhancers(

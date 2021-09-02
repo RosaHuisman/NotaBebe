@@ -49,8 +49,8 @@ const Home = ({
 
   return (
     <>
-      {getToken ? (
-      // {getToken && jwtDecode(getToken).exp < Date.now() / 1000 ? (
+      {/* {getToken ? ( */}
+      {getToken && jwtDecode(getToken).exp < Date.now() / 1000 ? (
         <>
           {user.roleId === 1
             && (

@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
-import Header from 'src/containers/Header';
-
 import { Icon, Button } from 'semantic-ui-react';
+import HeaderAdmin from 'src/containers/HeaderAdmin';
 
 import './styles.scss';
 
-const ContactDetails = () => {
+const ContactAdmin = () => {
   const location = useLocation();
 
   const history = useHistory();
@@ -22,8 +21,9 @@ const ContactDetails = () => {
   return (
     <>
       <div>
-        <Header />
+        <HeaderAdmin />
       </div>
+
       <div className="contact__details">
         <div className="nursery__contact">
           <h1>Pour contacter la crèche:</h1>
@@ -39,21 +39,21 @@ const ContactDetails = () => {
           <h1>Pour contacter l'équipe de conception du site:</h1>
           <p className="mail"><span><Icon name="mail" /></span>devteam@notabebe.fr</p>
         </div>
-        <div className="backButtonContact">
-          <Button
-            type="button"
-            onClick={previousPage}
-            icon
-            labelPosition="left"
-            primary
-            size="tiny"
-          >
-            <Icon name="angle left" />Retour
-          </Button>
-        </div>
+      </div>
+      <div className="backButtonContact">
+        <Button
+          type="button"
+          onClick={previousPage}
+          icon
+          labelPosition="left"
+          primary
+          size="tiny"
+        >
+          <Icon name="angle left" />Retour
+        </Button>
       </div>
     </>
   );
 };
 
-export default ContactDetails;
+export default ContactAdmin;

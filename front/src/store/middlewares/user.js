@@ -10,7 +10,7 @@ import {
   FETCH_USERS_PARENTS,
   saveNewPasswordParent,
   FETCH_USERS_STAFF,
-  saveUsersStaff
+  saveUsersStaff,
 } from 'src/store/actions';
 import axios from 'axios';
 
@@ -55,7 +55,7 @@ const user = (store) => (next) => (action) => {
 
     //   const options = {
     //     method: 'GET',
-    //     url: 'http://notabebe-back.herokuapp.com/profile/admin/parents',
+    //     url: 'https://notabebe-back.herokuapp.com/profile/admin/parents',
     //     headers: {
     //       // on donne le token dans le header Authorization
     //       // attention a l'espace après Bearer
@@ -78,7 +78,7 @@ const user = (store) => (next) => (action) => {
       const id = action.id;
 
 
-      axios.patch(`http://notabebe-back.herokuapp.com/profile/parent/${id}`, {
+      axios.patch(`https://notabebe-back.herokuapp.com/profile/parent/${id}`, {
         address: state.user.address,
         postcode: state.user.postcode,
         city: state.user.city,
@@ -101,7 +101,7 @@ const user = (store) => (next) => (action) => {
       const childId = action.childId;
 
 
-      axios.patch(`http://notabebe-back.herokuapp.com/profile/parent/${parentId}/child/${childId}`, {
+      axios.patch(`https://notabebe-back.herokuapp.com/profile/parent/${parentId}/child/${childId}`, {
         allergies: state.user.allergy,
       })
         .then((response) => {
@@ -118,7 +118,10 @@ const user = (store) => (next) => (action) => {
       const state = store.getState();
       const id = action.id;
 
-      axios.patch(`http://notabebe-back.herokuapp.com/profile/parent/${id}/password`, {
+      //console.log(state.user.oldpassword)
+      //console.log(state.user)
+
+      axios.patch(`https://notabebe-back.herokuapp.com/profile/parent/${id}/password`, {
         oldPassword: state.user.oldpassword,
         password: state.user.newpassword,
         id: action.id,

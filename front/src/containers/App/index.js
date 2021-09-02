@@ -9,6 +9,7 @@ import App from 'src/components/App';
 
 const mapStateToProps = (state) => ({
   loading: state.auth.loading,
+  user: state.auth,
 
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   children: state.user.children,
@@ -20,10 +21,9 @@ const mapDispatchToProps = (dispatch) => ({
   welcomePage: () => {
     dispatch(homeInitial());
   },
-  // checkIsLogged: () => {
-  //   dispatch(checkToken());
-  // },
-
+  checkIsLogged: () => {
+    dispatch(checkToken());
+  },
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // loadUsersParents: () => {
   //   dispatch(fetchUsersParents());

@@ -5,18 +5,26 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
+  padding: 0 1rem;
+  margin: 0 auto;
 
   &__child {
-    margin-top: 5px;
+    // margin-top: 5px;
+    margin: 0.8rem 0;
     width: 48%;
     border: 1px solid rgb(211, 211, 211);
     border-radius: 5px;
     padding: 5px;
 
+    &__name {
+      font-size: 1rem;
+    }
+
     &__createrecapbutton {
-      display: block;
-      margin: 0 auto;
-      padding: v.$gutter/2;
+      // display: block;
+      margin: 0 1rem;
+      width: fit-content;
+      // padding: v.$gutter/2;
       background-color: v.$bg-color;
       border: none;
       border-radius: 5px;

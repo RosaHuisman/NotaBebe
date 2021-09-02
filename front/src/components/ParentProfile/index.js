@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import Header from 'src/components/Header';
+// import Header from 'src/components/Header';
+import HeaderParent from 'src/containers/HeaderParent';
 import Loading from 'src/components/App/Loading';
 
 import Children from './Children';
@@ -48,9 +49,9 @@ const ParentProfile = ({
 
   return (
     <>
-      <header className="header">
-        <Header />
-      </header>
+      <div>
+        <HeaderParent />
+      </div>
 
       <div className="parentprofile">
 

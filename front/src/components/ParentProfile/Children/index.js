@@ -15,7 +15,7 @@ const Children = ({
 
 }) => {
 
-  return (
+  (
     <div className="children">
 
       <h3 className="children__title"> Mon enfant</h3>
@@ -50,8 +50,6 @@ const Children = ({
       </div>
     </div>
   );
-};
-
 Children.propTypes = {
   // children: PropTypes.arrayOf(
   //   PropTypes.shape({

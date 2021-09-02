@@ -1,12 +1,11 @@
 import { connect } from 'react-redux';
-import { isUserLogged } from 'src/store/selectors/loggedPseudo';
 
-import App from 'src/components/App';
+import PrivateRoute from 'src/components/PrivateRoute';
 
 const mapStateToProps = (state) => ({
-  // isLogged: isUserLogged(state),
-  logged: isUserLogged(state),
-  loading: state.user.loading,
+  // isAuth: state.auth.logged,
+  // isAuth: true,
+
 });
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps)(PrivateRoute);

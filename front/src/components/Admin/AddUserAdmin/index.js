@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { useLocation, useHistory, Link } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 import {
   Button, Icon, Table, Form,
 } from 'semantic-ui-react';
 
 import Field from 'src/containers/Field';
 import logoAdmin from 'src/images/logo_admin.png';
+import HeaderAdmin from 'src/containers/HeaderAdmin';
 
 const AddUserAdmin = ({
   firstName,
@@ -27,45 +28,204 @@ const AddUserAdmin = ({
   addUserSuccess,
   addUserError,
 }) => {
-  console.log('modal admin edit');
   const location = useLocation();
+
+  const history = useHistory();
 
   useEffect(() => {
     window.scroll(0, 0);
   }, [location]);
 
   const handleSubmitAddUser = (e) => {
-    console.log('ici c\'est addUser', e);
     e.preventDefault();
     handleAddUser();
   };
 
-  const history = useHistory();
-
   const previousPage = () => {
-    history.push('/admin');
+    history.goBack();
     resetFormAdmin();
   };
 
   return (
     <>
       <div className="adminMobileHome">
+        <div>
+          <HeaderAdmin />
+        </div>
         <img src={logoAdmin} className="adminMobileHome__logo" alt="admin" />
         <div className="adminMobileHome__txt">
           Pour une meilleur expérience, veuillez vous connecter à partir d'un ordinateur.
         </div>
-        <Link to="/">
-          <div className="button-settings-back">
-            Retour à l'accueil
-          </div>
-        </Link>
       </div>
 
       <div className="adminDesktopHome">
+        <div>
+          <HeaderAdmin />
+        </div>
         <div className="addUserForm">
           {contentAdminPageAdd
-          && (
-            <Form onSubmit={handleSubmitAddUser}>
+            && (
+              <Form onSubmit={handleSubmitAddUser}>
+                <Table celled>
+                  <Table.Header fullwidth="true" column="equal">
+                    <Table.Row>
+                      <Table.HeaderCell colSpan="2" textAlign="center">
+                        <h1>CREATION ACCES UTILISATEUR</h1>
+                      </Table.HeaderCell>
+                    </Table.Row>
+                  </Table.Header>
+
+                  <Table.Body>
+                    <Table.Row>
+                      <Table.Cell verticalAlign="middle"><div className="columnTitle">Nom</div></Table.Cell>
+                      <Table.Cell>
+                        <Field
+                          type="text"
+                          name="last_name"
+                          placeholder="Nom"
+                          onChange={changeField}
+                          value={lastName}
+                          required
+                        />
+                      </Table.Cell>
+                    </Table.Row>
+                    <Table.Row>
+                      <Table.Cell verticalAlign="middle"><div className="columnTitle">Prénom</div></Table.Cell>
+                      <Table.Cell>
+                        <Field
+                          type="text"
+                          name="first_name"
+                          placeholder="Prénom"
+                          onChange={changeField}
+                          value={firstName}
+                          required
+                        />
+                      </Table.Cell>
+                    </Table.Row>
+                    <Table.Row>
+                      <Table.Cell verticalAlign="middle"><div className="columnTitle">Adresse mail</div></Table.Cell>
+                      <Table.Cell>
+                        <Field
+                          type="email"
+                          name="email"
+                          placeholder="Email"
+                          onChange={changeField}
+                          value={email}
+                          required
+                        />
+                      </Table.Cell>
+                    </Table.Row>
+                    <Table.Row>
+                      <Table.Cell verticalAlign="middle"><div className="columnTitle">Numéro de téléphone</div></Table.Cell>
+                      <Table.Cell verticalAlign="middle">
+                        <Field
+                          type="text"
+                          name="phone_number"
+                          pattern="^[0-9]{10}$"
+                          placeholder="Numéro de téléphone"
+                          onChange={changeField}
+                          value={phoneNumber}
+                          required
+                        />
+                      </Table.Cell>
+                    </Table.Row>
+                    <Table.Row>
+                      <Table.Cell verticalAlign="middle"><div className="columnTitle">Adresse</div></Table.Cell>
+                      <Table.Cell verticalAlign="middle">
+                        <Field
+                          type="text"
+                          name="address"
+                          placeholder="Adresse"
+                          onChange={changeField}
+                          value={address}
+                          required
+                        />
+                      </Table.Cell>
+                    </Table.Row>
+                    <Table.Row>
+                      <Table.Cell verticalAlign="middle"><div className="columnTitle">Code postal</div></Table.Cell>
+                      <Table.Cell verticalAlign="middle">
+                        <Field
+                          type="number"
+                          name="postcode"
+                          placeholder="Code postal"
+                          max="99999"
+                          onChange={changeField}
+                          value={postcode}
+                          required
+                        />
+                      </Table.Cell>
+                    </Table.Row>
+                    <Table.Row>
+                      <Table.Cell verticalAlign="middle"><div className="columnTitle">Ville</div></Table.Cell>
+                      <Table.Cell verticalAlign="middle">
+                        <Field
+                          type="text"
+                          name="city"
+                          placeholder="Ville"
+                          onChange={changeField}
+                          value={city}
+                          required
+                        />
+                      </Table.Cell>
+                    </Table.Row>
+                    <Table.Row>
+                      <Table.Cell verticalAlign="middle"><div className="columnTitle">Rôle = 1 : Parent / 2 : Staff / 3 : Admin</div></Table.Cell>
+                      <Table.Cell verticalAlign="middle">
+                        <Field
+                          type="number"
+                          name="role_id"
+                          placeholder="Rôle"
+                          min="1"
+                          max="3"
+                          onChange={changeField}
+                          value={roleId}
+                          required
+                        />
+                      </Table.Cell>
+                    </Table.Row>
+                    <Table.Row>
+                      <Table.Cell verticalAlign="middle"><div className="columnTitle">Mot de passe temporaire</div></Table.Cell>
+                      <Table.Cell verticalAlign="middle">
+                        <Field
+                          type="text"
+                          name="password"
+                          placeholder="Mot de passe"
+                          onChange={changeField}
+                          value={password}
+                          required
+                        />
+                      </Table.Cell>
+                    </Table.Row>
+                  </Table.Body>
+                  <Table.Footer fullwidth="true" column="equal" className="footerTable">
+                    <Table.Row>
+                      <Table.HeaderCell colSpan="2" textAlign="center">
+                        <Button
+                          type="button"
+                          onClick={previousPage}
+                          icon="cancel"
+                          color="red"
+                          size="tiny"
+                        />
+                        <Button
+                          type="submit"
+                          icon
+                          labelPosition="left"
+                          primary
+                          size="tiny"
+                        >
+                          <Icon name="angle right" />Ajouter
+                        </Button>
+                      </Table.HeaderCell>
+                    </Table.Row>
+                  </Table.Footer>
+                </Table>
+              </Form>
+            )}
+
+          {addUserSuccess
+            && (
               <Table celled>
                 <Table.Header fullwidth="true" column="equal">
                   <Table.Row>
@@ -74,227 +234,67 @@ const AddUserAdmin = ({
                     </Table.HeaderCell>
                   </Table.Row>
                 </Table.Header>
-
                 <Table.Body>
                   <Table.Row>
-                    <Table.Cell verticalAlign="middle"><div className="columnTitle">Nom</div></Table.Cell>
-                    <Table.Cell>
-                      <Field
-                        type="text"
-                        name="last_name"
-                        placeholder="Nom"
-                        onChange={changeField}
-                        value={lastName}
-                        required
-                      />
-                    </Table.Cell>
-                  </Table.Row>
-                  <Table.Row>
-                    <Table.Cell verticalAlign="middle"><div className="columnTitle">Prénom</div></Table.Cell>
-                    <Table.Cell>
-                      <Field
-                        type="text"
-                        name="first_name"
-                        placeholder="Prénom"
-                        onChange={changeField}
-                        value={firstName}
-                        required
-                      />
-                    </Table.Cell>
-                  </Table.Row>
-                  <Table.Row>
-                    <Table.Cell verticalAlign="middle"><div className="columnTitle">Adresse mail</div></Table.Cell>
-                    <Table.Cell>
-                      <Field
-                        type="email"
-                        name="email"
-                        placeholder="Email"
-                        onChange={changeField}
-                        value={email}
-                        required
-                      />
-                    </Table.Cell>
-                  </Table.Row>
-                  <Table.Row>
-                    <Table.Cell verticalAlign="middle"><div className="columnTitle">Numéro de téléphone</div></Table.Cell>
-                    <Table.Cell verticalAlign="middle">
-                      <Field
-                        type="tel"
-                        name="phone_number"
-                        pattern="^[0-9]{10}$"
-                        placeholder="Numéro de téléphone"
-                        onChange={changeField}
-                        value={phoneNumber}
-                        required
-                      />
-                    </Table.Cell>
-                  </Table.Row>
-                  <Table.Row>
-                    <Table.Cell verticalAlign="middle"><div className="columnTitle">Adresse</div></Table.Cell>
-                    <Table.Cell verticalAlign="middle">
-                      <Field
-                        type="text"
-                        name="address"
-                        placeholder="Adresse"
-                        onChange={changeField}
-                        value={address}
-                        required
-                      />
-                    </Table.Cell>
-                  </Table.Row>
-                  <Table.Row>
-                    <Table.Cell verticalAlign="middle"><div className="columnTitle">Code postal</div></Table.Cell>
-                    <Table.Cell verticalAlign="middle">
-                      <Field
-                        type="number"
-                        name="postcode"
-                        placeholder="Code postal"
-                        max="99999"
-                        onChange={changeField}
-                        value={postcode}
-                        required
-                      />
-                    </Table.Cell>
-                  </Table.Row>
-                  <Table.Row>
-                    <Table.Cell verticalAlign="middle"><div className="columnTitle">Ville</div></Table.Cell>
-                    <Table.Cell verticalAlign="middle">
-                      <Field
-                        type="text"
-                        name="city"
-                        placeholder="Ville"
-                        onChange={changeField}
-                        value={city}
-                        required
-                      />
-                    </Table.Cell>
-                  </Table.Row>
-                  <Table.Row>
-                    <Table.Cell verticalAlign="middle"><div className="columnTitle">Rôle = 1 : Parent / 2 : Staff / 3 : Admin</div></Table.Cell>
-                    <Table.Cell verticalAlign="middle">
-                      <Field
-                        type="number"
-                        name="role_id"
-                        placeholder="Rôle"
-                        min="1"
-                        max="3"
-                        onChange={changeField}
-                        value={roleId}
-                        required
-                      />
-                    </Table.Cell>
-                  </Table.Row>
-                  <Table.Row>
-                    <Table.Cell verticalAlign="middle"><div className="columnTitle">Mot de passe temporaire</div></Table.Cell>
-                    <Table.Cell verticalAlign="middle">
-                      <Field
-                        type="text"
-                        name="password"
-                        placeholder="Mot de passe"
-                        onChange={changeField}
-                        value={password}
-                        required
-                      />
+                    <Table.Cell verticalAlign="middle" textAlign="center">
+                      <div className="messageSuccessAddUser">Utilisateur créé</div>
                     </Table.Cell>
                   </Table.Row>
                 </Table.Body>
-                <Table.Footer fullwidth="true" column="equal" className="footerTable">
+                <Table.Footer fullwidth="true" column="equal">
                   <Table.Row>
                     <Table.HeaderCell colSpan="2" textAlign="center">
                       <Button
-                        type="button"
                         onClick={previousPage}
-                        icon="cancel"
-                        color="red"
-                        size="tiny"
-                      />
-                      <Button
-                        type="submit"
+                        type="button"
                         icon
                         labelPosition="left"
                         primary
                         size="tiny"
                       >
-                        <Icon name="angle right" />Ajouter
+                        <Icon name="angle left" />Retour
                       </Button>
                     </Table.HeaderCell>
                   </Table.Row>
                 </Table.Footer>
               </Table>
-            </Form>
-          )}
-
-          {addUserSuccess
-          && (
-            <Table celled>
-              <Table.Header fullwidth="true" column="equal">
-                <Table.Row>
-                  <Table.HeaderCell colSpan="2" textAlign="center">
-                    <h1>CREATION ACCES UTILISATEUR</h1>
-                  </Table.HeaderCell>
-                </Table.Row>
-              </Table.Header>
-              <Table.Body>
-                <Table.Row>
-                  <Table.Cell verticalAlign="middle" textAlign="center">
-                    <div className="messageSuccessAddUser">Utilisateur créé</div>
-                  </Table.Cell>
-                </Table.Row>
-              </Table.Body>
-              <Table.Footer fullwidth="true" column="equal">
-                <Table.Row>
-                  <Table.HeaderCell colSpan="2" textAlign="center">
-                    <Button
-                      onClick={previousPage}
-                      type="button"
-                      icon
-                      labelPosition="left"
-                      primary
-                      size="tiny"
-                    >
-                      <Icon name="angle left" />Retour
-                    </Button>
-                  </Table.HeaderCell>
-                </Table.Row>
-              </Table.Footer>
-            </Table>
-          )}
+            )}
 
           {addUserError
-          && (
-            <Table celled>
-              <Table.Header fullwidth="true" column="equal">
-                <Table.Row>
-                  <Table.HeaderCell colSpan="2" textAlign="center">
-                    <h1>CREATION ACCES UTILISATEUR</h1>
-                  </Table.HeaderCell>
-                </Table.Row>
-              </Table.Header>
-              <Table.Body>
-                <Table.Row>
-                  <Table.Cell verticalAlign="middle" textAlign="center">
-                    <div className="messageErrorAddUser">Erreur serveur</div>
-                  </Table.Cell>
-                </Table.Row>
-              </Table.Body>
-              <Table.Footer fullwidth="true" column="equal">
-                <Table.Row>
-                  <Table.HeaderCell colSpan="2" textAlign="center">
-                    <Button
-                      onClick={previousPage}
-                      type="button"
-                      icon
-                      labelPosition="left"
-                      primary
-                      size="tiny"
-                    >
-                      <Icon name="angle left" />Retour
-                    </Button>
-                  </Table.HeaderCell>
-                </Table.Row>
-              </Table.Footer>
-            </Table>
-          )}
+            && (
+              <Table celled>
+                <Table.Header fullwidth="true" column="equal">
+                  <Table.Row>
+                    <Table.HeaderCell colSpan="2" textAlign="center">
+                      <h1>CREATION ACCES UTILISATEUR</h1>
+                    </Table.HeaderCell>
+                  </Table.Row>
+                </Table.Header>
+                <Table.Body>
+                  <Table.Row>
+                    <Table.Cell verticalAlign="middle" textAlign="center">
+                      <div className="messageErrorAddUser">Erreur serveur</div>
+                    </Table.Cell>
+                  </Table.Row>
+                </Table.Body>
+                <Table.Footer fullwidth="true" column="equal">
+                  <Table.Row>
+                    <Table.HeaderCell colSpan="2" textAlign="center">
+                      <Button
+                        onClick={previousPage}
+                        type="button"
+                        icon
+                        labelPosition="left"
+                        primary
+                        size="tiny"
+                      >
+                        <Icon name="angle left" />Retour
+                      </Button>
+                    </Table.HeaderCell>
+                  </Table.Row>
+                </Table.Footer>
+              </Table>
+            )}
         </div>
       </div>
     </>
