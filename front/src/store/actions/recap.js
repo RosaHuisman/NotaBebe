@@ -7,6 +7,7 @@ export const CHANGE_TIME_NAP = 'CHANGE_TIME_NAP';
 export const CREATE_RECAP ='CREATE_RECAP';
 export const CHANGE_DATE = 'CHANGE_DATE'
 export const SAVE_RECAP = 'SAVE_RECAP';
+export const FILTER_RECAPS = 'FILTER_RECAPS';
 
 export const fetchRecaps = () => ({
   type: FETCH_RECAPS,
@@ -53,4 +54,10 @@ export const changeDate = (value, key) => ({
 export const saveRecap = (recap) => ({
   type: SAVE_RECAP,
   payload: recap,
-})
+});
+
+export const filterRecaps = (filterInputValue) => ({
+  type: FILTER_RECAPS,
+  filterInputValue,
+});
+

@@ -18,11 +18,9 @@ export function filterComments(list, filterInputValue) {
   const filteredList = list.filter((comment) => {
     return comment.message.toLowerCase()
       .includes(filterInputValue.toLowerCase()) 
-    || comment.child_id.toString().toLowerCase()
-      .includes(filterInputValue.toLowerCase())
+    // || comment.comment.child_id.toString().toLowerCase()
+    //   .includes(filterInputValue.toLowerCase())
   } )
   return filteredList
 }
-
-
 

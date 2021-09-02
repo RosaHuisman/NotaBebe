@@ -18,7 +18,7 @@ import Home from 'src/containers/Home';
 // STAFF
 import StaffProfile from 'src/containers/StaffProfile';
 import ChildsList from 'src/containers/ChildsList';
-import Recaps from 'src/components/Recaps';
+import Recaps from 'src/containers/Recaps';
 import Comments from 'src/containers/Comments';
 // import ReadComment from 'src/containers/ReadComment';
 import CreateRecap from 'src/containers/CreateRecap';

@@ -6,6 +6,7 @@ import {
   SAVE_RECAPS,
   CHANGE_DATE,
   SAVE_RECAP,
+  FILTER_RECAPS
 } from 'src/store/actions/recap';
 
 
@@ -15,6 +16,7 @@ const initialState = {
   loading: true,
   list: [],
   time: '12:00:00',
+  inputValue:'',
 };
 
 const reducer = (state = initialState, action ) => {
@@ -29,8 +31,7 @@ const reducer = (state = initialState, action ) => {
         ...state,
         [action.key]: action.value,
       }; 
-    }
-         
+    }    
     case CHANGE_MOOD:
       return {
         ...state,
@@ -58,6 +59,12 @@ const reducer = (state = initialState, action ) => {
       return {
         ...state,
         recap: action.payload,
+      }
+    }
+    case FILTER_RECAPS: {
+      return {
+        ...state,
+        inputValue: action.filterInputValue
       }
     }
     default:
