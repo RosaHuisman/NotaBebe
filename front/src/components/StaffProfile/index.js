@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import PropTypes from 'prop-types'
 import Loading from 'src/components/App/Loading';
+import Field from 'src/containers/Field';
+
 
 
 import { Link } from 'react-router-dom';
@@ -8,7 +10,14 @@ import { Link } from 'react-router-dom';
 import './styles.scss';
 
 
-const StaffProfile = ({ searchValue, setSearchValue, handleSubmit, loadUsersStaff, staff, loading }) => {
+const StaffProfile = ({  
+    loadUsersStaff, 
+    staff, 
+    loading,
+    hasPasswordError,
+    handleChangePassword,
+   
+  }) => {
 
   useEffect(() => {
     loadUsersStaff();
@@ -17,44 +26,71 @@ const StaffProfile = ({ searchValue, setSearchValue, handleSubmit, loadUsersStaf
   if (loading) {
     return <Loading />;
   }
-   
-// const [datas, setDatas] = useState([])
 
-// useEffect(() => {
-//   fetch
-// }, [])
+  const handleSubmitChangePassword = (evt) => {
+    evt.preventDefault();
+    handleChangePassword(staff.id);
+  };
 
   return (
     <div className="staff">
       <div className="staff__name">
-        <h2> Dupont-Moretti Christine </h2>
+        {staff.first_name} {staff.last_name}
       </div>
       <div className="staff__button">
         <div className="staff__button__child">
           <Link className="childs__link" to={`/profile/staff/${staff.id}/children`} exact="true">
-            <button type="button" className="button">Liste des enfants</button>
+            <button type="button" className="button">Liste des enfants et création de récap</button>
           </Link>
         </div>
         <div className="staff__button__recap">
           <Link className="recap__link" to={`/profile/staff/${staff.id}/recaps`} exact="true">
-            <button type="button" className="button">Liste des récaps</button>
+            <button type="button" className="button">Liste des récaps déjà créés</button>
           </Link>
         </div>
         <div className="staff__button__comments">
           <Link className="comments__link" to={`/profile/staff/${staff.id}/comments`} exact="true">
-            <button type="button" className="button">Les Commentaires</button>
+            <button type="button" className="button">Les Commentaires des parents</button>
           </Link>
         </div>
       </div>
-      {/* <div className="ui divider"></div> */}
       
-      {/* <div className="recaps__filter">
-        <FilterRecaps
-          searchValue={searchValue}
-          onSearchChange={setSearchValue}
-          onSearchSubmit={handleSubmit}
-        />
-      </div> */}
+     
+    <form
+      autoComplete="off"
+      className="changepasswordform"
+      onSubmit={handleSubmitChangePassword}
+    >
+      <p> Changer de mot de passe :</p>
+      <Field
+        name="oldpassword"
+        type="password"
+        placeholder="Ancien mot de passe"
+      />
+
+      <Field
+        name="newpassword"
+        type="password"
+        placeholder="Nouveau mot de passe"
+      />
+
+      <Field
+        name="confirmpassword"
+        type="password"
+        placeholder="Confirmez le mot de passe"
+      />
+
+      <div className="changepasswordform__buttons">
+        <button
+          className="changepasswordform__buttons__send"
+          type="submit"
+        >
+          Valider
+        </button>
+      </div>
+
+      {hasPasswordError && <div>Veuillez vérifier vos identifiants</div>}
+    </form>
     </div>
     )}
    

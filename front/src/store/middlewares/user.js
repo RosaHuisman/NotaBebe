@@ -120,10 +120,12 @@ const user = (store) => (next) => (action) => {
 
       axios.patch(`http://notabebe-back.herokuapp.com/profile/parent/${id}/password`, {
         oldPassword: state.user.oldpassword,
+        password: state.user.newpassword,
         id: action.id,
       })
         .then((response) => {
           const actionsChangePasswordParent = saveNewPasswordParent(response.data);
+          console.log(response.data)
           store.dispatch(actionsChangePasswordParent);
         })
         .catch((error) => {

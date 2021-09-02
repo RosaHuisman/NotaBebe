@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
 
@@ -22,12 +22,15 @@ const CreateRecap = ({
   addNewNap,
 
 }) => {
+  // useEffect(() => {
+    
+  // }, []);
+
   const data = useLocation();
   const child = data.state.child;
   
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('je clique sur submit')
     submitCreateRecap(child.id);
   }
 

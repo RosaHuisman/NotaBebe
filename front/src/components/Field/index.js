@@ -11,13 +11,10 @@ const Field = ({
   type,
   name,
   placeholder,
-  //onChange,
   onChangeInputValue,
 }) => {
   const handleChange = (evt) => {
     evt.preventDefault();
-    
-    //onChange(evt.target.value, name);
     onChangeInputValue(evt.target.value, name);
   };
 
@@ -52,7 +49,6 @@ Field.propTypes = {
   type: PropTypes.string,
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
-  // onChange: PropTypes.func.isRequired,
   onChangeInputValue: PropTypes.func.isRequired,
 };
 

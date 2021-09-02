@@ -17,7 +17,6 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   // },
 
   onChangeInputValue: (value) => {
-    console.log('ownprops dans field', ownProps)
     const action = changeFieldValueTwo(ownProps.name, value);
     dispatch(action);
   },

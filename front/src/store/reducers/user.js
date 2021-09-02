@@ -147,6 +147,7 @@ const reducer = (state = initialState, action) => {
     //   };
     // }
     case SAVE_NEW_PASSWORD_PARENT: {
+      console.log('je suis dans le case change password parent')
       return {
         ...state,
         changePasswordError: false,

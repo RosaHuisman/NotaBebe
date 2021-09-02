@@ -14,13 +14,14 @@ import user from './middlewares/user';
 import recap from './middlewares/recap';
 import comment from './middlewares/comment';
 import children from './middlewares/children';
+import staff from './middlewares/staff';
 
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const enhancers = composeEnhancers(
 
-  applyMiddleware(logMiddleware, authMiddleware, forgotMiddleware, user, recap, comment, children, listUsersAdminMiddleware),
+  applyMiddleware(logMiddleware, authMiddleware, forgotMiddleware, user, recap, comment, children, staff, listUsersAdminMiddleware),
 
 );
 

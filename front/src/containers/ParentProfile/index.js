@@ -10,38 +10,31 @@ import {
   fetchUsersParents,
 } from 'src/store/actions';
 
-//import { findChildren } from 'src/store/selectors/children';
 
 import { findUser, findChildrenOfParent } from 'src/store/selectors/user';
 
-const mapStateToProps = (state, ownProps) => {
-  // console.log('LIST', state.user.list)
+const mapStateToProps = (state, ownProps) => ({
+  oldpassword: state.user.oldpassword,
+  isOpenInfos: state.user.isOpenInfos,
+  isOpenPassword: state.user.isOpenPassword,
+  newpassword: state.user.newpassword,
+  confirmpassword: state.user.confirmpassword,
+  value: state[ownProps.name],
+  changeInfos: state.user.changeInfos,
+  hasInfosError: state.user.changeInfosError,
+  hasPasswordError: state.user.changePasswordError,
+  user: findUser(state.user.list, ownProps.match.params.id),
+  children: findChildrenOfParent(state.user.list, ownProps.match.params.id),
+  loading: state.user.loading,
+  });
 
-  const props = {
-    oldpassword: state.user.oldpassword,
-    isOpenInfos: state.user.isOpenInfos,
-    isOpenPassword: state.user.isOpenPassword,
-    newpassword: state.user.newpassword,
-    confirmpassword: state.user.confirmpassword,
-    value: state[ownProps.name],
-    changeInfos: state.user.changeInfos,
-    hasInfosError: state.user.changeInfosError,
-    hasPasswordError: state.user.changePasswordError,
-    user: findUser(state.user.list, ownProps.match.params.id),
-    children: findChildrenOfParent(state.user.list, ownProps.match.params.id),
-    loading: state.user.loading,
-  };
-  return props;
-};
 
 const mapDispatchToProps = (dispatch) => ({
 
   loadUsersParents: () => {
     dispatch(fetchUsersParents());
   },
-
   
-
   openUserInfos: () => {
     dispatch(openChangeInfos());
   },
@@ -59,7 +52,6 @@ const mapDispatchToProps = (dispatch) => ({
   },
 
   handleChangePassword: (id) => {
-    console.log('id dans container', id)
     dispatch(changePassword(id));
   },
 

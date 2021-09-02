@@ -112,22 +112,7 @@ const reducer = (state = initialState, action ) => {
         ...state,
           [action.key]: action.value,
       }
-    // case CHANGE_TIME_NAP_START:
-    //   return {
-    //     ...state,
-    //     naps:[
-    //       {
-    //       start_nap: action.value,
-    //     }]
-    //   }
-    //   case CHANGE_TIME_NAP_END:
-    //   return {
-    //     ...state,
-    //     naps:[
-    //       {
-    //       end_nap: action.value,
-    //     }]
-    //   }
+
       case SAVE_RECAPS: {
        return {
          ...state,
@@ -145,6 +130,18 @@ const reducer = (state = initialState, action ) => {
       return {
         ...state,
         recap: action.payload,
+        date: '',
+        mood: '',
+        others:'',
+        start_time_1: '',
+        end_time_1: '',
+        comment_nap_1: '',
+        start_time_2: '',
+        end_time_2: '',
+        comment_nap_2: '',
+        start_time_3: '',
+        end_time_3: '',
+        comment_nap_3: '',
       }
     }
     default:
