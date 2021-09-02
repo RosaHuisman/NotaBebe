@@ -58,9 +58,9 @@ router.route('/profile/parent/:id/password')
 router.route('/profile/staff/:id/password')
     .patch(userController.updatePassword);
 
-    // modify password for ADMIN (with user id)
+// modify password for ADMIN (with user id)
 router.route('/profile/admin/:id/password')
-.patch(userController.updatePassword);
+    .patch(userController.updatePassword);
 
 
 // get child by id - for admin

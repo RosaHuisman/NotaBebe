@@ -32,8 +32,16 @@ Content-Type: application/json
 PATCH http://localhost:3000/profile/parent/2/password
 
 
-### UPDATING USER PASSWORD
-PATCH http://localhost:3000/profile/admin/6/password
+### UPDATING STAFF PASSWORD
+PATCH http://localhost:3000/profile/staff/10/password
+Content-Type: application/json
+
+{   
+    "oldPassword": "staff",
+    "password": "test"
+}
+### UPDATING ADMIN PASSWORD
+PATCH http://localhost:3000/profile/admin/13/password
 Content-Type: application/json
 
 {   

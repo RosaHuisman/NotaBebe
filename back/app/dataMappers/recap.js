@@ -32,6 +32,79 @@ const recapDataMapper = {
         return result.rows[0];
     },
 
+
+    async modifyEntireRecap(recap, recapId, nap, meal) {
+
+        const napsByRecap = await client.query('SELECT * FROM "nap" WHERE recap_id = $1', [recapId]);
+        const napsByRecapResult = napsByRecap.rows;
+
+        const mealsByRecap = await client.query('SELECT * FROM "meal" WHERE recap_id = $1', [recapId]);
+        const mealsByRecapResult = mealsByRecap.rows;
+
+
+        try {
+
+            await client.query('BEGIN');
+            let values1 = [];
+            const keys1 = Object.keys(recap);
+
+            let query1 = 'UPDATE "recap" SET date = $1, extra_info = $2, mood = $3, child_id = $4, updated_at = now() WHERE id = $5 RETURNING *';
+
+            values1 = [recap.date, recap.extra_info, recap.mood, recap.child_id, recapId];
+
+            const updatedRecap = await client.query(query1, values1);
+            let recapResult = updatedRecap.rows[0];
+
+            let values2 = [];
+
+            let napResult = [];
+            let indexNap = 0;
+            for (const n of nap) {
+                let query2 = `UPDATE "nap" SET start_time = $1, end_time = $2, comment = $3, updated_at = now() WHERE id = $4 RETURNING *`;
+
+                let napId = napsByRecapResult[indexNap].id
+
+                values2 = [n.start_time, n.end_time, n.comment, napId];
+
+                let updatedNap = await client.query(query2, values2);
+
+                napResult[indexNap] = updatedNap.rows[0];
+                indexNap++;
+            }
+
+            recapResult.naps = napResult;
+
+            let values3 = [];
+
+            let mealResult = [];
+            let indexMeal = 0;
+            for (const m of meal) {
+                let query3 = `UPDATE "meal" SET time = $1, comment = $2, updated_at = now() WHERE id = $3 RETURNING *`;
+
+                let mealId = mealsByRecapResult[indexMeal].id
+
+                values3 = [m.time, m.comment, mealId];
+
+                let updatedMeal = await client.query(query3, values3);
+                mealResult[indexMeal] = updatedMeal.rows[0];
+
+                indexMeal++;
+            }
+
+            recapResult.meals = mealResult;
+
+            await client.query('COMMIT');
+
+            return recapResult;
+
+        } catch (e) {
+
+            await client.query('ROLLBACK');
+            throw e;
+        }
+    },
+
+
     async modifyRecap(recap, id) {
 
         let query = `UPDATE "recap" SET `;
@@ -109,9 +182,6 @@ const recapDataMapper = {
         const result = await client.query('DELETE FROM "meal" WHERE id = $1', [id]);
         return result;
     }
-
-    //deleteNap
-    //deleteMeal
 
 };
 

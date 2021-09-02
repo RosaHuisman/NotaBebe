@@ -9,8 +9,8 @@ POST http://localhost:3000/login
 Content-Type: application/json
 
 {
-    "email": "mickaeldu59@gmail.com",
-    "password": "monsuperpassword"
+    "email": "staff@notabebe.io",
+    "password": "staff"
 }
 
 
