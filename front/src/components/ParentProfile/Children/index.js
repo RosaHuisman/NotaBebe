@@ -9,12 +9,11 @@ import './styles.scss';
 
 // == Composant
 const Children = ({
-  // children,
+  children,
   user,
   // child,
 
 }) => {
-  //console.log(user);
 
   return (
     <div className="children">
@@ -22,8 +21,8 @@ const Children = ({
       <h3 className="children__title"> Mon enfant</h3>
 
       <div className="children__infos">
-        {user.map((parent) =>
-        // console.log(child)
+        {children.map((parent) =>
+        
           (
             <Link
               key={parent.child_id}

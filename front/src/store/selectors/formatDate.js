@@ -16,7 +16,6 @@ export const formatDate = (comment) => {
 
 export const formatHour = (comment) => {
   const date = new Date(comment);
-  //console.log(date)
   let heure = date.getHours();
   let minutes = date.getMinutes();
 

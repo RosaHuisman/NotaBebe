@@ -16,7 +16,6 @@ import api from './utils/api';
 const authMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case LOGIN: {
-      console.log('je suis dans le case LOGIN');
 
       const state = store.getState();
       // const { user: { email, password } } = store.getState();

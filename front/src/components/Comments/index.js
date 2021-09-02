@@ -10,8 +10,6 @@ import { childSearched } from 'src/store/selectors/user'
 
 import './styles.scss';
 //import commentsData from 'src/data/comments';
-// console.log('mes données 2:', commentsData),
-// console.log('Salut');
 
 const Comments = ({ 
 

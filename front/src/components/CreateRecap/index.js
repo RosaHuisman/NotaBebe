@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
 
@@ -15,21 +15,31 @@ const CreateRecap = ({
   timeNapSelected,
   value,
   submitCreateRecap,
-  dateSelected
+  dateSelected,
+  napFormList,
+  napFormLimit,
+  removeLastNap,
+  addNewNap,
 
 }) => {
+  // useEffect(() => {
+    
+  // }, []);
 
   const data = useLocation();
   const child = data.state.child;
   
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('je clique sur submit')
     submitCreateRecap(child.id);
   }
 
-  const handleClick = () => {
-    openNewNap();
+  const handleAddNapFormClick = () => {
+    addNewNap();
+  };
+
+  const handleRemoveNapFormClick = () => {
+    removeLastNap();
   };
 
   const changeValue = (e) => {
@@ -51,7 +61,6 @@ const CreateRecap = ({
     e.preventDefault();
     const newDate = changeDate(e.target.value)
     dateSelected(newDate, e.target.name);
-
   }
 
   return (
@@ -60,13 +69,14 @@ const CreateRecap = ({
         <h1 className="createrecap__title">Création d'un récap pour </h1>
         <h1 className="createrecap__firstname">{child.first_name}</h1>
 
-        <label htmlFor="date"> Date: </label>
-
-        <input type="date" id="date" name="date"
-          //value="2021-08-31"
-           min="2020-01-01" max="2030-12-31" 
-           onChange={selectDate}
-           />
+        <div className="createrecap__date">
+          <label htmlFor="date" className="createrecap__date__text"> Date: </label>
+          <input type="date" id="date" name="date"
+            min="2020-01-01" max="2030-12-31" 
+            onChange={selectDate}
+            />
+        </div>
+       
 
         <div className="createrecap__mood">
           <label htmlFor="mood-select" className="createrecap__mood__label">Humeur du jour :</label>
@@ -77,99 +87,74 @@ const CreateRecap = ({
             <option value="grumpy">Grincheux</option>
           </select>
         </div>
-        <div className="createrecap__nap">
-          <label className="createrecap__nap__label" htmlFor="snap">Début sieste:</label>
-          <input
-            type="time"
-            id="snap"
-            name="start_nap_1"
-            onChange={selectTimeNap}
-            required
-            className="createrecap__nap__input"
-          />
-        </div>
-        <div className="createrecap__nap">
-          <label className="createrecap__nap__label" htmlFor="enap">Fin sieste:</label>
-          <input
-            type="time"
-            id="enap"
-            name="end_nap_1"
-            onChange={selectTimeNap}
-            required
-            className="createrecap__nap__input"
-          />
-        </div>
+        
 
-        <div className="createrecap__nap__comment">
-          <label htmlFor="nap" className="createrecap__nap__comment__label">Commentaire sieste:</label>
-          <textarea
-            id="nap"
-            name="comment_nap_1"
-            onChange={changeValue}
-            rows="3"
-            placeholder="Ecrivez votre commentaire"
-            className="createrecap__nap__comment__textarea"
-          />
-        </div>
+        {/* // FORM NAPS */}
+      
+      {napFormList.map((form) => (
+        <div key={form.id} className="createrecap__nap">
+        <h2 className="createrecap__nap__title">Sieste </h2>
 
-        {!isOpen ? (
-          
-            <button 
-              type="button" 
-              onClick={handleClick} 
-              className="createrecap__nap__button"
-              >
-                Ajouter une sieste
-              </button>
-          
-        ) : (
-          <>
-            <div className="createrecap__nap">
-            <label className="createrecap__nap__label" htmlFor="snap2">Début sieste:</label>
-            <input
-              type="time"
-              id="snap2"
-              name="start_nap_2"
-              onChange={selectTimeNap}
-              required
-              className="createrecap__nap__input"
-            />
-          </div>
-          <div className="createrecap__nap">
-            <label className="createrecap__nap__label" htmlFor="enap2">Fin sieste:</label>
-            <input
-              type="time"
-              id="enap2"
-              name="end_nap_2"
-              onChange={selectTimeNap}
-              required
-              className="createrecap__nap__input"
-            />
+          <div className="createrecap__nap__time">
+            <div className="createrecap__nap__time__designation"> 
+            <p>De</p>
+            <p> A </p>
+            </div>
+            <div className="createrecap__nap__time__inputs">
+              <input
+                type="time"
+                id="snap"
+                // step="10"
+                name={form.nameStartNap}
+                onChange={selectTimeNap}
+                className="createrecap__nap__time__inputs__input"
+              />
+            
+              <input
+                type="time"
+                id="enap"
+                name={form.nameEndNap}
+                onChange={selectTimeNap}
+                className="createrecap__nap__time__inputs__input"
+              />
+              </div>
           </div>
 
           <div className="createrecap__nap__comment">
-          <label htmlFor="nap2" className="createrecap__nap__comment__label">Commentaire sieste:</label>
-          <textarea
-            id="nap"
-            name="comment_nap_2"
-            onChange={changeValue}
-            rows="3"
-            placeholder="Ecrivez votre commentaire"
-            className="createrecap__nap__comment__textarea"
-          />
+            <textarea
+              id="nap"
+              name={form.nameCommentNap}
+              onChange={changeValue}
+              rows="3"
+              placeholder="Ecrivez votre commentaire"
+              className="createrecap__nap__comment__textarea"
+            />
+          </div>
         </div>
+      ))}
 
-              <button type="buttons" onClick={handleClick} className="createrecap__nap__button">Annuler</button>
-
-           
-          </>
+        {/* // ADD NAP BUTTON */}
+        {napFormLimit < 3 && (
+          <button 
+            type="button" 
+            onClick={handleAddNapFormClick} 
+            className="createrecap__nap__button"
+            >
+              Ajouter une autre sieste
+          </button>
+        )}
+          
+        
+        {/* // CANCEL BUTTON */}
+        {napFormLimit > 1 && (
+          <button type="button" onClick={handleRemoveNapFormClick} className="createrecap__nap__button__cancel">Annuler</button>
         )}
 
       <div className="createrecap__nap__comment">
-          <label htmlFor="meal" className="createrecap__nap__comment__label">Commentaires repas:</label>
+          <label htmlFor="meal" className="createrecap__nap__comment__label">Commentaire repas:</label>
           <textarea
             id="meal"
-            name="meal"
+            name="comment_meal"
             onChange={changeValue}
             rows="3"
             className="createrecap__nap__comment__textarea"

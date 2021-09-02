@@ -20,11 +20,9 @@ const user = (store) => (next) => (action) => {
   // une fois qu'on aura les infos, on va les stocker dans le state => dispatcher une action
   switch (action.type) {
     case FETCH_USERS_PARENTS: {
-      //console.log('je suis dans le cas FETCH USERS PARENTS')
       const fetchData = async () => {
         try {
           const response = await api.get('/profile/admin/parents');
-          //console.log('reponse du fetch : ', response.data)
           const actionsaveUsersParents = saveUsersParents(response.data);
           store.dispatch(actionsaveUsersParents);
         }
@@ -37,11 +35,9 @@ const user = (store) => (next) => (action) => {
       break;
     }
     case FETCH_USERS_STAFF: {
-      console.log('je suis dans le cas FETCH USERS STAFF')
       const fetchData = async () => {
         try {
           const response = await api.get('/profile/admin/allstaff');
-          console.log('reponse du fetch : ', response.data)
           const actionsaveUsersStaff = saveUsersStaff(response.data);
           store.dispatch(actionsaveUsersStaff);
         }
@@ -68,7 +64,6 @@ const user = (store) => (next) => (action) => {
     //   };
 
     //   axios(options).then((response) => {
-    //     console.log(response.data);
     //     const actionsaveUsersParents = saveUsersParents(response.data);
     //     store.dispatch(actionsaveUsersParents);
     //   })
@@ -79,10 +74,8 @@ const user = (store) => (next) => (action) => {
     //   break;
     // }
     case CHANGE_INFOS: {
-      //console.log('je suis dans le cas CHANGE_INFOS')
       const state = store.getState();
       const id = action.id;
-      //console.log(id)
 
 
       axios.patch(`http://notabebe-back.herokuapp.com/profile/parent/${id}`, {
@@ -92,7 +85,6 @@ const user = (store) => (next) => (action) => {
         phone_number: state.user.phone_number,
       })
         .then((response) => {
-          console.log("reponse de la BDD update parent infos", response.data)
           const actionSaveInfosUser = saveInfosUser(response.data);
           store.dispatch(actionSaveInfosUser);
         })
@@ -104,7 +96,6 @@ const user = (store) => (next) => (action) => {
     }
 
     case CHANGE_CHILD_INFOS: {
-      console.log('je suis dans le cas CHANGE_CHILD_INFOS')
       const state = store.getState();
       const parentId = action.parentId;
       const childId = action.childId;
@@ -114,7 +105,6 @@ const user = (store) => (next) => (action) => {
         allergies: state.user.allergy,
       })
         .then((response) => {
-          console.log("reponse de la BDD update parent infos", response.data)
           const actionSaveInfosUser = saveInfosUser(response.data);
           store.dispatch(actionSaveInfosUser);
         })
@@ -125,20 +115,17 @@ const user = (store) => (next) => (action) => {
       break;
     }
     case CHANGE_PASSWORD: {
-       console.log('je suis dans le cas CHANGE_PASSWORD')
       const state = store.getState();
       const id = action.id;
 
-      //console.log(state.user.oldpassword)
-      //console.log(state.user)
-
       axios.patch(`http://notabebe-back.herokuapp.com/profile/parent/${id}/password`, {
         oldPassword: state.user.oldpassword,
+        password: state.user.newpassword,
         id: action.id,
       })
         .then((response) => {
-          //console.log(response.data)
           const actionsChangePasswordParent = saveNewPasswordParent(response.data);
+          console.log(response.data)
           store.dispatch(actionsChangePasswordParent);
         })
         .catch((error) => {

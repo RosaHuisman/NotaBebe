@@ -16,8 +16,7 @@ console.log('Hola !')
 const Recaps = ({
   recaps, onSearchSubmit, inputRef, searchValue,
 }) => (
-  console.log('hello'),
-  console.log('mes recaps:', data),
+  
   <>
     <h1>Mes récapitulatifs enfants</h1>
     <div className="filter">

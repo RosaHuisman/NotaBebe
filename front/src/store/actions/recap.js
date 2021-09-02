@@ -1,9 +1,13 @@
 export const FETCH_RECAPS = 'FETCH_RECAPS';
 export const SAVE_RECAPS = 'SAVE_RECAPS';
-export const SHOW_FIELD_NAP = 'SHOW_FIELD_NAP';
+export const ADD_FIELD_NAP = 'ADD_FIELD_NAP';
+export const REMOVE_FIELD_NAP = 'REMOVE_FIELD_NAP';
 export const CHANGE_VALUE_TEXT = 'CHANGE_VALUE_TEXT';
 export const CHANGE_MOOD = 'CHANGE_MOOD';
+// export const CHANGE_TIME_NAP_START = 'CHANGE_TIME_NAP_START';
+// export const CHANGE_TIME_NAP_END = 'CHANGE_TIME_NAP_END';
 export const CHANGE_TIME_NAP = 'CHANGE_TIME_NAP';
+
 export const CREATE_RECAP ='CREATE_RECAP';
 export const CHANGE_DATE = 'CHANGE_DATE'
 export const SAVE_RECAP = 'SAVE_RECAP';
@@ -17,8 +21,12 @@ export const saveRecaps = (recaps) => ({
   payload: recaps,
 });
 
-export const showFieldNap = () => ({
-  type: SHOW_FIELD_NAP,
+export const addFieldNap = () => ({
+  type: ADD_FIELD_NAP,
+});
+
+export const removeFieldNap = () => ({
+  type: REMOVE_FIELD_NAP,
 });
 
 export const changeValueText = (key, value) => ({
@@ -38,6 +46,17 @@ export const changeTimeNap = (key, value) => ({
   value,
   key,
 });
+
+// export const changeTimeNapStart = (key, value) => ({
+//   type: CHANGE_TIME_NAP_START,
+//   value,
+//   key,
+// });
+// export const changeTimeNapEnd = (key, value) => ({
+//   type: CHANGE_TIME_NAP_END,
+//   value,
+//   key,
+// });
 
 export const submitFormCreateRecap = (child_id) => ({
   type: CREATE_RECAP,

@@ -27,9 +27,6 @@ const ChildsList = ({
     return <Loading />;
   } 
 
- 
-
-console.log(children)
   return (
     <>
     <h1>La liste des enfants</h1>

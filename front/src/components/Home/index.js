@@ -27,7 +27,6 @@ const Home = ({
     // return history.push('/admin');
   };
 
-  // console.log("mon user", user)
 
   return (
     <>

@@ -24,8 +24,6 @@ const initialState = {
 const reducer = (state = initialState, action ={} ) => {
   switch (action.type) {
       case SAVE_COMMENTS: {
-        //console.log('je suis dans le cas SAVE_COMMENTS')
-        //console.log('action payload dans le reducer comment',action.payload)
        return {
          ...state,
          list: action.payload,
@@ -33,8 +31,6 @@ const reducer = (state = initialState, action ={} ) => {
        };
      }
      case OPEN_MODAL: {
-      console.log('je suis dans le cas OPEN MODAL')
-      console.log(action.commentId)
        return {
          ...state,
          modalOpen: !state.modalOpen,
@@ -63,7 +59,6 @@ const reducer = (state = initialState, action ={} ) => {
       };
     }
     case OPEN_FORM_DELETE_COMMENT: {
-      console.log(action.commentId)
       return {
         ...state,
         formDeleteOpen: !state.formDeleteOpen, 

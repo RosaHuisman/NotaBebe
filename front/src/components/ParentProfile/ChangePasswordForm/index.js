@@ -17,7 +17,6 @@ const ChangePasswordForm = ({
 
   const handleSubmitChangePassword = (evt) => {
     evt.preventDefault();
-    //console.log('id dans component', user.id)
     handleChangePassword(user.id);
   };
 

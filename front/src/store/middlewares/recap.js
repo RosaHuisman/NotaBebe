@@ -11,11 +11,9 @@ import api from './utils/api';
 const recap = (store) => (next) => (action) => {
   switch (action.type) {
     case FETCH_RECAPS: {
-      //console.log('je suis dans le cas FETCH RECAPS')
       const fetchData = async () => {
         try {
           const response = await api.get('profile/staff/allrecaps');
-          //console.log('reponse du fetch : ', response.data)
           const actionsaveRecaps = saveRecaps(response.data);
           store.dispatch(actionsaveRecaps);
         }
@@ -28,33 +26,32 @@ const recap = (store) => (next) => (action) => {
       break;
     }
     case CREATE_RECAP: {
-      console.log('je suis dans le cas CREATE_RECAP')
       const state = store.getState();
       const childId = action.child_id;
-      console.log(childId)
 
-     axios.post(`http://notabebe-back.herokuapp.com/profile/staff/child/recap`, {
-       child_id: childId,
-       date: state.recap.date,
-       mood: state.recap.mood,
-       naps: [
-         {
-         start_time: state.recap.start_nap_1,
-         end_time: state.recap.end_nap_1,
-         comment: state.recap.comment_1,
-       },
-       {
-        start_time: state.recap.start_nap_2,
-        end_time: state.recap.end_nap_2,
-        comment: state.recap.comment_2,
-        }
-      
-      ],
-       meals: [{
-         time: state.recap.time,
-         comment: state.recap.meal,
-       }]
+      const naps = [] 
 
+      const nap = state.recap.napFormList.map(form => {
+        naps.push({
+          start_time: state['recap'][`start_time_${form.id}`],
+          end_time: state['recap'][`end_time_${form.id}`],
+          comment: state['recap'][`comment_nap_${form.id}`],
+        })
+      })
+
+      console.log('SCHNAPS : ', naps)
+
+     axios.post(`http://notabebe-back.herokuapp.com/profile/staff/child/recap`, 
+     {
+      child_id: childId,
+      date: state.recap.date,
+      mood: state.recap.mood,
+      naps: naps,
+      meals:  [{
+        time: state.recap.time,
+        comment: state.recap.comment_meal
+      }],
+      extra_info: state.recap.others
      })
        .then((response) => {
          console.log(response.data)
@@ -74,3 +71,29 @@ const recap = (store) => (next) => (action) => {
 }
 
 export default recap;
+
+
+
+
+// date: inputDate, 
+        // extra_info: textAreaOther,
+        // child_id: childId,
+        // mood: inputMood, 
+        // naps: [
+        //   {
+        //     start_time: inputStart, 
+        //     end_time: inputEnd, 
+        //     comment: textAreaMeals, 
+        //   },
+        //   {
+        //     start_time: inputStart, 
+        //     end_time: inputEnd, 
+        //     comment: textAreaMeals, 
+        //   }
+        // ],
+        // meals: [
+        //   {
+        //     time: inputStart, 
+        //     comment: textAreaMeals, 
+        //   }
+        // ],

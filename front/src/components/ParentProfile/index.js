@@ -23,12 +23,13 @@ const ParentProfile = ({
   loadUsersParents,
   loading,
   changeInfos,
+  children,
+  
 }) => {
 
-  //console.log('user dans le composant profile parent', user)
   useEffect(() => {
-    //console.log('je suis dans le useEffect')
     loadUsersParents();
+    
   }, []);
 
   const handleOnClickChangePasswordButton = (e) => {
@@ -40,8 +41,6 @@ const ParentProfile = ({
     e.preventDefault();
     openUserInfos();
   };
-
-   //console.log('user dans parentprofile', user)
 
   if (loading) {
     return <Loading />;
@@ -58,7 +57,7 @@ const ParentProfile = ({
         {!isOpenInfos ? (
           <>
             <UserInfos
-              user={user[0]}
+              user={user}
               openUserInfos={openUserInfos}
             />
             <button
@@ -73,8 +72,9 @@ const ParentProfile = ({
           <ChangeUserInfosForm
             closeForm={closeForm}
             handleChangeInfos={handleChangeInfos}
-            user={user[0]}
+            user={user}
             changeInfos={changeInfos}
+            loadUsersParents={loadUsersParents}
           />
         )}
 
@@ -91,12 +91,12 @@ const ParentProfile = ({
           <ChangePasswordForm
             closeForm={closeForm}
             handleChangePassword={handleChangePassword}
-            user={user[0]}
+            user={user}
           />
         )}
 
         <Children
-        // children={myChildren}
+          children={children}
           user={user}
         />
       </div>

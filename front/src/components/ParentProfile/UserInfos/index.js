@@ -7,7 +7,6 @@ import './styles.scss';
 
 // == Composant
 const UserInfos = ({ user }) =>
-  // console.log(user);
   (
     <div className="userinfos">
       <div className="userinfos__infos">

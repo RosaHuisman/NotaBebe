@@ -33,14 +33,12 @@ const Comment = ({
 
 }) => {
 
-  //console.log(commentSend)
 
   useEffect(() => {
     loadComments()
   }, [comments]);
 
   const handleSubmit = (evt) => {
-    // console.log('je clique sur submit')
     evt.preventDefault();
     submitComment(parent.id, parent.child_id);
   };
@@ -52,7 +50,6 @@ const Comment = ({
 
   const handleClickEdit = (evt) => {
     evt.preventDefault();
-    console.log(evt.target.id)    
     onClickOpenModalToFormChangeComment(evt.target.id);
     
   }
@@ -62,7 +59,6 @@ const Comment = ({
     
   }
   const handleClickDelete = (evt) => {
-    //console.log('je clique sur delete')
     evt.preventDefault(); 
     onClickOpenFormDeleteComment(evt.target.id);
   }
@@ -73,11 +69,9 @@ const Comment = ({
 
   const handleSubmitDelete = (evt) => {
     evt.preventDefault();
-    //console.log('je valide la suppression');
     deleteComment(parent.id, parent.child_id, evt.target.id);
   }
 
-  //console.log(commentSend)
 
   return (
 
