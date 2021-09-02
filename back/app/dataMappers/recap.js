@@ -41,12 +41,10 @@ const recapDataMapper = {
         const mealsByRecap = await client.query('SELECT * FROM "meal" WHERE recap_id = $1', [recapId]);
         const mealsByRecapResult = mealsByRecap.rows;
 
-
         try {
 
             await client.query('BEGIN');
             let values1 = [];
-            const keys1 = Object.keys(recap);
 
             let query1 = 'UPDATE "recap" SET date = $1, extra_info = $2, mood = $3, child_id = $4, updated_at = now() WHERE id = $5 RETURNING *';
 

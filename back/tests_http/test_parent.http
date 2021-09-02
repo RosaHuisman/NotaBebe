@@ -29,8 +29,13 @@ Content-Type: application/json
 
 
 ### UPDATING PARENT PASSWORD
-PATCH http://localhost:3000/profile/parent/2/password
+PATCH http://localhost:3000/profile/parent/1/password
+Content-Type: application/json
 
+{   
+    "oldPassword": "testouille",
+    "password": "parent"
+}
 
 ### UPDATING STAFF PASSWORD
 PATCH http://localhost:3000/profile/staff/10/password
