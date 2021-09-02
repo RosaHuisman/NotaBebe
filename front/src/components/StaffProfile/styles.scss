@@ -1,20 +1,20 @@
 @use 'src/styles/vars' as v;
 
 .staff {
-  margin: 0 5px 0 5px;
-  //overflow: scroll;
-  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 5rem;
 }
 
 .staff__name {
   font-weight: bold;
   text-align: center;
   font-size: 1.5em;
-  margin-bottom: 3rem;
+  margin: 1rem 0 1.5rem;
 }
 
 .staff__button {
-  margin-top: 20px;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -31,7 +31,6 @@
   box-shadow: 0 5px 9px rgba(0, 0, 0, 0.3);
   padding: 10px 10px 10px 10px; 
 }
-
 
 
 
