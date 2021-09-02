@@ -9,6 +9,7 @@ import {
   SAVE_RECAPS,
   CHANGE_DATE,
   SAVE_RECAP,
+  FILTER_RECAPS
 } from 'src/store/actions/recap';
 
 
@@ -51,6 +52,7 @@ const initialState = {
   start_time_3: '',
   end_time_3: '',
   comment_nap_3: '',
+  inputValue:'',
 };
 
 
@@ -143,6 +145,12 @@ const reducer = (state = initialState, action ) => {
         // start_time_3: '',
         // end_time_3: '',
         // comment_nap_3: '',
+      }
+    }
+    case FILTER_RECAPS: {
+      return {
+        ...state,
+        inputValue: action.filterInputValue
       }
     }
     default:

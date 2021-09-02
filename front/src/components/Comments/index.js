@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Loading from 'src/components/App/Loading';
 import { formatDate, formatHour } from 'src/store/selectors/formatDate';
 import { filterComments } from 'src/store/selectors/comment';
-
 import { childSearched } from 'src/store/selectors/user'
 
 
@@ -11,7 +10,6 @@ import './styles.scss';
 //import commentsData from 'src/data/comments';
 
 const Comments = ({ 
-
   recaps, 
   onSearchSubmit, 
   inputRef, 
@@ -26,8 +24,19 @@ const Comments = ({
   onInputValueCommentChange
 }) => {
 
-  console.log(comments)
+//   // je définis la date du jour 
+//  const datetime = new Date();
+//  // je mets la date du format 02/09/2021
+//  const date = (('0'+datetime.getDate()).slice(-2)+"/"+('0'+(datetime.getMonth()+1)).slice(-2)+"/"+datetime.getFullYear());
+//  console.log(date);
+//   // je compare la date du jour avec la date des comments
+//  function filter_date(comments) {
+//     return comments.date == date;
+//   }
+//   // je filtre sur le tableau avec les dates comparées
+//  const commentsFiltered = comments.filter(filter_date);
 
+  console.log('mes comments:', comments)
 
   //console.log(children);
 
@@ -36,7 +45,6 @@ const Comments = ({
   useEffect(() => {
     loadChildren();
     loadComments();
-    
   }, [])
 
   if (loading) {
@@ -46,12 +54,12 @@ const Comments = ({
   // const [ searchNewValue, setSearchNewValue ] = useState('');
   // const [comments] = useState([]);
 
-
 // filterComments(comments, inputValue);
 
 return (
   <>
     <h1>Les commentaires parents</h1>
+    <h2>{comments.length}</h2>
     <div className="filter">
       <form onSubmit={onSearchSubmit}>
         <input

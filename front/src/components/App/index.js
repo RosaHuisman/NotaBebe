@@ -19,7 +19,7 @@ import PrivateRoute from 'src/containers/PrivateRoute';
 // STAFF
 import StaffProfile from 'src/containers/StaffProfile';
 import ChildsList from 'src/containers/ChildsList';
-import Recaps from 'src/components/Recaps';
+import Recaps from 'src/containers/Recaps';
 import Comments from 'src/containers/Comments';
 import CreateRecap from 'src/containers/CreateRecap';
 // PARENT CHILD
