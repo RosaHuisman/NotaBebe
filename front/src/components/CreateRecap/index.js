@@ -22,6 +22,7 @@ const CreateRecap = ({
   removeLastNap,
   addNewNap,
   save,
+  createRecapFalse
 
 }) => {
   // useEffect(() => {
@@ -70,6 +71,7 @@ console.log(child)
 
   const handleOnClick = () => {
     history.goBack();
+    createRecapFalse();
   }
 
   return (

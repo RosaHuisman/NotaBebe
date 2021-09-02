@@ -9,7 +9,8 @@ import {
   SAVE_RECAPS,
   CHANGE_DATE,
   SAVE_RECAP,
-  FILTER_RECAPS
+  FILTER_RECAPS,
+  RECAP_TO_FALSE
 } from 'src/store/actions/recap';
 
 
@@ -145,6 +146,12 @@ const reducer = (state = initialState, action ) => {
       return {
         ...state,
         inputValue: action.filterInputValue
+      }
+    }
+    case RECAP_TO_FALSE: {
+      return {
+        ...state,
+        save: false,
       }
     }
     default:

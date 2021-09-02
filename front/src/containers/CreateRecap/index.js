@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import CreateRecap from 'src/components/CreateRecap';
-import { changeValueText, changeMood, changeTimeNap, submitFormCreateRecap, changeDate, addFieldNap, removeFieldNap } from 'src/store/actions/recap';
+import { changeValueText, changeMood, changeTimeNap, submitFormCreateRecap, changeDate, addFieldNap, removeFieldNap, createRecapToFalse } from 'src/store/actions/recap';
 
 const mapStateToProps = (state, ownProps) => ({
   napFormLimit: state.recap.napFormLimit,
@@ -35,13 +35,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     dispatch(changeTimeNap(name, value));
   },
 
-  // timeNapStartSelected: (value, name) => {
-  //   dispatch(changeTimeNapStart(name, value));
-  // },
-
-  // timeNapEndSelected: (value, name) => {
-  //   dispatch(changeTimeNapEnd(name, value));
-  // },
+  createRecapFalse: () => {
+    dispatch(createRecapToFalse())
+  },
 
   dateSelected: (date, name) => {
     dispatch(changeDate(date, name));

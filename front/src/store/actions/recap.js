@@ -12,6 +12,7 @@ export const CREATE_RECAP ='CREATE_RECAP';
 export const CHANGE_DATE = 'CHANGE_DATE'
 export const SAVE_RECAP = 'SAVE_RECAP';
 export const FILTER_RECAPS = 'FILTER_RECAPS';
+export const RECAP_TO_FALSE = 'RECAP_TO_FALSE'
 
 export const fetchRecaps = () => ({
   type: FETCH_RECAPS,
@@ -35,6 +36,10 @@ export const changeValueText = (key, value) => ({
   value,
   key,
 });
+
+export const createRecapToFalse = () => ({
+  type: RECAP_TO_FALSE,
+})
 
 export const changeMood = (key, value) => ({
   type: CHANGE_MOOD,
