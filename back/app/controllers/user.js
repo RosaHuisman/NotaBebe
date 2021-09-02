@@ -201,7 +201,6 @@ const userController = {
             // Checking if password is valid thanks to bcrypt's compare function
             const pwResult = bcrypt.compareSync(password, user.password);
 
-
             // if the password is correct 
             if (pwResult) {
 

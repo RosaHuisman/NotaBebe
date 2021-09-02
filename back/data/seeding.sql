@@ -2,18 +2,18 @@ BEGIN;
 
 INSERT INTO "user" ("first_name", "last_name", "address", "postcode", "city", "email", "password", "phone_number", "role_id") VALUES
 ('Parent', 'Rétarcesoir', '3 rue des Pommes', '48000', 'Trifouilly-les-Oies', 'parent@notabebe.io', '$2b$10$3LpDqhR5lMGHzIYOrLLgs.oUzT7m2iwOctl26yL2mrrCH57B6DVje', '0320831920', 1),
-('Mickael', 'Menet', '616 place de la Madeleine', '59000', 'Lille', 'mickael@notabebe.io', '$2y$10$07OC1YsEevbc.1dBJpIIuO5jjY1erBxHeLk.VJBLYCDb8RUpdVsR.', '0459102934', 1),
-('David', 'Basset', '616 place de la Madeleine', '44600', 'Saint-Nazaire', 'david@notabebe.io', '$2a$12$RWK6SKDOahab3hbqZajDXupOlDrIDqC37wWoi9r05HgZcY79ZRyy.', '0384810583', 1),
-('Morgane', 'Benureau', '852 rue Bonnet', '44600', 'Saint-Nazaire', 'morgane@notabebe.io', '$2y$10$n6peUJPEzq6RTT1nY8DXLegCXTMrIs1rML2EPFxHKQoQ7cXdytZeq', '0691238561', 1),
-('Toufik', 'Bezzaouya', '3675 avenue des hêtres', '31000', 'Toulouse', 'toufik@notabebe.io', '$2y$10$G.XIYM01yyKe3ghWc7jdb.GYweZ4X3QKjjr9BFXV5L9/I/XvW7ZNC', '0401947683', 1),
-('Victor', 'Cao', '210 rue du rêve', '20000', 'Ajaccio', 'victor@notabebe.io', '$2y$10$AOgCkaQ566cii4Et//9sAujUpDxKJHKMywLGm.f3fkKYNOezcj62S', '0699887744' , 1),
-('Laura', 'Huisman', '33 rue de ma soeur', '30350', 'Cardet', 'laura@notabebe.io', '$2y$10$gGev/YtiCeGTy.MpB9XuoOCIeFJMtMNlJQ0p00A3LuF7wVwJtnn5S', '0125697485', 1),
-('Claire', 'Paillies', '55 rue bestfriend', '30110', 'Pradel', 'claire@notabebe.io', '$2y$10$CUy85HTi3XV/oWxuofUWnuhT5oaJxX1PYQiPc.Q36wyoJ8XVsZHzK', '0755662233', 1),
-('Yann', 'Hirlemann', '274 rue Adolphe Wurtz', '80000', 'Amiens', 'yann@notabebe.io', '$2y$10$vVD4.kSFfXxWVFFP1fUX0ukDU6K3O0U3kEzdTCOn9nwjSn4dkAKt2', '0549332190', 2),
+('Mickael', 'Menet', '616 place de la Madeleine', '59000', 'Lille', 'mickael@notabebe.io', '$2a$10$Nl812CC5gYzrMLq/uKBDKewWBUFT5pBrLaanuKIk6eIDhO69an21a', '0459102934', 1),
+('David', 'Basset', '616 place de la Madeleine', '44600', 'Saint-Nazaire', 'david@notabebe.io', '$2a$10$qG8GFDP1dj/FDIHJ9Qu8HOk48zXINvcxyTPo7X0nOlnWhdIr74eSy', '0384810583', 1),
+('Morgane', 'Benureau', '852 rue Bonnet', '44600', 'Saint-Nazaire', 'morgane@notabebe.io', '$2a$10$vZoSq1EDWLDBW24zL2tI3usSO37Y83V0zxwSwhqomWS.Jc.VokZsW', '0691238561', 1),
+('Toufik', 'Bezzaouya', '3675 avenue des hêtres', '31000', 'Toulouse', 'toufik@notabebe.io', '$2a$10$yM09NhPGTj7JvhvXWvdz2OL/BUBDATxeK6iF4hSJvVeU83M1XlMWy', '0401947683', 1),
+('Victor', 'Cao', '210 rue du rêve', '20000', 'Ajaccio', 'victor@notabebe.io', '$2a$10$3Ut7Tlu/NpZbwPmt0Sz21.LpTTEiCfCEYFjbWtv5rjM0DdIz/EKfq', '0699887744' , 1),
+('Laura', 'Huisman', '33 rue de ma soeur', '30350', 'Cardet', 'laura@notabebe.io', '$2a$10$0GFnVPgWOJwgKDlHra6ydupFCi3tRsKAJ1eoXp0sqyR/bCqap2y4O', '0125697485', 1),
+('Claire', 'Paillies', '55 rue bestfriend', '30110', 'Pradel', 'claire@notabebe.io', '$2a$10$mozuOWzUldyvhCxzuaON0O8pMoxNO4H15a70KsEx1aT2hAFhRYaRu', '0755662233', 1),
+('Yann', 'Hirlemann', '274 rue Adolphe Wurtz', '80000', 'Amiens', 'yann@notabebe.io', '$2a$10$s3kUzyOB.2zlvGVNT3sBPeBgUH7r.Fzxv0dcJhWL7y1oFb1U51.Zi', '0549332190', 2),
 ('Staff', 'Trodur', '99 avenue des coquelicots', '02000', 'Saint-Quentin', 'staff@notabebe.io', '$2b$10$NAl5uBV3mamCnTjXd5I7uuU0ZKVi8Y9lIyq0XlOm5VrQKiqU5/0k6', '0549332190', 2),
-('Rosa', 'Huisman', '150 boulevard des prairies', '13000', 'Marseille', 'rosa@notabebe.io', '$2y$10$uSbWDxB4C5iCaeIG5vcaRuWZywm5A6IplmUkkl4FtuoPA8OCLFS8y', '0670102943', 2),
-('Blandine', 'Jarysta', '58 rue du théâtre', '59000', 'Lille', 'blandine@notabebe.io' ,'$2y$10$dupdfBcMp8SHZ3pj0op6d.X2Kzo3QHs20AD3cR3xqo4yVaZKJJstu', '0621326554', 2),
-('Nico', 'Charpin', '89 rue de la mer', '06800', 'Cagnes-sur-Mer', 'nico@notabebe.io', '$2y$10$rfbCilpsOyUOU0pqtmS.oez..h8Xr5QzkZVFRB6ZfxIRZ24Cd./oe', '0538592058', 3),
+('Rosa', 'Huisman', '150 boulevard des prairies', '13000', 'Marseille', 'rosa@notabebe.io', '$2a$10$3gtmPHxnQJ1fzN7WdpzKK.KHF410fkeOJPuo5BEnepkiizY9R/bXm', '0670102943', 2),
+('Blandine', 'Jarysta', '58 rue du théâtre', '59000', 'Lille', 'blandine@notabebe.io' ,'$2a$10$X3tohIInxfdOzy4n8cxVfOkm8.bgo3RxK2xSYinMLnwJ53Vg60Tzy', '0621326554', 2),
+('Nico', 'Charpin', '89 rue de la mer', '06800', 'Cagnes-sur-Mer', 'nico@notabebe.io', '$2a$10$P44fPgNr5nagg4F.i/2rmO4HT1hH6MkpbYWkHPQo6gB8pD4Yqa0A2', '0538592058', 3),
 ('Admin', 'Istrationfrançaise', '5 impasse des plantes vertes', '45000', 'Olivet', 'admin@notabebe.io', '$2b$10$9zEcQIenAFg8GkGnZJIuneRDjNuBe1JEKpz6ZsfBdRDMobx0JAT76', '0384910501', 3);
 
 

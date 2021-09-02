@@ -29,12 +29,12 @@ Content-Type: application/json
 
 
 ### UPDATING PARENT PASSWORD
-PATCH http://localhost:3000/profile/parent/1/password
+PATCH http://localhost:3000/profile/parent/6/password
 Content-Type: application/json
 
 {   
-    "oldPassword": "testouille",
-    "password": "parent"
+    "oldPassword": "victor",
+    "password": "victor2"
 }
 
 ### UPDATING STAFF PASSWORD
