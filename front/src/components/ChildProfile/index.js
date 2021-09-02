@@ -55,7 +55,7 @@ const ChildProfile = ({
     loadParents();
     loadChildren();
     loadRecaps();
-    
+
     loadComments();
   }, []);
 

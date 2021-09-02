@@ -7,6 +7,7 @@ const mapStateToProps = (state, ownProps) => ({
   napFormList: state.recap.napFormList,
   isOpen: state.recap.isOpen,
   //value: state.recap[ownProps.name],
+  save: state.recap.save,
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

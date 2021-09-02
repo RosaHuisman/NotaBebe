@@ -67,16 +67,16 @@ const reducer = (state = initialState, action) => {
       };
     }
     case SAVE_USERS_PARENTS: {
-      console.log('je suis dans le cas SAVE_USERS_PARENTS');
-      const { user_id, role_id } = action.payload;
+      //console.log('je suis dans le cas SAVE_USERS_PARENTS');
+      //const { user_id, role_id } = action.payload;
 
       console.log('action payload dans le reducer', action.payload);
 
       return {
         ...state,
         list: action.payload,
-        user_id,
-        role_id,
+        //ser_id,
+        //role_id,
         loading: false,
         logged: true,
       };

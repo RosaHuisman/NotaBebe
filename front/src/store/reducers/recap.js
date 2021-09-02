@@ -23,7 +23,7 @@ const initialState = {
       nameCommentNap: 'comment_nap_1'
     },
   ],
-
+  save: false, 
   isOpen: false,
   loading: true,
   list: [],
@@ -130,18 +130,19 @@ const reducer = (state = initialState, action ) => {
       return {
         ...state,
         recap: action.payload,
-        date: '',
-        mood: '',
-        others:'',
-        start_time_1: '',
-        end_time_1: '',
-        comment_nap_1: '',
-        start_time_2: '',
-        end_time_2: '',
-        comment_nap_2: '',
-        start_time_3: '',
-        end_time_3: '',
-        comment_nap_3: '',
+        save: true, 
+        // date: '',
+        // mood: '',
+        // others:'',
+        // start_time_1: '',
+        // end_time_1: '',
+        // comment_nap_1: '',
+        // start_time_2: '',
+        // end_time_2: '',
+        // comment_nap_2: '',
+        // start_time_3: '',
+        // end_time_3: '',
+        // comment_nap_3: '',
       }
     }
     default:

@@ -33,6 +33,8 @@ const StaffProfile = ({
     handleChangePassword(staff.id);
   };
 
+  console.log(staff)
+
   return (
     <>
     <HeaderStaff 

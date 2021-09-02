@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 
+import HeaderStaff from 'src/containers/HeaderStaff'
 import { changeDate } from 'src/store/selectors/formatDate'
 
 import './styles.scss';
@@ -20,6 +21,7 @@ const CreateRecap = ({
   napFormLimit,
   removeLastNap,
   addNewNap,
+  save,
 
 }) => {
   // useEffect(() => {
@@ -28,7 +30,8 @@ const CreateRecap = ({
 
   const data = useLocation();
   const child = data.state.child;
-  
+  const history = useHistory();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     submitCreateRecap(child.id);
@@ -63,8 +66,21 @@ const CreateRecap = ({
     dateSelected(newDate, e.target.name);
   }
 
+  const handleOnClick = () => {
+    history.goBack();
+  }
+
   return (
-    <form className="createrecap" onSubmit={handleSubmit}>
+    <>
+    <HeaderStaff />
+    { save ? (
+      <div>
+      Récap créé avec succès pour {child.first_name}
+      <button onClick={handleOnClick}> Retour</button>
+      </div>
+    ) : (
+      
+      <form className="createrecap" onSubmit={handleSubmit}>
       <div className="createrecap">
         <h1 className="createrecap__title">Création d'un récap pour </h1>
         <h1 className="createrecap__firstname">{child.first_name}</h1>
@@ -177,8 +193,13 @@ const CreateRecap = ({
       </div>
       <div>-</div>
       </form>
-   
+      
+    )}
+
+    
+  </> 
   );
+  
 }
 
 CreateRecap.propTypes = {

@@ -4,8 +4,6 @@ import {
   openChangeInfos, changeChildInfos, closeFormAction, fetchUsersParents} from 'src/store/actions';
 import { fetchRecaps } from 'src/store/actions/recap'
 import { changeTextValue, fetchComments, openModal, postComment, updateComment, openFormDeleteComment, deleteComment } from 'src/store/actions/comment'
-// import { findChild } from 'src/store/selectors/children';
-// import { findUser } from 'src/store/selectors/user';
 import { findComments } from 'src/store/selectors/comment';
 import { fetchChildren } from 'src/store/actions/children';
 

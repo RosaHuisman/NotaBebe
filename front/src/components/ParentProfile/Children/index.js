@@ -15,7 +15,7 @@ const Children = ({
 
 }) => {
 
-  (
+  return (
     <div className="children">
 
       <h3 className="children__title"> Mon enfant</h3>
