@@ -4,7 +4,6 @@ import Loading from 'src/components/App/Loading';
 import { formatDate, formatHour } from 'src/store/selectors/formatDate';
 import { filterComments } from 'src/store/selectors/comment';
 
-import { formatDate, formatHour } from 'src/store/selectors/formatDate'
 import { childSearched } from 'src/store/selectors/user'
 
 

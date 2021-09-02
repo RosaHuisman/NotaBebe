@@ -50,6 +50,8 @@ const Children = ({
       </div>
     </div>
   );
+}
+
 Children.propTypes = {
   // children: PropTypes.arrayOf(
   //   PropTypes.shape({

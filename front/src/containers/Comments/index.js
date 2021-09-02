@@ -27,8 +27,8 @@ const mapDispatchToProps = (dispatch) => ({
 
 
   onInputValueCommentChange: (filterInputValue) => {
-    console.log(filterInputValue)
     dispatch(filterComments(filterInputValue));
+  },
 
   loadChildren: () => {
     dispatch(fetchChildren());

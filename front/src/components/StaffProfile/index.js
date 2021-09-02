@@ -34,6 +34,10 @@ const StaffProfile = ({
   };
 
   return (
+    <>
+    <HeaderStaff 
+    
+    />
     <div className="staff">
       <div className="staff__name">
         {staff.first_name} {staff.last_name}
@@ -93,6 +97,7 @@ const StaffProfile = ({
       {hasPasswordError && <div>Veuillez vérifier vos identifiants</div>}
     </form>
     </div>
+    </>
     )}
    
 StaffProfile.propTypes = {
