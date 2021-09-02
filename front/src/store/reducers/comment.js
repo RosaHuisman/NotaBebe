@@ -6,7 +6,7 @@ import {
   COMMENT_UPDATED,
   OPEN_FORM_DELETE_COMMENT,
   COMMENT_DELETED,
-
+  FILTER_COMMENTS
 } from 'src/store/actions/comment'
 
 const initialState = {
@@ -18,6 +18,7 @@ const initialState = {
   commentId: null,
   formDeleteOpen: false,
   commentSend: false,  
+  inputValue:'',
 };
 
 const reducer = (state = initialState, action ={} ) => {
@@ -33,7 +34,7 @@ const reducer = (state = initialState, action ={} ) => {
        return {
          ...state,
          modalOpen: !state.modalOpen,
-         //[action.commentId]: !state.modalOpen, 
+         //[action.FILTER_COMMENTScommentId]: !state.modalOpen, 
          commentId: action.commentId,
        }
      }
@@ -41,7 +42,7 @@ const reducer = (state = initialState, action ={} ) => {
       return {
         ...state,
         commentSend: !state.commentSend,
-        //commentId: action.payload.data.id,
+        //commentId:FILTER_COMMENTS action.payload.data.id,
         comment:'',
       };
     }
@@ -69,6 +70,12 @@ const reducer = (state = initialState, action ={} ) => {
         ...state,
         formDeleteOpen: false,
       };
+    }
+    case FILTER_COMMENTS: {
+      return {
+        ...state,
+        inputValue: action.filterInputValue
+      }
     }
     default:
       return state;
