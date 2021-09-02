@@ -83,20 +83,24 @@ const recapController = {
     addRecap: async (request, response, next) => {
         try {
 
+            console.log("req body", request.body);
+
+
             const newRecap = await recapDataMapper.addRecap(request.body);
+
 
             const recapId = newRecap.id;
 
             if (!newRecap)
                 return next();
 
-            if (request.body.naps) {
+            if (request.body.naps && request.body.naps !== null) {
                 for (const nap of request.body.naps) {
                     await recapDataMapper.addNap(nap, recapId);
                 }
             }
 
-            if (request.body.meals)
+            if (request.body.meals && request.body.meals !== null)
                 for (const meal of request.body.meals) {
                     await recapDataMapper.addMeal(meal, recapId);
                 }
