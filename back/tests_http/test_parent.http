@@ -33,10 +33,11 @@ PATCH http://localhost:3000/profile/parent/2/password
 
 
 ### UPDATING USER PASSWORD
-PATCH http://localhost:3000/profile/parent/6/password
+PATCH http://localhost:3000/profile/admin/6/password
 Content-Type: application/json
 
-{
+{   
+    "oldPassword": "admin2",
     "password": "admin"
 }
 

@@ -39,7 +39,7 @@ CREATE TABLE "user" (
     "address" TEXT NOT NULL,
     "postcode" code_postal_fr NOT NULL,
     "city" TEXT NOT NULL,
-    "email" email NOT NULL,
+    "email" email NOT NULL UNIQUE,
     "password" TEXT NOT NULL,
     "phone_number" phone_number NOT NULL,
     "role_id" INT NOT NULL REFERENCES "role"("id") ON DELETE CASCADE,

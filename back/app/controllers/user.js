@@ -198,8 +198,11 @@ const userController = {
                 return;
             };
 
+            console.log("password", password);
+            console.log("user.password", user.password);
             // Checking if password is valid thanks to bcrypt's compare function
             const pwResult = bcrypt.compareSync(password, user.password);
+
 
             // if the password is correct 
             if (pwResult) {
@@ -248,56 +251,56 @@ const userController = {
     },
 
     /**
-     * Updating the user password (+ hashing it)
+     * Checking old password and updating user password (+ hashing it)
      * @param {request} request 
      * @param {response} response 
      */
     updatePassword: async (request, response) => {
         try {
             // check that the data is coherent
-
-            // vérif que old password === pw de l'user en bdd (à partir du token)
-            // si c'est bon : on appelle pour changer le mdp
-
-
-            // const oldPassword = request.body.oldPassword;
-            // côté datamapper : select password from "user" where id=$1
-            // id = request.params.id
-            // -- à ce niveau-là, c'est le oldpassword
-
-            // après il faudrait pouvoir comparer
-
-
-            // voir si c'est le nom choisi en front
-            // vérifier s'il match avec l'ancien mdp présent en BDD ?
-            // si ça matche pas -> errors.push('blabla');
-            const password = request.body.password;
-
-            const errors = [];
-
-
-            // checking string length
-            if (password.length === 0) {
-                errors.push("Le mot de passe est obligatoire");
-            }
-
-            if (errors.length > 0) {
-                // if there is at least one error, we want it to show up in the json response
-                response.json({ error: errors });
-                return;
-            }
-
             const userId = Number(request.params.id);
-            const hash = bcrypt.hashSync(password, 10);
 
-            // save the data into the database
-            const user = await userDataMapper.updatePassword(hash, userId);
 
-            // connect the user (save into a session)
-            request.session.user = user;
+            const oldPassword = request.body.oldPassword;
 
-            // redirect to /
-            response.redirect('/');
+            const user = await userDataMapper.findById(userId);
+
+            const compareHash = bcrypt.compareSync(oldPassword, user.password);
+
+            if (compareHash) {
+
+                const newPassword = request.body.password;
+
+                const errors = [];
+
+                if (oldPassword === newPassword) {
+                    errors.push("Le nouveau mot de passe doit être différent de l'ancien.")
+                }
+                // checking string length
+                if (newPassword.length === 0) {
+                    errors.push("Le mot de passe est obligatoire");
+                }
+
+                if (errors.length > 0) {
+                    // if there is at least one error, we want it to show up in the json response
+                    response.json({ error: errors });
+                    return;
+                }
+
+                const hash = bcrypt.hashSync(newPassword, 10);
+
+                // save the data into the database
+                const user = await userDataMapper.updatePassword(hash, userId);
+
+                // connect the user (save into a session)
+                request.session.user = user;
+
+                // redirect to /
+                response.redirect('/');
+
+            } else {
+                response.json("L'ancien mot de passe est invalide. Veuillez réessayer.");
+            }
 
         } catch (error) {
             console.log(error);
