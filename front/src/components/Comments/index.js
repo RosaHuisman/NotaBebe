@@ -24,23 +24,6 @@ const Comments = ({
   onInputValueCommentChange
 }) => {
 
-//   // je définis la date du jour 
-//  const datetime = new Date();
-//  // je mets la date du format 02/09/2021
-//  const date = (('0'+datetime.getDate()).slice(-2)+"/"+('0'+(datetime.getMonth()+1)).slice(-2)+"/"+datetime.getFullYear());
-//  console.log(date);
-//   // je compare la date du jour avec la date des comments
-//  function filter_date(comments) {
-//     return comments.date == date;
-//   }
-//   // je filtre sur le tableau avec les dates comparées
-//  const commentsFiltered = comments.filter(filter_date);
-
-  console.log('mes comments:', comments)
-
-  //console.log(children);
-
-  // console.log('mes données:', commentsData);
 
   useEffect(() => {
     loadChildren();

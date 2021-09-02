@@ -20,6 +20,7 @@ const Day = ({
             key={nap.id}
           > 
             <p> {nap.start_time} - {nap.end_time} </p>
+            <p> {nap.comment} </p>
           </div>
         )
         )}

@@ -67,16 +67,9 @@ const reducer = (state = initialState, action) => {
       };
     }
     case SAVE_USERS_PARENTS: {
-      //console.log('je suis dans le cas SAVE_USERS_PARENTS');
-      //const { user_id, role_id } = action.payload;
-
-      console.log('action payload dans le reducer', action.payload);
-
       return {
         ...state,
         list: action.payload,
-        //ser_id,
-        //role_id,
         loading: false,
         logged: true,
       };
@@ -88,23 +81,6 @@ const reducer = (state = initialState, action) => {
        loading: false,
      };
    }
-    // case HOME_INITIAL: {
-    //   return {
-    //     loading: false,
-    //   };
-    // }
-    // case SAVE_USER: {
-    //   const { email, logged, token, roleId } = action.myTokenDecoded;
-    //   return {
-    //     ...state,
-    //     email,
-    //     logged,
-    //     token,
-    //     roleId,
-    //     isError: false,
-    //     loading: false,
-    //   };
-    // }
     case OPEN_CHANGE_INFOS:
       return {
         ...state,
@@ -154,7 +130,6 @@ const reducer = (state = initialState, action) => {
     //   };
     // }
     case SAVE_NEW_PASSWORD_PARENT: {
-      console.log('je suis dans le case change password parent')
       return {
         ...state,
         changePasswordError: false,

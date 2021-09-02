@@ -21,8 +21,6 @@ const ChildRecap = ({
 
 }) => {
 
-console.log(recap)
-
   useEffect(() => {
     loadChildren();
     loadRecaps();

@@ -18,15 +18,14 @@ const BasicInfos = ({
   child,
  
 }) => {
-//console.log(parent)
   return(
   <div className="basicinfos">
       <div className="basicinfos__infos">
-      {recap.mood === 'triste' ? 
+      {recap.mood === 'grincheux' || recap.mood === 'malade' || recap.mood === 'triste' || recap.mood === 'énervée' || recap.mood === 'énervé' || recap.mood === 'fatigué' || recap.mood === 'fatiguée'  ? 
             <img src={childGrumpyIcon} className="basicinfos__infos__icon" alt="Child Icon" />
-          : recap.mood === 'middle' ? 
+          : recap.mood === 'ca va' || recap.mood === 'impatient' || recap.mood === 'impatiente' ? 
           <img src={childMediumIcon} className="basicinfos__infos__icon" alt="Child Icon" /> 
-          : recap.mood === 'happy' ?
+          : recap.mood === 'joyeux' || recap.mood === 'curieux' || recap.mood === 'contente' || recap.mood === 'joyeux' || recap.mood === 'très heureux' || recap.mood === 'joyeuse' || recap.mood === 'passionnée' || recap.mood === 'heureuse' || recap.mood === 'souriante' || recap.mood === 'content' || recap.mood === 'curieuse' ?
           <img src={childHappyIcon} className="basicinfos__infos__icon" alt="Child Icon" />
           : null  
         }

@@ -32,7 +32,6 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   },
 
   timeNapSelected: (value, name) => {
-    console.log(value)
     dispatch(changeTimeNap(name, value));
   },
 

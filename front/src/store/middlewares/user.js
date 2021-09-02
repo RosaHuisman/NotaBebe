@@ -49,30 +49,7 @@ const user = (store) => (next) => (action) => {
       fetchData();
       break;
     }
-    // case CHANGE_INFOS: {
-    //   //console.log('je suis dans le cas CHANGE_INFOS')
-    //   const state = store.getState();
-
-    //   const options = {
-    //     method: 'GET',
-    //     url: 'https://notabebe-back.herokuapp.com/profile/admin/parents',
-    //     headers: {
-    //       // on donne le token dans le header Authorization
-    //       // attention a l'espace après Bearer
-    //       Authorization: `Bearer ${state.user.token}`,
-    //     },
-    //   };
-
-    //   axios(options).then((response) => {
-    //     const actionsaveUsersParents = saveUsersParents(response.data);
-    //     store.dispatch(actionsaveUsersParents);
-    //   })
-    //     .catch((error) => {
-    //       console.error(error);
-    //     });
-    //   next(action);
-    //   break;
-    // }
+  
     case CHANGE_INFOS: {
       const state = store.getState();
       const id = action.id;
@@ -89,7 +66,6 @@ const user = (store) => (next) => (action) => {
           store.dispatch(actionSaveInfosUser);
         })
         .catch((error) => {
-          // console.log('une erreur s\'est produite')
           // store.dispatch(changeInfosError());
         });
       break;
@@ -118,9 +94,6 @@ const user = (store) => (next) => (action) => {
       const state = store.getState();
       const id = action.id;
 
-      //console.log(state.user.oldpassword)
-      //console.log(state.user)
-
       axios.patch(`https://notabebe-back.herokuapp.com/profile/parent/${id}/password`, {
         oldPassword: state.user.oldpassword,
         password: state.user.newpassword,
@@ -128,7 +101,6 @@ const user = (store) => (next) => (action) => {
       })
         .then((response) => {
           const actionsChangePasswordParent = saveNewPasswordParent(response.data);
-          console.log(response.data)
           store.dispatch(actionsChangePasswordParent);
         })
         .catch((error) => {

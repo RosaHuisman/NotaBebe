@@ -104,12 +104,6 @@ const reducer = (state = initialState, action ) => {
         [action.key]: action.value,
       }
       case CHANGE_TIME_NAP:
-        console.log(typeof(action.value))
-        console.log(action.key)
-        // const newItem = {
-        //   start_time: state.start_nap_1,
-        //   end_time: state.end_nap_1,
-        // }
       return {
         ...state,
           [action.key]: action.value,

@@ -64,7 +64,6 @@ const AdminHome = ({
   };
 
   const handleClickEditUser = (id) => {
-    console.log('CLICK EDIT', id);
     history.push('/admin/edituser');
   };
 

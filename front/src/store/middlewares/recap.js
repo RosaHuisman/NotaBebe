@@ -54,7 +54,6 @@ const recap = (store) => (next) => (action) => {
       extra_info: state.recap.others
      })
        .then((response) => {
-         console.log(response.data)
          const actionsaveRecap = saveRecap(response.data);
          store.dispatch(actionsaveRecap);
        })

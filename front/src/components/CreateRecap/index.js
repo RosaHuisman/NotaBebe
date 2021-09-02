@@ -32,6 +32,8 @@ const CreateRecap = ({
   const child = data.state.child;
   const history = useHistory();
 
+console.log(child)
+
   const handleSubmit = (e) => {
     e.preventDefault();
     submitCreateRecap(child.id);
@@ -97,10 +99,38 @@ const CreateRecap = ({
         <div className="createrecap__mood">
           <label htmlFor="mood-select" className="createrecap__mood__label">Humeur du jour :</label>
           <select name="mood" id="mood-select" onChange={selectMood}>
+            {child.sex === 'F' ? (
+              <>
             <option value="0">--Sélectionner--</option>
-            <option value="happy">Joyeux</option>
-            <option value="middle">Ca va</option>
-            <option value="grumpy">Grincheux</option>
+            <option value="Joyeuse">Joyeuse</option>
+            <option value="Heureuse">Heureuse</option>
+            <option value="Passionnée">Passionnée</option>
+            <option value="Curieuse">Curieuse</option>
+            <option value="Souriante">Souriante</option>
+            <option value="Contente">Contente</option>
+            <option value="Ca va...">Ca va...</option>
+            <option value="Impatiente">Impatiente</option>
+            <option value="Fatiguée">Fatiguée</option>
+            <option value="Grincheuse">Grincheuse</option>
+              </>
+            ) : (
+              <>
+              <option value="0">--Sélectionner--</option>
+              <option value="Joyeux">Joyeux</option>
+              <option value="Grincheux">Grincheux</option>
+              <option value="Ca va...">Ca va...</option>
+              <option value="Content">Content</option>
+              <option value="Impatient">Impatient</option>
+              <option value="Heureux">Heureux</option>
+              <option value="Souriant">Souriant</option>
+              <option value="Fatigué">Fatigué</option>
+              <option value="Passionné">Passionné</option>
+              <option value="Curieux">Curieux</option>
+              </>
+            
+            )}
+            
+
           </select>
         </div>
         

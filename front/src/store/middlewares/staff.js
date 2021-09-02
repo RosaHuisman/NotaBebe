@@ -12,7 +12,6 @@ const staff = (store) => (next) => (action) => {
   switch (action.type) {
     
     case CHANGE_PASSWORD_STAFF: {
-      console.log('je suis dans le case CHANGE_PASSWORD_STAFF')
       const state = store.getState();
       const id = action.id;
 
@@ -23,7 +22,6 @@ const staff = (store) => (next) => (action) => {
       })
         .then((response) => {
           const actionsChangePasswordStaff = saveNewPasswordStaff(response.data);
-          console.log(response.data)
           store.dispatch(actionsChangePasswordStaff);
         })
         .catch((error) => {
