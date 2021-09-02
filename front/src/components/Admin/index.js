@@ -10,7 +10,6 @@ import Loading from '../App/Loading';
 // import UsersListData from './data.json';
 
 import './styles.scss';
-import { deleteUser } from '../../store/actions';
 
 const AdminHome = ({
   handleDelete,
@@ -31,19 +30,9 @@ const AdminHome = ({
   deleteUser,
   deletedUserError,
   deletedUserSuccess,
+  checkIsLogged,
 
 }) => {
-  if (loading) {
-    return <Loading />;
-  }
-  // le hook useLocation nous renvoie l'url courante
-  const location = useLocation();
-  const history = useHistory();
-
-  useEffect(() => {
-    window.scroll(0, 0);
-  }, [location]);
-
   const [searchNewValue, setSearchNewValue] = useState('');
   const [UsersListData, setUsersListData] = useState([]);
 
@@ -52,6 +41,23 @@ const AdminHome = ({
       .then((response) => response.json())
       .then((json) => setUsersListData(json));
   }, []);
+
+  useEffect(() => {
+    // ici on veut vérifier si l'utilisateur est déjà connecté
+    // au 1e rendu du composant App
+    checkIsLogged();
+  }, []);
+
+  // if (loading) {
+  //   return <Loading />;
+  // }
+  // le hook useLocation nous renvoie l'url courante
+  const location = useLocation();
+  const history = useHistory();
+
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, [location]);
 
   const addUserPage = () => {
     history.push('/admin/adduser');

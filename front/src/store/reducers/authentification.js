@@ -9,6 +9,8 @@ import {
   LOGOUT,
   LOGOUT_SUCCESS,
   SAVE_USER,
+  CHECK_TOKEN_SUCCESS,
+  CHECK_TOKEN_ERROR,
 } from 'src/store/actions/authActions';
 
 const initialState = {
@@ -31,6 +33,7 @@ const reducer = (oldState = initialState, action = {}) => {
       return {
         ...oldState,
         loading: false,
+        contentHome: true,
       };
     }
     case CHANGE_FIELD_VALUE_LOGIN: {
@@ -47,20 +50,26 @@ const reducer = (oldState = initialState, action = {}) => {
         [action.key]: action.value,
       };
     }
-    // case LOGIN_SUCCESS: {
-    //   const { email, logged, token, roleId } = action.myTokenDecoded;
-    //   return {
-    //     ...oldState,
-    //     email,
-    //     logged,
-    //     token,
-    //     roleId,
-    //     loading: false,
-    //     errorMessage: false,
-    //     contentHome: false,
-    //     successMessage: true,
-    //   };
-    // }
+    case CHECK_TOKEN_SUCCESS: {
+      const { email, logged, token, roleId, userId} = action.tokenLocal;
+      return {
+        ...oldState,
+        email,
+        logged,
+        token,
+        roleId,
+        userId,
+        loading: false,
+        errorMessage: false,
+        contentHome: false,
+        successMessage: true,
+      };
+    }
+    case CHECK_TOKEN_ERROR: {
+      return {
+        ...oldState,
+      };
+    }
     case SAVE_USER: {
       const { email, logged, token, roleId, userId, firstName, lastName } = action.myTokenDecoded;
       return {
@@ -75,7 +84,8 @@ const reducer = (oldState = initialState, action = {}) => {
         lastName,
         loading: false,
         errorMessage: false,
-        contentHome: false,
+        // contentHome: false,
+        contentHome: true,
         successMessage: true,
       };
     }

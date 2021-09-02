@@ -9,6 +9,7 @@ import {
   AdminAddUser,
   resetFormAdmin,
 } from 'src/store/actions';
+import { checkToken } from 'src/store/actions/authActions';
 
 const mapStateToProps = (state) => ({
   // loading: state.admin.loading,
@@ -57,6 +58,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   resetFormAdmin: () => {
     dispatch(resetFormAdmin());
+  },
+  checkIsLogged: () => {
+    dispatch(checkToken());
   },
 });
 

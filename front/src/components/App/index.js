@@ -4,15 +4,15 @@ import { Route, Switch, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 // == Import composants /components
+import WelcomeHome from 'src/components/WelcomeHome';
 import Footer from 'src/components/Footer';
 import ContactDetails from 'src/components/ContactDetails';
 import ContactAdmin from 'src/components/Admin/ContactAdmin';
 import ForgotPassword from 'src/components/ForgotPassword';
-import Error from 'src/components/Error';
+import ErrorPage from 'src/components/Error';
 
 // == Import composants /containers
 // import Login from 'src/containers/Login';
-import Header from 'src/containers/Header';
 import Home from 'src/containers/Home';
 import PrivateRoute from 'src/containers/PrivateRoute';
 
@@ -39,10 +39,11 @@ import './styles.scss';
 const App = ({
   welcomePage,
   loading,
+  user,
   checkIsLogged,
 }) => {
   const location = useLocation();
-
+  console.log('LES INFO USER', user);
   useEffect(() => {
     window.scroll(0, 0);
   }, [location]);
@@ -64,41 +65,50 @@ const App = ({
       {/* <Header /> */}
       <Switch>
         {/* // à test ChildProfile */}
+        {/* <Route exact path="/" component={WelcomeHome} /> */}
         <Route exact path="/" component={Home} />
-        {/* <Route exact path="/login" component={Login} /> */}
+        {/* <Route exact path="/login" component={Home} /> */}
         <Route exact path="/forgot" component={ForgotPassword} />
         <Route exact path="/contact" component={ContactDetails} />
 
-        {/* Route Staff */}
-        <PrivateRoute exact path="/profile/staff/:id" component={StaffProfile} />
-
-        {/* <PrivateRoute exact path="/staff/:id/" component={StaffProfile} /> */}
-
-        <PrivateRoute exact path="/profile/staff/:id/children" component={ChildsList} />
-        <PrivateRoute exact path="/profile/staff/:id/recaps" component={Recaps} />
-        <PrivateRoute exact path="/profile/staff/:id/comments" component={Comments} />
-
-        {/* <PrivateRoute exact path="/staff/:id/comments" component={ReadComment} /> */}
-        {/* <PrivateRoute exact path="/profile/staff/children/:id/createrecap" component={CreateRecap} /> */}
-        <PrivateRoute exact path="/profile/staff/childrensetSearchNewValue:id/createrecap" component={CreateRecap} />
-        
         {/* Route Parent Children */}
-        <PrivateRoute exact path="/profile/parent/:id" component={ParentProfile} />
-        <PrivateRoute exact path="/profile/parent/:id/child/:id" component={ChildProfile} />
-        <PrivateRoute exact path="/profile/parent/:id/child/:child_id" component={ChildProfile} />
-        <PrivateRoute exact path="/profile/parent/:id/child/:id/recap" component={ChildRecap} />
+        {user.roleId === 1 && (
+        <>
+          <PrivateRoute exact path="/profile/parent/:id" component={ParentProfile} />
+          <PrivateRoute exact path="/profile/parent/:id/child/:id" component={ChildProfile} />
+          <PrivateRoute exact path="/profile/parent/:id/child/:child_id" component={ChildProfile} />
+          <PrivateRoute exact path="/profile/parent/:id/child/:id/recap" component={ChildRecap} />
+        </>
+        )}
+
+        {/* Route Staff */}
+        {user.roleId === 2 && (
+        <>
+          <PrivateRoute exact path="/profile/staff/:id" component={StaffProfile} />
+          {/* <PrivateRoute exact path="/staff/:id/" component={StaffProfile} /> */}
+          <PrivateRoute exact path="/profile/staff/:id/children" component={ChildsList} />
+          <PrivateRoute exact path="/profile/staff/:id/recaps" component={Recaps} />
+          <PrivateRoute exact path="/profile/staff/:id/comments" component={Comments} />
+          {/* <PrivateRoute exact path="/staff/:id/comments" component={ReadComment} /> */}
+          {/* <PrivateRoute exact path="/profile/staff/children/:id/createrecap" component={CreateRecap} /> */}
+          <PrivateRoute exact path="/profile/staff/childrensetSearchNewValue:id/createrecap" component={CreateRecap} />
+        </>
+        )}
 
         {/* Route Admin */}
-        <PrivateRoute exact path="/admin" component={Admin} />
-        <PrivateRoute exact path="/admin/adduser" component={AddUserAdmin} />
-        <PrivateRoute exact path="/admin/edituser" component={EditUserAdmin} />
-        <PrivateRoute exact path="/admin/contacts" component={ContactAdmin} />
+        {user.roleId === 3 && (
+        <>
+          <PrivateRoute exact path="/admin" component={Admin} />
+          <PrivateRoute exact path="/admin/adduser" component={AddUserAdmin} />
+          <PrivateRoute exact path="/admin/edituser" component={EditUserAdmin} />
+          <PrivateRoute exact path="/admin/contacts" component={ContactAdmin} />
+        </>
+        )}
 
-        <Route exact path="*" component={Error} />
+        {/* <Route exact path="*" component={ErrorPage} /> */}
 
       </Switch>
       <Footer />
-
     </>
   );
 };
@@ -106,7 +116,7 @@ const App = ({
 App.propTypes = {
   loading: PropTypes.bool,
   welcomePage: PropTypes.func.isRequired,
-  checkIsLogged: PropTypes.func.isRequired,
+  // checkIsLogged: PropTypes.func.isRequired,
 };
 
 App.defaultProps = {

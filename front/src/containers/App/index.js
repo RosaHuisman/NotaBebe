@@ -9,6 +9,7 @@ import App from 'src/components/App';
 
 const mapStateToProps = (state) => ({
   loading: state.auth.loading,
+  user: state.auth,
 
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   children: state.user.children,
