@@ -30,7 +30,7 @@ Content-Type: application/json
 
 {
     "email": "admin@notabebe.io",
-    "password": "fgrfdg"
+    "password": "admin"
 }
 
 
