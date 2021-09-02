@@ -12,11 +12,9 @@ import { findUser } from 'src/store/selectors/user';
 
 
 const mapStateToProps = (state, ownProps) => ({
-  //user: findUser(state.user.list, ownProps.match.params.id),
   isOpenInfos: state.user.isOpenInfos,
-  commentSend: state.user.commentSend,
+  commentSend: state.comment.commentSend,
   loading: state.comment.loading,
-  //recap: findRecap(state.recap.list, ownProps.match.params.id),
   comments: findComments(state.comment.list, ownProps.match.params.id),
   modalOpen: state.comment.modalOpen,
   commentId: state.comment.commentId,

@@ -10,7 +10,6 @@ const initialState = {
 const reducer = (state = initialState, action ={} ) => {
   switch (action.type) {
       case SAVE_CHILDREN: {
-        console.log('ok', action.payload)
        return {
          ...state,
          list: action.payload,

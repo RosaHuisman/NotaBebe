@@ -19,6 +19,7 @@ const initialState = {
   formDeleteOpen: false,
   commentSend: false,  
   inputValue:'',
+  commentSend: false,
 };
 
 const reducer = (state = initialState, action ={} ) => {
@@ -44,6 +45,7 @@ const reducer = (state = initialState, action ={} ) => {
         commentSend: !state.commentSend,
         //commentId:FILTER_COMMENTS action.payload.data.id,
         comment:'',
+        commentSend: true, 
       };
     }
     case CHANGE_TEXT_VALUE: {

@@ -26,12 +26,6 @@ const Comments = ({
   onInputValueCommentChange
 }) => {
 
-  console.log(comments)
-
-
-  //console.log(children);
-
-  // console.log('mes données:', commentsData);
 
   useEffect(() => {
     loadChildren();

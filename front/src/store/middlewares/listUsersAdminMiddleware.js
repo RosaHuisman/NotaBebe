@@ -27,7 +27,6 @@ const listUsersAdminMiddleware = (store) => (next) => (action) => {
       //     store.dispatch(getAllUsersSuccessAction(myUserList));
       //   })
       //   .catch((err) => {
-      //     console.log('ERREUR DANS LE MIDDLEXARE ADMIN');
       //     store.dispatch(getAllUsersErrorAction(err));
       //   });
 
@@ -35,7 +34,6 @@ const listUsersAdminMiddleware = (store) => (next) => (action) => {
       //   try {
       //     const response = await api.get('/profile/admin/allusers');
       //     const SOLSOL = response.json();
-      //     console.log('fsefgedgidghqi', SOLSOL);
 
       //     store.dispatch(getAllUsersSuccessAction(SOLSOL));
       //   }
@@ -54,11 +52,9 @@ const listUsersAdminMiddleware = (store) => (next) => (action) => {
     case DELETE_USER: {
 
       const LALALA = action.payload;
-      console.log('je suis dans le cas DELETE_USER', LALALA);
 
       api.delete(`/profile/admin/manageprofile/${LALALA}`)
         .then((response) => {
-          console.log('reponse de la BDD delete user', response.data);
           store.dispatch(deleteUserSuccess(response.data));
         })
         .catch((error) => {
@@ -73,13 +69,9 @@ const listUsersAdminMiddleware = (store) => (next) => (action) => {
       break;
     }
     case ADMIN_ADD_USER: {
-      console.log('je suis dans le cas ADMIN_ADD_USER');
 
       const state = store.getState();
-      console.log('je consoleLOG STATE', state);
       const LALALA = action.payload;
-
-      console.log('Je consoleLOG le PAYLOAD', LALALA);
 
       api({
         method: 'POST',

@@ -51,12 +51,10 @@ const comment = (store) => (next) => (action) => {
      break;
    }
    case UPDATE_COMMENT: {
-    console.log('je suis dans le cas UPDATE_COMMENT')
     const state = store.getState();
     const parentId = action.parentId;
     const childId = action.childId;
     const commentId = action.commentId;
-    console.log(childId)
 
    axios.patch(`https://notabebe-back.herokuapp.com/profile/parent/${parentId}/child/${childId}/comments/${commentId}`, {
      message: state.comment.comment,
@@ -64,7 +62,6 @@ const comment = (store) => (next) => (action) => {
      child_id: action.childId,
    })
      .then((response) => {
-       console.log(response.data)
        const actionupdateComment = commentUpdated(response.data);
        store.dispatch(actionupdateComment);
      })
@@ -75,19 +72,16 @@ const comment = (store) => (next) => (action) => {
    break;
  }
  case DELETE_COMMENT: {
-  console.log('je suis dans le cas DELETE_COMMENT')
   const state = store.getState();
   const parentId = action.parentId;
   const childId = action.childId;
   const commentId = action.commentId;
-  console.log(commentId)
 
  axios.delete(`https://notabebe-back.herokuapp.com/profile/parent/${parentId}/child/${childId}/comments/${commentId}`, {
    commentId: action.commentId,
    child_id: action.childId,
  })
    .then((response) => {
-     console.log(response.data)
      const actiondeleteComment = commentDeleted(response.data);
      store.dispatch(actiondeleteComment);
    })

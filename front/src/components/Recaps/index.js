@@ -15,8 +15,6 @@ import data from 'src/data/recaps';
 const Recaps = ({
   recaps, onSearchSubmit, inputRef, searchValue,
 }) => (
-  console.log('hello'),
-  console.log('mes recaps:', data),
     <>
       <div>
         <HeaderStaff />
