@@ -53,21 +53,21 @@ const Recaps = ({
 
   if (loading) {
     return <Loading />;
-  }
+  }"child.first_name" + "child.last_name"
   
   // console.log('mes recaps:', recaps);  
   console.log('un recap:', recaps[0]);
   // console.log(recaps.length);
  
   return (
-  <>
-    <h1>Mes récapitulatifs enfants </h1>
+  <div className="recaps">
+    <h1 className="recaps__title">Mes récapitulatifs enfants </h1>
     <h2>{recaps.length}</h2>
-    <div className="filter">
+    <div className="recaps__filter">
       <form onSubmit={onSearchSubmit}>
         <input
           ref={inputRef}
-          className="filter__input"
+          className="recaps__filter__input"
           //fluid
           value={inputValue}
           onChange={(e) => onInputValueRecapChange(e.target.value)}
@@ -75,21 +75,20 @@ const Recaps = ({
           />
       </form>
     </div>
-    <div className="staff__recap">
+    <div className="recaps__listing">
       { recaps.map((recap) => (
-        <div key={recap.id} className="recap">
-          <h1 className="recap__title">{childSearched(children, recap.child_id)} - {recap.date}</h1>
-          <span>Son humeur: {recap.mood}</span>
+        <div key={recap.id} className="recaps__listing__recap">
+          <h1 className="recaps__listing__recap__title">{childSearched(children, recap.child_id)} - {recap.date}</h1>
+          <span className="recaps__listing__recap__mood">Son humeur: {recap.mood}</span>
           { recap.naps ? (
             <>
-            <p> Sieste(s) </p>
+            <br></br>
+            <span className="recaps__listing__recap__nap"> Sieste(s): </span>
              {recap.naps.map((nap) => {  
               return(
-                <div
-                key={nap.id}
-                >
-                <p className="recap__sleep"> {nap.start_time} - {nap.end_time} </p>
-                <p>{nap.comment}</p>
+                <div key={nap.id}>
+                <p className="recaps__listing__recap__nap__time"> {nap.start_time} - {nap.end_time} </p>
+                <p className="recaps__listing__recap__nap__comment">{nap.comment}</p>
                 </div>
               )
             })}
@@ -97,26 +96,26 @@ const Recaps = ({
           ) : null}
           { recap.meals ? (
             <>
-            <p> Repas: </p>
+            <span className="recaps__listing__recap__meal"> Repas: </span>
              {recap.meals.map((meal) => {  
               return(
                 <div
                 key={meal.id}
                 >
-                <p className="recap__meal"> {meal.comment} </p>
+                <p className="recaps__listing__recap__meal__comment"> {meal.comment} </p>
                 </div>
               )
             })}
             </>
           ) : null}
-         
-          <p className="recap__others__comments">Divers: {recap.extra_info}</p>
+          <p className="recaps__listing__recap__otherscomment"><span>Divers:</span> {recap.extra_info}</p>
         </div>
       ))}
     </div>
     <div>.</div>
-  </>
+  </div>
   )};
+
 
 Recaps.propTypes = {
 

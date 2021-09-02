@@ -1,15 +1,47 @@
-.filter {
+@use 'src/styles/vars' as v;
+
+.recaps {
+  background-color: rgb(231, 231, 231);
+
+  &__filter {
+    text-align: center;
+
+    &__input {
+      border-radius: 5px;
+    }
+  }
+
+  &__listing__recap {
+    margin: 10px 5px;
+    background-color: rgb(238, 238, 238);
+    border: 1px solid v.$primary-color;
+    border-radius: 5px;
+    padding: 5px;
+
+    &__mood {
+     
+     color: red;
+     text-align: center;
+     
+    }
+
+     
+    }
+
+  &__meal {
+    text-align: center;
+  }
+
+  &__otherscomment {
+      margin-top: 15px;
+    }
+
+
+  }
+
+
+span {
+  font-weight: bold;
   text-align: center;
-  margin-top: 5px;
 }
 
-.recap {
-  margin: 10px 5px;
-  border: 1px solid grey;
-  border-radius: 5px;
-  padding: 5px;
-}
-
-.staff__recap {
-  margin-bottom: 5rem;
-}
