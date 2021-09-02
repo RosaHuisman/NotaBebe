@@ -260,7 +260,6 @@ const userController = {
             // check that the data is coherent
             const userId = Number(request.params.id);
 
-
             const oldPassword = request.body.oldPassword;
 
             const user = await userDataMapper.findById(userId);

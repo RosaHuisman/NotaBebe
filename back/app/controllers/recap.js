@@ -83,9 +83,6 @@ const recapController = {
     addRecap: async (request, response, next) => {
         try {
 
-            console.log("req body", request.body);
-
-
             const newRecap = await recapDataMapper.addRecap(request.body);
 
 
