@@ -54,8 +54,20 @@ Content-Type: application/json
     "extra_info": "coucou les fronteux",
     "mood": "on a réussi l'ajout",
     "child_id": 3,
-    "naps": null,
-    "meals": null
+    "naps": [{
+        "start_time": "11:00:00",
+        "end_time": "12:00:00",
+        "comment": "merci à nico"
+    },
+    {
+        "start_time": "20:00:00",
+        "end_time": "22:00:00",
+        "comment": "test pour une deuxième sieste"
+    }],
+    "meals": [{
+        "time": "12:14:56",
+        "comment": "maintenant pour la modification ça va être une autre affaire"
+    }]
 }
 
 

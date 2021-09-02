@@ -256,6 +256,10 @@ const userController = {
         try {
             // check that the data is coherent
 
+            // vérif que old password === pw de l'user en bdd (à partir du token)
+            // si c'est bon : on appelle pour changer le mdp
+
+
             // const oldPassword = request.body.oldPassword;
             // côté datamapper : select password from "user" where id=$1
             // id = request.params.id
