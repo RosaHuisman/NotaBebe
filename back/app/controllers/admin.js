@@ -7,9 +7,9 @@ const adminController = {
 
     /**
      * Adding a user
-     * @param {request} request 
-     * @param {response} response 
-     * @param {next} next 
+     * @param {request} request - 
+     * @param {response} response - 
+     * @param {next} next - 
      * @returns 
      */
     addUser: async (request, response, next) => {

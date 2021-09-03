@@ -66,5 +66,5 @@ Content-Type: application/json
 
 
 ### DELETING A USER
-DELETE http://localhost:3000/profile/admin/manageprofile/8
+DELETE http://localhost:3000/profile/admin/manageprofile/15
 

@@ -3,7 +3,7 @@ const client = require('../client');
 const commentDataMapper = {
 
     async findAll() {
-        const result = await client.query('SELECT * FROM "comment" ORDER BY created_at DESC');
+        const result = await client.query('SELECT "comment".*, "child"."first_name" FROM "comment" JOIN "child" ON "comment"."child_id" = "child"."id" ORDER BY created_at DESC');
         return result.rows;
     },
 

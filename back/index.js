@@ -4,7 +4,7 @@ const express = require('express');
 const session = require('express-session');
 const cors = require('cors');
 
-const router = require('./app/routers/index');
+const router = require('./app/routers');
 
 
 const app = express();

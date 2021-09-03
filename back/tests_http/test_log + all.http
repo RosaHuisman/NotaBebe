@@ -14,7 +14,7 @@ Content-Type: application/json
 }
 
 
-### try login with other user - hashed password to try with bcrypt compareSync 
+### try login wrong password 
 POST http://localhost:3000/login
 Content-Type: application/json
 
@@ -24,22 +24,16 @@ Content-Type: application/json
 }
 
 
-### try login - wrong password
-POST http://localhost:3000/login
-Content-Type: application/json
-
-{
-    "email": "admin@notabebe.io",
-    "password": "admin"
-}
-
-
-
-
-
 # a tester?
 # ### logout user
 # GET http://localhost:3000/logout
+
+
+
+
+
+
+
 
 
 
