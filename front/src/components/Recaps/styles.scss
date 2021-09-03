@@ -1,7 +1,7 @@
 @use 'src/styles/vars' as v;
 
 .recaps {
-  background-color: rgb(231, 231, 231);
+  margin-bottom: 5rem;
 
   &__filter {
     text-align: center;
@@ -12,8 +12,8 @@
   }
 
   &__listing__recap {
-    margin: 10px 5px;
-    background-color: rgb(238, 238, 238);
+    margin: 15px 10px;
+    background-color: white;
     border: 1px solid v.$primary-color;
     border-radius: 5px;
     padding: 5px;

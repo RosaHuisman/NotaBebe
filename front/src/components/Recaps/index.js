@@ -4,6 +4,7 @@ import { Icon } from 'semantic-ui-react';
 import recaps from 'src/store/middlewares/recap';
 import HeaderStaff from 'src/containers/HeaderStaff';
 import Loading from 'src/components/App/Loading';
+import { filterRecaps } from 'src/store/selectors/recap';
 
 import {childSearched} from 'src/store/selectors/user'
 import './styles.scss';
@@ -80,9 +81,9 @@ const Recaps = ({
       </form>
     </div>
     <div className="recaps__listing">
-      { recaps.map((recap) => (
+      { filterRecaps(recaps, inputValue).map((recap) => (
         <div key={recap.id} className="recaps__listing__recap">
-          <h1 className="recaps__listing__recap__title">{childSearched(children, recap.child_id)} - {recap.date}</h1>
+          <h1 className="recaps__listing__recap__title">{recap.first_name} - {recap.date}</h1>
           <span className="recaps__listing__recap__mood">Son humeur: {recap.mood}</span>
           { recap.naps ? (
             <>

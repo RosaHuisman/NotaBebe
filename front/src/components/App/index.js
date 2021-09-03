@@ -96,6 +96,7 @@ const App = ({
             {/* <PrivateRoute exact path="/staff/:id/comments" component={ReadComment} /> */}
             <PrivateRoute exact path="/profile/staff/children/:id/createrecap" component={CreateRecap} />
             {/* <PrivateRoute exact path="/profile/staff/childrensetSearchNewValue:id/createrecap" component={CreateRecap} /> */}
+           
           </>
         )}
 
@@ -109,7 +110,7 @@ const App = ({
           </>
         )}
 
-        {/* <Route exact path="*" component={ErrorPage} /> */}
+        <Route><ErrorPage /></Route> 
 
       </Switch>
       <Footer />
