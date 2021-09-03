@@ -44,12 +44,11 @@ const reducer = (state = initialState, action ={} ) => {
         ...state,
         commentSend: !state.commentSend,
         //commentId:FILTER_COMMENTS action.payload.data.id,
-        comment:'',
+        comment: '',
         commentSend: true,
         list: [
           action.payload.data,
           ...state.list,
-          
         ]  
       };
     }

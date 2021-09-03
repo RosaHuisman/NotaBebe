@@ -16,6 +16,8 @@ const ChildRecap = ({
   child,
   loading,
   recap,
+  loadParents,
+  parent 
 
 }) => {
   const history = useHistory();
@@ -23,6 +25,18 @@ const ChildRecap = ({
   const previousPage = () => {
     history.goBack();
   };
+
+  useEffect(() => {
+    loadParents();
+    loadChildren();
+    loadRecaps();
+  }, []);
+
+  if (loading) {
+    return <Loading />;
+  } 
+
+  
 
   return (
     <>

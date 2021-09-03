@@ -11,13 +11,19 @@
   -moz-box-shadow: 0 5px 9px rgba(0, 0, 0, 0.3);
 
   &__designation {
+    margin-top: 1rem;
     font-weight: bold;
-    padding-bottom: v.$gutter,2;
+    padding: v.$gutter,2;
   }
 
   &__result {
-    padding-left: v.$gutter,2;
-    text-overflow: ellipsis;
-    word-wrap: break-word;
+    margin-bottom: 1rem;
+    background-color:rgba(255, 255, 255, 0.486);
+    padding: .3rem;
+    border-radius: 5px;
+    box-shadow: 0 5px 9px rgba(0, 0, 0, 0.3); 
+     -webkit-box-shadow: 0 5px 9px rgba(0, 0, 0, 0.3); 
+     -moz-box-shadow: 0 5px 9px rgba(0, 0, 0, 0.3);
+    
   }
 }

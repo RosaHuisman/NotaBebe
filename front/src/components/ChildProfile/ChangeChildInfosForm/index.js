@@ -18,12 +18,13 @@ const ChangeChildInfosForm = ({
 }) => {
   useEffect(() => {
     loadChildren();
-   }, [child]);
+   }, []);
 
   const handleOnClickCancelButton = (e) => {
     e.preventDefault();
     closeForm();
   };
+
 
   const handleSubmit = (evt) => {
     evt.preventDefault();

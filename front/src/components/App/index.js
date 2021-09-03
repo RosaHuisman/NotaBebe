@@ -42,17 +42,18 @@ const App = ({
   loading,
   user,
   checkIsLogged,
-  loadChildren,
+  //loadChildren,
   child,
   children,
 }) => {
   const location = useLocation();
   useEffect(() => {
     window.scroll(0, 0);
-    loadChildren();
+    //loadChildren();
   }, [location]);
 
-  console.log(children)
+  //console.log(children)
+  
 
   //console.log(child)
 
@@ -80,9 +81,9 @@ const App = ({
         {/* Route Parent Children */}
         {user.roleId === 1 && (
           <>
-            <PrivateRoute exact path="/profile/parent/:id" component={ParentProfile} />
-            <PrivateRoute exact path="/profile/parent/:parent_id/child/:id" component={ChildProfile} />
-            <PrivateRoute exact path="/profile/parent/:id/child/:id/recap" component={ChildRecap} />
+            <PrivateRoute exact path="/profile/parent/:parent_id" component={ParentProfile} />
+            <PrivateRoute exact path="/profile/parent/:parent_id/child/:child_id" component={ChildProfile} />
+            <PrivateRoute exact path="/profile/parent/:parent_id/child/:child_id/recap" component={ChildRecap} />
           </>
         )}
 

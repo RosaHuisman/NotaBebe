@@ -59,10 +59,12 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case SAVE_INFOS_USER: {
-
+      console.log(action.payload.updatedChild.allergies)
       return {
+        allergy: action.payload.updatedChild.allergies,
+
         ...state,
-        changeInfos: true,
+        //changeInfos: true,
         isOpenInfos: false,
       };
     }

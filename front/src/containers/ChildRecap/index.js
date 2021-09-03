@@ -6,13 +6,14 @@ import { fetchRecaps } from 'src/store/actions/recap'
 import { fetchChildren } from 'src/store/actions/children';
 import { findUser } from 'src/store/selectors/user';
 import { findRecap } from 'src/store/selectors/recap';
+import { fetchUsersParents} from 'src/store/actions';
 
 
 const mapStateToProps = (state, ownProps) => ({
-  child: findUser(state.children.list, ownProps.match.params.id),
+  parent: findUser(state.user.list, ownProps.match.params.parent_id),
+  child: findUser(state.children.list, ownProps.match.params.child_id),
   loading: state.recap.loading,
-  recap: findRecap(state.recap.list, ownProps.match.params.id)
-
+  recap: findRecap(state.recap.list, ownProps.match.params.child_id),
 });
 
 const mapDispatchToProps = (dispatch,) => ({
@@ -21,6 +22,9 @@ const mapDispatchToProps = (dispatch,) => ({
   },
   loadChildren: () => {
     dispatch(fetchChildren());
+  },
+  loadParents: () => {
+    dispatch(fetchUsersParents());
   },
 });
 
