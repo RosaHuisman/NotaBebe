@@ -1,6 +1,13 @@
 @use 'src/styles/vars'as v;
 
 
+.team__page__container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding-bottom: 5rem;
+}
+
 .team__page {
   //padding-top: 0.5em;
   display: flex;
@@ -56,8 +63,6 @@
     }
 
   }
-
-
 
 }
 
