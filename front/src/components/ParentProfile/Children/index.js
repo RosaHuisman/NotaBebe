@@ -12,6 +12,7 @@ const Children = ({
   children,
   user,
 
+
 }) => {
 console.log(children)
   return (
@@ -49,9 +50,10 @@ console.log(children)
 
           ))}
       </div>
+
     </div>
-  );
-}
+  </div>
+);
 
 Children.propTypes = {
   // children: PropTypes.arrayOf(

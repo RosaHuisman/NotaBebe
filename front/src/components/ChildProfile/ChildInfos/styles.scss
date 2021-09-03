@@ -2,7 +2,8 @@
 
 .childinfos {
   margin: 0 v.$gutter v.$gutter;
-  padding: v.$gutter/2 v.$gutter;
+  margin-bottom: 0.7rem;
+  padding: 2rem ;
   border-radius: 10px;
   border: 1px solid #eee;
   background-color: #fff;
@@ -14,10 +15,12 @@
   font-size: .9em;
 
   &__firstname {
-    font-size: 1.5em;
+    font-size: 4rem;
+    font-weight: bold;
     color: v.$red-color;
     margin-bottom: v.$gutter;
     text-align: center;
+    font-family: v.$amatic;
   }
 
     &__infos {
