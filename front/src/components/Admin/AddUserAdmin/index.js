@@ -34,13 +34,6 @@ const AddUserAdmin = ({
   const history = useHistory();
 
   useEffect(() => {
-    // state HomePage
-    // ici on veut vérifier si l'utilisateur est déjà connecté
-    // au 1e rendu du composant App
-    checkIsLogged();
-  }, []);
-
-  useEffect(() => {
     window.scroll(0, 0);
   }, [location]);
 
