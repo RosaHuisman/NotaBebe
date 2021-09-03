@@ -112,8 +112,9 @@ export const infosError = () => ({
   type: LOGIN_ERROR,
 });
 
-export const saveInfosUser = () => ({
+export const saveInfosUser = (infos) => ({
   type: SAVE_INFOS_USER,
+  payload: infos,
 });
 
 // export const savePasswordUser = () => ({

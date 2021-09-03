@@ -1,6 +1,8 @@
 import { connect } from 'react-redux';
 import CreateRecap from 'src/components/CreateRecap';
 import { changeValueText, changeMood, changeTimeNap, submitFormCreateRecap, changeDate, addFieldNap, removeFieldNap, createRecapToFalse } from 'src/store/actions/recap';
+import { fetchChildren } from 'src/store/actions/children'
+
 
 const mapStateToProps = (state, ownProps) => ({
   napFormLimit: state.recap.napFormLimit,
@@ -41,7 +43,10 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 
   dateSelected: (date, name) => {
     dispatch(changeDate(date, name));
-  }
+  },
+  loadChildren: () => {
+    dispatch(fetchChildren());
+  },
 
 });
 

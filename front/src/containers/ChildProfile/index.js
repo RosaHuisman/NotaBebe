@@ -19,7 +19,7 @@ const mapStateToProps = (state, ownProps) => ({
   modalOpen: state.comment.modalOpen,
   commentId: state.comment.commentId,
   formDeleteOpen: state.comment.formDeleteOpen,
-  child: findUser(state.children.list, ownProps.match.params.id),
+  child: findUser(state.children.list, ownProps.match.params.child_id),
   parent: findUser(state.user.list, ownProps.match.params.parent_id),
 });
 

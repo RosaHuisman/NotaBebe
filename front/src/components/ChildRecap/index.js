@@ -16,13 +16,29 @@ const ChildRecap = ({
   child,
   loading,
   recap,
+  loadParents,
+  parent,
+  closeCommentSend 
 
 }) => {
   const history = useHistory();
 
   const previousPage = () => {
     history.goBack();
+    closeCommentSend();
   };
+
+  useEffect(() => {
+    loadParents();
+    loadChildren();
+    loadRecaps();
+  }, []);
+
+  if (loading) {
+    return <Loading />;
+  } 
+
+  
 
   return (
     <>
@@ -35,7 +51,7 @@ const ChildRecap = ({
           <p className="childrecap__date">{recap.date}</p>
 
           <BasicInfos recap={recap[0]} child={child} parent={parent} />
-          <Day recap={recap[0]} />
+          <Day recap={recap[0]} child={child} />
         </div>
 
         <div className="backButton">

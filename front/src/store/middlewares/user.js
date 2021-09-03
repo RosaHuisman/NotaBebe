@@ -82,6 +82,7 @@ const user = (store) => (next) => (action) => {
       })
         .then((response) => {
           const actionSaveInfosUser = saveInfosUser(response.data);
+          console.log(response.data)
           store.dispatch(actionSaveInfosUser);
         })
         .catch((error) => {

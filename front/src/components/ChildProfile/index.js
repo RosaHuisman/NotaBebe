@@ -61,6 +61,7 @@ const ChildProfile = ({
   if (loading) {
     return <Loading />;
   } 
+
  
 
   // we retrieve the data of the parent and the child through Link of Children in ParentProfile
