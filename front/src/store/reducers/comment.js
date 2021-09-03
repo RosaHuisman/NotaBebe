@@ -6,7 +6,8 @@ import {
   COMMENT_UPDATED,
   OPEN_FORM_DELETE_COMMENT,
   COMMENT_DELETED,
-  FILTER_COMMENTS
+  FILTER_COMMENTS, 
+  COMMENT_SEND_NO
 } from 'src/store/actions/comment'
 
 const initialState = {
@@ -44,12 +45,11 @@ const reducer = (state = initialState, action ={} ) => {
         ...state,
         commentSend: !state.commentSend,
         //commentId:FILTER_COMMENTS action.payload.data.id,
-        comment:'',
+        comment: '',
         commentSend: true,
         list: [
           action.payload.data,
           ...state.list,
-          
         ]  
       };
     }
@@ -84,6 +84,12 @@ const reducer = (state = initialState, action ={} ) => {
       return {
         ...state,
         inputValue: action.filterInputValue
+      }
+    }
+    case COMMENT_SEND_NO: {
+      return {
+        ...state,
+        commentSend: false,
       }
     }
     default:

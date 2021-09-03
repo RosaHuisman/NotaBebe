@@ -36,3 +36,9 @@ export const changeDate = (date) => {
   return newDate
 }
 
+export const napTime = (time) => {
+  //console.log(time)
+  const newTime = time.split(':').splice(0, 2).join(' h ')
+  //console.log('newtime: ', newTime)
+  return newTime
+}

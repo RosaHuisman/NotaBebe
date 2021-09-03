@@ -23,8 +23,8 @@ const mapStateToProps = (state, ownProps) => ({
   changeInfos: state.user.changeInfos,
   hasInfosError: state.user.changeInfosError,
   hasPasswordError: state.user.changePasswordError,
-  user: findUser(state.user.list, ownProps.match.params.id),
-  children: findChildrenOfParent(state.user.list, ownProps.match.params.id),
+  user: findUser(state.user.list, ownProps.match.params.parent_id),
+  children: findChildrenOfParent(state.user.list, ownProps.match.params.parent_id),
   loading: state.user.loading,
   });
 

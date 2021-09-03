@@ -13,8 +13,8 @@ const mapStateToProps = (state, ownProps) => ({
   user: state.auth,
 
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  children: state.children.children,
-  //child: findUser(state.children.list, ownProps.match.params.id),
+  children: state.children.list,
+  //child: findUser(state.children.list, ownProps.match.params.child_id),
 
   //user: findUser(state.user.list, ownProps.match.params.id),
   //user: state.user,
@@ -27,9 +27,9 @@ const mapDispatchToProps = (dispatch) => ({
   checkIsLogged: () => {
     dispatch(checkToken());
   },
-  loadChildren: () => {
-    dispatch(fetchChildren());
-  },
+  // loadChildren: () => {
+  //   dispatch(fetchChildren());
+  // },
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // loadUsersParents: () => {
   //   dispatch(fetchUsersParents());

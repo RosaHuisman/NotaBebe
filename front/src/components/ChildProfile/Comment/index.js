@@ -38,7 +38,7 @@ const Comment = ({
     loadComments()
   }, []);
 
-  console.log(comments)
+  //console.log(comments)
 
 
   const handleSubmit = (evt) => {

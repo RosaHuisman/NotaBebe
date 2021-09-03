@@ -43,15 +43,21 @@ const App = ({
   loading,
   user,
   checkIsLogged,
-  loadChildren,
+  //loadChildren,
   child,
   children,
 }) => {
   const location = useLocation();
   useEffect(() => {
     window.scroll(0, 0);
-    loadChildren();
+    //loadChildren();
   }, [location]);
+
+
+  //console.log(children)
+  
+
+  //console.log(child)
 
   useEffect(() => {
     // state HomePage
@@ -120,7 +126,9 @@ const App = ({
         <Route exact path="/" component={Home} />
         <Route exact path="/forgot" component={ForgotPassword} />
         <Route exact path="/contact" component={ContactDetails} />
+
         <Route path="/devteam" component={TeamPagePublic} />
+
 
         {/* <Route exact path="*" component={ErrorPage} /> */}
       </Switch>
