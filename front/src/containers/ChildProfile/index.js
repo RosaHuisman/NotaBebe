@@ -15,7 +15,7 @@ const mapStateToProps = (state, ownProps) => ({
   isOpenInfos: state.user.isOpenInfos,
   commentSend: state.comment.commentSend,
   loading: state.comment.loading,
-  comments: findComments(state.comment.list, ownProps.match.params.id),
+  comments: findComments(state.comment.list, ownProps.match.params.child_id),
   modalOpen: state.comment.modalOpen,
   commentId: state.comment.commentId,
   formDeleteOpen: state.comment.formDeleteOpen,
@@ -36,7 +36,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     dispatch(closeFormAction());
   },
 
-  submitComment: (parentId, childId, commentId) => {
+  submitComment: (parentId, childId) => {
     dispatch(postComment(parentId, childId));
   },
 

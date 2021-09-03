@@ -33,12 +33,11 @@ const Comment = ({
 
 }) => {
   useEffect(() => {
-
     loadChildren(),
     loadComments()
   }, []);
 
-  //console.log(comments)
+  console.log(comments)
 
 
   const handleSubmit = (evt) => {
