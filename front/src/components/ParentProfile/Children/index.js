@@ -52,9 +52,9 @@ console.log(children)
       </div>
 
     </div>
-  </div>
+            
 );
-
+}
 Children.propTypes = {
   // children: PropTypes.arrayOf(
   //   PropTypes.shape({
