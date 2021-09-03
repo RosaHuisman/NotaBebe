@@ -22,6 +22,7 @@ const AddUserAdmin = ({
 
   handleAddUser,
   changeField,
+  roleSelected,
   resetFormAdmin,
 
   contentAdminPageAdd,
@@ -43,6 +44,11 @@ const AddUserAdmin = ({
   const handleSubmitAddUser = (e) => {
     e.preventDefault();
     handleAddUser();
+  };
+
+  const selectRole = (e) => {
+    e.preventDefault();
+    roleSelected(e.target.value, e.target.name);
   };
 
   const previousPage = () => {
@@ -87,8 +93,8 @@ const AddUserAdmin = ({
                           type="text"
                           name="last_name"
                           // placeholder="Nom"
-                          // onChange={changeField}
-                          // value={lastName}
+                          onChange={changeField}
+                          value={lastName}
                           required
                         />
                       </Table.Cell>
@@ -100,8 +106,8 @@ const AddUserAdmin = ({
                           type="text"
                           name="first_name"
                           // placeholder="Prénom"
-                          // onChange={changeField}
-                          // value={firstName}
+                          onChange={changeField}
+                          value={firstName}
                           required
                         />
                       </Table.Cell>
@@ -113,8 +119,8 @@ const AddUserAdmin = ({
                           type="email"
                           name="email"
                           // placeholder="Email"
-                          // onChange={changeField}
-                          // value={email}
+                          onChange={changeField}
+                          value={email}
                           required
                         />
                       </Table.Cell>
@@ -127,8 +133,8 @@ const AddUserAdmin = ({
                           name="phone_number"
                           pattern="^[0-9]{10}$"
                           // placeholder="Numéro de téléphone"
-                          // onChange={changeField}
-                          // value={phoneNumber}
+                          onChange={changeField}
+                          value={phoneNumber}
                           required
                         />
                       </Table.Cell>
@@ -140,8 +146,8 @@ const AddUserAdmin = ({
                           type="text"
                           name="address"
                           // placeholder="Adresse"
-                          // onChange={changeField}
-                          // value={address}
+                          onChange={changeField}
+                          value={address}
                           required
                         />
                       </Table.Cell>
@@ -154,8 +160,8 @@ const AddUserAdmin = ({
                           name="postcode"
                           // placeholder="Code postal"
                           max="99999"
-                          // onChange={changeField}
-                          // value={postcode}
+                          onChange={changeField}
+                          value={postcode}
                           required
                         />
                       </Table.Cell>
@@ -167,25 +173,25 @@ const AddUserAdmin = ({
                           type="text"
                           name="city"
                           // placeholder="Ville"
-                          // onChange={changeField}
-                          // value={city}
+                          onChange={changeField}
+                          value={city}
                           required
                         />
                       </Table.Cell>
                     </Table.Row>
+
+
                     <Table.Row>
-                      <Table.Cell verticalAlign="middle"><div className="columnTitle">Rôle = 1 : Parent / 2 : Staff / 3 : Admin</div></Table.Cell>
+                      <Table.Cell verticalAlign="middle"><div className="columnTitle">Rôle</div></Table.Cell>
                       <Table.Cell verticalAlign="middle">
-                        <Field
-                          type="number"
-                          name="role_id"
-                          // placeholder="Rôle"
-                          min="1"
-                          max="3"
-                          // onChange={changeField}
-                          // value={roleId}
-                          required
-                        />
+                        <div className="roleSelectedMenu">
+                          <select name="role_id" id="role-select" onChange={selectRole}>
+                            <option value="0">Rôles</option>
+                            <option value="1">1 : Parent</option>
+                            <option value="2">2 : Staff</option>
+                            <option value="3">3 : Admin</option>
+                          </select>
+                        </div>
                       </Table.Cell>
                     </Table.Row>
                     <Table.Row>
@@ -195,8 +201,8 @@ const AddUserAdmin = ({
                           type="text"
                           name="password"
                           // placeholder="Mot de passe"
-                          // onChange={changeField}
-                          // value={password}
+                          onChange={changeField}
+                          value={password}
                           required
                         />
                       </Table.Cell>

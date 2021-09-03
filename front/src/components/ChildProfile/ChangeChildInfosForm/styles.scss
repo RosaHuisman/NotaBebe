@@ -1,8 +1,9 @@
 @use 'src/styles/vars' as v;
+@use "sass:math";
 
 .changechildinfosform {
      margin: 0 v.$gutter v.$gutter;
-     padding: v.$gutter/2 v.$gutter;
+     padding: math.div(v.$gutter, 2) v.$gutter;
      border-radius: 10px;
      border: 1px solid #eee;
      background-color: #fff;
@@ -26,12 +27,12 @@
   &__buttons {
     display: flex;
     justify-content: flex-end;
-    padding: v.$gutter/4;
+    padding: math.div(v.$gutter, 4);
     align-items: center;
 
     &__send {
       display: block;
-      padding: v.$gutter/3;
+      padding: math.div(v.$gutter, 3);
       background-color: v.$primary-color;
       border: none;
       margin-left: 10px;
@@ -42,7 +43,7 @@
     &__cancel {
       font-size: .9em;
       display: block;
-      padding: v.$gutter/3;
+      padding: math.div(v.$gutter, 3);
       background-color: v.$red-color;
       border: none;
       border-radius: 5px;

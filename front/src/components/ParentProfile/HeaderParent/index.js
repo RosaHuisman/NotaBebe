@@ -6,17 +6,17 @@ import { Link, useHistory } from 'react-router-dom';
 import logo from 'src/images/NotaBebe_logo.png';
 
 const HeaderParent = ({
-  handleLogout, loggedMessage, userId,
+  handleLogout, userId,
 }) => {
   const history = useHistory();
 
   const LOGOUT = () => {
-    // localStorage.removeItem('MyToken');
-    // e.preventDefault();
     handleLogout();
-    // if (!getToken) {
     history.push('/');
-    // }
+  };
+
+  const profilMenu = () => {
+    history.push(`/profile/parent/${userId}`);
   };
 
   return (
@@ -28,13 +28,7 @@ const HeaderParent = ({
         className="icon iconBurger"
       >
         <Dropdown.Menu>
-          <Dropdown.Item>{loggedMessage}</Dropdown.Item>
-          <Dropdown.Item>
-            <Link to={`/profile/parent/${userId}`}>Mon profil</Link>
-          </Dropdown.Item>
-          <Dropdown.Item>
-            <Link to="/actualites">Actualités</Link>
-          </Dropdown.Item>
+          <Dropdown.Item onClick={profilMenu}>Mon profil</Dropdown.Item>
           <Dropdown.Item onClick={LOGOUT}>Se déconnecter</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
@@ -48,11 +42,6 @@ const HeaderParent = ({
 
 HeaderParent.propTypes = {
   handleLogout: PropTypes.func.isRequired,
-  loggedMessage: PropTypes.string,
-};
-
-HeaderParent.defaultProps = {
-  loggedMessage: 'Connecté',
 };
 
 export default HeaderParent;

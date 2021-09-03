@@ -42,7 +42,7 @@ const Error = () => {
         </Button>
       </div>
     </>
-);
+  );
 };
 
 export default Error;

@@ -18,6 +18,7 @@ import {
   ADMIN_ADD_USER_SUCCESS,
   ADMIN_ADD_USER_ERROR,
   RESET_FORM_ADMIN,
+  CHANGE_ROLE,
 } from '../actions';
 
 const initialState = {
@@ -178,7 +179,12 @@ const reducer = (state = initialState, action) => {
         addUserError: false,
       };
     }
-
+    case CHANGE_ROLE: {
+      return {
+        ...state,
+        [action.key]: action.value,
+      };
+    }
     default:
       return state;
   }

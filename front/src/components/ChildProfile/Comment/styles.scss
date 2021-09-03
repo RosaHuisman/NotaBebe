@@ -1,4 +1,5 @@
 @use 'src/styles/vars' as v;
+@use "sass:math";
 
 .comment {
   margin-top: v.$gutter;
@@ -9,21 +10,21 @@
   margin: 0 v.$gutter v.$gutter;
   
   &__text {
-    margin-top: v.$gutter/2;
+    margin-top: math.div(v.$gutter, 2);
 
     &__label {
       color: v.$primary-color;
       font-size: 0.9em;
       text-transform: uppercase;
       font-weight: bold;
-      margin-left: v.$gutter/2;
+      margin-left: math.div(v.$gutter, 2);
     }
     &__textarea {
       display: block;
       width: 90%;
       resize: none;
-      margin: v.$gutter/2 auto;
-      padding: v.$gutter/2;
+      margin: math.div(v.$gutter, 2) auto;
+      padding: math.div(v.$gutter, 2);
       border-radius: 10px;
       border: 1px solid #ddd;
       background-color: #fff;
@@ -33,7 +34,7 @@
     margin: 1rem auto;
     margin-bottom: v.$gutter;
     display: block;
-    padding: v.$gutter/3;
+    padding: math.div(v.$gutter, 3);
     background-color: v.$primary-color;
     border: none;
     border-radius: 5px;
@@ -59,7 +60,7 @@
       font-size: 1em;
       text-transform: uppercase;
       font-weight: bold;
-      margin-left: v.$gutter/2;
+      margin-left: math.div(v.$gutter, 2);
 
     }
   }
@@ -68,7 +69,7 @@
     
     width: 80%;
     margin: 1rem auto;
-    padding: v.$gutter/2;
+    padding: math.div(v.$gutter, 2);
     border-radius: 10px;
     border: 1px solid #eee;
     background-color: v.$bg-color;
@@ -119,7 +120,7 @@
         justify-content: flex-end;
         &__submit {
           display: block;
-          padding: v.$gutter/3;
+          padding: math.div(v.$gutter, 3);
           background-color: v.$primary-color;
           border: none;
           border-radius: 5px;
@@ -128,7 +129,7 @@
         &__cancel {
           font-size: .9em;
           display: block;
-          padding: v.$gutter/3;
+          padding: math.div(v.$gutter, 3);
           background-color: v.$red-color;
           border: none;
           border-radius: 5px;

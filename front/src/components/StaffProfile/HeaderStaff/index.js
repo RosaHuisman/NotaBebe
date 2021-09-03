@@ -6,17 +6,29 @@ import { Link, useHistory } from 'react-router-dom';
 import logo from 'src/images/NotaBebe_logo.png';
 
 const HeaderStaff = ({
-  handleLogout, loggedMessage, userId, staff
+  handleLogout, userId,
 }) => {
   const history = useHistory();
 
   const LOGOUT = () => {
-    // localStorage.removeItem('MyToken');
-    // e.preventDefault();
     handleLogout();
-    // if (!getToken) {
     history.push('/');
-    // }
+  };
+
+  const profilMenu = () => {
+    history.push(`/profile/staff/${userId}`);
+  };
+
+  const childListMenu = () => {
+    history.push(`/profile/staff/${userId}/children`);
+  };
+
+  const recapsListMenu = () => {
+    history.push(`/profile/staff/${userId}/recaps`);
+  };
+
+  const commentsListMenu = () => {
+    history.push(`/profile/staff/${userId}/comments`);
   };
 
   return (
@@ -27,23 +39,11 @@ const HeaderStaff = ({
         button
         className="icon iconBurger"
       >
-        <Dropdown.Menu>
-          <Dropdown.Item>{loggedMessage}</Dropdown.Item>
-          <Dropdown.Item>
-            <Link to={`/profile/staff/${userId}`}>Mon profil</Link>
-          </Dropdown.Item>
-          <Dropdown.Item>
-            <Link to="/actualites">Actualités</Link>
-          </Dropdown.Item>
-          <Dropdown.Item>
-            <Link to={`/profile/staff/:id/children`}>Liste des enfants</Link>
-          </Dropdown.Item>
-          <Dropdown.Item>
-            <Link to={`/profile/staff/:id/comments`}>Listes des commentaires</Link>
-          </Dropdown.Item>
-          <Dropdown.Item>
-            <Link to={`/profile/staff/:id/recaps`}>Liste des récaps</Link>
-          </Dropdown.Item>
+        <Dropdown.Menu className="dropMenu">
+          <Dropdown.Item onClick={profilMenu}>Mon profil</Dropdown.Item>
+          <Dropdown.Item onClick={childListMenu}>Liste des enfants</Dropdown.Item>
+          <Dropdown.Item onClick={recapsListMenu}>Liste des récaps</Dropdown.Item>
+          <Dropdown.Item onClick={commentsListMenu}>Listes des commentaires</Dropdown.Item>
           <Dropdown.Item onClick={LOGOUT}>Se déconnecter</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
@@ -57,11 +57,6 @@ const HeaderStaff = ({
 
 HeaderStaff.propTypes = {
   handleLogout: PropTypes.func.isRequired,
-  loggedMessage: PropTypes.string,
-};
-
-HeaderStaff.defaultProps = {
-  loggedMessage: 'Connecté',
 };
 
 export default HeaderStaff;
