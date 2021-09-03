@@ -1,4 +1,5 @@
 @use 'src/styles/vars' as v;
+@use "sass:math";
 
 .basicinfos {
   &__infos {
@@ -14,7 +15,7 @@
       -moz-box-shadow: 0 5px 9px rgba(0, 0, 0, 0.3);
       &__icon {
         margin: 1rem 0;
-        padding: v.$gutter/2;
+        padding: math.div(v.$gutter, 2);
         background-color: v.$bg-color;
         border-radius: 100px;
         width: 100px;

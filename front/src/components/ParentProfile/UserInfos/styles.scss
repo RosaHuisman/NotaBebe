@@ -1,8 +1,9 @@
 @use 'src/styles/vars' as v;
+@use "sass:math";
 
 .userinfos {
   margin: 0 v.$gutter v.$gutter;
-  padding: v.$gutter/2 v.$gutter;
+  padding: math.div(v.$gutter, 2) v.$gutter;
   border-radius: 10px;
   border: 1px solid #eee;
   background-color: #fff;
@@ -19,18 +20,18 @@
     text-overflow: ellipsis;
     &__designation {
         font-weight: bold;
-        padding-bottom: v.$gutter/2;
+        padding-bottom: math.div(v.$gutter, 2);
         &__address {
           font-weight: bold;
         }
         &__tel {
           font-weight: bold;
-          padding: v.$gutter/2 0;
+          padding: math.div(v.$gutter, 2) 0;
 
         }
       }
     &__result {
-        padding-left: v.$gutter/2;
+        padding-left: math.div(v.$gutter, 2);
         text-overflow: ellipsis;
         word-wrap: break-word; 
              
@@ -40,8 +41,8 @@
     }
     &__button {
       display: block;
-      margin: v.$gutter/4 auto;
-      padding: v.$gutter/3;
+      margin: math.div(v.$gutter, 4) auto;
+      padding: math.div(v.$gutter, 3);
       background-color: v.$secondary-color;
       border: none; 
     }

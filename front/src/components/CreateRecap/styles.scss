@@ -1,4 +1,5 @@
 @use 'src/styles/vars' as v;
+@use "sass:math";
 
 .createrecap {
 
@@ -95,8 +96,8 @@
         display: block;
         width: 100%;
         resize: none;
-        margin: v.$gutter/2 auto;
-        padding: v.$gutter/2;
+        margin: math.div(v.$gutter, 2) auto;
+        padding: math.div(v.$gutter, 2);
         border-radius: 5px;
         border: 1px solid #ddd;
         background-color: #fff;
@@ -109,7 +110,7 @@
       background-color: v.$bg-color;
       margin: 0 auto;
       margin-bottom: 2rem;
-      padding: v.$gutter/2;
+      padding: math.div(v.$gutter, 2);
       color: white;
       border: none;
       font-size: 1.2em;
@@ -120,7 +121,7 @@
       &__cancel {
         display: block;
         margin: .4rem auto;
-        padding: v.$gutter/2;
+        padding: math.div(v.$gutter, 2);
         color: white;
         border: none;
         font-size: 1.2em;
@@ -208,8 +209,8 @@ textarea {
   display: block;
   width: 100%;
   resize: none;
-  margin: v.$gutter/2 auto;
-  padding: v.$gutter/2;
+  margin: math.div(v.$gutter, 2) auto;
+  padding: math.div(v.$gutter, 2);
   border-radius: 5px;
   border: 1px solid #ddd;
   background-color: #fff;

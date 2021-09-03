@@ -1,22 +1,36 @@
 @use 'src/styles/vars' as v;
 
 .recaps {
-  background-color: rgb(231, 231, 231);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 5rem;
 
   &__filter {
-    text-align: center;
+    display: flex;
+    margin-top: 1rem;
 
     &__input {
+      margin-bottom: 2rem;
       border-radius: 5px;
+      border: 1px solid #999;
+      height: 35px;
+      padding-left: 15px;
     }
   }
 
   &__listing__recap {
-    margin: 10px 5px;
-    background-color: rgb(238, 238, 238);
+    display: flex;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 80%;
+    background-color: v.$bg-color-card;
     border: 1px solid v.$primary-color;
     border-radius: 5px;
-    padding: 5px;
+    padding: 1rem;
 
     &__mood {
      
@@ -24,28 +38,26 @@
      text-align: center;
      
     }
-
-     
-    }
-
-.filter {
-  text-align: center;
-  margin-top: 5px;
-  input {
-    border-radius: 5px;
-    border: 1px solid #999;
-    height: 35px;
-    padding-left: 15px;
   }
-}
 
-.recap {
-  margin: 2rem 1rem;
-  border: 1px solid v.$primary-color;
-  border-radius: 5px;
-  padding: 1.4rem 2rem;
-  background-color: v.$bg-color-card;
-}
+  .filter {
+    text-align: center;
+    margin-top: 5px;
+    input {
+      border-radius: 5px;
+      border: 1px solid #999;
+      height: 35px;
+      padding-left: 15px;
+    }
+  }
+
+  .recap {
+    margin: 2rem 1rem;
+    border: 1px solid v.$primary-color;
+    border-radius: 5px;
+    padding: 1.4rem 2rem;
+    background-color: v.$bg-color-card;
+  }
 
   &__meal {
     text-align: center;
