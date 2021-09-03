@@ -9,6 +9,7 @@ import { findUser } from 'src/store/selectors/user';
 
 const mapStateToProps = (state, ownProps) => ({
   staff: findUser(state.user.list, ownProps.match.params.id),
+  //staff: state.auth,
   loading: state.user.loading,
   hasPasswordError: state.staff.changePasswordError,
 

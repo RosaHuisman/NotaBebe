@@ -65,7 +65,7 @@ const Comments = ({
         { filterComments(comments, inputValue).map((comment) => (
           <div key={comment.id} className="comment">
 
-            <h1 className="comment__child"> {childSearched(children, comment.child_id)}</h1>
+            <h1 className="comment__child"> {comment.first_name}</h1>
             <p className="comment__child__date">
               Date: {formatDate(comment.created_at)} à {formatHour(comment.created_at)}
             </p>

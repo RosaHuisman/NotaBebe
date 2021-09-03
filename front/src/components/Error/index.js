@@ -21,9 +21,9 @@ const Error = () => {
 
   return (
     <>
-      <div>
+      {/* <div>
         <Header />
-      </div>
+      </div> */}
       <div className="error-page">
         <img src={error404} className="error404" alt="error 404" />
         <div className="error-txt">

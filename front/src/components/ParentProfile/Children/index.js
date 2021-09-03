@@ -24,7 +24,6 @@ console.log(children)
       )}
       <div className="children__infos">
         {children.map((parent) =>
-        
           (
             <Link
               key={parent.child_id}
@@ -35,22 +34,18 @@ console.log(children)
                 },
               }}
             >
-
               <div className="children__infos__child">
                 <Icon
                   name="user"
                   size="huge"
                   className="children__infos__child__icon"
                 />
-
                 <div className="children__infos__child__name">{parent.pwc_child_first_name}</div>
-
               </div>
             </Link>
 
           ))}
       </div>
-
     </div>
             
 );
