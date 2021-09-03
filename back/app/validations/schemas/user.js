@@ -8,8 +8,9 @@ const userSchema = Joi.object({
     city: Joi.string().min(2).max(70),
     email: Joi.string().min(3).max(70),
     password: Joi.string().min(4).max(50),
-    phone_number: Joi.string().length(10)
-}).required().min(1).max(8);
+    phone_number: Joi.string().length(10),
+    role_id: Joi.number().min(1).max(1)
+}).required().min(1).max(9);
 
 
 module.exports = userSchema;
