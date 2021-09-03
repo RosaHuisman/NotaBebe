@@ -37,7 +37,7 @@ const ContactAdmin = () => {
         </div>
         <div className="dev__team">
           <h1>Pour contacter l'équipe de conception du site:</h1>
-          <p className="mail"><span><Icon name="mail" /></span>devteam@notabebe.fr</p>
+          <p className="mail"><span><Icon name="mail" /></span>notabebe.dev@gmail.com</p>
         </div>
         <div className="backButtonContact">
           <Button
