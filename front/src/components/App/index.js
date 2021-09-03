@@ -40,11 +40,19 @@ const App = ({
   loading,
   user,
   checkIsLogged,
+  loadChildren,
+  child,
+  children,
 }) => {
   const location = useLocation();
   useEffect(() => {
     window.scroll(0, 0);
+    loadChildren();
   }, [location]);
+
+  console.log(children)
+
+  //console.log(child)
 
   useEffect(() => {
     // state HomePage

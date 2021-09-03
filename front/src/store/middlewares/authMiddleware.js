@@ -24,7 +24,7 @@ const authMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           // ici on vient stocker le token dans localStorage
           localStorage.setItem('MyToken', response.data.token);
-          // const userData = response.data.token;
+          const userData = response.data.token;
 
           const myToken = response.data.token;
           const myTokenDecoded = jwtDecode(myToken);

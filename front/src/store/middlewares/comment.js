@@ -40,7 +40,7 @@ const comment = (store) => (next) => (action) => {
      })
        .then((response) => {
          const actionsaveComment = saveComment(response.data);
-
+        console.log(response.data)
          store.dispatch(actionsaveComment);
        })
        .catch((error) => {
@@ -81,7 +81,8 @@ const comment = (store) => (next) => (action) => {
    child_id: action.childId,
  })
    .then((response) => {
-     const actiondeleteComment = commentDeleted(response.data);
+     const actiondeleteComment = commentDeleted(commentId);
+     console.log(response.data)
      store.dispatch(actiondeleteComment);
    })
    .catch((error) => {

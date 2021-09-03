@@ -11,15 +11,16 @@ import './styles.scss';
 const Children = ({
   children,
   user,
-  // child,
 
 }) => {
-
+console.log(children)
   return (
     <div className="children">
-
-      <h3 className="children__title"> Mon enfant</h3>
-
+      { children.length > 1 ? (
+         <h3 className="children__title">Mes enfants</h3>
+      ) : (
+        <h3 className="children__title"> Mon enfant</h3>
+      )}
       <div className="children__infos">
         {children.map((parent) =>
         
