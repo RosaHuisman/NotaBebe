@@ -33,7 +33,7 @@ INSERT INTO "child" ("first_name", "last_name", "birthdate", "birthplace", "sex"
 ('Mira', 'Cao', '01/06/2017', 'Pontarlier', 'F', ''),
 ('Milan', 'Tamerti', '08/01/2015', 'Alès', 'M', ''),
 ('Lily', 'Tamerti', '12/12/2017', 'Alès', 'F', ''),
-('Nina', 'Lombardo', '26/07/2019', 'Alès', 'F', '');
+('Nina', 'Lombardo', '24/07/2019', 'Alès', 'F', '');
 
 
 INSERT INTO "recap" ("date", "extra_info", "mood", "child_id") VALUES

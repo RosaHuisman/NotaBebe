@@ -17,7 +17,7 @@ GET http://localhost:3000/profile/staff/comments/parent/1
 
 
 ### DISPLAYING STAFF PROFILE BY ID
-GET http://localhost:3000/profile/staff/5
+GET http://localhost:3000/profile/staff/9
 
 
 ### DISPLAYING RECAP BY ID
@@ -29,7 +29,7 @@ GET http://localhost:3000/profile/staff/child/1/recaps
 
 
 ### DISPLAYING COMMENT BY ID
-GET http://localhost:3000/profile/staff/comments/3
+GET http://localhost:3000/profile/staff/comments/4
 
 
 ### DISPLAYING COMMENTS BY CHILD ID
@@ -37,11 +37,12 @@ GET http://localhost:3000/profile/staff/comments/child/2
 
 
 ### UPDATING STAFF PASSWORD
-PATCH http://localhost:3000/profile/staff/5/password
+PATCH http://localhost:3000/profile/staff/9/password
 Content-Type: application/json
 
-{
-    "password": "testouille"
+{   
+    "oldPassword": "test",
+    "password": "yann"
 }
 
 
@@ -51,9 +52,9 @@ Content-Type: application/json
 
 {
     "date": "11/11/2019",
-    "extra_info": "coucou les fronteux",
+    "extra_info": "test recap",
     "mood": "on a réussi l'ajout",
-    "child_id": 3,
+    "child_id": 7,
     "naps": [{
         "start_time": "11:00:00",
         "end_time": "12:00:00",
@@ -79,12 +80,12 @@ Content-Type: application/json
     "date": "20/04/2020",
     "extra_info": "coucou les fronteux",
     "mood": "on a réussi l'ajout",
-    "child_id": 2
+    "child_id": 10
 }
 
 
 ### ADDING A NAP TO A RECAP
-POST http://localhost:3000/profile/staff/child/recap/6/nap/
+POST http://localhost:3000/profile/staff/child/recap/23/nap/
 Content-Type: application/json
 
 {
@@ -95,7 +96,7 @@ Content-Type: application/json
 
 
 ### ADDING A MEAL TO A RECAP
-POST http://localhost:3000/profile/staff/child/recap/6/meal/
+POST http://localhost:3000/profile/staff/child/recap/23/meal/
 Content-Type: application/json
 
 {
@@ -105,23 +106,18 @@ Content-Type: application/json
 
 
 ### MODIFYING ONE TO SEVERAL FIELDS FROM A RECAP
-PATCH http://localhost:3000/profile/staff/child/recap/11/
+PATCH http://localhost:3000/profile/staff/child/recap/23/
 Content-Type: application/json
 
 {
     "date": "11/11/2019",
     "extra_info": "yeux explosés",
     "mood": "mais ça marche !",
-    "child_id": 2,
+    "child_id": 10,
     "naps": [{
         "start_time": "11:00:00",
         "end_time": "12:00:00",
         "comment": "merci charles"
-    },
-    {
-        "start_time": "11:00:00",
-        "end_time": "12:00:00",
-        "comment": "jpp"
     }],
     "meals": [{
         "time": "12:14:56",
@@ -130,7 +126,7 @@ Content-Type: application/json
 }
 
 ### MODIFYING A NAP IN A RECAP
-PATCH http://localhost:3000/profile/staff/child/recap/47/nap/49
+PATCH http://localhost:3000/profile/staff/child/recap/23/nap/29
 Content-Type: application/json
 
 {
@@ -148,7 +144,7 @@ Content-Type: application/json
 
 
 ### DELETING A RECAP - AND ALL ASSOCIATED NAPS/MEALS
-DELETE http://localhost:3000/profile/staff/child/recap/1
+DELETE http://localhost:3000/profile/staff/child/recap/23
 
 
 ### DELETING A NAP
