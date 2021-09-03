@@ -145,6 +145,27 @@
   &__submit:hover {
     background-color: v.$secondary-color;
   }
+  &__success {
+    &__text {
+      display: block;
+      color: v.$primary-color;
+      font-size: 1.3rem;
+      text-align: center;
+    }
+    &__button {
+      display: block;
+      background-color: v.$primary-color;
+      margin: 0 auto;
+      padding: v.$gutter;
+      color: white;
+      border: none;
+      font-size: 1.2em;
+      border-radius: 5px;
+      box-shadow: 0 5px 9px rgba(0, 0, 0, 0.3); 
+      -webkit-box-shadow: 0 5px 9px rgba(0, 0, 0, 0.3); 
+      -moz-box-shadow: 0 5px 9px rgba(0, 0, 0, 0.3); 
+    }
+  }
   
 }
 

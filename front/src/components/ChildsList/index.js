@@ -8,13 +8,10 @@ import ChildsData from 'src/data/childs';
 import Loading from 'src/components/App/Loading';
 
 const ChildsList = ({
-  recaps,
-  onSearchSubmit,
-  inputRef,
-  searchValue,
   loading,
   children,
   loadChildren,
+
 }) => {
   useEffect(() => {
     loadChildren();
@@ -44,9 +41,27 @@ const ChildsList = ({
         { children.map((child) => (
           <div key={child.id} className="childs__child">
             <h1 className="childs__child__name">{child.first_name} {child.last_name}</h1>
-            <h2>Né(e) le: {child.birthdate}</h2>
-            <p className="childs__child__infos">Genre: {child.sex}</p>
-            <p className="childs__child__infos">Allergies: {child.allergies}</p>
+            
+            <div className="childs__child__infos">
+              {child.sex === 'F' ? (
+                <>
+                <h2>Née le: {child.birthdate}</h2>
+                <p> Fille </p>
+                </>
+              ) : (
+                <>
+                <h2>Né le: {child.birthdate}</h2>
+                <p> Garçon </p>
+                </>
+              )}
+              </div>
+            <div className="childs__child__infos">
+              {child.allergies ? (
+                <p> Allergies: {child.allergies}</p>
+              ) : (
+                <p> Allergies: Aucune </p>
+              )}
+              </div>
             <Link
               to={{
                 pathname: `/profile/staff/children/${child.id}/createrecap`,

@@ -30,17 +30,22 @@ const Comment = ({
   formDeleteOpen,
   deleteComment,
   loadComments,
+  loadChildren,
+  child
 
 }) => {
 
 
   useEffect(() => {
+    loadChildren(),
     loadComments()
-  }, [comments]);
+  }, []);
+
+  console.log(comments)
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    submitComment(parent.id, parent.child_id);
+    submitComment(parent.id, child.id);
   };
 
   const handleOnChange = (evt) => {

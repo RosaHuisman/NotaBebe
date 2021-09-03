@@ -58,6 +58,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   loadChildren: () => {
     dispatch(fetchChildren());
   },
+  
   onClickOpenModalToFormChangeComment: (commentId) => {
     dispatch(openModal(commentId));
   },

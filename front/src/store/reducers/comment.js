@@ -45,7 +45,12 @@ const reducer = (state = initialState, action ={} ) => {
         commentSend: !state.commentSend,
         //commentId:FILTER_COMMENTS action.payload.data.id,
         comment:'',
-        commentSend: true, 
+        commentSend: true,
+        list: [
+          action.payload.data,
+          ...state.list,
+          
+        ]  
       };
     }
     case CHANGE_TEXT_VALUE: {
@@ -71,6 +76,8 @@ const reducer = (state = initialState, action ={} ) => {
       return {
         ...state,
         formDeleteOpen: false,
+        list: state.list.filter((comment) => comment.id !== Number(action.commentId))
+        
       };
     }
     case FILTER_COMMENTS: {

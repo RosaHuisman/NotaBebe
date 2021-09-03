@@ -1,5 +1,5 @@
 // == Import : npm
-import React, { Children } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Field from 'src/containers/Field';
 
@@ -13,8 +13,13 @@ const ChangeChildInfosForm = ({
   handleChangeInfos,
   parent,
   child,
+  loadChildren,
   //user
 }) => {
+  useEffect(() => {
+    loadChildren();
+   }, [child]);
+
   const handleOnClickCancelButton = (e) => {
     e.preventDefault();
     closeForm();
