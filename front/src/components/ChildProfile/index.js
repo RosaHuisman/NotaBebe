@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 
 import { useLocation, Link } from 'react-router-dom';
+import { Icon } from 'semantic-ui-react';
+import Loading from 'src/components/App/Loading';
 
 // import Header from 'src/components/Header';
 import HeaderParent from 'src/containers/HeaderParent';
@@ -11,8 +13,6 @@ import ChildRecap from 'src/components/ChildRecap';
 import ChildInfos from './ChildInfos';
 import ChangeChildInfosForm from './ChangeChildInfosForm';
 import Comment from './Comment';
-import Loading from 'src/components/App/Loading';
-
 
 import './styles.scss';
 
@@ -118,6 +118,7 @@ const ChildProfile = ({
             type="button"
             className="childprofile__button childprofile__button__recap"
           >
+            <Icon name="list ul" />
             Récap du jour
           </button>
         </Link>

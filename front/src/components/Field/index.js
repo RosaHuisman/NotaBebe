@@ -48,7 +48,7 @@ Field.propTypes = {
   value: PropTypes.string,
   type: PropTypes.string,
   name: PropTypes.string.isRequired,
-  placeholder: PropTypes.string.isRequired,
+  placeholder: PropTypes.string,
   onChangeInputValue: PropTypes.func.isRequired,
 };
 
@@ -56,6 +56,7 @@ Field.propTypes = {
 Field.defaultProps = {
   value: '',
   type: 'text',
+  placeholder: '',
 };
 
 // == Export

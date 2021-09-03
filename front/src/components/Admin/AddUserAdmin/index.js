@@ -36,6 +36,10 @@ const AddUserAdmin = ({
     window.scroll(0, 0);
   }, [location]);
 
+  useEffect(() => {
+    resetFormAdmin();
+  }, []);
+
   const handleSubmitAddUser = (e) => {
     e.preventDefault();
     handleAddUser();
@@ -54,7 +58,7 @@ const AddUserAdmin = ({
         </div>
         <img src={logoAdmin} className="adminMobileHome__logo" alt="admin" />
         <div className="adminMobileHome__txt">
-          Pour une meilleur expérience, veuillez vous connecter à partir d'un ordinateur.
+          Pour une meilleure expérience, veuillez vous connecter à partir d'un ordinateur.
         </div>
       </div>
 
@@ -82,9 +86,9 @@ const AddUserAdmin = ({
                         <Field
                           type="text"
                           name="last_name"
-                          placeholder="Nom"
-                          onChange={changeField}
-                          value={lastName}
+                          // placeholder="Nom"
+                          // onChange={changeField}
+                          // value={lastName}
                           required
                         />
                       </Table.Cell>
@@ -95,9 +99,9 @@ const AddUserAdmin = ({
                         <Field
                           type="text"
                           name="first_name"
-                          placeholder="Prénom"
-                          onChange={changeField}
-                          value={firstName}
+                          // placeholder="Prénom"
+                          // onChange={changeField}
+                          // value={firstName}
                           required
                         />
                       </Table.Cell>
@@ -108,9 +112,9 @@ const AddUserAdmin = ({
                         <Field
                           type="email"
                           name="email"
-                          placeholder="Email"
-                          onChange={changeField}
-                          value={email}
+                          // placeholder="Email"
+                          // onChange={changeField}
+                          // value={email}
                           required
                         />
                       </Table.Cell>
@@ -122,9 +126,9 @@ const AddUserAdmin = ({
                           type="text"
                           name="phone_number"
                           pattern="^[0-9]{10}$"
-                          placeholder="Numéro de téléphone"
-                          onChange={changeField}
-                          value={phoneNumber}
+                          // placeholder="Numéro de téléphone"
+                          // onChange={changeField}
+                          // value={phoneNumber}
                           required
                         />
                       </Table.Cell>
@@ -135,9 +139,9 @@ const AddUserAdmin = ({
                         <Field
                           type="text"
                           name="address"
-                          placeholder="Adresse"
-                          onChange={changeField}
-                          value={address}
+                          // placeholder="Adresse"
+                          // onChange={changeField}
+                          // value={address}
                           required
                         />
                       </Table.Cell>
@@ -148,10 +152,10 @@ const AddUserAdmin = ({
                         <Field
                           type="number"
                           name="postcode"
-                          placeholder="Code postal"
+                          // placeholder="Code postal"
                           max="99999"
-                          onChange={changeField}
-                          value={postcode}
+                          // onChange={changeField}
+                          // value={postcode}
                           required
                         />
                       </Table.Cell>
@@ -162,9 +166,9 @@ const AddUserAdmin = ({
                         <Field
                           type="text"
                           name="city"
-                          placeholder="Ville"
-                          onChange={changeField}
-                          value={city}
+                          // placeholder="Ville"
+                          // onChange={changeField}
+                          // value={city}
                           required
                         />
                       </Table.Cell>
@@ -175,11 +179,11 @@ const AddUserAdmin = ({
                         <Field
                           type="number"
                           name="role_id"
-                          placeholder="Rôle"
+                          // placeholder="Rôle"
                           min="1"
                           max="3"
-                          onChange={changeField}
-                          value={roleId}
+                          // onChange={changeField}
+                          // value={roleId}
                           required
                         />
                       </Table.Cell>
@@ -190,9 +194,9 @@ const AddUserAdmin = ({
                         <Field
                           type="text"
                           name="password"
-                          placeholder="Mot de passe"
-                          onChange={changeField}
-                          value={password}
+                          // placeholder="Mot de passe"
+                          // onChange={changeField}
+                          // value={password}
                           required
                         />
                       </Table.Cell>
@@ -304,12 +308,12 @@ const AddUserAdmin = ({
 AddUserAdmin.propTypes = {
   firstName: PropTypes.string.isRequired,
   lastName: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired,
+  email: PropTypes.string,
   phoneNumber: PropTypes.string.isRequired,
   address: PropTypes.string.isRequired,
   postcode: PropTypes.string.isRequired,
   city: PropTypes.string.isRequired,
-  password: PropTypes.string.isRequired,
+  password: PropTypes.string,
   roleId: PropTypes.string.isRequired,
 
   handleAddUser: PropTypes.func.isRequired,
@@ -322,6 +326,8 @@ AddUserAdmin.propTypes = {
 };
 
 AddUserAdmin.defaultProps = {
+  email: '',
+  password: '',
   contentAdminPageAdd: false,
   addUserSuccess: false,
   addUserError: false,

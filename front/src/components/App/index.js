@@ -4,6 +4,7 @@ import { Route, Switch, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 // == Import composants /components
+import Header from 'src/components/Header';
 import Footer from 'src/components/Footer';
 import ContactDetails from 'src/components/ContactDetails';
 import TeamPage from 'src/components/TeamPage';
@@ -69,6 +70,7 @@ const App = ({
 
   return (
     <>
+      <Header />
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/forgot" component={ForgotPassword} />
