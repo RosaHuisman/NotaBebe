@@ -55,7 +55,6 @@ const ChildProfile = ({
     loadParents();
     loadChildren();
     loadRecaps();
-
     loadComments();
   }, []);
 
@@ -107,6 +106,7 @@ const ChildProfile = ({
               handleChangeInfos={handleChangeInfos}
               parent={parent}
               child={child}
+              loadChildren={loadChildren}
             />
           </>
         )}
@@ -138,6 +138,8 @@ const ChildProfile = ({
           formDeleteOpen={formDeleteOpen}
           deleteComment={deleteComment}
           loadComments={loadComments}
+          loadChildren={loadChildren}
+          child={child}
         />
 
       </div>
