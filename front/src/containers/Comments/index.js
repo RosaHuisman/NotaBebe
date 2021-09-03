@@ -10,7 +10,8 @@ const mapStateToProps = (state, ownProps) => ({
   comments: state.comment.list,
   inputValue: state.comment.inputValue,
   //child: findUser(state.children.list, state.comment.list.child_id),
-  children: state.children.list
+  children: state.children.list,
+
 });
 
 const mapDispatchToProps = (dispatch) => ({

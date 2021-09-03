@@ -25,8 +25,6 @@ const Comments = ({
   inputValue,
   onInputValueCommentChange,
 }) => {
-  console.log(comments);
-
 
   useEffect(() => {
     loadChildren();
@@ -36,6 +34,7 @@ const Comments = ({
   if (loading) {
     return <Loading />;
   }
+  console.log('ICI ON EST DANS COMMENT', children);
 
   // const [ searchNewValue, setSearchNewValue ] = useState('');
   // const [comments] = useState([]);
@@ -61,8 +60,9 @@ const Comments = ({
           />
         </form>
       </div>
+      
       <div className="comments__list">
-        { filterComments(comments, inputValue).map((comment) => (
+        { filterComments(comments, children, inputValue).map((comment) => (
           <div key={comment.id} className="comment">
 
             <h1 className="comment__child"> {childSearched(children, comment.child_id)}</h1>

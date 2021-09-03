@@ -59,6 +59,11 @@ const Recaps = ({
   // console.log(recaps.length);
  
   return (
+    <>
+    <div>
+        <HeaderStaff />
+      </div>
+
   <div className="recaps">
     <h1 className="recaps__title">Mes récapitulatifs enfants </h1>
     <h2>{recaps.length}</h2>
@@ -113,6 +118,7 @@ const Recaps = ({
     </div>
     <div>.</div>
   </div>
+  </>
   )};
 
 

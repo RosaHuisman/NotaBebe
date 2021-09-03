@@ -6,6 +6,17 @@ h1 {
   text-align: center;
 }
 
+.filter {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.filter__input {
+  border-radius: 5px;
+  border: 1px solid green;
+}
+
+
 .comments__list {
   display: flex;
   flex-direction: column;
