@@ -58,7 +58,7 @@ Content-Type: application/json
     "address": "50 rue de Paris",
     "postcode": "12345",
     "city": "Marigny",
-    "email": "mickaeldu59@gmail.com",
+    "email": "testemailjoi@gmail.com",
     "password": "monsuperpassword",
     "phone_number": "0611203948",
     "role_id": 1
