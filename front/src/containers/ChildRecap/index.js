@@ -7,6 +7,7 @@ import { fetchChildren } from 'src/store/actions/children';
 import { findUser } from 'src/store/selectors/user';
 import { findRecap } from 'src/store/selectors/recap';
 import { fetchUsersParents} from 'src/store/actions';
+import { commentSendNo } from 'src/store/actions/comment'
 
 
 const mapStateToProps = (state, ownProps) => ({
@@ -26,6 +27,9 @@ const mapDispatchToProps = (dispatch,) => ({
   loadParents: () => {
     dispatch(fetchUsersParents());
   },
+  closeCommentSend: () => {
+    dispatch(commentSendNo());
+  }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChildRecap);

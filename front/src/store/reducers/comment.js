@@ -6,7 +6,8 @@ import {
   COMMENT_UPDATED,
   OPEN_FORM_DELETE_COMMENT,
   COMMENT_DELETED,
-  FILTER_COMMENTS
+  FILTER_COMMENTS, 
+  COMMENT_SEND_NO
 } from 'src/store/actions/comment'
 
 const initialState = {
@@ -83,6 +84,12 @@ const reducer = (state = initialState, action ={} ) => {
       return {
         ...state,
         inputValue: action.filterInputValue
+      }
+    }
+    case COMMENT_SEND_NO: {
+      return {
+        ...state,
+        commentSend: false,
       }
     }
     default:

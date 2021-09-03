@@ -10,7 +10,7 @@ export const OPEN_FORM_DELETE_COMMENT = 'OPEN_FORM_DELETE_COMMENT';
 export const DELETE_COMMENT = 'DELETE_COMMENT';
 export const COMMENT_DELETED = 'COMMENT_DELETED';
 export const FILTER_COMMENTS = 'FILTER_COMMENTS';
-
+export const COMMENT_SEND_NO = 'COMMENT_SEND_NO';
 
 export const fetchComments = () => ({
   type: FETCH_COMMENTS,
@@ -76,3 +76,6 @@ export const filterComments = (filterInputValue) => ({
   filterInputValue,
 });
 
+export const commentSendNo = () => ({
+  type: COMMENT_SEND_NO,
+})
