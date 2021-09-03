@@ -66,8 +66,9 @@ export const deleteComment = (parentId, childId, commentId) => ({
   commentId,
 });
 
-export const commentDeleted = () => ({
+export const commentDeleted = (commentId) => ({
   type: COMMENT_DELETED,
+  commentId,
 });
 
 export const filterComments = (filterInputValue) => ({
