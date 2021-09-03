@@ -1,31 +1,41 @@
-const userDataMapper = require('../dataMappers/user');
+const { userDataMapper } = require('../dataMappers');
 
 const jsonwebtoken = require('jsonwebtoken');
 
 const authController = {
 
+    /**
+     * 
+     * @param {Object} request 
+     * @param {Object} response object from express middleware
+     * @returns 
+     */
     async checkToken(request, response) {
+
         const authHeader = request.headers['authorization'];
-        //Si on a un authHeader, alors on renvoie le second paramètre de authHeader (qui est le token), sinon undefined
-        const token = authHeader && authHeader.split(' ')[1]
-        //Si pas de token, alors on renvoie un statut 401 => Unauthorized (pas de token, pas d'autorisation)
-        if (token == null) return response.sendStatus(401)
-        //Si on a un token, alors on le vérifie
-        //La fonction verify prend en paramètre le token à vérifier, et la clé utilisée pour le générer
-        //Elle prend en paramètre également un callback pour traiter le résultat
+
+        // if there is an authHeader, we send the second parameter of authHeader (the token), or undefined
+        const token = authHeader && authHeader.split(' ')[1];
+
+        // if there is no token, we send a 401 status (unauthorised)
+        if (token == null) return response.sendStatus(401);
+
+        // if there is a token, we check it thanks to the verify function
+        // it takes as parameters the token to check and the key which was used to generate it, as well as a callback to handle the result
+
         jsonwebtoken.verify(token, process.env.SECRET_KEY, async (error, decoded) => {
-            //Si il y a une erreur, on envoie un statut 403 qui signifie que le token n'est pas ou plus valide
-            if (error) return response.sendStatus(403)
-            //Si pas d'erreur, alors on va chercher le user correspondant au name et on renvoie le JSON
+            // in case of error, we send a 403 status which means the token is no longer valid (or wasn't valid in the first place)
+            if (error) return response.sendStatus(403);
+            // if there is no error, we search for the user by their email and send the json
             const user = await userDataMapper.findById(decoded.email);
-            // Pour des raisons de sécurité, on supprime le mot de passe avant de renvoyer les infos du compte
+            // for security reasons, we delete the password before sending the account information
             delete user.password;
-            // On envoie l'information indiquant le statut de connexion de l'utilisateur
+            // we send the information indicating the user's connection status
             user.logged = true;
-            response.json({ user });
+            response.status(200).json({ user });
         });
     }
 
-}
+};
 
 module.exports = authController;

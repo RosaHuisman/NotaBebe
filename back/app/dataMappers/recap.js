@@ -3,7 +3,7 @@ const client = require('../client');
 const recapDataMapper = {
 
     async findAll() {
-        const result = await client.query('SELECT * FROM "recap_with_nap_and_meal" ORDER BY date DESC');
+        const result = await client.query('SELECT "recap_with_nap_and_meal".*, "child"."first_name" FROM "recap_with_nap_and_meal" JOIN "child" ON "recap_with_nap_and_meal"."child_id" = "child"."id" ORDER BY date DESC');
         return result.rows;
     },
 
@@ -60,7 +60,7 @@ const recapDataMapper = {
             for (const n of nap) {
                 let query2 = `UPDATE "nap" SET start_time = $1, end_time = $2, comment = $3, updated_at = now() WHERE id = $4 RETURNING *`;
 
-                let napId = napsByRecapResult[indexNap].id
+                let napId = napsByRecapResult[indexNap].id;
 
                 values2 = [n.start_time, n.end_time, n.comment, napId];
 
@@ -68,7 +68,7 @@ const recapDataMapper = {
 
                 napResult[indexNap] = updatedNap.rows[0];
                 indexNap++;
-            }
+            };
 
             recapResult.naps = napResult;
 

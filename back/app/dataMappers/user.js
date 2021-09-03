@@ -13,22 +13,22 @@ const userDataMapper = {
     },
 
     async findAllParents() {
-        const result = await client.query('SELECT * FROM "user" JOIN "parent_with_child" ON "user"."id" = "parent_with_child"."pwc_user_id" WHERE "user"."role_id" = 1')
+        const result = await client.query('SELECT * FROM "user" JOIN "parent_with_child" ON "user"."id" = "parent_with_child"."pwc_user_id" WHERE "user"."role_id" = 1');
         return result.rows;
     },
 
     async findParentById(id) {
-        const result = await client.query('SELECT * FROM "user" WHERE "role_id" = 1 AND id = $1', [id])
+        const result = await client.query('SELECT * FROM "user" WHERE "role_id" = 1 AND id = $1', [id]);
         return result.rows[0];
     },
 
     async findAllStaff() {
-        const result = await client.query('SELECT * FROM "user" WHERE "role_id" = 2')
+        const result = await client.query('SELECT * FROM "user" WHERE "role_id" = 2');
         return result.rows;
     },
 
     async findStaffById(id) {
-        const result = await client.query('SELECT * FROM "user" WHERE "role_id" = 2 AND id = $1', [id])
+        const result = await client.query('SELECT * FROM "user" WHERE "role_id" = 2 AND id = $1', [id]);
         return result.rows[0];
     },
 
@@ -52,7 +52,7 @@ const userDataMapper = {
         return result.rows[0];
     },
 
-    async modifyChild (child, id) {
+    async modifyChild(child, id) {
         let query = `UPDATE "child" SET `;
         const values = [];
 
@@ -61,7 +61,7 @@ const userDataMapper = {
         for (let i = 0; i < keys.length; i++) {
             query += `"${keys[i]}" = $${i + 1}, `;
             values.push(child[keys[i]]);
-        }
+        };
 
         query += `updated_at = now() WHERE id = $${keys.length + 1} RETURNING *;`;
         values.push(id);

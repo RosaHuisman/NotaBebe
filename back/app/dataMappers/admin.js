@@ -1,5 +1,4 @@
 const client = require('../client');
-const { deleteChild } = require('../controllers/admin');
 
 const adminDataMapper = {
 
@@ -36,7 +35,7 @@ const adminDataMapper = {
         for (let i = 0; i < keys.length; i++) {
             query += `"${keys[i]}" = $${i + 1}, `;
             values.push(child[keys[i]]);
-        }
+        };
 
         query += `updated_at = now() WHERE id = $${keys.length + 1} RETURNING *;`;
         values.push(id);
@@ -47,7 +46,7 @@ const adminDataMapper = {
     },
 
     async deleteUser(id) {
-        const result = await client.query('DELETE FROM "user" WHERE id = $1', [id])
+        const result = await client.query('DELETE FROM "user" WHERE id = $1', [id]);
         return result;
     },
 

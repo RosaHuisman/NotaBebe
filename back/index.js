@@ -6,14 +6,11 @@ const cors = require('cors');
 
 const router = require('./app/routers');
 
-
 const app = express();
 app.use(cors());
 
 const port = process.env.PORT || 3000;
 
-
-// On configure la session
 app.use(session({
     secret: 'keyboard cat',
     resave: false,
@@ -21,18 +18,11 @@ app.use(session({
     cookie: { secure: false }
 }));
 
-
-// Body parser
 app.use(express.json());
 
-
-// Middleware perttant d'extraire les données des requetes POST si présentes.
 app.use(express.urlencoded({ extended: true }));
 
-
-// Routage
 app.use('/', router);
-
 
 app.listen(port, () => {
     console.log(`Server started on http://localhost:${port}`);
