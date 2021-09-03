@@ -78,9 +78,9 @@ console.log(child)
     <>
     <HeaderStaff />
     { save ? (
-      <div>
-      Récap créé avec succès pour {child.first_name}
-      <button onClick={handleOnClick}> Retour</button>
+      <div className="createrecap__success">
+        <p className="createrecap__success__text"> Récap créé avec succès pour {child.first_name} </p>
+        <button className="createrecap__success__button" onClick={handleOnClick}> Retour</button>
       </div>
     ) : (
       
