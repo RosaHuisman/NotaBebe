@@ -62,7 +62,7 @@ const Comments = ({
       </div>
       
       <div className="comments__list">
-        { filterComments(comments, children, inputValue).map((comment) => (
+        { filterComments(comments, inputValue).map((comment) => (
           <div key={comment.id} className="comment">
 
             <h1 className="comment__child"> {childSearched(children, comment.child_id)}</h1>
