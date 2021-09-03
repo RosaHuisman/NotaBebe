@@ -15,6 +15,7 @@
       -moz-box-shadow: 0 5px 9px rgba(0, 0, 0, 0.3);
       &__icon {
         margin: 1rem 0;
+        margin-right: 2rem;
 
         padding: math.div(v.$gutter, 2);
 
