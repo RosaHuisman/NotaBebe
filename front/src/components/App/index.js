@@ -78,9 +78,9 @@ const App = ({
       {user.roleId === 1 && (
       <>
         <Switch>
-          <PrivateRoute exact path="/profile/parent/:id" component={ParentProfile} />
-          <PrivateRoute exact path="/profile/parent/:parent_id/child/:id" component={ChildProfile} />
-          <PrivateRoute exact path="/profile/parent/:id/child/:id/recap" component={ChildRecap} />
+          <PrivateRoute exact path="/profile/parent/:parent_id" component={ParentProfile} />
+          <PrivateRoute exact path="/profile/parent/:parent_id/child/:child_id" component={ChildProfile} />
+          <PrivateRoute exact path="/profile/parent/:parent_id/child/:child_id/recap" component={ChildRecap} />
           <PrivateRoute exact path="/devteams" component={TeamPagePrivate} />
 
           <PrivateRoute exact path="*" component={ErrorPage} />
