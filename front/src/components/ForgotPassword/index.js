@@ -35,37 +35,40 @@ const ForgotPassword = ({
       <div>
         <Header />
       </div>
-      <div className="ForgotP">
-        <div className="ForgotP__txt">
-          <p className="ForgotP__txt__title">Mot de passe oublié ?</p>
-          <p className="ForgotP__txt__subtitle">
-            {messageForgot && 'Remplissez le formulaire et nous vous enverrons un email vous permettant de réinitialiser votre mot de passe.'}
-            {errorMessage && <p className="setting__error">Oups! Erreur de saisie</p>}
-            {successMessage && <p className="setting__success">Demande envoyée !</p>}
-          </p>
+      <div className="contentForgot">
+        <div className="ForgotP">
+          <div className="ForgotP__txt">
+            <p className="ForgotP__txt__title">Mot de passe oublié ?</p>
+            <p className="ForgotP__txt__subtitle">
+              {messageForgot && 'Remplissez le formulaire et nous vous enverrons un email vous permettant de réinitialiser votre mot de passe.'}
+              {errorMessage && <p className="setting__error">Oups! Erreur de saisie</p>}
+              {successMessage && <p className="setting__success">Demande envoyée !</p>}
+            </p>
 
+          </div>
+          <form autoComplete="off" className="loginForm__content" onSubmit={handleSubmit}>
+            <Field
+              name="email"
+              placeholder="Adresse Email"
+              type="email"
+              required
+            />
+            <button
+              type="submit"
+              className="settings__send"
+            >
+              Réinitialiser le mot de passe
+            </button>
+          </form>
         </div>
-        <form autoComplete="off" className="loginForm__content" onSubmit={handleSubmit}>
-          <Field
-            name="email"
-            placeholder="Adresse Email"
-            type="email"
-            required
-          />
-          <button
-            type="submit"
-            className="settings__send"
-          >
-            Réinitialiser le mot de passe
-          </button>
-        </form>
+
+        <div className="backButton">
+          <div className="backButton__contentButton">
+            <button onClick={previousPage} type="button" className="settings__send">Retour</button>
+          </div>
+        </div>
       </div>
 
-      <div className="backButton">
-        <div className="backButton__contentButton">
-          <button onClick={previousPage} type="button" className="settings__send">Retour</button>
-        </div>
-      </div>
     </>
   );
 };

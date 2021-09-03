@@ -13,44 +13,39 @@ const Children = ({
   user,
   // child,
 
-}) => {
+}) => (
+  <div className="children">
 
-  return (
-    <div className="children">
+    <h3 className="children__title"> Mon enfant</h3>
 
-      <h3 className="children__title"> Mon enfant</h3>
+    <div className="children__infos">
+      {children.map((parent) => (
+        <Link
+          key={parent.child_id}
+          to={{
+            pathname: `/profile/parent/${parent.id}/child/${parent.child_id}`,
+            state: {
+              parent: parent,
+            },
+          }}
+        >
 
-      <div className="children__infos">
-        {children.map((parent) =>
-        
-          (
-            <Link
-              key={parent.child_id}
-              to={{
-                pathname: `/profile/parent/${parent.id}/child/${parent.child_id}`,
-                state: {
-                  parent: parent,
-                },
-              }}
-            >
+          <div className="children__infos__child">
+            <Icon
+              name="user"
+              size="huge"
+              className="children__infos__child__icon"
+            />
 
-              <div className="children__infos__child">
-                <Icon
-                  name="user"
-                  size="huge"
-                  className="children__infos__child__icon"
-                />
+            <div className="children__infos__child__name">{parent.pwc_child_first_name}</div>
 
-                <div className="children__infos__child__name">{parent.pwc_child_first_name}</div>
+          </div>
+        </Link>
 
-              </div>
-            </Link>
-
-          ))}
-      </div>
+      ))}
     </div>
-  );
-}
+  </div>
+);
 
 Children.propTypes = {
   // children: PropTypes.arrayOf(
