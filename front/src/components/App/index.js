@@ -52,10 +52,6 @@ const App = ({
     loadChildren();
   }, [location]);
 
-  console.log(children)
-
-  //console.log(child)
-
   useEffect(() => {
     // state HomePage
     welcomePage();
@@ -71,47 +67,56 @@ const App = ({
   return (
     <>
       <Header />
+
+      {/* Route Parent Children */}
+      {user.roleId === 1 && (
+      <>
+        <Switch>
+          <PrivateRoute exact path="/profile/parent/:id" component={ParentProfile} />
+          <PrivateRoute exact path="/profile/parent/:parent_id/child/:id" component={ChildProfile} />
+          <PrivateRoute exact path="/profile/parent/:id/child/:id/recap" component={ChildRecap} />
+          <PrivateRoute exact path="*" component={ErrorPage} />
+        </Switch>
+      </>
+      )}
+
+      {/* Route Staff */}
+      {user.roleId === 2 && (
+      <>
+        <Switch>
+          <PrivateRoute exact path="/profile/staff/:id" component={StaffProfile} />
+          <PrivateRoute exact path="/profile/staff/:id/children" component={ChildsList} />
+          <PrivateRoute exact path="/profile/staff/:id/recaps" component={Recaps} />
+          <PrivateRoute exact path="/profile/staff/:id/comments" component={Comments} />
+          {/* <PrivateRoute exact path="/staff/:id/comments" component={ReadComment} /> */}
+          <PrivateRoute exact path="/profile/staff/children/:id/createrecap" component={CreateRecap} />
+          {/* <PrivateRoute exact path="/profile/staff/childrensetSearchNewValue:id/createrecap" component={CreateRecap} /> */}
+          <PrivateRoute exact path="*" component={ErrorPage} />
+        </Switch>
+
+      </>
+      )}
+
+      {/* Route Admin */}
+      {user.roleId === 3 && (
+      <>
+        <Switch>
+          <PrivateRoute exact path="/admin" component={Admin} />
+          <PrivateRoute exact path="/admin/adduser" component={AddUserAdmin} />
+          <PrivateRoute exact path="/admin/edituser" component={EditUserAdmin} />
+          <PrivateRoute exact path="/admin/contacts" component={ContactAdmin} />
+          <PrivateRoute exact path="*" component={ErrorPage} />
+        </Switch>
+      </>
+      )}
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/forgot" component={ForgotPassword} />
         <Route exact path="/contact" component={ContactDetails} />
         <Route exact path="/team" component={TeamPage} />
-
-        {/* Route Parent Children */}
-        {user.roleId === 1 && (
-          <>
-            <PrivateRoute exact path="/profile/parent/:id" component={ParentProfile} />
-            <PrivateRoute exact path="/profile/parent/:parent_id/child/:id" component={ChildProfile} />
-            <PrivateRoute exact path="/profile/parent/:id/child/:id/recap" component={ChildRecap} />
-          </>
-        )}
-
-        {/* Route Staff */}
-        {user.roleId === 2 && (
-          <>
-            <PrivateRoute exact path="/profile/staff/:id" component={StaffProfile} />
-            <PrivateRoute exact path="/profile/staff/:id/children" component={ChildsList} />
-            <PrivateRoute exact path="/profile/staff/:id/recaps" component={Recaps} />
-            <PrivateRoute exact path="/profile/staff/:id/comments" component={Comments} />
-            {/* <PrivateRoute exact path="/staff/:id/comments" component={ReadComment} /> */}
-            <PrivateRoute exact path="/profile/staff/children/:id/createrecap" component={CreateRecap} />
-            {/* <PrivateRoute exact path="/profile/staff/childrensetSearchNewValue:id/createrecap" component={CreateRecap} /> */}
-          </>
-        )}
-
-        {/* Route Admin */}
-        {user.roleId === 3 && (
-          <>
-            <PrivateRoute exact path="/admin" component={Admin} />
-            <PrivateRoute exact path="/admin/adduser" component={AddUserAdmin} />
-            <PrivateRoute exact path="/admin/edituser" component={EditUserAdmin} />
-            <PrivateRoute exact path="/admin/contacts" component={ContactAdmin} />
-          </>
-        )}
-
         {/* <Route exact path="*" component={ErrorPage} /> */}
-
       </Switch>
+
       <Footer />
     </>
   );

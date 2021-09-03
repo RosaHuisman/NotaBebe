@@ -51,6 +51,7 @@ const AdminHome = ({
   // if (loading) {
   //   return <Loading />;
   // }
+
   // le hook useLocation nous renvoie l'url courante
   const location = useLocation();
   const history = useHistory();

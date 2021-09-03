@@ -1,28 +1,35 @@
 @use 'src/styles/vars' as v;
 
+.containButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .staff {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
   padding-bottom: 5rem;
-}
 
-.staff__name {
-  font-weight: bold;
-  text-align: center;
-  font-size: 1.5em;
-  margin: 1rem 0 1.5rem;
-}
-
-.staff__button {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  height: 200px;
+  &__name {
+    display: flex;
+    font-weight: bold;
+    font-size: 1.5em;
+    margin: 1rem 0 1.5rem;
+  }
+  
+  &__button {
+    display: flex;
+    flex-direction: column;
+    height: 200px;
+  }
 }
 
 .button {
   margin-bottom: 20px;
+  // min-width: 350px;
+  // width: 100%;
   color: white;
   font-weight: bold;
   background-color: v.$primary-color;

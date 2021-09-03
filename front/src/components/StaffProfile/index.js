@@ -40,7 +40,7 @@ const StaffProfile = ({
         <div className="staff__name">
           {staff.first_name} {staff.last_name}
         </div>
-        <div className="staff__button">
+        <div className="staff__button containButton">
           <div className="staff__button__child">
             <Link className="childs__link" to={`/profile/staff/${staff.id}/children`} exact="true">
               <button type="button" className="button">Liste des enfants et création de récap</button>
