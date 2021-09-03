@@ -34,6 +34,13 @@ const AddUserAdmin = ({
   const history = useHistory();
 
   useEffect(() => {
+    // state HomePage
+    // ici on veut vérifier si l'utilisateur est déjà connecté
+    // au 1e rendu du composant App
+    checkIsLogged();
+  }, []);
+
+  useEffect(() => {
     window.scroll(0, 0);
   }, [location]);
 
@@ -180,7 +187,6 @@ const AddUserAdmin = ({
                       </Table.Cell>
                     </Table.Row>
 
-
                     <Table.Row>
                       <Table.Cell verticalAlign="middle"><div className="columnTitle">Rôle</div></Table.Cell>
                       <Table.Cell verticalAlign="middle">
@@ -194,6 +200,7 @@ const AddUserAdmin = ({
                         </div>
                       </Table.Cell>
                     </Table.Row>
+
                     <Table.Row>
                       <Table.Cell verticalAlign="middle"><div className="columnTitle">Mot de passe temporaire</div></Table.Cell>
                       <Table.Cell verticalAlign="middle">
@@ -207,6 +214,7 @@ const AddUserAdmin = ({
                         />
                       </Table.Cell>
                     </Table.Row>
+
                   </Table.Body>
                   <Table.Footer fullwidth="true" column="equal" className="footerTable">
                     <Table.Row>

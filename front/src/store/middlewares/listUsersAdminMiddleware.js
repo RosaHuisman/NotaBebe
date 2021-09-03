@@ -72,7 +72,17 @@ const listUsersAdminMiddleware = (store) => (next) => (action) => {
 
       const state = store.getState();
       const LALALA = action.payload;
-
+      console.log('fezfzieufhzeuif', {
+        last_name: state.user.last_name,
+        first_name: state.user.first_name,
+        email: state.user.email,
+        phone_number: state.user.phone_number,
+        address: state.user.address,
+        postcode: state.user.postcode,
+        city: state.user.city,
+        password: state.user.password,
+        role_id: +state.user.role_id,
+      });
       api({
         method: 'POST',
         url: '/profile/admin/manageprofile',
@@ -85,7 +95,7 @@ const listUsersAdminMiddleware = (store) => (next) => (action) => {
           postcode: state.user.postcode,
           city: state.user.city,
           password: state.user.password,
-          role_id: state.user.role_id,
+          role_id: +state.user.role_id,
         },
       })
         .then((response) => {
