@@ -62,6 +62,7 @@ const comment = (store) => (next) => (action) => {
    })
      .then((response) => {
        const actionupdateComment = commentUpdated(response.data);
+       console.log(response.data)
        store.dispatch(actionupdateComment);
      })
      .catch((error) => {

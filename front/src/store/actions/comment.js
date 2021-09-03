@@ -50,8 +50,9 @@ export const updateComment = (parentId, childId, commentId) => ({
   commentId,
 });
 
-export const commentUpdated = () => ({
+export const commentUpdated = (comment) => ({
   type: COMMENT_UPDATED,
+  payload: comment,
 });
 
 export const openFormDeleteComment = (commentId) => ({

@@ -13,7 +13,7 @@ const mapStateToProps = (state, ownProps) => ({
   user: state.auth,
 
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  children: state.children.children,
+  //children: state.children.children,
   //child: findUser(state.children.list, ownProps.match.params.id),
 
   //user: findUser(state.user.list, ownProps.match.params.id),

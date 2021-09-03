@@ -62,6 +62,11 @@ const reducer = (state = initialState, action ={} ) => {
     case COMMENT_UPDATED: {
       return {
         ...state,
+        list: [
+          action.payload.data,
+          ...state.list,
+          
+        ],  
         modalOpen: false,
       };
     }

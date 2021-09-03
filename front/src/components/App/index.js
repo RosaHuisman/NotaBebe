@@ -50,7 +50,7 @@ const App = ({
     loadChildren();
   }, [location]);
 
-  console.log(children)
+  //console.log(children)
 
   //console.log(child)
 
