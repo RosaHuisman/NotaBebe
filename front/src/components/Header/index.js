@@ -41,74 +41,74 @@ const Header = ({
   }
 
   return (
-    // <>
-    //   {!logged ? (
-    //     <>
-    //       <header className="header">
-    //         <>
-    //           {roleId === 1
-    //             ? (
-    //               <Dropdown
-    //                 icon="content"
-    //                 floating
-    //                 button
-    //                 className="icon iconBurger"
-    //               >
-    //                 <Dropdown.Menu>
-    //                   <Dropdown.Item>{loggedMessage}</Dropdown.Item>
-    //                   <Dropdown.Item>
-    //                     <Link to={`/profile/parent/${userId}`}>Mon profil</Link>
-    //                   </Dropdown.Item>
-    //                   <Dropdown.Item>
-    //                     <Link to="/actualites">Actualités</Link>
-    //                   </Dropdown.Item>
-    //                   <Dropdown.Item onClick={LOGOUT}>Se déconnecter</Dropdown.Item>
-    //                 </Dropdown.Menu>
-    //               </Dropdown>
-    //             ) : (
-    //               <Dropdown
-    //                 icon="content"
-    //                 floating
-    //                 button
-    //                 className="icon iconBurger"
-    //               >
-    //                 <Dropdown.Menu>
-    //                   <Dropdown.Item>{loggedMessage}</Dropdown.Item>
-    //                   <Dropdown.Item>
-    //                     <Link to={`/profile/staff/${userId}`}>Mon profil</Link>
-    //                   </Dropdown.Item>
-    //                   <Dropdown.Item>
-    //                     <Link to="/actualites">Actualités</Link>
-    //                   </Dropdown.Item>
-    //                   <Dropdown.Item>
-    //                     <Link to="">Listes des commentaires</Link>
-    //                   </Dropdown.Item>
-    //                   <Dropdown.Item>
-    //                     <Link to="">Editer un récap</Link>
-    //                   </Dropdown.Item>
-    //                   <Dropdown.Item onClick={LOGOUT}>Se déconnecter</Dropdown.Item>
-    //                 </Dropdown.Menu>
-    //               </Dropdown>
-    //             )}
-    //         </>
-    //         <h1 className="header-title">NotaBebe</h1>
-    //         <Link to="/">
-    //           <img src={logo} className="header-logo" alt="Logo NotaBebe" />
-    //         </Link>
-    //       </header>
+  // <>
+  //   {!logged ? (
+  //     <>
+  //       <header className="header">
+  //         <>
+  //           {roleId === 1
+  //             ? (
+  //               <Dropdown
+  //                 icon="content"
+  //                 floating
+  //                 button
+  //                 className="icon iconBurger"
+  //               >
+  //                 <Dropdown.Menu>
+  //                   <Dropdown.Item>{loggedMessage}</Dropdown.Item>
+  //                   <Dropdown.Item>
+  //                     <Link to={`/profile/parent/${userId}`}>Mon profil</Link>
+  //                   </Dropdown.Item>
+  //                   <Dropdown.Item>
+  //                     <Link to="/actualites">Actualités</Link>
+  //                   </Dropdown.Item>
+  //                   <Dropdown.Item onClick={LOGOUT}>Se déconnecter</Dropdown.Item>
+  //                 </Dropdown.Menu>
+  //               </Dropdown>
+  //             ) : (
+  //               <Dropdown
+  //                 icon="content"
+  //                 floating
+  //                 button
+  //                 className="icon iconBurger"
+  //               >
+  //                 <Dropdown.Menu>
+  //                   <Dropdown.Item>{loggedMessage}</Dropdown.Item>
+  //                   <Dropdown.Item>
+  //                     <Link to={`/profile/staff/${userId}`}>Mon profil</Link>
+  //                   </Dropdown.Item>
+  //                   <Dropdown.Item>
+  //                     <Link to="/actualites">Actualités</Link>
+  //                   </Dropdown.Item>
+  //                   <Dropdown.Item>
+  //                     <Link to="">Listes des commentaires</Link>
+  //                   </Dropdown.Item>
+  //                   <Dropdown.Item>
+  //                     <Link to="">Editer un récap</Link>
+  //                   </Dropdown.Item>
+  //                   <Dropdown.Item onClick={LOGOUT}>Se déconnecter</Dropdown.Item>
+  //                 </Dropdown.Menu>
+  //               </Dropdown>
+  //             )}
+  //         </>
+  //         <h1 className="header-title">NotaBebe</h1>
+  //         <Link to="/">
+  //           <img src={logo} className="header-logo" alt="Logo NotaBebe" />
+  //         </Link>
+  //       </header>
 
-    //     </>
-    //   ) : (
-    //     <>
-          <header className="header">
-            <h1 className="header-title">NotaBebe</h1>
-            <Link to="/">
-              <img src={logo} className="header-logo" alt="Logo NotaBebe" />
-            </Link>
-          </header>
-    //     </>
-    //   )}
-    // </>
+  //     </>
+  //   ) : (
+  //     <>
+    <header className="header">
+      <h1 className="header-title">NotaBebe</h1>
+      <Link to="/">
+        <img src={logo} className="header-logo" alt="Logo NotaBebe" />
+      </Link>
+    </header>
+  //     </>
+  //   )}
+  // </>
   );
 };
 

@@ -5,6 +5,7 @@ import {
   AdminAddUser,
   changeFieldValueAdminAddUser,
   resetFormAdmin,
+  changeRole,
 } from 'src/store/actions';
 
 const mapStateToProps = (state) => ({
@@ -34,7 +35,9 @@ const mapDispatchToProps = (dispatch) => ({
   resetFormAdmin: () => {
     dispatch(resetFormAdmin());
   },
-
+  roleSelected: (value, name) => {
+    dispatch(changeRole(name, value));
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddUserAdmin);

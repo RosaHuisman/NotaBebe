@@ -1,6 +1,8 @@
 @use 'src/styles/vars' as v;
+@use "sass:math";
 
 .createrecap {
+
   input {
     border-radius: 5px;
     border: 1px solid #999;
@@ -72,10 +74,10 @@
     }
     &__inputs {
       display: flex;
-      justify-content: space-around;
+      justify-content: space-evenly;
       &__input {
         height: 50px;
-        width: 130px;
+        width: 125px;
       }
     }
   }
@@ -91,8 +93,14 @@
       font-weight: bold;
       }
       &__textarea {
-        margin-top: 5px;
+        display: block;
         width: 100%;
+        resize: none;
+        margin: math.div(v.$gutter, 2) auto;
+        padding: math.div(v.$gutter, 2);
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        background-color: #fff;
       }
     }
     
@@ -102,7 +110,7 @@
       background-color: v.$bg-color;
       margin: 0 auto;
       margin-bottom: 2rem;
-      padding: v.$gutter/2;
+      padding: math.div(v.$gutter, 2);
       color: white;
       border: none;
       font-size: 1.2em;
@@ -113,7 +121,7 @@
       &__cancel {
         display: block;
         margin: .4rem auto;
-        padding: v.$gutter/2;
+        padding: math.div(v.$gutter, 2);
         color: white;
         border: none;
         font-size: 1.2em;
@@ -191,12 +199,21 @@ label {
 }
 
 textarea {
-  padding: 10px 10px 10px 10px;
-  background-color: #fff;
+  // padding: 10px 10px 10px 10px;
+  // background-color: #fff;
+  // border-radius: 5px;
+  // border: 1px solid #999;
+  // height: 100px;
+  // padding-left: 15px;
+
+  display: block;
+  width: 100%;
+  resize: none;
+  margin: math.div(v.$gutter, 2) auto;
+  padding: math.div(v.$gutter, 2);
   border-radius: 5px;
-  border: 1px solid #999;
-  height: 100px;
-  padding-left: 15px;
+  border: 1px solid #ddd;
+  background-color: #fff;
 }
 
 

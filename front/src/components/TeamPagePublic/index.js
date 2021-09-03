@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 import Header from 'src/components/Header';
 
-
 import rosa from '../../images/rosa.jpg';
 import morgane from '../../images/morgane.jpg';
 import victor from '../../images/victor.jpg';
@@ -15,7 +14,7 @@ import github from '../../images/github.png';
 
 import './styles.scss';
 
-const TeamPage = () => (
+const TeamPagePublic = () => (
   <>
     <Header />
     <div className="team__page__container">
@@ -83,4 +82,4 @@ const TeamPage = () => (
   </>
 );
 
-export default TeamPage;
+export default TeamPagePublic;

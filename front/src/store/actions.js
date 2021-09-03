@@ -1,5 +1,12 @@
 /* eslint-disable import/prefer-default-export */
 
+export const CHANGE_ROLE = 'CHANGE_ROLE';
+export const changeRole = (key, value) => ({
+  type: CHANGE_ROLE,
+  value,
+  key,
+});
+
 export const SAVE_USER = 'SAVE_USER';
 export const saveUser = (myTokenDecoded) => ({
   type: SAVE_USER,
