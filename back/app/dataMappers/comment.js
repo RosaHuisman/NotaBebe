@@ -33,7 +33,7 @@ const commentDataMapper = {
     },
 
     async delete(id) {
-        const result = await client.query('DELETE FROM "comment" WHERE id = $1', [id])
+        const result = await client.query('DELETE FROM "comment" WHERE id = $1', [id]);
         return result;
     }
 

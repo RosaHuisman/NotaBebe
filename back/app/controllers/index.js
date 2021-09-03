@@ -5,12 +5,11 @@ const authController = require('./auth');
 const commentController = require('./comment');
 const recapController = require('./recap');
 
-
 module.exports = {
     userController,
     errorController,
     adminController,
     authController,
     commentController,
-    recapController,
-}
+    recapController
+};
