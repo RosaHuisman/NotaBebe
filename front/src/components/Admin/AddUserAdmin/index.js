@@ -156,9 +156,10 @@ const AddUserAdmin = ({
                       <Table.Cell verticalAlign="middle"><div className="columnTitle">Code postal</div></Table.Cell>
                       <Table.Cell verticalAlign="middle">
                         <Field
-                          type="text"
+                          type="number"
                           name="postcode"
                           // placeholder="Code postal"
+                          max="99999"
                           onChange={changeField}
                           value={postcode}
                           required

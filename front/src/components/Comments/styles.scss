@@ -9,13 +9,15 @@ h1 {
 .filter {
   text-align: center;
   margin-top: 20px;
-}
 
-.filter__input {
-  border-radius: 5px;
-  border: 1px solid green;
+  &__input {
+    margin-bottom: 2rem;
+    border-radius: 5px;
+    border: 1px solid #999;
+    height: 35px;
+    padding-left: 15px;
+  }
 }
-
 
 .comments__list {
   display: flex;
