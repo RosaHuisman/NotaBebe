@@ -21,6 +21,8 @@ import {
   CHANGE_ROLE,
 } from '../actions';
 
+import { CLEAR_CHANGE_PASSWORD_CONFIRM_MESSAGE } from 'src/store/actions/staff';
+
 const initialState = {
   list: [],
   userlist: [],
@@ -121,6 +123,15 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         loginError: true,
+      };
+    }
+
+    case CLEAR_CHANGE_PASSWORD_CONFIRM_MESSAGE: {
+      return {
+        ...state,
+        oldpassword: '',
+        newpassword: '',
+        confirmpassword: '',
       };
     }
 
