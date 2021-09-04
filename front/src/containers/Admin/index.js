@@ -40,17 +40,14 @@ const mapDispatchToProps = (dispatch) => ({
   },
 
   onClickOpenFormDeleteUser: (userDeleteId) => {
-    console.log('OPEN après', userDeleteId);
     dispatch(openModalDeleteUser(userDeleteId));
   },
 
   onClickCloseFormDeleteUser: (userDeleteId) => {
-    console.log('CLOSE après', userDeleteId);
     dispatch(closeModalDeleteUser(userDeleteId));
   },
 
   deleteUser: (userDeleteId) => {
-    // console.log('BLABLAAAAA après', userDeleteId);
     dispatch(deleteUser(userDeleteId));
   },
 

@@ -34,12 +34,7 @@ const Comments = ({
   if (loading) {
     return <Loading />;
   }
-  console.log('ICI ON EST DANS COMMENT', children);
-
-  // const [ searchNewValue, setSearchNewValue ] = useState('');
-  // const [comments] = useState([]);
-
-  // filterComments(comments, inputValue);
+  
 
   return (
     <>

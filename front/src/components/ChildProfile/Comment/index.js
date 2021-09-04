@@ -37,8 +37,6 @@ const Comment = ({
       loadComments()
   }, [modalOpen]);
 
-  console.log(comments)
-
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -62,9 +60,10 @@ const Comment = ({
     evt.preventDefault();
     onClickOpenFormDeleteComment(evt.target.id);
   };
+  
   const handleSubmitPatch = (evt) => {
     evt.preventDefault();
-    patchComment(parent.id, parent.child_id, commentId);
+    patchComment(parent.id, child.id, commentId);
   };
 
   const handleSubmitDelete = (evt) => {

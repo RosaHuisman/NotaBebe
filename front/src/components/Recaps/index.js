@@ -27,19 +27,6 @@ const Recaps = ({
   loadChildren,
   children,
 }) => {
-  // je définis la date du jour 
-  //  const datetime = new Date();
-  //  // je mets la date du format 02/09/2021
-  //  const date = (('0'+datetime.getDate()).slice(-2)+"/"+('0'+(datetime.getMonth()+1)).slice(-2)+"/"+datetime.getFullYear());
-  //  console.log(date);
-  //   // je compare la date du jour avec la date des recaps
-  //  function filter_date(recaps) {
-  //     return recaps.date == date;
-  //   }
-  //   // je filtre sur le tableau avec les dates comparées
-  //  const recapsFiltered = recaps.filter(filter_date);
-
-
 
   useEffect(() => {
     loadChildren();
@@ -48,16 +35,12 @@ const Recaps = ({
   }, [])
 
 
-  console.log(loading)
-  console.log(children);
 
   if (loading) {
     return <Loading />;
   } "child.first_name" + "child.last_name"
 
-  // console.log('mes recaps:', recaps);  
-  console.log('un recap:', recaps[0]);
-  // console.log(recaps.length);
+  
 
   return (
     <>

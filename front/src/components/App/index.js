@@ -53,12 +53,6 @@ const App = ({
     //loadChildren();
   }, [location]);
 
-
-  //console.log(children)
-  
-
-  //console.log(child)
-
   useEffect(() => {
     // state HomePage
     welcomePage();

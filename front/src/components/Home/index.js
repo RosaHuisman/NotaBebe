@@ -29,7 +29,6 @@ const Home = ({
   const location = useLocation();
 
   const history = useHistory();
-  console.log('USER', token);
 
   useEffect(() => {
     window.scroll(0, 0);

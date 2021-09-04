@@ -69,12 +69,10 @@ const AdminHome = ({
   };
 
   const handleClickDeleteUserOpen = (id) => {
-    console.log('CLICK DELETE', id);
     onClickOpenFormDeleteUser(id);
   };
 
   const handleSubmitDelete = (id) => {
-    console.log('SUBMIT DELETE', id);
     deleteUser(id);
   };
 

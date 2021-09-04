@@ -13,7 +13,6 @@ const Day = ({
   child,  
 
 }) => {
-  console.log(recap.naps)
   return (
   <div className="day">
 

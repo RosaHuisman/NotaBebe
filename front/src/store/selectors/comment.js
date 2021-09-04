@@ -28,7 +28,6 @@ import { children } from "src/store/reducers/children";
 export function filterComments(list, filterInputValue) {
   
   const filteredList = list.filter((comment) => {
-    // console.log("child:", list);
     return comment.message.toLowerCase().includes(filterInputValue.toLowerCase()) 
      || comment.first_name.toLowerCase().includes(filterInputValue.toLowerCase())
   } )

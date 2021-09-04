@@ -28,7 +28,6 @@ const authMiddleware = (store) => (next) => (action) => {
 
           const myToken = response.data.token;
           const myTokenDecoded = jwtDecode(myToken);
-          console.log('Voici mon token décodé', myTokenDecoded);
 
           // on en profite pour venir le stoker aussi dans l'instance d'axios
           // comme ça on l'aura à chaque requête !!
@@ -38,11 +37,9 @@ const authMiddleware = (store) => (next) => (action) => {
           // donc on va faire un dispatch d'action
           // on passe par la fonction dispatch du store
           store.dispatch(saveUser(myTokenDecoded));
-          console.log('DATA JWT', response.data);
         })
         .catch((error) => {
           store.dispatch(createLoginErrorAction());
-          console.log('MON ERREUR createLoginErrorAction');
         });
       break;
     }

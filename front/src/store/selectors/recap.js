@@ -17,7 +17,6 @@ export function findRecap(recaps, childId) {
 export function filterRecaps(list, filterInputValue) {
 
   const filteredList = list.filter((recap) => {
-    //console.log('ici:', recap)
 
     if (recap.naps == null && recap.meals == null) {
       return recap.mood.toLowerCase().includes(filterInputValue.toLowerCase())
@@ -52,7 +51,6 @@ export function filterRecaps(list, filterInputValue) {
     (a, b) =>
       new Date(convertDateFormat(b.date)) - new Date(convertDateFormat(a.date))
   );
-  //console.log(list);
 
   return sortedList;
 }

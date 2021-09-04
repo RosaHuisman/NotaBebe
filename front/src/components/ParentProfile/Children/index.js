@@ -14,7 +14,6 @@ const Children = ({
 
 
 }) => {
-  console.log(children)
   return (
     <div className="children">
       {children.length > 1 ? (

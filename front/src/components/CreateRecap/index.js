@@ -25,15 +25,12 @@ const CreateRecap = ({
   createRecapFalse,
 
 }) => {
-  // useEffect(() => {
-    
-  // }, []);
+
 
   const data = useLocation();
   const child = data.state.child;
   const history = useHistory();
 
-//console.log(child)
 
   const handleSubmit = (e) => {
     e.preventDefault();

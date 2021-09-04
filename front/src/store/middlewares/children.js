@@ -16,7 +16,7 @@ const children = (store) => (next) => (action) => {
           store.dispatch(actionsaveChildren);
         }
         catch (error) {
-          console.log('il y a eu une erreur', error);
+          console.error('il y a eu une erreur', error);
         }
       };
 

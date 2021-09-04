@@ -22,7 +22,7 @@ const comment = (store) => (next) => (action) => {
           store.dispatch(actionsaveComments);
         }
         catch (error) {
-          console.log('il y a eu une erreur', error);
+          console.error('il y a eu une erreur', error);
         }
       };
 
@@ -40,11 +40,10 @@ const comment = (store) => (next) => (action) => {
      })
        .then((response) => {
          const actionsaveComment = saveComment(response.data);
-        console.log(response.data)
          store.dispatch(actionsaveComment);
        })
        .catch((error) => {
-         console.log('il y a eu une erreur dans le post comment', error);
+         console.error('il y a eu une erreur dans le post comment', error);
          // store.dispatch(postCommentError());
        });
      break;
@@ -65,7 +64,7 @@ const comment = (store) => (next) => (action) => {
        store.dispatch(actionupdateComment);
      })
      .catch((error) => {
-       console.log('il y a eu une erreur dans l\'update du commentaire', error);
+       console.error('il y a eu une erreur dans l\'update du commentaire', error);
        // store.dispatch(postCommentError());
      });
    break;
@@ -82,11 +81,10 @@ const comment = (store) => (next) => (action) => {
  })
    .then((response) => {
      const actiondeleteComment = commentDeleted(commentId);
-     console.log(response.data)
      store.dispatch(actiondeleteComment);
    })
    .catch((error) => {
-     console.log('il y a eu une erreur dans la suppression du commentaire', error);
+     console.error('il y a eu une erreur dans la suppression du commentaire', error);
      // store.dispatch(postCommentError());
    });
  break;
