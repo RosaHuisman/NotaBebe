@@ -119,20 +119,17 @@ const CreateRecap = ({
               <>
               <option value="0">--Sélectionner--</option>
               <option value="Joyeux">Joyeux</option>
-              <option value="Grincheux">Grincheux</option>
-              <option value="Ca va...">Ca va...</option>
-              <option value="Content">Content</option>
-              <option value="Impatient">Impatient</option>
               <option value="Heureux">Heureux</option>
-              <option value="Souriant">Souriant</option>
-              <option value="Fatigué">Fatigué</option>
               <option value="Passionné">Passionné</option>
               <option value="Curieux">Curieux</option>
+              <option value="Souriant">Souriant</option>
+              <option value="Content">Content</option>
+              <option value="Ca va...">Ca va...</option>
+              <option value="Impatient">Impatient</option>
+              <option value="Fatigué">Fatigué</option>
+              <option value="Grincheux">Grincheux</option>
               </>
-            
             )}
-            
-
           </select>
         </div>
         
