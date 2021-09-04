@@ -70,27 +70,3 @@ const recap = (store) => (next) => (action) => {
 export default recap;
 
 
-
-
-// date: inputDate, 
-        // extra_info: textAreaOther,
-        // child_id: childId,
-        // mood: inputMood, 
-        // naps: [
-        //   {
-        //     start_time: inputStart, 
-        //     end_time: inputEnd, 
-        //     comment: textAreaMeals, 
-        //   },
-        //   {
-        //     start_time: inputStart, 
-        //     end_time: inputEnd, 
-        //     comment: textAreaMeals, 
-        //   }
-        // ],
-        // meals: [
-        //   {
-        //     time: inputStart, 
-        //     comment: textAreaMeals, 
-        //   }
-        // ],

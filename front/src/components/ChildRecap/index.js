@@ -21,9 +21,11 @@ const ChildRecap = ({
   closeCommentSend 
 
 }) => {
-  const history = useHistory();
 
-  const previousPage = () => {
+
+const history = useHistory();
+
+const previousPage = () => {
     history.goBack();
     closeCommentSend();
   };
