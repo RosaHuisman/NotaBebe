@@ -344,7 +344,7 @@ const userController = {
                 // connect the user (save into a session)
                 request.session.user = user;
 
-                response.status(200);
+                response.status(200).json("Mot de passe bien modifié");
 
             } else {
                 response.status(401).json("L'ancien mot de passe est invalide. Veuillez réessayer.");
