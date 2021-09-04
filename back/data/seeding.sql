@@ -37,26 +37,26 @@ INSERT INTO "child" ("first_name", "last_name", "birthdate", "birthplace", "sex"
 
 
 INSERT INTO "recap" ("date", "extra_info", "mood", "child_id") VALUES
-('18/04/2020', 'problème de couche', 'triste', 1),
-('29/08/2020', 'coup de chaleur', 'énervé', 1),
-('18/04/2020', 'belle participation aux activités', 'contente', 2),
-('28/12/2020', 'coup de froid', 'fatiguée', 2),
-('18/04/2020', 'a fait du foot', 'fatigué', 3),
-('18/04/2020', 'pas sage', 'malade', 4),
-('01/09/2021', 'atelier pâte à modeler', 'joyeux', 5),
-('01/09/2021', 'atelier pâte à modeler', 'impatient', 6),
-('01/09/2021', 'atelier pair-programming', 'curieux', 7),
-('01/09/2021', 'atelier pair-programming', 'très heureux', 8),
-('11/01/2021', 'atelier couleurs', 'joyeuse', 9),
-('03/04/2021', 'atelier musique', 'passionnée', 9),
-('15/08/2021', 'atelier gommettes', 'heureuse', 9),
-('02/09/2021', 'peinture et transvasement', 'souriante', 9),
-('02/09/2021', 'peinture et transvasement', 'fatiguée', 10),
-('02/09/2021', 'peinture et transvasement', 'content', 11),
-('02/09/2021', 'peinture et transvasement', 'impatiente', 12),
-('02/09/2021', 'peinture et transvasement', 'fatigué', 13),
-('02/09/2021', 'peinture et transvasement', 'passionnée', 14),
-('02/09/2021', 'peinture et transvasement', 'curieuse', 15);
+('18/04/2020', 'problème de couche', 'Triste', 1),
+('29/08/2020', 'coup de chaleur', 'Enervé', 1),
+('18/04/2020', 'belle participation aux activités', 'Contente', 2),
+('28/12/2020', 'coup de froid', 'Fatiguée', 2),
+('18/04/2020', 'a fait du foot', 'Fatigué', 3),
+('18/04/2020', 'pas sage', 'Malade', 4),
+('01/09/2021', 'atelier pâte à modeler', 'Joyeux', 5),
+('01/09/2021', 'atelier pâte à modeler', 'Impatient', 6),
+('01/09/2021', 'atelier pair-programming', 'Curieux', 7),
+('01/09/2021', 'atelier pair-programming', 'Très heureux', 8),
+('11/01/2021', 'atelier couleurs', 'Joyeuse', 9),
+('03/04/2021', 'atelier musique', 'Passionnée', 9),
+('15/08/2021', 'atelier gommettes', 'Heureuse', 9),
+('02/09/2021', 'peinture et transvasement', 'Souriante', 9),
+('02/09/2021', 'peinture et transvasement', 'Fatiguée', 10),
+('02/09/2021', 'peinture et transvasement', 'Content', 11),
+('02/09/2021', 'peinture et transvasement', 'Impatiente', 12),
+('02/09/2021', 'peinture et transvasement', 'Fatigué', 13),
+('02/09/2021', 'peinture et transvasement', 'Passionnée', 14),
+('02/09/2021', 'peinture et transvasement', 'Curieuse', 15);
 
 
 INSERT INTO "comment" ("message", "child_id") VALUES
