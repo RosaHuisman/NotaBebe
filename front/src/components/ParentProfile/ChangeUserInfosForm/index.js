@@ -19,7 +19,7 @@ const ChangeUserInfosForm = ({
 }) => {
   useEffect(() => {
     loadUsersParents();
-  }, [user]);
+  }, []);
 
   const handleOnClickCancelButton = (e) => {
     e.preventDefault();
@@ -36,7 +36,7 @@ const ChangeUserInfosForm = ({
       {changeInfos ? (
         <>
           <UserInfos />
-          <UserInfos />
+          {/* <UserInfos /> */}
           <div className="success">Vos données ont été modifiées</div>
         </>
       ) : (

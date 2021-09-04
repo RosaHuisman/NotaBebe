@@ -1,13 +1,16 @@
 // == Import : npm
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 // == Import : local
 import './styles.scss';
 
 // == Composant
-const UserInfos = ({ user }) =>
-  (
+const UserInfos = ({ loadUsersParents, user }) => {
+  useEffect(() => {
+    loadUsersParents();
+  }, [])
+  return (
     <div className="userinfos">
       <div className="userinfos__infos">
         <table>
@@ -41,6 +44,8 @@ const UserInfos = ({ user }) =>
       </div>
     </div>
   );
+}
+
 UserInfos.propTypes = {
   // user: PropTypes.shape({
   //   id: PropTypes.number.isRequired,

@@ -49,11 +49,10 @@ const user = (store) => (next) => (action) => {
       fetchData();
       break;
     }
-  
+
     case CHANGE_INFOS: {
       const state = store.getState();
       const id = action.id;
-
 
       axios.patch(`https://notabebe-back.herokuapp.com/profile/parent/${id}`, {
         address: state.user.address,
@@ -110,8 +109,8 @@ const user = (store) => (next) => (action) => {
         });
       break;
     }
-    
-  
+
+
     default:
       next(action);
   }

@@ -25,12 +25,12 @@ const ParentProfile = ({
   loading,
   changeInfos,
   children,
-  
+
 }) => {
 
   useEffect(() => {
     loadUsersParents();
-    
+
   }, []);
 
   const handleOnClickChangePasswordButton = (e) => {
@@ -45,7 +45,7 @@ const ParentProfile = ({
 
   if (loading) {
     return <Loading />;
-  } 
+  }
 
   return (
     <>
@@ -60,6 +60,7 @@ const ParentProfile = ({
             <UserInfos
               user={user}
               openUserInfos={openUserInfos}
+              loadUsersParents={loadUsersParents}
             />
             <button
               type="button"
@@ -120,9 +121,9 @@ ParentProfile.propTypes = {
   //   }),
   // ).isRequired,
 
-//   user: PropTypes.shape({
-//     id: PropTypes.number.isRequired,
-//   }).isRequired,
+  //   user: PropTypes.shape({
+  //     id: PropTypes.number.isRequired,
+  //   }).isRequired,
 };
 
 ParentProfile.defaultProps = {

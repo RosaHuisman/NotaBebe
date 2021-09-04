@@ -50,10 +50,10 @@ const mapDispatchToProps = (dispatch) => ({
   },
 
   deleteUser: (userDeleteId) => {
-    console.log('BLABLAAAAA après', userDeleteId);
+    // console.log('BLABLAAAAA après', userDeleteId);
     dispatch(deleteUser(userDeleteId));
   },
-  
+
   handleAddUser: () => {
     dispatch(AdminAddUser());
   },
