@@ -34,8 +34,8 @@ const Comment = ({
 }) => {
   useEffect(() => {
     loadChildren(),
-    loadComments()
-  }, []);
+      loadComments()
+  }, [modalOpen]);
 
   console.log(comments)
 
@@ -137,7 +137,7 @@ const Comment = ({
                   Envoyé le {formatDate(comment.created_at)} à {formatHour(comment.created_at)}
                 </p>
 
-              ) }
+              )}
 
               <div className="comment__onecomment__icons">
                 <Icon
@@ -218,7 +218,7 @@ const Comment = ({
                 </form>
 
               </div>
-            ) : null }
+            ) : null}
 
           </div>
         ))}

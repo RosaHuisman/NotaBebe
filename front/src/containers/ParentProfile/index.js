@@ -26,7 +26,7 @@ const mapStateToProps = (state, ownProps) => ({
   user: findUser(state.user.list, ownProps.match.params.parent_id),
   children: findChildrenOfParent(state.user.list, ownProps.match.params.parent_id),
   loading: state.user.loading,
-  });
+});
 
 
 const mapDispatchToProps = (dispatch) => ({
@@ -34,7 +34,7 @@ const mapDispatchToProps = (dispatch) => ({
   loadUsersParents: () => {
     dispatch(fetchUsersParents());
   },
-  
+
   openUserInfos: () => {
     dispatch(openChangeInfos());
   },

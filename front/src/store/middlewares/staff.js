@@ -2,15 +2,15 @@ import {
   CHANGE_PASSWORD_STAFF,
   savePasswordStaff,
   saveNewPasswordStaff,
-  
+
 } from 'src/store/actions/staff';
 import axios from 'axios';
 import api from './utils/api';
 
 const staff = (store) => (next) => (action) => {
-  
+
   switch (action.type) {
-    
+
     case CHANGE_PASSWORD_STAFF: {
       const state = store.getState();
       const id = action.id;
