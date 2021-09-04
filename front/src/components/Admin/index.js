@@ -40,7 +40,7 @@ const AdminHome = ({
     fetch('https://notabebe-back.herokuapp.com/profile/admin/allusers')
       .then((response) => response.json())
       .then((json) => setUsersListData(json));
-  }, []);
+  }, [FormDeleteOpen]); // useEffect se relance à chaque fois que le state FormDeleteOpen change
 
   useEffect(() => {
     // ici on veut vérifier si l'utilisateur est déjà connecté
@@ -186,42 +186,42 @@ const AdminHome = ({
             <Table.Body>
               <>
                 {
-                UsersListData.filter((user) => {
-                  if (searchNewValue === '') {
-                    return user;
-                  } if (
-                    user.first_name.toLowerCase().includes(searchNewValue.toLowerCase())
-                    || user.last_name.toLowerCase().includes(searchNewValue.toLowerCase())
-                    || user.email.toLowerCase().includes(searchNewValue.toLowerCase())
-                    || user.phone_number.toLowerCase().includes(searchNewValue.toLowerCase())
-                  ) {
-                    return user;
-                  }
-                }).map((user) => (
-                  <Table.Row key={user.id}>
-                    <Table.Cell>{user.last_name}</Table.Cell>
-                    <Table.Cell>{user.first_name}</Table.Cell>
-                    <Table.Cell>{user.email}</Table.Cell>
-                    <Table.Cell>{user.phone_number}</Table.Cell>
-                    <Table.Cell textAlign="center">{user.role_id}</Table.Cell>
+                  UsersListData.filter((user) => {
+                    if (searchNewValue === '') {
+                      return user;
+                    } if (
+                      user.first_name.toLowerCase().includes(searchNewValue.toLowerCase())
+                      || user.last_name.toLowerCase().includes(searchNewValue.toLowerCase())
+                      || user.email.toLowerCase().includes(searchNewValue.toLowerCase())
+                      || user.phone_number.toLowerCase().includes(searchNewValue.toLowerCase())
+                    ) {
+                      return user;
+                    }
+                  }).map((user) => (
+                    <Table.Row key={user.id}>
+                      <Table.Cell>{user.last_name}</Table.Cell>
+                      <Table.Cell>{user.first_name}</Table.Cell>
+                      <Table.Cell>{user.email}</Table.Cell>
+                      <Table.Cell>{user.phone_number}</Table.Cell>
+                      <Table.Cell textAlign="center">{user.role_id}</Table.Cell>
 
-                    {/* <Table.Cell textAlign="center">
+                      {/* <Table.Cell textAlign="center">
                       <Button icon="edit" onClick={() => handleClickEditUser(user.id)} />
                     </Table.Cell> */}
 
-                    <Table.Cell textAlign="center">
-                      { FormDeleteOpen && userDeleteId === user.id ? (
-                        <Button.Group size="mini">
-                          <Button primary type="button" onClick={() => handleSubmitDelete(user.id)}>Oui</Button>
-                          <Button color="red" type="button" onClick={() => handleClickDeleteUserOpen(user.id)}>Non</Button>
-                        </Button.Group>
-                      ) : (
-                        <Button icon="trash alternate" onClick={() => handleClickDeleteUserOpen(user.id)} />
-                      )}
-                    </Table.Cell>
-                  </Table.Row>
-                ))
-              }
+                      <Table.Cell textAlign="center">
+                        {FormDeleteOpen && userDeleteId === user.id ? (
+                          <Button.Group size="mini">
+                            <Button primary type="button" onClick={() => handleSubmitDelete(user.id)}>Oui</Button>
+                            <Button color="red" type="button" onClick={() => handleClickDeleteUserOpen(user.id)}>Non</Button>
+                          </Button.Group>
+                        ) : (
+                          <Button icon="trash alternate" onClick={() => handleClickDeleteUserOpen(user.id)} />
+                        )}
+                      </Table.Cell>
+                    </Table.Row>
+                  ))
+                }
               </>
             </Table.Body>
           </Table>
