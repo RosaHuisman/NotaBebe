@@ -84,7 +84,7 @@ const AdminHome = ({
         </div>
         <img src={logoAdmin} className="adminMobileHome__logo" alt="admin" />
         <div className="adminMobileHome__txt">
-          Pour une meilleur expérience, veuillez vous connecter à partir d'un ordinateur.
+          Pour une meilleure expérience, veuillez vous connecter à partir d'un ordinateur.
         </div>
       </div>
 
