@@ -190,7 +190,7 @@ const Comment = ({
               </p>
 
             )}
-            {(commentId == comment.id && formDeleteOpen) ? (
+            {(commentId === comment.id && formDeleteOpen) ? (
               <div className="comment__formdelete">
                 <form
                   autoComplete="off"
