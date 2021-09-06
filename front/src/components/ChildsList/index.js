@@ -51,12 +51,12 @@ const ChildsList = ({
             <div className="childs__child__infos">
               {child.sex === 'F' ? (
                 <>
-                <h2>Née le: {child.birthdate}</h2>
+                <h2 className="childs__child__infos__girl">Née le: {child.birthdate}</h2>
                 <p> Fille </p>
                 </>
               ) : (
                 <>
-                <h2>Né le: {child.birthdate}</h2>
+                <h2 className="childs__child__infos__boy">Né le: {child.birthdate}</h2>
                 <p> Garçon </p>
                 </>
               )}

@@ -56,6 +56,14 @@
 
     &__infos {
       text-align: center;
+
+      &__girl {
+        color: v.$violet-color;
+      }
+
+      &__boy {
+        color: v.$primary-color;
+      }
     }
 
     &__createrecapbutton {
