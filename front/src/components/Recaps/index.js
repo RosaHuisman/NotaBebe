@@ -34,11 +34,11 @@ const Recaps = ({
 
   }, [])
 
-
-
   if (loading) {
     return <Loading />;
-  } "child.first_name" + "child.last_name"
+  } 
+  
+  // "child.first_name" + "child.last_name"
 
   
 
@@ -63,6 +63,7 @@ const Recaps = ({
           />
       </form>
     </div>
+
     <div className="recaps__listing">
       { filterRecaps(recaps, inputValue).map((recap) => (
         <div key={recap.id} className="recaps__listing__recap">
@@ -96,13 +97,12 @@ const Recaps = ({
             </>
           ) : null}
           <p className="recaps__listing__recap__otherscomment"><span>Divers:</span> {recap.extra_info}</p>
-
         </div>
-        <div>.</div>
-      </div>
+      ))},
+    </div>
+    </div>
     </>
-  )
-};
+)};
 
 
 Recaps.propTypes = {
