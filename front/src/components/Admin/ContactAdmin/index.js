@@ -26,10 +26,10 @@ const ContactAdmin = () => {
 
       <div className="contact__details">
         <div className="nursery__contact">
-          <h1>Pour contacter la crèche:</h1>
-          <p className="adress"><span><Icon name="home" /></span>7 rue des bambins, 75000 Paris</p>
-          <p className="mail"><span><Icon name="mail" /></span>contact-creche@notabebe.fr</p>
-          <p className="phone"><span><Icon name="phone" /></span>01.23.45.67.89</p>
+          <h1 className="nursery__contact__title">Pour contacter la crèche:</h1>
+          <p className="nursery__contact__adress"><span><Icon name="home" /></span>7 rue des bambins, 75000 Paris</p>
+          <p className="nursery__contact__mail"><span><Icon name="mail" /></span>contact-creche@notabebe.fr</p>
+          <p className="nursery__contact__phone"><span><Icon name="phone" /></span>01.23.45.67.89</p>
         </div>
         <div className="admin__contact">
           <h1>Pour contacter l'Administrateur du site:</h1>

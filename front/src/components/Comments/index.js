@@ -8,7 +8,7 @@ import HeaderStaff from 'src/containers/HeaderStaff';
 import { childSearched } from 'src/store/selectors/user';
 
 import './styles.scss';
-// import commentsData from 'src/data/comments';
+
 
 const Comments = ({
 
@@ -61,16 +61,16 @@ const Comments = ({
         </form>
       </div>
       
-      <div className="comments__list">
+      <div className="commments__list">
         { filterComments(comments, inputValue).map((comment) => (
-          <div key={comment.id} className="comment">
+          <div key={comment.id} className="commment">
 
-            <h1 className="comment__child"> {comment.first_name}</h1>
-            <p className="comment__child__date">
-              Date: {formatDate(comment.created_at)} à {formatHour(comment.created_at)}
+            <h2 className="commment__child"> {comment.first_name}</h2>
+            <p className="commment__child__date">
+              <span>Date:</span> {formatDate(comment.created_at)} à {formatHour(comment.created_at)}
             </p>
 
-            <p className="comment__message">Message: {comment.message}</p>
+            <p className="commment__message"><span>Message:</span> {comment.message}</p>
           </div>
         ))}
       </div>

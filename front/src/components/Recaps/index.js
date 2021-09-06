@@ -87,13 +87,12 @@ const Recaps = ({
           <span className="recaps__listing__recap__mood">Son humeur: {recap.mood}</span>
           { recap.naps ? (
             <>
-            <br></br>
             <span className="recaps__listing__recap__nap"> Sieste(s): </span>
              {recap.naps.map((nap) => {  
               return(
                 <div key={nap.id}>
-                <p className="recaps__listing__recap__nap__time"> {nap.start_time} - {nap.end_time} </p>
-                <p className="recaps__listing__recap__nap__comment">{nap.comment}</p>
+                <p className="recaps__listing__recap__nap__time"> {nap.start_time} - {nap.end_time} : </p>
+                <p className="recaps__listing__recap__nap__comment">- {nap.comment}</p>
                 </div>
               )
             })}
@@ -107,7 +106,7 @@ const Recaps = ({
                 <div
                 key={meal.id}
                 >
-                <p className="recaps__listing__recap__meal__comment"> {meal.comment} </p>
+                <p className="recaps__listing__recap__meal__comment"> - {meal.comment} </p>
                 </div>
               )
             })}

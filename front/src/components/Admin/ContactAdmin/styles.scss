@@ -11,6 +11,7 @@
   display: flex;
   margin: 0 auto;
   flex-direction: column;
+  justify-content: space-around;
   width: 300px;
   border-radius: 10px;
   border: 1px solid #eee;
@@ -20,6 +21,7 @@
   margin-top: 1rem;
   padding: 20px;
 }
+
 
 .returnlink {
   display: flex;
@@ -33,15 +35,15 @@
   margin-top: 2rem;
 }
 
-h1 {
-  margin-bottom: 15px;
-  font-weight: bold;
-  font-style: italic;
-}
+// h1 {
+//   margin-bottom: 15px;
+//   font-weight: bold;
+//   font-style: italic;
+// }
 
-p {
-  margin-bottom: 15px;
-}
+// p {
+//   margin-bottom: 15px;
+// }
 
 .backButtonContact {
   margin-top: 2rem;

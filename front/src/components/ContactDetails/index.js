@@ -43,7 +43,7 @@ const ContactDetails = () => {
           <div className="contactDetails__devTeam">
             <h1>Pour contacter l'équipe de conception du site:</h1>
             <div className="contactDetails__txt">
-              <p><Icon name="mail" />devteam@notabebe.fr</p>
+              <p><Icon name="mail" />notabebe.dev@gmail.com</p>
             </div>
           </div>
         </div>
