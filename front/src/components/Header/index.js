@@ -101,6 +101,7 @@ const Header = ({
   //   ) : (
   //     <>
     <header className="header">
+      <div className="header-blank" />
       <h1 className="header-title">NotaBebe</h1>
       <Link to="/">
         <img src={logo} className="header-logo" alt="Logo NotaBebe" />

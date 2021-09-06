@@ -23,7 +23,6 @@ const forgotMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           store.dispatch(createForgotErrorAction());
-          console.log('MON ERREUR createForgotErrorAction');
         });
       break;
     }

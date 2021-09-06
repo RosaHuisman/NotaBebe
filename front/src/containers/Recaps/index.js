@@ -23,7 +23,6 @@ const mapDispatchToProps = (dispatch) => ({
   },
 
   onInputValueRecapChange: (filterInputValue) => {
-    console.log(filterInputValue)
     dispatch(filterRecaps(filterInputValue));
   },  
 

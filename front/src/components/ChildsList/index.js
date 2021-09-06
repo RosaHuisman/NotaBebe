@@ -21,6 +21,8 @@ const ChildsList = ({
     return <Loading />;
   } 
 
+  console.log(children)
+
   return (
     <>
       <div>
@@ -39,8 +41,12 @@ const ChildsList = ({
       </div>
       <div className="childs">
         { children.map((child) => (
-          <div key={child.id} className="childs__child">
-            <h1 className="childs__child__name">{child.first_name} {child.last_name}</h1>
+          <div key={child.id} 
+          className={child.sex === 'F' ? "childs__child__girl" : "childs__child__boy"}
+          
+          >
+            <h1 className={child.sex === 'F' ? "childs__child__name__girl" : "childs__child__name__boy"}>
+              {child.first_name} {child.last_name}</h1>
             
             <div className="childs__child__infos">
               {child.sex === 'F' ? (

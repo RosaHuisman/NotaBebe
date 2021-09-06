@@ -15,10 +15,15 @@ const StaffProfile = ({
   loading,
   hasPasswordError,
   handleChangePassword,
+  changePasswordConfirmMessage,
+  clearChangePasswordConfirmMessage,
 
 }) => {
   useEffect(() => {
     loadUsersStaff();
+    return () => {
+      clearChangePasswordConfirmMessage();
+    }
   }, []);
 
   if (loading) {
@@ -58,41 +63,47 @@ const StaffProfile = ({
           </div>
         </div>
 
-        <form
-          autoComplete="off"
-          className="changepasswordform"
-          onSubmit={handleSubmitChangePassword}
-        >
-          <p> Changer de mot de passe :</p>
-          <Field
-            name="oldpassword"
-            type="password"
-            placeholder="Ancien mot de passe"
-          />
+        {!changePasswordConfirmMessage ? (
+          <form
+            autoComplete="off"
+            className="changepasswordform"
+            onSubmit={handleSubmitChangePassword}
+          >
+            <p> Changer de mot de passe :</p>
+            <Field
+              name="oldpassword"
+              type="password"
+              placeholder="Ancien mot de passe"
+            />
 
-          <Field
-            name="newpassword"
-            type="password"
-            placeholder="Nouveau mot de passe"
-          />
+            <Field
+              name="newpassword"
+              type="password"
+              placeholder="Nouveau mot de passe"
+            />
 
-          <Field
-            name="confirmpassword"
-            type="password"
-            placeholder="Confirmez le mot de passe"
-          />
+            <Field
+              name="confirmpassword"
+              type="password"
+              placeholder="Confirmez le mot de passe"
+            />
 
-          <div className="changepasswordform__buttons">
-            <button
-              className="changepasswordform__buttons__send"
-              type="submit"
-            >
-              Valider
-            </button>
-          </div>
+            <div className="changepasswordform__buttons">
+              <button
+                className="changepasswordform__buttons__send"
+                type="submit"
+              >
+                Valider
+              </button>
+            </div>
 
-          {hasPasswordError && <div>Veuillez vérifier vos identifiants</div>}
-        </form>
+            {hasPasswordError && <div>Veuillez vérifier vos identifiants</div>}
+          </form>
+        )
+          : (
+            <p className="changepasswordform">{changePasswordConfirmMessage}</p>
+          )}
+
       </div>
     </>
   );

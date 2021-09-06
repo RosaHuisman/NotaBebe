@@ -6,7 +6,7 @@ import HeaderStaff from 'src/containers/HeaderStaff';
 import Loading from 'src/components/App/Loading';
 import { filterRecaps } from 'src/store/selectors/recap';
 
-import {childSearched} from 'src/store/selectors/user'
+import { childSearched } from 'src/store/selectors/user'
 import './styles.scss';
 
 
@@ -16,52 +16,35 @@ import './styles.scss';
 // Le rendu des récaps
 
 const Recaps = ({
-  recaps, 
-  onSearchSubmit, 
-  inputRef, 
+  recaps,
+  onSearchSubmit,
+  inputRef,
   searchValue,
   loading,
-  inputValue, 
+  inputValue,
   onInputValueRecapChange,
   loadRecaps,
   loadChildren,
   children,
 }) => {
-  // je définis la date du jour 
-//  const datetime = new Date();
-//  // je mets la date du format 02/09/2021
-//  const date = (('0'+datetime.getDate()).slice(-2)+"/"+('0'+(datetime.getMonth()+1)).slice(-2)+"/"+datetime.getFullYear());
-//  console.log(date);
-//   // je compare la date du jour avec la date des recaps
-//  function filter_date(recaps) {
-//     return recaps.date == date;
-//   }
-//   // je filtre sur le tableau avec les dates comparées
-//  const recapsFiltered = recaps.filter(filter_date);
 
- 
- 
- useEffect(() => {
+  useEffect(() => {
     loadChildren();
     loadRecaps();
-    
+
   }, [])
 
 
-  console.log(loading)
-  console.log(children);
 
   if (loading) {
     return <Loading />;
-  }"child.first_name" + "child.last_name"
+  } "child.first_name" + "child.last_name"
+
   
-  // console.log('mes recaps:', recaps);  
-  console.log('un recap:', recaps[0]);
-  // console.log(recaps.length);
- 
+
   return (
     <>
-    <div>
+      <div>
         <HeaderStaff />
       </div>
 
@@ -113,13 +96,13 @@ const Recaps = ({
             </>
           ) : null}
           <p className="recaps__listing__recap__otherscomment"><span>Divers:</span> {recap.extra_info}</p>
+
         </div>
-      ))}
-    </div>
-    <div>.</div>
-  </div>
-  </>
-  )};
+        <div>.</div>
+      </div>
+    </>
+  )
+};
 
 
 Recaps.propTypes = {

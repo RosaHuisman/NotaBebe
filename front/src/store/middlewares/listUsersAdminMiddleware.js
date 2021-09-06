@@ -38,7 +38,7 @@ const listUsersAdminMiddleware = (store) => (next) => (action) => {
       //     store.dispatch(getAllUsersSuccessAction(SOLSOL));
       //   }
       //   catch (error) {
-      //     console.log('il y a eu une erreur', error);
+      //     console.error('il y a eu une erreur', error);
       //   }
       // };
 
@@ -51,14 +51,13 @@ const listUsersAdminMiddleware = (store) => (next) => (action) => {
     }
     case DELETE_USER: {
 
-      const LALALA = action.payload;
+      const userDeleted = action.payload;
 
-      api.delete(`/profile/admin/manageprofile/${LALALA}`)
+      api.delete(`/profile/admin/manageprofile/${userDeleted}`)
         .then((response) => {
           store.dispatch(deleteUserSuccess(response.data));
         })
         .catch((error) => {
-          console.log('une erreur s\'est produite');
 
           const errorPayload = {};
           errorPayload.message = error.response.data.message;
@@ -71,8 +70,7 @@ const listUsersAdminMiddleware = (store) => (next) => (action) => {
     case ADMIN_ADD_USER: {
 
       const state = store.getState();
-      const LALALA = action.payload;
-
+      
       api({
         method: 'POST',
         url: '/profile/admin/manageprofile',
@@ -85,15 +83,13 @@ const listUsersAdminMiddleware = (store) => (next) => (action) => {
           postcode: state.user.postcode,
           city: state.user.city,
           password: state.user.password,
-          role_id: state.user.role_id,
+          role_id: +state.user.role_id,
         },
       })
         .then((response) => {
-          console.log('je suis dans adminAddUserSuccess');
           store.dispatch(adminAddUserSuccess(response.data));
         })
         .catch((error) => {
-          console.log('ERREUR je suis dans adminAddUserError');
 
           const errorPayload = {};
           errorPayload.message = error.response.data.message;

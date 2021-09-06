@@ -39,7 +39,7 @@ const EditUserAdmin = () => {
         </div>
         <img src={logoAdmin} className="adminMobileHome__logo" alt="admin" />
         <div className="adminMobileHome__txt">
-          Pour une meilleur expérience, veuillez vous connecter à partir d'un ordinateur.
+          Pour une meilleure expérience, veuillez vous connecter à partir d'un ordinateur.
         </div>
       </div>
 
@@ -77,8 +77,8 @@ const EditUserAdmin = () => {
                       <input
                         type="email"
                         placeholder="email@notabebe.io"
-                      // value=""
-                      // onChange=""
+                        // value=""
+                        // onChange=""
                         required
                       />
                     </Table.Cell>
@@ -91,8 +91,8 @@ const EditUserAdmin = () => {
                         type="tel"
                         pattern="^[0-9]{10}$"
                         placeholder="Numéro de téléphone"
-                      // value=""
-                      // onChange=""
+                        // value=""
+                        // onChange=""
                         required
                       />
                     </Table.Cell>
@@ -104,8 +104,8 @@ const EditUserAdmin = () => {
                       <input
                         type="text"
                         placeholder="Adresse"
-                      // value=""
-                      // onChange=""
+                        // value=""
+                        // onChange=""
                         required
                       />
                     </Table.Cell>
@@ -115,11 +115,10 @@ const EditUserAdmin = () => {
                     <Table.Cell verticalAlign="middle">48000</Table.Cell>
                     <Table.Cell verticalAlign="middle">
                       <input
-                        type="number"
+                        type="text"
                         placeholder="Code postal"
-                        max="99999"
-                      // value=""
-                      // onChange=""
+                        // value=""
+                        // onChange=""
                         required
                       />
                     </Table.Cell>
@@ -131,8 +130,8 @@ const EditUserAdmin = () => {
                       <input
                         type="text"
                         placeholder="Ville"
-                      // value=""
-                      // onChange=""
+                        // value=""
+                        // onChange=""
                         required
                       />
                     </Table.Cell>
@@ -150,14 +149,14 @@ const EditUserAdmin = () => {
                     <Table.HeaderCell colSpan="3" textAlign="center">
                       <Link to="/admin">
                         <Button
-                        // onClick=""
+                          // onClick=""
                           icon="cancel"
                           color="red"
                           size="tiny"
                         />
                       </Link>
                       <Button
-                      // onClick=""
+                        // onClick=""
                         icon
                         labelPosition="left"
                         primary
@@ -176,7 +175,7 @@ const EditUserAdmin = () => {
 
             <div className="ContentEditModal__child__addChild">
               <Button
-              // onClick=""
+                // onClick=""
                 icon
                 labelPosition="left"
                 primary

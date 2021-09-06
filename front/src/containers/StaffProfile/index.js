@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import StaffProfile from 'src/components/StaffProfile';
 import { fetchUsersStaff } from 'src/store/actions';
 
-import { changePassword } from 'src/store/actions/staff'
+import { changePassword, clearPasswordMessage } from 'src/store/actions/staff'
 
 import { findUser } from 'src/store/selectors/user';
 
@@ -12,11 +12,12 @@ const mapStateToProps = (state, ownProps) => ({
   //staff: state.auth,
   loading: state.user.loading,
   hasPasswordError: state.staff.changePasswordError,
+  changePasswordConfirmMessage: state.staff.changePasswordConfirmMessage,
 
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  
+
   loadUsersStaff: () => {
     dispatch(fetchUsersStaff());
   },
@@ -24,6 +25,10 @@ const mapDispatchToProps = (dispatch) => ({
   handleChangePassword: (id) => {
     dispatch(changePassword(id));
   },
+
+  clearChangePasswordConfirmMessage: () => {
+    dispatch(clearPasswordMessage());
+  }
 
 
 });

@@ -30,7 +30,7 @@ const ContactDetails = () => {
             <h1>Pour contacter la crèche:</h1>
             <div className="contactDetails__txt">
               <p><Icon name="home" />7 rue des bambins, 75000 Paris</p>
-              <p><Icon name="mail" />Contact-creche@notabebe.fr</p>
+              <p><Icon name="mail" />contact-creche@notabebe.fr</p>
               <p><Icon name="phone" />01.23.45.67.89</p>
             </div>
           </div>

@@ -1,4 +1,4 @@
-import React, { useEffect} from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 
@@ -44,7 +44,7 @@ const ChildProfile = ({
   loadParents,
   parent
 
-  
+
   // loadUsersParents,
 
 }) => {
@@ -60,24 +60,24 @@ const ChildProfile = ({
 
   if (loading) {
     return <Loading />;
-  } 
+  }
 
- 
+
 
   // we retrieve the data of the parent and the child through Link of Children in ParentProfile
   // we could use this informations for the parent and the child
   // I called it parent but the child's information is available too
 
- 
+
 
   const handleOnClickChangeInfosButton = (e) => {
     e.preventDefault();
     openUserInfos();
   };
 
-  
+
   return (
-     
+
     <>
       <div>
         <HeaderParent />
@@ -90,6 +90,7 @@ const ChildProfile = ({
               openUserInfos={openUserInfos}
               parent={parent}
               child={child}
+              loadChildren={loadChildren}
             />
 
             <button

@@ -40,10 +40,10 @@
     }
     &__cancel {
       display: block;
+      padding: math.div(v.$gutter, 3);
       background-color: v.$red-color;
       border: none;
       font-size: 0.9rem;
-      height: 1.5rem;
       border-radius: 5px;
       color: white;
 

@@ -28,9 +28,9 @@
     &__cancel {
       display: block;
       background-color: v.$red-color;
+      padding: math.div(v.$gutter, 3);
       border: none;
       font-size: 0.9rem;
-      height: 1.5rem;
       border-radius: 5px;
       color: white;
 

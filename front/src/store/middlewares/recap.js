@@ -18,7 +18,7 @@ const recap = (store) => (next) => (action) => {
           store.dispatch(actionsaveRecaps);
         }
         catch (error) {
-          console.log('il y a eu une erreur', error);
+          console.error('il y a eu une erreur', error);
         }
       };
 
@@ -39,9 +39,7 @@ const recap = (store) => (next) => (action) => {
         })
       })
 
-      console.log('SCHNAPS : ', naps)
-
-     axios.post(`http://notabebe-back.herokuapp.com/profile/staff/child/recap`, 
+     axios.post(`https://notabebe-back.herokuapp.com/profile/staff/child/recap`, 
      {
       child_id: childId,
       date: state.recap.date,
@@ -58,7 +56,7 @@ const recap = (store) => (next) => (action) => {
          store.dispatch(actionsaveRecap);
        })
        .catch((error) => {
-         console.log('il y a eu une erreur dans le post comment', error);
+         console.error('il y a eu une erreur dans le post comment', error);
          // store.dispatch(postCommentError());
        });
      break;
@@ -72,27 +70,3 @@ const recap = (store) => (next) => (action) => {
 export default recap;
 
 
-
-
-// date: inputDate, 
-        // extra_info: textAreaOther,
-        // child_id: childId,
-        // mood: inputMood, 
-        // naps: [
-        //   {
-        //     start_time: inputStart, 
-        //     end_time: inputEnd, 
-        //     comment: textAreaMeals, 
-        //   },
-        //   {
-        //     start_time: inputStart, 
-        //     end_time: inputEnd, 
-        //     comment: textAreaMeals, 
-        //   }
-        // ],
-        // meals: [
-        //   {
-        //     time: inputStart, 
-        //     comment: textAreaMeals, 
-        //   }
-        // ],

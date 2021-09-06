@@ -34,10 +34,8 @@ const Comment = ({
 }) => {
   useEffect(() => {
     loadChildren(),
-    loadComments()
-  }, []);
-
-  console.log(comments)
+      loadComments()
+  }, [modalOpen]);
 
 
   const handleSubmit = (evt) => {
@@ -62,9 +60,10 @@ const Comment = ({
     evt.preventDefault();
     onClickOpenFormDeleteComment(evt.target.id);
   };
+  
   const handleSubmitPatch = (evt) => {
     evt.preventDefault();
-    patchComment(parent.id, parent.child_id, commentId);
+    patchComment(parent.id, child.id, commentId);
   };
 
   const handleSubmitDelete = (evt) => {
@@ -137,7 +136,7 @@ const Comment = ({
                   Envoyé le {formatDate(comment.created_at)} à {formatHour(comment.created_at)}
                 </p>
 
-              ) }
+              )}
 
               <div className="comment__onecomment__icons">
                 <Icon
@@ -191,7 +190,7 @@ const Comment = ({
               </p>
 
             )}
-            {(commentId == comment.id && formDeleteOpen) ? (
+            {(commentId === comment.id && formDeleteOpen) ? (
               <div className="comment__formdelete">
                 <form
                   autoComplete="off"
@@ -218,7 +217,7 @@ const Comment = ({
                 </form>
 
               </div>
-            ) : null }
+            ) : null}
 
           </div>
         ))}

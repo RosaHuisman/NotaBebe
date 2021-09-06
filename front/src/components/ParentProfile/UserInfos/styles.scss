@@ -13,6 +13,7 @@
   text-overflow: ellipsis;
   word-wrap: break-word;   
 
+
   &__infos {
     font-size: .9rem;
     
@@ -33,10 +34,7 @@
     &__result {
         padding-left: math.div(v.$gutter, 2);
         text-overflow: ellipsis;
-        word-wrap: break-word; 
-             
-       
-
+        word-wrap: break-word;
       }
     }
     &__button {

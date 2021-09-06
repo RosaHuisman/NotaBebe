@@ -156,10 +156,9 @@ const AddUserAdmin = ({
                       <Table.Cell verticalAlign="middle"><div className="columnTitle">Code postal</div></Table.Cell>
                       <Table.Cell verticalAlign="middle">
                         <Field
-                          type="number"
+                          type="text"
                           name="postcode"
                           // placeholder="Code postal"
-                          max="99999"
                           onChange={changeField}
                           value={postcode}
                           required
@@ -180,7 +179,6 @@ const AddUserAdmin = ({
                       </Table.Cell>
                     </Table.Row>
 
-
                     <Table.Row>
                       <Table.Cell verticalAlign="middle"><div className="columnTitle">Rôle</div></Table.Cell>
                       <Table.Cell verticalAlign="middle">
@@ -194,6 +192,7 @@ const AddUserAdmin = ({
                         </div>
                       </Table.Cell>
                     </Table.Row>
+
                     <Table.Row>
                       <Table.Cell verticalAlign="middle"><div className="columnTitle">Mot de passe temporaire</div></Table.Cell>
                       <Table.Cell verticalAlign="middle">
@@ -207,6 +206,7 @@ const AddUserAdmin = ({
                         />
                       </Table.Cell>
                     </Table.Row>
+
                   </Table.Body>
                   <Table.Footer fullwidth="true" column="equal" className="footerTable">
                     <Table.Row>

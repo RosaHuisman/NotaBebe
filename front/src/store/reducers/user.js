@@ -21,6 +21,8 @@ import {
   CHANGE_ROLE,
 } from '../actions';
 
+import { CLEAR_CHANGE_PASSWORD_CONFIRM_MESSAGE } from 'src/store/actions/staff';
+
 const initialState = {
   list: [],
   userlist: [],
@@ -60,9 +62,8 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case SAVE_INFOS_USER: {
-      console.log(action.payload.updatedChild.allergies)
       return {
-        allergy: action.payload.updatedChild.allergies,
+        allergy: action.payload.updatedChild?.allergies,  // Si pas de updateChild dans l'objet action.payload => allergy: undefined
 
         ...state,
         //changeInfos: true,
@@ -78,12 +79,12 @@ const reducer = (state = initialState, action) => {
       };
     }
     case SAVE_USERS_STAFF: {
-     return {
-       ...state,
-       list: action.payload,
-       loading: false,
-     };
-   }
+      return {
+        ...state,
+        list: action.payload,
+        loading: false,
+      };
+    }
     case OPEN_CHANGE_INFOS:
       return {
         ...state,
@@ -122,6 +123,15 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         loginError: true,
+      };
+    }
+
+    case CLEAR_CHANGE_PASSWORD_CONFIRM_MESSAGE: {
+      return {
+        ...state,
+        oldpassword: '',
+        newpassword: '',
+        confirmpassword: '',
       };
     }
 

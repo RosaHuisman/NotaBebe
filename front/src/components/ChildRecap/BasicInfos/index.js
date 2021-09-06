@@ -21,11 +21,11 @@ const BasicInfos = ({
   return(
   <div className="basicinfos">
       <div className="basicinfos__infos">
-      {recap.mood === 'grincheux' || recap.mood === 'malade' || recap.mood === 'triste' || recap.mood === 'énervée' || recap.mood === 'énervé' || recap.mood === 'fatigué' || recap.mood === 'fatiguée'  ? 
+      {recap.mood === 'Grincheux' || recap.mood === 'Grincheuse' ||  recap.mood === 'Malade' || recap.mood === 'Triste' || recap.mood === 'Enervée' || recap.mood === 'Enervé' || recap.mood === 'Fatigué' || recap.mood === 'Fatiguée'  ? 
             <img src={childGrumpyIcon} className="basicinfos__infos__icon" alt="Child Icon" />
-          : recap.mood === 'ca va' || recap.mood === 'impatient' || recap.mood === 'impatiente' ? 
+          : recap.mood === 'Ca va...' || recap.mood === 'Impatient' || recap.mood === 'Impatiente' ? 
           <img src={childMediumIcon} className="basicinfos__infos__icon" alt="Child Icon" /> 
-          : recap.mood === 'joyeux' || recap.mood === 'curieux' || recap.mood === 'contente' || recap.mood === 'joyeux' || recap.mood === 'très heureux' || recap.mood === 'joyeuse' || recap.mood === 'passionnée' || recap.mood === 'heureuse' || recap.mood === 'souriante' || recap.mood === 'content' || recap.mood === 'curieuse' ?
+          : recap.mood === 'Joyeux' || recap.mood === 'Curieux' || recap.mood === 'Contente' || recap.mood === 'Très heureux' || recap.mood === 'Joyeuse' || recap.mood === 'Passionnée' || recap.mood === 'Heureuse' || recap.mood === 'Souriante' || recap.mood === 'Content' || recap.mood === 'Curieuse' || recap.mood === 'Heureux' || recap.mood === 'Passionné' || recap.mood === 'Souriant' ?
           <img src={childHappyIcon} className="basicinfos__infos__icon" alt="Child Icon" />
           : null  
         }

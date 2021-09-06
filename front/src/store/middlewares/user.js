@@ -27,7 +27,7 @@ const user = (store) => (next) => (action) => {
           store.dispatch(actionsaveUsersParents);
         }
         catch (error) {
-          console.log('il y a eu une erreur', error);
+          console.error('il y a eu une erreur', error);
         }
       };
 
@@ -42,18 +42,17 @@ const user = (store) => (next) => (action) => {
           store.dispatch(actionsaveUsersStaff);
         }
         catch (error) {
-          console.log('il y a eu une erreur', error);
+          console.error('il y a eu une erreur', error);
         }
       };
 
       fetchData();
       break;
     }
-  
+
     case CHANGE_INFOS: {
       const state = store.getState();
       const id = action.id;
-
 
       axios.patch(`https://notabebe-back.herokuapp.com/profile/parent/${id}`, {
         address: state.user.address,
@@ -82,11 +81,10 @@ const user = (store) => (next) => (action) => {
       })
         .then((response) => {
           const actionSaveInfosUser = saveInfosUser(response.data);
-          console.log(response.data)
           store.dispatch(actionSaveInfosUser);
         })
         .catch((error) => {
-          // console.log('une erreur s\'est produite')
+           console.error('une erreur s\'est produite')
           // store.dispatch(changeInfosError());
         });
       break;
@@ -105,13 +103,13 @@ const user = (store) => (next) => (action) => {
           store.dispatch(actionsChangePasswordParent);
         })
         .catch((error) => {
-          console.log('il y a eu une erreur dans le save password parent', error);
+          ('il y a eu une erreur dans le save password parent', error);
           // store.dispatch(changeInfosError());
         });
       break;
     }
-    
-  
+
+
     default:
       next(action);
   }
