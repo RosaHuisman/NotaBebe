@@ -11,7 +11,26 @@
 
 
   &__child {
-    display: flex;
+    
+    
+    &__girl {
+      display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.8rem 0;
+    width: 48%;
+    border: 1px solid v.$violet-color;
+    border-radius: 5px;
+    // padding: 5px;
+    padding: 1.1rem 0.5rem;
+    //background-color: rgba(223, 121, 138, 0.452);
+    background-color: #8e6aa83d;
+
+    }
+    
+    &__boy {
+      display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
@@ -21,13 +40,18 @@
     border-radius: 5px;
     // padding: 5px;
     padding: 1.1rem 0.5rem;
-    background-color: v.$bg-color-card;
-  
+    background-color: #83c9b63d;
+    }
 
-    &__name {
+    &__name__girl {
+      font-size: 1.3rem;
+      color: v.$violet-color;
+
+    }
+    &__name__boy {
       font-size: 1.3rem;
       color: v.$primary-color;
-     
+
     }
 
     &__infos {
