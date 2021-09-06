@@ -1,7 +1,15 @@
 @use 'src/styles/vars' as v;
 
 h1 {
-  font-size: 20px;
+  font-size: 1.5rem;
+  color: black;
+  font-weight: bold;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.3rem;
+  color: v.$primary-color;
   font-weight: bold;
   text-align: center;
 }
@@ -10,34 +18,43 @@ h1 {
   text-align: center;
   margin-top: 20px;
 
-  &__input {
-    margin-bottom: 2rem;
-    border-radius: 5px;
-    border: 1px solid #999;
-    height: 35px;
-    padding-left: 15px;
+  margin-bottom: 10px;
+}
+
+.filter__input {
+  height: 30px;
+  border-radius: 5px;
+  border: 1px solid rgb(199, 199, 199);
+  padding-left: 5px;
+
+  &::placeholder{
+    color: rgb(200, 200, 200);
   }
 }
 
-.comments__list {
+
+.commments__list {
   display: flex;
   flex-direction: column;
   margin: 0 1.5rem;
   padding-bottom: 5rem;
 }
 
-.comment {
+.commment {
   padding: 10px;
   border: 1px solid v.$primary-color;
   border-radius: 10px;
-  margin: 0 10px;
+  margin: 10px 10px;
   background-color: v.$bg-color-card;
+
+  &__child__date {
+    font-style: italic;
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
+  
 }
 
-.comment__date {
-  font-style: italic;
-}
-
-.comment__message {
-  margin-top: 5px;
+span {
+  font-weight: bold;
 }
