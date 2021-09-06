@@ -4,6 +4,13 @@
   display: flex;
   flex-direction: column;
   position: static;
+  background-image: url('src/images/baleines.png');
+  background-size: 160px;
+  background-repeat: no-repeat;
+  //background-position-y: 450px;
+  //background-position-x: 100px;
+  background-position: bottom;
+  //height: 100vh;
 }
 
 .loginForm {
@@ -111,7 +118,7 @@
     flex-wrap: wrap;
     justify-content: center;
     margin: 2rem auto;
-    margin-bottom: 6rem;
+    margin-bottom: 12rem;
     padding: 0 1rem;
     width: 300px;
     border-radius: 10px;
