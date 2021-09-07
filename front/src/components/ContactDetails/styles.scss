@@ -1,40 +1,22 @@
-.containerContact {
-  padding-bottom: 0.1rem;
-}
-.contactDetails {
+// .contact {
+//   padding-bottom: 0.1rem;
+// }
+
+.contact__nursery, .contact__admin, .contact__dev {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   border-radius: 10px;
   border: 1px solid #eee;
   background-color: #fff;
   box-shadow: 0 5px 9px rgba(0, 0, 0, 0.3); 
   width: 300px;
-  height: 450px;
+  height: auto;
   padding: 1.4rem;
   margin: 1rem auto;
-  margin-top: 8rem;
   border-bottom: 1px solid #ccc;
 
-  h1 {
-    text-align: left;
+  &__details, &__adress, &__phone, &__mail {
+    margin-top: 15px;
   }
-
-  &__txt {
-    padding-top: 0.1rem;
-  }
-  &__nursery, &__admin, &__devTeam {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 120px;
-    padding-bottom: 0.5rem;
-    border-top: 1px solid #ccc;
-    padding-top: 1rem;
-  }
-
-  &__nursery {
-    border-top: none;
-  }
-
 }
