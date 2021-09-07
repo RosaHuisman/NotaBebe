@@ -4,14 +4,22 @@
   display: flex;
   flex-direction: column;
   position: static;
-  background-image: url('src/images/baleines.png');
-  background-size: 160px;
-  background-repeat: no-repeat;
+  align-items: center;
+  // background-image: url('src/images/baleines.png');
+  // padding-top: 1rem;
+  // background-size: 160px;
+  // background-repeat: no-repeat;
   //background-position-y: 450px;
   //background-position-x: 100px;
   background-position: bottom;
-  // background-color: aqua;
   padding-top: 0;
+}
+
+.homeLogo {
+  display: flex;
+  width: 170px;
+  margin-top: -4rem;
+  padding-bottom: 5rem;
 }
 
 .loginForm {
@@ -121,7 +129,7 @@
     flex-wrap: wrap;
     justify-content: center;
     margin: 2rem auto;
-    margin-bottom: 12rem;
+    margin-bottom: 5rem;
     padding: 0 1rem;
     width: 300px;
     border-radius: 10px;
@@ -130,3 +138,5 @@
     box-shadow: 0 5px 9px rgba(0, 0, 0, 0.3);
   }
 }
+
+

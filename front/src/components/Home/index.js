@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import Field from 'src/containers/Field';
 import Header from 'src/containers/Header';
 import jwtDecode from 'jwt-decode';
+import logoHome from 'src/images/baleines.png';
 
 import './styles.scss';
 
@@ -128,6 +129,9 @@ const Home = ({
                     >
                       <button type="button" className="settings__send">Contactez-nous</button>
                     </Link>
+                  </div>
+                  <div>
+                    <img src={logoHome} className="homeLogo" alt="Logo home" />
                   </div>
                 </>
               )}
