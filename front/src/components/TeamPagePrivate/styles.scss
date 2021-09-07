@@ -59,7 +59,16 @@
     }
 
     &__text {
+      font-weight: bold;
+      font-size: 1.2em;
       text-align: center;
+      margin-top: 0.2em;
+
+      &__tech {
+        text-align: center;
+        font-size: 1em;
+        padding-bottom: 0.4em;
+      }
     }
 
     &__logos {
