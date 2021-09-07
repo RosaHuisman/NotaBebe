@@ -10,13 +10,15 @@
   //background-position-y: 450px;
   //background-position-x: 100px;
   background-position: bottom;
-  //height: 100vh;
+  // background-color: aqua;
+  padding-top: 0;
 }
 
 .loginForm {
   display: flex;
   margin: 0 auto;
-  margin-top: 3rem;
+  // margin-top: 3rem;
+  // margin-bottom: 12rem;
   flex-direction: column;
   width: 300px;
   border-radius: 10px;
@@ -112,6 +114,7 @@
 }
 
 .backButton {
+  padding-bottom: 0.1rem;
   &__contentButton {
     display: flex;
     flex-direction: column;
