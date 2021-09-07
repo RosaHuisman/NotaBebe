@@ -20,6 +20,7 @@
     color: v.$bg-color;
     font-size: 2em;
     text-align: center;
+    padding: 1rem 0;
   }
   &__date {
     display: flex;
@@ -159,6 +160,7 @@
       color: v.$primary-color;
       font-size: 1.3rem;
       text-align: center;
+      padding-bottom: 2rem;
     }
     &__button {
       display: block;

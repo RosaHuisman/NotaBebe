@@ -8,10 +8,12 @@
   -webkit-box-shadow: 0 5px 9px rgba(0, 0, 0, 0.3); 
   -moz-box-shadow: 0 5px 9px rgba(0, 0, 0, 0.3);
   margin: 0 v.$gutter v.$gutter;
+
   padding: 5px;
   
   &__text {
     margin-top: math.div(v.$gutter, 2);
+    padding: 1rem 0;
 
     &__label {
       color: v.$primary-color;
@@ -31,8 +33,8 @@
       background-color: #fff;
     }
   }
-  &__submit {
-    margin: 1rem auto;
+  &__submitt {
+    margin: 0.3rem auto;
     margin-bottom: v.$gutter;
     display: block;
     padding: math.div(v.$gutter, 3);

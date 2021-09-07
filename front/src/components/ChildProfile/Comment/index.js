@@ -104,7 +104,7 @@ const Comment = ({
               </div>
 
               <button
-                className="comment__submit"
+                className="comment__submitt"
                 type="submit"
               >
                 Envoyer le message
@@ -190,7 +190,7 @@ const Comment = ({
               </p>
 
             )}
-            {(commentId === comment.id && formDeleteOpen) ? (
+            {(commentId == comment.id && formDeleteOpen) ? (
               <div className="comment__formdelete">
                 <form
                   autoComplete="off"

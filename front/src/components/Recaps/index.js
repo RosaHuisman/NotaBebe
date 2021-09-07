@@ -6,9 +6,8 @@ import HeaderStaff from 'src/containers/HeaderStaff';
 import Loading from 'src/components/App/Loading';
 import { filterRecaps } from 'src/store/selectors/recap';
 
-import { childSearched } from 'src/store/selectors/user'
+import { childSearched } from 'src/store/selectors/user';
 import './styles.scss';
-
 
 // Dans mon composant FilterRecaps ci dessous, j'y ai mis:
 // Le titre
@@ -27,26 +26,23 @@ const Recaps = ({
   loadChildren,
   children,
 }) => {
-
   useEffect(() => {
     loadChildren();
     loadRecaps();
 
-  }, [])
+
+  }, []);
 
   if (loading) {
     return <Loading />;
   } 
-  
-  // "child.first_name" + "child.last_name"
-
-  
 
   return (
     <>
       <div>
         <HeaderStaff />
       </div>
+
 
   <div className="recaps">
     <h1 className="recaps__title">Mes récapitulatifs enfants </h1>
@@ -97,12 +93,15 @@ const Recaps = ({
             </>
           ) : null}
           <p className="recaps__listing__recap__otherscomment"><span>Divers:</span> {recap.extra_info}</p>
+
         </div>
       ))},
     </div>
     </div>
     </>
-)};
+
+  )
+};
 
 
 Recaps.propTypes = {
