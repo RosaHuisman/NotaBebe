@@ -25,12 +25,24 @@ const ParentProfile = ({
   loading,
   changeInfos,
   children,
+  loadParent,
+  parentId,
+  parent,
+  checkIsLogged
 
 }) => {
 
-  useEffect(() => {
-    loadUsersParents();
+  console.log('parent', parent)
+  /* useEffect(() => {
+    //loadUsersParents();
+    loadParent(parentId);
 
+  }, []); */
+
+  useEffect(() => {
+    // ici on veut vérifier si l'utilisateur est déjà connecté
+    // au 1e rendu du composant App
+    checkIsLogged();
   }, []);
 
   const handleOnClickChangePasswordButton = (e) => {
@@ -43,9 +55,11 @@ const ParentProfile = ({
     openUserInfos();
   };
 
+
   if (loading) {
     return <Loading />;
   }
+ 
 
   return (
     <>
@@ -58,9 +72,12 @@ const ParentProfile = ({
         {!isOpenInfos ? (
           <>
             <UserInfos
-              user={user}
+              user={parent[0]}
               openUserInfos={openUserInfos}
-              loadUsersParents={loadUsersParents}
+              //loadUsersParents={loadUsersParents}
+              loadParent={loadParent}
+              parentId={parentId}
+              oading={loading}
             />
             <button
               type="button"
@@ -74,13 +91,13 @@ const ParentProfile = ({
           <ChangeUserInfosForm
             closeForm={closeForm}
             handleChangeInfos={handleChangeInfos}
-            user={user}
+            user={parent[0]}
             changeInfos={changeInfos}
-            loadUsersParents={loadUsersParents}
+            //loadUsersParents={loadUsersParents}
           />
         )}
 
-        {!isOpenPassword ? (
+        {/* {!isOpenPassword ? (
           <button
             type="button"
             className="parentprofile__button"
@@ -93,14 +110,14 @@ const ParentProfile = ({
           <ChangePasswordForm
             closeForm={closeForm}
             handleChangePassword={handleChangePassword}
-            user={user}
-          />
-        )}
+            user={parent[0]}
+            />
+        )} */}
 
-        <Children
+        {/* <Children
           children={children}
-          user={user}
-        />
+          user={parent}
+          /> */}
       </div>
     </>
   );

@@ -1,15 +1,22 @@
 // == Import : npm
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import Loading from 'src/components/App/Loading';
+
 
 // == Import : local
 import './styles.scss';
 
 // == Composant
-const UserInfos = ({ loadUsersParents, user }) => {
-  useEffect(() => {
-    loadUsersParents();
-  }, [])
+const UserInfos = ({ loadUsersParents, user, loadParent, parentId, loading }) => {
+  /* useEffect(() => {
+    loadParent(parentId);
+  }, []) */
+  
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
     <div className="userinfos">
       <div className="userinfos__infos">
@@ -17,11 +24,11 @@ const UserInfos = ({ loadUsersParents, user }) => {
           <tbody>
             <tr>
               <td className="userinfos__infos__designation">Nom:</td>
-              <td className="userinfos__infos__result">{user.last_name}</td>
+              <td className="userinfos__infos__result">{user.pwc_user_last_name}</td>
             </tr>
             <tr>
               <td className="userinfos__infos__designation">Prénom:</td>
-              <td className="userinfos__infos__result">{user.first_name}</td>
+              <td className="userinfos__infos__result">{user.pwc_user_first_name}</td>
             </tr>
             <tr>
               <td className="userinfos__infos__designation__address">Adresse: </td>

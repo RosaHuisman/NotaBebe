@@ -53,6 +53,22 @@ export const SAVE_USER_DATA = 'SAVE_USER_DATA';
 export const FETCH_USERS_STAFF = 'FETCH_USERS_STAFF';
 export const SAVE_USERS_STAFF = 'SAVE_USERS_STAFF';
 
+export const FETCH_PARENT_BY_ID = 'FETCH_PARENT_BY_ID';
+export const SAVE_PARENT_BY_ID = 'SAVE_PARENT_BY_ID';
+
+
+export const fetchParentById = (myTokenDecoded) => ({
+  type: FETCH_PARENT_BY_ID,
+  payload: myTokenDecoded,
+})
+
+// action pour sauvegarder les données du parent trouvé par l'id dans le state (parent représente les données reçues du back)
+export const saveParentById = (parent, myTokenDecoded) => ({
+  type: SAVE_PARENT_BY_ID,
+  payload: parent,
+  myTokenDecoded
+})
+
 
 // export const changeFieldValue = (value, key) => ({
 //   type: CHANGE_FIELD_VALUE,

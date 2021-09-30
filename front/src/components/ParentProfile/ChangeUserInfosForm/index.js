@@ -46,10 +46,10 @@ const ChangeUserInfosForm = ({
             className="changeuserinfosform"
             onSubmit={handleSubmit}
           >
-            <p className="changeuserinfosform__fullname">{user.last_name} {user.first_name} </p>
-            <p className="changeuserinfosform__email">{user.email}</p>
+           {/*  <p className="changeuserinfosform__fullname">{user.last_name} {user.first_name} </p>
+            <p className="changeuserinfosform__email">{user.email}</p> */}
 
-            <Field
+            {/* <Field
               name="address"
               type="text"
               placeholder="Adresse"
@@ -75,7 +75,7 @@ const ChangeUserInfosForm = ({
               type="text"
               placeholder="Numéro de téléphone"
               value={user.phone_number}
-            />
+            /> */}
             <div className="changeuserinfosform__buttons">
               <button
                 className="changeuserinfosform__buttons__cancel"

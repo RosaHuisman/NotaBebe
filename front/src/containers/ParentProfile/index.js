@@ -8,7 +8,11 @@ import {
   changePassword,
   saveParent,
   fetchUsersParents,
+  fetchParentById
 } from 'src/store/actions';
+
+import { checkToken } from 'src/store/actions/authActions';
+
 
 
 import { findUser, findChildrenOfParent } from 'src/store/selectors/user';
@@ -23,9 +27,13 @@ const mapStateToProps = (state, ownProps) => ({
   changeInfos: state.user.changeInfos,
   hasInfosError: state.user.changeInfosError,
   hasPasswordError: state.user.changePasswordError,
-  user: findUser(state.user.list, ownProps.match.params.parent_id),
+  //user: findUser(state.user.list, ownProps.match.params.parent_id),
   children: findChildrenOfParent(state.user.list, ownProps.match.params.parent_id),
-  loading: state.user.loading,
+  loading: state.auth.loading,
+  // on récupère l'id du parent qui s'est connecté, il s'est enregistré dans le state grace au token
+  parentId: state.auth.userId,
+  // une fois le parent enregistré dans le state, on fait passer ses données au composant: (les données du parent sont sous la forme d'un tableau d'objets, un objet par enfant du parent, dans ces objets on retrouve les infos du parent à chaque fois, redondant mais c'est ce qu'on recoit du back)
+  parent: state.auth.parent
 });
 
 
@@ -53,6 +61,15 @@ const mapDispatchToProps = (dispatch) => ({
 
   handleChangePassword: (id) => {
     dispatch(changePassword(id));
+  },
+
+  // fonction pour récupérer les données d'un parent selon son ID de la BDD
+  /* loadParent: (id) => {
+    dispatch(fetchParentById(id))
+  } */
+
+  checkIsLogged: () => {
+    dispatch(checkToken());
   },
 
 });

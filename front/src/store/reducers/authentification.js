@@ -13,6 +13,10 @@ import {
   CHECK_TOKEN_ERROR,
 } from 'src/store/actions/authActions';
 
+import {
+  SAVE_PARENT_BY_ID,
+} from 'src/store/actions'
+
 const initialState = {
   email: '',
   emailForgot: '',
@@ -25,10 +29,33 @@ const initialState = {
   errorMessage: false,
   contentHome: true,
   loading: true,
+  parent: [],
 };
 
 const reducer = (oldState = initialState, action = {}) => {
   switch (action.type) {
+    // save the parent's data in the state, we receive an array of objects with as many objects as the parent has children 
+    case SAVE_PARENT_BY_ID: {
+     
+      const { email, logged, token, roleId, userId, firstName, lastName } = action.myTokenDecoded;
+
+      return {
+        ...oldState,
+        parent: action.payload,
+        loading: false,
+        email,
+        logged,
+        password: '',
+        token,
+        roleId,
+        userId,
+        firstName,
+        lastName,
+        errorMessage: false,
+        contentHome: true,
+        successMessage: true,
+      }
+    }
     case HOME_INITIAL: {
       return {
         ...oldState,
@@ -51,6 +78,8 @@ const reducer = (oldState = initialState, action = {}) => {
       };
     }
     case CHECK_TOKEN_SUCCESS: {
+      console.log('je suis dans le cas check token success')
+
       const { email, logged, token, roleId, userId} = action.tokenLocal;
       return {
         ...oldState,
@@ -71,6 +100,8 @@ const reducer = (oldState = initialState, action = {}) => {
       };
     }
     case SAVE_USER: {
+      console.log('je suis dans le cas save user')
+
       const { email, logged, token, roleId, userId, firstName, lastName } = action.myTokenDecoded;
       return {
         ...oldState,
@@ -131,6 +162,8 @@ const reducer = (oldState = initialState, action = {}) => {
         errorMessage: false,
         loading: false,
         contentHome: true,
+        parent: [],
+
       };
     }
     case LOGOUT_SUCCESS: {

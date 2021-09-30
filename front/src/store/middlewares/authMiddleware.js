@@ -5,7 +5,10 @@ import {
   CHECK_TOKEN,
   saveToken,
   checkTokeError,
+
 } from 'src/store/actions/authActions';
+
+import {fetchParentById} from 'src/store/actions'
 
 import jwtDecode from 'jwt-decode';
 
@@ -36,7 +39,13 @@ const authMiddleware = (store) => (next) => (action) => {
           // ici on veut stocker dans le state les infos du user
           // donc on va faire un dispatch d'action
           // on passe par la fonction dispatch du store
-          store.dispatch(saveUser(myTokenDecoded));
+
+          // different cases depending on the role (parent, staff or admin) of the user
+          if (myTokenDecoded.roleId === 1) {
+            store.dispatch(fetchParentById(myTokenDecoded));
+          }
+          //store.dispatch(saveUser(myTokenDecoded));
+          console.log('token', myTokenDecoded)
         })
         .catch((error) => {
           store.dispatch(createLoginErrorAction());
@@ -44,6 +53,7 @@ const authMiddleware = (store) => (next) => (action) => {
       break;
     }
     case CHECK_TOKEN: {
+      console.log('je suis dans le cas check token')
       // on récupère le token stocké dans le localStorage
       const tokenLocal = localStorage.getItem('MyToken');
 
