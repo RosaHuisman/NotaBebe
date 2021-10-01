@@ -50,7 +50,7 @@ export const SAVE_USER_LOGIN = 'SAVE_USER_LOGIN';
 export const FETCH_USER_DATA = 'FETCH_USER_DATA';
 export const SAVE_USER_DATA = 'SAVE_USER_DATA';
 
-export const FETCH_USERS_STAFF = 'FETCH_USERS_STAFF';
+/* export const FETCH_USERS_STAFF = 'FETCH_USERS_STAFF'; */
 export const SAVE_USERS_STAFF = 'SAVE_USERS_STAFF';
 
 export const FETCH_PARENT_BY_ID = 'FETCH_PARENT_BY_ID';
@@ -165,9 +165,9 @@ export const fetchUsersParents = () => ({
 });
 
 
-export const fetchUsersStaff = () => ({
+/* export const fetchUsersStaff = () => ({
   type: FETCH_USERS_STAFF,
-});
+}); */
 
 export const saveUsersParents = (users_parents) => ({
   type: SAVE_USERS_PARENTS,

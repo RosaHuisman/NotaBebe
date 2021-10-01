@@ -9,7 +9,7 @@ import {
   saveUsersParents,
   FETCH_USERS_PARENTS,
   saveNewPasswordParent,
-  FETCH_USERS_STAFF,
+/*   FETCH_USERS_STAFF,  */  
   saveUsersStaff,
   FETCH_PARENT_BY_ID,
   saveParentById,
@@ -60,7 +60,7 @@ const user = (store) => (next) => (action) => {
     }
       break;
 
-    case FETCH_USERS_STAFF: {
+   /*  case FETCH_USERS_STAFF: {
       const fetchData = async () => {
         try {
           const response = await api.get('/profile/admin/allstaff');
@@ -74,10 +74,9 @@ const user = (store) => (next) => (action) => {
 
       fetchData();
       break;
-    }
+    } */
 
     case FETCH_STAFF_BY_ID: {
-      console.log('je suis dans le case fetc_staff_by_id')
       const tokenPresent = localStorage.getItem('MyToken');
       const myTokenDecoded = action.payload
       const id = myTokenDecoded.userId;
@@ -90,7 +89,6 @@ const user = (store) => (next) => (action) => {
         },
       })
         .then((response) => {
-          console.log(response.data)
           const actionSaveStaffById = saveStaffById(response.data, myTokenDecoded);
           store.dispatch(actionSaveStaffById);
         })

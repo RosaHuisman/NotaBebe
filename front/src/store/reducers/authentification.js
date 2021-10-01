@@ -32,6 +32,7 @@ const initialState = {
   contentHome: true,
   loading: true,
   parent: [],
+  staff: {},
   
 };
 
@@ -187,6 +188,7 @@ const reducer = (state = initialState, action = {}) => {
         parent: [],
         firstName: '',
         lastName: '',
+        staff: {},
 
       };
     }

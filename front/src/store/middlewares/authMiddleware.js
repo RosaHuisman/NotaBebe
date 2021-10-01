@@ -19,7 +19,6 @@ const authMiddleware = (store) => (next) => (action) => {
     case LOGIN: {
       const state = store.getState();
 
-      console.log('je suis dans le case LOGIN')
 
       api({
         method: 'POST',
@@ -27,7 +26,6 @@ const authMiddleware = (store) => (next) => (action) => {
         data: { email: state.user.email, password: state.user.password },
       })
         .then((response) => {
-          console.log(response.data)
           // ici on vient stocker le token dans localStorage
           localStorage.setItem('MyToken', response.data.token);
           const userData = response.data.token;
@@ -35,7 +33,6 @@ const authMiddleware = (store) => (next) => (action) => {
           const myToken = response.data.token;
           const myTokenDecoded = jwtDecode(myToken);
 
-          console.log(myTokenDecoded)
 
           // on en profite pour venir le stoker aussi dans l'instance d'axios
           // comme ça on l'aura à chaque requête !!
@@ -51,6 +48,9 @@ const authMiddleware = (store) => (next) => (action) => {
           }
           else if (myTokenDecoded.roleId === 2) {
             store.dispatch(fetchStaffById(myTokenDecoded));
+          }
+          else if (myTokenDecoded.roleId === 3) {
+            store.dispatch(saveUser(myTokenDecoded));
           }
           //store.dispatch(saveUser(myTokenDecoded));
           console.log('token', myTokenDecoded)
