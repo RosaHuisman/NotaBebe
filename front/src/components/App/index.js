@@ -90,9 +90,9 @@ const App = ({
           <PrivateRoute exact path="/profile/staff/:id/children" component={ChildsList} />
           <PrivateRoute exact path="/profile/staff/:id/recaps" component={Recaps} />
           <PrivateRoute exact path="/profile/staff/:id/comments" component={Comments} />
-          {/* <PrivateRoute exact path="/staff/:id/comments" component={ReadComment} /> */}
-          <PrivateRoute exact path="/profile/staff/children/:id/createrecap" component={CreateRecap} />
-          {/* <PrivateRoute exact path="/profile/staff/childrensetSearchNewValue:id/createrecap" component={CreateRecap} /> */}
+{/*           <PrivateRoute exact path="/staff/:id/comments" component={ReadComment} />
+ */}          <PrivateRoute exact path="/profile/staff/children/:id/createrecap" component={CreateRecap} />
+          <PrivateRoute exact path="/profile/staff/childrensetSearchNewValue:id/createrecap" component={CreateRecap} />
           <PrivateRoute path="/devteams" component={TeamPagePrivate} />
 
           <PrivateRoute exact path="*" component={ErrorPage} />

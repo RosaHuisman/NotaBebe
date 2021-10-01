@@ -15,6 +15,8 @@ import {
 
 import {
   SAVE_PARENT_BY_ID,
+  SAVE_STAFF_BY_ID,
+
 } from 'src/store/actions'
 
 const initialState = {
@@ -30,10 +32,32 @@ const initialState = {
   contentHome: true,
   loading: true,
   parent: [],
+  
 };
 
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
+    case SAVE_STAFF_BY_ID: {
+     
+      const { email, logged, token, roleId, userId, firstName, lastName } = action.myTokenDecoded;
+
+      return {
+        ...state,
+        staff: action.payload,
+        loading: false,
+        email,
+        logged,
+        password: '',
+        token,
+        roleId,
+        userId,
+        firstName,
+        lastName,
+        errorMessage: false,
+        contentHome: true,
+        successMessage: true,
+      }
+    }
     // save the parent's data in the state, we receive an array of objects with as many objects as the parent has children 
     case SAVE_PARENT_BY_ID: {
      
@@ -161,6 +185,8 @@ const reducer = (state = initialState, action = {}) => {
         loading: false,
         contentHome: true,
         parent: [],
+        firstName: '',
+        lastName: '',
 
       };
     }

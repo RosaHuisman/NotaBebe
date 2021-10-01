@@ -12,7 +12,9 @@ import {
   FETCH_USERS_STAFF,
   saveUsersStaff,
   FETCH_PARENT_BY_ID,
-  saveParentById
+  saveParentById,
+  FETCH_STAFF_BY_ID,
+  saveStaffById,
 } from 'src/store/actions';
 import axios from 'axios';
 
@@ -36,32 +38,12 @@ const user = (store) => (next) => (action) => {
       fetchData();
       break;
     }
-    // second step for connection: fetch the parent's data using his id (that we receive in the decoded token)
-    /* case FETCH_PARENT_BY_ID_OLD: {
-      const fetchData = async () => {
-        const myTokenDecoded = action.payload
-        const id = myTokenDecoded.userId;
-        
-        try {
-          const response = await api.get(`/profile/parent/${id}`);
-          const actionSaveParentById = saveParentById(response.data, myTokenDecoded);
-          store.dispatch(actionSaveParentById);
-        }
-        catch (error) {
-          console.error('il y a eu une erreur', error);
-        }
-      };
-
-      fetchData();
-      break;
-
-    } */
+    
 
     case FETCH_PARENT_BY_ID: {
       const tokenPresent = localStorage.getItem('MyToken');
       const myTokenDecoded = action.payload
       const id = myTokenDecoded.userId;
-      //const state = store.getState();
 
       api({
         method: 'GET',
@@ -93,6 +75,28 @@ const user = (store) => (next) => (action) => {
       fetchData();
       break;
     }
+
+    case FETCH_STAFF_BY_ID: {
+      console.log('je suis dans le case fetc_staff_by_id')
+      const tokenPresent = localStorage.getItem('MyToken');
+      const myTokenDecoded = action.payload
+      const id = myTokenDecoded.userId;
+
+      api({
+        method: 'GET',
+        url: `/profile/staff/${id}`,
+        headers: {
+          authorization: `Bearer ${tokenPresent}`,
+        },
+      })
+        .then((response) => {
+          console.log(response.data)
+          const actionSaveStaffById = saveStaffById(response.data, myTokenDecoded);
+          store.dispatch(actionSaveStaffById);
+        })
+        .catch((error) => (error));
+    }
+      break;
 
     case CHANGE_INFOS: {
       const state = store.getState();

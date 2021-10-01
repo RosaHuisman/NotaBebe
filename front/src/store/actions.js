@@ -56,6 +56,22 @@ export const SAVE_USERS_STAFF = 'SAVE_USERS_STAFF';
 export const FETCH_PARENT_BY_ID = 'FETCH_PARENT_BY_ID';
 export const SAVE_PARENT_BY_ID = 'SAVE_PARENT_BY_ID';
 
+export const FETCH_STAFF_BY_ID = 'FETCH_STAFF_BY_ID';
+export const SAVE_STAFF_BY_ID = 'SAVE_STAFF_BY_ID';
+
+
+export const fetchStaffById = (myTokenDecoded) => ({
+  type: FETCH_STAFF_BY_ID,
+  payload: myTokenDecoded,
+})
+
+// action pour sauvegarder les données de la nounou trouvée par l'id dans le state (staff représente les données reçues du back)
+export const saveStaffById = (staff, myTokenDecoded) => ({
+  type: SAVE_STAFF_BY_ID,
+  payload: staff,
+  myTokenDecoded
+})
+
 
 export const fetchParentById = (myTokenDecoded) => ({
   type: FETCH_PARENT_BY_ID,

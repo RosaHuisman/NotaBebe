@@ -10,7 +10,6 @@ import { Link } from 'react-router-dom';
 import './styles.scss';
 
 const StaffProfile = ({
-  loadUsersStaff,
   staff,
   loading,
   hasPasswordError,
@@ -20,15 +19,15 @@ const StaffProfile = ({
 
 }) => {
   useEffect(() => {
-    loadUsersStaff();
     return () => {
       clearChangePasswordConfirmMessage();
     }
   }, []);
 
-  if (loading) {
+  /* if (loading) {
     return <Loading />;
-  }
+  } */
+
 
   const handleSubmitChangePassword = (evt) => {
     evt.preventDefault();
@@ -104,7 +103,7 @@ const StaffProfile = ({
             <p className="changepasswordform">{changePasswordConfirmMessage}</p>
           )}
 
-      </div>
+       </div>
     </>
   );
 };
