@@ -12,14 +12,14 @@ const ChangeUserInfosForm = ({
   hasInfosError,
   closeForm,
   handleChangeInfos,
-  user,
+  parent,
   changeInfos,
   loadUsersParents,
 
 }) => {
-  useEffect(() => {
+  /* useEffect(() => {
     loadUsersParents();
-  }, []);
+  }, []); */
 
   const handleOnClickCancelButton = (e) => {
     e.preventDefault();
@@ -28,8 +28,9 @@ const ChangeUserInfosForm = ({
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    handleChangeInfos(user.id);
+    handleChangeInfos(parent.user_id);
   };
+
 
   return (
     <>
@@ -46,36 +47,36 @@ const ChangeUserInfosForm = ({
             className="changeuserinfosform"
             onSubmit={handleSubmit}
           >
-           {/*  <p className="changeuserinfosform__fullname">{user.last_name} {user.first_name} </p>
-            <p className="changeuserinfosform__email">{user.email}</p> */}
+            <p className="changeuserinfosform__fullname">{parent.pwc_user_last_name} {parent.pwc_user_first_name} </p>
+            <p className="changeuserinfosform__email">{parent.email}</p>
 
-            {/* <Field
+            <Field
               name="address"
               type="text"
               placeholder="Adresse"
-              value={user.address}
+              value={parent.address}
             />
 
             <Field
               name="postcode"
               type="text"
               placeholder="Code postal"
-              value={user.postcode}
+              value={parent.postcode}
             />
 
             <Field
               name="city"
               type="text"
               placeholder="Commune"
-              value={user.city}
+              value={parent.city}
             />
 
             <Field
               name="phone_number"
               type="text"
               placeholder="Numéro de téléphone"
-              value={user.phone_number}
-            /> */}
+              value={parent.phone_number}
+            />
             <div className="changeuserinfosform__buttons">
               <button
                 className="changeuserinfosform__buttons__cancel"
@@ -106,7 +107,7 @@ const ChangeUserInfosForm = ({
 };
 
 ChangeUserInfosForm.propTypes = {
-  hasInfosError: PropTypes.bool,
+  /* hasInfosError: PropTypes.bool,
   closeForm: PropTypes.func.isRequired,
   user: PropTypes.shape({
     last_name: PropTypes.string.isRequired,
@@ -117,7 +118,7 @@ ChangeUserInfosForm.propTypes = {
     email: PropTypes.string.isRequired,
     phone_number: PropTypes.string.isRequired,
   }).isRequired,
-  handleChangeInfos: PropTypes.func.isRequired,
+  handleChangeInfos: PropTypes.func.isRequired, */
 
 };
 

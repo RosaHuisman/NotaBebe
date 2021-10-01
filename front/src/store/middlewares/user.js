@@ -37,7 +37,7 @@ const user = (store) => (next) => (action) => {
       break;
     }
     // second step for connection: fetch the parent's data using his id (that we receive in the decoded token)
-    case FETCH_PARENT_BY_ID: {
+    /* case FETCH_PARENT_BY_ID_OLD: {
       const fetchData = async () => {
         const myTokenDecoded = action.payload
         const id = myTokenDecoded.userId;
@@ -55,7 +55,29 @@ const user = (store) => (next) => (action) => {
       fetchData();
       break;
 
+    } */
+
+    case FETCH_PARENT_BY_ID: {
+      const tokenPresent = localStorage.getItem('MyToken');
+      const myTokenDecoded = action.payload
+      const id = myTokenDecoded.userId;
+      //const state = store.getState();
+
+      api({
+        method: 'GET',
+        url: `/profile/parent/${id}`,
+        headers: {
+          authorization: `Bearer ${tokenPresent}`,
+        },
+      })
+        .then((response) => {
+          const actionSaveParentById = saveParentById(response.data, myTokenDecoded);
+          store.dispatch(actionSaveParentById);
+        })
+        .catch((error) => (error));
     }
+      break;
+
     case FETCH_USERS_STAFF: {
       const fetchData = async () => {
         try {

@@ -32,12 +32,6 @@ const ParentProfile = ({
 
 }) => {
 
-  console.log('parent', parent)
-  /* useEffect(() => {
-    //loadUsersParents();
-    loadParent(parentId);
-
-  }, []); */
 
   useEffect(() => {
     // ici on veut vérifier si l'utilisateur est déjà connecté
@@ -56,9 +50,9 @@ const ParentProfile = ({
   };
 
 
-  if (loading) {
+ /*  if (loading) {
     return <Loading />;
-  }
+  } */
  
 
   return (
@@ -72,12 +66,8 @@ const ParentProfile = ({
         {!isOpenInfos ? (
           <>
             <UserInfos
-              user={parent[0]}
+              parent={parent[0]}
               openUserInfos={openUserInfos}
-              //loadUsersParents={loadUsersParents}
-              loadParent={loadParent}
-              parentId={parentId}
-              oading={loading}
             />
             <button
               type="button"
@@ -91,13 +81,12 @@ const ParentProfile = ({
           <ChangeUserInfosForm
             closeForm={closeForm}
             handleChangeInfos={handleChangeInfos}
-            user={parent[0]}
+            parent={parent[0]}
             changeInfos={changeInfos}
-            //loadUsersParents={loadUsersParents}
           />
         )}
 
-        {/* {!isOpenPassword ? (
+        {!isOpenPassword ? (
           <button
             type="button"
             className="parentprofile__button"
@@ -110,14 +99,14 @@ const ParentProfile = ({
           <ChangePasswordForm
             closeForm={closeForm}
             handleChangePassword={handleChangePassword}
-            user={parent[0]}
+            parent={parent[0]}
             />
-        )} */}
+        )}
 
-        {/* <Children
-          children={children}
-          user={parent}
-          /> */}
+        <Children
+          //children={children}
+          parent={parent}
+          />
       </div>
     </>
   );

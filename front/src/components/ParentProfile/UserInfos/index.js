@@ -8,14 +8,14 @@ import Loading from 'src/components/App/Loading';
 import './styles.scss';
 
 // == Composant
-const UserInfos = ({ loadUsersParents, user, loadParent, parentId, loading }) => {
+const UserInfos = ({ parent }) => {
   /* useEffect(() => {
     loadParent(parentId);
   }, []) */
   
-  if (loading) {
+/*   if (loading) {
     return <Loading />;
-  }
+  } */
 
   return (
     <div className="userinfos">
@@ -24,27 +24,27 @@ const UserInfos = ({ loadUsersParents, user, loadParent, parentId, loading }) =>
           <tbody>
             <tr>
               <td className="userinfos__infos__designation">Nom:</td>
-              <td className="userinfos__infos__result">{user.pwc_user_last_name}</td>
+              <td className="userinfos__infos__result">{parent.pwc_user_last_name}</td>
             </tr>
             <tr>
               <td className="userinfos__infos__designation">Prénom:</td>
-              <td className="userinfos__infos__result">{user.pwc_user_first_name}</td>
+              <td className="userinfos__infos__result">{parent.pwc_user_first_name}</td>
             </tr>
             <tr>
               <td className="userinfos__infos__designation__address">Adresse: </td>
-              <td className="userinfos__infos__result">{user.address}</td>
+              <td className="userinfos__infos__result">{parent.address}</td>
             </tr>
             <tr>
               <td> </td>
-              <td className="userinfos__infos__result">{user.postcode} {user.city}</td>
+              <td className="userinfos__infos__result">{parent.postcode} {parent.city}</td>
             </tr>
             <tr>
               <td className="userinfos__infos__designation__tel">Tél.: </td>
-              <td className="userinfos__infos__result">{user.phone_number}</td>
+              <td className="userinfos__infos__result">{parent.phone_number}</td>
             </tr>
             <tr>
               <td className="userinfos__infos__designation">Email: </td>
-              <td className="userinfos__infos__result">{user.email}</td>
+              <td className="userinfos__infos__result">{parent.email}</td>
             </tr>
           </tbody>
         </table>

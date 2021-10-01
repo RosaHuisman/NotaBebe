@@ -9,27 +9,27 @@ import './styles.scss';
 
 // == Composant
 const Children = ({
-  children,
-  user,
-
+  //children,
+  parent,
 
 }) => {
+
   return (
     <div className="children">
-      {children.length > 1 ? (
+      {parent.length > 1 ? (
         <h3 className="children__title">Mes enfants</h3>
       ) : (
         <h3 className="children__title"> Mon enfant</h3>
       )}
       <div className="children__infos">
-        {children.map((parent) =>
+        {parent.map((child) =>
         (
           <Link
-            key={parent.child_id}
+            key={child.child_id}
             to={{
-              pathname: `/profile/parent/${parent.id}/child/${parent.child_id}`,
+              pathname: `/profile/parent/${child.user_id}/child/${child.child_id}`,
               state: {
-                parent: parent,
+                child: child,
               },
             }}
           >
@@ -39,7 +39,7 @@ const Children = ({
                 size="huge"
                 className="children__infos__child__icon"
               />
-              <div className="children__infos__child__name">{parent.pwc_child_first_name}</div>
+              <div className="children__infos__child__name">{child.pwc_child_first_name}</div>
             </div>
           </Link>
 

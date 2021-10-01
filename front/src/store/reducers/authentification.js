@@ -32,7 +32,7 @@ const initialState = {
   parent: [],
 };
 
-const reducer = (oldState = initialState, action = {}) => {
+const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
     // save the parent's data in the state, we receive an array of objects with as many objects as the parent has children 
     case SAVE_PARENT_BY_ID: {
@@ -40,7 +40,7 @@ const reducer = (oldState = initialState, action = {}) => {
       const { email, logged, token, roleId, userId, firstName, lastName } = action.myTokenDecoded;
 
       return {
-        ...oldState,
+        ...state,
         parent: action.payload,
         loading: false,
         email,
@@ -58,14 +58,14 @@ const reducer = (oldState = initialState, action = {}) => {
     }
     case HOME_INITIAL: {
       return {
-        ...oldState,
+        ...state,
         loading: false,
         contentHome: true,
       };
     }
     case CHANGE_FIELD_VALUE_LOGIN: {
       return {
-        ...oldState,
+        ...state,
         loading: false,
         [action.key]: action.value,
       };
@@ -78,11 +78,10 @@ const reducer = (oldState = initialState, action = {}) => {
       };
     }
     case CHECK_TOKEN_SUCCESS: {
-      console.log('je suis dans le cas check token success')
 
       const { email, logged, token, roleId, userId} = action.tokenLocal;
       return {
-        ...oldState,
+        ...state,
         email,
         logged,
         token,
@@ -96,15 +95,14 @@ const reducer = (oldState = initialState, action = {}) => {
     }
     case CHECK_TOKEN_ERROR: {
       return {
-        ...oldState,
+        ...state,
       };
     }
     case SAVE_USER: {
-      console.log('je suis dans le cas save user')
 
       const { email, logged, token, roleId, userId, firstName, lastName } = action.myTokenDecoded;
       return {
-        ...oldState,
+        ...state,
         email,
         logged,
         password: '',
@@ -122,7 +120,7 @@ const reducer = (oldState = initialState, action = {}) => {
     }
     case LOGIN_ERROR: {
       return {
-        ...oldState,
+        ...state,
         errorMessage: true,
         successMessage: false,
         loading: false,
@@ -131,7 +129,7 @@ const reducer = (oldState = initialState, action = {}) => {
     }
     case FORGOT_SUCCESS: {
       return {
-        ...oldState,
+        ...state,
         email: '',
         errorMessage: false,
         messageForgot: false,
@@ -141,7 +139,7 @@ const reducer = (oldState = initialState, action = {}) => {
     }
     case FORGOT_ERROR: {
       return {
-        ...oldState,
+        ...state,
         messageForgot: false,
         errorMessage: true,
         successMessage: false,
@@ -152,7 +150,7 @@ const reducer = (oldState = initialState, action = {}) => {
     case LOGOUT: {
       localStorage.removeItem('MyToken');
       return {
-        ...oldState,
+        ...state,
         email: '',
         password: '',
         token: null,
@@ -168,7 +166,7 @@ const reducer = (oldState = initialState, action = {}) => {
     }
     case LOGOUT_SUCCESS: {
       return {
-        ...oldState,
+        ...state,
         email: '',
         password: '',
         token: null,
@@ -180,7 +178,7 @@ const reducer = (oldState = initialState, action = {}) => {
       };
     }
     default:
-      return oldState;
+      return state;
   }
 };
 

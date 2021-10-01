@@ -28,7 +28,7 @@ const mapStateToProps = (state, ownProps) => ({
   hasInfosError: state.user.changeInfosError,
   hasPasswordError: state.user.changePasswordError,
   //user: findUser(state.user.list, ownProps.match.params.parent_id),
-  children: findChildrenOfParent(state.user.list, ownProps.match.params.parent_id),
+  //children: findChildrenOfParent(state.user.list, ownProps.match.params.parent_id),
   loading: state.auth.loading,
   // on récupère l'id du parent qui s'est connecté, il s'est enregistré dans le state grace au token
   parentId: state.auth.userId,

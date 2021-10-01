@@ -11,13 +11,13 @@ const ChangePasswordForm = ({
   hasPasswordError,
   handleChangePassword,
   closeForm,
-  user,
+  parent,
 
 }) => {
 
   const handleSubmitChangePassword = (evt) => {
     evt.preventDefault();
-    handleChangePassword(user.id);
+    handleChangePassword(parent.user_id);
   };
 
   const handleOnClickCancelButton = () => {

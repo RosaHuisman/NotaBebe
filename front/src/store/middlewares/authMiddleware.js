@@ -53,7 +53,6 @@ const authMiddleware = (store) => (next) => (action) => {
       break;
     }
     case CHECK_TOKEN: {
-      console.log('je suis dans le cas check token')
       // on récupère le token stocké dans le localStorage
       const tokenLocal = localStorage.getItem('MyToken');
 

@@ -21,7 +21,6 @@ const ChildsList = ({
     return <Loading />;
   } 
 
-  console.log(children)
 
   return (
     <>

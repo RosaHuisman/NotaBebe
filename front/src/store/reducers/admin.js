@@ -32,39 +32,39 @@ const initialState = {
 
 };
 
-const reducer = (oldState = initialState, action) => {
+const reducer = (state = initialState, action) => {
   switch (action.type) {
     // case GET_ALL_USERS: {
     //   return {
-    //     ...oldState,
+    //     ...state,
     //     loading: true,
     //   };
     // }
     // case GET_ALL_USERS_SUCCESS:
     //   return {
-    //     ...oldState,
+    //     ...state,
     //     userList: action.payload,
     //     loading: false,
     //   };
     // case LOGOUT_ADMIN:
     //   return {
-    //     ...oldState,
+    //     ...state,
     //     userList: [],
     //   };
     case USER_LIST_LOADING: {
       return {
-        ...oldState,
+        ...state,
         // listUsers: {
-        //   ...oldState.listUsers,
+        //   ...state.listUsers,
         loading: true,
         // },
       };
     }
     case USER_LIST_LOAD_SUCCESS: {
       return {
-        ...oldState,
+        ...state,
         // listUsers: {
-        // ...oldState.listUsers,
+        // ...state.listUsers,
         loading: false,
         dataUserList: action.payload,
         // },
@@ -72,9 +72,9 @@ const reducer = (oldState = initialState, action) => {
     }
     case USER_LIST_LOAD_ERROR: {
       return {
-        ...oldState,
+        ...state,
         // listUsers: {
-        // ...oldState.listUsers,
+        // ...state.listUsers,
         loading: false,
         error: action.payload,
         // },
@@ -82,40 +82,40 @@ const reducer = (oldState = initialState, action) => {
     }
     case OPEN_MODAL_DELETE_USER: {
       return {
-        ...oldState,
-        FormDeleteOpen: !oldState.FormDeleteOpen,
+        ...state,
+        FormDeleteOpen: !state.FormDeleteOpen,
         // FormDeleteOpen: true,
         userDeleteId: action.userDeleteId,
       };
     }
     case CLOSE_MODAL_DELETE_USER: {
       return {
-        ...oldState,
-        FormDeleteOpen: oldState.FormDeleteOpen,
+        ...state,
+        FormDeleteOpen: state.FormDeleteOpen,
         userDeleteId: action.userDeleteId,
       };
     }
     case DELETE_USER_SUCCESS: {
       return {
-        ...oldState,
+        ...state,
         deletedUserSuccess: true,
         FormDeleteOpen: false,
       };
     }
     case DELETE_USER_ERROR: {
       return {
-        ...oldState,
+        ...state,
         deletedUserError: action.payload,
       };
     }
     case CHANGE_FIELD_VALUE_ADMIN_ADD_USER: {
       return {
-        ...oldState,
+        ...state,
         [action.key]: action.value,
       };
     }
     default:
-      return oldState;
+      return state;
   }
 };
 
