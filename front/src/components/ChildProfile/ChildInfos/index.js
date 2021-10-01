@@ -7,18 +7,18 @@ import './styles.scss';
 
 // == Composant
 const ChildInfos = ({
-  parent,
+  //parent,
   child,
-  loadChildren,
+  //loadChildren,
 }) => {
-  useEffect(() => {
+/*   useEffect(() => {
     loadChildren()
-  }, [])
+  }, []) */
   return (
     <div className="childinfos">
-      <p className="childinfos__firstname">{child.first_name}</p>
+      <p className="childinfos__firstname">{child.pwc_child_first_name}</p>
       <p className="childinfos__infos">Date de naissance : {child.birthdate}</p>
-      <p className="childinfos__infos">Tél. du parent : {parent.phone_number}</p>
+      <p className="childinfos__infos">Tél. du parent : {child.phone_number}</p>
       <div className="childinfos__infos">
         {child.allergies ? (
           <p> Allergies : {child.allergies} </p>

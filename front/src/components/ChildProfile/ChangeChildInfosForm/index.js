@@ -11,15 +11,15 @@ const ChangeChildInfosForm = ({
   hasInfosError,
   closeForm,
   handleChangeInfos,
-  parent,
+  //parent,
   child,
-  loadChildren,
+  //loadChildren,
   //user
 }) => {
-  useEffect(() => {
+ /*  useEffect(() => {
     loadChildren();
    }, []);
-
+ */
   const handleOnClickCancelButton = (e) => {
     e.preventDefault();
     closeForm();
@@ -37,7 +37,7 @@ const ChangeChildInfosForm = ({
       className="changechildinfosform"
       onSubmit={handleSubmit}
     >
-      <p className="changechildinfosform__firstname">{child.first_name} </p>
+      <p className="changechildinfosform__firstname">{child.pwc_child_first_name} </p>
       {/* <p className="changechildinfosform__fullname">{parent.pwc_child_first_name}</p> */}
 
       <Field

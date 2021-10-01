@@ -18,7 +18,7 @@ import './styles.scss';
 
 const ChildProfile = ({
   user,
-  child,
+  //child,
   openUserInfos,
   isOpenInfos,
   closeForm,
@@ -42,17 +42,18 @@ const ChildProfile = ({
   deleteComment,
   loadChildren,
   loadParents,
-  parent
+  //parent
 
 
   // loadUsersParents,
 
 }) => {
 
-  //const data = useLocation();
+  const data = useLocation();
+  const child = data.state.child;
 
   useEffect(() => {
-    loadParents();
+    //loadParents();
     loadChildren();
     loadRecaps();
     loadComments();
@@ -74,7 +75,7 @@ const ChildProfile = ({
     e.preventDefault();
     openUserInfos();
   };
-
+ 
 
   return (
 
@@ -88,7 +89,7 @@ const ChildProfile = ({
           <>
             <ChildInfos
               openUserInfos={openUserInfos}
-              parent={parent}
+              //parent={parent}
               child={child}
               loadChildren={loadChildren}
             />
@@ -114,7 +115,7 @@ const ChildProfile = ({
         )}
 
         <Link
-          to={`/profile/parent/${parent.id}/child/${child.id}/recap`}
+          to={`/profile/parent/${child.user_id}/child/${child.child_id}/recap`}
         >
           <button
             type="button"
@@ -132,7 +133,7 @@ const ChildProfile = ({
           comments={comments}
           onClickOpenModalToFormChangeComment={onClickOpenModalToFormChangeComment}
           modalOpen={modalOpen}
-          parent={parent}
+          //parent={parent}
           commentId={commentId}
           onClickCancelFormChangeComment={onClickCancelFormChangeComment}
           patchComment={patchComment}
