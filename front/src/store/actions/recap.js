@@ -14,6 +14,20 @@ export const SAVE_RECAP = 'SAVE_RECAP';
 export const FILTER_RECAPS = 'FILTER_RECAPS';
 export const RECAP_TO_FALSE = 'RECAP_TO_FALSE'
 
+export const FETCH_RECAPS_BY_CHILD_ID = 'FETCH_RECAPS_BY_CHILD_ID';
+export const SAVE_RECAPS_BY_CHILD_ID = 'SAVE_RECAPS_BY_CHILD_ID';
+
+
+export const fetchRecapsByChildId = (id) => ({
+  type: FETCH_RECAPS_BY_CHILD_ID,
+  id
+})
+
+export const saveRecapsByChildId = (recaps) => ({
+  type: SAVE_RECAPS_BY_CHILD_ID,
+  payload: recaps,
+});
+
 export const fetchRecaps = () => ({
   type: FETCH_RECAPS,
 })

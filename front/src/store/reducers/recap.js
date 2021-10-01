@@ -10,7 +10,9 @@ import {
   CHANGE_DATE,
   SAVE_RECAP,
   FILTER_RECAPS,
-  RECAP_TO_FALSE
+  RECAP_TO_FALSE,
+  SAVE_RECAPS_BY_CHILD_ID,
+
 } from 'src/store/actions/recap';
 
 
@@ -54,6 +56,8 @@ const initialState = {
   end_time_3: '',
   comment_nap_3: '',
   inputValue:'',
+
+  childRecaps: [],
 };
 
 
@@ -62,6 +66,13 @@ const initialState = {
 
 const reducer = (state = initialState, action ) => {
   switch (action.type) {
+    case SAVE_RECAPS_BY_CHILD_ID: {
+      return {
+        ...state,
+        childRecaps: action.payload,
+        loading: false,
+      };
+    }
     case ADD_FIELD_NAP:{
 
       const newId = Math.max(...state.napFormList.map(form => form.id)) + 1
@@ -126,7 +137,7 @@ const reducer = (state = initialState, action ) => {
     case SAVE_RECAP: {
       return {
         ...state,
-        recap: action.payload,
+        //recap: action.payload,
         save: true, 
         // date: '',
         // mood: '',

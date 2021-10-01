@@ -2,7 +2,9 @@ import {
   FETCH_RECAPS, 
   saveRecaps,
   CREATE_RECAP,
-  saveRecap 
+  saveRecap, 
+  FETCH_RECAPS_BY_CHILD_ID , 
+  saveRecapsByChildId
 } from 'src/store/actions/recap';
 
 import axios from 'axios';
@@ -10,6 +12,24 @@ import api from './utils/api';
 
 const recap = (store) => (next) => (action) => {
   switch (action.type) {
+
+    case FETCH_RECAPS_BY_CHILD_ID: {
+      const fetchData = async () => {
+        const id = action.id;
+        try {
+          const response = await api.get(`profile/staff/child/${id}/recaps`);
+          const actionsaveRecapsByChildId = saveRecapsByChildId(response.data);
+          store.dispatch(actionsaveRecapsByChildId);
+        }
+        catch (error) {
+          console.error('il y a eu une erreur', error);
+        }
+      };
+
+      fetchData();
+      break;
+    }
+
     case FETCH_RECAPS: {
       const fetchData = async () => {
         try {

@@ -18,12 +18,13 @@ const ChildRecap = ({
   recap,
   loadParents,
   parent,
-  closeCommentSend 
+  closeCommentSend,
+  childRecaps,
 
 }) => {
 
-
 const history = useHistory();
+
 
 const previousPage = () => {
     history.goBack();
@@ -31,15 +32,19 @@ const previousPage = () => {
   };
 
   useEffect(() => {
-    loadParents();
-    loadChildren();
-    loadRecaps();
+    //loadParents();
+    //loadChildren();
+    loadRecaps(child.id);
   }, []);
 
   if (loading) {
     return <Loading />;
   } 
 
+
+
+  let lastRecap = childRecaps.slice(-1)
+  let oldRecaps = childRecaps.slice(0, -1).reverse()
   
 
   return (
@@ -48,20 +53,46 @@ const previousPage = () => {
         <HeaderParent />
       </div>
 
-      <div className="contentChildrecap">
+        <div className="contentChildrecap">
         <div className="childrecap">
-          <p className="childrecap__date">{recap.date}</p>
+          <p className="childrecap__date">{lastRecap[0].date}</p>
 
-          <BasicInfos recap={recap[0]} child={child} parent={parent} />
-          <Day recap={recap[0]} child={child} />
+          <BasicInfos  recap={lastRecap[0]} child={child} /* parent={parent} */ />
+          <Day  recap={lastRecap[0]} child={child} />
         </div>
 
         <div className="backButton">
           <div className="backButton__contentButton">
+         
             <button onClick={previousPage} type="button" className="settings__send">Retour</button>
           </div>
         </div>
       </div>
+
+      
+
+      {oldRecaps.map((recap) => {
+        return(
+        <div className="contentChildrecap" key={recap.id}>
+        <div className="childrecap">
+          <p className="childrecap__date">{recap.date}</p>
+
+          <BasicInfos  recap={recap} child={child} /* parent={parent} */ />
+          <Day  recap={recap} child={child} />
+        </div>
+
+        <div className="backButton">
+          <div className="backButton__contentButton">
+         
+            <button onClick={previousPage} type="button" className="settings__send">Retour</button>
+          </div>
+        </div>
+      </div>
+
+        )
+        
+      })}
+      
     </>
   );
 };

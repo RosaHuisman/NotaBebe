@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import ChildRecap from 'src/components/ChildRecap';
 import {} from 'src/store/actions';
 
-import { fetchRecaps } from 'src/store/actions/recap'
+import { fetchRecapsByChildId } from 'src/store/actions/recap'
 import { fetchChildren } from 'src/store/actions/children';
 import { findUser } from 'src/store/selectors/user';
 import { findRecap } from 'src/store/selectors/recap';
@@ -14,12 +14,13 @@ const mapStateToProps = (state, ownProps) => ({
   parent: findUser(state.user.list, ownProps.match.params.parent_id),
   child: findUser(state.children.list, ownProps.match.params.child_id),
   loading: state.recap.loading,
-  recap: findRecap(state.recap.list, ownProps.match.params.child_id),
+  //recap: findRecap(state.recap.list, ownProps.match.params.child_id),
+  childRecaps: state.recap.childRecaps,
 });
 
 const mapDispatchToProps = (dispatch,) => ({
-  loadRecaps: () => {
-    dispatch(fetchRecaps());
+  loadRecaps: (id) => {
+    dispatch(fetchRecapsByChildId(id));
   },
   loadChildren: () => {
     dispatch(fetchChildren());
@@ -29,7 +30,8 @@ const mapDispatchToProps = (dispatch,) => ({
   },
   closeCommentSend: () => {
     dispatch(commentSendNo());
-  }
+  },
+
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChildRecap);
