@@ -17,7 +17,7 @@ router.route('/profile/parent/:id(\\d+)/child/:childId(\\d+)')
     .get(userController.getChildFromParent)
     .patch(userController.modifyChild);
 
-// TODO : route params parents + enfants pour avoir un recaps
+// get all recaps from parent and child ids
 router.route('/profile/parent/:id(\\d+)/child/:childId(\\d+)/allrecaps')
     .get(recapController.getAllRecapsByOneChild);
 

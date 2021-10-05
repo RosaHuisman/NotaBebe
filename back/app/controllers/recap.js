@@ -451,6 +451,14 @@ const recapController = {
         };
     },
 
+
+    /**
+     * Getting all recaps for a child by its id and parents id
+     * @param {Objet} request 
+     * @param {Object} response object from express middleware
+     * @param {Object} next not found middleware
+     * @returns 
+     */
     getAllRecapsByOneChild: async (request, response, next) => {
         try{
             // get parent id from url
