@@ -1,4 +1,5 @@
 const { recapDataMapper } = require('../dataMappers');
+const { getChildFromParent } = require('./user');
 
 const recapController = {
 
@@ -448,6 +449,45 @@ const recapController = {
             console.error(error);
             response.status(500).json({ error: error.message });
         };
+    },
+
+    getAllRecapsByOneChild: async (request, response, next) => {
+        try{
+            // get parent id from url
+            const parentId = Number(request.params.id);
+
+            // in case the parent id isn't a number, we return next()
+            if (isNaN(parentId)) {
+                return next();
+            };
+
+            // get child id from url
+            const childId = Number(request.params.childId);
+            console.log('childId', childId);
+
+            // in case the child id isn't a number, we return next()
+            if (isNaN(childId)) {
+                return next();
+            };
+
+            // find recap by parent and child (with both ids)
+            const data = await recapDataMapper.findByChildIdAndParentId(parentId, childId);
+            console.log('data', data);
+
+
+            // if there is data, we respond with it; if not, we return next()
+            if (data [0]) {
+                response.status(200).json(data);
+            } else {
+                console.log('est ce que tu es la?');
+                return next();
+            };
+
+        } catch (error) {
+            console.error(error);
+            response.status(500).json({ error: error.message });
+        };
+        
     }
 };
 

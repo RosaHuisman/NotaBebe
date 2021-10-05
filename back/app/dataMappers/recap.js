@@ -17,6 +17,11 @@ const recapDataMapper = {
         return result.rows;
     },
 
+    async findByChildIdAndParentId(parentId, childId) {
+        const result = await client.query('SELECT * FROM "recap_with_nap_and_meal" JOIN "parent_with_child" ON parent_with_child.pwc_child_id = recap_with_nap_and_meal.child_id WHERE pwc_user_id = $1 AND recap_with_nap_and_meal.child_id = $2', [parentId, childId]);
+        return result.rows;
+    },
+
     async addRecap(data) {
         const result = await client.query('INSERT INTO "recap" (date, extra_info, mood, child_id) VALUES ($1, $2, $3, $4) RETURNING *', [data.date, data.extra_info, data.mood, data.child_id]);
         return result.rows[0];

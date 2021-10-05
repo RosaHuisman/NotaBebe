@@ -8,6 +8,8 @@ GET http://localhost:3000/profile/parent/1
 ### DISPLAYING CHILD ACCORDING TO PARENT PROFILE
 GET http://localhost:3000/profile/parent/3/child/4
 
+###  DISPLAYING CHILD RECAPS ACCORDING TO PARENT
+GET http://localhost:3000/profile/parent/2/child/3/allrecaps
 
 ### MODIFYING CHILD PROFILE 
 PATCH http://localhost:3000/profile/parent/3/child/4
@@ -38,23 +40,6 @@ Content-Type: application/json
 {   
     "oldPassword": "victor2",
     "password": "victor"
-}
-
-### UPDATING STAFF PASSWORD
-PATCH http://localhost:3000/profile/staff/10/password
-Content-Type: application/json
-
-{   
-    "oldPassword": "test",
-    "password": "staff"
-}
-### UPDATING ADMIN PASSWORD
-PATCH http://localhost:3000/profile/admin/14/password
-Content-Type: application/json
-
-{   
-    "oldPassword": "nico",
-    "password": "admin2"
 }
 
 

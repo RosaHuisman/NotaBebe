@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const { userController, commentController } = require('../controllers');
+const { userController, commentController, recapController } = require('../controllers');
 
 // get parent by id
 router.route('/profile/parent/:id(\\d+)')
@@ -16,6 +16,10 @@ router.route('/profile/parent/:id(\\d+)/password')
 router.route('/profile/parent/:id(\\d+)/child/:childId(\\d+)')
     .get(userController.getChildFromParent)
     .patch(userController.modifyChild);
+
+// TODO : route params parents + enfants pour avoir un recaps
+router.route('/profile/parent/:id(\\d+)/child/:childId(\\d+)/allrecaps')
+    .get(recapController.getAllRecapsByOneChild);
 
 // get all of one parent's comments
 router.route('/profile/parent/:parentId(\\d+)/comments')
