@@ -16,11 +16,12 @@ const mapStateToProps = (state, ownProps) => ({
   loading: state.recap.loading,
   //recap: findRecap(state.recap.list, ownProps.match.params.child_id),
   childRecaps: state.recap.childRecaps,
+  parent: state.auth.parent,
 });
 
 const mapDispatchToProps = (dispatch,) => ({
-  loadRecaps: (id) => {
-    dispatch(fetchRecapsByChildId(id));
+  loadRecaps: (parentId, childId) => {
+    dispatch(fetchRecapsByChildId(parentId, childId));
   },
   loadChildren: () => {
     dispatch(fetchChildren());

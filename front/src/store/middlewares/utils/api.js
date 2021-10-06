@@ -9,7 +9,11 @@ import axios from 'axios';
 
 const api = axios.create({
   // baseURL: 'https://localhost:3001/',
-  baseURL: 'https://notabebe-back.herokuapp.com/',
+  // old back-end heroku app : 
+  //baseURL: 'https://notabebe-backend.herokuapp.com/',
+
+  // new back-end heroku app (oct2021): 
+  baseURL: 'https://notabebe-backend.herokuapp.com/',
   timeout: 2500,
 });
 

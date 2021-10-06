@@ -18,9 +18,10 @@ export const FETCH_RECAPS_BY_CHILD_ID = 'FETCH_RECAPS_BY_CHILD_ID';
 export const SAVE_RECAPS_BY_CHILD_ID = 'SAVE_RECAPS_BY_CHILD_ID';
 
 
-export const fetchRecapsByChildId = (id) => ({
+export const fetchRecapsByChildId = (parentId, childId) => ({
   type: FETCH_RECAPS_BY_CHILD_ID,
-  id
+  parentId, 
+  childId,
 })
 
 export const saveRecapsByChildId = (recaps) => ({

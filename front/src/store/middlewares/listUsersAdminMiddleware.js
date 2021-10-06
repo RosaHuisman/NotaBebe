@@ -44,7 +44,7 @@ const listUsersAdminMiddleware = (store) => (next) => (action) => {
 
       // fetchData();
 
-      fetch('https://notabebe-back.herokuapp.com/profile/admin/allusers')
+      fetch('https://notabebe-backend.herokuapp.com/profile/admin/allusers')
         .then((response) => response.json())
         .then((data) => console.log(data));
       break;

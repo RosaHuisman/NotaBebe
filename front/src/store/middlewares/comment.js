@@ -34,7 +34,7 @@ const comment = (store) => (next) => (action) => {
       const parentId = action.parentId;
       const childId = action.childId;
 
-     axios.post(`https://notabebe-back.herokuapp.com/profile/parent/${parentId}/child/${childId}/comments`, {
+     axios.post(`https://notabebe-backend.herokuapp.com/profile/parent/${parentId}/child/${childId}/comments`, {
        message: state.comment.comment,
        child_id: action.childId,
      })
@@ -54,7 +54,7 @@ const comment = (store) => (next) => (action) => {
     const childId = action.childId;
     const commentId = action.commentId;
 
-   axios.patch(`https://notabebe-back.herokuapp.com/profile/parent/${parentId}/child/${childId}/comments/${commentId}`, {
+   axios.patch(`https://notabebe-backend.herokuapp.com/profile/parent/${parentId}/child/${childId}/comments/${commentId}`, {
      message: state.comment.comment,
      commentId: action.commentId,
      child_id: action.childId,
@@ -75,7 +75,7 @@ const comment = (store) => (next) => (action) => {
   const childId = action.childId;
   const commentId = action.commentId;
 
- axios.delete(`https://notabebe-back.herokuapp.com/profile/parent/${parentId}/child/${childId}/comments/${commentId}`, {
+ axios.delete(`https://notabebe-backend.herokuapp.com/profile/parent/${parentId}/child/${childId}/comments/${commentId}`, {
    commentId: action.commentId,
    child_id: action.childId,
  })

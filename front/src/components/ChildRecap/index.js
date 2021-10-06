@@ -34,18 +34,17 @@ const previousPage = () => {
   useEffect(() => {
     //loadParents();
     //loadChildren();
-    loadRecaps(child.id);
+    loadRecaps(parent[0].user_id, child.id);
   }, []);
+
+  console.log(parent[0].child_id)
 
   if (loading) {
     return <Loading />;
   } 
 
-
-
   let lastRecap = childRecaps.slice(-1)
   let oldRecaps = childRecaps.slice(0, -1).reverse()
-  
 
   return (
     <>

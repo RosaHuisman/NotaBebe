@@ -100,7 +100,7 @@ const user = (store) => (next) => (action) => {
       const state = store.getState();
       const id = action.id;
 
-      axios.patch(`https://notabebe-back.herokuapp.com/profile/parent/${id}`, {
+      axios.patch(`https://notabebe-backend.herokuapp.com/profile/parent/${id}`, {
         address: state.user.address,
         postcode: state.user.postcode,
         city: state.user.city,
@@ -122,7 +122,7 @@ const user = (store) => (next) => (action) => {
       const childId = action.childId;
 
 
-      axios.patch(`https://notabebe-back.herokuapp.com/profile/parent/${parentId}/child/${childId}`, {
+      axios.patch(`https://notabebe-backend.herokuapp.com/profile/parent/${parentId}/child/${childId}`, {
         allergies: state.user.allergy,
       })
         .then((response) => {
@@ -139,7 +139,7 @@ const user = (store) => (next) => (action) => {
       const state = store.getState();
       const id = action.id;
 
-      axios.patch(`https://notabebe-back.herokuapp.com/profile/parent/${id}/password`, {
+      axios.patch(`https://notabebe-backend.herokuapp.com/profile/parent/${id}/password`, {
         oldPassword: state.user.oldpassword,
         password: state.user.newpassword,
         id: action.id,
