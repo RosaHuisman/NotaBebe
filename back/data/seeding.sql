@@ -1,7 +1,7 @@
 BEGIN;
 
 INSERT INTO "user" ("first_name", "last_name", "address", "postcode", "city", "email", "password", "phone_number", "role_id") VALUES
-('Parent', 'Réctarcesoir', '3 rue des Pommes', '48000', 'Trifouilly-les-Oies', 'parent@notabebe.io', '$2b$10$3LpDqhR5lMGHzIYOrLLgs.oUzT7m2iwOctl26yL2mrrCH57B6DVje', '0320831920', 1),
+('Parent', 'Rétarcesoir', '3 rue des Pommes', '48000', 'Trifouilly-les-Oies', 'parent@notabebe.io', '$2b$10$3LpDqhR5lMGHzIYOrLLgs.oUzT7m2iwOctl26yL2mrrCH57B6DVje', '0320831920', 1),
 ('Mickael', 'Menet', '616 place de la Madeleine', '59000', 'Lille', 'mickael@notabebe.io', '$2a$10$Nl812CC5gYzrMLq/uKBDKewWBUFT5pBrLaanuKIk6eIDhO69an21a', '0459102934', 1),
 ('David', 'Basset', '616 place de la Madeleine', '44600', 'Saint-Nazaire', 'david@notabebe.io', '$2a$10$qG8GFDP1dj/FDIHJ9Qu8HOk48zXINvcxyTPo7X0nOlnWhdIr74eSy', '0384810583', 1),
 ('Morgane', 'Benureau', '852 rue Bonnet', '44600', 'Saint-Nazaire', 'morgane@notabebe.io', '$2a$10$vZoSq1EDWLDBW24zL2tI3usSO37Y83V0zxwSwhqomWS.Jc.VokZsW', '0691238561', 1),
