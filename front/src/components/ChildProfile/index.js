@@ -64,7 +64,6 @@ const ChildProfile = ({
   }
 
 
-
   // we retrieve the data of the parent and the child through Link of Children in ParentProfile
   // we could use this informations for the parent and the child
   // I called it parent but the child's information is available too
@@ -115,7 +114,12 @@ const ChildProfile = ({
         )}
 
         <Link
-          to={`/profile/parent/${child.user_id}/child/${child.child_id}/recap`}
+          to={{
+            pathname: `/profile/parent/${child.user_id}/child/${child.child_id}/recap`,
+            state: {
+              child: child,
+            },
+          }}
         >
           <button
             type="button"

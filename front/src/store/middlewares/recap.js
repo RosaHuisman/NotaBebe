@@ -14,13 +14,11 @@ const recap = (store) => (next) => (action) => {
   switch (action.type) {
 
     case FETCH_RECAPS_BY_CHILD_ID: {
-      console.log("je suis dans le cas FETCH_RECAPS_BY_CHILD_ID")
       const fetchData = async () => {
         const parentId = action.parentId;
         const childId = action.childId;
         try {
           const response = await api.get(`profile/parent/${parentId}/child/${childId}/allrecaps`);
-          console.log("reponse", response.data)
           const actionsaveRecapsByChildId = saveRecapsByChildId(response.data);
           store.dispatch(actionsaveRecapsByChildId);
         }

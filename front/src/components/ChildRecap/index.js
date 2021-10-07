@@ -1,22 +1,20 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 
 import Loading from 'src/components/App/Loading';
 
 import HeaderParent from 'src/containers/HeaderParent';
 import BasicInfos from './BasicInfos';
 import Day from './Day';
+import OldRecaps from './OldRecaps';
+
 
 import './styles.scss';
 
 const ChildRecap = ({
   loadRecaps,
-  loadChildren,
-  child,
   loading,
-  recap,
-  loadParents,
   parent,
   closeCommentSend,
   childRecaps,
@@ -32,12 +30,12 @@ const previousPage = () => {
   };
 
   useEffect(() => {
-    //loadParents();
-    //loadChildren();
-    loadRecaps(parent[0].user_id, child.id);
+    loadRecaps(parent[0].user_id, child.child_id);
   }, []);
 
-  console.log(parent[0].child_id)
+
+  const data = useLocation();
+  const child = data.state.child;
 
   if (loading) {
     return <Loading />;
@@ -68,29 +66,7 @@ const previousPage = () => {
         </div>
       </div>
 
-      
-
-      {oldRecaps.map((recap) => {
-        return(
-        <div className="contentChildrecap" key={recap.id}>
-        <div className="childrecap">
-          <p className="childrecap__date">{recap.date}</p>
-
-          <BasicInfos  recap={recap} child={child} /* parent={parent} */ />
-          <Day  recap={recap} child={child} />
-        </div>
-
-        <div className="backButton">
-          <div className="backButton__contentButton">
-         
-            <button onClick={previousPage} type="button" className="settings__send">Retour</button>
-          </div>
-        </div>
-      </div>
-
-        )
-        
-      })}
+      <OldRecaps oldRecaps={oldRecaps} child={child}/>
       
     </>
   );

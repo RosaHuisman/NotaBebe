@@ -12,7 +12,7 @@ import { commentSendNo } from 'src/store/actions/comment'
 
 const mapStateToProps = (state, ownProps) => ({
   parent: findUser(state.user.list, ownProps.match.params.parent_id),
-  child: findUser(state.children.list, ownProps.match.params.child_id),
+  //child: findUser(state.children.list, ownProps.match.params.child_id),
   loading: state.recap.loading,
   //recap: findRecap(state.recap.list, ownProps.match.params.child_id),
   childRecaps: state.recap.childRecaps,

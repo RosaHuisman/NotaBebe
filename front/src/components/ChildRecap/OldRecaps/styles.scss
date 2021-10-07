@@ -1,0 +1,36 @@
+@use 'src/styles/vars' as v;
+
+.oldrecaps {
+    display: flex;
+    margin-bottom: 3rem;
+
+    &__title {
+        text-align: center;
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+}
+
+.oldrecap {
+    margin: 1rem;
+    width: 45%;
+    box-sizing: border-box;
+    background-color: v.$bg-color;
+    padding: 1rem;
+    border-radius: 5px;
+    
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &__date {
+            font-weight: bold;
+        }
+
+        &__icon{
+            width: 50px;
+        }
+    }
+    
+}
