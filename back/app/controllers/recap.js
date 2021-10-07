@@ -471,7 +471,6 @@ const recapController = {
 
             // get child id from url
             const childId = Number(request.params.childId);
-            console.log('childId', childId);
 
             // in case the child id isn't a number, we return next()
             if (isNaN(childId)) {
@@ -480,14 +479,12 @@ const recapController = {
 
             // find recap by parent and child (with both ids)
             const data = await recapDataMapper.findByChildIdAndParentId(parentId, childId);
-            console.log('data', data);
 
 
             // if there is data, we respond with it; if not, we return next()
             if (data [0]) {
                 response.status(200).json(data);
             } else {
-                console.log('est ce que tu es la?');
                 return next();
             };
 
