@@ -17,7 +17,7 @@ const ChangeChildInfosForm = ({
   //user
 }) => {
  /*  useEffect(() => {
-    loadChildren();
+    //loadChildren();
    }, []);
  */
   const handleOnClickCancelButton = (e) => {

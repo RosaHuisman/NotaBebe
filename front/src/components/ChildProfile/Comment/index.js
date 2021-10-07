@@ -28,12 +28,12 @@ const Comment = ({
   formDeleteOpen,
   deleteComment,
   loadComments,
-  loadChildren,
+  //loadChildren,
   child
 
 }) => {
   useEffect(() => {
-    loadChildren(),
+   // loadChildren(),
       loadComments()
   }, [modalOpen]);
 

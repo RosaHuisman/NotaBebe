@@ -40,7 +40,7 @@ const ChildProfile = ({
   onClickOpenFormDeleteComment,
   formDeleteOpen,
   deleteComment,
-  loadChildren,
+  //loadChildren,
   loadParents,
   //parent
 
@@ -54,7 +54,7 @@ const ChildProfile = ({
 
   useEffect(() => {
     //loadParents();
-    loadChildren();
+    //loadChildren();
     loadRecaps();
     loadComments();
   }, []);
@@ -90,7 +90,7 @@ const ChildProfile = ({
               openUserInfos={openUserInfos}
               //parent={parent}
               child={child}
-              loadChildren={loadChildren}
+              //loadChildren={loadChildren}
             />
 
             <button
@@ -108,7 +108,7 @@ const ChildProfile = ({
               handleChangeInfos={handleChangeInfos}
               parent={parent}
               child={child}
-              loadChildren={loadChildren}
+              //loadChildren={loadChildren}
             />
           </>
         )}
@@ -145,7 +145,7 @@ const ChildProfile = ({
           formDeleteOpen={formDeleteOpen}
           deleteComment={deleteComment}
           loadComments={loadComments}
-          loadChildren={loadChildren}
+          //loadChildren={loadChildren}
           child={child}
         />
 

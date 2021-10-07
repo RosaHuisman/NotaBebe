@@ -12,7 +12,7 @@ const ChildInfos = ({
   //loadChildren,
 }) => {
 /*   useEffect(() => {
-    loadChildren()
+    //loadChildren()
   }, []) */
   return (
     <div className="childinfos">
