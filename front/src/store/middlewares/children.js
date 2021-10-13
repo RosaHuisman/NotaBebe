@@ -9,6 +9,7 @@ import api from './utils/api';
 const children = (store) => (next) => (action) => {
   switch (action.type) {
     case FETCH_CHILDREN: {
+      console.log('je suis dans le case FETCH CHILDREN')
       const fetchData = async () => {
         try {
           const response = await api.get('profile/admin/children');

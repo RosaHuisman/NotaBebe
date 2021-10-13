@@ -14,3 +14,4 @@ export const saveNewPasswordStaff = () => ({
 export const clearPasswordMessage = () => ({
   type: CLEAR_CHANGE_PASSWORD_CONFIRM_MESSAGE,
 })
+

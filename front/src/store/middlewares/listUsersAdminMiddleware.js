@@ -18,6 +18,8 @@ const listUsersAdminMiddleware = (store) => (next) => (action) => {
   // une fois qu'on aura les infos, on va les stocker dans le state => dispatcher une action
   switch (action.type) {
     case USER_LIST_LOADING: {
+      console.log('je suis dans le case USER LIST LOADING')
+
       // api({
       //   method: 'GET',
       //   url: '/profile/admin/allusers',
@@ -50,6 +52,8 @@ const listUsersAdminMiddleware = (store) => (next) => (action) => {
       break;
     }
     case DELETE_USER: {
+      console.log('je suis dans le case DELETE USER')
+
 
       const userDeleted = action.payload;
 
@@ -68,6 +72,8 @@ const listUsersAdminMiddleware = (store) => (next) => (action) => {
       break;
     }
     case ADMIN_ADD_USER: {
+      console.log('je suis dans le case ADMIN ADD USER')
+
 
       const state = store.getState();
       

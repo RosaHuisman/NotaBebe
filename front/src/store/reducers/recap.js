@@ -12,6 +12,7 @@ import {
   FILTER_RECAPS,
   RECAP_TO_FALSE,
   SAVE_RECAPS_BY_CHILD_ID,
+  EMPTY_STATE_RECAP,
 
 } from 'src/store/actions/recap';
 
@@ -163,6 +164,12 @@ const reducer = (state = initialState, action ) => {
       return {
         ...state,
         save: false,
+      }
+    }
+    case EMPTY_STATE_RECAP: {
+      return {
+        ...state,
+        list: []
       }
     }
     default:

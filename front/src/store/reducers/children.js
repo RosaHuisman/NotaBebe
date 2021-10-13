@@ -1,5 +1,6 @@
 import {
  SAVE_CHILDREN,
+ EMPTY_STATE_CHILDREN,
 } from 'src/store/actions/children'
 
 const initialState = {
@@ -15,6 +16,12 @@ const reducer = (state = initialState, action ={} ) => {
          list: action.payload,
          loading: false,
        };
+     }
+     case EMPTY_STATE_CHILDREN: {
+       return {
+         ...state, 
+         list: []
+       }
      }
     default:
       return state;

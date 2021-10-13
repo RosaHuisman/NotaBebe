@@ -12,6 +12,8 @@ const staff = (store) => (next) => (action) => {
   switch (action.type) {
 
     case CHANGE_PASSWORD_STAFF: {
+      console.log('je suis dans le case CHANGE PASSWORD STAFF')
+
       const state = store.getState();
       const id = action.id;
 

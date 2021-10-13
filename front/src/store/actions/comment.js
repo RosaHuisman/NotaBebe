@@ -11,6 +11,7 @@ export const DELETE_COMMENT = 'DELETE_COMMENT';
 export const COMMENT_DELETED = 'COMMENT_DELETED';
 export const FILTER_COMMENTS = 'FILTER_COMMENTS';
 export const COMMENT_SEND_NO = 'COMMENT_SEND_NO';
+export const EMPTY_STATE_COMMENT = 'EMPTY_STATE_COMMENT';
 
 export const fetchComments = () => ({
   type: FETCH_COMMENTS,
@@ -78,4 +79,8 @@ export const filterComments = (filterInputValue) => ({
 
 export const commentSendNo = () => ({
   type: COMMENT_SEND_NO,
+})
+
+export const emptyStateComment = () => ({
+  type: EMPTY_STATE_COMMENT,
 })

@@ -7,7 +7,8 @@ import {
   OPEN_FORM_DELETE_COMMENT,
   COMMENT_DELETED,
   FILTER_COMMENTS, 
-  COMMENT_SEND_NO
+  COMMENT_SEND_NO,
+  EMPTY_STATE_COMMENT
 } from 'src/store/actions/comment'
 
 const initialState = {
@@ -26,6 +27,8 @@ const initialState = {
 const reducer = (state = initialState, action ={} ) => {
   switch (action.type) {
       case SAVE_COMMENTS: {
+        console.log('je suis dans le case SAVE COMMENTS')
+
        return {
          ...state,
          list: action.payload,
@@ -41,6 +44,8 @@ const reducer = (state = initialState, action ={} ) => {
        }
      }
      case SAVE_COMMENT: {
+      console.log('je suis dans le case SAVE COMMENT')
+
       return {
         ...state,
         commentSend: !state.commentSend,
@@ -73,6 +78,8 @@ const reducer = (state = initialState, action ={} ) => {
       }
     }
     case COMMENT_DELETED: {
+      console.log('je suis dans le case COMMENT DELETED')
+
       return {
         ...state,
         formDeleteOpen: false,
@@ -90,6 +97,12 @@ const reducer = (state = initialState, action ={} ) => {
       return {
         ...state,
         commentSend: false,
+      }
+    }
+    case EMPTY_STATE_COMMENT: {
+      return {
+        ...state,
+        list: []
       }
     }
     default:

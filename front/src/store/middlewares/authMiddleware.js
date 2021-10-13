@@ -17,6 +17,8 @@ import api from './utils/api';
 const authMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case LOGIN: {
+      console.log('je suis dans le case LOGIN')
+
       const state = store.getState();
 
 
@@ -61,6 +63,8 @@ const authMiddleware = (store) => (next) => (action) => {
       break;
     }
     case CHECK_TOKEN: {
+      console.log('je suis dans le case CHECK_TOKEN')
+
       // on récupère le token stocké dans le localStorage
       const tokenLocal = localStorage.getItem('MyToken');
 

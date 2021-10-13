@@ -16,6 +16,7 @@ export const RECAP_TO_FALSE = 'RECAP_TO_FALSE'
 
 export const FETCH_RECAPS_BY_CHILD_ID = 'FETCH_RECAPS_BY_CHILD_ID';
 export const SAVE_RECAPS_BY_CHILD_ID = 'SAVE_RECAPS_BY_CHILD_ID';
+export const EMPTY_STATE_RECAP = 'EMPTY_STATE_RECAP';
 
 
 export const fetchRecapsByChildId = (parentId, childId) => ({
@@ -68,17 +69,6 @@ export const changeTimeNap = (key, value) => ({
   key,
 });
 
-// export const changeTimeNapStart = (key, value) => ({
-//   type: CHANGE_TIME_NAP_START,
-//   value,
-//   key,
-// });
-// export const changeTimeNapEnd = (key, value) => ({
-//   type: CHANGE_TIME_NAP_END,
-//   value,
-//   key,
-// });
-
 export const submitFormCreateRecap = (child_id) => ({
   type: CREATE_RECAP,
   child_id,
@@ -99,4 +89,8 @@ export const filterRecaps = (filterInputValue) => ({
   type: FILTER_RECAPS,
   filterInputValue,
 });
+
+export const emptyStateRecap = () => ({
+  type: EMPTY_STATE_RECAP,
+})
 
