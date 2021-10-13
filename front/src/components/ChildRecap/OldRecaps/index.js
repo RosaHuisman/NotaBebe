@@ -15,8 +15,6 @@ const OldRecaps = ({
     child
 }) => {
 
-    console.log(oldRecaps)
-
   return (
       <>
     <h3 className="oldrecaps__title"> Les récaps des journées précédentes : </h3>
