@@ -28,19 +28,17 @@ const Comment = ({
   formDeleteOpen,
   deleteComment,
   loadComments,
-  //loadChildren,
   child
 
 }) => {
   useEffect(() => {
-   // loadChildren(),
       loadComments()
   }, [modalOpen]);
 
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    submitComment(parent.id, child.id);
+    submitComment(child.user_id, child.pwc_child_id);
   };
 
   const handleOnChange = (evt) => {

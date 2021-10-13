@@ -15,7 +15,6 @@ import api from './utils/api';
 const comment = (store) => (next) => (action) => {
   switch (action.type) {
     case FETCH_COMMENTS: {
-      console.log('je suis dans le case FETCH COMMENTS')
 
       const fetchData = async () => {
         try {
@@ -32,7 +31,6 @@ const comment = (store) => (next) => (action) => {
       break;
     }
     case POST_COMMENT: {
-      console.log('je suis dans le case POST COMMENT')
 
       const state = store.getState();
       const parentId = action.parentId;
@@ -53,7 +51,6 @@ const comment = (store) => (next) => (action) => {
      break;
    }
    case UPDATE_COMMENT: {
-    console.log('je suis dans le case UPDATE COMMENT')
 
     const state = store.getState();
     const parentId = action.parentId;
@@ -76,7 +73,6 @@ const comment = (store) => (next) => (action) => {
    break;
  }
  case DELETE_COMMENT: {
-  console.log('je suis dans le case DELETE COMMENT')
 
   const state = store.getState();
   const parentId = action.parentId;

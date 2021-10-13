@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-import authReducer from './authentification';
+//import authReducer from './authentification';
 import adminReducer from './admin';
 import userReducer from './user';
 import childrenReducer from './children';
@@ -9,7 +9,7 @@ import commentReducer from './comment';
 import staffReducer from './staff';
 
 const rootReducer = combineReducers({
-  auth: authReducer,
+  //auth: authReducer,
   admin: adminReducer,
   user: userReducer,
   children: childrenReducer,

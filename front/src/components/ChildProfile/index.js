@@ -17,8 +17,6 @@ import Comment from './Comment';
 import './styles.scss';
 
 const ChildProfile = ({
-  user,
-  //child,
   openUserInfos,
   isOpenInfos,
   closeForm,
@@ -29,7 +27,6 @@ const ChildProfile = ({
   onChangeTextValue,
   loadRecaps,
   loading,
-  //recap,
   loadComments,
   comments,
   onClickOpenModalToFormChangeComment,
@@ -40,12 +37,7 @@ const ChildProfile = ({
   onClickOpenFormDeleteComment,
   formDeleteOpen,
   deleteComment,
-  //loadChildren,
-  loadParents,
-  //parent
 
-
-  // loadUsersParents,
 
 }) => {
 
@@ -53,8 +45,7 @@ const ChildProfile = ({
   const child = data.state.child;
 
   useEffect(() => {
-    //loadParents();
-    //loadChildren();
+   
     loadRecaps();
     loadComments();
   }, []);

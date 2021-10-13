@@ -6,16 +6,11 @@ import {
   toggleChangePassword,
   closeFormAction,
   changePassword,
-  saveParent,
   fetchUsersParents,
-  fetchParentById
 } from 'src/store/actions';
 
 import { checkToken } from 'src/store/actions/authActions';
 
-
-
-import { findUser, findChildrenOfParent } from 'src/store/selectors/user';
 
 const mapStateToProps = (state, ownProps) => ({
   oldpassword: state.user.oldpassword,
@@ -27,13 +22,11 @@ const mapStateToProps = (state, ownProps) => ({
   changeInfos: state.user.changeInfos,
   hasInfosError: state.user.changeInfosError,
   hasPasswordError: state.user.changePasswordError,
-  //user: findUser(state.user.list, ownProps.match.params.parent_id),
-  //children: findChildrenOfParent(state.user.list, ownProps.match.params.parent_id),
-  loading: state.auth.loading,
+  loading: state.user.loading,
   // on récupère l'id du parent qui s'est connecté, il s'est enregistré dans le state grace au token
-  parentId: state.auth.userId,
+  parentId: state.user.userId,
   // une fois le parent enregistré dans le state, on fait passer ses données au composant: (les données du parent sont sous la forme d'un tableau d'objets, un objet par enfant du parent, dans ces objets on retrouve les infos du parent à chaque fois, redondant mais c'est ce qu'on recoit du back)
-  parent: state.auth.parent
+  parent: state.user.parent
 });
 
 

@@ -221,6 +221,7 @@ export const saveUserData = (favorites) => ({
 export const LOGOUT_ADMIN = 'LOGOUT_ADMIN';
 
 export const USER_LIST_LOADING = 'USER_LIST_LOADING';
+
 export const getAllUsersAction = () => ({
   type: USER_LIST_LOADING,
 });

@@ -14,13 +14,13 @@ const recap = (store) => (next) => (action) => {
   switch (action.type) {
 
     case FETCH_RECAPS_BY_CHILD_ID: {
-      console.log('je suis dans le case FETCH RECAPS BY CHILD ID')
 
       const fetchData = async () => {
         const parentId = action.parentId;
         const childId = action.childId;
         try {
           const response = await api.get(`profile/parent/${parentId}/child/${childId}/allrecaps`);
+          console.log(response.data)
           const actionsaveRecapsByChildId = saveRecapsByChildId(response.data);
           store.dispatch(actionsaveRecapsByChildId);
         }
@@ -34,7 +34,6 @@ const recap = (store) => (next) => (action) => {
     }
 
     case FETCH_RECAPS: {
-      console.log('je suis dans le case FETCH RECAPS')
 
       const fetchData = async () => {
         try {
@@ -51,7 +50,6 @@ const recap = (store) => (next) => (action) => {
       break;
     }
     case CREATE_RECAP: {
-      console.log('je suis dans le case CREATE RECAP')
 
       const state = store.getState();
       const childId = action.child_id;

@@ -24,7 +24,6 @@ const user = (store) => (next) => (action) => {
   // une fois qu'on aura les infos, on va les stocker dans le state => dispatcher une action
   switch (action.type) {
     case FETCH_USERS_PARENTS: {
-      console.log('je suis dans le case FETCH USERS PARENTS')
 
       const fetchData = async () => {
         try {
@@ -43,7 +42,6 @@ const user = (store) => (next) => (action) => {
     
 
     case FETCH_PARENT_BY_ID: {
-      console.log('je suis dans le case FETCH PARENT BY ID')
 
       const tokenPresent = localStorage.getItem('MyToken');
       const myTokenDecoded = action.payload
@@ -81,7 +79,6 @@ const user = (store) => (next) => (action) => {
     } */
 
     case FETCH_STAFF_BY_ID: {
-      console.log('je suis dans le case FETCH STAFF BY ID')
 
       const tokenPresent = localStorage.getItem('MyToken');
       const myTokenDecoded = action.payload
@@ -103,7 +100,6 @@ const user = (store) => (next) => (action) => {
       break;
 
     case CHANGE_INFOS: {
-      console.log('je suis dans le case CHANGE INFOS')
 
       const state = store.getState();
       const id = action.id;
@@ -125,7 +121,6 @@ const user = (store) => (next) => (action) => {
     }
 
     case CHANGE_CHILD_INFOS: {
-      console.log('je suis dans le case CHANGE CHILD INFOS')
 
       const state = store.getState();
       const parentId = action.parentId;
@@ -146,7 +141,6 @@ const user = (store) => (next) => (action) => {
       break;
     }
     case CHANGE_PASSWORD: {
-      console.log('je suis dans le case CHNAGE PASSWORD')
 
       const state = store.getState();
       const id = action.id;

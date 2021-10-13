@@ -26,8 +26,8 @@ const initialState = {
 
 const reducer = (state = initialState, action ={} ) => {
   switch (action.type) {
-      case SAVE_COMMENTS: {
-        console.log('je suis dans le case SAVE COMMENTS')
+      
+    case SAVE_COMMENTS: {
 
        return {
          ...state,
@@ -35,21 +35,19 @@ const reducer = (state = initialState, action ={} ) => {
          loading: false,
        };
      }
+     
      case OPEN_MODAL: {
        return {
          ...state,
          modalOpen: !state.modalOpen,
-         //[action.FILTER_COMMENTScommentId]: !state.modalOpen, 
          commentId: action.commentId,
        }
      }
+     
      case SAVE_COMMENT: {
-      console.log('je suis dans le case SAVE COMMENT')
-
       return {
         ...state,
         commentSend: !state.commentSend,
-        //commentId:FILTER_COMMENTS action.payload.data.id,
         comment: '',
         commentSend: true,
         list: [
@@ -58,18 +56,21 @@ const reducer = (state = initialState, action ={} ) => {
         ]  
       };
     }
+    
     case CHANGE_TEXT_VALUE: {
       return {
         ...state,
         comment: action.value,
       };
     }
+    
     case COMMENT_UPDATED: {
       return {
         ...state,
         modalOpen: false,
       };
     }
+    
     case OPEN_FORM_DELETE_COMMENT: {
       return {
         ...state,
@@ -77,9 +78,8 @@ const reducer = (state = initialState, action ={} ) => {
         commentId: action.commentId
       }
     }
+    
     case COMMENT_DELETED: {
-      console.log('je suis dans le case COMMENT DELETED')
-
       return {
         ...state,
         formDeleteOpen: false,
@@ -87,18 +87,21 @@ const reducer = (state = initialState, action ={} ) => {
         
       };
     }
+    
     case FILTER_COMMENTS: {
       return {
         ...state,
         inputValue: action.filterInputValue
       }
     }
+    
     case COMMENT_SEND_NO: {
       return {
         ...state,
         commentSend: false,
       }
     }
+    
     case EMPTY_STATE_COMMENT: {
       return {
         ...state,

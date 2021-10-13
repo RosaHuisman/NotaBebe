@@ -17,7 +17,7 @@ const mapStateToProps = (state) => ({
   postcode: state.user.postcode,
   city: state.user.city,
   password: state.user.password,
-  roleId: state.user.role_id,
+  roleId: state.user.roleId,
 
   contentAdminPageAdd: state.user.contentAdminPageAdd,
   addUserSuccess: state.user.addUserSuccess,

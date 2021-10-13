@@ -39,7 +39,6 @@ const initialState = {
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
     case SAVE_STAFF_BY_ID: {
-      console.log('je suis dans le case SAVE STAFF BY ID')
       const { email, logged, token, roleId, userId, firstName, lastName } = action.myTokenDecoded;
 
       return {
@@ -61,7 +60,6 @@ const reducer = (state = initialState, action = {}) => {
     }
     // save the parent's data in the state, we receive an array of objects with as many objects as the parent has children 
     case SAVE_PARENT_BY_ID: {
-      console.log('je suis dans le case SAVE PARENT BY ID')
      
       const { email, logged, token, roleId, userId, firstName, lastName } = action.myTokenDecoded;
 
@@ -174,7 +172,6 @@ const reducer = (state = initialState, action = {}) => {
       };
     }
     case LOGOUT: {
-      console.log(' je suis dans le case LOGOUT ')
       
       localStorage.removeItem('MyToken');
       return {

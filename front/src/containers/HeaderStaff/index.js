@@ -8,7 +8,7 @@ import { emptyStateComment } from 'src/store/actions/comment'
 
 // transforme le state en props
 const mapStateToProps = (state) => ({
-  userId: state.auth.userId,
+  userId: state.user.userId,
 });
 
 // transforme la fonction dispatch en props

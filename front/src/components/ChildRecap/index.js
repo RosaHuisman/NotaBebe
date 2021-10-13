@@ -21,7 +21,17 @@ const ChildRecap = ({
 
 }) => {
 
+
+
 const history = useHistory();
+
+const data = useLocation();
+const child = data.state.child;
+
+
+useEffect(() => {
+  loadRecaps(parent[0].user_id, child.child_id);
+}, []);
 
 
 const previousPage = () => {
@@ -29,13 +39,7 @@ const previousPage = () => {
     closeCommentSend();
   };
 
-  useEffect(() => {
-    loadRecaps(parent[0].user_id, child.child_id);
-  }, []);
-
-
-  const data = useLocation();
-  const child = data.state.child;
+ 
 
   if (loading) {
     return <Loading />;
@@ -43,6 +47,7 @@ const previousPage = () => {
 
   let lastRecap = childRecaps.slice(-1)
   let oldRecaps = childRecaps.slice(0, -1).reverse()
+
 
   return (
     <>

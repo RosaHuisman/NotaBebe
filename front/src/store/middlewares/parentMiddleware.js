@@ -5,7 +5,6 @@ import { tokenHeaderMiddleware as authHeader } from './tokenHeaderMiddleware';
 const parentMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case FETCH_PARENT: {
-      console.log('je suis dans le case FETCH PARENT')
 
       const tokenPresent = localStorage.getItem('MyToken');
 

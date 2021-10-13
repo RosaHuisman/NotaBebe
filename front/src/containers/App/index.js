@@ -1,23 +1,13 @@
 import { connect } from 'react-redux';
 import { homeInitial, checkToken } from 'src/store/actions/authActions';
-import { fetchUsersParents } from 'src/store/actions';
-import { fetchChildren } from 'src/store/actions/children'
-
-// vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-import { findUser } from 'src/store/selectors/user';
-
 import App from 'src/components/App';
 
 const mapStateToProps = (state, ownProps) => ({
-  loading: state.auth.loading,
-  user: state.auth,
+  loading: state.user.loading,
+  user: state.user,
 
-  // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   children: state.children.list,
-  //child: findUser(state.children.list, ownProps.match.params.child_id),
-
-  //user: findUser(state.user.list, ownProps.match.params.id),
-  //user: state.user,
+ 
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -27,13 +17,7 @@ const mapDispatchToProps = (dispatch) => ({
   checkIsLogged: () => {
     dispatch(checkToken());
   },
-  // loadChildren: () => {
-  //   dispatch(fetchChildren());
-  // },
-  // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  // loadUsersParents: () => {
-  //   dispatch(fetchUsersParents());
-  // },
+ 
 
 });
 

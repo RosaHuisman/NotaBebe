@@ -5,10 +5,10 @@ import { logout, homeInitial } from 'src/store/actions/authActions';
 // transforme le state en props
 const mapStateToProps = (state) => ({
   // loggedMessage: `Bonjour ${state.pseudo}`,
-  roleId: state.user.role_id,
-  userId: state.user.user_id,
+  roleId: state.user.roleId,
+  userId: state.user.userId,
   logged: state.user.logged,
-  loading: state.auth.loading,
+  loading: state.user.loading,
 });
 
 // transforme la fonction dispatch en props

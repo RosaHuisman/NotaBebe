@@ -4,18 +4,15 @@ import { changeFieldValueLogin, login, checkToken } from 'src/store/actions/auth
 
 // transforme le state en props
 const mapStateToProps = (state) => ({
-  errorMessage: state.auth.errorMessage,
-  contentHome: state.auth.contentHome,
-  successMessage: state.auth.successMessage,
-  user: state.auth,
-  token: state.auth.token,
+  errorMessage: state.user.errorMessage,
+  contentHome: state.user.contentHome,
+  successMessage: state.user.successMessage,
+  user: state.user,
+  token: state.user.token,
 });
 
-// transforme la fonction dispatch en props
 const mapDispatchToProps = (dispatch) => ({
-  // changeField: (value, key) => {
-  //   dispatch(changeFieldValueLogin(value, key));
-  // },
+ 
   handleLogin: () => {
     dispatch(login());
   },

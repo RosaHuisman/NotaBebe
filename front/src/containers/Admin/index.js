@@ -12,18 +12,11 @@ import {
 import { checkToken } from 'src/store/actions/authActions';
 
 const mapStateToProps = (state) => ({
-  // loading: state.admin.loading,
-  // userAPI: state.admin.userList,
-  // userAPI: state.admin.userList,
-  // searchValue: state.auth.searchValue,
-  // successMessage: state.auth.successMessage,
-  // user: state.auth,
 
   loading: state.admin.loading,
   isSearchActive: state.admin.isSearchActive,
   foundUsers: state.admin.foundUsers,
   dataUserList: state.admin.dataUserList,
-  // userAPI: state.admin.dataUserList,
 
   users: state.admin.users,
   error: state.admin.error,
