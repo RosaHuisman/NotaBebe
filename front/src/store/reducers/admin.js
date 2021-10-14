@@ -52,7 +52,6 @@ const reducer = (state = initialState, action) => {
     //     userList: [],
     //   };
     case USER_LIST_LOADING: {
-      console.log('je suis dans le reducer USER LIST LOADING')
       return {
         ...state,
         // listUsers: {

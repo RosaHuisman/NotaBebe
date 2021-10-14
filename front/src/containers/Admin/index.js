@@ -14,12 +14,12 @@ import { checkToken } from 'src/store/actions/authActions';
 const mapStateToProps = (state) => ({
 
   loading: state.admin.loading,
-  isSearchActive: state.admin.isSearchActive,
-  foundUsers: state.admin.foundUsers,
-  dataUserList: state.admin.dataUserList,
+  //isSearchActive: state.admin.isSearchActive,
+  //foundUsers: state.admin.foundUsers,
+  //dataUserList: state.admin.dataUserList,
 
-  users: state.admin.users,
-  error: state.admin.error,
+  //users: state.admin.users,
+  //error: state.admin.error,
   FormDeleteOpen: state.admin.FormDeleteOpen,
   userDeleteId: state.admin.userDeleteId,
   deletedUserSuccess: state.admin.deletedUserSuccess,

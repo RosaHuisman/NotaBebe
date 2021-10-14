@@ -12,9 +12,9 @@ import Loading from '../App/Loading';
 import './styles.scss';
 
 const AdminHome = ({
-  handleDelete,
-  error,
-  user,
+  //handleDelete,
+  //error,
+  //user,
   FormDeleteOpen,
   loading,
   // newSearchValue,
@@ -25,7 +25,7 @@ const AdminHome = ({
   // getAllUsers,
   // dataUserList,
   onClickOpenFormDeleteUser,
-  onClickCloseFormDeleteUser,
+  //onClickCloseFormDeleteUser,
   userDeleteId,
   deleteUser,
   deletedUserError,

@@ -320,7 +320,7 @@ AddUserAdmin.propTypes = {
   postcode: PropTypes.string.isRequired,
   city: PropTypes.string.isRequired,
   password: PropTypes.string,
-  roleId: PropTypes.string.isRequired,
+  roleId: PropTypes.number.isRequired,
 
   handleAddUser: PropTypes.func.isRequired,
   changeField: PropTypes.func.isRequired,
