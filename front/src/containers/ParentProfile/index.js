@@ -6,7 +6,6 @@ import {
   toggleChangePassword,
   closeFormAction,
   changePassword,
-  fetchUsersParents,
 } from 'src/store/actions';
 
 import { checkToken } from 'src/store/actions/authActions';
@@ -31,10 +30,6 @@ const mapStateToProps = (state, ownProps) => ({
 
 
 const mapDispatchToProps = (dispatch) => ({
-
-  loadUsersParents: () => {
-    dispatch(fetchUsersParents());
-  },
 
   openUserInfos: () => {
     dispatch(openChangeInfos());

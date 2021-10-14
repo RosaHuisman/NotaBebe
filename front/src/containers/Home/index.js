@@ -16,6 +16,7 @@ const mapDispatchToProps = (dispatch) => ({
   handleLogin: () => {
     dispatch(login());
   },
+  
   checkIsLogged: () => {
     dispatch(checkToken());
   },

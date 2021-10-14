@@ -16,15 +16,12 @@ const recap = (store) => (next) => (action) => {
     case FETCH_RECAPS_BY_CHILD_ID: {
 
       const fetchData = async () => {
-        console.log("je suis dans le case FETCH RECAP BY CHILD ID")
         const parentId = action.parentId;
         const childId = action.childId;
         try {
           const response = await api.get(`profile/parent/${parentId}/child/${childId}/allrecaps`);
-          console.log(response.data)
-
-          const actionsaveRecapsByChildId = saveRecaps(response.data);
-          store.dispatch(actionsaveRecapsByChildId);
+          const actionsaveRecaps = saveRecaps(response.data);
+          store.dispatch(actionsaveRecaps);
         }
         catch (error) {
           console.error('il y a eu une erreur', error);

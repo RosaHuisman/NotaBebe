@@ -2,14 +2,11 @@ import { connect } from 'react-redux';
 import ChildRecap from 'src/components/ChildRecap';
 
 import { fetchRecapsByChildId } from 'src/store/actions/recap'
-import { fetchChildren } from 'src/store/actions/children';
-import { findUser } from 'src/store/selectors/user';
-import { fetchUsersParents} from 'src/store/actions';
 import { commentSendNo } from 'src/store/actions/comment'
 
 
 const mapStateToProps = (state, ownProps) => ({
-  parent: findUser(state.user.list, ownProps.match.params.parent_id),
+  //parent: findUser(state.user.list, ownProps.match.params.parent_id),
   loading: state.recap.loading,
   childRecaps: state.recap.list,
   parent: state.user.parent,
@@ -18,17 +15,16 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = (dispatch,) => ({
   
   loadRecaps: (parentId, childId) => {
-    console.log('je suis la')
     dispatch(fetchRecapsByChildId(parentId, childId));
   },
   
-  loadChildren: () => {
+  /* loadChildren: () => {
     dispatch(fetchChildren());
-  },
+  }, */
   
-  loadParents: () => {
+  /* loadParents: () => {
     dispatch(fetchUsersParents());
-  },
+  }, */
   
   closeCommentSend: () => {
     dispatch(commentSendNo());

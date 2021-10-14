@@ -20,22 +20,13 @@ const ParentProfile = ({
   isOpenPassword,
   togglerChangePassword,
   handleChangePassword,
-  user,
-  loadUsersParents,
-  loading,
   changeInfos,
-  children,
-  loadParent,
-  parentId,
   parent,
   checkIsLogged
 
 }) => {
 
-
   useEffect(() => {
-    // ici on veut vérifier si l'utilisateur est déjà connecté
-    // au 1e rendu du composant App
     checkIsLogged();
   }, []);
 
@@ -49,11 +40,6 @@ const ParentProfile = ({
     openUserInfos();
   };
 
-
- /*  if (loading) {
-    return <Loading />;
-  } */
- 
 
   return (
     <>
