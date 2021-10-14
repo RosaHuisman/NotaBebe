@@ -22,17 +22,17 @@ const ChildRecap = ({
 }) => {
 
 
-
 const history = useHistory();
 
 const data = useLocation();
 const child = data.state.child;
 
-
 useEffect(() => {
   loadRecaps(parent[0].user_id, child.child_id);
 }, []);
 
+loadRecaps()
+console.log(childRecaps)
 
 const previousPage = () => {
     history.goBack();

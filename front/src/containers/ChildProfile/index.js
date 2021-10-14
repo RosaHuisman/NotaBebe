@@ -1,11 +1,9 @@
 import { connect } from 'react-redux';
 import ChildProfile from 'src/components/ChildProfile';
 import {
-  openChangeInfos, changeChildInfos, closeFormAction, fetchUsersParents} from 'src/store/actions';
-import { fetchRecaps } from 'src/store/actions/recap'
-import { changeTextValue, fetchComments, openModal, postComment, updateComment, openFormDeleteComment, deleteComment } from 'src/store/actions/comment'
+  openChangeInfos, changeChildInfos, closeFormAction } from 'src/store/actions';
+import { changeTextValue, fetchCommentsByChildId, openModal, postComment, updateComment, openFormDeleteComment, deleteComment } from 'src/store/actions/comment'
 import { findComments } from 'src/store/selectors/comment';
-import { fetchChildren } from 'src/store/actions/children';
 
 import { findUser } from 'src/store/selectors/user';
 
@@ -15,7 +13,8 @@ const mapStateToProps = (state, ownProps) => ({
   isOpenInfos: state.user.isOpenInfos,
   commentSend: state.comment.commentSend,
   loading: state.comment.loading,
-  comments: findComments(state.comment.list, ownProps.match.params.child_id),
+  //comments: findComments(state.comment.list, ownProps.match.params.child_id),
+  comments: state.comment.list,
   modalOpen: state.comment.modalOpen,
   commentId: state.comment.commentId,
   formDeleteOpen: state.comment.formDeleteOpen,
@@ -44,20 +43,20 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     dispatch(changeTextValue(value));
   },
 
-  loadRecaps: () => {
+  /* loadRecaps: () => {
     dispatch(fetchRecaps());
-  },
-  loadComments: () => {
-    dispatch(fetchComments());
+  }, */
+  loadComments: (childId) => {
+    dispatch(fetchCommentsByChildId(childId));
   },
 
-  loadParents: () => {
+/*   loadParents: () => {
     dispatch(fetchUsersParents());
-  },
+  }, */
 
-  loadChildren: () => {
+ /*  loadChildren: () => {
     dispatch(fetchChildren());
-  },
+  }, */
   
   onClickOpenModalToFormChangeComment: (commentId) => {
     dispatch(openModal(commentId));

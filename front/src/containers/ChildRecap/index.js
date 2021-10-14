@@ -11,20 +11,25 @@ import { commentSendNo } from 'src/store/actions/comment'
 const mapStateToProps = (state, ownProps) => ({
   parent: findUser(state.user.list, ownProps.match.params.parent_id),
   loading: state.recap.loading,
-  childRecaps: state.recap.childRecaps,
+  childRecaps: state.recap.list,
   parent: state.user.parent,
 });
 
 const mapDispatchToProps = (dispatch,) => ({
+  
   loadRecaps: (parentId, childId) => {
+    console.log('je suis la')
     dispatch(fetchRecapsByChildId(parentId, childId));
   },
+  
   loadChildren: () => {
     dispatch(fetchChildren());
   },
+  
   loadParents: () => {
     dispatch(fetchUsersParents());
   },
+  
   closeCommentSend: () => {
     dispatch(commentSendNo());
   },

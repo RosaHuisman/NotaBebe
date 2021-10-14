@@ -9,7 +9,7 @@ import Loading from 'src/components/App/Loading';
 // import Header from 'src/components/Header';
 import HeaderParent from 'src/containers/HeaderParent';
 
-import ChildRecap from 'src/components/ChildRecap';
+//import ChildRecap from 'src/components/ChildRecap';
 import ChildInfos from './ChildInfos';
 import ChangeChildInfosForm from './ChangeChildInfosForm';
 import Comment from './Comment';
@@ -22,10 +22,10 @@ const ChildProfile = ({
   closeForm,
   handleChangeInfos,
   submitComment,
-  comment,
+  //comment,
   commentSend,
   onChangeTextValue,
-  loadRecaps,
+  //loadRecaps,
   loading,
   loadComments,
   comments,
@@ -45,9 +45,7 @@ const ChildProfile = ({
   const child = data.state.child;
 
   useEffect(() => {
-   
-    loadRecaps();
-    loadComments();
+    loadComments(child.child_id);
   }, []);
 
   if (loading) {

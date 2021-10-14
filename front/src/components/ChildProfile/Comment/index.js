@@ -31,9 +31,9 @@ const Comment = ({
   child
 
 }) => {
-  useEffect(() => {
-      loadComments()
-  }, [modalOpen]);
+ /*  useEffect(() => {
+      loadComments(child.child_id)
+  }, [modalOpen]); */
 
 
   const handleSubmit = (evt) => {

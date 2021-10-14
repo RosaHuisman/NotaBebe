@@ -1,4 +1,5 @@
 export const FETCH_COMMENTS = 'FETCH_COMMENTS';
+export const FETCH_COMMENTS_BY_CHILD_ID = 'FETCH_COMMENTS_BY_CHILD_ID'
 export const SAVE_COMMENTS = 'SAVE_COMMENTS';
 export const OPEN_MODAL ='OPEN_MODAL';
 export const POST_COMMENT ='POST_COMMENT';
@@ -15,6 +16,11 @@ export const EMPTY_STATE_COMMENT = 'EMPTY_STATE_COMMENT';
 
 export const fetchComments = () => ({
   type: FETCH_COMMENTS,
+})
+
+export const fetchCommentsByChildId = (childId) => ({
+  type: FETCH_COMMENTS_BY_CHILD_ID,
+  childId
 })
 
 export const saveComments = (comments) => ({

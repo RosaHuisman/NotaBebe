@@ -1,5 +1,6 @@
 import { 
   FETCH_COMMENTS, 
+  FETCH_COMMENTS_BY_CHILD_ID,
   saveComments,
   POST_COMMENT,
   saveComment,
@@ -7,6 +8,7 @@ import {
   commentUpdated,
   DELETE_COMMENT, 
   commentDeleted,
+
 } from 'src/store/actions/comment';
 
 import axios from 'axios';
@@ -15,7 +17,6 @@ import api from './utils/api';
 const comment = (store) => (next) => (action) => {
   switch (action.type) {
     case FETCH_COMMENTS: {
-
       const fetchData = async () => {
         try {
           const response = await api.get('profile/staff/comments');
@@ -30,6 +31,22 @@ const comment = (store) => (next) => (action) => {
       fetchData();
       break;
     }
+    case FETCH_COMMENTS_BY_CHILD_ID: {
+      const childId = action.childId
+      const fetchData = async () => {
+        try {
+          const response = await api.get(`profile/staff/comments/child/${childId}`);
+          const actionsaveComments = saveComments(response.data);
+          store.dispatch(actionsaveComments);
+        }
+        catch (error) {
+          console.error('il y a eu une erreur', error);
+        }
+      };
+      fetchData();
+      break;
+    }
+
     case POST_COMMENT: {
 
       const state = store.getState();
