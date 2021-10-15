@@ -1,5 +1,10 @@
 /* eslint-disable import/prefer-default-export */
 
+export const HANDLE_ADD_USER = 'HANDLE_ADD_USER';
+export const handleAddUser = () => ({
+  type: HANDLE_ADD_USER
+})
+
 export const CHANGE_ROLE = 'CHANGE_ROLE';
 export const changeRole = (key, value) => ({
   type: CHANGE_ROLE,
@@ -206,17 +211,18 @@ export const saveUserData = (favorites) => ({
   payload: favorites,
 });
 
-// liste user (viktk)
-// export const GET_ALL_USERS = 'GET_ALL_USERS';
-// export const getAllUsersAction = () => ({
-//   type: GET_ALL_USERS,
-// });
+ export const FETCH_ALL_USERS = 'FETCH_ALL_USERS';
+ export const fetchAllUsers = () => ({
+   type: FETCH_ALL_USERS,
+ });
 
-// export const GET_ALL_USERS_SUCCESS = 'GET_ALL_USERS_SUCCESS';
-// export const getAllUsersSuccessAction = (payload) => ({
-//   type: GET_ALL_USERS_SUCCESS,
-//   userList: payload,
-// });
+ export const SAVE_ALL_USERS = 'SAVE_ALL_USERS';
+ export const saveAllUsers = (allUsers) => ({
+   type: SAVE_ALL_USERS,
+   payload: allUsers,
+ });
+
+
 
 export const LOGOUT_ADMIN = 'LOGOUT_ADMIN';
 

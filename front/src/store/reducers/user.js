@@ -15,6 +15,7 @@ import {
   ADMIN_ADD_USER_ERROR,
   RESET_FORM_ADMIN,
   CHANGE_ROLE,
+  HANDLE_ADD_USER,
 } from '../actions';
 
 import { CLEAR_CHANGE_PASSWORD_CONFIRM_MESSAGE } from 'src/store/actions/staff';
@@ -177,7 +178,24 @@ const reducer = (state = initialState, action) => {
         contentAdminPageAdd: false,
         addUserSuccess: true,
         addUserError: false,
+        last_name: '',
+        first_name: '',
+        email: '',
+        phone_number: '',
+        address: '',
+        postcode: '',
+        city: '',
+        password: '',
+        role_id: null,
       };
+    }
+    case HANDLE_ADD_USER: {
+      return {
+        ...state,
+        addUserSuccess: false, 
+        contentAdminPageAdd: true,
+        addUserError: false,
+      }
     }
     case ADMIN_ADD_USER_ERROR: {
       return {
@@ -363,6 +381,9 @@ const reducer = (state = initialState, action) => {
         staff: {},
         emailForgot: '',
         userId: null,
+        comment: '',
+        successMessage: false,
+
       };
     }
     case LOGOUT_SUCCESS: {

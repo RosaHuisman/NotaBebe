@@ -2,12 +2,13 @@ import { connect } from 'react-redux';
 import Admin from 'src/components/Admin';
 
 import {
-  getAllUsersAction,
+  fetchAllUsers,
   openModalDeleteUser,
   closeModalDeleteUser,
   deleteUser,
   AdminAddUser,
   resetFormAdmin,
+  handleAddUser,
 } from 'src/store/actions';
 import { checkToken } from 'src/store/actions/authActions';
 
@@ -24,12 +25,17 @@ const mapStateToProps = (state) => ({
   userDeleteId: state.admin.userDeleteId,
   deletedUserSuccess: state.admin.deletedUserSuccess,
   deletedUserError: state.admin.deletedUserError,
+  usersList: state.admin.usersList
 });
 
 const mapDispatchToProps = (dispatch) => ({
 
-  getAllUsers: () => {
-    dispatch(getAllUsersAction());
+  fetchAllUsers: () => {
+    dispatch(fetchAllUsers());
+  },
+
+  addUserFalse: () => {
+    dispatch(handleAddUser())
   },
 
   onClickOpenFormDeleteUser: (userDeleteId) => {

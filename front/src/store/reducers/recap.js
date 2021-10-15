@@ -58,7 +58,6 @@ const initialState = {
   comment_nap_3: '',
   inputValue:'',
 
- // childRecaps: [],
 };
 
 
@@ -67,13 +66,7 @@ const initialState = {
 
 const reducer = (state = initialState, action ) => {
   switch (action.type) {
-    /* case SAVE_RECAPS_BY_CHILD_ID: {
-      return {
-        ...state,
-        childRecaps: action.payload,
-        loading: false,
-      };
-    } */
+  
     case ADD_FIELD_NAP:{
 
       const newId = Math.max(...state.napFormList.map(form => form.id)) + 1

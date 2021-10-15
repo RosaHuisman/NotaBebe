@@ -31,26 +31,29 @@ const AdminHome = ({
   deletedUserError,
   deletedUserSuccess,
   checkIsLogged,
+  fetchAllUsers,
+  usersList,
+  addUserFalse,
 
 }) => {
   const [searchNewValue, setSearchNewValue] = useState('');
-  const [UsersListData, setUsersListData] = useState([]);
+  //const [UsersListData, setUsersListData] = useState([]);
 
-  useEffect(() => {
+ /*  useEffect(() => {
     fetch('https://notabebe-backend.herokuapp.com/profile/admin/allusers')
       .then((response) => response.json())
       .then((json) => setUsersListData(json));
   }, [FormDeleteOpen]); // useEffect se relance à chaque fois que le state FormDeleteOpen change
+ */
 
   useEffect(() => {
-    // ici on veut vérifier si l'utilisateur est déjà connecté
-    // au 1e rendu du composant App
     checkIsLogged();
+    fetchAllUsers();
   }, []);
 
-  // if (loading) {
-  //   return <Loading />;
-  // }
+   if (loading) {
+     return <Loading />;
+   }
 
   // le hook useLocation nous renvoie l'url courante
   const location = useLocation();
@@ -61,6 +64,7 @@ const AdminHome = ({
   }, [location]);
 
   const addUserPage = () => {
+    addUserFalse();
     history.push('/admin/adduser');
   };
 
@@ -184,7 +188,7 @@ const AdminHome = ({
             <Table.Body>
               <>
                 {
-                  UsersListData.filter((user) => {
+                  usersList.filter((user) => {
                     if (searchNewValue === '') {
                       return user;
                     } if (

@@ -31,6 +31,7 @@ useEffect(() => {
   loadRecaps(parent[0].user_id, child.child_id);
 }, []);
 
+//loadRecaps(parent[0].user_id, child.child_id)
 
 const previousPage = () => {
     history.goBack();

@@ -15,16 +15,9 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = (dispatch,) => ({
   
   loadRecaps: (parentId, childId) => {
+    console.log('je suis la')
     dispatch(fetchRecapsByChildId(parentId, childId));
   },
-  
-  /* loadChildren: () => {
-    dispatch(fetchChildren());
-  }, */
-  
-  /* loadParents: () => {
-    dispatch(fetchUsersParents());
-  }, */
   
   closeCommentSend: () => {
     dispatch(commentSendNo());

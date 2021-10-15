@@ -13,6 +13,8 @@ import {
   ADMIN_ADD_USER_SUCCESS,
   ADMIN_ADD_USER_ERROR,
   CHANGE_FIELD_VALUE_ADMIN_ADD_USER,
+  SAVE_ALL_USERS
+  
 } from '../actions';
 
 const initialState = {
@@ -29,28 +31,21 @@ const initialState = {
   userDeleteId: null,
   deletedUserError: null,
   deletedUserSuccess: null,
+  usersList: [],
 
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    // case GET_ALL_USERS: {
-    //   return {
-    //     ...state,
-    //     loading: true,
-    //   };
-    // }
-    // case GET_ALL_USERS_SUCCESS:
-    //   return {
-    //     ...state,
-    //     userList: action.payload,
-    //     loading: false,
-    //   };
-    // case LOGOUT_ADMIN:
-    //   return {
-    //     ...state,
-    //     userList: [],
-    //   };
+
+    case SAVE_ALL_USERS: {
+      return {
+        ...state,
+        usersList: action.payload,
+        loading: false,
+      }
+    }
+  
     case USER_LIST_LOADING: {
       return {
         ...state,
@@ -96,6 +91,7 @@ const reducer = (state = initialState, action) => {
       };
     }
     case DELETE_USER_SUCCESS: {
+      console.log('coucou')
       return {
         ...state,
         deletedUserSuccess: true,

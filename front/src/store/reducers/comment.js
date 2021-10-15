@@ -49,7 +49,7 @@ const reducer = (state = initialState, action ={} ) => {
         ...state,
         commentSend: !state.commentSend,
         comment: '',
-        commentSend: true,
+        //commentSend: true,
         list: [
           action.payload.data,
           ...state.list,

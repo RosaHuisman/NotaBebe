@@ -62,21 +62,6 @@ const user = (store) => (next) => (action) => {
     }
       break;
 
-   /*  case FETCH_USERS_STAFF: {
-      const fetchData = async () => {
-        try {
-          const response = await api.get('/profile/admin/allstaff');
-          const actionsaveUsersStaff = saveUsersStaff(response.data);
-          store.dispatch(actionsaveUsersStaff);
-        }
-        catch (error) {
-          console.error('il y a eu une erreur', error);
-        }
-      };
-
-      fetchData();
-      break;
-    } */
 
     case FETCH_STAFF_BY_ID: {
 

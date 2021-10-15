@@ -9,6 +9,8 @@ import {
   ADMIN_ADD_USER,
   adminAddUserSuccess,
   adminAddUserError,
+  FETCH_ALL_USERS,
+  saveAllUsers
 } from 'src/store/actions';
 
 import axios from 'axios';
@@ -17,38 +19,20 @@ import api from './utils/api';
 const listUsersAdminMiddleware = (store) => (next) => (action) => {
   // une fois qu'on aura les infos, on va les stocker dans le state => dispatcher une action
   switch (action.type) {
-    case USER_LIST_LOADING: {
-
-      // api({
-      //   method: 'GET',
-      //   url: '/profile/admin/allusers',
-      // })
-      //   .then((json) => {
-      //     const myUserList = json;
-      //     store.dispatch(getAllUsersSuccessAction(myUserList));
-      //   })
-      //   .catch((err) => {
-      //     store.dispatch(getAllUsersErrorAction(err));
-      //   });
-
-      // const fetchData = async () => {
-      //   try {
-      //     const response = await api.get('/profile/admin/allusers');
-      //     const SOLSOL = response.json();
-
-      //     store.dispatch(getAllUsersSuccessAction(SOLSOL));
-      //   }
-      //   catch (error) {
-      //     console.error('il y a eu une erreur', error);
-      //   }
-      // };
-
-      // fetchData();
-
-      fetch('https://notabebe-backend.herokuapp.com/profile/admin/allusers')
-        .then((response) => response.json())
-        .then((data) => console.log(data));
-      break;
+    case FETCH_ALL_USERS: {
+         const fetchData = async () => {
+          try {
+            const response = await api.get('/profile/admin/allusers');
+            const actionsaveAllUsers = saveAllUsers(response.data);
+            store.dispatch(actionsaveAllUsers);
+          }
+          catch (error) {
+            console.error('il y a eu une erreur', error);
+          }
+        };
+  
+        fetchData();
+        break;
     }
     case DELETE_USER: {
 
@@ -70,7 +54,6 @@ const listUsersAdminMiddleware = (store) => (next) => (action) => {
       break;
     }
     case ADMIN_ADD_USER: {
-
 
       const state = store.getState();
       

@@ -4,7 +4,6 @@ import {
   CREATE_RECAP,
   saveRecap, 
   FETCH_RECAPS_BY_CHILD_ID , 
-  saveRecapsByChildId
 } from 'src/store/actions/recap';
 
 import axios from 'axios';

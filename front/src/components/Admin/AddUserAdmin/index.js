@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { useLocation, useHistory } from 'react-router-dom';
+import { useLocation, useHistory, Link } from 'react-router-dom';
 import {
   Button, Icon, Table, Form,
 } from 'semantic-ui-react';
@@ -33,13 +33,13 @@ const AddUserAdmin = ({
 
   const history = useHistory();
 
+
+
   useEffect(() => {
     window.scroll(0, 0);
   }, [location]);
 
-  useEffect(() => {
-    resetFormAdmin();
-  }, []);
+ 
 
   const handleSubmitAddUser = (e) => {
     e.preventDefault();
@@ -51,8 +51,7 @@ const AddUserAdmin = ({
     roleSelected(e.target.value, e.target.name);
   };
 
-  const previousPage = () => {
-    history.goBack();
+  const emptyForm = () => {
     resetFormAdmin();
   };
 
@@ -213,7 +212,7 @@ const AddUserAdmin = ({
                       <Table.HeaderCell colSpan="2" textAlign="center">
                         <Button
                           type="button"
-                          onClick={previousPage}
+                          //onClick={previousPage}
                           icon="cancel"
                           color="red"
                           size="tiny"
@@ -254,16 +253,20 @@ const AddUserAdmin = ({
                 <Table.Footer fullwidth="true" column="equal">
                   <Table.Row>
                     <Table.HeaderCell colSpan="2" textAlign="center">
-                      <Button
-                        onClick={previousPage}
-                        type="button"
-                        icon
-                        labelPosition="left"
-                        primary
-                        size="tiny"
-                      >
-                        <Icon name="angle left" />Retour
-                      </Button>
+                      <Link
+                        to='/admin'
+                      > 
+                        <Button
+                          type="button"
+                          icon
+                          labelPosition="left"
+                          primary
+                          size="tiny"
+                        >
+                          <Icon name="angle left" />Retour
+                        </Button>
+                      </Link>
+                      
                     </Table.HeaderCell>
                   </Table.Row>
                 </Table.Footer>
@@ -290,16 +293,19 @@ const AddUserAdmin = ({
                 <Table.Footer fullwidth="true" column="equal">
                   <Table.Row>
                     <Table.HeaderCell colSpan="2" textAlign="center">
-                      <Button
-                        onClick={previousPage}
-                        type="button"
-                        icon
-                        labelPosition="left"
-                        primary
-                        size="tiny"
-                      >
-                        <Icon name="angle left" />Retour
-                      </Button>
+                    <Link
+                        to='/admin'
+                      > 
+                        <Button
+                          type="button"
+                          icon
+                          labelPosition="left"
+                          primary
+                          size="tiny"
+                        >
+                          <Icon name="angle left" />Retour
+                        </Button>
+                      </Link>
                     </Table.HeaderCell>
                   </Table.Row>
                 </Table.Footer>
@@ -324,7 +330,7 @@ AddUserAdmin.propTypes = {
 
   handleAddUser: PropTypes.func.isRequired,
   changeField: PropTypes.func.isRequired,
-  resetFormAdmin: PropTypes.func.isRequired,
+  //resetFormAdmin: PropTypes.func.isRequired,
 
   contentAdminPageAdd: PropTypes.bool,
   addUserSuccess: PropTypes.bool,
