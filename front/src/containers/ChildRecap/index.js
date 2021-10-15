@@ -15,7 +15,7 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = (dispatch,) => ({
   
   loadRecaps: (parentId, childId) => {
-    console.log('je suis la')
+    console.log('je fais le loadrecaps')
     dispatch(fetchRecapsByChildId(parentId, childId));
   },
   

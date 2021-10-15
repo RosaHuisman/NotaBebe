@@ -21,15 +21,18 @@ const ChildRecap = ({
 
 }) => {
 
+useEffect(() => {
+  loadRecaps(parent[0].user_id, child.child_id);
+}, []);
 
 const history = useHistory();
 
 const data = useLocation();
 const child = data.state.child;
 
-useEffect(() => {
-  loadRecaps(parent[0].user_id, child.child_id);
-}, []);
+console.log(parent[0].user_id, child.child_id)
+consolelog(childRecaps)
+
 
 //loadRecaps(parent[0].user_id, child.child_id)
 

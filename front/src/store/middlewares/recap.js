@@ -19,6 +19,7 @@ const recap = (store) => (next) => (action) => {
         const childId = action.childId;
         try {
           const response = await api.get(`profile/parent/${parentId}/child/${childId}/allrecaps`);
+          console.log(response.data)
           const actionsaveRecaps = saveRecaps(response.data);
           store.dispatch(actionsaveRecaps);
         }
@@ -36,7 +37,7 @@ const recap = (store) => (next) => (action) => {
       const fetchData = async () => {
         try {
           const response = await api.get('profile/staff/allrecaps');
-
+          console.log(response.data)
           const actionsaveRecaps = saveRecaps(response.data);
           store.dispatch(actionsaveRecaps);
         }
