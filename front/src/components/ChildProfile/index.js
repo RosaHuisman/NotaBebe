@@ -37,6 +37,7 @@ const ChildProfile = ({
   onClickOpenFormDeleteComment,
   formDeleteOpen,
   deleteComment,
+  loadRecaps,
 
 
 }) => {
@@ -46,12 +47,18 @@ const ChildProfile = ({
 
   useEffect(() => {
     loadComments(child.child_id);
+    loadRecaps(child.user_id, child.child_id);
+
   }, []);
+
+  console.log(child.user_id, child.child_id)
+
 
   if (loading) {
     return <Loading />;
   }
-
+ 
+  
 
   // we retrieve the data of the parent and the child through Link of Children in ParentProfile
   // we could use this informations for the parent and the child

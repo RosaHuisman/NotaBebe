@@ -21,20 +21,15 @@ const ChildRecap = ({
 
 }) => {
 
-useEffect(() => {
+/* useEffect(() => {
   loadRecaps(parent[0].user_id, child.child_id);
-}, []);
+}, []); */
 
 const history = useHistory();
 
 const data = useLocation();
 const child = data.state.child;
 
-console.log(parent[0].user_id, child.child_id)
-consolelog(childRecaps)
-
-
-//loadRecaps(parent[0].user_id, child.child_id)
 
 const previousPage = () => {
     history.goBack();

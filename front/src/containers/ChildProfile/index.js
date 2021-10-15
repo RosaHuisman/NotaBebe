@@ -7,6 +7,7 @@ import { findComments } from 'src/store/selectors/comment';
 
 import { findUser } from 'src/store/selectors/user';
 
+import { fetchRecapsByChildId } from 'src/store/actions/recap'
 
 
 const mapStateToProps = (state, ownProps) => ({
@@ -43,9 +44,11 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     dispatch(changeTextValue(value));
   },
 
-  /* loadRecaps: () => {
-    dispatch(fetchRecaps());
-  }, */
+  loadRecaps: (parentId, childId) => {
+    console.log('je fais le loadrecaps')
+    dispatch(fetchRecapsByChildId(parentId, childId));
+  },
+
   loadComments: (childId) => {
     dispatch(fetchCommentsByChildId(childId));
   },

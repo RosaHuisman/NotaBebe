@@ -14,10 +14,10 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch,) => ({
   
-  loadRecaps: (parentId, childId) => {
+  /* loadRecaps: (parentId, childId) => {
     console.log('je fais le loadrecaps')
     dispatch(fetchRecapsByChildId(parentId, childId));
-  },
+  }, */
   
   closeCommentSend: () => {
     dispatch(commentSendNo());
