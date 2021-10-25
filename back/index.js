@@ -7,7 +7,9 @@ const cors = require('cors');
 const router = require('./app/routers');
 
 const app = express();
-app.use(cors());
+app.use(cors({
+    origin: "https://notabebe-backend.herokuapp.com/"
+}));
 
 const port = process.env.PORT || 3000;
 
