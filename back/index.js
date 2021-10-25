@@ -8,7 +8,7 @@ const router = require('./app/routers');
 
 const app = express();
 app.use(cors({
-    origin: "https://notabebe.netlify.app/"
+    origin: ["https://notabebe.netlify.app/", 'https://localhost:8080/']
 }));
 
 const port = process.env.PORT || 3000;
