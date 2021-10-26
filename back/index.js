@@ -8,10 +8,9 @@ const sanitizer = require('sanitizer');
 const router = require('./app/routers');
 
 const app = express();
-app.use(cors({
-    Origin: 'https://notabebe.netlify.app/'
-    // la bonne pratique : origin: 'https://notabebe.netlify.app/'
-}));
+
+// la bonne pratique : origin: 'https://notabebe.netlify.app/'
+app.use(cors());
 
 // On assainit avec sanitizer
 app.use((req, res, next) => {
