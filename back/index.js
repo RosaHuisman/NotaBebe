@@ -9,7 +9,7 @@ const router = require('./app/routers');
 
 const app = express();
 app.use(cors({
-    origin: 'https://notabebe.netlify.app/'
+    Origin: 'https://notabebe.netlify.app/'
     // la bonne pratique : origin: 'https://notabebe.netlify.app/'
 }));
 
