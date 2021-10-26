@@ -13,14 +13,14 @@ const app = express();
 app.use(cors());
 
 // On assainit avec sanitizer
-app.use((req, res, next) => {
-    if (req.body) {
-        for (const prop in req.body) {
-            req.body[prop] = sanitizer.escape(req.body[prop]);
-        }
-    }
-    next();
-});
+// app.use((req, res, next) => {
+//     if (req.body) {
+//         for (const prop in req.body) {
+//             req.body[prop] = sanitizer.escape(req.body[prop]);
+//         }
+//     }
+//     next();
+// });
 
 const port = process.env.PORT || 3000;
 
