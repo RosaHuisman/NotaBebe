@@ -10,17 +10,23 @@ const router = require('./app/routers');
 const app = express();
 
 // la bonne pratique : origin: 'https://notabebe.netlify.app/'
-app.use(cors());
+const corsOptions ={
+    origin:'https://notabebe.netlify.app', 
+    credentials:true,            //access-control-allow-credentials:true
+    optionSuccessStatus:200
+}
+app.use(cors(corsOptions));
+// app.use(cors());
 
 // On assainit avec sanitizer
-// app.use((req, res, next) => {
-//     if (req.body) {
-//         for (const prop in req.body) {
-//             req.body[prop] = sanitizer.escape(req.body[prop]);
-//         }
-//     }
-//     next();
-// });
+app.use((req, res, next) => {
+    if (req.body) {
+        for (const prop in req.body) {
+            req.body[prop] = sanitizer.escape(req.body[prop]);
+        }
+    }
+    next();
+});
 
 const port = process.env.PORT || 3000;
 
