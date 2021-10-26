@@ -39,7 +39,7 @@ const recap = (store) => (next) => (action) => {
         })
       })
 
-     axios.post(`https://notabebe-back.herokuapp.com/profile/staff/child/recap`, 
+     axios.post(`https://notabebe-backend.herokuapp.com/profile/staff/child/recap`, 
      {
       child_id: childId,
       date: state.recap.date,

@@ -15,7 +15,7 @@ const staff = (store) => (next) => (action) => {
       const state = store.getState();
       const id = action.id;
 
-      axios.patch(`https://notabebe-back.herokuapp.com/profile/staff/${id}/password`, {
+      axios.patch(`https://notabebe-backend.herokuapp.com/profile/staff/${id}/password`, {
         oldPassword: state.user.oldpassword,
         password: state.user.newpassword,
         id: action.id,
